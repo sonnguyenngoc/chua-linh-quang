@@ -1,0 +1,265 @@
+<header id="header" class="type_2">
+
+    <!-- - - - - - - - - - - - - - Bottom part - - - - - - - - - - - - - - - - -->
+
+    <div class="bottom_part">
+
+        <div class="sticky_part">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="main_header_row">
+
+                        <div class="col-sm-3">
+
+                            <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
+                            
+                            <%= link_to image_tag("/frontend/images/logo.png"), root_path, class: "logo" %>
+
+                            <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
+
+                        </div><!--/ [col]-->
+
+                        <div class="col-lg-6 col-md-5 col-sm-6">
+
+                            <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
+
+                            <nav>
+
+                                <ul class="topbar">
+
+                                    <li><%= link_to "Home", root_path %></li>
+                                    <li><a href="#shop_my_account">My Account</a></li>
+                                    <li><a href="#shop_shopping_cart">Shopping Cart</a></li>
+                                    <li><a href="#shop_checkout">Checkout</a></li>
+                                    <li><a href="#blog">Blog</a></li>
+                                    <li><a href="#additional_page_contact">Contact us</a></li>
+                                    <li><a href="#" data-modal-url="/frontend/modals/login.html">Login</a></li>
+
+                                </ul>
+
+                            </nav>
+
+                            <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
+
+                            <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
+
+                            <form class="clearfix search">
+
+                                <input type="text" name="" tabindex="1" placeholder="Search..." class="alignleft">
+                                
+                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                                <div class="search_category alignleft">
+
+                                    <div class="open_categories">All Categories</div>
+
+                                    <ul class="categories_list dropdown">
+
+                                        <li class="animated_item"><a href="#">Medicine &amp; Health</a></li>
+                                        <li class="animated_item"><a href="#">Beauty</a></li>
+                                        <li class="animated_item"><a href="#">Personal Care</a></li>
+                                        <li class="animated_item"><a href="#">Vitamins &amp; Supplements</a></li>
+                                        <li class="animated_item"><a href="#">Baby Needs</a></li>
+                                        <li class="animated_item"><a href="#">Diet &amp; Fitness</a></li>
+                                        <li class="animated_item"><a href="#">Sexual Well-being</a></li>
+
+                                    </ul>
+
+                                </div><!--/ .search_category.alignleft-->
+
+                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                                <button class="button_blue def_icon_btn alignleft"></button>
+
+                            </form><!--/ #search-->
+                            
+                            <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+
+                        </div><!--/ [col]-->
+
+                        <div class="col-lg-3 col-md-4 col-sm-3">
+
+                            <div class="clearfix">
+
+                                <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
+
+                                <div class="alignright site_settings">
+
+                                    <span class="current open_"><img src="/frontend/images/flag_vn.jpg" alt="">Vietnam</span>
+
+                                    <ul class="dropdown site_setting_list language">
+
+                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
+                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
+
+                                    </ul>
+
+                                </div><!--/ .alignright.site_settings-->
+
+                                <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
+                                
+                                <!-- - - - - - - - - - - - - - Currency change - - - - - - - - - - - - - - - - -->
+
+                                <div class="alignright site_settings currency">
+
+                                    <span class="current open_">VND</span>
+
+                                    <ul class="dropdown site_setting_list">
+
+                                        <li class="animated_item"><a href="#">VND</a></li>
+                                        <li class="animated_item"><a href="#">USD</a></li>
+
+                                    </ul>
+
+                                </div><!--/ .alignright.site_settings.currency-->
+
+                                <!-- - - - - - - - - - - - - - End of currency change - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .clearfix-->
+
+                            <div class="align_right v_centered">
+
+                                <!-- - - - - - - - - - - - - - Wishlist & compare counters - - - - - - - - - - - - - - - - -->
+
+                                <ul class="shop_links_list">
+
+                                    <li>
+                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> Wishlist (7)</a>	
+                                    </li>
+                                    <li>
+                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> Compare (2)</a>
+                                    </li>
+
+                                </ul><!--/ .align_right.shop_links-->
+                            
+                                <!-- - - - - - - - - - - - - - End of wishlist & compare counters - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Shopping cart - - - - - - - - - - - - - - - - -->
+
+                                <div class="shopping_cart_wrap">
+
+                                    <button id="open_shopping_cart" class="open_button" data-amount="3">
+                                        <b class="title">My Cart</b>
+                                        <b class="total_price">$999.00</b>
+                                    </button>
+
+                                    <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
+
+                                    <div class="shopping_cart dropdown">
+
+                                        <div class="animated_item">
+
+                                            <p class="title">Recently added item(s)</p>
+
+                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                            <div class="clearfix sc_product">
+
+                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_1.jpg" alt=""></a>
+
+                                                <a href="#" class="product_name">Aenean Auctor Wisi Et Urna Ipsum...</a>
+
+                                                <p>1 x $499.00</p>
+
+                                                <button class="close"></button>
+
+                                            </div><!--/ .clearfix.sc_product-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .animated_item-->
+
+                                        <div class="animated_item">
+
+                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                            <div class="clearfix sc_product">
+
+                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_2.jpg" alt=""></a>
+
+                                                <a href="#" class="product_name">Lorem Ipsum Dolor Sit Amet...</a>
+
+                                                <p>1 x $499.00</p>
+
+                                                <button class="close"></button>
+
+                                            </div><!--/ .clearfix.sc_product-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .animated_item-->
+
+                                        <div class="animated_item">
+
+                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                            <div class="clearfix sc_product">
+
+                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_3.jpg" alt=""></a>
+
+                                                <a href="#" class="product_name">Nemo Enim Ipsam <br>Voluptatem 30 ea</a>
+
+                                                <p>1 x $499.00</p>
+
+                                                <button class="close"></button>
+
+                                            </div><!--/ .clearfix.sc_product-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .animated_item-->
+
+                                        <div class="animated_item">
+
+                                            <!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
+
+                                            <ul class="total_info">
+
+                                                <li><span class="price">Tax:</span> $0.00</li>
+
+                                                <li><span class="price">Discount:</span> $37.00</li>
+
+                                                <li class="total"><b><span class="price">Total:</span> $999.00</b></li>
+
+                                            </ul>
+                                            
+                                            <!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .animated_item-->
+
+                                        <div class="animated_item">
+
+                                            <a href="#" class="button_grey">View Cart</a>
+
+                                            <a href="#" class="button_blue">Checkout</a>
+
+                                        </div><!--/ .animated_item-->
+
+                                    </div><!--/ .shopping_cart.dropdown-->
+
+                                    <!-- - - - - - - - - - - - - - End of products list - - - - - - - - - - - - - - - - -->
+
+                                </div><!--/ .shopping_cart_wrap.align_left-->
+                                
+                                <!-- - - - - - - - - - - - - - End of shopping cart - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .align_right-->
+
+                        </div><!--/ [col]-->
+
+                    </div><!--/ .main_header_row-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div>
+
+    </div><!--/ .bottom_part -->
+
+    <!-- - - - - - - - - - - - - - End of bottom part - - - - - - - - - - - - - - - - -->
+
+</header>

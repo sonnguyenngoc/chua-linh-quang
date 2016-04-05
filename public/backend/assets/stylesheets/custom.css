@@ -1,0 +1,8 @@
+.media-left img:not(.media-preview), .media-right img:not(.media-preview), .thumbnail .media img:not(.media-preview) {
+    width: 82px;
+    height: 82px;
+    max-width: none;
+}
+.margin-submit {
+    margin: 10px;
+}
