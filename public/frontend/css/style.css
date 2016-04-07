@@ -2477,7 +2477,7 @@ transition-duration:0.1s;
 				background: #fff;
 				position: absolute;
 				padding: 14px 20px;
-				z-index: 101;
+				z-index: 110;
 				white-space: nowrap;
 			}
 
