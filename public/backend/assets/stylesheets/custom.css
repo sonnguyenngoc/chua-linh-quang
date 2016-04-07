@@ -1,8 +1,30 @@
 .media-left img:not(.media-preview), .media-right img:not(.media-preview), .thumbnail .media img:not(.media-preview) {
-    width: 82px;
-    height: 82px;
-    max-width: none;
+    width: 90px;
+    height: 55px;
 }
-.margin-submit {
-    margin: 10px;
+.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
+    z-index: 3;
+    color: #fff;
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+.pagination li.disabled {
+    display: none;
+}
+.pagination li.active span {
+    border-radius: 3px;
+    margin-left: 2px;
+}
+.pagination li a {
+    border-radius: 3px;
+    margin-left: 2px;
+}
+.panel {
+    margin-bottom: 35px;
+}
+.datatable-footer {
+    display: none;
+}
+.datatable-footer.showed {
+    display: block;
 }

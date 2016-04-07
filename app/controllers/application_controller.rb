@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
     def layout_by_resource
       if controller_name == "home"
         "frontend"
-      elsif controller_name == "main"
+      elsif (devise_controller? && resource_name == :user && action_name != 'edit') || controller_name == 'passwords'
+        "login"
+      elsif controller_name == "main" || controller_name == "products" || controller_name == "categories" || controller_name == "manufacturers" ||
+            controller_name == "articles" || controller_name == "article_categories" || controller_name == "areas"
+        authenticate_user!
         "backend"
       end
     end

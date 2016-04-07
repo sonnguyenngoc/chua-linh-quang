@@ -1,0 +1,71 @@
+<% if @article.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @article.errors.full_messages.each do |message| %>
+                - <%= message %><br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @article], html: {class: "form-horizontal"} do |f| %>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Picture <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <div class="uploader bg-teal-400">
+                <%= f.file_field :image_url, class: "file-styled", require: true %>
+                <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
+            </div>
+            <span class="help-block">Accepted formats: gif, png, jpg.</span>
+            <%= image_tag(@article.image_url.medium_image, size: "202x128", class: "img-rouded") %>
+        </div>
+    </div>
+            
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Title <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group field">
+        <label class="col-lg-2 control-label" >Categories <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <select name="category_ids[]" class="select-item-color" data-placeholder="Categories..." multiple="multiple">
+                <% @article_categories.each do |item| %>
+                    <% if item.level == 1 %>
+                        <optgroup label="<%= item.name %>">
+                            <% item.children.each do |child_1| %>
+                                <% if child_1.level == 2 %>
+                                    <option <%= "selected" if @article.article_categories.include?(child_1) %> value="<%= child_1.id %>"><%= child_1.name %></option>
+                                <% end %>
+                            <% end %>
+                        </optgroup>
+                    <% end %>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Content <span class='text-danger'>*</span></label>
+    </div>
+    <div class="mb-15">
+        <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Tags <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :tags, class: "form-control" %>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag 'Save <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+        <%= link_to 'Cancel <i class="icon-cross3 position-right"></i>'.html_safe, admin_articles_path, class: "btn btn-danger"%>
+    </div>
+    
+<% end %>
