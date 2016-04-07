@@ -1,0 +1,44 @@
+<div class="sidebar-category sidebar-category-visible">
+    <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion">
+
+            <!-- Main -->
+            <li class="navigation-header"><span>Main</span> <i class="icon-menu"></i></li>
+            <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>Dashboard</span>'.html_safe, { controller: "main", action: "index" } %></li>
+            <li>
+                <a href="#"><i class="icon-stack2"></i> <span>Product</span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/products"].include?(params[:controller]) %>">
+                        <%= link_to "Products", admin_products_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/categories"].include?(params[:controller]) %>">
+                        <%= link_to "Categories", admin_categories_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/manufacturers"].include?(params[:controller]) %>">
+                        <%= link_to 'Manufacturers', admin_manufacturers_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/areas"].include?(params[:controller]) %>">
+                        <%= link_to 'Areas', admin_areas_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span>Article</span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
+                        <%= link_to "Articles", admin_articles_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
+                        <%= link_to "Article of Categories", admin_article_categories_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span>Order</span></a>
+                <ul>
+                    <li><%= link_to "Orders", "" %></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -3,7 +3,7 @@
 	<head>
 		<!-- Basic page needs
 		============================================ -->
-		<title>ShopMe | <%= @title_head %></title>
+		<title>Đặc sản vùng miền | <%= @title_head %></title>
 		<meta charset="utf-8">
 		<meta name="author" content="">
 		<meta name="description" content="">
@@ -15,33 +15,33 @@
 
 		<!-- Favicon
 		============================================ -->
-		<%= favicon_link_tag '/frontend/images/fav_icon.ico', rel: 'shortcut icon', type: 'image/x-icon' %>
+		<%= favicon_link_tag '/frontend/images/fav_icon.ico', rel: 'icon', type: 'image/x-icon' %>
 
 		<!-- Google web fonts
 		============================================ -->
-		<%= stylesheet_link_tag '' %>
+		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,700,700italic,900,900italic" %>
 
 		<!-- Libs CSS
 		============================================ -->
-		<%= stylesheet_link_tag '/frontend/css/animate.css' %>
-		<%= stylesheet_link_tag '/frontend/css/fontello.css' %>
-		<%= stylesheet_link_tag '/frontend/css/bootstrap.min.css' %>
+		<%= stylesheet_link_tag "/frontend/css/animate.css" %>
+		<%= stylesheet_link_tag "/frontend/css/fontello.css" %>
+		<%= stylesheet_link_tag "/frontend/css/bootstrap.min.css" %>
 		
 		<!-- Theme CSS
 		============================================ -->
-		<%= stylesheet_link_tag '/frontend/js/rs-plugin/css/settings.css' %>
-		<%= stylesheet_link_tag '/frontend/js/owlcarousel/owl.carousel.css' %>
-		<%= stylesheet_link_tag '/frontend/js/arcticmodal/jquery.arcticmodal.css' %>
-		<%= stylesheet_link_tag '/frontend/css/style.css' %>
+		<%= stylesheet_link_tag "/frontend/js/rs-plugin/css/settings.css" %>
+		<%= stylesheet_link_tag "/frontend/js/owlcarousel/owl.carousel.css" %>
+		<%= stylesheet_link_tag "/frontend/js/arcticmodal/jquery.arcticmodal.css" %>
+		<%= stylesheet_link_tag "/frontend/css/style.css" %>
 
 		<!-- JS Libs
 		============================================ -->
-		<%= javascript_include_tag '/frontend/js/modernizr.js' %>
-
+		<%= javascript_include_tag "/frontend/js/modernizr.js" %>
+		
 		<!-- Old IE stylesheet
 		============================================ -->
 		<!--[if lte IE 9]>
-			<%= stylesheet_link_tag '/frontend/css/oldie.css' %>
+		<%= stylesheet_link_tag '/frontend/css/oldie.css' %>
 		<![endif]-->
 	</head>
 	<%= yield %>

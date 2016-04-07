@@ -1,0 +1,149 @@
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
+
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold">Products</span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i> Home'.html_safe, { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_products_path %>">Product</a></li>
+                        <li class="active">Products</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Basic datatable -->
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <%= link_to 'New Product', new_admin_product_path, class: 'btn btn-primary' %>
+                        <hr/>
+                        <h5 class="panel-title"><span class="text-semibold">Listing Products</span></h5>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li><a data-action="collapse"></a></li>
+                                <li><a data-action="reload"></a></li>
+                                <li><a data-action="close"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <table class="table datatable-products">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Categories</th>
+                                <th>Manufacturer</th>
+                                <th>Created At</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @products.each do |item| %>
+                                <tr>
+                                    <td><%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %></td>
+                                    <td><%= item.code %></td>
+                                    <td><%= item.price %></td>
+                                    <td><%= item.quantity %></td>
+                                    <td><%= item.unit %></td>
+                                    <td></td>
+                                    <td>
+                                        <%= item.manufacturer.name %>
+                                    </td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_product_path(item) %>
+                                                    </li>
+                                                    <li>
+                                                        <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_wrapper no-footer">
+                        <div class="datatable-footer showed">
+                            <div class="dataTables_info" ><%= page_entries_info @products %></div>
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /basic datatable -->
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_products.js' %>
+<!-- /theme JS files -->

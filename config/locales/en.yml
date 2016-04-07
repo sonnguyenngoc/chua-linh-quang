@@ -21,3 +21,16 @@
 
 en:
   hello: "Hello world"
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "No %{model} found"
+        one:   "Showing 1 %{model}"
+        other: "Showing all %{count} %{model}"
+      single_page_html:
+        zero:  "No %{model} found"
+        one:   "Showing 1 %{model}"
+        other: "Showing all %{count} %{model}"
+
+      multi_page: "Showing  %{from} to %{to} of %{count} entries"
+      multi_page_html: "Showing %{from} to %{to}</b> of %{count} entries"

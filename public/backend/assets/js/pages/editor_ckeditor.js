@@ -12,16 +12,12 @@
 $(function() {
 
     // Full featured editor
-    CKEDITOR.replace( 'editor-full-vn', {
+    CKEDITOR.replace( 'editor-full', {
         height: '400px',
         extraPlugins: 'forms'
     });
 
-    // Full featured editor
-    CKEDITOR.replace( 'editor-full-en', {
-        height: '400px',
-        extraPlugins: 'forms'
-    });
+
 
     // Readonly editor
     // ------------------------------

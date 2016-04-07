@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root "home#index"
   
   get "account/login" => "account#login", as: :login
@@ -32,8 +33,14 @@ Rails.application.routes.draw do
   get "product/quickview" => "product#quickview", as: :quickview
   get "search/products" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial
-  
-  namespace :admin, path: "shopme-admin" do
+
+  namespace :admin do
     get "main" => "main#index"
+    resources :products
+    resources :categories
+    resources :manufacturers
+    resources :articles
+    resources :article_categories
+    resources :areas
   end
 end
