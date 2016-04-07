@@ -156,7 +156,7 @@
 
 	.align_left	  { text-align: left; }
 
-	.align_right  { text-align: right; }
+	.align_right  { text-align: right; width: 102% }
 
 	.alignleft  { float: left; }
 

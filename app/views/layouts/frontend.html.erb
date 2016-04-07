@@ -15,33 +15,33 @@
 
 		<!-- Favicon
 		============================================ -->
-		<link rel="shortcut icon" type="image/x-icon" href="/frontend/images/fav_icon.ico">
+		<%= favicon_link_tag '/frontend/images/fav_icon.ico', rel: 'shortcut icon', type: 'image/x-icon' %>
 
 		<!-- Google web fonts
 		============================================ -->
-		<link href='' rel='stylesheet' type='text/css'>
+		<%= stylesheet_link_tag '' %>
 
 		<!-- Libs CSS
 		============================================ -->
-		<link rel="stylesheet" href="/frontend/css/animate.css">
-		<link rel="stylesheet" href="/frontend/css/fontello.css">
-		<link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
+		<%= stylesheet_link_tag '/frontend/css/animate.css' %>
+		<%= stylesheet_link_tag '/frontend/css/fontello.css' %>
+		<%= stylesheet_link_tag '/frontend/css/bootstrap.min.css' %>
 		
 		<!-- Theme CSS
 		============================================ -->
-		<link rel="stylesheet" href="/frontend/js/rs-plugin/css/settings.css">
-		<link rel="stylesheet" href="/frontend/js/owlcarousel/owl.carousel.css">
-		<link rel="stylesheet" href="/frontend/js/arcticmodal/jquery.arcticmodal.css">
-		<link rel="stylesheet" href="/frontend/css/style.css">
+		<%= stylesheet_link_tag '/frontend/js/rs-plugin/css/settings.css' %>
+		<%= stylesheet_link_tag '/frontend/js/owlcarousel/owl.carousel.css' %>
+		<%= stylesheet_link_tag '/frontend/js/arcticmodal/jquery.arcticmodal.css' %>
+		<%= stylesheet_link_tag '/frontend/css/style.css' %>
 
 		<!-- JS Libs
 		============================================ -->
-		<script src="/frontend/js/modernizr.js"></script>
+		<%= javascript_include_tag '/frontend/js/modernizr.js' %>
 
 		<!-- Old IE stylesheet
 		============================================ -->
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" type="text/css" href="/frontend/css/oldie.css">
+			<%= stylesheet_link_tag '/frontend/css/oldie.css' %>
 		<![endif]-->
 	</head>
 	<%= yield %>

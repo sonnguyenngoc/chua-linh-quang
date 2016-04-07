@@ -30,13 +30,14 @@
 
                                 <ul class="topbar">
 
-                                    <li><%= link_to "Home", root_path %></li>
-                                    <li><a href="#shop_my_account">My Account</a></li>
-                                    <li><a href="#shop_shopping_cart">Shopping Cart</a></li>
-                                    <li><a href="#shop_checkout">Checkout</a></li>
-                                    <li><a href="#blog">Blog</a></li>
-                                    <li><a href="#additional_page_contact">Contact us</a></li>
-                                    <li><a href="#" data-modal-url="/frontend/modals/login.html">Login</a></li>
+                                    <li><%= link_to "Trang chủ", root_path %></li>
+                                    <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                                    <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "cart" } %></li>
+                                    <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
+                                    <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
+                                    <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
+                                    <!--<li><a href="#" data-modal-url="/frontend/modals/login.html">Đăng nhập</a></li>-->
+                                    <li><%= link_to "Đăng nhập", { controller: "account", action: "login" } %></li>
 
                                 </ul>
 
@@ -54,17 +55,17 @@
 
                                 <div class="search_category alignleft">
 
-                                    <div class="open_categories">All Categories</div>
+                                    <div class="open_categories">Khu vực - Tất cả</div>
 
                                     <ul class="categories_list dropdown">
 
-                                        <li class="animated_item"><a href="#">Medicine &amp; Health</a></li>
-                                        <li class="animated_item"><a href="#">Beauty</a></li>
-                                        <li class="animated_item"><a href="#">Personal Care</a></li>
-                                        <li class="animated_item"><a href="#">Vitamins &amp; Supplements</a></li>
-                                        <li class="animated_item"><a href="#">Baby Needs</a></li>
-                                        <li class="animated_item"><a href="#">Diet &amp; Fitness</a></li>
-                                        <li class="animated_item"><a href="#">Sexual Well-being</a></li>
+                                        <li class="animated_item"><a href="#">Hà Nội</a></li>
+                                        <li class="animated_item"><a href="#">Hải Phòng</a></li>
+                                        <li class="animated_item"><a href="#">Đà Nẵng</a></li>
+                                        <li class="animated_item"><a href="#">Hồ Chí Minh</a></li>
+                                        <li class="animated_item"><a href="#">Cần Thơ</a></li>
+                                        <li class="animated_item"><a href="#">Nha Trang - Khánh Hoà</a></li>
+                                        <li class="animated_item"><a href="#">Đà Lạt - Lâm Đồng</a></li>
 
                                     </ul>
 
@@ -109,7 +110,7 @@
 
                                     <ul class="dropdown site_setting_list">
 
-                                        <li class="animated_item"><a href="#">VND</a></li>
+                                        <li class="animated_item"><a href="#">VNĐ</a></li>
                                         <li class="animated_item"><a href="#">USD</a></li>
 
                                     </ul>
@@ -127,10 +128,11 @@
                                 <ul class="shop_links_list">
 
                                     <li>
-                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> Wishlist (7)</a>	
+                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (7)</a>
+                                        
                                     </li>
                                     <li>
-                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> Compare (2)</a>
+                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (2)</a>
                                     </li>
 
                                 </ul><!--/ .align_right.shop_links-->
@@ -141,9 +143,9 @@
 
                                 <div class="shopping_cart_wrap">
 
-                                    <button id="open_shopping_cart" class="open_button" data-amount="3">
-                                        <b class="title">My Cart</b>
-                                        <b class="total_price">$999.00</b>
+                                    <button id="open_shopping_cart" class="open_button" data-amount="2">
+                                        <b class="title">Giỏ hàng</b>
+                                        <b class="total_price">600.000</b>
                                     </button>
 
                                     <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
@@ -152,7 +154,7 @@
 
                                         <div class="animated_item">
 
-                                            <p class="title">Recently added item(s)</p>
+                                            <p class="title">Danh sách giỏ hàng</p>
 
                                             <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
 
@@ -160,9 +162,9 @@
 
                                                 <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_1.jpg" alt=""></a>
 
-                                                <a href="#" class="product_name">Aenean Auctor Wisi Et Urna Ipsum...</a>
+                                                <a href="#" class="product_name">Mực rim Nha Trang</a>
 
-                                                <p>1 x $499.00</p>
+                                                <p>1 x 120.000 VNĐ</p>
 
                                                 <button class="close"></button>
 
@@ -180,29 +182,9 @@
 
                                                 <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_2.jpg" alt=""></a>
 
-                                                <a href="#" class="product_name">Lorem Ipsum Dolor Sit Amet...</a>
+                                                <a href="#" class="product_name">Tôm càng muối chua</a>
 
-                                                <p>1 x $499.00</p>
-
-                                                <button class="close"></button>
-
-                                            </div><!--/ .clearfix.sc_product-->
-                                            
-                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .animated_item-->
-
-                                        <div class="animated_item">
-
-                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                            <div class="clearfix sc_product">
-
-                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_3.jpg" alt=""></a>
-
-                                                <a href="#" class="product_name">Nemo Enim Ipsam <br>Voluptatem 30 ea</a>
-
-                                                <p>1 x $499.00</p>
+                                                <p>1 x 490.000</p>
 
                                                 <button class="close"></button>
 
@@ -211,6 +193,7 @@
                                             <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
 
                                         </div><!--/ .animated_item-->
+
 
                                         <div class="animated_item">
 
@@ -218,11 +201,11 @@
 
                                             <ul class="total_info">
 
-                                                <li><span class="price">Tax:</span> $0.00</li>
+                                                <li><span class="price">Thuế:</span> 0.000 VNĐ</li>
 
-                                                <li><span class="price">Discount:</span> $37.00</li>
+                                                <li><span class="price">Giảm giá:</span> 10.000 VNĐ</li>
 
-                                                <li class="total"><b><span class="price">Total:</span> $999.00</b></li>
+                                                <li class="total"><b><span class="price">Cộng:</span> 600.000 VNĐ</b></li>
 
                                             </ul>
                                             

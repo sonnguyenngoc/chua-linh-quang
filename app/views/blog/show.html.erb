@@ -1,0 +1,355 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li>Ut pharetra augue nec augue integer rutrum ante eu lacus</li>
+
+                </ul>
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'categories' %>
+
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Popular posts - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'popular_posts' %>
+
+                        <!-- - - - - - - - - - - - - - End of popular posts - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                        <div class="section_offset">
+
+                            <a href="#" class="banner">
+                                
+                                <img src="/frontend/images/banner_img_10.png" alt="">
+
+                            </a>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Recent comments - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'recent_comments' %>
+
+                        <!-- - - - - - - - - - - - - - End recent comments - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Blog Tags - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'blog_tags' %>
+
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                        <div class="section_offset">
+
+                            <a href="#" class="banner">
+                                
+                                <img src="/frontend/images/banner_img_11.png" alt="">
+
+                            </a>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Community poll - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'community_poll' %>
+
+                        <!-- - - - - - - - - - - - - - End of community poll - - - - - - - - - - - - - - - - -->
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+
+                        <section class="section_offset">
+
+                            <h1>Tiêu đề bài viết.....</h1>
+
+                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+                            
+                            <article class="entry single">
+
+                                <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
+
+                                <div class="entry_meta">
+
+                                    <div class="alignleft">
+
+                                        <span><i class="icon-calendar"></i> 2014-08-05 07:01:49</span>
+
+                                        <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
+
+                                        <span><i class="icon-user-8"></i> by <a href="#">admin</a></span>
+
+                                        <span><i class="icon-folder-open-empty-1"></i> <a href="#">News</a>, <a href="#">About Beauty</a></span>
+
+                                    </div>
+
+                                    <div class="alignright">
+
+                                        rate this item
+
+                                        <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
+
+                                        <ul class="rating">
+
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li></li>
+                                            <li></li>
+
+                                        </ul>
+                                        
+                                        <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
+
+                                        (17 votes)
+
+                                    </div>
+
+                                </div><!--/ .entry_meta-->
+
+                                <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
+
+
+                                <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
+
+                                <div class="entry_image">
+                                    
+                                    <img src="/frontend/images/blog_img_1.jpg" alt="">
+
+                                </div>
+
+                                <h4 class="entry_title"><a href="#">Ut pharetra augue nec augue integer rutrum ante eu lacus</a></h4>
+
+                                <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
+
+                                <p>﻿Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.</p>
+
+                                <ul class="list_type_5">
+                                    
+                                    <li>Vivamus eget nibh. Etiam cursus leo vel metus.</li>
+                                    <li>Nulla facilisi. Aenean nec eros.</li>
+                                    <li>Vestibulum ante ipsum primis in faucibus orci luctus et.</li>
+
+                                </ul>
+
+                                <ul class="lightbox_list">
+
+                                    <li>
+
+                                        <a class="fancybox_item" data-rel="group_1" href="/frontend/images/lightbox_thumb_1.jpg" title="Title 1">
+
+                                            <img src="/frontend/images/lightbox_thumb_1.jpg" alt="">
+
+                                            <span class="helper_icon">
+
+                                                <span class="helper_left"></span>
+                                                <span class="helper_right"></span>
+
+                                            </span>
+
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a class="fancybox_item" data-rel="group_1" href="/frontend/images/lightbox_thumb_2.jpg" title="Title 2">
+
+                                            <img src="/frontend/images/lightbox_thumb_2.jpg" alt="">
+
+                                            <span class="helper_icon">
+
+                                                <span class="helper_left"></span>
+                                                <span class="helper_right"></span>
+
+                                            </span>
+
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a class="fancybox_item_media" data-rel="group_1" href="http://www.youtube.com/watch?v=-BrDlrytgm8">
+
+                                            <img src="/frontend/images/lightbox_thumb_3.jpg" alt="">
+
+                                            <span class="helper_icon">
+
+                                                <span class="helper_left"></span>
+                                                <span class="helper_right"></span>
+
+                                            </span>
+
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a class="fancybox_item" data-rel="group_1" href="images/lightbox_thumb_4.jpg" title="Title 3">
+
+                                            <img src="/frontend/images/lightbox_thumb_4.jpg" alt="">
+
+                                            <span class="helper_icon">
+
+                                                <span class="helper_left"></span>
+                                                <span class="helper_right"></span>
+
+                                            </span>
+
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a class="fancybox_item" data-rel="group_1" href="/frontend/images/lightbox_thumb_5.jpg" title="Title 4">
+
+                                            <img src="/frontend/images/lightbox_thumb_5.jpg" alt="">
+
+                                            <span class="helper_icon">
+
+                                                <span class="helper_left"></span>
+                                                <span class="helper_right"></span>
+
+                                            </span>
+
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+
+                                <p>Vestibulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque sed dolor. Aliquam congue fermentum nisl. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis.</p>
+
+                                <div class="v_centered share">
+
+                                    <span class="title">Share this:</span>
+
+                                    <div class="addthis_widget_container">
+
+                                        <!-- AddThis Button BEGIN -->
+                                        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                                        <a class="addthis_button_preferred_1"></a>
+                                        <a class="addthis_button_preferred_2"></a>
+                                        <a class="addthis_button_preferred_3"></a>
+                                        <a class="addthis_button_preferred_4"></a>
+                                        <a class="addthis_button_compact"></a>
+                                        <a class="addthis_counter addthis_bubble_style"></a>
+                                        </div>
+                                        <!-- AddThis Button END -->
+
+                                    </div>
+
+                                </div><!--/ .v_centered-->
+
+                            </article>
+
+                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+
+                            <footer class="bottom_box">
+
+                                Tags: <a href="#">beauty</a>, <a href="#">medicine</a>, <a href="#">health</a>
+
+                            </footer>
+
+                        </section>
+
+                        <!-- - - - - - - - - - - - - - Related posts - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'related_posts' %>
+
+                        <!-- - - - - - - - - - - - - - End related posts - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Comments - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'comments' %>
+
+                        <!-- - - - - - - - - - - - - - End of comments - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Leave a comment - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'leave_comment' %>
+
+                        <!-- - - - - - - - - - - - - - End leave a comment - - - - - - - - - - - - - - - - -->
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <% javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <% javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <% javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <% javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <% javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <% javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <% javascript_include_tag '/frontend/js/fancybox/source/jquery.fancybox.pack.js' %>
+    <% javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-media.js' %>
+    <% javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-thumbs.js' %>
+    <% javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <% javascript_include_tag '/frontend/js/retina.min.js' %>
+    <% javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <% javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <% javascript_include_tag '/frontend/js/theme.core.js' %>
+    <%= render 'home/include_js' %>
+    
+</body>
