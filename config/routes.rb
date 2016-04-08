@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   get "product/quickview" => "product#quickview", as: :quickview
   get "search/products" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial
-
+  get "product/testimonialform" => 'product#testimonialform', as: :testimonialform
+  
   namespace :admin do
     get "main" => "main#index"
     resources :products

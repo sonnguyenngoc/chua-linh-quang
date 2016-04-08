@@ -275,19 +275,19 @@
     
     <!-- Include Libs & Plugins
     ============================================ -->
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/queryloader2.min.js"></script>
-    <script src="js/jquery.appear.js"></script>
-    <script src="js/owlcarousel/owl.carousel.min.js"></script>
-    <script src="twitter/jquery.tweet.min.js"></script>
-    <script src="js/arcticmodal/jquery.arcticmodal.js"></script>
-    <script src="js/colorpicker/colorpicker.js"></script>
-    <script src="js/retina.min.js"></script>
-    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script>
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
 
     <!-- Theme files
     ============================================ -->
-    <script src="js/theme.plugins.js"></script>
-    <script src="js/theme.core.js"></script>
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
     
 </body>

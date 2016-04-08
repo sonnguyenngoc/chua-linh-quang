@@ -1,0 +1,141 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li><a href="#">Customer Testimonials</a></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="section_offset">
+
+                    <div class="row">
+
+                      <div id="content" class="col-sm-12">
+                        
+                        <h1>Customer Testimonials</h1>
+      
+                        <div class="bordered_content box">
+                          
+                          <div class="grid_holder grid1">
+                            
+                            <div class="product-grid testimonial">
+                      
+                              <div class="item testimonial">
+                                
+                                <span class="author">Sample Name, London</span>
+                                
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                              
+                              </div>
+                              
+                              <div class="item testimonial">
+                              
+                                <span class="author">Anna Doe, Madrid</span>
+                              
+                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                              
+                              </div>
+                              
+                              <div class="item testimonial">
+                              
+                                <span class="author">Johanna Doe, Stockholm</span>
+                              
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                              
+                              </div>
+                              
+                              <div class="item testimonial">
+                              
+                                <span class="author">John Doe, New York</span>
+                              
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                              
+                              </div>
+                            
+                            </div>
+                          
+                          </div>
+                          
+                          <div class="bottom_buttons text-right">
+                          
+                            <a class="btn btn-default" href="/product/testimonialform" title="Write testimonial">Write testimonial</a>
+                          
+                          </div>
+                        
+                        </div> <!-- bordered_content ends -->
+                      
+                      </div>
+
+                    </div><!--/ .row -->
+
+                </div>
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= stylesheet_link_tag '/frontend/css/stylesheet.css' %>
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.elevateZoom-3.0.8.min.js' %>
+    <%= javascript_include_tag '/frontend/js/fancybox/source/jquery.fancybox.pack.js' %>
+    <%= javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-media.js' %>
+    <%= javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-thumbs.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>
