@@ -36,8 +36,9 @@
                                     <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
                                     <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
                                     <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
-                                    <!--<li><a href="#" data-modal-url="/frontend/modals/login.html">Đăng nhập</a></li>-->
-                                    <li><%= link_to "Đăng nhập", { controller: "account", action: "login" } %></li>
+                                    <li><%= link_to "FAQ", { controller: "information", action: "faq" } %></li>
+                                    <li><a href="#" data-modal-url="/frontend/modals/login.html">Đăng nhập</a></li>
+                                    
 
                                 </ul>
 
@@ -55,17 +56,14 @@
 
                                 <div class="search_category alignleft">
 
-                                    <div class="open_categories">Khu vực - Tất cả</div>
+                                    <div class="open_categories">Khu vực</div>
 
                                     <ul class="categories_list dropdown">
 
-                                        <li class="animated_item"><a href="#">Hà Nội</a></li>
-                                        <li class="animated_item"><a href="#">Hải Phòng</a></li>
-                                        <li class="animated_item"><a href="#">Đà Nẵng</a></li>
-                                        <li class="animated_item"><a href="#">Hồ Chí Minh</a></li>
-                                        <li class="animated_item"><a href="#">Cần Thơ</a></li>
-                                        <li class="animated_item"><a href="#">Nha Trang - Khánh Hoà</a></li>
-                                        <li class="animated_item"><a href="#">Đà Lạt - Lâm Đồng</a></li>
+                                        <li class="animated_item"><a href="#">Miền Bắc</a></li>
+                                        <li class="animated_item"><a href="#">Miền Trung</a></li>
+                                        <li class="animated_item"><a href="#">Miền Nam</a></li>
+                                        <li class="animated_item"><a href="#">Tây Nguyên</a></li>
 
                                     </ul>
 
@@ -94,7 +92,6 @@
                                     <ul class="dropdown site_setting_list language">
 
                                         <li class="animated_item"><a href="#"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
-                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
 
                                     </ul>
 
@@ -110,8 +107,7 @@
 
                                     <ul class="dropdown site_setting_list">
 
-                                        <li class="animated_item"><a href="#">VNĐ</a></li>
-                                        <li class="animated_item"><a href="#">USD</a></li>
+                                        <li class="animated_item"><a href="#">VND</a></li>
 
                                     </ul>
 
@@ -128,11 +124,11 @@
                                 <ul class="shop_links_list">
 
                                     <li>
-                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (7)</a>
+                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (0)</a>
                                         
                                     </li>
                                     <li>
-                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (2)</a>
+                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (0)</a>
                                     </li>
 
                                 </ul><!--/ .align_right.shop_links-->

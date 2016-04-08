@@ -36,7 +36,7 @@ class ManufacturerUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
   version :small_image do
-    process :resize_to_fill => [180, 110]
+    process :resize_to_fit => [173, 173]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

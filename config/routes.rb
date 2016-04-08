@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "information/faq" => "information#faq", as: :faq
   get "information/privacy_policy" => "information#privacy_policy", as: :privacy_policy
   get "information/terms_conditions" => "information#terms_conditions", as: :terms_conditions
-  get "information/site_map" => "information#site_map", as: :site_map
+  get "information/sitemap" => "information#sitemap", as: :sitemap
   # end information
   
   # manufacturer

@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   
   has_and_belongs_to_many :products
   has_many :parent_categories, dependent: :destroy
@@ -11,4 +11,9 @@ class Category < ActiveRecord::Base
     self.level = lvl
     self.save
   end
+  
+  def self.get_all_categories
+    self.all.order("created_at ASC")
+  end
+  
 end
