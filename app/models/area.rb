@@ -6,6 +6,10 @@ class Area < ActiveRecord::Base
   has_many :children, class_name: "Area", foreign_key: "parent_id", dependent: :destroy
   belongs_to :parent, class_name: "Area"
   
+  def self.get_all_areas
+    self.order("name DESC, created_at DESC")
+  end
+  
   def update_level(lvl)
     self.level = lvl
     self.save
@@ -18,7 +22,7 @@ class Area < ActiveRecord::Base
       arr.unshift p.name
       p = p.parent
     end
-    return arr.join(" / ")
+    return arr.join("-")
   end
   
   def self.get_select_options

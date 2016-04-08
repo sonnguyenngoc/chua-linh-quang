@@ -103,15 +103,13 @@
 
                                         <span>Show:</span>
 
-                                        <div class="custom_select">
+                                        <div class="">
 
                                             <select name="">
 
                                                 <option value="15">15</option>
                                                 <option value="12">12</option>
                                                 <option value="9">9</option>
-                                                <option value="6">6</option>
-                                                <option value="3">3</option>
 
                                             </select>
 
@@ -127,14 +125,15 @@
 
                                         <span>Sort by:</span>
 
-                                        <div class="custom_select sort_select">
+                                        <div class="">
                                             
                                             <select name="">
                                                     
-                                                <option value="Default">Default</option>
-                                                <option value="Price">Price</option>
-                                                <option value="Name">Name</option>
-                                                <option value="Date">Date</option>
+                                                <option value="Default">Mặc định</option>
+                                                <option value="Price">Tên (A - Z)</option>
+                                                <option value="Name">Tên (Z - A)</option>
+                                                <option value="Date">Giá (Cao - Thấp)</option>
+                                                <option value="Date">Giá (Thấp - Cao)</option>
 
                                             </select>
 
@@ -209,12 +208,16 @@
                                                 <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
     
                                                 <div class="description">
-    
-                                                    <a href="#"><%= product.name %></a>
+                                                    
+                                                    <div class="nowrap-ellipsis">
+                                                        
+                                                        <%= link_to product.name, { controller: "product", action: "product" }, title: product.name %>
+                                                    
+                                                    </div>
     
                                                     <div class="clearfix product_info">
     
-                                                        <p class="product_price alignleft"><b><%= product.price %></b></p>
+                                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
     
                                                         <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
     
@@ -240,9 +243,13 @@
     
                                                 <div class="full_description">
     
-                                                    <a href="#" class="product_title"><%= product.name %></a>
+                                                    <div class="nowrap-ellipsis">
+                                                        
+                                                        <%= link_to product.name, { controller: "product", action: "product" }, class: "product_title", title: product.name %>
+                                                    
+                                                    </div>
     
-                                                    <p class="product_price bold">$5.99</p>
+                                                    <p class="product_price bold"><%= format_number(product.price) %> đ</p>
     
                                                     <div class="v_centered product_reviews">
     

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   
   
   # product
-  get "product/category" => "product#category", as: :category
+  get "product/category/:category_id" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
   get "product/product" => "product#product", as: :product
   get "product/quickview" => "product#quickview", as: :quickview

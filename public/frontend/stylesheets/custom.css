@@ -4,3 +4,8 @@
     margin-top: 10px;
     color: #333333;
 }
+.nowrap-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
