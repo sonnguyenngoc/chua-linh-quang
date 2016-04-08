@@ -34,16 +34,18 @@ Rails.application.routes.draw do
   
   # manufacturer
   get "manufacturer/list" => "manufacturer#list", as: :list
-  get "manufaturer/products" => "manufaturer#products", as: :products
+  get "manufacturer/products" => "manufacturer#products", as: :products
   # end manufacturer
+  
   
   # product
   get "product/category" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
   get "product/product" => "product#product", as: :product
   get "product/quickview" => "product#quickview", as: :quickview
-  get "search/products" => "product#search", as: :search
+  get "product/search" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial
+  get "product/testimonialform" => 'product#testimonialform', as: :testimonialform
   # end product
 
   namespace :admin do

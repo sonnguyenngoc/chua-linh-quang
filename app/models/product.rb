@@ -7,5 +7,14 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :areas
   belongs_to :manufacturer
   has_many :product_images
-  accepts_nested_attributes_for :product_images, :reject_if => lambda { |a| a[:image_url].blank? }, :allow_destroy => true
+  belongs_to :product_images
+  accepts_nested_attributes_for :product_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
+
+  def get_main_image
+
+  end
+  
+  def format_price
+    
+  end
 end

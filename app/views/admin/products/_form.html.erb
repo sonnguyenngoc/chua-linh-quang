@@ -54,13 +54,13 @@
                         <select name="category_ids[]" class="select-item-color" data-placeholder="Categories....." multiple="multiple">
                             <% @categories.each do |item| %>
                                 <% if item.level == 1 %>
-                                    <optgroup label="<%= item.name %>">
-                                        <% item.children.each do |child_1| %>
-                                            <% if child_1.level == 2 %>
-                                                <option <%= "selected" if @product.categories.include?(child_1) %> value="<%= child_1.id %>"><%= child_1.name %></option>
-                                            <% end %>
-                                        <% end %>
-                                    </optgroup>
+                                    <option <%= "selected" if @product.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                                    <% item.children.each do |child_1| %>
+                                        <option <%= "selected" if @product.categories.include?(child_1) %> value="<%= child_1.id %>"><%= "--" + child_1.name %></option>
+                                        <% child_1.children.each do |child_2| %>
+                                        <option <%= "selected" if @product.categories.include?(child_2) %> value="<%= child_2.id %>"><%= "-----" + child_2.name %></option>
+                                    <% end %>
+                                    <% end %>
                                 <% end %>
                             <% end %>
                         </select>

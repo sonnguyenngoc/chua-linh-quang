@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -29,11 +29,15 @@
 
                 <div class="row">
 
-                    <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+                    <aside class="col-md-3 has_mega_menu">
 
-                    <%= render 'home/categories' %>
-
-                    <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+                        
+                        <%= render "module/categories" %>
+                        
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                    
+                    </aside><!--/ [col]-->
 
                     <main class="col-md-9">
 
@@ -93,7 +97,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -103,7 +107,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     
