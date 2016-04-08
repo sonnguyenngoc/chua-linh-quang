@@ -25,13 +25,13 @@ Rails.application.routes.draw do
   get "information/site_map" => "information#site_map", as: :site_map
   
   get "manufacturer/list" => "manufacturer#list", as: :list
-  get "manufaturer/products" => "manufaturer#products", as: :products
+  get "manufacturer/products" => "manufacturer#products", as: :products
   
   get "product/category" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
   get "product/product" => "product#product", as: :product
   get "product/quickview" => "product#quickview", as: :quickview
-  get "search/products" => "product#search", as: :search
+  get "product/search" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial
   get "product/testimonialform" => 'product#testimonialform', as: :testimonialform
   
