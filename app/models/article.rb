@@ -5,4 +5,9 @@ class Article < ActiveRecord::Base
   def self.get_lastest_blog_posts
     self.order("created_at DESC").first(3)
   end
+  
+  def self.get_all_blogs
+    self.all.order("created_at DESC")
+  end
+
 end

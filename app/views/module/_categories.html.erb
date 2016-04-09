@@ -1,10 +1,10 @@
-<section class="animated transparent" data-animation="fadeInDown" data-animation-delay="200">
+<section class="section_offset">
 
     <h3>Danh mục</h3>
 
     <ul class="theme_menu cats">
         
-        <% @categories.each do |category| %>
+        <% Category.get_all_categories.each do |category| %>
         
             <% if category.children.count == 0 %>
                 

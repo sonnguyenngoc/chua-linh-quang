@@ -1,419 +1,222 @@
 <body>
 
-  <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-  <div class="wide_layout">
+    <div class="wide_layout">
 
-      <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-      <%= render 'home/header' %>
-      
-      <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+        <%= render 'module/header' %>
 
-      <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
-      <div class="secondary_page_wrapper">
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
 
-          <div class="container">
+        <div class="secondary_page_wrapper">
 
-              <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+            <div class="container">
 
-              <ul class="breadcrumbs">
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-                  <li><a href="<%= root_path %>">Trang chủ</a></li>
-                  <li>Bài viết</li>
+                <ul class="breadcrumbs">
 
-              </ul>
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li><%= @title_head %></li>
 
-              <div class="row">
+                </ul>
 
-                  <aside class="col-md-3 col-sm-4">
+                <div class="row">
 
-                      <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+                    <aside class="col-md-3 col-sm-4">
 
-                      <%= render 'categories' %>
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                      <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                        <%= render 'module/blog_categories' %>
 
-                      <!-- - - - - - - - - - - - - - Popular posts - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
 
-                      <%= render 'popular_posts' %>
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
-                      <!-- - - - - - - - - - - - - - End of popular posts - - - - - - - - - - - - - - - - -->
+                        <div class="section_offset">
 
-                      <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+                            <a href="#" class="banner">
 
-                      <div class="section_offset">
+                                <img src="/frontend/images/banner_img_10.png" alt="">
 
-                          <a href="#" class="banner">
-                              
-                              <img src="/frontend/images/banner_img_10.png" alt="">
+                            </a>
 
-                          </a>
+                        </div>
 
-                      </div>
+                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
-                      <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                        <%= render 'module/blog_newsletter' %>
 
-                      <!-- - - - - - - - - - - - - - Recent comments - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
-                      <%= render 'recent_comments' %>
+                        <div class="section_offset">
 
-                      <!-- - - - - - - - - - - - - - End recent comments - - - - - - - - - - - - - - - - -->
+                            <a href="#" class="banner">
 
-                      <!-- - - - - - - - - - - - - - Blog Tags - - - - - - - - - - - - - - - - -->
+                                <img src="/frontend/images/banner_img_11.png" alt="">
 
-                      <%= render 'blog_tags' %>
+                            </a>
 
-                      <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+                        </div>
 
-                      <div class="section_offset">
+                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
 
-                          <a href="#" class="banner">
-                              
-                              <img src="/frontend/images/banner_img_11.png" alt="">
+                        <!-- - - - - - - - - - - - - - Blog Tags - - - - - - - - - - - - - - - - -->
 
-                          </a>
+                        <%= render 'module/blog_tags' %>
+                        
+                        <!-- - - - - - - - - - - - - - End blog tags - - - - - - - - - - - - - - - - -->
 
-                      </div>
+                    </aside>
+                    <!--/ [col]-->
 
-                      <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                    <main class="col-md-9 col-sm-8">
 
-                      <!-- - - - - - - - - - - - - - Community poll - - - - - - - - - - - - - - - - -->
+                        <h1><%= @title_head %></h1>
 
-                      <%= render 'community_poll' %>
+                        <header class="top_box on_the_sides">
+                            
+                            <div class="left_side v_centered">
 
-                      <!-- - - - - - - - - - - - - - End of community poll - - - - - - - - - - - - - - - - -->
+                                <p><%= page_entries_info @blogs %> bài viết.</p>
 
-                      <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+                            </div>
 
-                      <div class="section_offset">
+                            <div class="right_side">
+                                
+                                <%= will_paginate @blogs, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
 
-                          <a href="#" class="banner">
-                              
-                              <img src="/frontend/images/banner_img_12.png" alt="">
+                            </div>
 
-                          </a>
+                        </header>
 
-                      </div>
+                        <!-- - - - - - - - - - - - - - List of entries - - - - - - - - - - - - - - - - -->
 
-                      <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                        <ul class="list_of_entries">
+                            
+                            <% @blogs.each do |blog| %>
+
+                                <li>
+    
+                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+    
+                                    <article class="entry">
+    
+                                        <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
+                                        
+                                        <%= link_to image_tag(blog.image_url.big_image), { controller: "blog", action: "show", blog_id: blog.id }, class: "thumbnail entry_image" %>
+    
+                                        <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
+    
+                                        <h4 class="entry_title"><%= link_to blog.title, { controller: "blog", action: "show", blog_id: blog.id } %></h4>
+    
+                                        <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
+    
+                                        <div class="entry_meta">
+    
+                                            <div class="alignleft">
+    
+                                                <span><i class="icon-calendar"></i> <%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>
+    
+                                                <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
+    
+                                                <span><i class="icon-user-8"></i> bởi Người quản trị</span>
+    
+                                                <span><i class="fa fa-eye"></i> Số lượt đã đọc: 370</span>
+    
+                                            </div>
+    
+                                        </div>
+                                        <!--/ .byline-->
+    
+                                        <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
+    
+                                        <p class="text-justify">﻿<%= truncate(strip_tags(blog.content.html_safe), length: 360) %></p>
+    
+                                        <%= link_to 'Đọc tiếp', {controller: 'blog', action: 'show', blog_id: blog.id }, class: 'button_grey middle_btn' %>
+    
+                                    </article>
+    
+                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+    
+                                </li>
+
+                            <% end %>
+
+                        </ul>
+
+                        <!-- - - - - - - - - - - - - - End of list of entries - - - - - - - - - - - - - - - - -->
+
+                        <footer class="bottom_box on_the_sides">
+
+                            <div class="left_side">
+
+                                <p><%= page_entries_info @blogs %> bài viết.</p>
+
+                            </div>
+
+                            <div class="right_side">
+                                
+                                <%= will_paginate @blogs, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+
+                            </div>
+
+                        </footer>
+
+                    </main>
+                    <!--/ [col]-->
+
+                </div>
+                <!--/ .row-->
+
+            </div>
+            <!--/ .container-->
+
+        </div>
+        <!--/ .page_wrapper-->
+
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div>
+    <!--/ [layout]-->
+
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
 
-                  </aside><!--/ [col]-->
-
-                  <main class="col-md-9 col-sm-8">
-
-                      <h1>Bài viết</h1>
-
-                      <header class="top_box on_the_sides">
-
-                          <div class="left_side v_centered">
-
-                              <a href="#" class="middle_btn icon_btn social_rss tooltip_container"><i class="icon-rss"></i><span class="tooltip top">RSS</span></a>
-
-                              <p>Showing 1 to 3 of 45 (15 Pages)</p>
-
-                          </div>
-
-                          <div class="right_side">
-
-                              <ul class="pags">
-
-                                  <li><a href="#"></a></li>
-                                  <li class="active"><a href="#">1</a></li>
-                                  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#"></a></li>
-
-                              </ul>
-
-                          </div>
-
-                      </header>
-
-                      <!-- - - - - - - - - - - - - - List of entries - - - - - - - - - - - - - - - - -->
-
-                      <ul class="list_of_entries">
-
-                          <li>
-
-                              <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-                              
-                              <article class="entry">
-
-                                  <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
-
-                                  <a href="#" class="thumbnail entry_image">
-                                      
-                                      <img src="/frontend/images/blog_img_1.jpg" alt="">
-
-                                  </a>
-
-                                  <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
-
-                                  <h4 class="entry_title"><a href="#">Ut pharetra augue nec augue integer rutrum ante eu lacus</a></h4>
-
-                                  <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
-
-                                  <div class="entry_meta">
-
-                                      <div class="alignleft">
-
-                                          <span><i class="icon-calendar"></i> 2014-08-05 07:01:49</span>
-
-                                          <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
-                                          <span><i class="icon-user-8"></i> by <a href="#">admin</a></span>
-
-                                          <span><i class="icon-folder-open-empty-1"></i> <a href="#">News</a>, <a href="#">About Beauty</a></span>
-
-                                      </div>
-
-                                      <div class="alignright">
-
-                                          rate this item
-
-                                          <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
-
-                                          <ul class="rating">
-
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li></li>
-                                              <li></li>
-
-                                          </ul>
-                                          
-                                          <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
-
-                                          (17 votes)
-
-                                      </div>
-
-                                  </div><!--/ .byline-->
-
-                                  <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
-
-                                  <p>﻿Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consecvtetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.</p>
-
-                                  <%= link_to 'Đọc tiếp', {controller: 'blog', action: 'show'}, class: 'button_grey middle_btn' %>
-
-                              </article>
-
-                              <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                          </li>
-
-                          <li>
-
-                              <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-                              
-                              <article class="entry">
-
-                                  <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
-
-                                  <a href="#" class="thumbnail entry_image">
-                                      
-                                      <img src="/frontend/images/blog_img_2.jpg" alt="">
-
-                                  </a>
-
-                                  <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
-
-                                  <h4 class="entry_title"><a href="#">Aliquam dapibus tincidunt metus</a></h4>
-
-                                  <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
-
-                                  <div class="entry_meta">
-
-                                      <div class="alignleft">
-
-                                          <span><i class="icon-calendar"></i> 2014-08-05 07:01:49</span>
-
-                                          <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
-                                          <span><i class="icon-user-8"></i> by <a href="#">admin</a></span>
-
-                                          <span><i class="icon-folder-open-empty-1"></i> <a href="#">Diet &amp; Fitness</a></span>
-
-                                      </div>
-
-                                      <div class="alignright">
-
-                                          rate this item
-
-                                          <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
-
-                                          <ul class="rating">
-
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li></li>
-
-                                          </ul>
-                                          
-                                          <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
-
-                                          (12 votes)
-
-                                      </div>
-
-                                  </div><!--/ .byline-->
-
-                                  <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
-
-                                  <p>﻿Vivamus eget nibh. Nam elit agna,endrerit sit amet, tincidunt ac, viverra sed, nulla. Donec porta diam eu massa. Quisque diam lorem, interdum vitae,dapibus ac, scelerisque vitae, pede. Donec eget tellus non erat lacinia fermentum. Donec in velit vel ipsum auctor pulvinar. Vestibulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque sed dolor. Aliquam congue fermentum nisl. </p>
-
-                                  <%= link_to 'Đọc tiếp', {controller: 'blog', action: 'show'}, class: 'button_grey middle_btn' %>
-
-                              </article>
-
-                              <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                          </li>
-
-                          <li>
-
-                              <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-                              
-                              <article class="entry">
-
-                                  <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
-
-                                  <a href="#" class="thumbnail entry_image">
-                                      
-                                      <img src="/frontend/images/blog_img_3.jpg" alt="">
-
-                                  </a>
-
-                                  <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
-
-                                  <h4 class="entry_title"><a href="#">Sed ut perspiciatis unde omnis iste natus error</a></h4>
-
-                                  <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
-
-                                  <div class="entry_meta">
-
-                                      <div class="alignleft">
-
-                                          <span><i class="icon-calendar"></i> 2014-08-05 07:01:49</span>
-
-                                          <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
-                                          <span><i class="icon-user-8"></i> by <a href="#">admin</a></span>
-
-                                          <span><i class="icon-folder-open-empty-1"></i> <a href="#">News</a>, <a href="#">Promotions</a></span>
-
-                                      </div>
-
-                                      <div class="alignright">
-
-                                          rate this item
-
-                                          <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
-
-                                          <ul class="rating">
-
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-                                              <li class="active"></li>
-
-                                          </ul>
-                                          
-                                          <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
-
-                                          (7 votes)
-
-                                      </div>
-
-                                  </div><!--/ .byline-->
-
-                                  <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
-
-                                  <p>﻿Vestibulum iaculis lacinia est. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.  Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue. </p>
-
-                                  <%= link_to 'Đọc tiếp', {controller: 'blog', action: 'show'}, class: 'button_grey middle_btn' %>
-
-                              </article>
-
-                              <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                          </li>
-
-                      </ul>
-
-                      <!-- - - - - - - - - - - - - - End of list of entries - - - - - - - - - - - - - - - - -->
-
-                      <footer class="bottom_box on_the_sides">
-
-                          <div class="left_side">
-
-                              <p>Showing 1 to 3 of 45 (15 Pages)</p>
-
-                          </div>
-
-                          <div class="right_side">
-
-                              <ul class="pags">
-
-                                  <li><a href="#"></a></li>
-                                  <li class="active"><a href="#">1</a></li>
-                                  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#"></a></li>
-
-                              </ul>
-
-                          </div>
-
-                      </footer>
-
-                  </main><!--/ [col]-->
-
-              </div><!--/ .row-->
-
-          </div><!--/ .container-->
-
-      </div><!--/ .page_wrapper-->
-      
-      <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-      <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-      <%= render 'home/footer' %>
-      
-      <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-  </div><!--/ [layout]-->
-  
-  <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-  <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-  <%= render 'home/social_feeds' %>
-
-  <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
-  
-  <!-- Include Libs & Plugins
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-  <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-  <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-  <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-  <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-  <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-  <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-  <%= javascript_include_tag '/frontend/js/retina.min.js' %>
-  <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-  <!-- Theme files
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-  <%= javascript_include_tag '/frontend/js/theme.core.js' %>
-  
 </body>

@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -21,8 +21,12 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Trang</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li>Ut pharetra augue nec augue integer rutrum ante eu lacus</li>
+                    <li>
+                        <% @blog.article_categories.each do |category| %>
+                            <%= link_to category.name, "" %> / 
+                        <% end %>
+                        <%= @blog.title %>
+                    </li>
 
                 </ul>
 
@@ -32,22 +36,16 @@
 
                         <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'categories' %>
+                        <%= render 'module/blog_categories' %>
 
                         <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Popular posts - - - - - - - - - - - - - - - - -->
-
-                        <%= render 'popular_posts' %>
-
-                        <!-- - - - - - - - - - - - - - End of popular posts - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
                         <div class="section_offset">
 
                             <a href="#" class="banner">
-                                
+
                                 <img src="/frontend/images/banner_img_10.png" alt="">
 
                             </a>
@@ -55,23 +53,19 @@
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
-                        <!-- - - - - - - - - - - - - - Recent comments - - - - - - - - - - - - - - - - -->
+                        <%= render 'module/blog_newsletter' %>
 
-                        <%= render 'recent_comments' %>
-
-                        <!-- - - - - - - - - - - - - - End recent comments - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Blog Tags - - - - - - - - - - - - - - - - -->
-
-                        <%= render 'blog_tags' %>
-
+                        <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
+                        
                         <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
                         <div class="section_offset">
 
                             <a href="#" class="banner">
-                                
+
                                 <img src="/frontend/images/banner_img_11.png" alt="">
 
                             </a>
@@ -80,19 +74,20 @@
 
                         <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
 
-                        <!-- - - - - - - - - - - - - - Community poll - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - Blog Tags - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'community_poll' %>
+                        <%= render 'module/blog_tags' %>
+                        
+                        <!-- - - - - - - - - - - - - - End blog tags - - - - - - - - - - - - - - - - -->
 
-                        <!-- - - - - - - - - - - - - - End of community poll - - - - - - - - - - - - - - - - -->
-
-                    </aside><!--/ [col]-->
+                    </aside>
+                    <!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
 
                         <section class="section_offset">
 
-                            <h1>Tiêu đề bài viết.....</h1>
+                            <h1><%= @blog.title %></h1>
 
                             <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
                             
@@ -104,35 +99,13 @@
 
                                     <div class="alignleft">
 
-                                        <span><i class="icon-calendar"></i> 2014-08-05 07:01:49</span>
-
+                                        <span><i class="icon-calendar"></i> <%= @blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>
+    
                                         <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
 
-                                        <span><i class="icon-user-8"></i> by <a href="#">admin</a></span>
+                                        <span><i class="icon-user-8"></i> bởi Người quản trị</span>
 
-                                        <span><i class="icon-folder-open-empty-1"></i> <a href="#">News</a>, <a href="#">About Beauty</a></span>
-
-                                    </div>
-
-                                    <div class="alignright">
-
-                                        rate this item
-
-                                        <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
-
-                                        <ul class="rating">
-
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li></li>
-                                            <li></li>
-
-                                        </ul>
-                                        
-                                        <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
-
-                                        (17 votes)
+                                        <span><i class="fa fa-eye"></i> Số lượt đã đọc: 370</span>
 
                                     </div>
 
@@ -145,7 +118,7 @@
 
                                 <div class="entry_image">
                                     
-                                    <img src="/frontend/images/blog_img_1.jpg" alt="">
+                                    <img src="<%= @blog.image_url.big_image %>" alt="">
 
                                 </div>
 
@@ -153,110 +126,11 @@
 
                                 <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
 
-                                <p>﻿Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.</p>
-
-                                <ul class="list_type_5">
-                                    
-                                    <li>Vivamus eget nibh. Etiam cursus leo vel metus.</li>
-                                    <li>Nulla facilisi. Aenean nec eros.</li>
-                                    <li>Vestibulum ante ipsum primis in faucibus orci luctus et.</li>
-
-                                </ul>
-
-                                <ul class="lightbox_list">
-
-                                    <li>
-
-                                        <a class="fancybox_item" data-rel="group_1" href="/frontend/images/lightbox_thumb_1.jpg" title="Title 1">
-
-                                            <img src="/frontend/images/lightbox_thumb_1.jpg" alt="">
-
-                                            <span class="helper_icon">
-
-                                                <span class="helper_left"></span>
-                                                <span class="helper_right"></span>
-
-                                            </span>
-
-                                        </a>
-
-                                    </li>
-
-                                    <li>
-
-                                        <a class="fancybox_item" data-rel="group_1" href="/frontend/images/lightbox_thumb_2.jpg" title="Title 2">
-
-                                            <img src="/frontend/images/lightbox_thumb_2.jpg" alt="">
-
-                                            <span class="helper_icon">
-
-                                                <span class="helper_left"></span>
-                                                <span class="helper_right"></span>
-
-                                            </span>
-
-                                        </a>
-
-                                    </li>
-
-                                    <li>
-
-                                        <a class="fancybox_item_media" data-rel="group_1" href="http://www.youtube.com/watch?v=-BrDlrytgm8">
-
-                                            <img src="/frontend/images/lightbox_thumb_3.jpg" alt="">
-
-                                            <span class="helper_icon">
-
-                                                <span class="helper_left"></span>
-                                                <span class="helper_right"></span>
-
-                                            </span>
-
-                                        </a>
-
-                                    </li>
-
-                                    <li>
-
-                                        <a class="fancybox_item" data-rel="group_1" href="images/lightbox_thumb_4.jpg" title="Title 3">
-
-                                            <img src="/frontend/images/lightbox_thumb_4.jpg" alt="">
-
-                                            <span class="helper_icon">
-
-                                                <span class="helper_left"></span>
-                                                <span class="helper_right"></span>
-
-                                            </span>
-
-                                        </a>
-
-                                    </li>
-
-                                    <li>
-
-                                        <a class="fancybox_item" data-rel="group_1" href="/frontend/images/lightbox_thumb_5.jpg" title="Title 4">
-
-                                            <img src="/frontend/images/lightbox_thumb_5.jpg" alt="">
-
-                                            <span class="helper_icon">
-
-                                                <span class="helper_left"></span>
-                                                <span class="helper_right"></span>
-
-                                            </span>
-
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-
-                                <p>Vestibulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque sed dolor. Aliquam congue fermentum nisl. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis.</p>
+                                <p><%= @blog.content.html_safe %></p>
 
                                 <div class="v_centered share">
 
-                                    <span class="title">Share this:</span>
+                                    <span class="title">Chia sẻ với:</span>
 
                                     <div class="addthis_widget_container">
 
@@ -281,7 +155,7 @@
 
                             <footer class="bottom_box">
 
-                                Tags: <a href="#">beauty</a>, <a href="#">medicine</a>, <a href="#">health</a>
+                                Từ khóa bài viết: <a href="#">beauty</a>, <a href="#">medicine</a>, <a href="#">health</a>
 
                             </footer>
 
@@ -289,19 +163,19 @@
 
                         <!-- - - - - - - - - - - - - - Related posts - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'related_posts' %>
+                        <%= render 'module/blog_related_posts' %>
 
                         <!-- - - - - - - - - - - - - - End related posts - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Comments - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'comments' %>
+                        <%= render 'module/blog_comments' %>
 
                         <!-- - - - - - - - - - - - - - End of comments - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Leave a comment - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'leave_comment' %>
+                        <%= render 'module/blog_leave_comment' %>
 
                         <!-- - - - - - - - - - - - - - End leave a comment - - - - - - - - - - - - - - - - -->
 
@@ -317,7 +191,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -327,7 +201,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

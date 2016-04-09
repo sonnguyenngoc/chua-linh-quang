@@ -211,17 +211,13 @@
                                         
                                         <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
                                         
-                                        <a href="#" class="entry_thumb ">
-    
-                                            <img src="<%= blog.image_url.smaller_image %>" alt="<%= blog.title %>">
-    
-                                        </a>
+                                        <%= link_to image_tag(blog.image_url.smaller_image), { controller: "blog", action: "show", blog_id: blog.id }, class: "entry_thumb", title: blog.title %>
     
                                         <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
     
                                         <div class="wrapper">
     
-                                            <h6 class="entry_title"><a href="#"><%= blog.title %></a></h6>
+                                            <h6 class="entry_title"><%= link_to blog.title, { controller: "blog", action: "show", blog_id: blog.id } %></h6>
     
                                             <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
     

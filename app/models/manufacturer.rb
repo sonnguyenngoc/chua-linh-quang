@@ -7,7 +7,7 @@ class Manufacturer < ActiveRecord::Base
   }
   
   def self.get_all_manufacturers
-    self.all.order("name ASC")
+    self.all
   end
   
 end

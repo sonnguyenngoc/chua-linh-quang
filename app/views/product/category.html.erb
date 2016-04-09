@@ -211,7 +211,7 @@
                                                     
                                                     <div class="nowrap-ellipsis">
                                                         
-                                                        <%= link_to product.name, { controller: "product", action: "product" }, title: product.name %>
+                                                        <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
                                                     
                                                     </div>
     
@@ -245,7 +245,7 @@
     
                                                     <div class="nowrap-ellipsis">
                                                         
-                                                        <%= link_to product.name, { controller: "product", action: "product" }, class: "product_title", title: product.name %>
+                                                        <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
                                                     
                                                     </div>
     

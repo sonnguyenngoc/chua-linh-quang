@@ -24,13 +24,13 @@ en:
   will_paginate:
     page_entries_info:
       single_page:
-        zero:  "No %{model} found"
-        one:   "Showing 1 %{model}"
-        other: "Showing all %{count} %{model}"
+        zero:  "Dữ liệu trống."
+        one:   "Hiển thị 1 "
+        other: "Hiển thị toàn bộ %{count} "
       single_page_html:
-        zero:  "No %{model} found"
-        one:   "Showing 1 %{model}"
-        other: "Showing all %{count} %{model}"
+        zero:  "Dữ liệu trống."
+        one:   "Hiển thị 1 "
+        other: "Hiển thị toàn bộ %{count} "
 
-      multi_page: "Showing  %{from} to %{to} of %{count} entries"
-      multi_page_html: "Showing %{from} to %{to}</b> of %{count} entries"
+      multi_page: "Hiển thị  %{from} - %{to} / %{count} "
+      multi_page_html: "Hiển thị %{from} tới %{to} / %{count} "

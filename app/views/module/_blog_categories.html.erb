@@ -1,0 +1,15 @@
+<section class="section_offset">
+
+    <h3>Danh mục</h3>
+
+    <ul class="theme_menu">
+        
+        <% ArticleCategory.all.each do |category| %>
+
+            <li><%= link_to category.name, "" %></li>
+        
+        <% end %>
+
+    </ul>
+
+</section><!--/ .section_offset -->

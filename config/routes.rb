@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   
   # blog
   get "blog" => "blog#index", as: :index
-  get "blog/show" => "blog#show", as: :show
+  get "blog/show/:blog_id" => "blog#show", as: :show
   # end blog
   
   # information
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   # product
   get "product/category/:category_id" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
-  get "product/product" => "product#product", as: :product
+  get "product/product/:product_id" => "product#product", as: :product
   get "product/quickview" => "product#quickview", as: :quickview
   get "product/search" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial

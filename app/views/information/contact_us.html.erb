@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -29,17 +29,31 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'information' %>
+                        <%= render "module/categories" %>
+
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                        <div class="section_offset">
+
+                            <a href="#" class="banner">
+
+                                <img src="/frontend/images/banner_img_10.png" alt="">
+
+                            </a>
+
+                        </div>
 
                         <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
-                        <!-- - - - - - - - - - - - - - Testimonials - - - - - - - - - - - - - - - - -->
+                        <%= render 'module/blog_newsletter' %>
 
-                        <%= render 'restimonials' %>
-
-                        <!-- - - - - - - - - - - - - - End of testimonials - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
                     </aside><!--/ [col]-->
 
@@ -81,17 +95,6 @@
 
                                             <div class="col-xs-12">
 
-                                                <label for="cf_order_number">Mã số đơn đặt hàng</label>
-                                                <input type="text" name="cf_order_number" id="cf_order_number" title="Order number">
-
-                                            </div><!--/ [col]-->
-
-                                        </li><!--/ .row -->
-
-                                        <li class="row">
-
-                                            <div class="col-xs-12">
-
                                                 <label for="cf_message" class="required">Lời nhắn</label>
                                                 <textarea id="cf_message" required name="cf_message" title="Message" rows="6"></textarea>
 
@@ -104,24 +107,10 @@
                                 </form><!--/ .contactform -->
 
                                 <!-- - - - - - - - - - - - - - End of contact form - - - - - - - - - - - - - - - - -->
-
-                            </div><!--/ .theme_box -->
-
-                            <footer class="bottom_box on_the_sides">
-
-                                <div class="left_side">
                                 
-                                    <button class="button_dark_grey middle_btn" type="submit" form="contact_form">Gửi</button>
-
-                                </div>
-
-                                <div class="right_side">
-
-                                    <p class="prompt">Thông tin bắt buộc</p>
-
-                                </div>
-
-                            </footer>
+                                <button class="button_dark_grey middle_btn alignright" type="submit">Gửi lời nhắn</button>
+                            
+                            </div><!--/ .theme_box -->
 
                         </section>
 
@@ -186,7 +175,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -196,7 +185,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     
