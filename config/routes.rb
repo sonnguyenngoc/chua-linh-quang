@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   
   # manufacturer
   get "manufacturer/list" => "manufacturer#list", as: :list
-  get "manufacturer/products" => "manufacturer#products", as: :products
+  get "manufacturer/products/:manufacturer_id" => "manufacturer#products", as: :products
   # end manufacturer
   
   

@@ -54,16 +54,12 @@
                                         <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
     
                                         <figure class="manufacturer">
-    
-                                            <a href="#manufacturer/products" class="thumbnail">
-                                                
-                                                <img src="<%= manufacturer.image_url.small_image %>" alt="">
-    
-                                            </a>
+                                            
+                                            <%= link_to image_tag(manufacturer.image_url.small_image), { controller: "manufacturer", action: "products", manufacturer_id: manufacturer.id }, class: "thumbnail" %>
     
                                             <figcaption>
     
-                                                <a href="#manufacturer/products"><%= manufacturer.name %></a>
+                                                <%= link_to manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: manufacturer.id }, class: "thumbnail" %>
     
                                             </figcaption>
     
