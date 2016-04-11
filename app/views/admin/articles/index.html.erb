@@ -85,7 +85,7 @@
                                     <td>
                                       <%= item.title %><br/>
                                     </td>
-                                    <td><%= item.content %></td>
+                                    <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
                                     <td></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">

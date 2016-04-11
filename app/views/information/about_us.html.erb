@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -21,7 +21,7 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Home</a></li>
-                    <li>About Us</li>
+                    <li><%= @title_home %></li>
 
                 </ul>
 
@@ -29,17 +29,37 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'information' %>
+                        <%= render "module/categories" %>
 
-                        <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                        <div class="section_offset">
+
+                            <a href="#" class="banner">
+
+                                <img src="/frontend/images/banner_img_10.png" alt="">
+
+                            </a>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'module/blog_newsletter' %>
+
+                        <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
 
-                        <h1>Giới thiệu</h1>
+                        <h1><%= @title_home %></h1>
 
                         <div class="theme_box clearfix">
 
@@ -67,7 +87,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -77,7 +97,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

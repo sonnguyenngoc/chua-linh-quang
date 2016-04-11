@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
   
+  # account
   get "account/login" => "account#login", as: :login
   get "account/logout" => "account#logout", as: :logout
   get "account/forgotten" => "account#forgotten", as: :forgotten
@@ -22,26 +23,37 @@ Rails.application.routes.draw do
   get "account/edit" => "account#edit", as: :edit
   get "account/password" => "account#password", as: :password
   get "account/voucher" => "account#voucher", as: :voucher
+  # end account
   
+  # checkout
   get "checkout/cart" => "checkout#cart", as: :cart
   get "checkout/checkout" => "checkout#checkout", as: :checkout
   get "opencart/checkout/success" => "checkout#success", as: :success
+  # end checkout
   
+  # blog
   get "blog" => "blog#index", as: :index
-  get "blog/show" => "blog#show", as: :show
+  get "blog/show/:blog_id" => "blog#show", as: :show
+  # end blog
   
+  # information
   get "information/about_us" => "information#about_us", as: :about_us
   get "information/contact_us" => "information#contact_us", as: :contact_us
   get "information/delivery" => "information#delivery", as: :delivery
   get "information/faq" => "information#faq", as: :faq
   get "information/privacy_policy" => "information#privacy_policy", as: :privacy_policy
   get "information/terms_conditions" => "information#terms_conditions", as: :terms_conditions
-  get "information/site_map" => "information#site_map", as: :site_map
+  get "information/sitemap" => "information#sitemap", as: :sitemap
+  # end information
   
+  # manufacturer
   get "manufacturer/list" => "manufacturer#list", as: :list
-  get "manufacturer/products" => "manufacturer#products", as: :products
+  get "manufacturer/products/:manufacturer_id" => "manufacturer#products", as: :products
+  # end manufacturer
   
-  get "product/category" => "product#category", as: :category
+  
+  # product
+  get "product/category/:category_id" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
   get "product/product" => "product#product", as: :product
   get "product/quick_view" => "product#quick_view", as: :quick_view
@@ -49,7 +61,9 @@ Rails.application.routes.draw do
   get "product/testimonial" => "product#testimonial", as: :testimonial
   get "product/testimonialform" => "product#testimonialform", as: :testimonialform
   get "product/special" => "product#special", as: :special
-  
+  # end product
+
+
   namespace :admin do
     get "main" => "main#index"
     resources :products

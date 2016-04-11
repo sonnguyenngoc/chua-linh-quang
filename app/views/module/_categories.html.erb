@@ -1,0 +1,67 @@
+<section class="section_offset">
+
+    <h3>Danh mục</h3>
+
+    <ul class="theme_menu cats">
+        
+        <% Category.get_all_categories.each do |category| %>
+        
+            <% if category.children.count == 0 %>
+                
+                <% if category.level == 1 %>
+                
+                    <li class="top"><%= link_to category.name, { controller: "product", action: "category", category_id: category.id } %></li>
+                
+                <% end %>
+                
+            <% else %>
+
+                <li class="has_megamenu">
+                    
+                    <% if category.level == 1 %>
+    
+                        <%= link_to category.name, { controller: "product", action: "category", category_id: category.id } %>
+                    
+                    <% end %>
+    
+                    <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
+    
+                    <div class="mega_menu type_2 clearfix">
+                        
+                        <% category.children.each do |child_1| %>
+    
+                            <!-- - - - - - - - - - - - - - Mega menu item - - - - - - - - - - - - - - - - -->
+        
+                            <div class="mega_menu_item">
+                            
+                                <h6><b><%= link_to child_1.name, { controller: "product", action: "category", category_id: child_1.id } %></b></h6>
+                            
+                                <ul class="list_of_links">
+                                    
+                                    <% child_1.children.each do |child_2| %>
+        
+                                        <li><%= link_to child_2.name, { controller: "product", action: "category", category_id: child_2.id } %></li>
+                                        
+                                    <% end %>
+        
+                                </ul>
+        
+                            </div><!--/ .mega_menu_item-->
+        
+                            <!-- - - - - - - - - - - - - - End of mega menu item - - - - - - - - - - - - - - - - -->
+                        
+                        <% end %>
+    
+                    </div><!--/ .mega_menu-->
+    
+                    <!-- - - - - - - - - - - - - - End of mega menu - - - - - - - - - - - - - - - - -->
+    
+                </li>
+            
+            <% end %>
+            
+        <% end %>
+
+    </ul>
+
+</section><!--/ .animated.transparent-->

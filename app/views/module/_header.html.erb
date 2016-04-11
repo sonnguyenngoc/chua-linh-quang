@@ -1,0 +1,244 @@
+<header id="header" class="type_2">
+
+    <!-- - - - - - - - - - - - - - Bottom part - - - - - - - - - - - - - - - - -->
+
+    <div class="bottom_part">
+
+        <div class="sticky_part">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="main_header_row">
+
+                        <div class="col-sm-3">
+
+                            <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
+                            
+                            <%= link_to image_tag("/frontend/images/logo.png"), root_path, class: "logo" %>
+
+                            <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
+
+                        </div><!--/ [col]-->
+
+                        <div class="col-lg-6 col-md-5 col-sm-6">
+
+                            <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
+
+                            <nav>
+
+                                <ul class="topbar">
+
+                                    <li><%= link_to "Trang chủ", root_path %></li>
+                                    <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                                    <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "cart" } %></li>
+                                    <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
+                                    <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
+                                    <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
+                                    <li><%= link_to "FAQ", { controller: "information", action: "faq" } %></li>
+                                    <li><a href="#" data-modal-url="/frontend/modals/login.html">Đăng nhập</a></li>
+                                    
+
+                                </ul>
+
+                            </nav>
+
+                            <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
+
+                            <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
+
+                            <form class="clearfix search">
+
+                                <input type="text" name="" tabindex="1" placeholder="Search..." class="alignleft">
+                                
+                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                                <div class="search_category alignleft">
+
+                                    <div class="open_categories">Khu vực</div>
+
+                                    <ul class="categories_list dropdown">
+
+                                        <li class="animated_item"><a href="#">Miền Bắc</a></li>
+                                        <li class="animated_item"><a href="#">Miền Trung</a></li>
+                                        <li class="animated_item"><a href="#">Miền Nam</a></li>
+                                        <li class="animated_item"><a href="#">Tây Nguyên</a></li>
+
+                                    </ul>
+
+                                </div><!--/ .search_category.alignleft-->
+
+                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                                <button class="button_blue def_icon_btn alignleft"></button>
+
+                            </form><!--/ #search-->
+                            
+                            <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+
+                        </div><!--/ [col]-->
+
+                        <div class="col-lg-3 col-md-4 col-sm-3">
+
+                            <div class="clearfix">
+
+                                <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
+
+                                <div class="alignright site_settings">
+
+                                    <span class="current open_"><img src="/frontend/images/flag_vn.jpg" alt="">Vietnam</span>
+
+                                    <ul class="dropdown site_setting_list language">
+
+                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
+
+                                    </ul>
+
+                                </div><!--/ .alignright.site_settings-->
+
+                                <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
+                                
+                                <!-- - - - - - - - - - - - - - Currency change - - - - - - - - - - - - - - - - -->
+
+                                <div class="alignright site_settings currency">
+
+                                    <span class="current open_">VND</span>
+
+                                    <ul class="dropdown site_setting_list">
+
+                                        <li class="animated_item"><a href="#">VND</a></li>
+
+                                    </ul>
+
+                                </div><!--/ .alignright.site_settings.currency-->
+
+                                <!-- - - - - - - - - - - - - - End of currency change - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .clearfix-->
+
+                            <div class="align_right v_centered">
+
+                                <!-- - - - - - - - - - - - - - Wishlist & compare counters - - - - - - - - - - - - - - - - -->
+
+                                <ul class="shop_links_list">
+
+                                    <li>
+                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (0)</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (0)</a>
+                                    </li>
+
+                                </ul><!--/ .align_right.shop_links-->
+                            
+                                <!-- - - - - - - - - - - - - - End of wishlist & compare counters - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Shopping cart - - - - - - - - - - - - - - - - -->
+
+                                <div class="shopping_cart_wrap">
+
+                                    <button id="open_shopping_cart" class="open_button" data-amount="2">
+                                        <b class="title">Giỏ hàng</b>
+                                        <b class="total_price">600.000</b>
+                                    </button>
+
+                                    <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
+
+                                    <div class="shopping_cart dropdown">
+
+                                        <div class="animated_item">
+
+                                            <p class="title">Danh sách giỏ hàng</p>
+
+                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                            <div class="clearfix sc_product">
+
+                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_1.jpg" alt=""></a>
+
+                                                <a href="#" class="product_name">Mực rim Nha Trang</a>
+
+                                                <p>1 x 120.000 VNĐ</p>
+
+                                                <button class="close"></button>
+
+                                            </div><!--/ .clearfix.sc_product-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .animated_item-->
+
+                                        <div class="animated_item">
+
+                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                            <div class="clearfix sc_product">
+
+                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_2.jpg" alt=""></a>
+
+                                                <a href="#" class="product_name">Tôm càng muối chua</a>
+
+                                                <p>1 x 490.000</p>
+
+                                                <button class="close"></button>
+
+                                            </div><!--/ .clearfix.sc_product-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .animated_item-->
+
+
+                                        <div class="animated_item">
+
+                                            <!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
+
+                                            <ul class="total_info">
+
+                                                <li><span class="price">Thuế:</span> 0.000 VNĐ</li>
+
+                                                <li><span class="price">Giảm giá:</span> 10.000 VNĐ</li>
+
+                                                <li class="total"><b><span class="price">Cộng:</span> 600.000 VNĐ</b></li>
+
+                                            </ul>
+                                            
+                                            <!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .animated_item-->
+
+                                        <div class="animated_item">
+
+                                            <a href="#" class="button_grey">View Cart</a>
+
+                                            <a href="#" class="button_blue">Checkout</a>
+
+                                        </div><!--/ .animated_item-->
+
+                                    </div><!--/ .shopping_cart.dropdown-->
+
+                                    <!-- - - - - - - - - - - - - - End of products list - - - - - - - - - - - - - - - - -->
+
+                                </div><!--/ .shopping_cart_wrap.align_left-->
+                                
+                                <!-- - - - - - - - - - - - - - End of shopping cart - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .align_right-->
+
+                        </div><!--/ [col]-->
+
+                    </div><!--/ .main_header_row-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div>
+
+    </div><!--/ .bottom_part -->
+
+    <!-- - - - - - - - - - - - - - End of bottom part - - - - - - - - - - - - - - - - -->
+
+</header>

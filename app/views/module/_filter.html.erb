@@ -1,0 +1,185 @@
+<section class="section_offset">
+
+    <h3>Filter</h3>
+
+    <form class="type_2">
+
+        <div class="table_layout list_view">
+
+            <div class="table_row">
+
+                <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+
+                <div class="table_cell">
+
+                    <label>Khu vực</label>
+
+                    <div class="">
+
+                        <select name="">
+                            
+                            <% @areas.each do |area| %>
+                                <option value="<%= area.id %>"><%= area.get_name_area %></option>
+                            <% end %>
+
+                        </select>
+
+                    </div>
+
+                </div><!--/ .table_cell -->
+
+                <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+
+                <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
+
+                <div class="table_cell">
+
+                    <fieldset>
+
+                        <legend>Thương hiệu</legend>
+
+                        <ul class="checkboxes_list">
+                            
+                            <% @manufacturers.each do |manufacturer| %>
+
+                                <li>
+                                    
+                                    <input type="checkbox" name="manufacturer" id="manufacturer_<%= manufacturer.id %>">
+                                    <label for="manufacturer_<%= manufacturer.id %>"><%= manufacturer.name %></label>
+    
+                                </li>
+                            
+                            <% end %>
+
+                        </ul>
+
+                    </fieldset>
+
+                </div><!--/ .table_cell -->
+
+                <!-- - - - - - - - - - - - - - End manufacturer - - - - - - - - - - - - - - - - -->
+
+                <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
+
+                <!--<div class="table_cell">
+
+                    <fieldset>
+
+                        <legend>Price</legend>
+
+                        <div class="range">
+
+                            Range :
+
+                            <span class="min_val"></span> - 
+                            <span class="max_val"></span>
+
+                            <input type="hidden" name="" class="min_value">
+
+                            <input type="hidden" name="" class="max_value">
+
+                        </div>
+
+                        <div id="slider"></div>
+
+                    </fieldset>
+
+                </div>--><!--/ .table_cell -->
+
+                <!-- - - - - - - - - - - - - - End price - - - - - - - - - - - - - - - - -->
+
+                <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
+
+                <div class="table_cell">
+
+                    <fieldset>
+
+                        <legend>Color</legend>
+
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                
+                                <ul class="simple_vertical_list">
+
+                                    <li>
+                                        
+                                        <input type="checkbox" name="" id="color_btn_1">
+                                        <label for="color_btn_1" class="color_btn green">Green</label>
+
+                                    </li>
+
+                                    <li>
+
+                                        <input type="checkbox" name="" id="color_btn_2">
+                                        <label for="color_btn_2" class="color_btn yellow">Yellow</label>
+
+                                    </li>
+
+                                    <li>
+                                        
+                                        <input type="checkbox" name="" id="color_btn_3">
+                                        <label for="color_btn_3" class="color_btn red">Red</label>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="col-sm-6">
+                                
+                                <ul class="simple_vertical_list">
+
+                                    <li>
+
+                                        <input type="checkbox" name="" id="color_btn_4">
+                                        <label for="color_btn_4" class="color_btn blue">Blue</label>
+
+                                    </li>
+
+                                    <li>
+                                        
+                                        <input type="checkbox" name="" id="color_btn_5">
+                                        <label for="color_btn_5" class="color_btn grey">Grey</label>
+
+                                    </li>
+
+                                    <li>
+                                        
+                                        <input type="checkbox" name="" id="color_btn_6">
+                                        <label for="color_btn_6" class="color_btn orange">Orange</label>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+                </div><!--/ .table_cell -->
+
+                <!-- - - - - - - - - - - - - - End price - - - - - - - - - - - - - - - - -->
+
+            </div><!--/ .table_row -->
+
+        </div><!--/ .table_layout -->
+
+        <footer class="bottom_box">
+
+            <div class="buttons_row">
+
+                <button type="submit" class="button_blue middle_btn">Search</button>
+
+                <button type="reset" class="button_grey middle_btn filter_reset">Reset</button>
+
+            </div>
+            
+        </footer>
+        
+    </form>
+
+</section>

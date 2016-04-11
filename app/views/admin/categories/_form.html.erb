@@ -30,35 +30,35 @@
         <%= f.label "Related Categories", class: "col-lg-2 control-label" %>
         <div class="col-lg-10">
             <% Category.all.each do |category| %>
-                <% if @category.id != category.id %>
-                  <% if category.level == 1 %>
-                    <p><div class="row-fluid">
-                      <div class="checkbox">
-                        <%= check_box_tag 'category[parent_ids][]', category.id, @category.parent.include?(category), id: "category_#{category.id}", class: "styled-level-1" %>
-                        <%= f.label category.name, :for => "category_#{category.id}" %>
-                      </div>
-                    </div></p>
-                    <% category.children.each do |child_1| %>
-                        <% if child_1.level == 2 %>
-                            <div class="row-fluid">
-                              <div class="checkbox">
-                                <%= check_box_tag 'category[parent_ids][]', child_1.id, @category.parent.include?(child_1), :id => "category_#{child_1.id}", class: "styled-level-2" %>
-                                <%= f.label child_1.name, :for => "category_#{child_1.id}" %>
-                              </div>
+                <% if category.level == 1 %>
+                    <% if @category.id != category.id %>
+                        <div class="row-fluid">
+                            <div class="checkbox">
+                                <%= check_box_tag 'category[parent_ids][]', category.id, @category.parent.include?(category), id: "category_#{category.id}", class: "styled-level-1" %>
+                                <label for="category_<%= category.id %>"><%= category.name %></label>
                             </div>
-                            <% child_1.children.each do |child_2| %>
-                                <% if child_2.level == 3 %>
-                                    <div class="row-fluid">
-                                      <div class="checkbox">
+                        </div>
+                    <% end %>
+                    <% category.children.each do |child_1| %>
+                        <% if @category.id != child_1.id %>
+                            <div class="row-fluid">
+                                <div class="checkbox">
+                                    <%= check_box_tag 'category[parent_ids][]', child_1.id, @category.parent.include?(child_1), :id => "category_#{child_1.id}", class: "styled-level-2" %>
+                                    <label for="category_<%= child_1.id %>"><%= child_1.name %></label>
+                                </div>
+                            </div>
+                        <% end %>
+                        <% child_1.children.each do |child_2| %>
+                            <% if @category.id != child_2.id %>
+                                <div class="row-fluid">
+                                    <div class="checkbox">
                                         <%= check_box_tag 'category[parent_ids][]', child_2.id, @category.parent.include?(child_2), :id => "category_#{child_2.id}", class: "styled-level-3" %>
-                                        <%= f.label child_2.name, :for => "category_#{child_2.id}" %>
-                                      </div>
+                                        <label for="category_<%= child_2.id %>"><%= child_2.name %></label>
                                     </div>
-                                <% end %>
+                                </div>
                             <% end %>
                         <% end %>
                     <% end %>
-                  <% end %>
                 <% end %>
             <% end %>
         </div>

@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render "module/header" %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -21,7 +21,7 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Beauty</li>
+                    <li><%= @category.name %></li>
 
                 </ul>
 
@@ -31,13 +31,13 @@
 
                         <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'categories' %>
+                        <%= render "module/categories" %>
 
                         <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'filter' %>
+                        <%= render "module/filter" %>
 
                         <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
 
@@ -54,8 +54,12 @@
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
-                        <%= render 'bestseller' %>
+                        
+                        <!-- - - - - - - - - - - - - - Bestseller products - - - - - - - - - - - - - - - - -->
+                        
+                            <%= render "module/category_bestseller" %>
+                        
+                        <!-- - - - - - - - - - - - - - End of bestseller products - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
@@ -79,9 +83,9 @@
 
                         <section class="section_offset">
 
-                            <h1>Product Category - Page</h1>
+                            <h1><%= @category.name %></h1>
 
-                            <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula. Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Vestibulum sed ante. Donec sagittis euismod purus. Sed ut perspiciatis sit voluptatem accusantim doloremque laudantim.</p>
+                            <p><%= @category.description %></p>
 
                         </section>
 
@@ -99,15 +103,13 @@
 
                                         <span>Show:</span>
 
-                                        <div class="custom_select">
+                                        <div class="">
 
                                             <select name="">
 
                                                 <option value="15">15</option>
                                                 <option value="12">12</option>
                                                 <option value="9">9</option>
-                                                <option value="6">6</option>
-                                                <option value="3">3</option>
 
                                             </select>
 
@@ -123,14 +125,15 @@
 
                                         <span>Sort by:</span>
 
-                                        <div class="custom_select sort_select">
+                                        <div class="sort_select">
                                             
                                             <select name="">
                                                     
-                                                <option value="Default">Default</option>
-                                                <option value="Price">Price</option>
-                                                <option value="Name">Name</option>
-                                                <option value="Date">Date</option>
+                                                <option value="Default">Mặc định</option>
+                                                <option value="Price">Tên (A - Z)</option>
+                                                <option value="Name">Tên (Z - A)</option>
+                                                <option value="Date">Giá (Cao - Thấp)</option>
+                                                <option value="Date">Giá (Thấp - Cao)</option>
 
                                             </select>
 
@@ -163,428 +166,124 @@
                             <div class="table_layout" id="products_container">
 
                                 <div class="table_row">
-
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_7.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= url_for({controller: 'product', action: 'quick_view'}) %>">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$5.99</b></p>
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="rating alignright">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
+                                    <% @products.each_with_index do |product, index| %>
+                                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+                                        <div class="table_cell">
+    
+                                            <div class="product_item">
+    
+                                                <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="image_wrap">
+    
+                                                    <img src="/frontend/images/product_img_7.jpg" alt="">
+    
+                                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+    
+                                                    <div class="actions_wrap">
+    
+                                                        <div class="centered_buttons">
+    
+                                                            <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+    
+                                                            <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+    
+                                                        </div><!--/ .centered_buttons -->
+    
+                                                        <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+    
+                                                        <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+    
+                                                    </div><!--/ .actions_wrap-->
                                                     
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
-
-                                                <p class="product_price bold">$5.99</p>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                                
-                                                    <ul class="rating">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
+                                                    <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+    
+                                                </div><!--/. image_wrap-->
+    
+                                                <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                                <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="description">
+                                                    
+                                                    <div class="nowrap-ellipsis">
                                                         
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
+                                                        <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                    
+                                                    </div>
+    
+                                                    <div class="clearfix product_info">
+    
+                                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+    
+                                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+    
+                                                        <ul class="rating alignright">
+    
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li></li>
+    
+                                                        </ul>
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+    
+                                                    </div>
+    
                                                 </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
-
-                                    </div>
-
+    
+                                                <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+    
+                                                <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="full_description">
+    
+                                                    <div class="nowrap-ellipsis">
+                                                        
+                                                        <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                    
+                                                    </div>
+    
+                                                    <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+    
+                                                    <div class="v_centered product_reviews">
+    
+                                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                                    
+                                                        <ul class="rating">
+    
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li></li>
+    
+                                                        </ul>
+                                                            
+                                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+    
+                                                    </div>
+    
+                                                    <p class="text-justify"><%= product.short_description %></p>
+    
+                                                </div>
+    
+                                                <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+    
+                                            </div><!--/ .product_item-->
+    
+                                        </div>
+                                    
+                                        <%= "</div><div class=\"table_row\"><!--/ .table_row -->".html_safe if index%3 == 2 %>
+                                    
+                                    <% end %>
+                                    
                                     <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
                                     
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_7.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= url_for({controller: 'product', action: 'quick_view'}) %>">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$5.99</b></p>
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="rating alignright">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                    
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
-
-                                                <p class="product_price bold">$5.99</p>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                                
-                                                    <ul class="rating">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                        
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-                                    
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_7.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= url_for({controller: 'product', action: 'quick_view'}) %>">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$5.99</b></p>
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="rating alignright">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                    
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
-
-                                                <p class="product_price bold">$5.99</p>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                                
-                                                    <ul class="rating">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                        
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .table_row -->
-
-                                <div class="table_row">
-
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_7.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= url_for({controller: 'product', action: 'quick_view'}) %>">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$5.99</b></p>
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="rating alignright">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                    
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
-
-                                                <p class="product_price bold">$5.99</p>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                                
-                                                    <ul class="rating">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                        
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .table_row -->
+                                </div>
 
                             </div><!--/ .table_layout -->
 
@@ -628,7 +327,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer'%>
+        <%= render "module/footer" %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -638,7 +337,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render "module/social_feeds" %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

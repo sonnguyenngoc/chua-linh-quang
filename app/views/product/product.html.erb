@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -20,12 +20,22 @@
 
                 <ul class="breadcrumbs">
 
+<<<<<<< HEAD
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
                     <li><a href="#">Beauty</a></li>
                     <li><a href="#">Skin Care</a></li>
                     <li><a href="#">Cleansers</a></li>
                     <li><a href="#">Liquid</a></li>
                     <li>Metus nulla facilisi, Original 24 fl oz (709 ml)</li>
+=======
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li>
+                        <% @product.categories.each do |categories| %>
+                            <%= link_to categories.name, { controller: "product", action: "category", category_id: categories.id } %> /
+                        <% end %>
+                        <%= @product.name %>
+                    </li>
+>>>>>>> c48d67b09c5458f44849dd28664f924fde946b4d
 
                 </ul>
 
@@ -35,23 +45,34 @@
 
                     <div class="row">
                         <aside class="col-md-3 col-sm-4 has_mega_menu">
-                            <%= render 'categories' %>
                             
-                            <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+                            <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                            <div class="section_offset">
+                            <%= render "module/categories" %>
     
-                                <a href="#" class="banner">
-                                    
-                                    <img src="/frontend/images/banner_img_10.png" alt="">
-    
-                                </a>
-    
-                            </div>
-    
-                            <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                            <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
                             
-                            <%= render 'bestseller' %>
+                            <!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
+
+                            <section class="infoblock type_2">
+
+                                <i class="icon-money"></i>
+
+                                <h4 class="caption"><b>100% Money Back Guaranteed</b></h4>
+
+                                <p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna.</p>
+
+                                <a href="#" class="button_dark_grey middle_btn">Read More</a>
+
+                            </section>
+    
+                            <!-- - - - - - - - - - - - - - End of infoblock - - - - - - - - - - - - - - - - -->
+                            
+                            <!-- - - - - - - - - - - - - - Bestseller products - - - - - - - - - - - - - - - - -->
+                        
+                            <%= render "module/category_bestseller" %>
+                            
+                            <!-- - - - - - - - - - - - - - End of bestseller products - - - - - - - - - - - - - - - - -->
                             
                         </aside>
 
@@ -115,8 +136,6 @@
                                     
                                     <div class="v_centered">
 
-                                        <span class="title">Share this:</span>
-
                                         <div class="addthis_widget_container">
                                             <!-- AddThis Button BEGIN -->
                                             <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -142,18 +161,7 @@
 
                                 <div class="single_product_description">
 
-                                    <h3 class="offset_title"><a href="#">Metus nulla facilisi, Original 24 fl oz</a></h3>
-
-                                    <!-- - - - - - - - - - - - - - Page navigation - - - - - - - - - - - - - - - - -->
-
-                                    <div class="page-nav">
-
-                                        <a href="#" class="page-prev"></a>
-                                        <a href="#" class="page-next"></a>
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of page navigation - - - - - - - - - - - - - - - - -->
+                                    <h3><%= @product.name %></h3>
 
                                     <div class="description_section v_centered">
 
@@ -192,22 +200,22 @@
 
                                                 <tr>
 
-                                                    <td>Manufacturer: </td>
-                                                    <td><a href="#">Chanel</a></td>
+                                                    <td>Thương hiệu sản phẩm: </td>
+                                                    <td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "list" } %></td>
 
                                                 </tr>
 
                                                 <tr>
 
-                                                    <td>Availability: </td>
-                                                    <td><span class="in_stock">in stock</span> 20 item(s)</td>
+                                                    <td>Trạng thái: </td>
+                                                    <td><span class="in_stock">Còn trong kho</span> 20 sản phẩm.</td>
 
                                                 </tr>
 
                                                 <tr>
 
-                                                    <td>Product Code: </td>
-                                                    <td>PS06</td>
+                                                    <td>Mã sản phẩm: </td>
+                                                    <td><%= @product.code %></td>
 
                                                 </tr>
 
@@ -221,93 +229,13 @@
 
                                     <div class="description_section">
 
-                                        <p>Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis.</p>
+                                        <p class="text-justify"><%= @product.short_description %></p>
 
                                     </div>
+                                    
+                                    <hr>
 
-                                    <div class="description_section">
-
-                                        <div class="table_wrap product_price_table">
-
-                                            <table>
-                                                
-                                                <tbody>
-
-                                                    <tr>
-                                                        
-                                                        <td class="special_price">
-                                                            
-                                                            Special Price:
-
-                                                            <div class="price">$5.99</div>
-
-                                                        </td>
-
-                                                        <td class="old_price">
-                                                            
-                                                            Old Price:
-
-                                                            <div class="price">$9.99</div>
-
-                                                        </td>
-
-                                                        <td class="save">
-                                                            
-                                                            You Save:
-
-                                                            <div class="price">$4.00</div>
-
-                                                        </td>
-
-                                                    </tr>
-
-                                                </tbody>
-
-                                                <tfoot>
-
-                                                    <tr>
-                                                        
-                                                        <td colspan="3">
-                                                            
-                                                            <span class="countdown_title">This limited offer ends in:</span>
-
-                                                            <span class="countdown simple" data-year="2016" data-month="1" data-day="11" data-hours="15" data-minutes="0" data-seconds="0"></span>
-
-                                                        </td>
-
-                                                    </tr>
-
-                                                </tfoot>
-
-                                            </table>
-
-                                        </div>
-                                        
-                                        <p class="hurry_message"><span>Hurry! Only 20 item(s) left!</span> 17 item(s) already purchased</p>
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - Product size - - - - - - - - - - - - - - - - -->
-
-                                    <div class="description_section_2 v_centered">
-                                        
-                                        <span class="title">Size:</span>
-
-                                        <div class="custom_select min">
-
-                                            <select>
-
-                                                <option value="Small">Small</option>
-                                                <option value="Middle">Middle</option>
-                                                <option value="Big">Big</option>
-
-                                            </select>
-
-                                        </div>
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product size - - - - - - - - - - - - - - - - -->
+                                    <p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
 
                                     <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
 
@@ -333,10 +261,12 @@
 
                                         <button class="button_blue middle_btn">Thêm giỏ hàng</button>
 
-                                        <button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào yêu thích</span></button>
+                                        <button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào danh sách yêu thích</span></button>
 
                                         <button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Thêm vào so sánh sản phẩm</span></button>
-
+                                        
+                                        <a href="#tab-questions" class="button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container"><span class="tooltip top">Câu hỏi cho sản phẩm</span></a>
+                                        
                                     </div>
 
                                     <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
@@ -357,10 +287,9 @@
             
                                     <ul class="tabs_nav clearfix">
             
-                                        <li><a href="#tab-1">Description</a></li>
-                                        <li><a href="#tab-2">Specifications</a></li>
-                                        <li><a href="#tab-3">Reviews (3)</a></li>
-                                        <li><a href="#tab-4">Custom Tab</a></li>
+                                        <li><a href="#tab-description">Mô tả sản phẩm</a></li>
+                                        <li><a href="#tab-questions">Câu hỏi vể sản phẩm (0)</a></li>
+                                        <li><a href="#tab-review">Đánh giá sản phẩm (0)</a></li>
             
                                     </ul>
                                     
@@ -372,7 +301,7 @@
             
                                         <!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
             
-                                        <div id="tab-1" class="tab_container">
+                                        <div id="tab-description" class="tab_container">
             
                                             <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue. Nam elit agna,endrerit sit amet, tincidunt ac, viverra sed, nulla.</p>
             
@@ -384,25 +313,79 @@
             
                                         <!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
             
-                                        <div id="tab-2" class="tab_container">
+                                        <div id="tab-questions" class="tab_container">
+                                            
+                                            <div id="question" style="margin-bottom:25px"><p style="margin-top:5px;">Chưa có câu hỏi nào cho sản phẩm.</p></div>
+                                            
+                                            <h2 id="ask_heading">Hỏi về sản phẩm</h2>
             
-                                            <ul class="specifications">
+                                            <form novalidate="" enctype="multipart/form-data" class="contactform type_2" id="contact_form">
+        
+                                                <ul>
+                                                
+                                                    <li class="row">
+        
+                                                        <div class="col-sm-12">
+                                                        
+                                                            <label for="cf_name" class="required">Họ & Tên</label>
+                                                            <input type="text" required="" name="cf_name" id="cf_name" title="Name">
+        
+                                                        </div><!--/ [col]-->
+        
+                                                    </li><!--/ .row -->
+                                                    
+                                                    <li class="row">
+        
+                                                        <div class="col-sm-12">
+        
+                                                            <label for="cf_email" class="required">Địa chỉ email</label>
+                                                            <input type="email" required="" name="cf_email" id="cf_email" title="Email">
+        
+                                                        </div><!--/ [col]-->
+        
+                                                    </li><!--/ .row -->
+        
+                                                    <li class="row">
+        
+                                                        <div class="col-xs-12">
+        
+                                                            <label for="cf_message" class="required">Nội dung câu hỏi</label>
+                                                            <textarea id="cf_message" required="" name="cf_message" title="Message" rows="6"></textarea>
+        
+                                                        </div><!--/ [col]-->
+        
+                                                    </li><!--/ .row -->
+                                                    
+                                                    <li class="row">
+        
+                                                        <div class="col-xs-12">
+        
+                                                            <label for="cf_message" class="required">Trả lời câu hỏi dưới đây</label>
+                                                            <span class="input-group-addon captcha_wrap">Captcha</span>
+        
+                                                        </div><!--/ [col]-->
+        
+                                                    </li><!--/ .row -->
+        
+                                                </ul>
+        
+                                            </form><!--/ .contactform -->
+        
+                                            <!-- - - - - - - - - - - - - - End of contact form - - - - - - - - - - - - - - - - -->
             
-                                                <li><span>Weight:</span>0.3 Kg</li>
-                                                <li><span>Dimensions:</span>20x10x30 Cm</li>
-                                                <li><span>Material:</span>Plastic</li>
-                                                <li><span>Manufacture:</span>G&amp;D</li>
-                                                <li><span>Guarantee:</span>2 Years</li>
-            
-                                            </ul>
-            
+                                            <div class="left_side">
+									
+                                                <button class="button_blue middle_btn" type="submit" form="contact_form">Submit</button>
+        
+                                            </div>
+                                        
                                         </div><!--/ #tab-2-->
             
                                         <!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
             
                                         <!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
             
-                                        <div id="tab-3" class="tab_container">
+                                        <div id="tab-review" class="tab_container">
             
                                             <section class="section_offset">
             
@@ -844,24 +827,6 @@
             
                                         <!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
             
-                                        <!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-            
-                                        <div id="tab-4" class="tab_container">
-            
-                                            <!-- - - - - - - - - - - - - - Youtube video - - - - - - - - - - - - - - - - -->
-            
-                                            <div class="video_wrap">
-            
-                                                <iframe src="http://www.youtube.com/embed/-BrDlrytgm8?controls=1&amp;autohide=0&amp;wmode=transparent"></iframe>
-            
-                                            </div><!--/ .video_wrap -->
-            
-                                            <!-- - - - - - - - - - - - - - End of youtube video - - - - - - - - - - - - - - - - -->
-            
-                                        </div><!--/ #tab-4-->
-            
-                                        <!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-            
                                     </div><!--/ .tab_containers_wrap -->
             
                                     <!-- - - - - - - - - - - - - - End of tabs containers - - - - - - - - - - - - - - - - -->
@@ -906,15 +871,15 @@
             
                                                             <div class="centered_buttons">
             
-                                                                <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
             
-                                                                <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
             
                                                             </div><!--/ .centered_buttons -->
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
             
                                                         </div><!--/ .actions_wrap-->
                                                         
@@ -924,17 +889,11 @@
             
                                                     <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
             
-                                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="label_bestseller">Bestseller</div>
-            
-                                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-            
                                                     <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
             
                                                     <div class="description">
             
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24 capsules</a>
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
             
                                                         <div class="clearfix product_info">
             
@@ -958,7 +917,7 @@
             
                                                     <div class="image_wrap">
             
-                                                        <img src="/frontend/images/product_img_8.jpg" alt="">
+                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
             
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
             
@@ -966,15 +925,15 @@
             
                                                             <div class="centered_buttons">
             
-                                                                <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
             
-                                                                <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
             
                                                             </div><!--/ .centered_buttons -->
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
             
                                                         </div><!--/ .actions_wrap-->
                                                         
@@ -984,21 +943,15 @@
             
                                                     <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
             
-                                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="label_new">New</div>
-            
-                                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-            
                                                     <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
             
                                                     <div class="description">
             
-                                                        <a href="#">Quisque diam lorem, interdum vitae,dapibus ac 4.25 fl oz(126 ml)</a>
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
             
                                                         <div class="clearfix product_info">
             
-                                                            <p class="product_price alignleft"><b>$8.99</b></p>
+                                                            <p class="product_price alignleft"><b>$5.99</b></p>
             
                                                         </div>
             
@@ -1009,7 +962,7 @@
                                                 </div><!--/ .product_item-->
                                                 
                                                 <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-            
+                                                
                                                 <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
             
                                                 <div class="product_item">
@@ -1018,7 +971,7 @@
             
                                                     <div class="image_wrap">
             
-                                                        <img src="/frontend/images/product_img_9.jpg" alt="">
+                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
             
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
             
@@ -1026,15 +979,15 @@
             
                                                             <div class="centered_buttons">
             
-                                                                <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
             
-                                                                <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
             
                                                             </div><!--/ .centered_buttons -->
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
             
                                                         </div><!--/ .actions_wrap-->
                                                         
@@ -1048,11 +1001,11 @@
             
                                                     <div class="description">
             
-                                                        <a href="#">Interdum vitae dapibus ac quisque diam lorem 160 ea</a>
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
             
                                                         <div class="clearfix product_info">
             
-                                                            <p class="product_price alignleft"><b>$76.99</b></p>
+                                                            <p class="product_price alignleft"><b>$5.99</b></p>
             
                                                         </div>
             
@@ -1063,7 +1016,7 @@
                                                 </div><!--/ .product_item-->
                                                 
                                                 <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-            
+                                                
                                                 <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
             
                                                 <div class="product_item">
@@ -1072,7 +1025,7 @@
             
                                                     <div class="image_wrap">
             
-                                                        <img src="/frontend/images/product_img_29.jpg" alt="">
+                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
             
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
             
@@ -1080,15 +1033,15 @@
             
                                                             <div class="centered_buttons">
             
-                                                                <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
             
-                                                                <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
             
                                                             </div><!--/ .centered_buttons -->
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
             
                                                         </div><!--/ .actions_wrap-->
                                                         
@@ -1102,25 +1055,11 @@
             
                                                     <div class="description">
             
-                                                        <a href="#">Mauris fermentum dictum magna sed laoreet 60 ea</a>
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
             
                                                         <div class="clearfix product_info">
             
-                                                            <p class="product_price alignleft"><b>$17.99</b></p>
-            
-                                                            <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-            
-                                                            <ul class="rating alignright">
-            
-                                                                <li class="active"></li>
-                                                                <li class="active"></li>
-                                                                <li class="active"></li>
-                                                                <li></li>
-                                                                <li></li>
-            
-                                                            </ul>
-                                                            
-                                                            <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                                                            <p class="product_price alignleft"><b>$5.99</b></p>
             
                                                         </div>
             
@@ -1131,7 +1070,7 @@
                                                 </div><!--/ .product_item-->
                                                 
                                                 <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-            
+                                                
                                                 <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
             
                                                 <div class="product_item">
@@ -1140,7 +1079,7 @@
             
                                                     <div class="image_wrap">
             
-                                                        <img src="/frontend/images/product_img_10.jpg" alt="">
+                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
             
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
             
@@ -1148,15 +1087,15 @@
             
                                                             <div class="centered_buttons">
             
-                                                                <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
             
-                                                                <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
             
                                                             </div><!--/ .centered_buttons -->
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
             
-                                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
             
                                                         </div><!--/ .actions_wrap-->
                                                         
@@ -1166,21 +1105,177 @@
             
                                                     <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
             
-                                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
             
-                                                    <div class="label_bestseller">Bestseller</div>
+                                                    <div class="description">
             
-                                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
+            
+                                                        <div class="clearfix product_info">
+            
+                                                            <p class="product_price alignleft"><b>$5.99</b></p>
+            
+                                                        </div>
+            
+                                                    </div>
+            
+                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+            
+                                                </div><!--/ .product_item-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+                                                
+                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+            
+                                                <div class="product_item">
+            
+                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+            
+                                                    <div class="image_wrap">
+            
+                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
+            
+                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+            
+                                                        <div class="actions_wrap">
+            
+                                                            <div class="centered_buttons">
+            
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+            
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
+            
+                                                            </div><!--/ .centered_buttons -->
+            
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+            
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+            
+                                                        </div><!--/ .actions_wrap-->
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+            
+                                                    </div><!--/. image_wrap-->
+            
+                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
             
                                                     <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
             
                                                     <div class="description">
             
-                                                        <a href="#">Dictum magna sed laoreet aliquam, Capsules 60 ea</a>
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
             
                                                         <div class="clearfix product_info">
             
-                                                            <p class="product_price alignleft"><b>$35.99</b></p>
+                                                            <p class="product_price alignleft"><b>$5.99</b></p>
+            
+                                                        </div>
+            
+                                                    </div>
+            
+                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+            
+                                                </div><!--/ .product_item-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+                                                
+                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+            
+                                                <div class="product_item">
+            
+                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+            
+                                                    <div class="image_wrap">
+            
+                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
+            
+                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+            
+                                                        <div class="actions_wrap">
+            
+                                                            <div class="centered_buttons">
+            
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+            
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
+            
+                                                            </div><!--/ .centered_buttons -->
+            
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+            
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+            
+                                                        </div><!--/ .actions_wrap-->
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+            
+                                                    </div><!--/. image_wrap-->
+            
+                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+            
+                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+            
+                                                    <div class="description">
+            
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
+            
+                                                        <div class="clearfix product_info">
+            
+                                                            <p class="product_price alignleft"><b>$5.99</b></p>
+            
+                                                        </div>
+            
+                                                    </div>
+            
+                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+            
+                                                </div><!--/ .product_item-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+                                                
+                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+            
+                                                <div class="product_item">
+            
+                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+            
+                                                    <div class="image_wrap">
+            
+                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
+            
+                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+            
+                                                        <div class="actions_wrap">
+            
+                                                            <div class="centered_buttons">
+            
+                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+            
+                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
+            
+                                                            </div><!--/ .centered_buttons -->
+            
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
+            
+                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+            
+                                                        </div><!--/ .actions_wrap-->
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+            
+                                                    </div><!--/. image_wrap-->
+            
+                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+            
+                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+            
+                                                    <div class="description">
+            
+                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
+            
+                                                        <div class="clearfix product_info">
+            
+                                                            <p class="product_price alignleft"><b>$5.99</b></p>
             
                                                         </div>
             
@@ -1212,9 +1307,7 @@
 
                     </div><!--/ .row -->
 
-                </div>
-
-                
+                </div> 
 
             </div><!--/ .container-->
 
@@ -1224,7 +1317,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -1234,7 +1327,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

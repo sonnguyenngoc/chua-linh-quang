@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -21,7 +21,7 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Nhãn hàng phân phối</li>
+                    <li><%= @title_head %></li>
 
                 </ul>
 
@@ -32,218 +32,52 @@
                     <aside class="col-md-3 has_mega_menu">
 
                         <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
-
-                        <%= render 'categories' %>
-
+                        
+                        <%= render "module/categories" %>
+                        
                         <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-
+                    
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9">
 
-                        <h1>Manufacturers</h1>
+                        <h1><%= @title_head %></h1>
 
                         <div class="table_layout">
 
                             <div class="table_row">
+                                
+                                <% @manufacturers.each_with_index do |manufacturer, index| %>
 
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
+                                    <div class="table_cell">
+    
+                                        <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
+    
+                                        <figure class="manufacturer">
                                             
-                                            <img src="/frontend/images/brands_img_1.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 1</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
-                                            
-                                            <img src="/frontend/images/brands_img_2.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 2</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
-                                            
-                                            <img src="/frontend/images/brands_img_3.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 3</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
-                                            
-                                            <img src="/frontend/images/brands_img_4.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 4</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                            </div><!--/ .table_row -->
-
-                            <div class="table_row">
-
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
-                                            
-                                            <img src="/frontend/images/brands_img_5.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 5</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
-                                            
-                                            <img src="/frontend/images/brands_img_6.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 6</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
-                                            
-                                            <img src="/frontend/images/brands_img_7.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 7</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                                <div class="table_cell">
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <figure class="manufacturer">
-
-                                        <a href="shop_manufacturer_page.html" class="thumbnail">
-                                            
-                                            <img src="/frontend/images/brands_img_8.jpg" alt="">
-
-                                        </a>
-
-                                        <figcaption>
-
-                                            <a href="shop_manufacturer_page.html">Manufacturer Name 8</a>
-
-                                        </figcaption>
-
-                                    </figure>
-
-                                    <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                            </div><!--/ .table_row -->
+                                            <%= link_to image_tag(manufacturer.image_url.small_image), { controller: "manufacturer", action: "products", manufacturer_id: manufacturer.id }, class: "thumbnail" %>
+    
+                                            <figcaption>
+    
+                                                <%= link_to manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: manufacturer.id }, class: "thumbnail" %>
+    
+                                            </figcaption>
+    
+                                        </figure>
+    
+                                        <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
+    
+                                    </div>
+                                    
+                                <% if index%4 == 3 %>
+                                    
+                                    </div><!--/ .table_row -->
+
+                                    <div class="table_row">
+                                     
+                                <% end %>
+                                
+                            <% end %>
 
                         </div><!--/ .table_layout -->
 
@@ -259,7 +93,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -269,25 +103,25 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     
     <!-- Include Libs & Plugins
     ============================================ -->
-    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
-    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= javascript_include_tag "/frontend/js/jquery-2.1.1.min.js" %>
+    <%= javascript_include_tag "/frontend/js/queryloader2.min.js" %>
+    <%= javascript_include_tag "/frontend/js/jquery.appear.js" %>
+    <%= javascript_include_tag "/frontend/js/owlcarousel/owl.carousel.min.js" %>
+    <%= javascript_include_tag "/frontend/twitter/jquery.tweet.min.js" %>
+    <%= javascript_include_tag "/frontend/js/arcticmodal/jquery.arcticmodal.js" %>
+    <%= javascript_include_tag "/frontend/js/colorpicker/colorpicker.js" %>
+    <%= javascript_include_tag "/frontend/js/retina.min.js" %>
+    <%= javascript_include_tag "http://s7.addthis.com/js/300/addthis_widget.js" %>
 
     <!-- Theme files
     ============================================ -->
-    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    <%= javascript_include_tag "/frontend/js/theme.plugins.js" %>
+    <%= javascript_include_tag "/frontend/js/theme.core.js" %>
     
 </body>
