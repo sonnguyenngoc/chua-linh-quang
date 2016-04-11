@@ -18,54 +18,43 @@
 
                 <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-                <ul class="breadcrumbs">
+                <ul class="breadcrumbs"> 
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
-                    <li>Change Password</li>
+                    <li>Shopping Cart</li>
+                    <li>Checkout</li>
+                    <li>Success</li>
 
                 </ul>
 
-                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
-
                 <div class="row">
 
-                    <aside class="col-md-3 col-sm-4">
-
-                        <%= render 'menu_account' %>
-
-                    </aside><!--/ [col]-->
-
-                    <main class="col-md-9 col-sm-8">
-                        <h1>Forgot Your Password?</h1>
+                    <main class="col-md-12 col-sm-8">
+                        
+                        <h1>Your order has been placed!</h1>
+                        
                         <div class="bordered_content box">
-                            <div class="padded_ex_bottom">
-                                <p class="margin-b">Enter the e-mail address associated with your account. Click submit to have your password e-mailed to you.</p>
-                                <form action="account/forgotten" method="post" enctype="multipart/form-data">
-                                  <fieldset>
-                                      <div class="form-group required">
-                                          <label class="control-label" for="input-email">E-Mail Address</label>
-                                          <input type="email" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control">
-                                      </div>
-                                  </fieldset>
-                                </form>
-                            </div>
-                            <div class="bottom_buttons">
-                                <div class="bottom on_the_sides">
-                                    <div class="left_side v_centered">
-                                        <a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Back</a>
-                                    </div>
-									
-                                    <div class="right_side">
-                                        <a class="button_blue middle_btn" href="#">Continue</a>
-                                    </div>
-								</div>
-                            </div>
+                          
+                          <div class="padded">
+                            
+                            <p>Your order has been successfully processed!</p>
+                            <p>You can view your order history by going to the <a href="/account/my_account">my account</a> page and by clicking on <a href="/account/order">history</a>.</p>
+                            <p>If your purchase has an associated download, you can go to the account <a href="/account/download">downloads</a> page to view them.</p>
+                            <p>Please direct any questions you have to the <a href="/information/contact">store owner</a>.</p><p>Thanks for shopping with us online!</p>
+                          
+                          </div>
+                          
+                          <div class="bottom_buttons">
+                            
+                            <div class="text-right"><a href="<%= root_path %>" class="btn btn-primary">Continue</a></div>
+                          
+                          </div>
+                          
                         </div>
 
-                    </main><!--/ [col]-->
+                    </main>
 
-                </div><!--/ .row-->
+                </div><!--/ .row -->
 
             </div><!--/ .container-->
 
@@ -75,7 +64,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'home/footer'%>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -92,8 +81,11 @@
     <!-- Include Libs & Plugins
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
     <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
     <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
     <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
     <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>

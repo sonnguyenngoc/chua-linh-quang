@@ -1,75 +1,139 @@
-<!--==================================
-		Login modal window
-======================================-->
+<body>
 
-<div id="login_mw" class="modal_window">
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-	<button class="close arcticmodal-close"></button>
+    <div class="wide_layout">
 
-	<header class="on_the_sides">
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-		<div class="left_side">
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
-			<h2>Log In</h2>
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
 
-		</div>
+        <div class="secondary_page_wrapper">
 
-		<div class="right_side">
+            <div class="container">
 
-			<a href="#" class="button_grey middle_btn">Register</a>
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-		</div>
+                <ul class="breadcrumbs">
 
-	</header><!--/ .on_the_sides-->
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Account</li>
+                    <li>Logout</li>
 
-	<form class="type_2">
+                </ul>
 
-		<ul>
+                <div class="row">
 
-			<li>
-				<label for="login_email">Email address</label>
-				<input type="email" name="" id="login_email">
-			</li>
+                    <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
+                      
+                        <h3>Account</h3>
+                        <div class="list-group box">
+                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Login</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'register'}) %>" class="list-group-item dark_hover">Register</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="list-group-item dark_hover">Forgotten Password</a>
+                            <a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="list-group-item dark_hover">My Account</a>
+                            <a href="<%= url_for({controller: 'account', action: 'address'}) %>" class="list-group-item dark_hover">Address Book</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Wish List</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>" class="list-group-item dark_hover">Order History</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'download'}) %>" class="list-group-item dark_hover">Downloads</a>
+                            <a href="<%= url_for({controller: 'account', action: 'recurring'}) %>" class="list-group-item dark_hover">Recurring payments</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>" class="list-group-item dark_hover">Reward Points</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'return'}) %>" class="list-group-item dark_hover">Returns</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'transaction'}) %>" class="list-group-item dark_hover">Transactions</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>" class="list-group-item dark_hover">Newsletter</a>
+                        </div>
 
-			<li>
-				<label for="login_password">Password</label>
-				<input type="password" name="" id="login_password">
-			</li>
+                    </aside>
 
-			<li>
-				<input type="checkbox" name="" id="checkbox_1">
-				<label for="checkbox_1">Remember me</label>
-			</li>
+                    <main class="col-md-9 col-sm-8">
+                        
+                        <h1>Account Logout</h1>
+                        
+                        <div class="bordered_content box">
+							<div class="row login_screen no_margin">
+							  <div class="col-sm-6">
+								  <div class="padded top">
+								  <h2>New Customer</h2>
+								  <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+								  </div>
+								  <div class="padded bottom">
+								  <a href="<%= url_for({controller: 'account', action: 'register'}) %>" class="btn btn-primary">Register Account</a>
+								  </div>
+							  </div>
+							  
+								<div class="col-sm-6">
+									  <div class="padded top">
+										<h2>Returning Customer</h2>
+										<p>I am a returning customer</p>
+										<form action="<%= url_for({controller: 'account', action: 'login'}) %>" method="post" enctype="multipart/form-data">
+											<div class="form-group">
+												<label class="control-label" for="input-email">E-Mail Address</label>
+												<input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" vk_1d8ed="subscribed">
+											</div>
+											<div class="form-group">
+												<label class="control-label" for="input-password">Password</label>
+												<input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" vk_1d8ed="subscribed">
+											</div>
+											<a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="forgotten">Forgotten Password</a>
+										</form>
+									  </div>
+									  <div class="padded bottom">
+										  <div id="social_login_content_holder"></div>
+										  <input type="submit" value="Login" class="btn btn-primary">
+									  </div>
+								</div>
+							</div>
+						</div>
 
-			<li class="v_centered">
-				<button class="button_blue middle_btn">Login</button>
-				<a href="#" class="small_link">Forgot your password?</a>
-			</li>
+                    </main>
 
-		</ul>
+                </div><!--/ .row -->
 
-	</form>
+            </div><!--/ .container-->
 
-	<hr>
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 
-	<div class="streamlined">
-							
-		<h4 class="streamlined_title">OR Log In With</h4>
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-		<!--Social icon's list-->
-		<ul class="horizontal_list social_btns">
+        <%= render 'home/footer'%>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
-			<li><a href="#" class="icon_btn middle_btn social_facebook tooltip_container"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></a></li>
-			<li><a href="#" class="icon_btn middle_btn social_twitter tooltip_container"><i class="icon-twitter"></i><span class="tooltip top">Twitter</span></a></li>
-			<li><a href="#" class="icon_btn middle_btn social_googleplus tooltip_container"><i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span></a></li>
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
 
-		</ul><!--/ .horizontal_list.wrapper.social_btns-->
-		<!--End social icon's list-->
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-	</div><!--/ .streamlined-->
+    <%= render 'home/social_feeds' %>
 
-</div>
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
 
-<!--==================================
-		End login modal window
-======================================-->
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

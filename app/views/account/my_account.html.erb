@@ -1,234 +1,125 @@
 <body>
 
-  <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
-
-  <div class="wide_layout">
-
-      <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-      <%= render 'home/header' %>
-      
-      <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-      <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-      <div class="secondary_page_wrapper">
-
-          <div class="container">
-
-              <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-              <ul class="breadcrumbs">
-
-                  <li><a href="<%= root_path %>">Home</a></li>
-                  <li>My Account</li>
-
-              </ul>
-
-              <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
-
-              <div class="row">
-
-                  <aside class="col-md-3 col-sm-4">
-
-                      <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
-
-                      <section class="section_offset">
-
-                          <h3>My Account</h3>
-
-                          <ul class="theme_menu">
-
-                              <li class="active"><a href="#">Account Dashboard</a></li>
-                              <li><a href="#">Account Information</a></li>
-                              <li><a href="#">Address Book</a></li>
-                              <li><a href="#">My Orders</a></li>
-                              <li><a href="#">Billing Agreements</a></li>
-                              <li><a href="#">Recurring Profiles</a></li>
-                              <li><a href="#">My Product Reviews</a></li>
-                              <li><a href="#">My Tags</a></li>
-                              <li><a href="#">My Wishlist</a></li>
-                              <li><a href="#">My Applications</a></li>
-                              <li><a href="#">Newsletter Subscriptions</a></li>
-                              <li><a href="#">My Downloadable Products</a></li>
-
-                          </ul>
-
-                      </section><!--/ .section_offset -->
-
-                      <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                      <div class="section_offset">
-
-                          <a href="#" class="banner">
-                              
-                              <img src="images/banner_img_10.png" alt="">
-
-                          </a>
-
-                      </div>
-
-                      <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
-                  </aside><!--/ [col]-->
-
-                  <main class="col-md-9 col-sm-8">
-
-                      <h1>My Dashboard</h1>
-
-                      <section class="theme_box">
-
-                          <h4>Hello, John Doe!</h4>
-
-                          <p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
-
-                      </section><!--/ .theme_box -->
-
-                      <!-- - - - - - - - - - - - - - Contact information - - - - - - - - - - - - - - - - -->
-
-                      <section class="theme_box">
-
-                          <h4>Contact Information</h4>
-
-                          <p>John Doe<br><a href="#" class="mail_to">john.doe@gmail.com</a></p>
-
-                          <div class="buttons_row">
-
-                              <a href="#" class="button_grey middle_btn">Edit Account Information</a>
-
-                              <a href="#" class="button_grey middle_btn">Change Password</a>
-
-                          </div>
-
-                      </section><!--/ .theme_box -->
-
-                      <!-- - - - - - - - - - - - - - End of contact information - - - - - - - - - - - - - - - - -->
-
-                      <div class="table_layout">
-
-                          <div class="table_row">
-                              
-                              <div class="table_cell">
-
-                                  <!-- - - - - - - - - - - - - - Newsletter - - - - - - - - - - - - - - - - -->
-
-                                  <section>
-
-                                      <h4>Newsletter</h4>
-
-                                      <p>You are currently not subscribed to any newsletter.</p>
-
-                                      <a href="#" class="button_grey middle_btn">Edit Subscription</a>
-
-                                  </section>
-
-                                  <!-- - - - - - - - - - - - - - End of newsletter - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .table_cell -->
-
-                              <div class="table_cell">
-
-                                  <!-- - - - - - - - - - - - - - Address book - - - - - - - - - - - - - - - - -->
-
-                                  <section>
-
-                                      <h4>Address Book</h4>
-
-                                      <a href="#" class="button_grey middle_btn">Manage Addresses</a>
-
-                                  </section>
-
-                                  <!-- - - - - - - - - - - - - - End of address book - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .table_cell -->
-
-                          </div><!--/ .table_row -->
-
-                          <div class="table_row">
-                              
-                              <div class="table_cell">
-
-                                  <!-- - - - - - - - - - - - - - Default billing address - - - - - - - - - - - - - - - - -->
-
-                                  <section>
-
-                                      <h4>Default Billing Address</h4>
-
-                                      <p>You have not set a default billing address.</p>
-
-                                      <a href="#" class="button_grey middle_btn">Edit Address</a>
-
-                                  </section>
-
-                                  <!-- - - - - - - - - - - - - - End of default billing address - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .table_cell -->
-
-                              <div class="table_cell">
-
-                                  <!-- - - - - - - - - - - - - - Default shipping address - - - - - - - - - - - - - - - - -->
-
-                                  <section>
-
-                                      <h4>Default Shipping Address</h4>
-
-                                      <p>You have not set a default shipping address.</p>
-
-                                      <a href="#" class="button_grey middle_btn">Edit Address</a>
-
-                                  </section>
-
-                                  <!-- - - - - - - - - - - - - - End of default shipping address - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .table_cell -->
-
-                          </div><!--/ .table_row -->
-
-                      </div><!--/ .table_layout -->
-
-                  </main><!--/ [col]-->
-
-              </div><!--/ .row-->
-
-          </div><!--/ .container-->
-
-      </div><!--/ .page_wrapper-->
-      
-      <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-      <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-      <%= render 'home/footer' %>
-      
-      <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-  </div><!--/ [layout]-->
-  
-  <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-  <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-  <%= render 'home/social_feeds' %>
-
-  <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
-  
-  <!-- Include Libs & Plugins
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-  <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-  <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-  <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-  <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-  <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-  <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-  <%= javascript_include_tag '/frontend/js/retina.min.js' %>
-  <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-  <!-- Theme files
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-  <%= javascript_include_tag '/frontend/js/theme.core.js' %>
-  
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Account</li>
+
+                </ul>
+
+                <div class="row">
+
+                    <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
+                      
+                        <h3>Account</h3>
+                        <div class="list-group box">
+                            <a href="<%= url_for({controller: 'account', action: 'register'}) %>" class="list-group-item dark_hover">Register</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="list-group-item dark_hover">Forgotten Password</a>
+                            <a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="list-group-item dark_hover">My Account</a>
+                            <a href="<%= url_for({controller: 'account', action: 'address'}) %>" class="list-group-item dark_hover">Address Book</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Wish List</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>" class="list-group-item dark_hover">Order History</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'download'}) %>" class="list-group-item dark_hover">Downloads</a>
+                            <a href="<%= url_for({controller: 'account', action: 'recurring_payments'}) %>" class="list-group-item dark_hover">Recurring payments</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>" class="list-group-item dark_hover">Reward Points</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'return_list'}) %>" class="list-group-item dark_hover">Returns</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'transaction'}) %>" class="list-group-item dark_hover">Transactions</a> 
+                            <a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>" class="list-group-item dark_hover">Newsletter</a>
+                            <a href="<%= url_for({controller: 'account', action: 'logout'}) %>" class="list-group-item dark_hover">Logout</a> 
+                        </div>
+
+                    </aside>
+
+                    <main class="col-md-9 col-sm-8">
+                        
+                        <h1>My Account</h1>
+                        
+                        <div class="bordered_content padded box">
+                            <h4>My Account</h4>
+                            <ul class="list-unstyled margin-b">
+                                <li><a href="<%= url_for({controller: 'account', action: 'edit'}) %>">Edit your account information</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'password'}) %>">Change your password</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'address'}) %>">Modify your address book entries</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>">Modify your wish list</a></li>
+                            </ul>
+                            <h4>My Orders</h4>
+                            <ul class="list-unstyled margin-b">
+                                <li><a href="<%= url_for({controller: 'account', action: 'order'}) %>">View your order history</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'download'}) %>">Downloads</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>">Your Reward Points</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'return_list'}) %>">View your return requests</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'transaction'}) %>">Your Transactions</a></li>
+                                <li><a href="<%= url_for({controller: 'account', action: 'recurring_payments'}) %>">Recurring payments</a></li>
+                            </ul>
+                            <h4>Newsletter</h4>
+                            <ul class="list-unstyled margin-b">
+                                <li><a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>">Subscribe / unsubscribe to newsletter</a></li>
+                            </ul>
+                        </div>
+
+                    </main>
+
+                </div><!--/ .row -->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer'%>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
 </body>

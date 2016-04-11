@@ -1,0 +1,187 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Account</li>
+                    <li>Order History</li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render 'menu_account' %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+                        <h1>Order History</h1>
+                        <div class="bordered_content box">
+                            <table class="compare-info">
+                              <tbody>
+                                <tr>
+                                  <td class="history">Order ID</td>
+                                  <td>#65</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Order Status</td>
+                                  <td>Pending</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Date Added</td>
+                                  <td>08/04/2016</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">No. of Products</td>
+                                  <td>2</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Customer</td>
+                                  <td>demo demo</td>
+                                </tr>
+                                <tr class="totals price">
+                                  <td class="history">Total</td>
+                                  <td>$69.00</td>
+                                </tr>
+                                <tr>
+                                  <td class="white_back" colspan="2">
+                                    <a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'order_info'}) %>">View</a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Order ID</td>
+                                  <td>#64</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Order Status</td>
+                                  <td>Pending</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Date Added</td>
+                                  <td>08/04/2016</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">No. of Products</td>
+                                  <td>3</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Customer</td>
+                                  <td>demo demo</td>
+                                </tr>
+                                <tr class="totals price">
+                                  <td class="history">Total</td>
+                                  <td>$119.00</td>
+                                </tr>
+                                <tr>
+                                  <td class="white_back" colspan="2">
+                                    <a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'order_info'}) %>">View</a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Order ID</td>
+                                  <td>#62</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Order Status</td>
+                                  <td>Pending</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Date Added</td>
+                                  <td>05/04/2016</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">No. of Products</td>
+                                  <td>1</td>
+                                </tr>
+                                <tr>
+                                  <td class="history">Customer</td>
+                                  <td>demo demo</td>
+                                </tr>
+                                <tr class="totals price">
+                                  <td class="history">Total</td>
+                                  <td>$39.00</td>
+                                </tr>
+                                <tr>
+                                  <td class="white_back" colspan="2">
+                                    <a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'order_info'}) %>">View</a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div class="bottom_buttons">
+                                  <div class="bottom on_the_sides">
+                                      <div class="right_side v_centered">
+                                        <a class="button_blue middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Continue</a>
+                                      </div>
+                                      
+                                  </div>
+                            </div>
+                        </div>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>
