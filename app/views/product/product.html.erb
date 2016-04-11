@@ -19,15 +19,7 @@
                 <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
                 <ul class="breadcrumbs">
-
-<<<<<<< HEAD
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li><a href="#">Beauty</a></li>
-                    <li><a href="#">Skin Care</a></li>
-                    <li><a href="#">Cleansers</a></li>
-                    <li><a href="#">Liquid</a></li>
-                    <li>Metus nulla facilisi, Original 24 fl oz (709 ml)</li>
-=======
+                    
                     <li><%= link_to "Trang chủ", root_path %></li>
                     <li>
                         <% @product.categories.each do |categories| %>
@@ -36,7 +28,6 @@
                         <% end %>
                         <%= @product.name %>
                     </li>
->>>>>>> c48d67b09c5458f44849dd28664f924fde946b4d
 
                 </ul>
 
