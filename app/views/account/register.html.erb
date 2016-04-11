@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -22,182 +22,348 @@
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
                     <li>Account</li>
-                    <li>Change Password</li>
+                    <li>Register</li>
 
                 </ul>
 
-                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
-
                 <div class="row">
 
-                    <aside class="col-md-3 col-sm-4">
+                    <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
+                      
+                        <%= render 'menu_account_login' %>
 
-                        <%= render 'menu_account' %>
-
-                    </aside><!--/ [col]-->
+                    </aside>
 
                     <main class="col-md-9 col-sm-8">
-
-                        <h1>Register Account</h1>
-
-                        <p class="margin-b">
-                          If you already have an account with us, please login at the <a href="<a href="<%= url_for({controller: 'account', action: 'login'}) %>">login page</a>.
-                        </p>
-                        
-                        <form action="account/register" method="post" enctype="multipart/form-data" class="form-horizontal">
-        
-                          <h3>Your Personal Details</h3>
-                          <div class="bordered_content padded_ex_bottom margin-b">
-                          <fieldset id="account">
-                          <div class="form-group required" style="display: none;">
-                            <label class="col-sm-2 control-label">Customer Group</label>
-                            <div class="col-sm-10">
-                                                          <div class="radio">
-                                <label>
-                                  <input type="radio" name="customer_group_id" value="1" checked="checked">
-                                  Default</label>
-                              </div>
-                                                        </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
-                            <div class="col-sm-10">
-                              <input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
-                                          </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
-                            <div class="col-sm-10">
-                              <input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label" for="input-fax">Fax</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="fax" value="" placeholder="Fax" id="input-fax" class="form-control" vk_18fe1="subscribed">
-                            </div>
-                          </div>
-                                  </fieldset>
-                        </div>
-                        
-                        <h3>Your Address</h3>
-                        <div class="bordered_content padded_ex_bottom margin-b">
-                        <fieldset id="address">
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label" for="input-company">Company</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="company" value="" placeholder="Company" id="input-company" class="form-control" vk_18fe1="subscribed">
-                            </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-address-1">Address 1</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="address_1" value="" placeholder="Address 1" id="input-address-1" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label" for="input-address-2">Address 2</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="address_2" value="" placeholder="Address 2" id="input-address-2" class="form-control" vk_18fe1="subscribed">
-                            </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-city">City</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="city" value="" placeholder="City" id="input-city" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-postcode">Post Code</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="postcode" value="" placeholder="Post Code" id="input-postcode" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-country">Country</label>
-                            <div class="col-sm-10">
-                              <select name="country_id" id="input-country" class="form-control">
-                                <option value=""> --- Please Select --- </option>
-                                <option value="244">Aaland Islands</option>
-                                <option value="1">Afghanistan</option>
-                                <option value="2">Albania</option>
-                                <option value="3">Algeria</option>
-                              </select> 
-                            </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-zone">Region / State</label>
-                            <div class="col-sm-10">
-                              <select name="zone_id" id="input-zone" class="form-control"><option value=""> --- Please Select --- </option><option value="3513">Aberdeen</option><option value="3514">Aberdeenshire</option><option value="3515">Anglesey</option><option value="3516">Angus</option><option value="3517">Argyll and Bute</option><option value="3518">Bedfordshire</option><option value="3519">Berkshire</option><option value="3520">Blaenau Gwent</option><option value="3521">Bridgend</option><option value="3522">Bristol</option><option value="3523">Buckinghamshire</option><option value="3524">Caerphilly</option><option value="3525">Cambridgeshire</option><option value="3526">Cardiff</option><option value="3527">Carmarthenshire</option><option value="3528">Ceredigion</option><option value="3529">Cheshire</option><option value="3530">Clackmannanshire</option><option value="3531">Conwy</option><option value="3532">Cornwall</option><option value="3949">County Antrim</option><option value="3950">County Armagh</option><option value="3951">County Down</option><option value="3952">County Fermanagh</option><option value="3953">County Londonderry</option><option value="3954">County Tyrone</option><option value="3955">Cumbria</option><option value="3533">Denbighshire</option><option value="3534">Derbyshire</option><option value="3535">Devon</option><option value="3536">Dorset</option><option value="3537">Dumfries and Galloway</option><option value="3538">Dundee</option><option value="3539">Durham</option><option value="3540">East Ayrshire</option><option value="3541">East Dunbartonshire</option><option value="3542">East Lothian</option><option value="3543">East Renfrewshire</option><option value="3544">East Riding of Yorkshire</option><option value="3545">East Sussex</option><option value="3546">Edinburgh</option><option value="3547">Essex</option><option value="3548">Falkirk</option><option value="3549">Fife</option><option value="3550">Flintshire</option><option value="3551">Glasgow</option><option value="3552">Gloucestershire</option><option value="3553">Greater London</option><option value="3554">Greater Manchester</option><option value="3555">Gwynedd</option><option value="3556">Hampshire</option><option value="3557">Herefordshire</option><option value="3558">Hertfordshire</option><option value="3559">Highlands</option><option value="3560">Inverclyde</option><option value="3561">Isle of Wight</option><option value="3562">Kent</option><option value="3563">Lancashire</option><option value="3564">Leicestershire</option><option value="3565">Lincolnshire</option><option value="3566">Merseyside</option><option value="3567">Merthyr Tydfil</option><option value="3568">Midlothian</option><option value="3569">Monmouthshire</option><option value="3570">Moray</option><option value="3571">Neath Port Talbot</option><option value="3572">Newport</option><option value="3573">Norfolk</option><option value="3574">North Ayrshire</option><option value="3575">North Lanarkshire</option><option value="3576">North Yorkshire</option><option value="3577">Northamptonshire</option><option value="3578">Northumberland</option><option value="3579">Nottinghamshire</option><option value="3580">Orkney Islands</option><option value="3581">Oxfordshire</option><option value="3582">Pembrokeshire</option><option value="3583">Perth and Kinross</option><option value="3584">Powys</option><option value="3585">Renfrewshire</option><option value="3586">Rhondda Cynon Taff</option><option value="3587">Rutland</option><option value="3588">Scottish Borders</option><option value="3589">Shetland Islands</option><option value="3590">Shropshire</option><option value="3591">Somerset</option><option value="3592">South Ayrshire</option><option value="3593">South Lanarkshire</option><option value="3594">South Yorkshire</option><option value="3595">Staffordshire</option><option value="3596">Stirling</option><option value="3597">Suffolk</option><option value="3598">Surrey</option><option value="3599">Swansea</option><option value="3600">Torfaen</option><option value="3601">Tyne and Wear</option><option value="3602">Vale of Glamorgan</option><option value="3603">Warwickshire</option><option value="3604">West Dunbartonshire</option><option value="3605">West Lothian</option><option value="3606">West Midlands</option><option value="3607">West Sussex</option><option value="3608">West Yorkshire</option><option value="3609">Western Isles</option><option value="3610">Wiltshire</option><option value="3611">Worcestershire</option><option value="3612">Wrexham</option></select>
-                            </div>
-                          </div>
-                                    
-                        </fieldset>
-                        </div>
-                        
-                        <h3>Your Password</h3>
-                        <div class="bordered_content padded_ex_bottom margin-b">        
-                        <fieldset>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-password">Password</label>
-                            <div class="col-sm-10">
-                              <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                          <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
-                            <div class="col-sm-10">
-                              <input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control" vk_18fe1="subscribed">
-                                          </div>
-                          </div>
-                        </fieldset>
-                        </div>
-                        
-                        <h3>Newsletter</h3>
-                        <div class="bordered_content box">
-                        <div class="padded_ex_bottom">
-                        <fieldset>
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label">Subscribe</label>
-                            <div class="col-sm-10">
-                                            <label class="radio-inline">
-                                <input type="radio" name="newsletter" value="1">
-                                Yes</label>
-                              <label class="radio-inline">
-                                <input type="radio" name="newsletter" value="0" checked="checked">
-                                No</label>
-                                          </div>
-                          </div>
-                        </fieldset>
-                        </div>
                         
                         
-                        <div class="bottom_buttons">
+						<h1 class="tall">Register Account</h1>
+                        
+						<p>If you already have an account with us, please login at the login page.</p>
+                        
+						<h3>Your Personal Details</h3>
+                        
+                        <div class="table_wrap bordered_content margin-b">
+                        
+						    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+                              
+                                <ul class="padded">
+						
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-firstname" class="col-sm-2 control-label">First Name</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-firstname" placeholder="First Name" value="" name="firstname" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-email" class="col-sm-2 control-label">E-Mail</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-telephone" class="col-sm-2 control-label">Telephone</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="telephone" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+						
+									<li class="row">
+						
+									  <div class="col-xs-12">
+						
+										<label for="input-fax" class="col-sm-2 control-label">Fax</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-fax" placeholder="Fax" value="" name="fax" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+                                  
+                                </ul>
+                              
+                            </form>
                           
-                          <div class="text-right">I have read and agree to the <a href="http://velikorodnov.com/opencart/shopme/demo2/index.php?route=information/information/agree&amp;information_id=3" class="agree"><b>Privacy Policy</b></a>&nbsp;
-                                        <input type="checkbox" name="agree" value="1">
-                                        &nbsp;
-                            <input type="submit" value="Continue" class="btn btn-primary">
-                          </div>
-                
-                                </div></div>
-                      </form>
+                        </div>
+						
+						<h3>Your Address</h3>
+                        
+                        <div class="table_wrap bordered_content margin-b">
+                        
+						    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+                              
+                                <ul class="padded">
+						
+									<li class="row">
+						
+									  <div class="col-xs-12">
+						
+										<label for="input-company" class="col-sm-2 control-label">Company</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-company" placeholder="Company" value="" name="company" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-lastname" class="col-sm-2 control-label">Address 1</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-email" class="col-sm-2 control-label">Address 2</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-telephone" class="col-sm-2 control-label">City</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="telephone" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+						
+									<li class="row">
+						
+									  <div class="col-xs-12">
+						
+										<label for="input-fax" class="col-sm-2 control-label">Post Code</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-fax" placeholder="Fax" value="" name="fax" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+						
+									<li class="row">
+						
+									  <div class="col-xs-12">
+						
+										<label for="input-fax" class="col-sm-2 control-label">Country</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-fax" placeholder="Fax" value="" name="fax" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+						
+									<li class="row">
+						
+									  <div class="col-xs-12">
+						
+										<label for="input-fax" class="col-sm-2 control-label">Region / State</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-fax" placeholder="Fax" value="" name="fax" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+                                  
+                                </ul>
+                              
+                            </form>
+                          
+                        </div>
+						
+						<h3>Your Password</h3>
+                        
+                        <div class="table_wrap bordered_content margin-b">
+                        
+						    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+                              
+                                <ul class="padded">
+                        
+						          <li class="row">
+                        
+						            <div class="col-xs-12">
+                        
+						              <label for="input-company" class="col-sm-2 control-label">Password</label>
+                        
+						              <div class="form_el">
+                        
+						                <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" vk_1ef60="subscribed">
+                        
+						              </div>
+                        
+						            </div>
+                        
+						          </li>
+                                  
+                                  <li class="row">
+                        
+						            <div class="col-xs-12 required">
+                        
+						              <label for="input-password-confirm" class="col-sm-2 control-label">Password Confirm</label>
+                        
+						              <div class="form_el">
+                        
+						                <input type="password-confirm" name="password" value="" placeholder="Password Confirm" id="input-password-confirm" class="form-control" vk_1ef60="subscribed">
+                        
+						              </div>
+                        
+						            </div>
+                        
+						          </li>
+                                  
+                                </ul>
+                              
+                            </form>
+                          
+                        </div>
+						
+						<h3>Newsletter Subscription</h3>
 
-                    </main><!--/ [col]-->
+                        <div class="table_wrap bordered_content">
+                            
+                            <form action="<%= url_for({controller: 'account', action: 'newsletter'}) %>" method="post" enctype="multipart/form-data">
+                            
+                                <div>
+                            
+                                    <div class="padded">
+                            
+                                        <fieldset>
+                            
+                                            <label style="text-align: left;">Subscribe</label>
+                            
+                                            <div class="form_el no_b_margin">
+                            
+                                                <input checked="" type="radio" name="radio_2" id="radio_3">
+                        
+						                        <label for="radio_3">Yes</label>
+    
+                                                <input type="radio" name="radio_2" id="radio_4">
+                        
+						                        <label for="radio_4">No</label>
+                            
+                                            </div>
+                            
+                                        </fieldset>
+                            
+                                    </div>
+                            
+                                </div>                                                
+                            
+                            </form>
+                        
+                        </div>
+						
+                        <footer class="bottom_box on_the_sides">
 
-                </div><!--/ .row-->
+							<div class="left_side">
+						
+								<input checked="" type="checkbox" name="description" id="description" value="1">
+						
+								<label for="description">I have read and agree to the <a href="#" class="agree"><b>Privacy Policy</b></a></label>
+                               
+							</div>
+						
+							<div class="right_side">
+						
+								<a href="#" class="button_blue middle_btn">Continue</a>
+						
+							</div>
+
+						</footer>
+
+                    </main>
+
+                </div><!--/ .row -->
 
             </div><!--/ .container-->
 
@@ -207,7 +373,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer'%>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -217,15 +383,18 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     
     <!-- Include Libs & Plugins
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
     <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
     <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
     <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
     <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>

@@ -1,3 +1,24 @@
+h3 {
+    font-size: 22px;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+    font-weight: inherit;
+    line-height: 1em;
+    margin-bottom: 14px;
+    margin-top: 0;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    color: #333333;
+}
+h1.tall {
+    margin-bottom: 27px;
+}
+.form-group {
+    margin-bottom: 12px;
+}
+
 .bordered_content {
     border-radius: 3px;
     border: 1px solid #eaeaea;

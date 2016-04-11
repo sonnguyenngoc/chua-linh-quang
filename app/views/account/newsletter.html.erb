@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -22,7 +22,7 @@
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
                     <li>Account</li>
-                    <li>Change Password</li>
+                    <li>Newsletter</li>
 
                 </ul>
 
@@ -32,41 +32,61 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <%= render 'menu_account' %>
+                        <%= render 'menu_account_login' %>
 
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
 
-                        <h1>Special Offers</h1>
+                        <h1>Newsletter Subscription</h1>
 
-                        <div class="box">
+                        <div class="table_wrap bordered_content">
+                            
                             <form action="<%= url_for({controller: 'account', action: 'newsletter'}) %>" method="post" enctype="multipart/form-data">
-                              <div class="bordered_content">
-                                <div class="padded">
-                                    <fieldset>
-                                        <label class="control-label">Subscribe</label>
-                                        <div class="form-group no_b_margin">
-                                            <label class="radio-inline">
-                                                <input type="radio" name="newsletter" value="1" checked="checked">
-                                                Yes
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="newsletter" value="0">
-                                                No
-                                            </label>
-                                        </div>
-                                    </fieldset>
-                                  </div>
-                                  <div class="bottom_buttons">
-                                  <div class="row">
-                                      <div class="col-sm-6"><a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="btn btn-default">Back</a></div>
-                                      <div class="col-sm-6 text-right"><input type="submit" value="Continue" class="btn btn-primary"></div>
-                                  </div>
-                                </div>
-                              </div>                                                
+                            
+                                <div>
+                            
+                                    <div class="padded">
+                            
+                                        <fieldset>
+                            
+                                            <label style="text-align: left;">Subscribe</label>
+                            
+                                            <div class="form_el no_b_margin">
+                            
+                                                <input checked="" type="radio" name="radio_2" id="radio_3">
+                                                <label for="radio_3">Yes</label>
+    
+                                                <input type="radio" name="radio_2" id="radio_4">
+                                                <label for="radio_4">No</label>
+                            
+                                            </div>
+                            
+                                        </fieldset>
+                            
+                                    </div>
+                            
+                                </div>                                                
+                            
                             </form>
+                        
                         </div>
+                        
+                        <footer class="bottom_box on_the_sides">
+
+							<div class="left_side">
+
+								<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Back</a>
+
+							</div>
+
+							<div class="right_side">
+
+								<input type="submit" value="Continue" class="btn btn-primary">
+
+							</div>
+
+						</footer>
 
                     </main><!--/ [col]-->
 
@@ -80,7 +100,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -90,7 +110,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

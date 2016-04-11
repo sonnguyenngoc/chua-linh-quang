@@ -298,9 +298,9 @@
                         <ul class="list_of_links">
 
                             <li><%= link_to "Về chúng tôi", { controller: "information", action: "about_us" } %></li>
-                            <li><%= link_to "Thông tin giao hàng", "" %></li>
-                            <li><%= link_to "Chính sách bảo mật", "" %></li>
-                            <li><%= link_to "Điều khoản sử dụng dịch vụ", "" %></li>
+                            <li><%= link_to "Thông tin giao hàng", { controller: "information", action: "delivery" } %></li>
+                            <li><%= link_to "Chính sách bảo mật", { controller: "information", action: "privacy_policy" } %></li>
+                            <li><%= link_to "Điều khoản sử dụng dịch vụ", { controller: "information", action: "terms_conditions" } %></li>
                             <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
 
                         </ul>
@@ -322,9 +322,9 @@
                         <ul class="list_of_links">
 
                             <li><%= link_to "Thương hiệu sản phẩm", { controller: "manufacturer", action: "list" } %></li>
-                            <li><%= link_to "Phiếu quà tặng", "" %></li>
+                            <li><%= link_to "Phiếu quà tặng", { controller: "account", action: "voucher" } %></li>
                             <li><%= link_to "Đại lý", "" %></li>
-                            <li><%= link_to "Đặc biệt", "" %></li>
+                            <li><%= link_to "Đặc biệt", { controller: "product", action: "special" } %></li>
                             <li><%= link_to "Sơ đồ website", { controller: "information", action: "sitemap" } %></li>
 
                         </ul>
@@ -346,10 +346,10 @@
                         <ul class="list_of_links">
 
                             <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
-                            <li><%= link_to "Lịch sử đặt hàng","" %></li>
-                            <li><%= link_to "Sản phẩm trả lại", "" %></li>
+                            <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "order" } %></li>
+                            <li><%= link_to "Sản phẩm trả lại", { controller: "account", action: "return_product" } %></li>
                             <li><%= link_to "Danh sách sản phẩm yêu thích", { controller: "account", action: "wishlist" } %></li>
-                            <li><%= link_to "Nhận tin mới", "" %></li>
+                            <li><%= link_to "Nhận tin mới", { controller: "account", action: "newsletter" } %></li>
 
                         </ul>
 

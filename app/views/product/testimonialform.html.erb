@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -31,85 +31,100 @@
 
                     <div class="row">
 
-                      <div id="content" class="col-sm-12">
-                        
-                        <h1>Write testimonial</h1>
-                        
-                        <div class="bordered_content padded box">
-                        
-                          <p>Testimonial is your experience or comments on the website.</p>
-                        
-                          <form action="/product/testimonialform" method="post" enctype="multipart/form-data" id="testimonial" class="form-horizontal">
-                        
-                            <div class="form-group required">
-                        
-                              <div class="col-sm-12">
-                        
-                                <label class="control-label" for="input-desc">Testimonial:</label>
-                        
-                                <textarea name="description" rows="10" id="input-desc" class="form-control"></textarea>
-                        
-                              </div>
-                        
-                            </div>
-                        
-                            <div class="form-group">
-                        
-                              <div class="col-sm-12">
-                        
-                                <label class="control-label" for="input-name">Name:</label>
-                        
-                                <input type="text" name="name" id="input-name" value="" class="form-control" vk_12c2f="subscribed">
-                        
-                              </div>
-                        
-                            </div>
-                        
-                            <div class="form-group">
-                        
-                              <div class="col-sm-12">
-                        
-                                <label class="control-label" for="input-city">City:</label>
-                        
-                                <input type="text" name="city" id="input-city" value="" class="form-control" vk_12c2f="subscribed">
-                        
-                              </div>
-                        
-                            </div>
-                        
-                            <div class="form-group">
-                        
-                              <div class="col-sm-12">
-                        
-                                <label class="control-label" for="input-email">Email address (will not be published):</label>
-                        
-                                <input type="text" name="email" id="input-email" value="" class="form-control" vk_12c2f="subscribed">
-                        
-                              </div>
-                        
-                            </div>
+                        <div id="content" class="col-sm-12">
                           
-                            <div class="form-group">
+                            <h1>Write testimonial</h1>
+                            
+                            <div class="table_wrap bordered_content padded">
+                            
+                                <p>Testimonial is your experience or comments on the website.</p>
+                                
+                                <form action="/product/testimonialform" method="post" enctype="multipart/form-data" id="testimonial" class="type_2">
+                              
+                                    <ul>
                         
-                              <div class="col-sm-6">
-                        
-                                <div class="g-recaptcha" data-sitekey="6LehxAQTAAAAAHP-c_WTM-4XaxbytblTHvzfvpnd"><div><div style="width: 304px; height: 78px;"><iframe src="https://www.google.com/recaptcha/api2/anchor?k=6LehxAQTAAAAAHP-c_WTM-4XaxbytblTHvzfvpnd&amp;co=aHR0cDovL3ZlbGlrb3JvZG5vdi5jb206ODA.&amp;hl=vi&amp;v=r20160328144503&amp;size=normal&amp;cb=dkeid3xgejrb" title="tiện ích con mã xác thực lại" width="304" height="78" role="presentation" frameborder="0" scrolling="no" name="undefined"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;  display: none; "></textarea></div></div>
-                        
-                              </div>
-                        
-                              <div class="col-sm-6 text-right">
-                        
-                                <input class="btn btn-primary" type="submit" value="Send">
-                        
-                              </div>
-                        
+                                        <li class="row">
+                                    
+                                          <div class="col-xs-12">
+                                    
+                                            <label class="required" for="input-desc">Testimonial:</label>
+                                    
+                                            <textarea name="description" rows="10" id="input-desc" class="form-control"></textarea>
+                                    
+                                          </div>
+                                    
+                                        </li>
+                                    
+                                        <li class="row">
+                                    
+                                          <div class="col-xs-12">
+                                    
+                                            <label for="input-name">Name:</label>
+                                    
+                                            <input type="text" name="name" id="input-name" value="" class="form-control" vk_12c2f="subscribed">
+                                    
+                                          </div>
+                                    
+                                        </li>
+                                    
+                                        <li class="row">
+                                    
+                                          <div class="col-xs-12">
+                                    
+                                            <label for="input-city">City:</label>
+                                    
+                                            <input type="text" name="city" id="input-city" value="" class="form-control" vk_12c2f="subscribed">
+                                    
+                                          </div>
+                                    
+                                        </li>
+                                    
+                                        <li class="row">
+                                    
+                                          <div class="col-xs-12">
+                                    
+                                            <label for="input-email">Email address (will not be published):</label>
+                                    
+                                            <input type="text" name="email" id="input-email" value="" class="form-control" vk_12c2f="subscribed">
+                                    
+                                          </div>
+                                    
+                                        </li>
+                                      
+                                    </ul>
+                              
+                                </form>
+                              
                             </div>
-                        
-                          </form>
+                            
+                            <footer class="bottom_box on_the_sides">
+
+                                <div class="left_side">
+                            
+                                    <div class="g-recaptcha" data-sitekey="6LehxAQTAAAAAHP-c_WTM-4XaxbytblTHvzfvpnd">
+                                        <div>
+                                            <div style="width: 304px; height: 78px;">
+                                                <iframe src="https://www.google.com/recaptcha/api2/anchor?k=6LehxAQTAAAAAHP-c_WTM-4XaxbytblTHvzfvpnd&amp;co=aHR0cDovL3ZlbGlrb3JvZG5vdi5jb206ODA.&amp;hl=vi&amp;v=r20160328144503&amp;size=normal&amp;cb=dkeid3xgejrb" title="tiện ích con mã xác thực lại" width="304" height="78" role="presentation" frameborder="0" scrolling="no" name="undefined">
+                                                    
+                                                </iframe>
+                                            </div>
+                                            <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;  display: none; ">
+                                                
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            
+                                <div class="right_side">
+                            
+                                    <input class="btn btn-primary" type="submit" value="Send">
+                            
+                                </div>
+    
+                            </footer>
                         
                         </div>
-                      
-                      </div>
 
                     </div><!--/ .row -->
 
@@ -123,7 +138,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -133,7 +148,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

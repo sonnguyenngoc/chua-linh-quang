@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -30,77 +30,84 @@
 
                     <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
                       
-                        <h3>Account</h3>
-                        <div class="list-group box">
-                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Login</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'register'}) %>" class="list-group-item dark_hover">Register</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="list-group-item dark_hover">Forgotten Password</a>
-                            <a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="list-group-item dark_hover">My Account</a>
-                            <a href="<%= url_for({controller: 'account', action: 'address'}) %>" class="list-group-item dark_hover">Address Book</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Wish List</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>" class="list-group-item dark_hover">Order History</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'download'}) %>" class="list-group-item dark_hover">Downloads</a>
-                            <a href="<%= url_for({controller: 'account', action: 'recurring'}) %>" class="list-group-item dark_hover">Recurring payments</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'reward'}) %>" class="list-group-item dark_hover">Reward Points</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'return'}) %>" class="list-group-item dark_hover">Returns</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'transaction'}) %>" class="list-group-item dark_hover">Transactions</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>" class="list-group-item dark_hover">Newsletter</a>
-                        </div>
+                        <%= render 'menu_account_login' %>
 
                     </aside>
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1>My Account Information</h1>
+                        <h1 class="tall">My Account Information</h1>
+                        
                         <h3>Your Personal Details</h3>
-                        <div class="bordered_content box">
-                          <div class="padded_ex_bottom">
-                          <form action="<%= url_for({controller: 'account', action: 'edit'}) %>" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            <fieldset>
+                        
+                        <div class="table_wrap bordered_content">
+                            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
                               
-                              <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-firstname">First Name </label>
-                                <div class="col-sm-10">
-                                  <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control" vk_1a511="subscribed">
-                                              </div>
-                              </div>
-                              <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
-                                <div class="col-sm-10">
-                                  <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control" vk_1a511="subscribed">
-                                              </div>
-                              </div>
-                              <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
-                                <div class="col-sm-10">
-                                  <input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
-                                              </div>
-                              </div>
-                              <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
-                                <div class="col-sm-10">
-                                  <input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control" vk_1a511="subscribed">
-                                              </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-fax">Fax</label>
-                                <div class="col-sm-10">
-                                  <input type="text" name="fax" value="" placeholder="Fax" id="input-fax" class="form-control" vk_1a511="subscribed">
-                                </div>
-                              </div>
-                                      </fieldset>
-                            </form></div>
-                            <div class="bottom_buttons">
-                             <div class="row">
-                              <div class="col-xs-6"><a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="btn btn-default">Back</a></div>
-                              <div class="col-xs-6 text-right">
-                                <input type="submit" value="Continue" class="btn btn-primary">
-                              </div>
-                             </div>
-                            </div>
+                                <ul class="padded margin-b">
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-firstname" class="col-sm-2 control-label">First Name</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-firstname" placeholder="First Name" value="" name="firstname" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-email" class="col-sm-2 control-label">E-Mail</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-telephone" class="col-sm-2 control-label">Telephone</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="telephone" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="row">
+                                    <div class="col-xs-12">
+                                      <label for="input-fax" class="col-sm-2 control-label">Fax</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-fax" placeholder="Fax" value="" name="fax" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                </ul>
+                              
+                            </form>
                           
-                          
-                          </div>
+                        </div>
+                        <footer class="bottom_box on_the_sides">
+
+							<div class="left_side">
+
+								<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Back</a>
+
+							</div>
+
+							<div class="right_side">
+
+								<a href="#" class="button_blue middle_btn">Continue</a>
+
+							</div>
+
+						</footer>
 
                     </main>
 
@@ -114,7 +121,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer'%>
+        <%= render 'module/footer'%>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -124,7 +131,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     
