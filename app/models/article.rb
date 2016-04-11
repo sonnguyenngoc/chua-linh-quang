@@ -9,5 +9,9 @@ class Article < ActiveRecord::Base
   def self.get_all_blogs
     self.all.order("created_at DESC")
   end
-
+  
+  def self.get_related_blog_posts(params)
+    
+  end
+  
 end

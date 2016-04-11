@@ -21,7 +21,7 @@
                 <ul class="breadcrumbs">
 
                     <li><%= link_to "Trang chủ", root_path %></li>
-                    <li><%= @title_head %></li>
+                    <li><%= @article_category.name %></li>
 
                 </ul>
 
@@ -80,7 +80,7 @@
 
                     <main class="col-md-9 col-sm-8">
 
-                        <h1><%= @title_head %></h1>
+                        <h1><%= @article_category.name %></h1>
 
                         <header class="top_box on_the_sides">
                             
@@ -95,7 +95,7 @@
                                 <%= will_paginate @blogs, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
 
                             </div>
-
+                            
                         </header>
 
                         <!-- - - - - - - - - - - - - - List of entries - - - - - - - - - - - - - - - - -->
@@ -157,7 +157,7 @@
 
                         <footer class="bottom_box on_the_sides">
 
-                            <div class="left_side">
+                            <div class="left_side v_centered">
 
                                 <p><%= page_entries_info @blogs %> bài viết.</p>
 

@@ -3,16 +3,14 @@
     <h3>Đăng ký nhận tin mới</h3>
 
     <div class="theme_box">
+        
+        <%= form_for Newsletter.new, html: {class: 'newsletter subscribe clearfix'} do |f| %>
 
-        <p class="form_caption">Sing up to our newsletter and get exclusive deals you wont find any- where else straight to your inbox!</p>
+            <%= f.email_field :email, placeholder: 'Nhập email tại đây...', required: true %>
+                                
+            <button class="button_blue def_icon_btn" type="submit"></button>
 
-        <form class="newsletter subscribe clearfix" novalidate="">
-
-            <input type="email" name="sc_email" placeholder="Enter your email address">
-
-            <button class="button_blue def_icon_btn"></button>
-
-        </form>
+        <% end %>
 
     </div>
     <!--/ .theme_box-->

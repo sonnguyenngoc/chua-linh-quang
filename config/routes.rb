@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   # blog
   get "blog" => "blog#index", as: :index
   get "blog/show/:blog_id" => "blog#show", as: :show
+  get "blog/article_category/:article_category_id" => "blog#article_category", as: :article_category
   # end blog
   
   # information
@@ -62,15 +63,22 @@ Rails.application.routes.draw do
   get "product/testimonialform" => "product#testimonialform", as: :testimonialform
   get "product/special" => "product#special", as: :special
   # end product
+  
+  # resources
+  resources :newsletters
+  resources :shopping_carts
+  #end resources
 
 
   namespace :admin do
     get "main" => "main#index"
+    resources :shopping_carts
     resources :products
     resources :categories
     resources :manufacturers
     resources :articles
     resources :article_categories
     resources :areas
+    resources :newsletters
   end
 end
