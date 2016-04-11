@@ -1,0 +1,214 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Account</li>
+                    <li>Order History</li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render 'menu_account' %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+                        <h1>Order Information</h1>
+                        <div class="box">
+                            <table class="list">
+                              <thead>
+                                <tr>
+                                  <td colspan="2" class="contrast_font">Order Details</td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>              
+                                <td style="width: 50%;" class="left">
+                                  Order ID: #64<br>
+                                  Date Added: 08/04/2016
+                                </td>
+                                <td style="width: 50%;" class="left">
+                                  Payment Method: Cash On Delivery<br>
+                                  Shipping Method: Flat Shipping Rate
+                                </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            
+                            <table class="list">
+                              <thead>
+                                <tr>
+                                  <td class="left">Payment Address</td>
+                                  <td class="left">Shipping Address</td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="left">demo demo<br>demo<br>demo<br>demo<br>Gramsh<br>Albania</td>
+                                  <td class="left">demo demo<br>demo<br>demo<br>demo<br>Gramsh<br>Albania</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            
+                            <table class="list">
+                              <thead>
+                                <tr>
+                                  <td class="product_title_col">Product Name</td>
+                                  <td class="left">Model</td>
+                                  <td class="right">Quantity</td>
+                                  <td class="right">Price</td>
+                                  <td class="right">Total</td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Consectetuer Adipiscing 15, 2.5 fl oz (75ml)<br><br>
+                                  <a href="#" class="button_blue">Reorder</a>
+                                  <a href="#" class="button_grey">Return</a>
+                                  </td>
+                                  <td class="left">Product 3</td>
+                                  <td class="right">1</td>
+                                  <td class="right">$30.00</td>
+                                  <td class="right">$30.00</td>
+                                </tr>
+                                <tr>
+                                  <td>Aenean Auctor Wisi Et Urna 750mg, Softgels 120 ea<br><br>
+                                  <a href="#" class="button_blue">Reorder</a>
+                                  <a href="#" class="button_grey">Return</a>
+                                  </td>
+                                  <td class="left">Product 3</td>
+                                  <td class="right">1</td>
+                                  <td class="right">$34.00</td>
+                                  <td class="right">$34.00</td>
+                                </tr>
+                                <tr>
+                                  <td>Ab Ipsum Dolor 750mg, Softgels 120 ea<br><br>
+                                  <a href="#" class="button_blue">Reorder</a>
+                                  <a href="#" class="button_grey">Return</a>
+                                  </td>
+                                  <td class="left">Product 3</td>
+                                  <td class="right">1</td>
+                                  <td class="right">$50.00</td>
+                                  <td class="right">$50.00</td>
+                                </tr>
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="3"></td>
+                                  <td class="right">Sub-Total:</td>
+                                  <td class="right price">$114.00</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3"></td>
+                                  <td class="right">Flat Shipping Rate:</td>
+                                  <td class="right price">$5.00</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3"></td>
+                                  <td class="right">Total:</td>
+                                  <td class="right price">$119.00</td>
+                                </tr>
+                              </tfoot>
+                            </table>
+                            
+                            <h3>Order History</h3>
+                            
+                            <table class="list last">
+                              <thead>
+                                <tr>
+                                  <td class="left">Date Added</td>
+                                  <td class="left">Order Status</td>
+                                  <td class="left">Comment</td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="left">08/04/2016</td>
+                                  <td class="left">Pending</td>
+                                  <td class="left"></td>
+                                </tr>
+                                <tr>
+                                  <td class="left">08/04/2016</td>
+                                  <td class="left">Pending</td>
+                                  <td class="left"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div class="bottom_buttons bordered_content">
+                                <div class="bottom on_the_sides">
+                                  <div class="right_side v_centered">
+                                    <a class="button_blue middle_btn" href="<%= url_for({controller: 'account', action: 'order'}) %>">Continue</a>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

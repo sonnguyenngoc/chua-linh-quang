@@ -1,0 +1,254 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Account</li>
+                    <li>Order History</li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render 'menu_account' %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+                        <h1>Order History</h1>
+                        <div>
+                          <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+                            
+                              <h3>Order Information</h3>
+                              <ul class="bordered_content padded margin-b">
+                                <li class="row">
+                                  <div class="col-xs-12 required">
+                                    <label for="input-firstname" class="col-sm-2 control-label">First Name</label>
+                                    <div class="form_el">
+                                      <input type="text" class="form-control" id="input-firstname" placeholder="First Name" value="" name="firstname" vk_11575="subscribed">
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                                <li class="row">
+                                  <div class="col-xs-12 required">
+                                    <label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
+                                    <div class="form_el">
+                                      <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname" vk_11575="subscribed">
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                                <li class="row">
+                                  <div class="col-xs-12 required">
+                                    <label for="input-email" class="col-sm-2 control-label">E-Mail</label>
+                                    <div class="form_el">
+                                      <input type="text" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email" vk_11575="subscribed">
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                                <li class="row">
+                                  <div class="col-xs-12 required">
+                                    <label for="input-telephone" class="col-sm-2 control-label">Telephone</label>
+                                    <div class="form_el">
+                                      <input type="text" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="telephone" vk_11575="subscribed">
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="row">
+                                  <div class="col-xs-12 required">
+                                    <label for="input-order-id" class="col-sm-2 control-label">Order ID</label>
+                                    <div class="form_el">
+                                      <input type="text" class="form-control" id="input-order-id" placeholder="Order ID" value="" name="order_id" vk_11575="subscribed">
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                                <li class="row">
+                                  <div class="col-sm-12 no_b_margin">
+                                    <label for="input-date-ordered" class="col-sm-2 control-label">Order Date</label>
+                                    <div class="date form_el">
+                                      <div class="form_el date"><input type="text" class="form-control" id="input-date-ordered" data-date-format="YYYY-MM-DD" placeholder="Order Date" value="" name="date_ordered" vk_11575="subscribed">
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                                      </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            
+                              <h3>Product Information &amp; Reason for Return</h3>
+                              <!--<ul class="bordered_content padded">
+                                  <li class="row">-->
+                              <ul class="bordered_content padded">
+                                  <li class="row">
+                                    <div class="col-sm-12 required">
+                                      <label for="input-product" class="col-sm-2 control-label">Product Name</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-product" placeholder="Product Name" value="" name="product" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-sm-12 required">
+                                      <label for="input-model" class="col-sm-2 control-label">Product Code</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-model" placeholder="Product Code" value="" name="model" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-sm-12">
+                                      <label for="input-quantity" class="col-sm-2 control-label">Quantity</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-quantity" placeholder="Quantity" value="1" name="quantity" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-sm-12 required">
+                                      <label class="col-sm-2 control-label">Reason for Return</label>
+                                      <ul class="form_el">
+                                        <li class="radio">
+                                          
+                                            <input type="radio" id="radio_1" name="return_reason_id" value="1" checked="">
+                                            <label>Dead On Arrival</label>
+                                        </li>
+                                        <li class="radio">
+                                          
+                                            <input type="radio" value="4" name="return_reason_id" id="radio_1">
+                                            <label>Faulty, please supply details</label>
+                                        </li>
+                                        <li class="radio">
+                                          
+                                            <input type="radio" value="3" name="return_reason_id">
+                                            <label>Order Error</label>
+                                        </li>
+                                        <li class="radio">
+                                          
+                                            <input type="radio" value="5" name="return_reason_id">
+                                            <label>Other, please supply details</label>
+                                        </li>
+                                        <li class="radio">
+                                          
+                                            <input type="radio" value="2" name="return_reason_id">
+                                            <label>Received Wrong Item</label>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-sm-12 required">
+                                      <label class="col-sm-2 control-label">Product is opened</label>
+                                      <div class="form_el">
+                                        
+                                          <input type="radio" value="1" name="opened">
+                                          <label class="radio-inline">Yes</label>
+                                        
+                                          <input type="radio" checked="checked" value="0" name="opened">
+                                          <label class="radio-inline">No</label>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-sm-12">
+                                      <label for="input-comment" class="col-sm-2 control-label">Faulty or other details</label>
+                                      <div class="form_el">
+                                        <textarea class="form-control" id="input-comment" placeholder="Faulty or other details" rows="10" name="comment"></textarea>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-sm-12">
+                                      <div class="form_el pull-right">
+                                        <div data-sitekey="6LehxAQTAAAAAHP-c_WTM-4XaxbytblTHvzfvpnd" class="g-recaptcha"><div><div style="width: 304px; height: 78px;"><iframe width="304" height="78" frameborder="0" src="https://www.google.com/recaptcha/api2/anchor?k=6LehxAQTAAAAAHP-c_WTM-4XaxbytblTHvzfvpnd&amp;co=aHR0cDovL3ZlbGlrb3JvZG5vdi5jb206ODA.&amp;hl=vi&amp;v=r20160404124926&amp;size=normal&amp;cb=vrxblcqijku" title="tiện ích con mã xác thực lại" role="presentation" scrolling="no" name="undefined"></iframe></div><textarea style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;  display: none; " class="g-recaptcha-response" name="g-recaptcha-response" id="g-recaptcha-response"></textarea></div></div>
+                                      </div>
+                                    </div>
+                                  </li>
+                              </ul>
+                              <footer class="bottom_box on_the_sides">
+
+                                  <div class="right_side v_centered">
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                  </div>
+      
+                              </footer>
+                          </form>
+                          
+                        </div>
+                        
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

@@ -1,0 +1,141 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Account</li>
+                    <li>Address Book</li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+                
+                <!--
+                <div class="alert_box success">
+
+                    <b>Well done!</b> You successfully read this important alert message.
+
+                    <button class="close"></button>
+
+                </div>-->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render 'menu_account' %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+
+                        <h1>Address Book Entries</h1>
+
+                        <div class="table_wrap">
+                            <table>
+                                <tbody>
+                                  <tr>
+                                    <td class="text-left">John<br>Brotherton<br>Ellensburg, Washington<br>Washington 70000<br>Swains Island<br>American Samoa</td>
+                                    
+                                    <td data-title="Action" class="product_actions_col">
+
+                                        <a href="#" class="button_dark_grey icon_btn edit_product"><i class="icon-pencil"></i></a>
+
+                                        <a href="#" class="button_dark_grey icon_btn remove_product"><i class="icon-cancel-2"></i></a>
+
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="text-left">Nguyen Ton Hung<br>48/8 Ung Van Khiem Str, Ward 25, Binh Thanh Dist.,<br>Ho Chi Minh City 70000<br>Ho Chi Minh City<br>Viet Nam</td>
+                                    
+                                    <td data-title="Action" class="product_actions_col">
+
+                                        <a href="#" class="button_dark_grey icon_btn edit_product"><i class="icon-pencil"></i></a>
+
+                                        <a href="#" class="button_dark_grey icon_btn remove_product"><i class="icon-cancel-2"></i></a>
+
+                                    </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>    
+                          
+                        <footer class="bottom_box on_the_sides">
+
+							<div class="left_side">
+
+								<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Back</a>
+
+							</div>
+
+							<div class="right_side">
+
+								<a href="<%= url_for({controller: 'account', action: 'address_edit'}) %>" class="button_blue middle_btn">New Address</a>
+
+							</div>
+
+						</footer>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

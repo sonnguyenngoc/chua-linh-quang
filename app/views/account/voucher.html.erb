@@ -1,0 +1,155 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="index.html">Home</a></li>
+                    <li>Wishlist</li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render 'menu_account' %>
+
+                    </aside><!--/ [col]-->
+
+                    <main id="content" class="col-md-9 col-sm-8">
+
+                        <h1>Purchase a Gift Certificate</h1>
+
+                        <div class="bordered_content box">
+                          <div class="padded">
+                            <p class="margin-b">This gift certificate will be emailed to the recipient after your order has been paid for.</p>
+                            <form action="<%= url_for ({controller: 'account', action: 'voucher'}) %>" method="post" enctype="multipart/form-data" class="form-horizontal">
+                              <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-to-name">Recipient's Name</label>
+                                <div class="col-sm-10">
+                                  <input type="text" name="to_name" value="" id="input-to-name" class="form-control" vk_12fc8="subscribed">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-to-email">Recipient's e-mail</label>
+                                <div class="col-sm-10">
+                                  <input type="text" name="to_email" value="" id="input-to-email" class="form-control" vk_12fc8="subscribed">
+                                </div>
+                              </div>
+                              <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-from-name">Your Name</label>
+                                <div class="col-sm-10">
+                                  <input type="text" name="from_name" value="" id="input-from-name" class="form-control" vk_12fc8="subscribed">
+                                </div>
+                              </div>
+                              <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-from-email">Your e-mail</label>
+                                <div class="col-sm-10">
+                                  <input type="text" name="from_email" value="" id="input-from-email" class="form-control" vk_12fc8="subscribed">
+                                </div>
+                              </div>
+                              <div class="form-group required">
+                                <label class="col-sm-2 control-label">Gift Certificate Theme</label>
+                                <div class="col-sm-10">
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="voucher_theme_id" value="7">Birthday
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="voucher_theme_id" value="6">
+                                      Christmas</label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="voucher_theme_id" value="8">
+                                      General</label>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label" for="input-message"><span data-toggle="tooltip" title="" data-original-title="Optional">Message</span></label>
+                              <div class="col-sm-10">
+                                <textarea name="message" cols="40" rows="5" id="input-message" class="form-control"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-group no_b_margin">
+                              <label class="col-sm-2 control-label" for="input-amount"><span data-toggle="tooltip" title="" data-original-title="Value must be between $1.00 and $1,000.00">Amount</span></label>
+                              <div class="col-sm-10">
+                                <input type="text" name="amount" value="1.00" id="input-amount" class="form-control" size="5" vk_12fc8="subscribed">
+                                          </div>
+                            </div>
+                            </form></div>
+                            <div class="bottom_buttons text-right">
+                              I understand that gift certificates are non-refundable.
+                              <input type="checkbox" name="agree" value="1">&nbsp;
+                              <input type="submit" value="Continue" class="btn btn-primary">
+                            </div>
+                        </div>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'home/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>
