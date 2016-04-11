@@ -24,11 +24,11 @@ en:
   will_paginate:
     page_entries_info:
       single_page:
-        zero:  "Dữ liệu trống."
+        zero:  "Chưa có dữ liệu cho "
         one:   "Hiển thị 1 "
         other: "Hiển thị toàn bộ %{count} "
       single_page_html:
-        zero:  "Dữ liệu trống."
+        zero:  "Chưa có dữ liệu cho "
         one:   "Hiển thị 1 "
         other: "Hiển thị toàn bộ %{count} "
 

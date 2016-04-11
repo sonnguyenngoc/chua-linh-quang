@@ -286,22 +286,14 @@
 
                                 <div class="left_side">
 
-                                    <p>Showing 1 to 3 of 45 (15 Pages)</p>
+                                <p><%= page_entries_info @products %> sản phẩm.</p>
 
-                                </div>
+                            </div>
 
                                 <div class="right_side">
-
-                                    <ul class="pags">
-
-                                        <li><a href="#"></a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#"></a></li>
-
-                                    </ul>
-
+                                
+                                    <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+    
                                 </div>
 
                             </footer>

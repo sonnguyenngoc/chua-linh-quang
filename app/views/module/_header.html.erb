@@ -48,31 +48,36 @@
 
                             <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
 
-                            <form class="clearfix search">
-
-                                <input type="text" name="" tabindex="1" placeholder="Search..." class="alignleft">
+                            <form class="clearfix search" %>
+    
+                                <input type="text" name="search" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
                                 
                                 <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
-
+    
                                 <div class="search_category alignleft">
-
-                                    <div class="open_categories">Khu vực</div>
-
-                                    <ul class="categories_list dropdown">
-
-                                        <li class="animated_item"><a href="#">Miền Bắc</a></li>
-                                        <li class="animated_item"><a href="#">Miền Trung</a></li>
-                                        <li class="animated_item"><a href="#">Miền Nam</a></li>
-                                        <li class="animated_item"><a href="#">Tây Nguyên</a></li>
-
-                                    </ul>
-
+                                    
+                                     <div class="">
+    
+                                        <select class="select_header" name="category_id">
+                                            
+                                            <option value="">Tất cả</option>
+                                            
+                                            <% Area.all.each do |item| %>
+                                                    
+                                                <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
+                                                                                           
+                                            <% end %>
+                                        
+                                        </select>
+    
+                                    </div><!--/ .custom_select -->
+    
                                 </div><!--/ .search_category.alignleft-->
-
+    
                                 <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-
+    
                                 <button class="button_blue def_icon_btn alignleft"></button>
-
+    
                             </form><!--/ #search-->
                             
                             <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->

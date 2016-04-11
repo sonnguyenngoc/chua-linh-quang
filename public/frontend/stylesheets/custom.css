@@ -75,3 +75,10 @@
     background: #4ac4fa;
     border-color: #4ac4fa;
 }
+.select_header {
+    padding: 9.5px 8px !important;
+}
+.search_category {
+    border-top: 1px solid #4ac4fa;
+    border-botton: 1px solid #4ac4fa;
+}
