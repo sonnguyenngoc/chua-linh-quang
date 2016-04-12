@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -33,126 +33,126 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <%= render 'menu_account' %>
+                        <%= render 'menu_account_login' %>
 
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
                         <h1>Edit Address</h1>
                         <div class="table_wrap bordered_content">
-                          <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
-                            
-                              <ul class="padded margin-b">
-                                <li class="row">
-                                  <div class="col-xs-12 required">
-                                    <label for="input-firstname" class="col-sm-2 control-label">First Name</label>
-                                    <div class="form_el">
-                                      <input type="text" class="form-control" id="input-firstname" placeholder="First Name" value="" name="firstname" vk_11575="subscribed">
-                                    </div>
-                                  </div>
-                                </li>
-                                
-                                <li class="row">
-                                  <div class="col-xs-12 required">
-                                    <label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
-                                    <div class="form_el">
-                                      <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname" vk_11575="subscribed">
-                                    </div>
-                                  </div>
-                                </li>
-                                
-                                <li class="row">
-                                  <div class="col-xs-12">
-                                    <label for="input-company" class="col-sm-2 control-label">Company</label>
-                                    <div class="form_el">
-                                      <input type="text" class="form-control" id="input-company" placeholder="Company" value="" name="company" vk_11575="subscribed">
-                                    </div>
-                                  </div>
-                                </li>
-                                
-                                <li class="row">
-                                  <div class="col-xs-12 required">
-                                    <label for="input-address-1" class="col-sm-2 control-label">Address 1</label>
-                                    <div class="form_el">
-                                      <input type="text" class="form-control" id="input-address-1" placeholder="Address 1" value="" name="address-1" vk_11575="subscribed">
-                                    </div>
-                                  </div>
-                                </li>
-                                <li class="row">
-                                  <div class="col-xs-12">
-                                    <label for="input-address-2" class="col-sm-2 control-label">Address 2</label>
-                                    <div class="form_el">
-                                      <input type="text" class="form-control" id="input-address-2" placeholder="Address 1" value="" name="address-2" vk_11575="subscribed">
-                                    </div>
-                                  </div>
-                                </li>
-                                <li class="row">
-                                  <div class="col-xs-12 required">
-                                    <label for="input-city" class="col-sm-2 control-label">City</label>
-                                    <div class="form_el">
-                                      <input type="text" class="form-control" id="input-city" placeholder="City" value="" name="city" vk_11575="subscribed">
-                                    </div>
-                                  </div>
-                                </li>
-                                
-                                <li class="row">
-                                  <div class="col-xs-12 required">
-                                    <label for="input-post-code" class="col-sm-2 control-label">Post Code</label>
-                                    <div class="form_el">
-                                      <input type="text" class="form-control" id="input-post-code" placeholder="Post Code" value="" name="post-code" vk_11575="subscribed">
-                                    </div>
-                                  </div>
-                                </li>
-                                
-                                <li class="row">
-                                  <div class="col-xs-12 required">
-                                    <label for="input-country" class="col-sm-2 control-label">Country</label>
-                                    <div class="form_el">
-                                        <select name="country_id" id="input-country" class="form-control">
-                                          <option value=""> --- Please Select --- </option>
-                                          <option value="244">Aaland Islands</option>
-                                          <option value="1">Afghanistan</option>
-                                          <option value="2">Albania</option>
-                                          <option value="3">Algeria</option>
-                                          <option value="4">American</option>
-                                        </select>
-                                    </div>
-                                  </div>
-                                </li>
-                                
-                                <li class="row">
-                                  <div class="col-xs-12 required">
-                                    <label for="input-region-state" class="col-sm-2 control-label">Region/State</label>
-                                    <div class="form_el">
-                                        <select name="region-state_id" id="input-region-state" class="form-control">
-                                          <option value=""> --- Please Select --- </option>
-                                          <option value="244">Aaland Islands</option>
-                                          <option value="1">Afghanistan</option>
-                                          <option value="2">Albania</option>
-                                          <option value="3">Algeria</option>
-                                          <option value="4">American</option>
-                                        </select>
-                                    </div>
-                                  </div>
-                                </li>
-                                
-                                <li class="row">
-                                  <div class="col-xs-12">
-                                    <label for="input-post-code" class="col-sm-2 control-label">Default Address</label>
-                                    <div class="form_el">
-                                        
-                                          <input id="radio_1" type="radio" name="default" value="1">
-                                          <label>Yes</label>
-                                        
-                                          <input type="radio" name="default" value="0" checked="">
-                                          <label>No</label>
-                                      </div>
-                                  </div>
-                                </li>
-                                
-                              </ul>
+                            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
                               
-                          </form>
+                                <ul class="padded margin-b">
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-firstname" class="col-sm-2 control-label">First Name</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-firstname" placeholder="First Name" value="" name="firstname" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12">
+                                      <label for="input-company" class="col-sm-2 control-label">Company</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-company" placeholder="Company" value="" name="company" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-address-1" class="col-sm-2 control-label">Address 1</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-address-1" placeholder="Address 1" value="" name="address-1" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="row">
+                                    <div class="col-xs-12">
+                                      <label for="input-address-2" class="col-sm-2 control-label">Address 2</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-address-2" placeholder="Address 1" value="" name="address-2" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-city" class="col-sm-2 control-label">City</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-city" placeholder="City" value="" name="city" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-post-code" class="col-sm-2 control-label">Post Code</label>
+                                      <div class="form_el">
+                                        <input type="text" class="form-control" id="input-post-code" placeholder="Post Code" value="" name="post-code" vk_11575="subscribed">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-country" class="col-sm-2 control-label">Country</label>
+                                      <div class="form_el">
+                                          <select name="country_id" id="input-country" class="form-control">
+                                            <option value=""> --- Please Select --- </option>
+                                            <option value="244">Aaland Islands</option>
+                                            <option value="1">Afghanistan</option>
+                                            <option value="2">Albania</option>
+                                            <option value="3">Algeria</option>
+                                            <option value="4">American</option>
+                                          </select>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12 required">
+                                      <label for="input-region-state" class="col-sm-2 control-label">Region/State</label>
+                                      <div class="form_el">
+                                          <select name="region-state_id" id="input-region-state" class="form-control">
+                                            <option value=""> --- Please Select --- </option>
+                                            <option value="244">Aaland Islands</option>
+                                            <option value="1">Afghanistan</option>
+                                            <option value="2">Albania</option>
+                                            <option value="3">Algeria</option>
+                                            <option value="4">American</option>
+                                          </select>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  
+                                  <li class="row">
+                                    <div class="col-xs-12">
+                                      <label for="input-post-code" class="col-sm-2 control-label">Default Address</label>
+                                      <div class="form_el">
+                                          
+                                            <input id="radio_1" type="radio" name="default" value="1">
+                                            <label>Yes</label>
+                                          
+                                            <input type="radio" name="default" value="0" checked="">
+                                            <label>No</label>
+                                        </div>
+                                    </div>
+                                  </li>
+                                  
+                                </ul>
+                                
+                            </form>
                           
                         </div>
                         <footer class="bottom_box on_the_sides">
@@ -183,7 +183,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer' %>
+        <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -193,7 +193,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

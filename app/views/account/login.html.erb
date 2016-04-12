@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -28,66 +28,63 @@
 
                 <div class="row">
 
-                    <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
+                    <aside class="col-md-3 col-sm-4">
                       
-                        <h3>Account</h3>
-                        <div class="list-group box">
-                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Login</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'register'}) %>" class="list-group-item dark_hover">Register</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="list-group-item dark_hover">Forgotten Password</a>
-                            <a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="list-group-item dark_hover">My Account</a>
-                            <a href="<%= url_for({controller: 'account', action: 'address'}) %>" class="list-group-item dark_hover">Address Book</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Wish List</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>" class="list-group-item dark_hover">Order History</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'download'}) %>" class="list-group-item dark_hover">Downloads</a>
-                            <a href="<%= url_for({controller: 'account', action: 'recurring'}) %>" class="list-group-item dark_hover">Recurring payments</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>" class="list-group-item dark_hover">Reward Points</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'return'}) %>" class="list-group-item dark_hover">Returns</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'transaction'}) %>" class="list-group-item dark_hover">Transactions</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>" class="list-group-item dark_hover">Newsletter</a>
-                        </div>
+                        <%= render 'menu_account_logout' %>
 
                     </aside>
 
                     <main class="col-md-9 col-sm-8">
                         
                         <h1>Account Logout</h1>
-                        
-                        <div class="bordered_content box">
-							<div class="row login_screen no_margin">
-							  <div class="col-sm-6">
-								  <div class="padded top">
-								  <h2>New Customer</h2>
-								  <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-								  </div>
-								  <div class="padded bottom">
-								  <a href="<%= url_for({controller: 'account', action: 'register'}) %>" class="btn btn-primary">Register Account</a>
-								  </div>
-							  </div>
-							  
-								<div class="col-sm-6">
-									  <div class="padded top">
-										<h2>Returning Customer</h2>
-										<p>I am a returning customer</p>
-										<form action="<%= url_for({controller: 'account', action: 'login'}) %>" method="post" enctype="multipart/form-data">
-											<div class="form-group">
-												<label class="control-label" for="input-email">E-Mail Address</label>
-												<input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" vk_1d8ed="subscribed">
+						
+						<div class="table_wrap bordered_content">
+                            <table>
+                                <tbody>
+                                  <tr>
+                                    <td>
+										<div>
+											<div class="top">
+												<h4>New Customer</h4>
+												<p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
 											</div>
-											<div class="form-group">
-												<label class="control-label" for="input-password">Password</label>
-												<input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" vk_1d8ed="subscribed">
-											</div>
-											<a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="forgotten">Forgotten Password</a>
-										</form>
-									  </div>
-									  <div class="padded bottom">
+										</div>
+									</td>
+                                    <td>
+										<div class=" top">
+											<h4>Returning Customer</h4>
+											<p>I am a returning customer</p>
+											<form action="<%= url_for({controller: 'account', action: 'login'}) %>" method="post" enctype="multipart/form-data">
+												<div class="form-group">
+													<label class="control-label" for="input-email" style="text-align: left;">E-Mail Address</label>
+													<input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" vk_1d8ed="subscribed">
+												</div>
+												<div class="form-group">
+													<label class="control-label" for="input-password" style="text-align: left;">Password</label>
+													<input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" vk_1d8ed="subscribed">
+												</div>
+												<a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="forgotten">Forgotten Password</a>
+											</form>
+										</div>
+									  
+									</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+										<div class="bottom">
+											<input type="submit" value="Register Account" class="btn btn-primary">
+										</div>
+									</td>
+                                    <td>
+										<div class="bottom">
 										  <div id="social_login_content_holder"></div>
 										  <input type="submit" value="Login" class="btn btn-primary">
 									  </div>
-								</div>
-							</div>
-						</div>
+									</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </main>
 
@@ -101,7 +98,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer'%>
+        <%= render 'module/footer'%>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -111,7 +108,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     
