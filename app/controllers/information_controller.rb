@@ -1,10 +1,23 @@
 class InformationController < ApplicationController
   def about_us
     @title_head = "Về chúng tôi"
-    @lastest_blog_posts = Article.get_lastest_blog_posts
+    @about_us =  Article.get_blog_about_us
   end
+  
   def contact_us
     @title_head = "Liên hệ"
-    @lastest_blog_posts = Article.get_lastest_blog_posts
+    @contact = Contact.new
+  end
+  
+  def finish_contact_us
+    @title_head = "Cảm ơn"
+  end
+  
+  def finish_newsletter
+    @title_head = "Cảm ơn"
+  end
+  
+  def sitemap
+    @title_head = "Sitemap"
   end
 end

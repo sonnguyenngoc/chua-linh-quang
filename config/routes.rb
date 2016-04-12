@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   root "home#index"
   
   # account
@@ -40,6 +39,8 @@ Rails.application.routes.draw do
   # information
   get "information/about_us" => "information#about_us", as: :about_us
   get "information/contact_us" => "information#contact_us", as: :contact_us
+  get "information/finish_contact_us" => "information#finish_contact_us", as: :finish_contact_us
+  get "information/finish_newsletter" => "information#finish_newsletter", as: :finish_newsletter
   get "information/delivery" => "information#delivery", as: :delivery
   get "information/faq" => "information#faq", as: :faq
   get "information/privacy_policy" => "information#privacy_policy", as: :privacy_policy
@@ -52,11 +53,10 @@ Rails.application.routes.draw do
   get "manufacturer/products/:manufacturer_id" => "manufacturer#products", as: :products
   # end manufacturer
   
-  
   # product
   get "product/category/:category_id" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
-  get "product/product" => "product#product", as: :product
+  get "product/product/:product_id" => "product#product", as: :product
   get "product/quick_view" => "product#quick_view", as: :quick_view
   get "product/search" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial
@@ -67,8 +67,9 @@ Rails.application.routes.draw do
   # resources
   resources :newsletters
   resources :shopping_carts
+  resources :contacts
+  devise_for :users
   #end resources
-
 
   namespace :admin do
     get "main" => "main#index"
@@ -80,5 +81,6 @@ Rails.application.routes.draw do
     resources :article_categories
     resources :areas
     resources :newsletters
+    resources :contacts
   end
 end

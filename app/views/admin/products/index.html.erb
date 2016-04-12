@@ -66,7 +66,7 @@
                     <table class="table datatable-products">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Name/Status</th>
                                 <th>Code</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
@@ -80,12 +80,19 @@
                         <tbody>
                             <% @products.each do |item| %>
                                 <tr>
-                                    <td><%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %></td>
+                                    <td>
+                                        <%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %></br>
+                                        <%= item.status %>
+                                    </td>
                                     <td><%= item.code %></td>
-                                    <td><%= item.price %></td>
-                                    <td><%= item.quantity %></td>
+                                    <td><%= format_number(item.price) %> đ</td>
+                                    <td><%= format_number(item.quantity) %></td>
                                     <td><%= item.unit %></td>
-                                    <td></td>
+                                    <td>
+                                        <% item.categories.each do |categories| %>
+                                            <%= categories.name %></br>
+                                        <% end %>
+                                    </td>
                                     <td>
                                         <%= item.manufacturer.name %>
                                     </td>

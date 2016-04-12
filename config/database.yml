@@ -19,8 +19,8 @@ development:
   encoding: unicode
   database: shopme_development
   pool: 5
-  username: hungnt
-  password: 123
+  username: nguyenngocson0811
+  password: 1251tt1467
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,8 +57,8 @@ test:
   encoding: unicode
   database: shopme_test
   pool: 5
-  username: hungnt
-  password: 123
+  username: nguyenngocson0811
+  password: 1251tt1467
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,5 +84,5 @@ production:
   encoding: unicode
   database: shopme_production
   pool: 5
-  username: hungnt
-  password: 123
+  username: nguyenngocson0811
+  password: 1251tt1467

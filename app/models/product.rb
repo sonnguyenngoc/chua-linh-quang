@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
   validates :name, :price, :quantity, :unit, :manufacturer_id, :short_description, presence: true
   
-  belongs_to :category
   has_many :categories_products
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :areas
@@ -14,4 +13,19 @@ class Product < ActiveRecord::Base
     
     return records
   end
+  
+  def get_main_image
+    product_images.where(is_main: "True").order("updated_at DESC").first
+  end
+  
+  def get_related_products
+    cat_ids = []
+    categories.each do |c|
+      cat_ids += c.get_all_related_ids
+    end
+    records = Product.joins(:categories).where(categories: {id: cat_ids}).uniq
+    
+    return records
+  end
+
 end

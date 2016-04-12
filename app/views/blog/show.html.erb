@@ -56,7 +56,7 @@
                         
                         <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'module/blog_newsletter' %>
+                        <%= render 'module/newsletter' %>
 
                         <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
                         
@@ -163,7 +163,59 @@
 
                         <!-- - - - - - - - - - - - - - Related posts - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'module/blog_related_posts' %>
+                        <section class="section_offset">
+                            
+                            <h3>Related Posts</h3>
+
+                            <div class="table_layout related_posts">
+
+                                <div class="table_row">
+                                    
+                                    <% @blog.get_related_blogs.limit(2).each do |blog| %>
+
+                                        <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+    
+                                        <div class="table_cell">
+    
+                                            <article class="entry">
+                                                
+                                                <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+                                                
+                                                <%= link_to image_tag(blog.image_url.medium_image), { controller: "blog", action: "show", blog_id: blog.id }, class: "entry_thumb" %>
+    
+                                                <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="wrapper">
+    
+                                                    <h6 class="entry_title text-justify"><%= link_to blog.title, { controller: "blog", action: "show", blog_id: blog.id } %></h6>
+    
+                                                    <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+    
+                                                    <div class="entry_meta">
+    
+                                                        <span><i class="icon-calendar"></i> <%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>
+    
+                                                        <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
+    
+                                                    </div><!--/ .byline-->
+    
+                                                    <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+    
+                                                </div><!--/ .wrapper-->
+    
+                                            </article><!--/ .clearfix-->
+    
+                                        </div>
+    
+                                        <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+
+                                    <% end %>
+
+                                </div>
+
+                            </div>						
+
+                        </section>
 
                         <!-- - - - - - - - - - - - - - End related posts - - - - - - - - - - - - - - - - -->
 

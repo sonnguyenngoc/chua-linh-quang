@@ -10,8 +10,21 @@ class Article < ActiveRecord::Base
     self.all.order("created_at DESC")
   end
   
-  def self.get_related_blog_posts(params)
+  def self.get_blog_about_us
+    records = self.joins(:article_categories).where(article_categories: {name: "Về chúng tôi"})
+    records.order("created_at").first
     
+    return records
+  end
+  
+  def get_related_blogs
+    cat_ids = []
+    article_categories.each do |c|
+      cat_ids += c.get_all_related_ids
+    end
+    records = Article.joins(:article_categories).where(article_categories: {id: cat_ids}).uniq
+    
+    return records
   end
   
 end
