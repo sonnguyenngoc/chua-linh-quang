@@ -32,50 +32,57 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <%= render 'menu_account' %>
+                        <%= render 'menu_account_login' %>
 
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
                         <h1>Your Transactions</h1>
                         <p>Your current balance is: <span class="price">$0.00</span></p>
-                        <div class="box">
-                          <table class="list last">
-                            <thead>
-                              <tr>
-                                <td class="left">Date Added</td>
-                                <td class="left">Description</td>
-                                <td style="text-align: right">Amount (USD)</td>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="left">08/04/2016</td>
-                                <td class="left">Pending</td>
-                                <td class="right">$0.00</td>
-                              </tr>
-                              <tr>
-                                <td class="left">08/04/2016</td>
-                                <td class="left">Pending</td>
-                                <td class="right">$0.00</td>
-                              </tr>
-                            </tbody>
+                        <div class="table_wrap bordered_content">
+                            <table class="list last">
+                              <thead>
+                                <tr>
+                                  <td class="left">Date Added</td>
+                                  <td class="left">Description</td>
+                                  <td style="text-align: right">Amount (USD)</td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="left">08/04/2016</td>
+                                  <td class="left">Pending</td>
+                                  <td class="right">$0.00</td>
+                                </tr>
+                                <tr>
+                                  <td class="left">08/04/2016</td>
+                                  <td class="left">Pending</td>
+                                  <td class="right">$0.00</td>
+                                </tr>
+                              </tbody>
+                              
+                              <tbody>
+                                <tr>
+                                  <td colspan="1">...</td>
+                                </tr>
+                              </tbody>
+                              
+                            </table>
+                            
                             <!--You do not have any reward points!-->
-                            <tbody>
-                              <tr>
-                                <td colspan="3" class="text-center" style="text-align: center">You do not have any transactions!</td>
-                              </tr>
-                            </tbody>
+                            <p colspan="3" class="text-center" style="text-align: center">You do not have any transactions!</p>
                             <!--End - You do not have any reward points!-->
-                          </table>
+                            
                         </div>
-                        <div class="bottom_buttons bordered_content">
-                            <div class="bottom on_the_sides">
-                              <div class="right_side v_centered">
-                                <a class="button_blue middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Continue</a>
-                              </div>
-                            </div>
-                        </div>
+                        <footer class="bottom_box on_the_sides">
+						
+							<div class="right_side">
+						
+								<a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="button_blue middle_btn">Continue</a>
+						
+							</div>
+
+						</footer>
 
                     </main><!--/ [col]-->
 

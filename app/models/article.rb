@@ -14,4 +14,17 @@ class Article < ActiveRecord::Base
     
   end
   
+  def self.sort_by
+    [
+      ["Create At","create_at"]
+    ]
+  end
+  
+  def self.sort_orders
+    [
+      ["DESC","desc"],
+      ["ASC","asc"]
+    ]
+  end
+  
 end

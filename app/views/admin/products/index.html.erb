@@ -33,44 +33,101 @@
                     <div class="page-title">
                         <h4><span class="text-semibold">Products</span></h4>
                     </div>
+                    
                 </div>
-            
+                
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i> Home'.html_safe, { controller: "main", action: "index" } %></li>
                         <li><a href="<%= admin_products_path %>">Product</a></li>
                         <li class="active">Products</li>
                     </ul>
+                    
                 </div>
             </div>
             <!-- /page header -->
             
             <!-- Content area -->
             <div class="content">
-            
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
-                    <div class="panel-heading">
-                        <%= link_to 'New Product', new_admin_product_path, class: 'btn btn-primary' %>
-                        <hr/>
-                        <h5 class="panel-title"><span class="text-semibold">Listing Products</span></h5>
-                        <div class="heading-elements">
-                            <ul class="icons-list">
-                                <li><a data-action="collapse"></a></li>
-                                <li><a data-action="reload"></a></li>
-                                <li><a data-action="close"></a></li>
-                            </ul>
-                        </div>
+                    <div class="panel-heading col-md-12">
+                        <h5 class="panel-title col-md-6"><span class="text-semibold">Listing Products</span></h5>
+                        <%= link_to 'New Product', new_admin_product_path, class: 'btn btn-primary pull-right' %>
                     </div>
-                    
-                    <table class="table datatable-products">
+                    <div class="filter-box">
+                        <%= form_for("", url: {controller: "products", action: "search"}, method: "get") do |f| %>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Manufacturer</label>
+                                        <div>
+                                            <%= select_tag(:manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name, :selected => params[:manufacturer_id]),  include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="" >Category</label>
+                                        <div>
+                                            <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name, :selected => params[:category_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="" >Areas</label>
+                                        <div>
+                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="" >Status</label>
+                                        <div>
+                                            <%= select_tag(:status_id, options_for_select(Product.status_options, :selected => params[:status_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Filter</label>
+                                        <div class="input-group">
+                                            <input type="text" name="keyword" class="form-control" placeholder="Search by product name..." value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-2">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Sort By</label>
+                                        <div>
+                                            <%= select_tag(:sort_by, options_for_select(Product.sort_by, :selected => params[:sort_by]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Sort Order</label>
+                                        <div>
+                                            <%= select_tag(:sort_order, options_for_select(Product.sort_orders, :selected => params[:sort_order]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>                            
+                        <% end %>
+                    </div>
+                    <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="bg-teal-800">
                                 <th>Name</th>
-                                <th>Code</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
-                                <th>Unit</th>
                                 <th>Categories</th>
                                 <th>Manufacturer</th>
                                 <th>Created At</th>
@@ -80,12 +137,13 @@
                         <tbody>
                             <% @products.each do |item| %>
                                 <tr>
-                                    <td><%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %></td>
-                                    <td><%= item.code %></td>
+                                    <td>
+                                        <%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %>
+                                        <br/><%= item.code %>
+                                    </td>
                                     <td><%= item.price %></td>
-                                    <td><%= item.quantity %></td>
-                                    <td><%= item.unit %></td>
-                                    <td></td>
+                                    <td><%= item.quantity %> (<%= item.unit %>)</td>
+                                    <td><%= item.categories.map(&:name).join("<br/>").html_safe %></td>
                                     <td>
                                         <%= item.manufacturer.name %>
                                     </td>
@@ -147,3 +205,7 @@
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/javascripts/datatables_products.js' %>
 <!-- /theme JS files -->
+
+<script>
+    $(".select").select2();
+</script>

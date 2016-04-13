@@ -10,4 +10,17 @@ class Manufacturer < ActiveRecord::Base
     self.all
   end
   
+   def self.sort_by
+    [
+      ["Name","name"]
+    ]
+  end
+  
+  def self.sort_orders
+    [
+      ["DESC","desc"],
+      ["ASC","asc"]
+    ]
+  end
+  
 end

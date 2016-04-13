@@ -34,4 +34,18 @@ class ArticleCategory < ActiveRecord::Base
       
       return arr
   end
+  
+  def self.sort_by
+    [
+      ["Create At","create_at"]
+    ]
+  end
+  
+  def self.sort_orders
+    [
+      ["DESC","desc"],
+      ["ASC","asc"]
+    ]
+  end
+  
 end

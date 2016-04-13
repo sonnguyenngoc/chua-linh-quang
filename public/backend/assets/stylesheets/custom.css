@@ -28,3 +28,15 @@
 .datatable-footer.showed {
     display: block;
 }
+.filter-box {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding: 20px 20px;
+    clear: both;
+}
+.filter-box .form-group {
+    margin: 0;
+}
+.row-2 {
+    margin-top: 20px;
+}

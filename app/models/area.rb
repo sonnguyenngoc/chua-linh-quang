@@ -39,4 +39,17 @@ class Area < ActiveRecord::Base
     return arr
   end
   
+  def self.sort_by
+    [
+      ["Name","name"]
+    ]
+  end
+  
+  def self.sort_orders
+    [
+      ["DESC","desc"],
+      ["ASC","asc"]
+    ]
+  end
+  
 end

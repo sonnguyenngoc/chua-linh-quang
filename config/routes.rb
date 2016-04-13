@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "account/edit" => "account#edit", as: :edit
   get "account/password" => "account#password", as: :password
   get "account/voucher" => "account#voucher", as: :voucher
+  get "account/voucher/success" => "account#voucher_success", as: :voucher_success
   # end account
   
   # checkout
@@ -73,7 +74,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get "main" => "main#index"
     resources :shopping_carts
-    resources :products
+    resources :products do
+      collection do
+        get 'search'
+      end
+    end
     resources :categories
     resources :manufacturers
     resources :articles

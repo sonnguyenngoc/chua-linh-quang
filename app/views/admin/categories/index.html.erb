@@ -50,22 +50,53 @@
             
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
-                    <div class="panel-heading">
-                        <%= link_to 'New Category', new_admin_category_path, class: 'btn btn-primary' %>
-                        <hr/>
-                        <h5 class="panel-title"><span class="text-semibold">Listing Categories</span></h5>
-                        <div class="heading-elements">
-                            <ul class="icons-list">
-                                <li><a data-action="collapse"></a></li>
-                                <li><a data-action="reload"></a></li>
-                                <li><a data-action="close"></a></li>
-                            </ul>
-                        </div>
+                    <div class="panel-heading col-md-12">
+                        <h5 class="panel-title col-md-6"><span class="text-semibold">Listing Categories</span></h5>
+                        <%= link_to 'New Category', new_admin_category_path, class: 'btn btn-primary pull-right' %> 
+                    </div>
+                    <div class="filter-box">
+                        <%= form_for "" do |f| %>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Parent Category</label>
+                                        <div>
+                                            <%= select_tag(:category_id, options_from_collection_for_select(Category.where(level: 1), :id, :name), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Sort By</label>
+                                        <div>
+                                            <%= select_tag(:sort_by_id, options_for_select(Category.sort_by), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Sort Order</label>
+                                        <div>
+                                            <%= select_tag(:sort_orders, options_for_select(Category.sort_orders), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Filter</label>
+                                        <div class="input-group">
+                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword">
+                                            <a class="input-group-addon"><i class="icon-search4"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        <% end %>
                     </div>
                     
-                    <table class="table datatable-categories">
+                    <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="bg-teal-800">
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Created At</th>
@@ -201,3 +232,6 @@
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/javascripts/datatables_categories.js' %>
 <!-- /theme JS files -->
+<script>
+    $(".select").select2();
+</script>
