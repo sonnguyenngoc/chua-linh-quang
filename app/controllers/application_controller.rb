@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart
   
   layout :layout_by_resource
   protect_from_forgery with: :exception

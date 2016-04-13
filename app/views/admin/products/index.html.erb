@@ -66,11 +66,11 @@
                     <table class="table datatable-products">
                         <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Name/Status</th>
                                 <th>Code</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
-                                <th>Unit</th>
                                 <th>Categories</th>
                                 <th>Manufacturer</th>
                                 <th>Created At</th>
@@ -81,13 +81,19 @@
                             <% @products.each do |item| %>
                                 <tr>
                                     <td>
+                                        <% if item.get_main_image.present? %>
+                                            <%= link_to image_tag(item.get_main_image.image_url.small_image), edit_admin_product_path(item), title: item.name %>
+                                        <% else %>
+                                            <%= link_to image_tag("/frontend/images/small_image.png"), edit_admin_product_path(item), title: item.name %>
+                                        <% end %>
+                                    </td>
+                                    <td>
                                         <%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %></br>
                                         <%= item.status %>
                                     </td>
                                     <td><%= item.code %></td>
                                     <td><%= format_number(item.price) %> đ</td>
                                     <td><%= format_number(item.quantity) %></td>
-                                    <td><%= item.unit %></td>
                                     <td>
                                         <% item.categories.each do |categories| %>
                                             <%= categories.name %></br>

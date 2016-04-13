@@ -12,7 +12,15 @@
     
                 <li>
                     
-					<%= link_to image_tag(item.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.id }, class: "product_thumb", title: item.name %>
+					<% if item.get_main_image.present? %>
+																
+						<%= link_to image_tag(item.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.id }, class: "product_thumb", title: item.name %>
+					
+					<% else %>
+						
+						<%= link_to image_tag("/frontend/images/small_image.png"), { controller: "product", action: "product", product_id: item.id }, class: "product_thumb", title: item.name %>
+					
+					<% end %>
     
                     <div class="wrapper">
                         
