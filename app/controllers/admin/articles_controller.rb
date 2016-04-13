@@ -16,11 +16,13 @@ class Admin::ArticlesController < ApplicationController
   def new
     @article = Article.new
     @article_categories = ArticleCategory.all
+    @products = Product.all
   end
 
   # GET /articles/1/edit
   def edit
     @article_categories = ArticleCategory.all
+    @products = Product.all
   end
 
   # POST /articles
@@ -31,6 +33,13 @@ class Admin::ArticlesController < ApplicationController
     if params[:category_ids].present?
       params[:category_ids].each do |id|      
         @article.article_categories << ArticleCategory.find(id)
+      end
+    end
+    
+    @article.products.clear
+    if params[:product_ids].present?
+      params[:product_ids].each do |id|      
+        @article.products << Product.find(id)
       end
     end
 
@@ -48,12 +57,21 @@ class Admin::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @article.article_categories.clear
     if params[:category_ids].present?
         @article.article_categories.clear
         params[:category_ids].each do |id|      
           @article.article_categories << ArticleCategory.find(id)
         end
     end
+    
+    if params[:product_ids].present?
+       @article.products.clear
+      params[:product_ids].each do |id|      
+        @article.products << Product.find(id)
+      end
+    end
+    
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Article was successfully updated.' }

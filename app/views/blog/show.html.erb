@@ -36,10 +36,24 @@
 
                         <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'module/blog_categories' %>
+                        <%= render "module/blog_categories" %>
 
                         <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
 
+                        <!-- - - - - - - - - - - - - - Related Products - - - - - - - - - - - - - - - - -->
+                        
+                        <% if @blog.products.count < 4 %>
+								
+                            <%= render "module/blog_related_products_1" %>
+                            
+                        <% else %>
+                            
+                            <%= render "module/blog_related_products_2" %>
+                            
+                        <% end %>
+                        
+                        <!-- - - - - - - - - - - - - - End Related Products - - - - - - - - - - - - - - - - -->
+                        
                         <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
                         <div class="section_offset">

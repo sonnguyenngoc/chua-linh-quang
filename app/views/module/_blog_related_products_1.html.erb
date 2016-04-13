@@ -1,0 +1,29 @@
+<section class="section_offset">
+
+    <h3>Sản phẩm liên quan</h3>
+
+    <ul class="products_list_widget">
+        
+        <% @blog.products.each do |item| %>
+
+            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+            <li>
+                
+                <%= link_to image_tag(item.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.id }, class: "product_thumb", title: item.name %>
+    
+                <div class="wrapper">
+    
+                    <%= link_to truncate(strip_tags(item.name), length: 30), { controller: "product", action: "product", product_id: item.id }, class: "product_title", title: item.name %>
+    
+                </div>
+    
+            </li>
+    
+            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+        
+        <% end %>
+
+    </ul><!--/ .list_of_products-->
+
+</section>

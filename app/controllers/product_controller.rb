@@ -11,4 +11,10 @@ class ProductController < ApplicationController
     @title_head = "Trang sản phẩm"
     @product = Product.find(params[:product_id])
   end
+  
+  def quick_view
+    @product = Product.find(params[:product_id])
+    render :layout => false
+  end
+  
 end

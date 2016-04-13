@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :line_items
   root "home#index"
   
   # account
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   # end account
   
   # checkout
-  get "checkout/cart" => "checkout#cart", as: :cart
+  get "checkout/shopping_cart" => "checkout#shopping_cart", as: :shopping_cart
   get "checkout/checkout" => "checkout#checkout", as: :checkout
   get "opencart/checkout/success" => "checkout#success", as: :success
   # end checkout
@@ -57,7 +58,7 @@ Rails.application.routes.draw do
   get "product/category/:category_id" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
   get "product/product/:product_id" => "product#product", as: :product
-  get "product/quick_view" => "product#quick_view", as: :quick_view
+  get "product/quick_view/:product_id" => "product#quick_view", as: :quick_view
   get "product/search" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial
   get "product/testimonialform" => "product#testimonialform", as: :testimonialform
@@ -66,14 +67,13 @@ Rails.application.routes.draw do
   
   # resources
   resources :newsletters
-  resources :shopping_carts
   resources :contacts
   devise_for :users
+  resources :carts
   #end resources
 
-  namespace :admin do
+  namespace :admin, path: "hkpanel" do
     get "main" => "main#index"
-    resources :shopping_carts
     resources :products
     resources :categories
     resources :manufacturers

@@ -44,7 +44,21 @@
     
                             <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
                             
-                            <!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
+                            <!-- - - - - - - - - - - - - - Related Articles - - - - - - - - - - - - - - - - -->
+
+                            <% if @product.articles.count < 4 %>
+								
+								<%= render "module/product_related_blogs_1" %>
+								
+							<% else %>
+								
+								<%= render "module/product_related_blogs_2" %>
+								
+							<% end %>
+    
+                            <!-- - - - - - - - - - - - - - End of related articles - - - - - - - - - - - - - - - - -->
+							
+							<!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
 
                             <section class="infoblock type_2">
 
@@ -66,7 +80,27 @@
                             
                             <!-- - - - - - - - - - - - - - End of bestseller products - - - - - - - - - - - - - - - - -->
                             
-                        </aside>
+							<!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
+							
+							<div class="section_offset">
+
+								<section class="infoblock type_2">
+
+									<i class="icon-lock"></i>
+
+									<h4 class="caption"><b>Safe &amp; Secure Payment</b></h4>
+
+									<p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna.</p>
+
+									<a href="#" class="button_dark_grey middle_btn">Read More</a>
+
+								</section><!--/ .infoblock.type_2-->
+
+							</div>
+							
+							<!-- - - - - - - - - - - - - - End infoblock - - - - - - - - - - - - - - - - -->
+						
+						</aside>
 
                         <main class="col-md-9 col-sm-8">
 
@@ -241,7 +275,7 @@
 
 										<div class="buttons_row">
 
-											<button class="button_blue middle_btn">Thêm vào giỏ hàng</button>
+											<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart" %>
 
 											<button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào mục yêu thích</span></button>
 
@@ -543,7 +577,7 @@
 				
 																<div class="centered_buttons">
 				
-																	<a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+																	<a href="#" class="button_dark_grey quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
 				
 																	<a href="#" class="button_blue">Thêm giỏ hàng</a>
 				

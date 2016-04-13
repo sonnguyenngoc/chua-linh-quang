@@ -67,6 +67,12 @@
                             </div>
                             
                             <div class="panel-body">
+                                <% if notice.present? %>
+                                    <div class="alert alert-success alert-styled-left">
+                                        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                        <span class="text-semibold"><%= notice %></span>
+                                    </div>
+                                <% end %>
                                 <%= render 'form' %>
                             </div>
             

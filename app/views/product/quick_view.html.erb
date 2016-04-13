@@ -16,7 +16,7 @@
 
 			<div class="image_preview_container" id="qv_preview">
 
-				<img id="img_zoom" data-zoom-image="images/qv_large_1.JPG" src="images/qv_img_1.jpg" alt="">
+				<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
 
 			</div><!--/ .image_preview_container-->
 
@@ -28,13 +28,11 @@
 
 				<div class="owl_carousel" id="thumbnails">
 				
-					<img src="images/qv_thumb_1.jpg" data-large-image="images/qv_img_1.jpg" alt="">
+					<% @product.product_images.each do |item| %>
 
-					<img src="images/qv_thumb_2.jpg" data-large-image="images/qv_img_2.jpg" alt="">
-
-					<img src="images/qv_thumb_3.jpg" data-large-image="images/qv_img_3.jpg" alt="">
-
-					<img src="images/qv_thumb_4.jpg" data-large-image="images/qv_img_4.jpg" alt="">
+						<img src="<%= item.image_url.small_image %>" data-large-image="<%= item.image_url.large_image %>" alt="">
+					
+					<% end %>
 
 				</div><!--/ .owl-carousel-->
 
@@ -45,8 +43,6 @@
 			<!-- - - - - - - - - - - - - - Share - - - - - - - - - - - - - - - - -->
 			
 			<div class="v_centered">
-
-				<span class="title">Share this:</span>
 
 				<div class="addthis_widget_container">
 					<!-- AddThis Button BEGIN -->
@@ -73,7 +69,7 @@
 
 		<div class="single_product_description">
 
-			<h3><a href="#">Ivory Body Wash, Original 24 fl oz</a></h3>
+			<h3><%= @product.name %></h3>
 
 			<div class="description_section v_centered">
 
@@ -112,22 +108,22 @@
 
 						<tr>
 
-							<td>Manufacturer: </td>
-							<td><a href="#">Chanel</a></td>
+							<td>Thương hiệu sản phẩm: </td>
+							<td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: @product.manufacturer_id } %></td>
 
 						</tr>
 
 						<tr>
 
-							<td>Availability: </td>
-							<td><span class="in_stock">in stock</span> 20 item(s)</td>
+							<td>Mã sản phẩm: </td>
+							<td><%= @product.code %></td>
 
 						</tr>
 
 						<tr>
 
-							<td>Product Code: </td>
-							<td>PS06</td>
+							<td>Trạng thái: </td>
+							<td><span class="in_stock">Có hàng</span></td>
 
 						</tr>
 
@@ -141,41 +137,19 @@
 
 			<div class="description_section">
 
-				<p>Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna.</p>
-
+				<p class="text-justify"><%= @product.short_description %></p>
+				
 			</div>
 
 			<hr>
 
-			<p class="product_price"><s>$9.99</s> <b class="theme_color">$5.99</b></p>
-
-			<!-- - - - - - - - - - - - - - Product size - - - - - - - - - - - - - - - - -->
-
-			<div class="description_section_2 v_centered">
-				
-				<span class="title">Size:</span>
-
-				<div class="custom_select min">
-
-					<select>
-
-						<option value="Small">Small</option>
-						<option value="Middle">Middle</option>
-						<option value="Big">Big</option>
-
-					</select>
-
-				</div>
-
-			</div>
-
-			<!-- - - - - - - - - - - - - - End of product size - - - - - - - - - - - - - - - - -->
+			<p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
 
 			<!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
 
 			<div class="description_section_2 v_centered">
 				
-				<span class="title">Qty:</span>
+				<span class="title">Số lượng:</span>
 
 				<div class="qty min clearfix">
 
@@ -193,11 +167,11 @@
 
 			<div class="buttons_row">
 
-				<button class="button_blue middle_btn">Add to Cart</button>
+				<button class="button_blue middle_btn">Thêm vào giỏ hàng</button>
 
-				<button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Add to Wishlist</span></button>
+				<button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào mục yêu thích</span></button>
 
-				<button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Add to Compare</span></button>
+				<button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Thêm vào danh sách so sánh</span></button>
 
 			</div>
 

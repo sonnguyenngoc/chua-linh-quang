@@ -32,14 +32,13 @@
 
                                     <li><%= link_to "Trang chủ", root_path %></li>
                                     <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
-                                    <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "cart" } %></li>
+                                    <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "shopping_cart" } %></li>
                                     <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
                                     <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
                                     <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
                                     <li><%= link_to "FAQ", { controller: "information", action: "faq" } %></li>
                                     <li><a href="#" data-modal-url="/frontend/modals/login.html">Đăng nhập</a></li>
-                                    
-
+                                
                                 </ul>
 
                             </nav>
@@ -144,7 +143,7 @@
 
                                 <div class="shopping_cart_wrap">
 
-                                    <button id="open_shopping_cart" class="open_button" data-amount="2">
+                                    <button id="open_shopping_cart" class="open_button" data-amount="1">
                                         <b class="title">Giỏ hàng</b>
                                         <b class="total_price">600.000</b>
                                     </button>
