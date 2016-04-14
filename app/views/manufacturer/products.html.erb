@@ -170,7 +170,7 @@
         
                                                     <div class="image_wrap">
         
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
+                                                        <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
         
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
         
@@ -286,9 +286,9 @@
 
                                 <div class="left_side">
 
-                                <p><%= page_entries_info @products %> sản phẩm.</p>
-
-                            </div>
+                                    <p><%= page_entries_info @products %> sản phẩm.</p>
+    
+                                </div>
 
                                 <div class="right_side">
                                 

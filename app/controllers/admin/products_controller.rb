@@ -25,6 +25,7 @@ class Admin::ProductsController < ApplicationController
     10.times do
       @product.product_images.build
     end
+    @articles = Article.all
   end
 
   # GET /products/1/edit
@@ -34,6 +35,7 @@ class Admin::ProductsController < ApplicationController
     (10-@product.product_images.count).times do
       @product.product_images.build
     end
+    @articles = Article.all
   end
 
   # POST /products
@@ -53,6 +55,13 @@ class Admin::ProductsController < ApplicationController
         @product.areas << Area.find(id)
       end
     end
+    
+    @product.articles.clear
+    if params[:article_ids].present?
+      params[:article_ids].each do |id|      
+        @product.articles << Article.find(id)
+      end
+    end
 
     respond_to do |format|
       if @product.save
@@ -68,7 +77,6 @@ class Admin::ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    @product.categories.clear
     if params[:category_ids].present?
         @product.categories.clear
         params[:category_ids].each do |id|      
@@ -83,6 +91,14 @@ class Admin::ProductsController < ApplicationController
           @product.areas << Area.find(id)
         end
     end
+    
+    if params[:article_ids].present?
+      @product.articles.clear
+      params[:article_ids].each do |id|      
+        @product.articles << Article.find(id)
+      end
+    end
+    
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to edit_admin_product_path(@product.id), notice: 'Product was successfully updated.' }
@@ -112,6 +128,6 @@ class Admin::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :code, :quantity, :unit, :price, :tags, :short_description, :description, :manufacturer_id, :product_image_id, product_images_attributes: [:id, :image_url, :is_main, :_destroy])
+      params.require(:product).permit(:name, :code, :quantity, :unit, :price, :tags, :short_description, :description, :status, :manufacturer_id, :product_image_id, product_images_attributes: [:id, :image_url, :is_main, :_destroy])
     end
 end

@@ -57,16 +57,15 @@
                         <div class="panel panel-flat">
                             <div class="panel-heading">
                                 <h5 class="panel-title">New Article</h5>
-                                <div class="heading-elements">
-                                    <ul class="icons-list">
-                                        <li><a data-action="collapse"></a></li>
-                                        <li><a data-action="reload"></a></li>
-                                        <li><a data-action="close"></a></li>
-                                    </ul>
-                                </div>
                             </div>
                             
                             <div class="panel-body">
+                                <% if notice.present? %>
+                                    <div class="alert alert-success alert-styled-left">
+                                        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                        <span class="text-semibold"><%= notice %></span>
+                                    </div>
+                                <% end %>
                                 <%= render 'form' %>
                             </div>
             

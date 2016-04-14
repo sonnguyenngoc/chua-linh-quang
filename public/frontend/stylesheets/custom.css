@@ -82,3 +82,15 @@
     border-top: 1px solid #4ac4fa;
     border-botton: 1px solid #4ac4fa;
 }
+.select_header {
+    height: 40px;
+}
+.contact-line {
+    margin-bottom: 30px;
+}
+.not_found_404 {
+    font-size: 72px;
+}
+.not_found {
+    font-size: 22px;
+}

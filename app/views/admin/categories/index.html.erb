@@ -55,13 +55,13 @@
                         <%= link_to 'New Category', new_admin_category_path, class: 'btn btn-primary pull-right' %> 
                     </div>
                     <div class="filter-box">
-                        <%= form_for "" do |f| %>
+                        <%= form_for("", url: {controller: "categories", action: "search"}, method: "get") do |f| %>
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Parent Category</label>
+                                        <label class="" >Parent</label>
                                         <div>
-                                            <%= select_tag(:category_id, options_from_collection_for_select(Category.where(level: 1), :id, :name), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:parent_id, options_from_collection_for_select(Category.where(level: 1), :id, :name, :selected => params[:parent_id]), include_blank: "All", class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                     <div class="form-group">
                                         <label class="" >Sort By</label>
                                         <div>
-                                            <%= select_tag(:sort_by_id, options_for_select(Category.sort_by), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:sort_by, options_for_select(Category.sort_by, :selected => params[:sort_by]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                     <div class="form-group">
                                         <label class="" >Sort Order</label>
                                         <div>
-                                            <%= select_tag(:sort_orders, options_for_select(Category.sort_orders), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:sort_order, options_for_select(Category.sort_order, :selected => params[:sort_order]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -85,8 +85,8 @@
                                     <div class="form-group">
                                         <label class="" >Filter</label>
                                         <div class="input-group">
-                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword">
-                                            <a class="input-group-addon"><i class="icon-search4"></i></a>
+                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword" value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,6 @@
                         </thead>
                         <tbody>
                             <% @categories.each do |item| %>
-                                <% if item.parent.count == 0 %>
                                     <% item.update_level(1) %>
                                     <tr>
                                         <td>
@@ -134,67 +133,7 @@
                                             </ul>
                                         </td>
                                     </tr>
-                                    <% item.children.each do |child_1| %>
-                                        <% child_1.update_level(2) %>
-                                        <tr>
-                                            <td>
-                                                <%= link_to child_1.name.html_safe, edit_admin_category_path(child_1) %>
-                                            </td>
-                                            <td>
-                                                <%= child_1.description %>
-                                            </td>
-                                            <td><%= child_1.created_at.strftime("%d/%m/%Y") %></td>
-                                            <td class="text-center">
-                                                <ul class="icons-list">
-                                                    <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                            <i class="icon-menu9"></i>
-                                                        </a>
-                        
-                                                        <ul class="dropdown-menu dropdown-menu-right">
-                                                            <li>
-                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_category_path(child_1) %>
-                                                            </li>
-                                                            <li>
-                                                                <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, child_1], method: :delete, data: {confirm: 'Are you sure?'} %>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <% child_1.children.each do |child_2| %>
-                                            <% child_2.update_level(3) %>
-                                            <tr>
-                                                <td>
-                                                    <%= link_to child_2.name.html_safe, edit_admin_category_path(child_2) %>
-                                                </td>
-                                                <td>
-                                                    <%= child_2.description %>
-                                                </td>
-                                                <td><%= child_2.created_at.strftime("%d/%m/%Y") %></td>
-                                                <td class="text-center">
-                                                    <ul class="icons-list">
-                                                        <li class="dropdown">
-                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                                <i class="icon-menu9"></i>
-                                                            </a>
-                            
-                                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                                <li>
-                                                                    <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_category_path(child_2) %>
-                                                                </li>
-                                                                <li>
-                                                                    <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, child_2], method: :delete, data: {confirm: 'Are you sure?'} %>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        <% end %>
-                                    <% end %>
-                                <% end %>
+                                    
                             <% end %>
                         </tbody>
                     </table>

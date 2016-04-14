@@ -7,7 +7,6 @@ class BlogController < ApplicationController
   def show
     @title_head = "Chi tiết bài viết"
     @blog = Article.find(params[:blog_id])
-    @related_blog_posts = Article.get_related_blog_posts(params)
   end
   
   def article_category

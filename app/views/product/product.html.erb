@@ -44,7 +44,21 @@
     
                             <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
                             
-                            <!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
+                            <!-- - - - - - - - - - - - - - Related Articles - - - - - - - - - - - - - - - - -->
+
+                            <% if @product.articles.count < 4 %>
+								
+								<%= render "module/product_related_blogs_1" %>
+								
+							<% else %>
+								
+								<%= render "module/product_related_blogs_2" %>
+								
+							<% end %>
+    
+                            <!-- - - - - - - - - - - - - - End of related articles - - - - - - - - - - - - - - - - -->
+							
+							<!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
 
                             <section class="infoblock type_2">
 
@@ -66,208 +80,220 @@
                             
                             <!-- - - - - - - - - - - - - - End of bestseller products - - - - - - - - - - - - - - - - -->
                             
-                        </aside>
+							<!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
+							
+							<div class="section_offset">
+
+								<section class="infoblock type_2">
+
+									<i class="icon-lock"></i>
+
+									<h4 class="caption"><b>Safe &amp; Secure Payment</b></h4>
+
+									<p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna.</p>
+
+									<a href="#" class="button_dark_grey middle_btn">Read More</a>
+
+								</section><!--/ .infoblock.type_2-->
+
+							</div>
+							
+							<!-- - - - - - - - - - - - - - End infoblock - - - - - - - - - - - - - - - - -->
+						
+						</aside>
 
                         <main class="col-md-9 col-sm-8">
 
-                            <div class="clearfix">
+                            <!-- - - - - - - - - - - - - - Product images & description - - - - - - - - - - - - - - - - -->
 
-                                <!-- - - - - - - - - - - - - - Product image column - - - - - - - - - - - - - - - - -->
+							<section class="section_offset">
 
-                                <div class="single_product">
+								<div class="clearfix">
 
-                                    <!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
+									<!-- - - - - - - - - - - - - - Product image column - - - - - - - - - - - - - - - - -->
 
-                                    <div class="image_preview_container">
+									<div class="single_product">
 
-                                        <img id="img_zoom" data-zoom-image="/frontend/images/qv_large_1.JPG" src="/frontend/images/qv_img_1.jpg" alt="">
+										<!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
 
-                                        <button class="button_grey_2 icon_btn middle_btn open_qv"><i class="icon-resize-full-6"></i></button>
+										<div class="image_preview_container">
 
-                                    </div><!--/ .image_preview_container-->
+											<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
 
-                                    <!-- - - - - - - - - - - - - - End of image preview container - - - - - - - - - - - - - - - - -->
+											<button class="button_grey_2 icon_btn middle_btn open_qv"><i class="icon-resize-full-6"></i></button>
 
-                                    <!-- - - - - - - - - - - - - - Prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
-                                    
-                                    <div class="product_preview">
+										</div><!--/ .image_preview_container-->
 
-                                        <div class="owl_carousel" id="thumbnails">
-                                            
-                                            <a href="#" data-image="/frontend/images/qv_img_1.jpg" data-zoom-image="/frontend/images/qv_large_1.JPG">
+										<!-- - - - - - - - - - - - - - End of image preview container - - - - - - - - - - - - - - - - -->
 
-                                                <img src="/frontend/images/qv_thumb_1.jpg" data-large-image="/frontend/images/qv_img_1.jpg" alt="">
+										<!-- - - - - - - - - - - - - - Prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+										
+										<div class="product_preview">
 
-                                            </a>
+											<div class="owl_carousel" id="thumbnails">
+                                                
+                                                <% @product.product_images.each do |item| %>
+												
+                                                    <a href="#" data-image="<%= item.image_url.large_image %>" data-zoom-image="<%= item.image_url.big_image %>">
+    
+                                                        <img src="<%= item.image_url.small_image %>" data-large-image="<%= item.image_url.large_image %>" alt="">
+    
+                                                    </a>
+                                                
+                                                <% end %>
 
-                                            <a href="#" data-image="/frontend/images/qv_img_2.jpg" data-zoom-image="/frontend/images/qv_large_2.jpg">
+											</div><!--/ .owl-carousel-->
 
-                                                <img src="/frontend/images/qv_thumb_2.jpg" data-large-image="/frontend/images/qv_img_2.jpg" alt="">
+										</div><!--/ .product_preview-->
+										
+										<!-- - - - - - - - - - - - - - End of prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
 
-                                            </a>
+										<!-- - - - - - - - - - - - - - Share - - - - - - - - - - - - - - - - -->
+										
+										<div class="v_centered">
 
-                                            <a href="#" data-image="/frontend/images/qv_img_3.jpg" data-zoom-image="/frontend/images/qv_large_3.jpg">
+											<div class="addthis_widget_container">
+												<!-- AddThis Button BEGIN -->
+												<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+												<a class="addthis_button_preferred_1"></a>
+												<a class="addthis_button_preferred_2"></a>
+												<a class="addthis_button_preferred_3"></a>
+												<a class="addthis_button_preferred_4"></a>
+												<a class="addthis_button_compact"></a>
+												<a class="addthis_counter addthis_bubble_style"></a>
+												</div>
+												<!-- AddThis Button END -->
+											</div>
+											
+										</div>
+										
+										<!-- - - - - - - - - - - - - - End of share - - - - - - - - - - - - - - - - -->
 
-                                                <img src="/frontend/images/qv_thumb_3.jpg" data-large-image="/frontend/images/qv_img_3.jpg" alt="">
+									</div>
 
-                                            </a>
+									<!-- - - - - - - - - - - - - - End of product image column - - - - - - - - - - - - - - - - -->
 
-                                            <a href="#" data-image="/frontend/images/qv_img_4.jpg" data-zoom-image="/frontend/images/qv_large_4.JPG">
+									<!-- - - - - - - - - - - - - - Product description column - - - - - - - - - - - - - - - - -->
 
-                                                <img src="/frontend/images/qv_thumb_4.jpg" data-large-image="/frontend/images/qv_img_4.jpg" alt="">
+									<div class="single_product_description">
 
-                                            </a>
+										<h3 class="offset_title"><%= @product.name %></h3>
 
-                                        </div><!--/ .owl-carousel-->
+										<div class="description_section v_centered">
 
-                                    </div><!--/ .product_preview-->
-                                    
-                                    <!-- - - - - - - - - - - - - - End of prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+											<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+										
+											<ul class="rating">
 
-                                    <!-- - - - - - - - - - - - - - Share - - - - - - - - - - - - - - - - -->
-                                    
-                                    <div class="v_centered">
+												<li class="active"></li>
+												<li class="active"></li>
+												<li class="active"></li>
+												<li></li>
+												<li></li>
 
-                                        <div class="addthis_widget_container">
-                                            <!-- AddThis Button BEGIN -->
-                                            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-                                            <a class="addthis_button_preferred_1"></a>
-                                            <a class="addthis_button_preferred_2"></a>
-                                            <a class="addthis_button_preferred_3"></a>
-                                            <a class="addthis_button_preferred_4"></a>
-                                            <a class="addthis_button_compact"></a>
-                                            <a class="addthis_counter addthis_bubble_style"></a>
-                                            </div>
-                                            <!-- AddThis Button END -->
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                    <!-- - - - - - - - - - - - - - End of share - - - - - - - - - - - - - - - - -->
+											</ul>
+												
+											<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
 
-                                </div>
+											<!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
 
-                                <!-- - - - - - - - - - - - - - End of product image column - - - - - - - - - - - - - - - - -->
+											<ul class="topbar">
 
-                                <!-- - - - - - - - - - - - - - Product description column - - - - - - - - - - - - - - - - -->
+												<li><a href="#">3 Review(s)</a></li>
+												<li><a href="#">Add Your Review</a></li>
 
-                                <div class="single_product_description">
+											</ul>
 
-                                    <h3><%= @product.name %></h3>
+											<!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
 
-                                    <div class="description_section v_centered">
+										</div>
 
-                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                    
-                                        <ul class="rating">
+										<div class="description_section">
 
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li></li>
-                                            <li></li>
+											<table class="product_info">
 
-                                        </ul>
-                                            
-                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+												<tbody>
 
-                                        <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+													<tr>
 
-                                        <ul class="topbar">
+														<td>Thương hiệu sản phẩm: </td>
+														<td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: @product.manufacturer_id } %></td>
 
-                                            <li><a href="#">3 Review(s)</a></li>
-                                            <li><a href="#">Add Your Review</a></li>
+													</tr>
 
-                                        </ul>
+													<tr>
 
-                                        <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+														<td>Mã sản phẩm: </td>
+														<td><%= @product.code %></td>
 
-                                    </div>
+													</tr>
 
-                                    <div class="description_section">
+													<tr>
 
-                                        <table class="product_info">
+														<td>Trạng thái: </td>
+														<td><span class="in_stock">Có hàng</span></td>
 
-                                            <tbody>
+													</tr>
 
-                                                <tr>
+												</tbody>
 
-                                                    <td>Thương hiệu sản phẩm: </td>
-                                                    <td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "list" } %></td>
+											</table>
 
-                                                </tr>
+										</div>
 
-                                                <tr>
+										<hr>
 
-                                                    <td>Trạng thái: </td>
-                                                    <td><span class="in_stock">Còn trong kho</span> 20 sản phẩm.</td>
+										<div class="description_section">
 
-                                                </tr>
+											<p class="text-justify"><%= @product.short_description %></p>
 
-                                                <tr>
+										</div>
 
-                                                    <td>Mã sản phẩm: </td>
-                                                    <td><%= @product.code %></td>
+										<hr>
 
-                                                </tr>
+										<p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
 
-                                            </tbody>
+										<!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
 
-                                        </table>
+										<div class="description_section_2 v_centered">
+											
+											<span class="title">Số lượng:</span>
 
-                                    </div>
+											<div class="qty min clearfix">
 
-                                    <hr>
+												<button class="theme_button" data-direction="minus">&#45;</button>
+												<input type="text" name="" value="1">
+												<button class="theme_button" data-direction="plus">&#43;</button>
 
-                                    <div class="description_section">
+											</div>
 
-                                        <p class="text-justify"><%= @product.short_description %></p>
+										</div>
 
-                                    </div>
-                                    
-                                    <hr>
+										<!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
 
-                                    <p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+										<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
 
-                                    <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
+										<div class="buttons_row">
 
-                                    <div class="description_section_2 v_centered">
-                                        
-                                        <span class="title">Số lượng:</span>
+											<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart" %>
 
-                                        <div class="qty min clearfix">
+											<button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào mục yêu thích</span></button>
 
-                                            <button class="theme_button" data-direction="minus">&#45;</button>
-                                            <input type="text" name="" value="1">
-                                            <button class="theme_button" data-direction="plus">&#43;</button>
+											<button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Thêm vào danh sách so sánh</span></button>
+											
+											<a href="#tab-questions" data-toggle="tooltip" class="button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container"><span class="tooltip top">Câu hỏi về sản phẩm</span></a>
 
-                                        </div>
+										</div>
 
-                                    </div>
+										<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
 
-                                    <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
+									</div>
 
-                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+									<!-- - - - - - - - - - - - - - End of product description column - - - - - - - - - - - - - - - - -->
 
-                                    <div class="buttons_row">
+								</div>
 
-                                        <button class="button_blue middle_btn">Thêm giỏ hàng</button>
-
-                                        <button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào danh sách yêu thích</span></button>
-
-                                        <button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Thêm vào so sánh sản phẩm</span></button>
-                                        
-                                        <a href="#tab-questions" data-toggle="tooltip" class="button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container"><span class="tooltip top">Câu hỏi về sản phẩm</span></a>
-                                        
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of product description column - - - - - - - - - - - - - - - - -->
-
-                            </div>
+							</section><!--/ .section_offset -->
                             
                             <!-- - - - - - - - - - - - - - Tabs - - - - - - - - - - - - - - - - -->
 
@@ -295,9 +321,7 @@
             
                                         <div id="tab-description" class="tab_container">
             
-                                            <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue. Nam elit agna,endrerit sit amet, tincidunt ac, viverra sed, nulla.</p>
-            
-                                            <p>Donec porta diam eu massa. Quisque diam lorem, interdum vitae,dapibus ac, scelerisque vitae, pede. Donec eget tellus non erat lacinia fermentum. Donec in velit vel ipsum auctor pulvinar. Vestibulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. Lorem ipsum dolor sit amet, consectetuer adipisMauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in,auctor ut, ligula. </p>
+                                            <p class="text-justify"><%= @product.description.html_safe %></p>
             
                                         </div><!--/ #tab-1-->
             
@@ -534,438 +558,68 @@
                                             <!-- - - - - - - - - - - - - - Carousel of featured products - - - - - - - - - - - - - - - - -->
             
                                             <div class="owl_carousel carousel_in_tabs type_2">
+												
+												<% @product.get_related_products.each do |product| %>
                                                 
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-            
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-                                                
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-                                                
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-                                                
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-                                                
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-                                                
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-                                                
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                                                <div class="product_item">
-            
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="image_wrap">
-            
-                                                        <img src="/frontend/images/product_img_7.jpg" alt="">
-            
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-            
-                                                        <div class="actions_wrap">
-            
-                                                            <div class="centered_buttons">
-            
-                                                                <a href="#" class="button_dark_grey" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-            
-                                                                <a href="#" class="button_blue">Thêm giỏ hàng</a>
-            
-                                                            </div><!--/ .centered_buttons -->
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào giỏ hàng</span></a>
-            
-                                                            <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
-            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-            
-                                                    </div><!--/. image_wrap-->
-            
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-            
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                    <div class="description">
-            
-                                                        <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-            
-                                                        <div class="clearfix product_info">
-            
-                                                            <p class="product_price alignleft"><b>$5.99</b></p>
-            
-                                                        </div>
-            
-                                                    </div>
-            
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-            
-                                                </div><!--/ .product_item-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+													<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+				
+													<div class="product_item">
+				
+														<!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+				
+														<div class="image_wrap">
+				
+															<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+				
+															<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+				
+															<div class="actions_wrap">
+				
+																<div class="centered_buttons">
+				
+																	<a href="#" class="button_dark_grey quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
+				
+																	<a href="#" class="button_blue">Thêm giỏ hàng</a>
+				
+																</div><!--/ .centered_buttons -->
+				
+																<a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+				
+																<a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+				
+															</div><!--/ .actions_wrap-->
+															
+															<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+				
+														</div><!--/. image_wrap-->
+				
+														<!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+				
+														<!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+				
+														<div class="description">
+															
+															<div class="nowrap-ellipsis">
+																
+																<%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+															
+															</div>
+															
+															<div class="clearfix product_info">
+				
+																<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+				
+															</div>
+				
+														</div>
+				
+														<!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+				
+													</div><!--/ .product_item-->
+													
+													<!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+													
+												<% end %>
             
                                             </div><!--/ .sh_container-->
                                             
@@ -982,6 +636,74 @@
                             </div>
                                 
                             <!-- - - - - - - - - - - - - - End of tabs - - - - - - - - - - - - - - - - -->
+                            
+                            <section class="section_offset">
+
+								<h3 class="offset_title">Sản phẩm vừa xem</h3>
+
+								<div class="owl_carousel other_products">
+
+									<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+									<div class="product_item">
+
+										<!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+										<div class="image_wrap">
+
+											<img src="/frontend/images/product_img_6.jpg" alt="">
+
+											<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+											<div class="actions_wrap">
+
+												<div class="centered_buttons">
+
+													<a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+													<a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+
+												</div><!--/ .centered_buttons -->
+
+												<a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+
+												<a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+
+											</div><!--/ .actions_wrap-->
+											
+											<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+										</div><!--/. image_wrap-->
+
+										<!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+										<!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+										<div class="description">
+
+											<div class="nowrap-ellipsis">
+            
+                                                <a href="#" title="Adipiscing aliquet sed in lacus, Liqui-gels 24">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
+                                            
+                                            </div>
+
+											<div class="clearfix product_info">
+
+												<p class="product_price alignleft"><b>$75.39</b></p>
+
+											</div>
+
+										</div>
+
+										<!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+									</div><!--/ .product_item-->
+									
+									<!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+
+								</div><!--/ .owl_carousel -->
+
+							</section><!--/ .section_offset -->
 
                         </main><!--/ [col] -->
 
@@ -1020,8 +742,6 @@
     <%= javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-media.js' %>
     <%= javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-thumbs.js' %>
     <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
-    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
     <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
     <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>

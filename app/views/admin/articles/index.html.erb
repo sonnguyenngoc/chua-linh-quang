@@ -56,30 +56,38 @@
                     </div>
                     
                     <div class="filter-box">
-                        <%= form_for "" do |f| %>
+                        <%= form_for("", url: {controller: 'articles', action: 'search'}, method: "get") do |f| %>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Category</label>
+                                        <div>
+                                            <%= select_tag(:article_category_id, options_from_collection_for_select(ArticleCategory.all, :id, :name, :selected => params[:article_category_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" >Sort By</label>
                                         <div>
-                                            <%= select_tag(:sort_by_id, options_for_select(Article.sort_by), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:sort_by, options_for_select(Article.sort_by, :selected => params[:sort_by]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" >Sort Order</label>
                                         <div>
-                                            <%= select_tag(:sort_orders, options_for_select(Article.sort_orders), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:sort_order, options_for_select(Article.sort_orders, :selected => params[:sort_order]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" >Filter</label>
                                         <div class="input-group">
-                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword">
-                                            <a class="input-group-addon"><i class="icon-search4"></i></a>
+                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword" value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
                                         </div>
                                     </div>
                                 </div>

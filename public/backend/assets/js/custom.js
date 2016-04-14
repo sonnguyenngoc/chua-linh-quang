@@ -7,4 +7,7 @@ $(document).ready(function () {
     $(".filter-box .keyword_search_button").click(function() {
         $(this).parents("form").submit();
     });
+    
+    // select2
+    $(".select").select2();
 });

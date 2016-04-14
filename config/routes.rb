@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :line_items
   root "home#index"
   
   # account
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # end account
   
   # checkout
-  get "checkout/cart" => "checkout#cart", as: :cart
+  get "checkout/shopping_cart" => "checkout#shopping_cart", as: :shopping_cart
   get "checkout/checkout" => "checkout#checkout", as: :checkout
   get "opencart/checkout/success" => "checkout#success", as: :success
   # end checkout
@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   # information
   get "information/about_us" => "information#about_us", as: :about_us
   get "information/contact_us" => "information#contact_us", as: :contact_us
+  get "information/finish_contact_us" => "information#finish_contact_us", as: :finish_contact_us
+  get "information/finish_newsletter" => "information#finish_newsletter", as: :finish_newsletter
   get "information/delivery" => "information#delivery", as: :delivery
   get "information/faq" => "information#faq", as: :faq
   get "information/privacy_policy" => "information#privacy_policy", as: :privacy_policy
@@ -53,12 +55,11 @@ Rails.application.routes.draw do
   get "manufacturer/products/:manufacturer_id" => "manufacturer#products", as: :products
   # end manufacturer
   
-  
   # product
   get "product/category/:category_id" => "product#category", as: :category
   get "product/comparison" => "product#comparison", as: :comparison
-  get "product/product" => "product#product", as: :product
-  get "product/quick_view" => "product#quick_view", as: :quick_view
+  get "product/product/:product_id" => "product#product", as: :product
+  get "product/quick_view/:product_id" => "product#quick_view", as: :quick_view
   get "product/search" => "product#search", as: :search
   get "product/testimonial" => "product#testimonial", as: :testimonial
   get "product/testimonialform" => "product#testimonialform", as: :testimonialform
@@ -67,11 +68,12 @@ Rails.application.routes.draw do
   
   # resources
   resources :newsletters
-  resources :shopping_carts
+  resources :contacts
+  devise_for :users
+  resources :carts
   #end resources
 
-
-  namespace :admin do
+  namespace :admin, path: "hkpanel" do
     get "main" => "main#index"
     resources :shopping_carts
     resources :products do
@@ -79,11 +81,32 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
-    resources :categories
-    resources :manufacturers
-    resources :articles
-    resources :article_categories
-    resources :areas
+    resources :categories do
+      collection do
+        get 'search'
+      end
+    end
+    resources :manufacturers do
+      collection do
+        get 'search'
+      end
+    end
+    resources :articles do
+      collection do
+        get 'search'
+      end
+    end
+    resources :article_categories do
+      collection do
+        get 'search'
+      end
+    end
+    resources :areas do
+      collection do
+        get 'search'
+      end
+    end
     resources :newsletters
+    resources :contacts
   end
 end

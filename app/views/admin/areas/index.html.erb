@@ -56,13 +56,13 @@
                     </div>
                     
                     <div class="filter-box">
-                        <%= form_for "" do |f| %>
+                        <%= form_for("", url: {controller: 'areas', action: 'search'}, method: "get") do |f| %>
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" >Parent</label>
                                         <div>
-                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.where(level: 1), :id, :name), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <label class="" >Sort By</label>
                                         <div>
-                                            <%= select_tag(:sort_by_id, options_for_select(Area.sort_by), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:sort_by, options_for_select(Area.sort_by, :selected => params[:sort_by]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                     <div class="form-group">
                                         <label class="" >Sort Order</label>
                                         <div>
-                                            <%= select_tag(:sort_orders, options_for_select(Area.sort_orders), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:sort_order, options_for_select(Area.sort_order, :selected => params[:sort_order]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -86,8 +86,8 @@
                                     <div class="form-group">
                                         <label class="" >Filter</label>
                                         <div class="input-group">
-                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword">
-                                            <a class="input-group-addon"><i class="icon-search4"></i></a>
+                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword" value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -99,6 +99,7 @@
                         <thead>
                             <tr class="bg-teal-800">
                                 <th>Name</th>
+                                <th>Parent</th>
                                 <th>Description</th>
                                 <th>Created At</th>
                                 <th class="text-center">Actions</th>
@@ -108,7 +109,10 @@
                             <% @areas.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to item.get_name_area, edit_admin_area_path(item) %>
+                                        <%= link_to item.name, edit_admin_area_path(item) %>
+                                    </td>
+                                    <td>
+                                        <%= item.get_parent_name %>
                                     </td>
                                     <td>
                                         <%= item.description %>

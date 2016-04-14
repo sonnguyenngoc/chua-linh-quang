@@ -4,7 +4,12 @@ class Admin::AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @areas = Area.all.paginate(:page => params[:page], :per_page => 10)
+    @areas = Area.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @areas = Area.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/areas/index"
   end
 
   # GET /areas/1

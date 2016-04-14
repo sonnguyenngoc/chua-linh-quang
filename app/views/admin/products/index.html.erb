@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label class="" >Manufacturer</label>
                                         <div>
-                                            <%= select_tag(:manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name, :selected => params[:manufacturer_id]),  include_blank: "All", class: "select") %>
+                                            <%= select_tag(:manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name, :selected => params[:manufacturer_id]), include_blank: "All", class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                     <div class="form-group">
                                         <label class="" >Sort Order</label>
                                         <div>
-                                            <%= select_tag(:sort_order, options_for_select(Product.sort_orders, :selected => params[:sort_order]), class: "select") %>
+                                            <%= select_tag(:sort_order, options_for_select(Product.sort_order, :selected => params[:sort_order]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -130,6 +130,7 @@
                                 <th>Quantity</th>
                                 <th>Categories</th>
                                 <th>Manufacturer</th>
+                                <th>Status</th>
                                 <th>Created At</th>
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -141,11 +142,16 @@
                                         <%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %>
                                         <br/><%= item.code %>
                                     </td>
-                                    <td><%= item.price %></td>
+                                    <td><%= format_number(item.price) %> đ</td>
                                     <td><%= item.quantity %> (<%= item.unit %>)</td>
-                                    <td><%= item.categories.map(&:name).join("<br/>").html_safe %></td>
+                                    <td>
+                                        <%= item.categories.map(&:name).join("<br/>").html_safe %>
+                                    </td>
                                     <td>
                                         <%= item.manufacturer.name %>
+                                    </td>
+                                    <td>
+                                        <%= item.status %>
                                     </td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
@@ -205,7 +211,3 @@
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/javascripts/datatables_products.js' %>
 <!-- /theme JS files -->
-
-<script>
-    $(".select").select2();
-</script>

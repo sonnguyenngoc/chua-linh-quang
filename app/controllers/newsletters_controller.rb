@@ -1,11 +1,5 @@
-class Admin::NewslettersController < ApplicationController
-
-  # GET /newsletters/new
-  def new
-    @newsletter = Newsletter.new
-  end
-
-
+class NewslettersController < ApplicationController
+  
   # POST /newsletters
   # POST /newsletters.json
   def create
@@ -13,7 +7,7 @@ class Admin::NewslettersController < ApplicationController
 
     respond_to do |format|
       if @newsletter.save
-        format.html { redirect_to [:admin, @newsletter], notice: 'Cảm ơn bạn đã đăng ký nhận tin mới từ website chúng tôi.' }
+        format.html { redirect_to controller: "information", action: "finish_newsletter" }
         format.json { render :show, status: :created, location: @newsletter }
       else
         format.html { render :new }

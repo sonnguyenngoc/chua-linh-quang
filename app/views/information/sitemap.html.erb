@@ -20,14 +20,14 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Sitemap</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li><%= @title_head %></li>
 
                 </ul>
 
                 <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
 
-                <h1>Sitemap</h1>
+                <h1><%= @title_head %></h1>
 
                 <div class="theme_box clearfix">
 
@@ -43,14 +43,15 @@
 
                             <section class="section_offset">
 
-                                <h4>Tài khoản</h4>
+                                <h4>Trang thông tin</h4>
 
                                 <ul class="list_type_5 links">
-                                    <li><a href="additional_page_about.html">Giới thiệu</a></li>
-                                    <li><a href="additional_page_contact.html">Liên hệ</a></li>
+                                    <li><a href="additional_page_about.html">Về chúng tôi</a></li>
+                                    <li><a href="additional_page_contact.html">Thông tin giao hàng</a></li>
+                                    <li><a href="additional_page_404.html">Chính sách bảo mật</a></li>
+                                    <li><a href="additional_page_sitemap.html">Điều khoản sử dụng dịch vụ</a></li>
                                     <li><a href="additional_page_faq.html">FAQ</a></li>
-                                    <li><a href="additional_page_404.html">404 Page</a></li>
-                                    <li><a href="additional_page_sitemap.html">Sitemap</a></li>
+                                    <li><a href="additional_page_contact.html">Liên hệ</a></li>
                                 </ul>
 
                             </section><!--/ .section_offset -->

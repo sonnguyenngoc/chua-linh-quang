@@ -14,8 +14,9 @@
     <div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
             <li class="active"><a href="#control-tab1" data-toggle="tab">Product Info</a></li>
-            <li><a href="#control-tab2" data-toggle="tab">Product Intro </a></li>
-            <li><a href="#control-tab3" data-toggle="tab">Product Images </a></li>
+            <li><a href="#control-tab2" data-toggle="tab">Product Status </a></li>
+            <li><a href="#control-tab3" data-toggle="tab">Product Intro </a></li>
+            <li><a href="#control-tab4" data-toggle="tab">Product Images </a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane has-padding active" id="control-tab1">
@@ -51,7 +52,7 @@
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" >Categories <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
-                        <select name="category_ids[]" class="select-item-color" data-placeholder="Categories....." multiple="multiple">
+                        <select name="category_ids[]" class="select select-item-color" data-placeholder="Categories....." multiple="multiple">
                             <% @categories.each do |item| %>
                                 <% if item.level == 1 %>
                                     <option <%= "selected" if @product.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
@@ -70,7 +71,7 @@
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" >Areas <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
-                        <select name="area_ids[]" class="select-item-color" data-placeholder="Areas....." multiple="multiple">
+                        <select name="area_ids[]" class="select select-item-color" data-placeholder="Areas....." multiple="multiple">
                             <% Area.get_select_options.each do |item| %>
                                 <option <%= "selected" if @product.areas.include?(item) %> value="<%= item.id %>"><%= item.get_name_area %></option>
                             <% end %>
@@ -99,13 +100,44 @@
                     </div>
                 </div>
                     
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Related Articles</label>
+                    <div class="col-lg-10">
+                        <select name="article_ids[]" class="select select-item-color" data-placeholder="Related Articles..." multiple="multiple">
+                            <% @articles.each do |item| %>
+                                <option <%= "selected" if @product.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+                    
                 <div class="text-right">
                     <%= button_tag 'Save <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
                     <%= link_to 'Cancel <i class="icon-cross3 position-right"></i>'.html_safe, admin_products_path, class: "btn btn-danger"%>
                 </div>
-
+                
             </div>
+            
             <div class="tab-pane has-padding" id="control-tab2">
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Status</label>
+                    <div class="col-lg-10">
+                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="hot">Sản phẩm HOT</label>
+                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="new">Sản phẩm MỚI</label>
+                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="bestseller">Sản phẩm BÁN CHẠY</label>
+                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="prominent">Sản phẩm NỔI BẬT</label>
+                    </div>
+                </div>
+                    
+                <div class="text-right">
+                    <%= button_tag 'Save <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+                    <%= link_to 'Cancel <i class="icon-cross3 position-right"></i>'.html_safe, admin_products_path, class: "btn btn-danger"%>
+                </div>
+                    
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab3">
                 
                 <div class="form-group">
                     <label class="col-lg-2 control-label" >Introduction <span class='text-danger'>*</span></label>
@@ -119,7 +151,8 @@
                     <%= link_to 'Cancel <i class="icon-cross3 position-right"></i>'.html_safe, admin_products_path, class: "btn btn-danger"%>
                 </div>
             </div>
-            <div class="tab-pane has-padding" id="control-tab3">
+            
+            <div class="tab-pane has-padding" id="control-tab4">
                 
                 <div class="form-group">
                     <label class="col-lg-2 control-label" >Related Photos <span class='text-danger'>*</span></label>

@@ -20,8 +20,8 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Home</a></li>
-                    <li>Contact Us</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li><%= @title_head %></li>
 
                 </ul>
 
@@ -51,7 +51,7 @@
                         
                         <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
-                        <%= render 'module/blog_newsletter' %>
+                        <%= render 'module/newsletter' %>
 
                         <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
@@ -59,17 +59,15 @@
 
                     <main class="col-md-9 col-sm-8">
 
-                        <h1 class="page_title">Liên hệ</h1>
+                        <h1 class="page_title"><%= @title_head %></h1>
 
                         <section class="section_offset">
                             
                             <div class="theme_box">
 
-                                <p class="form_caption">Ut tellus dolor, dapibus eget, elementum vel, eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consecvtetuer adipiscing elit.</p>
-
                                 <!-- - - - - - - - - - - - - - Contact form - - - - - - - - - - - - - - - - -->
 
-                                <form novalidate enctype="multipart/form-data" class="contactform type_2" id="contact_form">
+                                <%= form_for @contact, html: {class: "type_2"} do |f| %>
 
                                     <ul>
                                     
@@ -77,15 +75,15 @@
 
                                             <div class="col-sm-6">
                                             
-                                                <label for="cf_name" class="required">Tên</label>
-                                                <input type="text" required name="cf_name" id="cf_name" title="Name">
+                                                <%= f.label "Họ và Tên", class: "required" %>
+                                                <%= f.text_field :name, required: true %>
 
                                             </div><!--/ [col]-->
 
                                             <div class="col-sm-6">
 
-                                                <label for="cf_email" class="required">Địa chỉ email</label>
-                                                <input type="email" required name="cf_email" id="cf_email" title="Email">
+                                                <%= f.label "Địa chỉ email", class: "required" %>
+                                                <%= f.email_field :email, required: true %>
 
                                             </div><!--/ [col]-->
 
@@ -95,18 +93,18 @@
 
                                             <div class="col-xs-12">
 
-                                                <label for="cf_message" class="required">Lời nhắn</label>
-                                                <textarea id="cf_message" required name="cf_message" title="Message" rows="6"></textarea>
+                                                <%= f.label "Lời nhắn", class: "required" %>
+                                                <%= f.text_area :message, rows: '10', required: true %>
 
                                             </div><!--/ [col]-->
 
                                         </li><!--/ .row -->
                                         
-                                        <button class="button_dark_grey middle_btn alignright" type="submit">Gửi lời nhắn</button>
+                                        <%= f.submit 'Gửi lời nhắn', class: 'button_dark_grey middle_btn alignright' %>
 
                                     </ul>
 
-                                </form><!--/ .contactform -->
+                                <% end %><!--/ .contactform -->
 
                                 <!-- - - - - - - - - - - - - - End of contact form - - - - - - - - - - - - - - - - -->
                             
