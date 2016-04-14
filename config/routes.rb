@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :line_items
   root "home#index"
   
   # account
@@ -9,7 +8,7 @@ Rails.application.routes.draw do
   get "account/my_account" => "account#my_account", as: :my_account
   get "account/wishlist" => "account#wishlist", as: :wishlist
   get "account/register" => "account#register", as: :register
-  get "account/order" => "account#order", as: :order
+  get "account/order" => "account#order", as: :account_order
   get "account/order/info" => "account#order_info", as: :order_info
   get "account/address" => "account#address", as: :address
   get "account/address/edit" => "account#address_edit", as: :address_edit
@@ -28,7 +27,7 @@ Rails.application.routes.draw do
   # checkout
   get "checkout/shopping_cart" => "checkout#shopping_cart", as: :shopping_cart
   get "checkout/checkout" => "checkout#checkout", as: :checkout
-  get "opencart/checkout/success" => "checkout#success", as: :success
+  get "checkout/success" => "checkout#success", as: :success
   # end checkout
   
   # blog
@@ -70,7 +69,10 @@ Rails.application.routes.draw do
   resources :contacts
   devise_for :users
   resources :carts
-  #end resources
+  resources :line_items
+  resources :customers
+  resources :orders
+  #end of resources
 
   namespace :admin, path: "hkpanel" do
     get "main" => "main#index"
@@ -82,5 +84,5 @@ Rails.application.routes.draw do
     resources :areas
     resources :newsletters
     resources :contacts
-  end
+    end
 end
