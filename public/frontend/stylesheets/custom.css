@@ -17,6 +17,10 @@
     font: normal normal normal 14px/1 FontAwesome;
     font-size: 18px;
 }
+.fa-refresh:before {
+    font-size: 14px;
+    line-height: 28px;
+}
 .image_centered {
     max-height: 245px;
     margin: 0;
@@ -93,4 +97,24 @@
 }
 .not_found {
     font-size: 22px;
+}
+.min {
+    width: 92px;
+    text-align: left;
+}
+.qty_input {
+    width: 50px !important;
+    text-align: left;
+}
+.product_title_col {
+    width: 26.35% !important;
+}
+.product_manufacturer_col {
+    width: 170px;
+}
+.product_qty_col {
+    width: 97px;
+}
+.align_shopping_cart {
+    width: 110% !important;
 }

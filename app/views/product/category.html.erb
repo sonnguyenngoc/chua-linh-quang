@@ -176,8 +176,16 @@
                                                 <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
     
                                                 <div class="image_wrap">
-    
-                                                    <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                    
+                                                    <% if product.get_main_image.present? %>
+																
+                                                        <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                    
+                                                    <% else %>
+                                                        
+                                                        <img src="/frontend/images/medium_image.png" alt="">
+                                                    
+                                                    <% end %>
     
                                                     <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
     
@@ -186,8 +194,8 @@
                                                         <div class="centered_buttons">
                                                             
                                                             <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
-    
-                                                            <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+                                                            
+                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
     
                                                         </div><!--/ .centered_buttons -->
     

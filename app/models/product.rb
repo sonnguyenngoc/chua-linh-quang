@@ -80,7 +80,8 @@ class Product < ActiveRecord::Base
   end
   
   def get_main_image
-    product_images.where(is_main: "True").order("updated_at DESC").first
+    image = product_images.where(is_main: "True").order("updated_at DESC").first
+    
   end
   
   def get_related_products
@@ -93,6 +94,10 @@ class Product < ActiveRecord::Base
     return records
   end
 
+  
+  def statuses
+    status.to_s.split(",")
+  end
   
   private
     # ensure that there are no line items referencing this product

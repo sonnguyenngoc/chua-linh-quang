@@ -69,7 +69,7 @@
 
 		<div class="single_product_description">
 
-			<h3><%= @product.name %></h3>
+			<h3><%= link_to @product.name, { controller: "product", action: "product", product_id: @product } %></h3>
 
 			<div class="description_section v_centered">
 

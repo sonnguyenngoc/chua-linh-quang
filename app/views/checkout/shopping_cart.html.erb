@@ -1,1410 +1,391 @@
 <body>
 
-  <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
-
-  <div class="wide_layout">
-
-      <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-      <%= render 'home/header' %>
-      
-      <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-      <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-      <div class="secondary_page_wrapper">
-
-          <div class="container">
-
-              <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-              <ul class="breadcrumbs">
-
-                  <li><a href="<%= root_path %>">Trang chủ</a></li>
-                  <li>Giỏ hàng</li>
-
-              </ul>
-
-              <section class="section_offset">
-
-                  <h1>Giỏ hàng</h1>
-
-                  <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
-
-                  <div class="table_wrap">
-
-                      <table class="table_type_1 shopping_cart_table">
-
-                          <thead>
-
-                              <tr>
-                                  <th class="product_image_col">Product Image</th>
-                                  <th class="product_title_col">Product Name</th>
-                                  <th>SKU</th>
-                                  <th>Price</th>
-                                  <th class="product_qty_col">Quantity</th>
-                                  <th>Total</th>
-                                  <th class="product_actions_col">Action</th>
-                              </tr>
-
-                          </thead>
-
-                          <tbody>
-
-                              <tr>
-
-                                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                                      
-                                  <td class="product_image_col" data-title="Product Image">
-                                      
-                                      <a href="#"><img src="/frontend/images/shopping_cart_img_3.jpg" alt=""></a>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Product Name">
-
-                                      <a href="#" class="product_title">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-
-                                      <ul class="sc_product_info">
-
-                                          <li>Size: Big</li>
-                                          <li>Color: Red</li>
-
-                                      </ul>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - SKU - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="SKU">
-
-                                      PS01
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of SKU - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
-
-                                  <td class="subtotal" data-title="Price">
-                                      
-                                      $5.99
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Quantity">
-
-                                      <div class="qty min clearfix">
-
-                                          <button class="theme_button" data-direction="minus">&#45;</button>
-                                          <input type="text" name="" value="1">
-                                          <button class="theme_button" data-direction="plus">&#43;</button>
-
-                                      </div><!--/ .qty.min.clearfix-->
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
-
-                                  <td class="total" data-title="Total">
-
-                                      $5.99
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Action">
-
-                                      <a href="#" class="button_dark_grey icon_btn edit_product"><i class="icon-pencil"></i></a>
-
-                                      <a href="#" class="button_dark_grey icon_btn remove_product"><i class="icon-cancel-2"></i></a>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of action - - - - - - - - - - - - - - - - -->
-
-                              </tr>
-
-                              <tr>
-
-                                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                                      
-                                  <td class="product_image_col" data-title="Product Image">
-                                      
-                                      <a href="#"><img src="/frontend/images/shopping_cart_img_2.jpg" alt=""></a>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Product Name">
-
-                                      <a href="#" class="product_title">Sed in lacus ut enim adipiscing dictum elementum velit Relief 4.25 fl oz (126ml)</a>
-
-                                      <ul class="sc_product_info">
-
-                                          <li>Size: Big</li>
-                                          <li>Color: Red</li>
-
-                                      </ul>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - SKU - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="SKU">
-
-                                      PS02
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of SKU - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
-
-                                  <td class="subtotal" data-title="Price">
-                                      
-                                      $8.99
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Quantity">
-
-                                      <div class="qty min clearfix">
-
-                                          <button class="theme_button" data-direction="minus">&#45;</button>
-                                          <input type="text" name="" value="1">
-                                          <button class="theme_button" data-direction="plus">&#43;</button>
-
-                                      </div><!--/ .qty.min.clearfix-->
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
-
-                                  <td class="total" data-title="Total">
-
-                                      $8.99
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Action">
-
-                                      <a href="#" class="button_dark_grey icon_btn edit_product"><i class="icon-pencil"></i></a>
-
-                                      <a href="#" class="button_dark_grey icon_btn remove_product"><i class="icon-cancel-2"></i></a>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of action - - - - - - - - - - - - - - - - -->
-
-                              </tr>
-
-                              <tr>
-
-                                  <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                                      
-                                  <td class="product_image_col" data-title="Product Image">
-                                      
-                                      <a href="#"><img src="/frontend/images/shopping_cart_img_1.jpg" alt=""></a>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Product Name">
-
-                                      <a href="#" class="product_title">Donec porta diam eu massa quisque Mint 160 ea</a>
-
-                                      <ul class="sc_product_info">
-
-                                          <li>Size: Big</li>
-                                          <li>Color: Red</li>
-
-                                      </ul>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - SKU - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="SKU">
-
-                                      PS03
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of SKU - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
-
-                                  <td class="subtotal" data-title="Price">
-                                      
-                                      $76.99
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Quantity">
-
-                                      <div class="qty min clearfix">
-
-                                          <button class="theme_button" data-direction="minus">&#45;</button>
-                                          <input type="text" name="" value="1">
-                                          <button class="theme_button" data-direction="plus">&#43;</button>
-
-                                      </div><!--/ .qty.min.clearfix-->
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
-
-                                  <td class="total" data-title="Total">
-
-                                      $76.99
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
-
-                                  <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
-
-                                  <td data-title="Action">
-
-                                      <a href="#" class="button_dark_grey icon_btn edit_product"><i class="icon-pencil"></i></a>
-
-                                      <a href="#" class="button_dark_grey icon_btn remove_product"><i class="icon-cancel-2"></i></a>
-
-                                  </td>
-
-                                  <!-- - - - - - - - - - - - - - End of action - - - - - - - - - - - - - - - - -->
-
-                              </tr>
-
-                          </tbody>
-
-                      </table>
-
-                  </div><!--/ .table_wrap -->
-
-                  <footer class="bottom_box on_the_sides">
-
-                      <div class="left_side">
-
-                          <a href="#" class="button_blue middle_btn">Tiếp tục mua hàng</a>
-
-                      </div>
-
-                      <div class="right_side">
-
-                          <a href="#" class="button_grey middle_btn">Xoá giỏ hàng</a>
-
-                      </div>
-
-                  </footer><!--/ .bottom_box -->
-
-                  <!-- - - - - - - - - - - - - - End of shopping cart table - - - - - - - - - - - - - - - - -->
-
-              </section><!--/ .section_offset -->
-
-              <div class="section_offset">
-
-                  <div class="row">
-
-                      <section class="col-sm-4">
-
-                          <h3>Mã giảm giá</h3>
-
-                          <div class="theme_box">
-
-                              <p class="form_caption">Nhập mã số phiếu giảm giá của bạn nếu có</p>
-
-                              <form id="discount_code">
-
-                                  <ul>
-
-                                      <li class="row">
-
-                                          <div class="col-xs-12">
-
-                                              <input type="text" name="">
-
-                                          </div>
-
-                                      </li>
-
-                                  </ul>
-
-                              </form>
-
-                          </div><!--/ .theme_box -->
-
-                          <footer class="bottom_box">
-
-                              <button type="submit" form="discount_code" class="button_grey middle_btn">Sử dụng mã giảm giá</button>
-
-                          </footer>
-
-                      </section><!--/ [col] -->
-
-                      <section class="col-sm-4">
-
-                          <h3>Ước tính chi phí giao hàng và thuế</h3>
-
-                          <div class="theme_box">
-
-                              <p class="form_caption">Nhập địa chỉ của bạn vào bên dưới</p>
-
-                              <form id="estimate_shipping" class="type_2">
-
-                                  <ul>
-
-                                      <li class="row">
-                                          
-                                          <div class="col-xs-12">
-
-                                              <label>Tỉnh/TP</label>
-
-                                              <div class="custom_select">
-
-                                                  <select>
-                                                      
-                                                      <option value="Hanoi">Hà Nội</option>
-                                                      <option value="Danang">Đà Nẵng</option>
-                                                      <option value="HCM">TP.Hồ Chí Minh</option>
-                                                      <option selected value="Dalat">Đà Lạt</option>
-                                                      
-
-                                                  </select>
-
-                                              </div>
-
-                                          </div>
-
-                                      </li>
-
-                                      <li class="row">
-                                          
-                                          <div class="col-lg-7 col-md-6">
-
-                                              <label>Quận/Huyện/Thị xã</label>
-
-                                              <div class="custom_select">
-
-                                                  <select>
-
-                                                      <option value="Alabama">Thủ Đức</option>
-                                                      <option value="Illinois">12</option>
-                                                      <option value="Kansas">Gò Vấp</option>
-
-                                                  </select>
-
-                                              </div>
-
-                                          </div><!--/ [col] -->
-
-                                      </li>
-
-                                  </ul>
-
-                              </form>
-
-                          </div><!--/ .theme_box -->
-
-                          <footer class="bottom_box">
-
-                              <button type="submit" form="estimate_shipping" class="button_grey middle_btn">Nhận báo giá</button>
-
-                          </footer><!--/ .bottom_box -->
-
-                      </section><!--/ [col] -->
-
-                      <section class="col-sm-4">
-
-                          <h3>Tổng cộng tiền hàng</h3>
-
-                          <div class="table_wrap">
-
-                              <table class="zebra">
-
-                                  <tfoot>
-
-                                      <tr>
-                                              
-                                          <td>Tiền hàng</td>
-                                          <td>$146.78</td>
-
-                                      </tr>
-
-                                      <tr class="total">
-                                              
-                                          <td>Tổng cộng</td>
-                                          <td>$146.78</td>
-
-                                      </tr>
-
-                                  </tfoot>
-
-                              </table>
-
-                          </div>
-
-                          <footer class="bottom_box">
-
-                              <%= link_to "Tiến hành thanh toán", { controller: "checkout", action: "checkout" }, class: 'button_blue middle_btn' %>
-
-                              <div class="single_link_wrap">
-
-                                  <a href="#">Checkout with Multiple Addresses</a>
-
-                              </div>
-
-                          </footer>
-
-                      </section><!-- / [col] -->
-
-                  </div><!--/ .row -->
-
-              </div><!--/ .section_offset -->
-
-              <section class="section_offset">
-
-                  <h3 class="offset_title">Có thể bạn thích</h3>
-
-                  <!-- - - - - - - - - - - - - - Carousel of you might also like - - - - - - - - - - - - - - - - -->
-
-                  <div class="owl_carousel six_items">
-                      
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_18.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_offer percentage">
-
-                              <div>30%</div>OFF
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-
-                          <div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>
-
-                          <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Metus nulla facilisi, Original 24 fl oz</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><s>$9.99</s> <b>$5.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_19.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Tincidunt ac viverra nam elit agna endrerit 29 ea</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><b>$14.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_20.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_new">New</div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Lorem ipsum dolor sit amet...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><b>$73.99</b></p>
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_21.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_offer percentage">
-
-                              <div>15%</div>OFF
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-
-                          <div class="countdown" data-year="2016" data-month="1" data-day="31" data-hours="18" data-minutes="40" data-seconds="40"></div>
-
-                          <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Etiam cursus leo vel metus nulla facilisi...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><s>$5.99</s> <b>$2.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li></li>
-                                      <li></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_22.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Ut pharetra augue nec augue...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price alignleft"><b>$13.99</b></p>
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_23.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_hot">Hot</div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Integer rutrum ante eu lacus vestibulum...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><b>$21.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_18.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_offer percentage">
-
-                              <div>30%</div>OFF
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-
-                          <div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>
-
-                          <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Metus nulla facilisi, Original 24 fl oz</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><s>$9.99</s> <b>$5.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_19.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Tincidunt ac viverra nam elit agna endrerit 29 ea</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><b>$14.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_20.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_new">New</div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Lorem ipsum dolor sit amet...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><b>$73.99</b></p>
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_21.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_offer percentage">
-
-                              <div>15%</div>OFF
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-
-                          <div class="countdown" data-year="2016" data-month="1" data-day="31" data-hours="18" data-minutes="40" data-seconds="40"></div>
-
-                          <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Etiam cursus leo vel metus nulla facilisi...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><s>$5.99</s> <b>$2.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li></li>
-                                      <li></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_22.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Ut pharetra augue nec augue...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price alignleft"><b>$13.99</b></p>
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                      <div class="product_item">
-
-                          <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                          
-                          <div class="image_wrap">
-
-                              <img src="images/product_img_23.jpg" alt="">
-
-                              <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                              <div class="actions_wrap">
-
-                                  <div class="centered_buttons">
-
-                                      <a href="#" class="button_dark_grey quick_view" data-modal-url="modals/quick_view.html">Quick View</a>
-
-                                      <a href="#" class="button_blue add_to_cart">Add to Cart</a>
-
-                                  </div><!--/ .centered_buttons -->
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Add to Wishlist</span></a>
-
-                                  <a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Add to Compare</span></a>
-
-                              </div><!--/ .actions_wrap-->
-                              
-                              <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                          </div><!--/. image_wrap-->
-
-                          <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                          <div class="label_hot">Hot</div>
-
-                          <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                          <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                          <div class="description">
-
-                              <p><a href="#">Integer rutrum ante eu lacus vestibulum...</a></p>
-
-                              <div class="clearfix product_info">
-
-                                  <p class="product_price"><b>$21.99</b></p>
-
-                                  <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                  <ul class="rating">
-
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li class="active"></li>
-                                      <li></li>
-
-                                  </ul>
-
-                                  <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-
-                              </div><!--/ .clearfix.product_info-->
-
-                          </div>
-
-                          <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                      </div><!--/ .product_item-->
-                      
-                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                  </div><!--/ .owl_carousel-->
-                  
-                  <!-- - - - - - - - - - - - - - End of you might also like - - - - - - - - - - - - - - - - -->
-
-              </section>
-
-          </div><!--/ .container-->
-
-      </div><!--/ .page_wrapper-->
-      
-      <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-      <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-      <%= render 'home/footer' %>
-      
-      <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-  </div><!--/ [layout]-->
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
   
-  <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-  <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-  <%= render 'home/social_feeds' %>
-
-  <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    <div class="wide_layout">
   
-  <!-- Include Libs & Plugins
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-  <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-  <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-  <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-  <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-  <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-  <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
-  <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
-  <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-  <%= javascript_include_tag '/frontend/js/retina.min.js' %>
-  <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-  <!-- Theme files
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-  <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+  
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+  
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+  
+        <div class="secondary_page_wrapper">
+  
+            <div class="container">
+  
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+  
+                <ul class="breadcrumbs">
+  
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li><%= @title_head %></li>
+  
+                </ul>
+  
+                <section class="section_offset">
+  
+                    <h1><%= @title_head %></h1>
+                    
+                    <% if @cart.get_number_items > 0 %>
+                        
+                        <%= form_for @cart do |f| %>
+  
+                            <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
+          
+                            <div class="table_wrap">
+          
+                                <table class="table_type_1 shopping_cart_table">
+          
+                                    <thead>
+          
+                                        <tr>
+                                            <th class="product_image_col">Hình ảnh</th>
+                                            <th class="product_title_col">Tên sản phẩm / Thương hiệu sản phẩm</th>
+                                            <th>Mã</th>
+                                            <th>Giá</th>
+                                            <th class="product_qty_col">Số lượng</th>
+                                            <th>Tổng tiền</th>
+                                            <th class="product_actions_col"></th>
+                                        </tr>
+          
+                                    </thead>
+          
+                                    <tbody>
+                                        
+                                        <% @cart.line_items.each do |item| %>
+          
+                                            <tr>
+                                                
+                                                <input type="hidden" name="line_items[id]" value="<%= item.id %>">
+              
+                                                <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                                                    
+                                                <td class="product_image_col" data-title="Product Image">
+                                                    
+                                                    <%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product.id }, title: item.product.name %>
+              
+                                                </td>
+              
+                                                <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
+              
+                                                <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
+              
+                                                <td data-title="Product Name">
+                                                    
+                                                    <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_title" %><br/>
+              
+                                                    <%= link_to item.product.manufacturer.name, { controller: "manufacturer", action: "list"} %>
+                                                
+                                                </td>
+              
+                                                <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
+              
+                                                <!-- - - - - - - - - - - - - - SKU - - - - - - - - - - - - - - - - -->
+              
+                                                <td data-title="SKU">
+              
+                                                    <%= item.product.code %>
+              
+                                                </td>
+              
+                                                <!-- - - - - - - - - - - - - - End of SKU - - - - - - - - - - - - - - - - -->
+              
+                                                <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
+              
+                                                <td class="subtotal" data-title="Price">
+                                                    
+                                                    <%= format_number(item.product.price) %> đ
+              
+                                                </td>
+              
+                                                <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
+              
+                                                <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
+              
+                                                <td data-title="Quantity">
+              
+                                                    <div class="min clearfix">
+              
+                                                        <input class="display_inline qty_input" type="text" name="quantities[<%= item.id %>]" value="<%= item.quantity %>">
+              
+                                                    </div><!--/ .qty.min.clearfix-->
+              
+                                                </td>
+              
+                                                <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
+              
+                                                <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
+              
+                                                <td class="total" data-title="Total">
+              
+                                                    <%= format_number(item.total_item) %> đ
+              
+                                                </td>
+              
+                                                <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
+              
+                                                <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
+              
+                                                <td data-title="Action">
+                                                    
+                                                    <button type="submit" class="button_dark_grey icon_btn edit_product">
+                                                        <i class='fa fa-refresh'></i>
+                                                    </button>
+              
+                                                    <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"} %>
+                                                            
+                                                </td>
+              
+                                                <!-- - - - - - - - - - - - - - End of action - - - - - - - - - - - - - - - - -->
+              
+                                            </tr>
+                                            
+                                        <% end %>
+          
+                                    </tbody>
+          
+                                </table>
+          
+                            </div><!--/ .table_wrap -->
+      
+                        <footer class="bottom_box on_the_sides">
+      
+                            <div class="left_side">
+                                
+                                <%= link_to "Tiếp tục mua hàng", root_path, class: "button_blue middle_btn" %>
+      
+                            </div>
+                            
+                    <% end %>
+      
+                            <div class="right_side">
+                                
+                                 <%= button_to "Xóa giỏ hàng", @cart, class: "button_grey middle_btn", method: :delete %>
+      
+                            </div>
+      
+                        </footer><!--/ .bottom_box -->
+      
+                        <!-- - - - - - - - - - - - - - End of shopping cart table - - - - - - - - - - - - - - - - -->
+      
+                    </section><!--/ .section_offset -->
+      
+                    <div class="section_offset">
+      
+                        <div class="row">
+                            
+                            <section class="col-sm-4">
+      
+                                <h3>Sử dụng Voucher</h3>
+      
+                                <div class="theme_box">
+      
+                                    <p class="form_caption">Nhập mã số phiếu voucher (nếu có)</p>
+      
+                                    <form id="discount_code">
+      
+                                        <ul>
+      
+                                            <li class="row">
+      
+                                                <div class="col-xs-12">
+      
+                                                    <input type="text" name="">
+      
+                                                </div>
+      
+                                            </li>
+      
+                                        </ul>
+      
+                                    </form>
+      
+                                </div><!--/ .theme_box -->
+      
+                                <footer class="bottom_box">
+      
+                                    <button type="submit" form="discount_code" class="button_grey middle_btn">Áp dụng</button>
+      
+                                </footer>
+      
+                            </section><!--/ [col] -->
+                            
+                            <section class="col-sm-4">
+      
+                                <h3>Ước tính chi phí giao hàng và thuế</h3>
+      
+                                <div class="theme_box">
+      
+                                    <p class="form_caption">Nhập địa chỉ của bạn vào bên dưới</p>
+      
+                                    <form id="estimate_shipping" class="type_2">
+      
+                                        <ul>
+      
+                                            <li class="row">
+                                                
+                                                <div class="col-xs-12">
+      
+                                                    <label>Tỉnh/TP</label>
+      
+                                                    <div class="custom_select">
+      
+                                                        <select>
+                                                            
+                                                            <option value="Hanoi">Hà Nội</option>
+                                                            <option value="Danang">Đà Nẵng</option>
+                                                            <option value="HCM">TP.Hồ Chí Minh</option>
+                                                            <option selected value="Dalat">Đà Lạt</option>
+                                                            
+      
+                                                        </select>
+      
+                                                    </div>
+      
+                                                </div>
+      
+                                            </li>
+      
+                                            <li class="row">
+                                                
+                                                <div class="col-lg-7 col-md-6">
+      
+                                                    <label>Quận/Huyện/Thị xã</label>
+      
+                                                    <div class="custom_select">
+      
+                                                        <select>
+      
+                                                            <option value="Alabama">Thủ Đức</option>
+                                                            <option value="Illinois">12</option>
+                                                            <option value="Kansas">Gò Vấp</option>
+      
+                                                        </select>
+      
+                                                    </div>
+      
+                                                </div><!--/ [col] -->
+      
+                                            </li>
+      
+                                        </ul>
+      
+                                    </form>
+      
+                                </div><!--/ .theme_box -->
+      
+                                <footer class="bottom_box">
+      
+                                    <button type="submit" form="estimate_shipping" class="button_grey middle_btn">Nhận báo giá</button>
+      
+                                </footer><!--/ .bottom_box -->
+      
+                            </section><!--/ [col] -->
+      
+                            <section class="col-sm-4">
+      
+                                <h3>Tổng cộng tiền hàng</h3>
+      
+                                <div class="table_wrap">
+      
+                                    <table class="zebra">
+      
+                                        <tfoot>
+      
+                                            <tr>
+                                                    
+                                                <td>Tiền hàng</td>
+                                                <td><%= format_number(@cart.total_order) %> đ</td>
+      
+                                            </tr>
+                                            
+                                            <tr>
+                                                    
+                                                <td>Eco Tax (-2.00)</td>
+                                                <td>0 đ</td>
+      
+                                            </tr>
+                                            
+                                            <tr>
+                                                    
+                                                <td>VAT</td>
+                                                <td>0 đ</td>
+      
+                                            </tr>
+      
+                                            <tr class="total">
+                                                    
+                                                <td>Tổng cộng</td>
+                                                <td><%= format_number(@cart.total_order) %> đ</td>
+      
+                                            </tr>
+      
+                                        </tfoot>
+      
+                                    </table>
+      
+                                </div>
+      
+                                <footer class="bottom_box">
+      
+                                    <%= link_to "Tiến hành thanh toán", { controller: "checkout", action: "checkout" }, class: 'button_blue middle_btn' %>
+      
+                                </footer>
+      
+                            </section><!-- / [col] -->
+      
+                        </div><!--/ .row -->
+                        
+                    </div><!--/ .section_offset -->
+                    
+                <% else %>
+                    
+                    <p class="box">Giỏ hàng trống!</p>
+                
+                <% end %>   
+  
+            </div><!--/ .container-->
+  
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+  
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+  
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+  
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+  
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+  
+    <%= render 'module/social_feeds' %>
+  
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+  
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
   
 </body>

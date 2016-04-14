@@ -77,6 +77,7 @@ class Admin::ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+  
     if params[:category_ids].present?
         @product.categories.clear
         params[:category_ids].each do |id|      
@@ -98,6 +99,10 @@ class Admin::ProductsController < ApplicationController
         @product.articles << Article.find(id)
       end
     end
+    
+    # update status
+    @product.status.clear if params[:product][:status].present?
+    @product.status = params[:product][:status].join(",") if params[:product][:status].present?
     
     respond_to do |format|
       if @product.update(product_params)

@@ -123,10 +123,14 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" >Status</label>
                     <div class="col-lg-10">
-                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="hot">Sản phẩm HOT</label>
-                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="new">Sản phẩm MỚI</label>
-                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="bestseller">Sản phẩm BÁN CHẠY</label>
-                        <label class="checkbox-inline"><input type="checkbox" name="product[status][]" value="prominent">Sản phẩm NỔI BẬT</label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?("hot") %> type="checkbox" name="product[status][]" value="hot">Sản phẩm HOT</label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?("new") %> type="checkbox" name="product[status][]" value="new">Sản phẩm MỚI</label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?("bestseller") %> type="checkbox" name="product[status][]" value="bestseller">Sản phẩm BÁN CHẠY</label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?("prominent") %> type="checkbox" name="product[status][]" value="prominent">Sản phẩm NỔI BẬT</label>
                     </div>
                 </div>
                     

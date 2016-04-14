@@ -121,7 +121,7 @@
 
                             </div><!--/ .clearfix-->
 
-                            <div class="align_right v_centered">
+                            <div class="align_right v_centered align_shopping_cart">
 
                                 <!-- - - - - - - - - - - - - - Wishlist & compare counters - - - - - - - - - - - - - - - - -->
 
@@ -143,57 +143,46 @@
 
                                 <div class="shopping_cart_wrap">
 
-                                    <button id="open_shopping_cart" class="open_button" data-amount="1">
+                                    <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.get_number_items %>">
                                         <b class="title">Giỏ hàng</b>
-                                        <b class="total_price">600.000</b>
+                                        <b class="total_price"><%= format_number(@cart.total_order) %> đ</b>
                                     </button>
 
                                     <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
 
                                     <div class="shopping_cart dropdown">
+                                        
+                                        <% @cart.line_items.each do |item| %>
 
-                                        <div class="animated_item">
-
-                                            <p class="title">Danh sách giỏ hàng</p>
-
-                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                            <div class="clearfix sc_product">
-
-                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_1.jpg" alt=""></a>
-
-                                                <a href="#" class="product_name">Mực rim Nha Trang</a>
-
-                                                <p>1 x 120.000 VNĐ</p>
-
-                                                <button class="close"></button>
-
-                                            </div><!--/ .clearfix.sc_product-->
-                                            
-                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .animated_item-->
-
-                                        <div class="animated_item">
-
-                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                            <div class="clearfix sc_product">
-
-                                                <a href="#" class="product_thumb"><img src="/frontend/images/sc_img_2.jpg" alt=""></a>
-
-                                                <a href="#" class="product_name">Tôm càng muối chua</a>
-
-                                                <p>1 x 490.000</p>
-
-                                                <button class="close"></button>
-
-                                            </div><!--/ .clearfix.sc_product-->
-                                            
-                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .animated_item-->
-
+                                            <div class="animated_item">
+    
+                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="clearfix sc_product">
+                                                    
+                                                    <% if item.product.get_main_image.present? %>
+																
+                                                        <%= link_to image_tag(item.product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
+                                                    
+                                                    <% else %>
+                                                        
+                                                        <%= link_to image_tag("/frontend/images/smaller_image.png"), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
+                                                    
+                                                    <% end %>
+    
+                                                    <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_name" %>
+    
+                                                    <p><%= item.quantity %> x <%= format_number(item.product.price) %> đ</p>
+    
+                                                    <%= link_to "" , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "close"}  %>
+    
+                                                </div><!--/ .clearfix.sc_product-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+    
+                                            </div><!--/ .animated_item-->
+                                        
+                                        <% end %>
 
                                         <div class="animated_item">
 
@@ -201,11 +190,11 @@
 
                                             <ul class="total_info">
 
-                                                <li><span class="price">Thuế:</span> 0.000 VNĐ</li>
+                                                <li><span class="price">Thuế:</span> 0.000 đ</li>
 
-                                                <li><span class="price">Giảm giá:</span> 10.000 VNĐ</li>
+                                                <li><span class="price">Giảm giá:</span> 0.000 đ</li>
 
-                                                <li class="total"><b><span class="price">Cộng:</span> 600.000 VNĐ</b></li>
+                                                <li class="total"><b><span class="price">Tổng:</span> <%= format_number(@cart.total_order) %> đ</b></li>
 
                                             </ul>
                                             
@@ -214,10 +203,10 @@
                                         </div><!--/ .animated_item-->
 
                                         <div class="animated_item">
-
-                                            <a href="#" class="button_grey">View Cart</a>
-
-                                            <a href="#" class="button_blue">Checkout</a>
+                                            
+                                            <%= link_to "Xem giỏ hàng", { controller: "checkout", action: "shopping_cart" }, class: "button_grey" %>
+                                            
+                                            <%= link_to "Đặt hàng", { controller: "checkout", action: "checkout" }, class: "button_blue" %>
 
                                         </div><!--/ .animated_item-->
 
