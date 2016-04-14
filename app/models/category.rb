@@ -39,4 +39,40 @@ class Category < ActiveRecord::Base
       return arr
   end
   
+  #
+  def self.sort_by
+    [
+      ["Name","categories.name"]
+    ]
+  end
+  
+  def self.sort_order
+    [
+      ["DESC","desc"],
+      ["ASC","asc"]
+    ]
+  end
+  
+  #Filter, Sort
+  def self.search(params)
+    records = self.all
+    
+    #Parent filter
+    if params[:parent_id].present?
+        records = records.joins(:parent_categories).where("parent_categories.parent_id = ?", params[:parent_id])
+    end
+    
+    #Search keyword filter
+    if params[:keyword].present?
+        records = records.where("LOWER(categories.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+    end
+    
+    # for sorting
+    sort_by = params[:sort_by].present? ? params[:sort_by] : "categories.name"
+    sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
+    records = records.order("#{sort_by} #{sort_order}")
+    
+    return records   
+  end
+  
 end

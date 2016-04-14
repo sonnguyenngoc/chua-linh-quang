@@ -4,7 +4,12 @@ class Admin::ManufacturersController < ApplicationController
   # GET /manufacturers
   # GET /manufacturers.json
   def index
-    @manufacturers = Manufacturer.all.paginate(:page => params[:page], :per_page => 10)
+    @manufacturers = Manufacturer.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @manufacturers = Manufacturer.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/manufacturers/index"
   end
 
   # GET /manufacturers/1

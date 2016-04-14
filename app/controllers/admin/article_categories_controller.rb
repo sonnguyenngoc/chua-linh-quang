@@ -4,7 +4,12 @@ class Admin::ArticleCategoriesController < ApplicationController
   # GET /article_categories
   # GET /article_categories.json
   def index
-    @article_categories = ArticleCategory.all.paginate(:page => params[:page], :per_page => 10)
+    @article_categories = ArticleCategory.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @article_categories = ArticleCategory.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/article_categories/index"
   end
 
   # GET /article_categories/1

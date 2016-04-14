@@ -527,3 +527,36 @@ input, textarea, select, .form-control {
     padding: 8px 20px 9px;
     white-space: normal;
 }
+.input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+}
+.input-group-addon, .input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.input-group .form-control, .input-group-addon, .input-group-btn {
+    display: table-cell;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.input-group {
+    width: 100%;
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.bootstrap-datetimepicker-widget td.day, .bootstrap-datetimepicker-widget th {
+    border: none;
+    padding: 8px;
+}
+.bootstrap-datetimepicker-widget{
+    border: solid 1px #ddd;
+}

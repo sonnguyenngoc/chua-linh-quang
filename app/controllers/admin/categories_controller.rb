@@ -6,6 +6,11 @@ class Admin::CategoriesController < ApplicationController
   def index
     @categories = Category.get_all_categories.paginate(:page => params[:page], :per_page => 10)
   end
+  
+  def search
+    @categories = Category.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/categories/index"
+  end
 
   # GET /categories/1
   # GET /categories/1.json

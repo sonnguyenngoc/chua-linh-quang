@@ -4,7 +4,12 @@ class Admin::ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.paginate(:page => params[:page], :per_page => 10)
+    @products = Product.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @products = Product.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/products/index"
   end
 
   # GET /products/1

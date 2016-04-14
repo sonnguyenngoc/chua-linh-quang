@@ -52,7 +52,7 @@
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" >Categories <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
-                        <select name="category_ids[]" class="select-item-color" data-placeholder="Categories....." multiple="multiple">
+                        <select name="category_ids[]" class="select select-item-color" data-placeholder="Categories....." multiple="multiple">
                             <% @categories.each do |item| %>
                                 <% if item.level == 1 %>
                                     <option <%= "selected" if @product.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
@@ -71,7 +71,7 @@
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" >Areas <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
-                        <select name="area_ids[]" class="select-item-color" data-placeholder="Areas....." multiple="multiple">
+                        <select name="area_ids[]" class="select select-item-color" data-placeholder="Areas....." multiple="multiple">
                             <% Area.get_select_options.each do |item| %>
                                 <option <%= "selected" if @product.areas.include?(item) %> value="<%= item.id %>"><%= item.get_name_area %></option>
                             <% end %>
@@ -103,7 +103,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" >Related Articles</label>
                     <div class="col-lg-10">
-                        <select name="article_ids[]" class="select-item-color" data-placeholder="Related Articles..." multiple="multiple">
+                        <select name="article_ids[]" class="select select-item-color" data-placeholder="Related Articles..." multiple="multiple">
                             <% @articles.each do |item| %>
                                 <option <%= "selected" if @product.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
                             <% end %>

@@ -15,13 +15,19 @@ class Area < ActiveRecord::Base
     self.save
   end
   
-  def get_name_area
-    arr = [self.name]
+  def get_parent_name
+    arr = []
     p = self.parent
     while !p.nil?
       arr.unshift p.name
       p = p.parent
     end
+    return arr.join("-")
+  end
+  
+  def get_name_area
+    arr = [self.name]
+    arr.unshift get_parent_name if !get_parent_name.empty?
     return arr.join("-")
   end
   
@@ -37,6 +43,43 @@ class Area < ActiveRecord::Base
       end
     end
     return arr
+  end
+  
+  #
+  def self.sort_by
+    [
+      ["Name","areas.name"]
+    ]
+  end
+  
+  def self.sort_order
+    [
+      ["DESC","desc"],
+      ["ASC","asc"]
+    ]
+  end
+  
+  
+  #Filter, Sort
+  def self.search(params)
+    records = self.all
+    
+    #Parent filter
+    if params[:parent_id].present?
+        records = records.joins(:areas).where("areas.parent_id = ?", params[:parent_id])
+    end
+    
+    #Search keyword filter
+    if params[:keyword].present?
+        records = records.where("LOWER(areas.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+    end
+    
+    # for sorting
+    sort_by = params[:sort_by].present? ? params[:sort_by] : "areas.name"
+    sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
+    records = records.order("#{sort_by} #{sort_order}")
+    
+    return records   
   end
   
 end

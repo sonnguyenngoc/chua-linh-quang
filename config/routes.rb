@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "account/edit" => "account#edit", as: :edit
   get "account/password" => "account#password", as: :password
   get "account/voucher" => "account#voucher", as: :voucher
+  get "account/voucher/success" => "account#voucher_success", as: :voucher_success
   # end account
   
   # checkout
@@ -76,12 +77,37 @@ Rails.application.routes.draw do
 
   namespace :admin, path: "hkpanel" do
     get "main" => "main#index"
-    resources :products
-    resources :categories
-    resources :manufacturers
-    resources :articles
-    resources :article_categories
-    resources :areas
+    resources :shopping_carts
+    resources :products do
+      collection do
+        get 'search'
+      end
+    end
+    resources :categories do
+      collection do
+        get 'search'
+      end
+    end
+    resources :manufacturers do
+      collection do
+        get 'search'
+      end
+    end
+    resources :articles do
+      collection do
+        get 'search'
+      end
+    end
+    resources :article_categories do
+      collection do
+        get 'search'
+      end
+    end
+    resources :areas do
+      collection do
+        get 'search'
+      end
+    end
     resources :newsletters
     resources :contacts
     end

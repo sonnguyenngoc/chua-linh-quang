@@ -37,5 +37,12 @@ User.create(:email => "admin@hoangkhang.com.vn", :password => "aA456321@", :pass
     end
   end
   
+  Article.delete_all
+  #.....
+  Article.create(:title => "Bai viet so 01", :content => "<p>noi dung bai viet&nbsp;noi dung bai viet</p>", :tags => "bv01", :article_category_id => 2)
+  Article.create(:title => "Bai viet so 02", :content => "<p>noi dung 02, noi dung 02</p>", :tags => "bv02", :article_category_id => 2)
+  Article.create(:title => "Bai viet gioi thieu", :content => "<p>noi dung bai viet gioi thieu cong ty</p>", :tags => "bv03", :article_category_id => 1)
+  #.....
+  
 end
 #.....
