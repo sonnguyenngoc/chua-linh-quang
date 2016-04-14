@@ -12,7 +12,7 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 --
--- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY areas (id, name, level, description, created_at, updated_at, parent_id) FROM stdin;
@@ -26,14 +26,14 @@ COPY areas (id, name, level, description, created_at, updated_at, parent_id) FRO
 
 
 --
--- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('areas_id_seq', 6, true);
 
 
 --
--- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin;
@@ -44,14 +44,14 @@ COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin
 
 
 --
--- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('areas_products_id_seq', 10, true);
 
 
 --
--- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY article_categories (id, name, description, created_at, updated_at, level) FROM stdin;
@@ -61,7 +61,7 @@ COPY article_categories (id, name, description, created_at, updated_at, level) F
 
 
 --
--- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY article_categories_articles (id, article_id, article_category_id, created_at, updated_at) FROM stdin;
@@ -71,21 +71,21 @@ COPY article_categories_articles (id, article_id, article_category_id, created_a
 
 
 --
--- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('article_categories_articles_id_seq', 2, true);
 
 
 --
--- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('article_categories_id_seq', 2, true);
 
 
 --
--- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY articles (id, image_url, title, content, tags, article_category_id, created_at, updated_at) FROM stdin;
@@ -95,14 +95,14 @@ COPY articles (id, image_url, title, content, tags, article_category_id, created
 
 
 --
--- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('articles_id_seq', 2, true);
 
 
 --
--- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM stdin;
@@ -112,30 +112,29 @@ COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM
 
 
 --
--- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('articles_products_id_seq', 2, true);
 
 
 --
--- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY carts (id, created_at, updated_at) FROM stdin;
-2	2016-04-13 15:57:18.803616	2016-04-13 15:57:18.803616
 \.
 
 
 --
--- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
-SELECT pg_catalog.setval('carts_id_seq', 2, true);
+SELECT pg_catalog.setval('carts_id_seq', 4, true);
 
 
 --
--- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY categories (id, name, level, description, created_at, updated_at) FROM stdin;
@@ -172,14 +171,14 @@ COPY categories (id, name, level, description, created_at, updated_at) FROM stdi
 
 
 --
--- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('categories_id_seq', 130, true);
 
 
 --
--- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY categories_products (id, product_id, category_id, created_at, updated_at) FROM stdin;
@@ -190,14 +189,14 @@ COPY categories_products (id, product_id, category_id, created_at, updated_at) F
 
 
 --
--- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('categories_products_id_seq', 10, true);
 
 
 --
--- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY contacts (id, name, email, message, created_at, updated_at) FROM stdin;
@@ -205,14 +204,14 @@ COPY contacts (id, name, email, message, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('contacts_id_seq', 1, false);
 
 
 --
--- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY products (id, name, code, quantity, unit, price, short_description, description, manufacturer_id, product_image_id, created_at, updated_at, tags, status) FROM stdin;
@@ -223,23 +222,22 @@ COPY products (id, name, code, quantity, unit, price, short_description, descrip
 
 
 --
--- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
-COPY line_items (id, product_id, cart_id, created_at, updated_at) FROM stdin;
-2	1	2	2016-04-13 15:57:25.27112	2016-04-13 15:57:25.27112
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity) FROM stdin;
 \.
 
 
 --
--- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
-SELECT pg_catalog.setval('line_items_id_seq', 2, true);
+SELECT pg_catalog.setval('line_items_id_seq', 5, true);
 
 
 --
--- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY manufacturers (id, image_url, name, address, description, created_at, updated_at) FROM stdin;
@@ -248,14 +246,14 @@ COPY manufacturers (id, image_url, name, address, description, created_at, updat
 
 
 --
--- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('manufacturers_id_seq', 1, true);
 
 
 --
--- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY newsletters (id, email, created_at, updated_at) FROM stdin;
@@ -263,14 +261,14 @@ COPY newsletters (id, email, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('newsletters_id_seq', 1, false);
 
 
 --
--- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY parent_article_categories (id, parent_id, article_category_id, created_at, updated_at) FROM stdin;
@@ -279,14 +277,14 @@ COPY parent_article_categories (id, parent_id, article_category_id, created_at, 
 
 
 --
--- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('parent_article_categories_id_seq', 1, true);
 
 
 --
--- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
@@ -323,14 +321,14 @@ COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM
 
 
 --
--- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('parent_categories_id_seq', 120, true);
 
 
 --
--- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY product_images (id, product_id, image_url, created_at, updated_at, is_main) FROM stdin;
@@ -343,21 +341,21 @@ COPY product_images (id, product_id, image_url, created_at, updated_at, is_main)
 
 
 --
--- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('product_images_id_seq', 5, true);
 
 
 --
--- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('products_id_seq', 3, true);
 
 
 --
--- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY schema_migrations (version) FROM stdin;
@@ -378,7 +376,6 @@ COPY schema_migrations (version) FROM stdin;
 20160407073929
 20160407090029
 20160407092753
-20160411021638
 20160411022035
 20160411070126
 20160411090637
@@ -391,22 +388,7 @@ COPY schema_migrations (version) FROM stdin;
 
 
 --
--- Data for Name: shopping_carts; Type: TABLE DATA; Schema: public; Owner: dsvm
---
-
-COPY shopping_carts (id, created_at, updated_at) FROM stdin;
-\.
-
-
---
--- Name: shopping_carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
---
-
-SELECT pg_catalog.setval('shopping_carts_id_seq', 1, false);
-
-
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: dsvm
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
 --
 
 COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
@@ -415,7 +397,7 @@ COPY users (id, email, encrypted_password, reset_password_token, reset_password_
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dsvm
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
 --
 
 SELECT pg_catalog.setval('users_id_seq', 1, true);

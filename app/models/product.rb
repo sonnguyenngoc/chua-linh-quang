@@ -18,7 +18,8 @@ class Product < ActiveRecord::Base
   end
   
   def get_main_image
-    product_images.where(is_main: "True").order("updated_at DESC").first
+    image = product_images.where(is_main: "True").order("updated_at DESC").first
+    
   end
   
   def get_related_products

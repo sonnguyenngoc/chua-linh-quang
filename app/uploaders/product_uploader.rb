@@ -35,6 +35,9 @@ class ProductUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
+  version :smaller_image do
+    process :resize_to_fill => [60, 60]
+  end
   version :small_image do
     process :resize_to_fill => [83, 83]
   end
