@@ -1,0 +1,87 @@
+vi:
+  #-------------------------------------
+  home: "Trang chủ"
+  dashboard: "Bảng điều khiển"
+  welcome: "CHÀO MỪNG QUẢN TRỊ VIÊN"
+  admin: "Quản trị viên"
+  location: "Hồ Chí Minh, Việt Nam"
+  copyright: "Bản quyền"
+  design_by: "Thiết kế bởi"
+  my_profile: "Hồ sơ"
+  account_settings: "Cài đặt tài khoản"
+  logout: "Đăng thoát"
+  #-------------------------------------
+  product: "Sản phẩm"
+  products: "Danh sách sản phẩm"
+  categories: "Danh sách chuyên mục"
+  manufacturers: "Nhãn hàng/Nhà sản xuất"
+  areas: "Khu vực"
+  #filter
+  listing_products: "Danh sách sản phẩm"
+  listing_categories: "Danh sách chuyên mục"
+  category: "Chuyên mục"
+  status: "Trạng thái"
+  filter: "Tìm kiếm"
+  placeholder_filter: "Nhập tìm kiếm theo tên..."
+  sort_by: "Sắp xếp theo"
+  sort_order: "Sắp tăng/giảm"
+  #table
+  list_image: "Hình ảnh"
+  list_product_name: "Tên sản phẩm"
+  list_category_name: "Tên chuyên mục"
+  list_price: Giá
+  list_quantity: "Số lượng"
+  list_categories: "Chuyên mục"
+  list_description: "Mô tả"
+  list_areas: "Khu vực"
+  list_status: "Trạng thái"
+  created_at: "Ngày tạo"
+  actions: "Thao tác"
+  save: "Lưu"
+  cancel: "Hủy"
+  edit: "Sửa"
+  delete: "Xoá"
+  new_product: "Tạo sản phẩm"
+  edit_product: "Chỉnh sửa sản phẩm"
+  new_category: "Tạo chuyên mục"
+  edit_category: "Chỉnh sửa chuyên mục"
+  list_product_code: "Mã sản phẩm"
+  unit: "Đơn vị"
+  #form
+  tab_product_info: "Thông tin"
+  tab_product_status: "Trạng thái"
+  tab_product_intro: "Giới thiệu"
+  tab_product_images: "Hình ảnh"
+  short_description: "Mô tả ngắn"
+  tags: "Gắn thẻ"
+  related_articles: "Bài viết liên quan"
+  hot: "Sản phẩm HOT"
+  new: "Sản phẩm MỚI"
+  bestseller: "Sản phẩm BÁN CHẠY"
+  prominent: "Sản phẩm NỔI BẬT"
+  introduction: "Giới thiệu"
+  related_photos: "Các hình ảnh liên quan"
+  #-------------------------------------
+  article: "Bài viết"
+  articles: "Danh sách bài viết"
+  article_categories: "Chuyên mục"
+  #-------------------------------------
+  orders: "Đơn đặt hàng"
+  #-------------------------------------
+  comments: "Bình luận"
+  #-------------------------------------
+  delivery_method: "Hình thức giao hàng"
+  delivery_methods: "Hình thức giao hàng"
+  #-------------------------------------
+  payment: "Thanh toán"
+  payments: "Danh sách thanh toán"
+  #-------------------------------------
+  customer: "Khách hàng"
+  customers: "Danh sách khách hàng"
+  #-------------------------------------
+  user: "Người dùng"
+  users: "Danh sách người dùng"
+  #-------------------------------------
+  settings: "Cài đặt"
+  #-------------------------------------
+  voucher_coupon: "Phiếu mua hàng/Quà tặng"

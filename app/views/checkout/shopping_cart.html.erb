@@ -132,7 +132,9 @@
                                                 <td data-title="Action">
                                                     
                                                     <button type="submit" class="button_dark_grey icon_btn edit_product">
+                                                        
                                                         <i class='fa fa-refresh'></i>
+                                                    
                                                     </button>
               
                                                     <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"} %>

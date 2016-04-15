@@ -3,40 +3,82 @@
         <ul class="navigation navigation-main navigation-accordion">
 
             <!-- Main -->
-            <li class="navigation-header"><span>Main</span> <i class="icon-menu"></i></li>
-            <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>Dashboard</span>'.html_safe, { controller: "main", action: "index" } %></li>
+            <li class="navigation-header"><span></span> <i class="icon-menu"></i></li>
+            <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>'.html_safe + t(:dashboard) +'</span>'.html_safe, { controller: "main", action: "index" } %></li>
             <li>
-                <a href="#"><i class="icon-stack2"></i> <span>Product</span></a>
+                <a href="#"><i class="icon-stack2"></i> <span><%= t(:product) %></span></a>
                 <ul>
                     <li class="<%= "active" if ["admin/products"].include?(params[:controller]) %>">
-                        <%= link_to "Products", admin_products_path %>
+                        <%= link_to t(:products), admin_products_path %>
                     </li>
                     <li class="<%= "active" if ["admin/categories"].include?(params[:controller]) %>">
-                        <%= link_to "Categories", admin_categories_path %>
+                        <%= link_to t(:categories), admin_categories_path %>
                     </li>
                     <li class="<%= "active" if ["admin/manufacturers"].include?(params[:controller]) %>">
-                        <%= link_to 'Manufacturers', admin_manufacturers_path %>
+                        <%= link_to t(:manufacturers), admin_manufacturers_path %>
                     </li>
                     <li class="<%= "active" if ["admin/areas"].include?(params[:controller]) %>">
-                        <%= link_to 'Areas', admin_areas_path %>
+                        <%= link_to t(:areas), admin_areas_path %>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span>Article</span></a>
+                <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
                 <ul>
                     <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
-                        <%= link_to "Articles", admin_articles_path %>
+                        <%= link_to t(:articles), admin_articles_path %>
                     </li>
                     <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
-                        <%= link_to "Article Categories", admin_article_categories_path %>
+                        <%= link_to t(:article_categories), admin_article_categories_path %>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span>Order</span></a>
+                <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span><%= t(:orders) %></span></a>
                 <ul>
-                    <li><%= link_to "Orders", "" %></li>
+                    <li><%= link_to t(:orders), "" %></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-comment"></i> <span><%= t(:comments) %></span></a>
+                <ul>
+                    <li><%= link_to t(:comments), "" %></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="icon-truck"></i> <span><%= t(:delivery_method) %></span></a>
+                <ul>
+                    <li><%= link_to t(:delivery_methods), "" %></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="icon-paypal"></i> <span><%= t(:payment) %></span></a>
+                <ul>
+                    <li><%= link_to t(:payments), "" %></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-gift"></i> <span><%= t(:voucher_coupon) %></span></a>
+                <ul>
+                    <li></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="icon-people"></i> <span><%= t(:customer) %></span></a>
+                <ul>
+                    <li><%= link_to t(:customers), "" %></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
+                <ul>
+                    <li><%= link_to t(:users), "" %></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-cog"></i> <span><%= t(:settings) %></span></a>
+                <ul>
+                    <li></li>
                 </ul>
             </li>
         </ul>

@@ -36,15 +36,7 @@
         <div class="col-lg-10">
             <select name="category_ids[]" class="select-item-color" data-placeholder="Categories..." multiple="multiple">
                 <% @article_categories.each do |item| %>
-                    <% if item.level == 1 %>
-                        <optgroup label="<%= item.name %>">
-                            <% item.children.each do |child_1| %>
-                                <% if child_1.level == 2 %>
-                                    <option <%= "selected" if @article.article_categories.include?(child_1) %> value="<%= child_1.id %>"><%= child_1.name %></option>
-                                <% end %>
-                            <% end %>
-                        </optgroup>
-                    <% end %>
+                    <option <%= "selected" if @article.article_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
                 <% end %>
             </select>
         </div>

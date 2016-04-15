@@ -100,7 +100,10 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_by_category_status(category, status, limit=5)
-    self.all.limit(3)
+    records = self.all
+    records = records.where("products.status LIKE ?", "%#{status}%")
+    records = records.joins(:categories).where(categories: {id: category})
+    return records
   end
   
   private

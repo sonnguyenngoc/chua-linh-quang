@@ -101,7 +101,7 @@ class Admin::ProductsController < ApplicationController
     end
     
     # update status
-    @product.status.clear if params[:product][:status].present?
+    @product.status = nil if params[:product][:status].present?
     @product.status = params[:product][:status].join(",") if params[:product][:status].present?
     
     respond_to do |format|

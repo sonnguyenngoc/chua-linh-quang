@@ -1,36 +1,86 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
-  will_paginate:
-    page_entries_info:
-      single_page:
-        zero:  "Chưa có dữ liệu cho "
-        one:   "Hiển thị 1 "
-        other: "Hiển thị toàn bộ %{count} "
-      single_page_html:
-        zero:  "Chưa có dữ liệu cho "
-        one:   "Hiển thị 1 "
-        other: "Hiển thị toàn bộ %{count} "
-
-      multi_page: "Hiển thị  %{from} - %{to} / %{count} "
-      multi_page_html: "Hiển thị %{from} tới %{to} / %{count} "
+  #-------------------------------------
+  home: "Home"
+  dashboard: "Dashboard"
+  welcome: "WELCOME TO ADMINISTRATOR"
+  admin: "Administrator"
+  location: "HCMC, Vietnam"
+  copyright: "Copyright"
+  design_by: "Designed by"
+  my_profile: "My profile"
+  account_settings: "Account settings"
+  logout: "Logout"
+  #-------------------------------------
+  product: "Product"
+  products: "Products"
+  categories: "Categories"
+  manufacturers: "Manufacturers"
+  areas: "Areas"
+  #filter
+  listing_products: "Listing Products"
+  listing_categories: "Listing Categories"
+  category: "Category"
+  status: "Status"
+  filter: "Filter"
+  placeholder_filter: "Search by name..."
+  sort_by: "Sort By"
+  sort_order: "Sort Order"
+  
+  #table
+  list_image: "Image"
+  list_name: "Name"
+  list_price: "Price"
+  list_quantity: "Quantity"
+  list_categories: "Categories"
+  list_description: "Description"
+  list_areas: "Areas"
+  list_status: "Status"
+  created_at: "Created At"
+  actions: "Actions"
+  save: "Save"
+  cancel: "Cancel"
+  edit: "Edit"
+  delete: "Delete"
+  new_product: "New Product"
+  new_category: "New Category"
+  edit_product: "Edit Product"
+  list_product_code: "Product Code"
+  unit: "Unit"
+  #form
+  tab_product_info: "Product Information"
+  tab_product_status: "Product Status"
+  tab_product_intro: "Product intro"
+  tab_product_images: "Product Images"
+  short_description: "Short Description"
+  tags: "Tags"
+  related_articles: "Related Articles"
+  hot: "Hot Product"
+  new: "New Product"
+  bestseller: "Bestseller Product"
+  prominent: "Prominent Product"
+  introduction: "Introduction"
+  related_photos: "Related Photos"
+  #-------------------------------------
+  article: "Article"
+  articles: "Articles"
+  article_categories: "Article Categories"
+  #-------------------------------------
+  orders: "Orders"
+  #-------------------------------------
+  comments: "Comments"
+  #-------------------------------------
+  delivery_method: "Delivery Method"
+  delivery_methods: "Delivery Methods"
+  #-------------------------------------
+  payment: "Payments"
+  payments: "Payments"
+  #-------------------------------------
+  customer: "Customers"
+  customers: "Customers"
+  #-------------------------------------
+  user: "Users"
+  users: "Users"
+  #-------------------------------------
+  settings: "Settings"
+  #-------------------------------------
+  voucher_coupon: "Voucher/Coupon"

@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold">Categories</span></h4>
+                        <h4><span class="text-semibold"><%= t(:categories) %></span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
-                        <li><%= link_to '<i class="icon-home2 position-left"></i> Home'.html_safe, { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_categories_path %>">Product</a></li>
-                        <li class="active">Categories</li>
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_categories_path %>"><%= t(:product) %></a></li>
+                        <li class="active"><%= t(:categories) %></li>
                     </ul>
                 </div>
             </div>
@@ -51,8 +51,8 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading col-md-12">
-                        <h5 class="panel-title col-md-6"><span class="text-semibold">Listing Categories</span></h5>
-                        <%= link_to 'New Category', new_admin_category_path, class: 'btn btn-primary pull-right' %> 
+                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_categories) %></span></h5>
+                        <%= link_to t(:new_category), new_admin_category_path, class: 'btn btn-primary pull-right' %> 
                     </div>
                     <div class="filter-box">
                         <%= form_for("", url: {controller: "categories", action: "search"}, method: "get") do |f| %>
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Sort By</label>
+                                        <label class="" ><%= t(:sort_by) %></label>
                                         <div>
                                             <%= select_tag(:sort_by, options_for_select(Category.sort_by, :selected => params[:sort_by]), class: "select") %>
                                         </div>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Sort Order</label>
+                                        <label class="" ><%= t(:sort_order) %></label>
                                         <div>
                                             <%= select_tag(:sort_order, options_for_select(Category.sort_order, :selected => params[:sort_order]), class: "select") %>
                                         </div>
@@ -83,9 +83,9 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Filter</label>
+                                        <label class="" ><%= t(:filter) %></label>
                                         <div class="input-group">
-                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword" value="<%= params[:keyword] %>">
+                                            <input type="text" name="keyword" class="form-control" placeholder="<%= t(:placeholder_filter) %>" value="<%= params[:keyword] %>">
                                             <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
                                         </div>
                                     </div>
@@ -97,10 +97,10 @@
                     <table class="table">
                         <thead>
                             <tr class="bg-teal-800">
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Created At</th>
-                                <th class="text-center">Actions</th>
+                                <th><%= t(:list_category_name) %></th>
+                                <th><%= t(:list_description) %></th>
+                                <th><%= t(:created_at) %></th>
+                                <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -165,12 +165,10 @@
 <!-- /page container -->
 
 <!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
 
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/javascripts/datatables_categories.js' %>
 <!-- /theme JS files -->
-<script>
-    $(".select").select2();
-</script>
