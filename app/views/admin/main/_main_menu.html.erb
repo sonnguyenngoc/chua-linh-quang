@@ -4,7 +4,7 @@
 
             <!-- Main -->
             <li class="navigation-header"><span>Main</span> <i class="icon-menu"></i></li>
-            <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>Dashboard</span>'.html_safe, { controller: "main", action: "index" } %></li>
+            <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>'.html_safe + t(:dashboard) +'</span>'.html_safe, { controller: "main", action: "index" } %></li>
             <li>
                 <a href="#"><i class="icon-stack2"></i> <span>Product</span></a>
                 <ul>
