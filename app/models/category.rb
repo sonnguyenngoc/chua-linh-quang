@@ -75,4 +75,8 @@ class Category < ActiveRecord::Base
     return records   
   end
   
+  def self.get_by_status(status, limit=5)
+    self.all.limit(5)
+  end
+  
 end

@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.delete_all
+
 #.....
 User.create(:email => "admin@hoangkhang.com.vn", :password => "aA456321@", :password_confirmation => "aA456321@")
 #.....
@@ -37,12 +37,18 @@ User.create(:email => "admin@hoangkhang.com.vn", :password => "aA456321@", :pass
     end
   end
   
-  Article.delete_all
-  #.....
-  Article.create(:title => "Bai viet so 01", :content => "<p>noi dung bai viet&nbsp;noi dung bai viet</p>", :tags => "bv01", :article_category_id => 2)
-  Article.create(:title => "Bai viet so 02", :content => "<p>noi dung 02, noi dung 02</p>", :tags => "bv02", :article_category_id => 2)
-  Article.create(:title => "Bai viet gioi thieu", :content => "<p>noi dung bai viet gioi thieu cong ty</p>", :tags => "bv03", :article_category_id => 1)
-  #.....
+  #Article.delete_all
+  ##.....
+  #Article.create(:title => "Bai viet so 01", :content => "<p>noi dung bai viet&nbsp;noi dung bai viet</p>", :tags => "bv01", :article_category_id => 2)
+  #Article.create(:title => "Bai viet so 02", :content => "<p>noi dung 02, noi dung 02</p>", :tags => "bv02", :article_category_id => 2)
+  #Article.create(:title => "Bai viet gioi thieu", :content => "<p>noi dung bai viet gioi thieu cong ty</p>", :tags => "bv03", :article_category_id => 1)
+  ##.....
+  
+  
+  # pages articles
+  Article.create(:title => "Chính sách giao hàng", :content => "<p>Nội dung ...</p>", :tags => "delivery information", code: "delivery_information")
+  Article.create(:title => "Chính sách bảo mật", :content => "<p>Nội dung ...</p>", :tags => "privacy policy", code: "privacy_policy")
+  Article.create(:title => "Điều khoản & điều kiện", :content => "<p>Nội dung ...</p>", :tags => "terms conditions", code: "terms_conditions")
   
 end
 #.....

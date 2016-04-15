@@ -99,6 +99,10 @@ class Product < ActiveRecord::Base
     status.to_s.split(",")
   end
   
+  def self.get_by_category_status(category, status, limit=5)
+    self.all.limit(3)
+  end
+  
   private
     # ensure that there are no line items referencing this product
     def ensure_not_referenced_by_any_line_item

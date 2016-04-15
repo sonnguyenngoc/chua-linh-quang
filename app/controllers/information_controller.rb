@@ -20,4 +20,20 @@ class InformationController < ApplicationController
   def sitemap
     @title_head = "Sitemap"
   end
+  
+  def delivery
+    @delivery_information = Article.where(code: "delivery_information").first
+    @title_head = @delivery_information.title
+  end
+  
+  def privacy_policy
+    @privacy_information = Article.where(code: "privacy_policy").first
+    @title_head = @privacy_information.title
+  end
+  
+  def terms_conditions
+    @terms_information = Article.where(code: "terms_conditions").first
+    @title_head = @terms_information.title
+  end
+
 end

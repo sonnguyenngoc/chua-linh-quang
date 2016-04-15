@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  validates :code, uniqueness: true
+  
   mount_uploader :image_url, ArticleUploader
   has_and_belongs_to_many :article_categories
   has_and_belongs_to_many :products

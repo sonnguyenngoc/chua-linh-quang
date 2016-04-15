@@ -21,7 +21,7 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Terms & Conditions</li>
+                    <li><%= @terms_information.title %></li>
 
                 </ul>
 
@@ -53,11 +53,11 @@
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1>Terms & Conditions</h1>
+                        <h1><%= @terms_information.title %></h1>
                         
                         <div class="bordered_content padded box">
                                 
-                            <p>Terms & Conditions</p>
+                        <%= @terms_information.content.html_safe %>
                             
                         </div>
 

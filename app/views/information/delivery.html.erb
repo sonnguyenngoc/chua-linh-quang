@@ -21,7 +21,7 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Delivery Information</li>
+                    <li><%= @delivery_information.title %></li>
 
                 </ul>
 
@@ -53,11 +53,11 @@
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1>Delivery Information</h1>
+                        <h1><%= @delivery_information.title %></h1>
                         
                             <div class="bordered_content padded box">
                                 
-                            <p>Delivery Information</p>
+                            <%= @delivery_information.content.html_safe %>
                             
                         </div>
 
