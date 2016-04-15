@@ -150,3 +150,6 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
 #coupon-content {
     margin-bottom: 15px;
 }
+.padded li.row {
+    margin-bottom: 10px;
+}

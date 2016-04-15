@@ -48,7 +48,8 @@
                     <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
                     <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
                     <li class="divider"></li>
-                    <li><% if user_signed_in? %>
+                    <li>
+                        <% if user_signed_in? %>
                             <%= link_to('<i class="icon-switch2"></i> Logout'.html_safe, destroy_user_session_path, :method => :delete) %>
                         <%end%>
                     </li>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     
     # account
     get "account/login" => "account#login", as: :login
+    get "account/quick_login" => "account#quick_login", as: :quick_login
     get "account/logout" => "account#logout", as: :logout
     get "account/forgotten" => "account#forgotten", as: :forgotten
     get "account/my_account" => "account#my_account", as: :my_account
@@ -70,7 +71,7 @@ Rails.application.routes.draw do
     # resources
     resources :newsletters
     resources :contacts
-    devise_for :users
+    devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
     resources :carts
     resources :line_items
     resources :customers

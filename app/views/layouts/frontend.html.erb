@@ -4,6 +4,7 @@
 		<!-- Basic page needs
 		============================================ -->
 		<title><%= @title_head %> | Đặc sản vùng miền </title>
+		<%= csrf_meta_tags %>
 		<meta charset="utf-8">
 		<meta name="author" content="">
 		<meta name="description" content="">
@@ -46,6 +47,10 @@
 		<!--[if lte IE 9]>
 		<%= stylesheet_link_tag '/frontend/css/oldie.css' %>
 		<![endif]-->
+		
+		<!-- JS for Rails -->
+		<%= javascript_include_tag 'application' %>
+		<!-- /js for rails -->
 		
 		<!-- Css Product Image Zoom
 		============================================ -->
