@@ -89,6 +89,7 @@ Rails.application.routes.draw do
       resources :categories do
         collection do
           get 'search'
+          get 'update_parent_order'
         end
       end
       resources :manufacturers do

@@ -3,8 +3,13 @@ class Admin::CategoriesController < ApplicationController
 
   # GET /categories
   # GET /categories.json
-  def index
-    @categories = Category.get_all_categories.paginate(:page => params[:page], :per_page => 10)
+  def index    
+    respond_to do |format|
+        format.html { 
+          @categories = Category.get_all_categories #.paginate(:page => params[:page], :per_page => 10)
+        }
+        format.json { render json: Category.get_tree_json }
+    end
   end
   
   def search
@@ -33,6 +38,13 @@ class Admin::CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        # update parent
+        @category.parent.clear
+        @category.parent << Category.find(params[:parent_id]) if params[:parent_id].present?
+        
+        # update all level
+        Category.update_all_level
+        
         format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
@@ -47,6 +59,12 @@ class Admin::CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
+        # update parent
+        @category.parent.clear
+        @category.parent << Category.find(params[:parent_id]) if params[:parent_id].present?
+        # update all level
+        Category.update_all_level
+        
         format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
@@ -61,9 +79,27 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
+      # update all level
+      Category.update_all_level
+        
       format.html { redirect_to admin_categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  # ajax update categories ordered parent
+  def update_parent_order
+    items = JSON.parse params[:data]
+    items.each do |item|
+      cat = Category.find(item["id"])
+      cat.parent.clear
+      cat.parent << Category.find(item["parent"]) if !item["parent"].empty?
+      cat.ordered = item["ordered"]
+      puts item["ordered"]+"sssss"
+      puts cat.save
+    end
+    Category.update_all_level
+    render text: items.count.to_s
   end
 
   private
