@@ -17,17 +17,24 @@
         <p class="navbar-text"><span class="label bg-success-400">Online</span></p>
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown language-switch">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="/backend/assets/images/flags/gb.png" class="position-left" alt="">
-                      English
-                    <span class="caret"></span>
+            <li class="dropdown language-switch <%= "active" if params[:locale] == "vi" %>">
+                <a href="<%= url_for( :locale => 'vi' ) %>">
+                    <img src="/backend/assets/images/flags/vn.png" class="position-left" alt="">
+                      Vietnam
                 </a>
 
-                <ul class="dropdown-menu">
+                <!--<ul class="dropdown-menu">
                     <li><a class="english"><img src="/backend/assets/images/flags/gb.png" alt=""> English</a></li>
                     <li><a class="espana"><img src="/backend/assets/images/flags/vn.png" alt=""> Vietnam</a></li>
-                </ul>
+                </ul>-->
+            </li>
+            
+            <li class="dropdown language-switch <%= "active" if params[:locale] == "en" %>">
+                
+                <a href="<%= url_for( :locale => 'en' ) %>">
+                    <img src="/backend/assets/images/flags/gb.png" class="position-left" alt="">
+                      English
+                </a>
             </li>
 
             <li class="dropdown dropdown-user">

@@ -6,7 +6,7 @@
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/header' %>
+        <%= render 'module/header' %>
         
         <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
 
@@ -20,10 +20,10 @@
 
                 <ul class="breadcrumbs"> 
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Shopping Cart</li>
-                    <li>Checkout</li>
-                    <li>Success</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "shopping_cart" } %></li>
+                    <li><%= link_to "Đặt hàng", { controller: "checkout", action: "checkout" } %></li>
+                    <li><%= @title_head %></li>
 
                 </ul>
 
@@ -31,22 +31,21 @@
 
                     <main class="col-md-12 col-sm-8">
                         
-                        <h1>Your order has been placed!</h1>
+                        <h1>Đơn hàng của bạn đã được đặt hàng!</h1>
                         
                         <div class="bordered_content box">
                           
                           <div class="padded">
                             
-                            <p>Your order has been successfully processed!</p>
-                            <p>You can view your order history by going to the <a href="/account/my_account">my account</a> page and by clicking on <a href="/account/order">history</a>.</p>
-                            <p>If your purchase has an associated download, you can go to the account <a href="/account/download">downloads</a> page to view them.</p>
-                            <p>Please direct any questions you have to the <a href="/information/contact">store owner</a>.</p><p>Thanks for shopping with us online!</p>
+                            <p>Đơn hàng của bạn đã được gửi đi thành công!</p>
+                            <p>Bạn có thể xem lại lịch sử đặt hàng trong <a href="/account/my_account">trang tài khoản</a> và chọn vào đây để xem <a href="/account/order">lịch sử</a> đặt hàng.</p>
+                            <p>Nếu có bất kỳ câu hỏi nào hãy để lại lời nhắn tại <%= link_to "trang liên hệ.", { controller: "information", action: "contact_us" } %></p><p>Cảm ơn bạn đã đặt hàng tại trang chúng tôi!</p>
                           
                           </div>
                           
                           <div class="bottom_buttons">
                             
-                            <div class="text-right"><a href="<%= root_path %>" class="btn btn-primary">Continue</a></div>
+                            <div class="text-right"><%= link_to "Tiếp tục", root_path, class: "btn btn-primary" %></div>
                           
                           </div>
                           
@@ -64,7 +63,7 @@
 
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
 
-        <%= render 'home/footer'%>
+        <%= render 'module/footer'%>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
 
@@ -74,7 +73,7 @@
 
     <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 
-    <%= render 'home/social_feeds' %>
+    <%= render 'module/social_feeds' %>
 
     <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
     

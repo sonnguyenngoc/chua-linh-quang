@@ -118,3 +118,35 @@
 .align_shopping_cart {
     width: 110% !important;
 }
+.action_checkout {
+    white-space: nowrap;
+}
+.refresh_checkout {
+    margin-left: 6px;
+    padding-top: 2px;
+}
+.fa-refresh-checkout:before {
+    line-height: 20px !important;
+}
+.remove_checkout {
+    margin-top: 3px;
+}
+#voucher-heading, #coupon-heading, #reward-heading {
+    cursor: pointer;
+    width: 100%;
+    padding: 12px 19px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f8f8f8;
+    border-radius: 3px;
+}
+#voucher-content input[type='text'], #coupon-content input[type='text'], #reward-content input[type='text'] {
+    max-width: 200px;
+}
+input[type='text'], input[type='password'], input[type='email'], input[type='tel'], select.form-control, select {
+    height: 38px;
+}
+#coupon-content {
+    margin-bottom: 15px;
+}
