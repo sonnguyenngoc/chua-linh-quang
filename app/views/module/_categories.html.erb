@@ -6,7 +6,7 @@
         
         <% Category.get_all_categories.each do |category| %>
         
-            <% if category.children.count == 0 %>
+            <% if category.children.order(:ordered).count == 0 %>
                 
                 <% if category.level == 1 %>
                 
