@@ -1,4 +1,5 @@
 module ApplicationHelper
+   
   def format_number(number, vn = false, round = false, precision = nil)
     prec = (number.to_f.round == number.to_f) ? 0 : 2
     prec = 0 if round
@@ -6,8 +7,7 @@ module ApplicationHelper
     if !precision.nil?
       prec = precision
     end
-    
-    
+  
     if vn
       number_to_currency(number, precision: prec, separator: ",", unit: '', delimiter: ".")
     else

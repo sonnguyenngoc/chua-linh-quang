@@ -37,8 +37,13 @@
                                     <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
                                     <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
                                     <li><%= link_to "FAQ", { controller: "information", action: "faq" } %></li>
-                                    <li><a href="#" data-modal-url="/frontend/modals/login.html">Đăng nhập</a></li>
-                                
+                                    <% if current_user.present? %>
+                                        <% if user_signed_in? %>
+                                            <li><%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %></li>
+                                        <%end%>
+                                    <% else %>
+                                        <li><a href="#" data-modal-url="<%= quick_login_path %>">Đăng nhập</a></li>
+                                    <% end %>  
                                 </ul>
 
                             </nav>

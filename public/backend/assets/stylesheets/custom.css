@@ -40,3 +40,6 @@
 .row-2 {
     margin-top: 20px;
 }
+.category_taggable_list, .category_taggable_list .fancytree-icon::after {
+    font-size: 20px;
+}

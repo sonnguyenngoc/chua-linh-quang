@@ -20,9 +20,9 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
-                    <li>Logout</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
+                    <li><%= @title_head %></li>
 
                 </ul>
 
@@ -36,55 +36,97 @@
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1>Account Logout</h1>
+                        <h1>Đăng nhập tài khoản</h1>
 						
 						<div class="table_wrap bordered_content">
+							
                             <table>
+								
                                 <tbody>
-                                  <tr>
-                                    <td>
-										<div>
-											<div class="top">
-												<h4>New Customer</h4>
-												<p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+									
+									<tr>
+										
+										<td>
+											
+											<div>
+												
+												<div class="top">
+													
+													<h4>Chưa có tài khoản</h4>
+													
+													<p class="text-justifly">Việc đăng ký tài khoản sẽ giúp bạn đặt hàng nhanh hơn. Dể dàng cập nhật tình trạng đơn hàng và xem lại lịch sử đặt hàng.</p>
+												
+												</div>
+											
 											</div>
-										</div>
-									</td>
-                                    <td>
-										<div class=" top">
-											<h4>Returning Customer</h4>
-											<p>I am a returning customer</p>
-											<form action="<%= url_for({controller: 'account', action: 'login'}) %>" method="post" enctype="multipart/form-data">
-												<div class="form-group">
-													<label class="control-label" for="input-email" style="text-align: left;">E-Mail Address</label>
-													<input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" vk_1d8ed="subscribed">
+										
+										</td>
+										
+										<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+										
+											<td>
+												
+												<div class=" top">
+													
+													<h4>Đã có tài khoản</h4>
+														
+														<div class="form-group">
+															
+															<label class="control-label" for="input-email" style="text-align: left;">Địa chỉ email</label>
+															
+															<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Nhập địa chỉ email..." %>
+														
+														</div>
+														
+														<div class="form-group">
+															
+															<label class="control-label" for="input-password" style="text-align: left;">Password</label>
+															
+															<%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nhập mật khẩu..." %>
+														
+														</div>
+														
+														<a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="forgotten">Quên mật khẩu.</a>
+													
 												</div>
-												<div class="form-group">
-													<label class="control-label" for="input-password" style="text-align: left;">Password</label>
-													<input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" vk_1d8ed="subscribed">
+											  
+											</td>
+										  
+										  </tr>
+										  
+										<tr>
+											
+											<td>
+												
+												<div class="bottom">
+													
+													<%= link_to "Đăng ký ngay", { controller: "account", action: "register" }, class: "button_blue middle_btn" %>
+												
 												</div>
-												<a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="forgotten">Forgotten Password</a>
-											</form>
-										</div>
-									  
-									</td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-										<div class="bottom">
-											<input type="submit" value="Register Account" class="btn btn-primary">
-										</div>
-									</td>
-                                    <td>
-										<div class="bottom">
-										  <div id="social_login_content_holder"></div>
-										  <input type="submit" value="Login" class="btn btn-primary">
-									  </div>
-									</td>
-                                  </tr>
-                                </tbody>
-                            </table>
-                        </div>
+											
+											</td>
+											
+											<td>
+												
+												<div class="bottom">
+												  
+												  <div id="social_login_content_holder"></div>
+												  
+												  <%= button_tag 'Đăng nhập <i class="icon-circle-right2 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+											  
+												</div>
+											
+											</td>
+											
+										</tr>
+										
+									<% end %>
+                                
+								</tbody>
+                            
+							</table>
+                        
+						</div>
 
                     </main>
 

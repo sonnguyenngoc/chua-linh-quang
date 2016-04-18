@@ -13,7 +13,7 @@ class Category < ActiveRecord::Base
   end
   
   def self.get_all_categories
-    self.all.order("created_at ASC")
+    self.all.order("ordered, created_at ASC")
   end
   
   def get_products_for_categories(params)
@@ -75,8 +75,53 @@ class Category < ActiveRecord::Base
     return records   
   end
   
+
   def self.get_by_status(status, limit=5)
     self.all.limit(5)
+  end 
+  # get json for tree draggable index
+  def self.get_tree_json
+    arr = []
+    Category.where(level: 1).order("ordered").each do |c|
+      row = {"key": c.id, "title": "<span class='c-item' parent='' rel='#{c.id}' ordered='#{c.ordered}'>#{c.name}</span> | #{c.html_actions}", "expanded": true, "folder": true, "children": []}
+      c.children.order("ordered").each do |c2|
+        child = {"key": c2.id, "title": "<span class='c-item' parent='#{c.id}' rel='#{c2.id}' ordered='#{c2.ordered}'>#{c2.name}</span> | #{c2.html_actions}", "expanded": true, "folder": true, "children": []}
+        c2.children.order("ordered").each do |c3|
+          child[:children] << {"key": c3.id, "title": "<span class='c-item' parent='#{c2.id}' rel='#{c3.id}' ordered='#{c3.ordered}'>#{c3.name}</span> | #{c3.html_actions}", "expanded": true, "folder": true, "children": []}
+        end
+        row[:children] << child
+      end
+      arr << row
+    end
+    return arr
+  end
+  
+  def html_actions
+    ActionView::Base.send(:include, Rails.application.routes.url_helpers)
+    str = ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-edit"></i>'.html_safe, {controller: "admin/categories", action: "edit", id: self.id})
+    str += " "
+    str += ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-trash"></i>'.html_safe, {controller: "admin/categories", action: "destroy", id: self.id}).html_safe
+    str
+  end
+  
+  # get level of category
+  def get_level
+    level = 1
+    p = parent.first
+    while !p.nil?
+      level += 1
+      p = p.parent.first
+    end
+    
+    return level
+  end
+  
+  # update all categories level
+  def self.update_all_level
+    Category.all.each do |c|
+      c.update_attribute(:level, c.get_level)
+    end
+
   end
   
 end
