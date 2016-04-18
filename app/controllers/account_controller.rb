@@ -10,4 +10,7 @@ class AccountController < ApplicationController
   def register
     @title_head = "Đăng ký"
   end
+  def my_account
+  	@title_head = ""
+  end
 end
