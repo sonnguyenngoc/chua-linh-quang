@@ -1,3 +1,6 @@
+body {
+    font-family: Helvetica,Arial,sans-serif;
+}
 .tweets_span {
     font-size: 13px;
     display: block;
@@ -152,4 +155,11 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
 }
 .padded li.row {
     margin-bottom: 10px;
+}
+.theme_menu > li > a {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    font-size: 16px;
+    border-radius: 0;
+    border-width: 0;
 }
