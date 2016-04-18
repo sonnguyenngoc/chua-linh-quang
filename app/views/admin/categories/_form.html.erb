@@ -31,7 +31,7 @@
         <div class="col-lg-10">
             <div class="row-fluid">
                 <div class="radio">
-                    <%= radio_button_tag 'parent_id', nil, @category.parent.empty?, :id => "category_none", class: "styled-level-1" %>
+                    <%= radio_button_tag 'parent_id', "", @category.parent.empty?, :id => "category_none", class: "styled-level-1" %>
                     <label for="category_none"><%= t(:none) %></label>
                 </div>
             </div>
