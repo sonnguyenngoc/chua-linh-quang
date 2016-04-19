@@ -1,0 +1,79 @@
+<body>
+  
+  <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+  
+  <div class="wide_layout">
+  
+      <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+  
+      <%= render 'module/header' %>
+      
+      <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+  
+      <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+  
+      <div class="secondary_page_wrapper">
+  
+          <div class="container">
+  
+              <div class="row">
+  
+                  <div class="col-xs-12">
+  
+                      <div class="container_404">
+  
+                          <p class="not_found_404">CẢM ƠN!</p>
+  
+                          <p class="not_found">TIN NHẮN CỦA BẠN ĐƯỢC GỬI THÀNH CÔNG!</p>
+  
+                          <%= link_to "QUAY VỀ TRANG CHỦ", root_path, class: "button_blue middle_btn" %>
+  
+                      </div><!--/ .align_center -->
+  
+                  </div><!--/ [col]-->
+  
+              </div><!--/ .row -->
+  
+          </div><!--/ .container-->
+  
+      </div><!--/ .page_wrapper-->
+      
+      <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+  
+      <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+  
+      <%= render 'module/footer' %>
+      
+      <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+  
+  </div><!--/ [layout]-->
+  
+  <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+  
+  <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+  
+  <%= render "module/social_feeds" %>
+  
+  <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+  
+  <!-- Include Libs & Plugins
+  ============================================ -->
+  <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+  <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+  <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+  <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+  <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+  <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+  <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+  <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+  <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+  <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+  <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+  <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+  
+  <!-- Theme files
+  ============================================ -->
+  <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+  <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+
+</body>

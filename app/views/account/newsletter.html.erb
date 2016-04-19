@@ -1,0 +1,135 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Account</li>
+                    <li>Newsletter</li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render 'menu_account_login' %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+
+                        <h1>Newsletter Subscription</h1>
+
+                        <div class="table_wrap bordered_content">
+                            
+                            <form action="<%= url_for({controller: 'account', action: 'newsletter'}) %>" method="post" enctype="multipart/form-data">
+                            
+                                <div>
+                            
+                                    <div class="padded">
+                            
+                                        <fieldset>
+                            
+                                            <label style="text-align: left;">Subscribe</label>
+                            
+                                            <div class="form_el no_b_margin">
+                            
+                                                <input checked="" type="radio" name="radio_2" id="radio_3">
+                                                <label for="radio_3">Yes</label>
+    
+                                                <input type="radio" name="radio_2" id="radio_4">
+                                                <label for="radio_4">No</label>
+                            
+                                            </div>
+                            
+                                        </fieldset>
+                            
+                                    </div>
+                            
+                                </div>                                                
+                            
+                            </form>
+                        
+                        </div>
+                        
+                        <footer class="bottom_box on_the_sides">
+
+							<div class="left_side">
+
+								<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Back</a>
+
+							</div>
+
+							<div class="right_side">
+
+								<input type="submit" value="Continue" class="btn btn-primary">
+
+							</div>
+
+						</footer>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

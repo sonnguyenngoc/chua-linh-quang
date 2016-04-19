@@ -1,0 +1,190 @@
+<!--==================================
+		Quick view modal window
+======================================-->
+
+<div id="quick_view" class="modal_window">
+
+	<button class="close arcticmodal-close"></button>
+
+	<div class="clearfix">
+
+		<!-- - - - - - - - - - - - - - Product image column - - - - - - - - - - - - - - - - -->
+
+		<div class="single_product">
+
+			<!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
+
+			<div class="image_preview_container" id="qv_preview">
+
+				<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
+
+			</div><!--/ .image_preview_container-->
+
+			<!-- - - - - - - - - - - - - - End of image preview container - - - - - - - - - - - - - - - - -->
+
+			<!-- - - - - - - - - - - - - - Prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+			
+			<div class="product_preview" data-output="#qv_preview">
+
+				<div class="owl_carousel" id="thumbnails">
+				
+					<% @product.product_images.each do |item| %>
+
+						<img src="<%= item.image_url.small_image %>" data-large-image="<%= item.image_url.large_image %>" alt="">
+					
+					<% end %>
+
+				</div><!--/ .owl-carousel-->
+
+			</div><!--/ .product_preview-->
+			
+			<!-- - - - - - - - - - - - - - End of prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+
+			<!-- - - - - - - - - - - - - - Share - - - - - - - - - - - - - - - - -->
+			
+			<div class="v_centered">
+
+				<div class="addthis_widget_container">
+					<!-- AddThis Button BEGIN -->
+					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<a class="addthis_button_preferred_1"></a>
+					<a class="addthis_button_preferred_2"></a>
+					<a class="addthis_button_preferred_3"></a>
+					<a class="addthis_button_preferred_4"></a>
+					<a class="addthis_button_compact"></a>
+					<a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<!-- AddThis Button END -->
+				</div>
+				
+			</div>
+			
+			<!-- - - - - - - - - - - - - - End of share - - - - - - - - - - - - - - - - -->
+
+		</div>
+
+		<!-- - - - - - - - - - - - - - End of product image column - - - - - - - - - - - - - - - - -->
+
+		<!-- - - - - - - - - - - - - - Product description column - - - - - - - - - - - - - - - - -->
+
+		<div class="single_product_description">
+
+			<h3><%= link_to @product.name, { controller: "product", action: "product", product_id: @product } %></h3>
+
+			<div class="description_section v_centered">
+
+				<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+			
+				<ul class="rating">
+
+					<li class="active"></li>
+					<li class="active"></li>
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+
+				</ul>
+					
+				<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+				<!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+				<ul class="topbar">
+
+					<li><a href="#">3 Review(s)</a></li>
+					<li><a href="#">Add Your Review</a></li>
+
+				</ul>
+
+				<!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+			</div>
+
+			<div class="description_section">
+
+				<table class="product_info">
+
+					<tbody>
+
+						<tr>
+
+							<td>Thương hiệu sản phẩm: </td>
+							<td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: @product.manufacturer_id } %></td>
+
+						</tr>
+
+						<tr>
+
+							<td>Mã sản phẩm: </td>
+							<td><%= @product.code %></td>
+
+						</tr>
+
+						<tr>
+
+							<td>Trạng thái: </td>
+							<td><span class="in_stock">Có hàng</span></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+			<hr>
+
+			<div class="description_section">
+
+				<p class="text-justify"><%= @product.short_description %></p>
+				
+			</div>
+
+			<hr>
+
+			<p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+
+			<!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
+
+			<div class="description_section_2 v_centered">
+				
+				<span class="title">Số lượng:</span>
+
+				<div class="qty min clearfix">
+
+					<button class="theme_button" data-direction="minus">&#45;</button>
+					<input type="text" name="" value="1">
+					<button class="theme_button" data-direction="plus">&#43;</button>
+
+				</div>
+
+			</div>
+
+			<!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
+
+			<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+			<div class="buttons_row">
+
+				<button class="button_blue middle_btn">Thêm vào giỏ hàng</button>
+
+				<button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào mục yêu thích</span></button>
+
+				<button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Thêm vào danh sách so sánh</span></button>
+
+			</div>
+
+			<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+		</div>
+
+		<!-- - - - - - - - - - - - - - End of product description column - - - - - - - - - - - - - - - - -->
+
+	</div>
+
+</div>
+
+<!--==================================
+		End quick view modal window
+====================================== -->

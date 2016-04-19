@@ -1,0 +1,313 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                    
+                    <li><%= link_to "Tài khoản", { controller: "account", action: "address" } %></li>
+                    
+					<li><%= @title_head %></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render "module/menu_account_logged" %>	
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+                       
+					    <h1><%= @title_head %></h1>
+                        
+						<div class="table_wrap bordered_content">
+                            
+							<form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+                              
+                                <ul class="padded margin-b">
+                                    
+									<li class="row">
+                                      
+										<div class="col-xs-12 required">
+										  
+											<label for="input-firstname" class="col-sm-2 control-label">Họ</label>
+											
+											<div class="form_el">
+											  
+												<input type="text" class="form-control" id="input-firstname" value="<%= current_user.first_name %>" name="firstname" vk_11575="subscribed">
+											
+											</div>
+										
+										</div>
+                                    
+									</li>
+                                    
+                                    <li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-lastname" class="col-sm-2 control-label">Tên</label>
+											
+											<div class="form_el">
+											  
+											  <input type="text" class="form-control" id="input-lastname" value="<%= current_user.last_name %>" name="lastname" vk_11575="subscribed">
+											
+											</div>
+										
+										</div>
+                                    
+									</li>
+                                    
+                                    <li class="row">
+										
+										<div class="col-xs-12">
+											
+											<label for="input-company" class="col-sm-2 control-label">Công ty</label>
+											
+											<div class="form_el">
+												
+												<input type="text" class="form-control" id="input-company" value="<%= current_user.company %>" name="company" vk_11575="subscribed">
+											
+											</div>
+										
+										</div>
+                                   
+								    </li>
+                                    
+                                    <li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-address-1" class="col-sm-2 control-label">Địa chỉ 1</label>
+											
+											<div class="form_el">
+												
+												<input type="text" class="form-control" id="input-address-1" value="<%= current_user.address_1 %>" name="address-1" vk_11575="subscribed">
+											
+											</div>
+										
+										</div>
+                                    
+									</li>
+                                    
+									<li class="row">
+										
+										<div class="col-xs-12">
+											
+											<label for="input-address-2" class="col-sm-2 control-label">Địa chỉ 2</label>
+											
+											<div class="form_el">
+												
+												<input type="text" class="form-control" id="input-address-2" value="<%= current_user.address_2 %>" name="address-2" vk_11575="subscribed">
+											
+											</div>
+										
+										</div>
+                                    
+									</li>
+                                    
+									<li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-city" class="col-sm-2 control-label">Thành phố</label>
+											
+											<div class="form_el">
+												
+												<input type="text" class="form-control" id="input-city" value="<%= current_user.city %>" name="city" vk_11575="subscribed">
+											
+											</div>
+										
+										</div>
+                                    
+									</li>
+                                    
+                                    <li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-post-code" class="col-sm-2 control-label">ZIP CODE</label>
+											
+											<div class="form_el">
+												
+												<input type="text" class="form-control" id="input-post-code" value="<%= current_user.zip_code %>" name="post-code" vk_11575="subscribed">
+											
+											</div>
+										
+										</div>
+                                    
+									</li>
+                                    
+                                    <li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-country" class="col-sm-2 control-label">Quốc gia</label>
+											
+											<div class="form_el">
+												
+												<select name="country_id" id="input-country" class="form-control">
+													
+													<option value=""> --- Please Select --- </option>
+													
+													<option value="244">Aaland Islands</option>
+													
+													<option value="1">Afghanistan</option>
+													
+													<option value="2">Albania</option>
+													
+													<option value="3">Algeria</option>
+													
+													<option value="4">American</option>
+												
+												</select>
+											
+											</div>
+										
+										</div>
+                                    
+									</li>
+                                    
+                                    <li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-region-state" class="col-sm-2 control-label">Tỉnh/Thành</label>
+											
+											<div class="form_el">
+												
+												<select name="region-state_id" id="input-region-state" class="form-control">
+													
+													<option value=""> --- Please Select --- </option>
+													
+													<option value="244">Aaland Islands</option>
+													
+													<option value="1">Afghanistan</option>
+													
+													<option value="2">Albania</option>
+													
+													<option value="3">Algeria</option>
+													
+													<option value="4">American</option>
+												
+												</select>
+											
+											</div>
+										
+										</div>
+                                   
+								    </li>
+                                    
+                                    <li class="row">
+                          
+                                        <div class="col-sm-12">
+                        
+                                            <label class="col-sm-2 control-label">Địa chỉ mặc định</label>
+                        
+                                            <div class="form_el">
+                                                
+                                                <input checked="" type="radio" name="default" id="yes">
+                        
+                                                <label for="yes">Đồng ý</label>
+        
+                                                <input type="radio" name="default" id="no">
+                        
+                                                <label for="no">Không đồng ý</label>
+                                                
+                                            </div>
+                        
+                                        </div>
+                        
+                                    </li>
+                                  
+                                </ul>
+                                
+                            </form>
+                          
+                        </div>
+						
+                        <footer class="bottom_box on_the_sides">
+
+							<div class="left_side">
+
+								<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'address'}) %>">Trở về</a>
+
+							</div>
+
+							<div class="right_side">
+
+								<a href="#" class="button_blue middle_btn">Tiếp tục</a>
+
+							</div>
+
+						</footer>
+                        
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

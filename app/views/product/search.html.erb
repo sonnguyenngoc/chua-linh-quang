@@ -1,0 +1,936 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li>Beauty</li>
+
+                </ul>
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4 has_mega_menu">
+
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'module/categories' %>
+
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                    </aside>
+
+                    <main class="col-md-9 col-sm-8">
+                        
+                        <h1>Seach - abcdefhg</h1>                       
+                        <div class="bordered_content box">
+                            <div class="padded">
+                              <div class="row">
+                                <div class="col-sm-6 form-group">
+                                  <input type="text" name="search_page" value="aaaaaaaaaaaa" placeholder="Keywords" id="input-search" class="form-control" vk_16032="subscribed">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                  <select name="category_id" class="form-control">
+                                      <option value="0">All Categories</option>
+                                      <option value="65">Allergy &amp; Sinus</option>
+                                          <option value="68">Diabetes Management</option>
+                                          <option value="63">Diet &amp; Fitness</option>
+                                          <option value="69">Digestion &amp; Nausea</option>
+                                          <option value="70">Eye Care</option>
+                                          <option value="73">Health Clearance</option>
+                                          <option value="75">Home Tests</option>
+                                      <option value="62">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Baby Needs</option>
+                                  </select>
+                                </div>
+                              </div>
+                              
+                              <div class="row">
+                                <div class="col-sm-6 form_el">
+                                  
+                                      <input checked="" type="checkbox" name="description" id="description" value="1">
+                                      <label for="description">Search in product descriptions</label>
+      
+                                </div>
+                                <div class="col-sm-6 form_el">
+                                  
+                                  <input checked="" type="checkbox" name="sub_category" id="sub_category" value="1">
+                                  <label for="sub_category">Search in subcategories</label>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="bottom_buttons">
+                              <a href="#" class="button_blue middle_btn">Search</a>
+                            </div>
+                          
+                        </div>
+                        
+                        <!---->
+
+                        <section class="section_offset">
+                            
+                            <!--<h3>Products meeting the search criteria</h3>
+                            <p>There is no product that matches the search criteria.</p>-->
+                            <h1>Beauty</h1>
+
+                            <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula. Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Vestibulum sed ante. Donec sagittis euismod purus. Sed ut perspiciatis sit voluptatem accusantim doloremque laudantim.</p>
+
+                        </section>
+
+                        <!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
+
+                        <div class="section_offset">
+
+                            <header class="top_box on_the_sides">
+
+                                <div class="left_side clearfix v_centered">
+                                  
+                                    <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
+
+                                    <div class="v_centered">
+
+                                        <span>Show:</span>
+
+                                        <div class="custom_select">
+
+                                            <select name="">
+
+                                                <option value="15">15</option>
+                                                <option value="12">12</option>
+                                                <option value="9">9</option>
+                                                <option value="6">6</option>
+                                                <option value="3">3</option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
+
+                                    <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+
+                                    <div class="v_centered">
+
+                                        <span>Sort by:</span>
+
+                                        <div class="custom_select sort_select">
+                                            
+                                            <select name="">
+                                                    
+                                                <option value="Default">Default</option>
+                                                <option value="Price">Price</option>
+                                                <option value="Name">Name</option>
+                                                <option value="Date">Date</option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
+
+                                </div>
+
+                                <div class="right_side">
+
+                                    <!-- - - - - - - - - - - - - - Product layout type - - - - - - - - - - - - - - - - -->
+
+                                    <div class="layout_type buttons_row" data-table-container="#products_container">
+
+                                        <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Grid View</span></a>
+
+                                        <a href="#" data-table-layout="list_view list_view_products" class="button_grey middle_btn icon_btn tooltip_container"><i class="icon-th-list"></i><span class="tooltip top">List View</span></a>
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of product layout type - - - - - - - - - - - - - - - - -->
+
+                                </div>
+
+                            </header>
+
+                            <div class="table_layout" id="products_container">
+
+                                <div class="table_row">
+
+                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                    <div class="table_cell">
+
+                                        <div class="product_item">
+
+                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <div class="image_wrap">
+
+                                                <img src="/frontend/images/product_img_7.jpg" alt="">
+
+                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                                <div class="actions_wrap">
+
+                                                    <div class="centered_buttons">
+
+                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+
+                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+
+                                                    </div><!--/ .centered_buttons -->
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+
+                                                </div><!--/ .actions_wrap-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                            </div><!--/. image_wrap-->
+
+                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <div class="description">
+
+                                                <a href="#">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
+
+                                                <div class="clearfix product_info">
+
+                                                    <p class="product_price alignleft"><b>$5.99</b></p>
+
+                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                    <ul class="rating alignright">
+
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li></li>
+
+                                                    </ul>
+                                                    
+                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="full_description">
+
+                                                <a href="#" class="product_title">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
+
+                                                <a href="#" class="product_category">Beauty Clearance</a>
+
+                                                <div class="v_centered product_reviews">
+
+                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                                
+                                                    <ul class="rating">
+
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li></li>
+
+                                                    </ul>
+                                                        
+                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                    <ul class="topbar">
+
+                                                        <li><a href="#">3 Review(s)</a></li>
+                                                        <li><a href="#">Add Your Review</a></li>
+
+                                                    </ul>
+
+                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                </div>
+
+                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
+
+                                                <a href="#" class="learn_more">Learn More</a>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions">
+
+                                                <p class="product_price bold">$5.99</p>
+
+                                                <ul class="seller_stats">
+
+                                                    <li>Shipping: <span class="success">Free Shipping</span></li>
+                                                    <li>Availability: <span class="success">in stock</span></li>
+                                                    <li class="seller_info_wrap">
+
+                                                        Seller: <span class="seller_name">johnsmith</span>
+
+                                                        <div class="seller_info_dropdown">
+
+                                                            <ul class="seller_stats">
+
+                                                                <li>
+                                                                    
+                                                                    <ul class="topbar">
+                                                                        
+                                                                        <li>China (Mainland)</li>
+
+                                                                        <li><a href="#">Contact Details</a></li>
+
+                                                                    </ul>
+
+                                                                </li>
+
+                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
+
+                                                            </ul>
+
+                                                            <div class="v_centered">
+
+                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
+
+                                                                <a href="#" class="small_link">Chat Now</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </li>
+
+                                                </ul>
+
+                                                <ul class="buttons_col">
+
+                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
+
+                                                </ul>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .product_item-->
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                    <div class="table_cell">
+
+                                        <div class="product_item">
+
+                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <div class="image_wrap">
+
+                                                <img src="/frontend/images/product_img_8.jpg" alt="">
+
+                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                                <div class="actions_wrap">
+
+                                                    <div class="centered_buttons">
+
+                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+
+                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+
+                                                    </div><!--/ .centered_buttons -->
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+
+                                                </div><!--/ .actions_wrap-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+
+                                                <div class="label_bestseller">Bestseller</div>
+
+                                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+
+                                            </div><!--/. image_wrap-->
+
+                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <div class="description">
+
+                                                <a href="#">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
+
+                                                <div class="clearfix product_info">
+
+                                                    <p class="product_price alignleft"><b>$8.99</b></p>
+
+                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                    <ul class="rating alignright">
+
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+
+                                                    </ul>
+                                                    
+                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="full_description">
+
+                                                <a href="#" class="product_title">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
+
+                                                <a href="#" class="product_category">Bath &amp; Spa</a>
+
+                                                <div class="v_centered product_reviews">
+
+                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                                
+                                                    <ul class="rating">
+
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+                                                        <li class="active"></li>
+
+                                                    </ul>
+                                                        
+                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                    <ul class="topbar">
+
+                                                        <li><a href="#">3 Review(s)</a></li>
+                                                        <li><a href="#">Add Your Review</a></li>
+
+                                                    </ul>
+
+                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                </div>
+
+                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
+
+                                                <a href="#" class="learn_more">Learn More</a>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions">
+
+                                                <p class="product_price bold">$8.99</p>
+
+                                                <ul class="seller_stats">
+
+                                                    <li>Shipping: $11.24/piece</li>
+                                                    <li>Availability: <span class="success">in stock</span></li>
+                                                    <li class="seller_info_wrap">
+
+                                                        Seller: <span class="seller_name">johnsmith</span>
+
+                                                        <div class="seller_info_dropdown">
+
+                                                            <ul class="seller_stats">
+
+                                                                <li>
+                                                                    
+                                                                    <ul class="topbar">
+                                                                        
+                                                                        <li>China (Mainland)</li>
+
+                                                                        <li><a href="#">Contact Details</a></li>
+
+                                                                    </ul>
+
+                                                                </li>
+
+                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
+
+                                                            </ul>
+
+                                                            <div class="v_centered">
+
+                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
+
+                                                                <a href="#" class="small_link">Chat Now</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </li>
+
+                                                </ul>
+
+                                                <ul class="buttons_col">
+
+                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
+
+                                                </ul>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .product_item-->
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                    <div class="table_cell">
+
+                                        <div class="product_item">
+
+                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <div class="image_wrap">
+
+                                                <img src="/frontend/images/product_img_9.jpg" alt="">
+
+                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                                <div class="actions_wrap">
+
+                                                    <div class="centered_buttons">
+
+                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+
+                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+
+                                                    </div><!--/ .centered_buttons -->
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+
+                                                </div><!--/ .actions_wrap-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                            </div><!--/. image_wrap-->
+
+                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <div class="description">
+
+                                                <a href="#">Quis autem vel eum iure reing elit, 2mg</a>
+
+                                                <div class="clearfix product_info">
+
+                                                    <p class="product_price alignleft"><b>$76.99</b></p>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="full_description">
+
+                                                <a href="#" class="product_title">Quis autem vel eum iure reing elit, 2mg</a>
+
+                                                <a href="#" class="product_category">Beauty Clearance</a>
+
+                                                <div class="v_centered product_reviews">
+
+                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                    <ul class="topbar">
+
+                                                        <li>0 Review(s)</li>
+                                                        <li><a href="#">Add Your Review</a></li>
+
+                                                    </ul>
+
+                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                </div>
+
+                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
+
+                                                <a href="#" class="learn_more">Learn More</a>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions">
+
+                                                <p class="product_price bold">$76.99</p>
+
+                                                <ul class="seller_stats">
+
+                                                    <li>Shipping: <span class="success">Free Shipping</span></li>
+                                                    <li>Availability: <span class="success">in stock</span></li>
+                                                    <li class="seller_info_wrap">
+
+                                                        Seller: <span class="seller_name">johnsmith</span>
+
+                                                        <div class="seller_info_dropdown">
+
+                                                            <ul class="seller_stats">
+
+                                                                <li>
+                                                                    
+                                                                    <ul class="topbar">
+                                                                        
+                                                                        <li>China (Mainland)</li>
+
+                                                                        <li><a href="#">Contact Details</a></li>
+
+                                                                    </ul>
+
+                                                                </li>
+
+                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
+
+                                                            </ul>
+
+                                                            <div class="v_centered">
+
+                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
+
+                                                                <a href="#" class="small_link">Chat Now</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </li>
+
+                                                </ul>
+
+                                                <ul class="buttons_col">
+
+                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
+
+                                                </ul>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .product_item-->
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                </div><!--/ .table_row -->
+
+                                <div class="table_row">
+
+                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                    <div class="table_cell">
+
+                                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                        <div class="product_item">
+
+                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <div class="image_wrap">
+
+                                                <img src="/frontend/images/product_img_6.jpg" alt="">
+
+                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                                <div class="actions_wrap">
+
+                                                    <div class="centered_buttons">
+
+                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
+
+                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+
+                                                    </div><!--/ .centered_buttons -->
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+
+                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+
+                                                </div><!--/ .actions_wrap-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+
+                                                <div class="label_new">New</div>
+
+                                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+
+                                            </div><!--/. image_wrap-->
+
+                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <div class="description">
+
+                                                <a href="#">Aliquam congue fermentum nisl, 100mg, Softgels 120 ea</a>
+
+                                                <div class="clearfix product_info">
+
+                                                    <p class="product_price alignleft"><b>$75.39</b></p>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="full_description">
+
+                                                <a href="#" class="product_title">Aliquam congue fermentum nisl, 100mg, Softgels 120 ea</a>
+
+                                                <a href="#" class="product_category">Beauty Clearance</a>
+
+                                                <div class="v_centered product_reviews">
+
+                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                    <ul class="topbar">
+
+                                                        <li>0 Review(s)</li>
+                                                        <li><a href="#">Add Your Review</a></li>
+
+                                                    </ul>
+
+                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                </div>
+
+                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
+
+                                                <a href="#" class="learn_more">Learn More</a>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions">
+
+                                                <p class="product_price bold">$75.39</p>
+
+                                                <ul class="seller_stats">
+
+                                                    <li>Shipping: $16.63/piece</li>
+                                                    <li>Availability: <span class="success">in stock</span></li>
+                                                    <li class="seller_info_wrap">
+
+                                                        Seller: <span class="seller_name">johnsmith</span>
+
+                                                        <div class="seller_info_dropdown">
+
+                                                            <ul class="seller_stats">
+
+                                                                <li>
+                                                                    
+                                                                    <ul class="topbar">
+                                                                        
+                                                                        <li>China (Mainland)</li>
+
+                                                                        <li><a href="#">Contact Details</a></li>
+
+                                                                    </ul>
+
+                                                                </li>
+
+                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
+
+                                                            </ul>
+
+                                                            <div class="v_centered">
+
+                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
+
+                                                                <a href="#" class="small_link">Chat Now</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </li>
+
+                                                </ul>
+
+                                                <ul class="buttons_col">
+
+                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
+
+                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
+
+                                                </ul>
+
+                                            </div>
+
+                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/ .product_item-->
+                                        
+                                        <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+
+                                    </div>
+
+                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                </div><!--/ .table_row -->
+
+                            </div><!--/ .table_layout -->
+
+                            <footer class="bottom_box on_the_sides">
+
+                                <div class="left_side">
+
+                                    <p>Showing 1 to 3 of 45 (15 Pages)</p>
+
+                                </div>
+
+                                <div class="right_side">
+
+                                    <ul class="pags">
+
+                                        <li><a href="#"></a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#"></a></li>
+
+                                    </ul>
+
+                                </div>
+
+                            </footer>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of products - - - - - - - - - - - - - - - - -->
+
+                    </main>
+
+                </div><!--/ .row -->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer'%>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

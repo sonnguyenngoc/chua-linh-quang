@@ -1,0 +1,176 @@
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
+
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold">Areas</span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i> Home'.html_safe, { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_areas_path %>">Product</a></li>
+                        <li class="active">Areas</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Basic datatable -->
+                <div class="panel panel-flat">
+                    <div class="panel-heading col-md-12">
+                        <h5 class="panel-title col-md-6"><span class="text-semibold">Listing Areas</span></h5>
+                        <%= link_to 'New Area', new_admin_area_path, class: 'btn btn-primary pull-right' %>
+                    </div>
+                    
+                    <div class="filter-box">
+                        <%= form_for("", url: {controller: 'areas', action: 'search'}, method: "get") do |f| %>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Parent</label>
+                                        <div>
+                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Sort By</label>
+                                        <div>
+                                            <%= select_tag(:sort_by, options_for_select(Area.sort_by, :selected => params[:sort_by]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Sort Order</label>
+                                        <div>
+                                            <%= select_tag(:sort_order, options_for_select(Area.sort_order, :selected => params[:sort_order]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" >Filter</label>
+                                        <div class="input-group">
+                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword" value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        <% end %>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr class="bg-teal-800">
+                                <th>Name</th>
+                                <th>Parent</th>
+                                <th>Description</th>
+                                <th>Created At</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @areas.each do |item| %>
+                                <tr>
+                                    <td>
+                                        <%= link_to item.name, edit_admin_area_path(item) %>
+                                    </td>
+                                    <td>
+                                        <%= item.get_parent_name %>
+                                    </td>
+                                    <td>
+                                        <%= item.description %>
+                                    </td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_area_path(item) %>
+                                                    </li>
+                                                    <li>
+                                                        <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_wrapper no-footer">
+                        <div class="datatable-footer showed">
+                            <div class="dataTables_info" ><%= page_entries_info @areas %></div>
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <%= will_paginate @areas, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /basic datatable -->
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_categories.js' %>
+<!-- /theme JS files -->
