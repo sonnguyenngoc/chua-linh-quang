@@ -10,6 +10,10 @@ class OrdersController < ApplicationController
     @order_delivery = OrderDelivery.new(order_delivery_params)
     @order.order_delivery = @order_delivery
     
+<<<<<<< HEAD
+    @order.user_id = current_user.id if current_user.present?
+=======
+>>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
     respond_to do |format|
       if @order.save
         @order.save_from_cart(@cart)

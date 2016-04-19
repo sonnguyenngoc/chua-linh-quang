@@ -9,4 +9,19 @@ class Order < ActiveRecord::Base
       self.order_details.create(product_id: item.product_id, quantity: item.quantity)
     end
   end
+  
+  #get order for user
+  def self.get_by_order(current_user)
+    records = self.all
+    records = records.where(user_id: {id: params[:current_id]})
+    return records
+  end
+  
+  def total
+    amount = 0.0
+    order_details.each do |od|
+      amount += od.total
+    end
+    return amount
+  end
 end

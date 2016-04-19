@@ -20,9 +20,11 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
-                    <li>Logout</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                    
+					<li><%= @title_head %></li>
 
                 </ul>
 
@@ -30,7 +32,7 @@
 
                     <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
                       
-                        <%= render 'menu_account_logout' %>
+                        <%= render 'module/menu_account_not_signed' %>
 
                     </aside>
 

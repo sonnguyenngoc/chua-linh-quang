@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get "account/wishlist" => "account#wishlist", as: :wishlist
     get "account/register" => "account#register", as: :register
     get "account/order" => "account#order", as: :account_order
-    get "account/order/info" => "account#order_info", as: :order_info
+    get "account/order/info/:order_id" => "account#order_info", as: :order_info
     get "account/address" => "account#address", as: :address
     get "account/address/edit" => "account#address_edit", as: :address_edit
     get "account/download" => "account#download", as: :download

@@ -31,7 +31,11 @@
                                 <ul class="topbar">
 
                                     <li><%= link_to "Trang chủ", root_path %></li>
-                                    <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                                    <% if current_user.present? %>
+                                        <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                                    <% else %>
+                                        <li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                                    <% end %>
                                     <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "shopping_cart" } %></li>
                                     <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
                                     <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>

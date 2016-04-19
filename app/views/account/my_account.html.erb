@@ -20,59 +20,64 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    
+                    <li><%= @title_head %></li>
 
                 </ul>
 
                 <div class="row">
 
                     <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
-                      
-                        <h3>Account</h3>
-                        <div class="list-group box">
-                            <a href="<%= url_for({controller: 'account', action: 'register'}) %>" class="list-group-item dark_hover">Register</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'forgotten'}) %>" class="list-group-item dark_hover">Forgotten Password</a>
-                            <a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="list-group-item dark_hover">My Account</a>
-                            <a href="<%= url_for({controller: 'account', action: 'address'}) %>" class="list-group-item dark_hover">Address Book</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'login'}) %>" class="list-group-item dark_hover">Wish List</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>" class="list-group-item dark_hover">Order History</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'download'}) %>" class="list-group-item dark_hover">Downloads</a>
-                            <a href="<%= url_for({controller: 'account', action: 'recurring_payments'}) %>" class="list-group-item dark_hover">Recurring payments</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>" class="list-group-item dark_hover">Reward Points</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'return_list'}) %>" class="list-group-item dark_hover">Returns</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'transaction'}) %>" class="list-group-item dark_hover">Transactions</a> 
-                            <a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>" class="list-group-item dark_hover">Newsletter</a>
-                            <a href="<%= url_for({controller: 'account', action: 'logout'}) %>" class="list-group-item dark_hover">Logout</a> 
-                        </div>
+                        
+                        <%= render "module/menu_account_logged" %>
 
                     </aside>
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1>My Account</h1>
+                        <h1><%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></h1>
                         
                         <div class="bordered_content padded box">
-                            <h4>My Account</h4>
+                            
+                            <h4>Tài khoản của tôi</h4>
+                            
                             <ul class="list-unstyled margin-b">
-                                <li><a href="<%= url_for({controller: 'account', action: 'edit'}) %>">Edit your account information</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'password'}) %>">Change your password</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'address'}) %>">Modify your address book entries</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>">Modify your wish list</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'edit'}) %>">Chỉnh sửa thông tin tài khoản</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'password'}) %>">Thay đổi mật khẩu</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'address'}) %>">Thay đổi địa chỉ đặt hàng</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>">Thay đổi sản phẩm yêu thích</a></li>
+                            
                             </ul>
-                            <h4>My Orders</h4>
+                            
+                            <h4>Đơn hàng của tôi</h4>
+                            
                             <ul class="list-unstyled margin-b">
-                                <li><a href="<%= url_for({controller: 'account', action: 'order'}) %>">View your order history</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'download'}) %>">Downloads</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>">Your Reward Points</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'return_list'}) %>">View your return requests</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'transaction'}) %>">Your Transactions</a></li>
-                                <li><a href="<%= url_for({controller: 'account', action: 'recurring_payments'}) %>">Recurring payments</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'order'}) %>">Xem lịch sử đặt hàng</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>">Điểm thưởng của tôi</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'return_list'}) %>">Xem yêu cầu trả hàng</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'transaction'}) %>">Giao dịch của bạn</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'recurring_payments'}) %>">Thanh toán định kỳ</a></li>
+                            
                             </ul>
-                            <h4>Newsletter</h4>
+                            
+                            <h4>Đăng ký nhận tin mới</h4>
+                            
                             <ul class="list-unstyled margin-b">
-                                <li><a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>">Subscribe / unsubscribe to newsletter</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>">Theo dõi / Hủy nhận tin mới</a></li>
+                            
                             </ul>
+                        
                         </div>
 
                     </main>

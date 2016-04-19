@@ -37,13 +37,17 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
     if session[:user_return_to] == nil
-      login_path
+      my_account_path
     else
       super
     end
   end
   
+  def after_update_path_for(resource)
+    my_account_path(resource)
+  end
+  
   def after_sign_out_path_for(resource_or_scope)
-    login_path
+    root_path
   end
 end
