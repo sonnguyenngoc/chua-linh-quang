@@ -344,7 +344,7 @@
                         <h4>Tài khoản</h4>
 
                         <ul class="list_of_links">
-                            
+ 
                             <% if current_user.present? %>
                                 <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
                             <% else %>

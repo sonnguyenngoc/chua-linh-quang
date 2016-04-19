@@ -159,6 +159,7 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
 .theme_menu > li > a {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: medium none;
+<<<<<<< HEAD
     font-size: 14px;
     border-radius: 0;
     border-width: 0;
@@ -175,3 +176,9 @@ form:not(.type_2) .form_el {
 input:not([type="submit"]), textarea, .active_option {
     color: #777777;
 }
+=======
+    font-size: 16px;
+    border-radius: 0;
+    border-width: 0;
+}
+>>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
