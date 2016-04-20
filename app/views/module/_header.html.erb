@@ -66,9 +66,15 @@
                                             
                                             <option value="">Tất cả</option>
                                             
-                                            <% Area.all.each do |item| %>
+                                            <% Area.where(level: 2).each do |item| %>
                                                     
                                                 <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
+                                                
+                                                <% item.children.each do |child| %>
+                                                    
+                                                    <option value="<%= child.id %>" class="list_category_option">-- <%= child.name %></option>
+                                                                                               
+                                                <% end %>
                                                                                            
                                             <% end %>
                                         
