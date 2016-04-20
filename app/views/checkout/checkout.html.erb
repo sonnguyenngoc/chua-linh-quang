@@ -30,17 +30,13 @@
                 
                 <% if !current_user.present? %>
                 
-                    <p class="page_title"><a href="#">Đăng nhập vào tài khoản của bạn.</a></p>
+                    <p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập vào tài khoản của bạn.</a></p>
       
                     <!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
       
-                    <section class="section_offset">
+                    <section class="section_offset checkout-quick-login-box" style="display: none;">
       
-<<<<<<< HEAD
                         <h3>Đăng nhập</h3>
-=======
-                        <h3>Login</h3>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
       
                         <div class="theme_box">
       
@@ -104,35 +100,7 @@
                                 
                                 <ul class="shipping_method">
           
-<<<<<<< HEAD
                                 <div class="type_2">
-=======
-                                    <li>
-          
-                                        <input checked type="radio" name="current_address_order" id="current_address_order">
-                                        <label for="current_address_order">Sử dụng địa chỉ hiện tại.</label>
-          
-                                    </li>
-                                    
-                                    <li>
-          
-                                        <input type="text" name="" id="current_address" value="Nguyễn Ngọc Sơn - TP.HCM, Việt Nam"  readonly>
-          
-                                    </li>
-                                    
-                                    <li>
-          
-                                        <input type="radio" name="other_address" id="other_address">
-                                        <label for="other_address">Sử dụng địa chỉ khác.</label>
-          
-                                    </li>
-                                    
-                                    <br/>
-          
-                                </ul>
-          
-                                <form class="type_2">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                                     
                                     <ul>
                                         
@@ -141,54 +109,36 @@
                                             <div class="col-sm-6">
                                                 
                                                 <label for="first_name" class="required">Họ:</label>
-<<<<<<< HEAD
                                                 
                                                 <input type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %>">
-=======
-                                                <input type="text" name="" id="first_name">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
           
                                             </div><!--/ [col] -->
           
                                             <div class="col-sm-6">
                                                 
                                                 <label for="last_name" class="required">Tên:</label>
-<<<<<<< HEAD
                                                 
                                                 <input type="text" name="customer[last_name]" id="customer_last_name" value="<%= current_user.last_name %>">
-=======
-                                                <input type="text" name="" id="last_name">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
           
                                             </div><!--/ [col] -->
           
                                         </li><!--/ .row -->
           
                                         <li class="row">	
-          
+                                            
                                             <div class="col-xs-6">
           
-<<<<<<< HEAD
-                                                <label for="company">Tên công ty:</label>
+                                                <label for="email" class="required">Email:</label>
                                                 
-                                                <input type="text" name="customer[company]" id="customer_company" value="<%= current_user.company %>">
-=======
-                                                <label for="address">Tên công ty:</label>
-                                                <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+                                                <input type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
           
                                             </div><!--/ [col] -->
                                             
                                             <div class="col-xs-6">
           
-<<<<<<< HEAD
-                                                <label for="address" class="required">Địa chỉ:</label>
+                                                <label for="phone" class="required">Số điện thoại:</label>
                                                 
-                                                <input type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
-=======
-                                                <label for="address" class="required">Địa chỉ 1:</label>
-                                                <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+                                                <input type="text" name="customer[phone]" id="customer_phone" value="<%= current_user.phone %>">
           
                                             </div><!--/ [col] -->
           
@@ -198,31 +148,33 @@
           
                                             <div class="col-xs-6">
           
-<<<<<<< HEAD
-                                                <label for="email" class="required">Email:</label>
+                                                <label for="company">Tên công ty:</label>
                                                 
-                                                <input type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
-=======
-                                                <label for="address" class="required">Thành phố:</label>
-                                                <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+                                                <input type="text" name="customer[company]" id="customer_company" value="<%= current_user.company %>">
           
                                             </div><!--/ [col] -->
                                             
                                             <div class="col-xs-6">
           
-<<<<<<< HEAD
                                                 <label for="zip_code">Mã bưu chính ZIP CODE:</label>
                                                 
                                                 <input type="text" name="customer[zip_code]" id="customer_zip_code" value="<%= current_user.zip_code %>">
-=======
-                                                <label for="address">Mã bưu chính ZIP/CODE:</label>
-                                                <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
           
                                             </div><!--/ [col] -->
           
                                         </li><!--/ .row -->
+                                        
+                                        <li class="row">
+                                            
+                                            <div class="col-xs-12">
+          
+                                                <label for="address" class="required">Địa chỉ:</label>
+                                                
+                                                <input type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
+          
+                                            </div><!--/ [col] -->
+          
+                                        </li><!-- / .row -->
           
                                         <li class="row">
           
@@ -244,24 +196,16 @@
           
                                             <div class="col-sm-6">
           
-<<<<<<< HEAD
                                                 <label>Tỉnh/Thành phố</label>
-=======
-                                                <label>Tỉnh</label>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
           
                                                 <div>
           
                                                     <select name="">
           
                                                         <option value="dongnnaiprovine">Đồng Nai</option>
-<<<<<<< HEAD
                                                         
                                                         <option value="hochiminhcity">TP.Hồ Chí Minh</option>
                                                         
-=======
-                                                        <option value="hochiminhcity">TP.Hồ Chí Minh</option>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                                                         <option value="vungtauprovine">Vũng Tàu</option>
           
                                                     </select>
@@ -274,23 +218,14 @@
           
                                     </ul>
           
-<<<<<<< HEAD
                                 </div>
-=======
-                                </form>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
           
                             </div>
           
                         </section><!--/ .section_offset -->
           
                         <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
-<<<<<<< HEAD
-        
-=======
-          
                         
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                         <!-- - - - - - - - - - - - - - Delivery details - - - - - - - - - - - - - - - - -->
           
                         <section class="section_offset">
@@ -298,35 +233,6 @@
                             <h3>Thông tin giao hàng</h3>
           
                             <div class="theme_box">
-<<<<<<< HEAD
-=======
-                                
-                                <ul class="shipping_method">
-          
-                                    <li>
-          
-                                        <input checked type="radio" name="current_address_delivery" id="current_address_delivery">
-                                        <label for="current_address_delivery">Sử dụng địa chỉ hiện tại.</label>
-          
-                                    </li>
-                                    
-                                    <li>
-          
-                                        <input type="text" name="" id="current_address" value="Nguyễn Ngọc Sơn - TP.HCM, Việt Nam"  readonly>
-          
-                                    </li>
-                                    
-                                    <li>
-          
-                                        <input type="radio" name="other_address" id="other_address">
-                                        <label for="other_address">Sử dụng địa chỉ khác.</label>
-          
-                                    </li>
-                                    
-                                    <br/>
-          
-                                </ul>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                                     
                                 <ul>
                                     
@@ -335,54 +241,36 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="first_name" class="required">Họ:</label>
-<<<<<<< HEAD
                                             
                                             <input type="text" name="order_delivery[first_name]" id="order_delivery_first_name" value="<%= current_user.first_name %>">
-=======
-                                            <input type="text" name="" id="first_name">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
         
                                         </div><!--/ [col] -->
         
                                         <div class="col-sm-6">
                                             
                                             <label for="last_name" class="required">Tên:</label>
-<<<<<<< HEAD
                                             
                                             <input type="text" name="order_delivery[last_name]" id="order_delivery_last_name" value="<%= current_user.last_name %>">
-=======
-                                            <input type="text" name="" id="last_name">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
         
                                         </div><!--/ [col] -->
         
                                     </li><!--/ .row -->
         
-                                    <li class="row">	
-        
+                                    <li class="row">
+                                        
                                         <div class="col-xs-6">
         
-<<<<<<< HEAD
-                                            <label for="company">Tên công ty:</label>
-                                            
-                                            <input type="text" name="order_delivery[company]" id="order_delivery_company" value="<%= current_user.company %>">
-=======
-                                            <label for="address">Tên công ty:</label>
-                                            <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+                                            <label for="email" class="required">Email:</label>
+                                           
+                                            <input type="text" name="order_delivery[email]" id="order_delivery_email" value="<%= current_user.email %>">
         
                                         </div><!--/ [col] -->
                                         
                                         <div class="col-xs-6">
         
-<<<<<<< HEAD
-                                            <label for="address" class="required">Địa chỉ:</label>
+                                            <label for="phone" class="required">Số điện thoại:</label>
                                             
-                                            <input type="text" name="order_delivery[address]" id="order_delivery_address" value="<%= current_user.address_1 %>">
-=======
-                                            <label for="address" class="required">Địa chỉ 1:</label>
-                                            <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+                                            <input type="text" name="order_delivery[phone]" id="order_delivery_phone" value="<%= current_user.phone %>">
         
                                         </div><!--/ [col] -->
         
@@ -392,30 +280,33 @@
         
                                         <div class="col-xs-6">
         
-                                            <label for="address" class="required">Thành phố:</label>
-<<<<<<< HEAD
-                                           
-                                            <input type="text" name="order_delivery[city]" id="order_delivery_city" value="<%= current_user.city %>">
-=======
-                                            <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+                                            <label for="company">Tên công ty:</label>
+                                            
+                                            <input type="text" name="order_delivery[company]" id="order_delivery_company" value="<%= current_user.company %>">
         
                                         </div><!--/ [col] -->
                                         
                                         <div class="col-xs-6">
         
-<<<<<<< HEAD
                                             <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
                                             
                                             <input type="text" name="order_delivery[zip_code]" id="order_delivery_zip_code" value="<%= current_user.zip_code %>">
-=======
-                                            <label for="address">Mã bưu chính ZIP/CODE:</label>
-                                            <input type="text" name="" id="address">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
         
                                         </div><!--/ [col] -->
         
                                     </li><!--/ .row -->
+                                    
+                                    <li class="row">
+                                        
+                                        <div class="col-xs-12">
+        
+                                            <label for="address" class="required">Địa chỉ:</label>
+                                            
+                                            <input type="text" name="order_delivery[address]" id="order_delivery_address" value="<%= current_user.address_1 %>">
+        
+                                        </div><!--/ [col] -->
+        
+                                    </li><!-- / .row -->
         
                                     <li class="row">
         
@@ -437,24 +328,16 @@
         
                                         <div class="col-sm-6">
         
-<<<<<<< HEAD
                                             <label>Tỉnh/Thành phố</label>
-=======
-                                            <label>Tỉnh</label>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
         
                                             <div>
         
                                                 <select name="">
         
                                                     <option value="dongnnaiprovine">Đồng Nai</option>
-<<<<<<< HEAD
                                                     
                                                     <option value="hochiminhcity">TP.Hồ Chí Minh</option>
                                                     
-=======
-                                                    <option value="hochiminhcity">TP.Hồ Chí Minh</option>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                                                     <option value="vungtauprovine">Vũng Tàu</option>
         
                                                 </select>
@@ -490,10 +373,7 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="first_name" class="required">Họ:</label>
-<<<<<<< HEAD
                                             
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                                             <input type="text" name="customer[first_name]" id="customer_first_name">
         
                                         </div><!--/ [col] -->
@@ -501,10 +381,7 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="last_name" class="required">Tên:</label>
-<<<<<<< HEAD
                                             
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                                             <input type="text" name="customer[last_name]" id="customer_last_name">
         
                                         </div><!--/ [col] -->
@@ -515,11 +392,8 @@
                                         
                                         <div class="col-sm-6">
                                             
-                                            <label for="email" class="required">Địa chỉ email:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+                                            <label for="email" class="required">Email:</label>
+
                                             <input type="text" name="customer[email]" id="customer_email">
         
                                         </div><!--/ [col] -->
@@ -527,10 +401,7 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="phone" class="required">Số điện thoại:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+
                                             <input type="text" name="customer[phone]" id="customer_phone">
         
                                         </div><!--/ [col] -->
@@ -542,22 +413,16 @@
                                         <div class="col-xs-6">
         
                                             <label for="address">Tên công ty:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+
                                             <input type="text" name="customer[company]" id="customer_company">
         
                                         </div><!--/ [col] -->
                                         
                                         <div class="col-xs-6">
         
-                                            <label for="address" class="required">Địa chỉ:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <input type="text" name="customer[address]" id="customer_address">
+                                            <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
+
+                                            <input type="text" name="customer[zip_code]" id="customer_zip_code">
         
                                         </div><!--/ [col] -->
         
@@ -565,27 +430,11 @@
         
                                     <li class="row">
         
-                                        <div class="col-xs-6">
+                                        <div class="col-xs-12">
         
-<<<<<<< HEAD
-                                            <label for="email" class="required">Email:</label>
-                                            
-                                            <input type="text" name="customer[email]" id="customer_email">
-=======
-                                            <label for="city" class="required">Thành phố:</label>
-                                            <input type="text" name="customer[city]" id="customer_city">
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-        
-                                        </div><!--/ [col] -->
-                                        
-                                        <div class="col-xs-6">
-        
-                                            <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <input type="text" name="customer[zip_code]" id="customer_zip_code">
+                                            <label for="address" class="required">Địa chỉ:</label>
+
+                                            <input type="text" name="customer[address]" id="customer_address">
         
                                         </div><!--/ [col] -->
         
@@ -611,24 +460,16 @@
         
                                         <div class="col-sm-6">
         
-<<<<<<< HEAD
                                             <label>Tỉnh/Thành phố</label>
-=======
-                                            <label>Tỉnh</label>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
         
                                             <div>
         
                                                 <select name="">
         
                                                     <option value="dongnnaiprovine">Đồng Nai</option>
-<<<<<<< HEAD
                                                     
                                                     <option value="hochiminhcity">TP.Hồ Chí Minh</option>
                                                    
-=======
-                                                    <option value="hochiminhcity">TP.Hồ Chí Minh</option>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
                                                     <option value="vungtauprovine">Vũng Tàu</option>
         
                                                 </select>
@@ -643,83 +484,69 @@
         
                                         <div class="col-xs-12">
         
-                                            <input type="checkbox" name="" id="account">
-<<<<<<< HEAD
+                                            <input type="checkbox" name="order[quick_create_user]" id="quick_create_user" onclick="$('.quick_create_user_box').toggle()">
                                             
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <label for="account">Sử dụng thông tin để tạo tài khoản mới.</label>
+                                            <label for="quick_create_user">Sử dụng thông tin để tạo tài khoản mới.</label>
         
                                         </div><!--/ [col] -->
         
                                     </li><!--/ .row -->
                                     
-                                    <li class="row">
-        
-                                        <div class="col-sm-6">
-        
-                                            <label for="password" class="required">Mật khẩu:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <input type="password" name="" id="password">
-        
-                                        </div><!--/ [col] -->
-        
-                                        <div class="col-sm-6">
-        
-                                            <label for="confirm" class="required">Xác nhận mật khẩu:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <input type="password" name="" id="confirm">
-        
-                                        </div><!--/ [col] -->
-        
-                                    </li><!--/ .row -->
+                                    <div class="quick_create_user_box" style="display: none">
                                     
+                                        <li class="row">
+            
+                                            <div class="col-sm-6">
+            
+                                                <label for="password" class="required">Mật khẩu:</label>
+    
+                                                <input type="password" name="" id="password">
+            
+                                            </div><!--/ [col] -->
+            
+                                            <div class="col-sm-6">
+            
+                                                <label for="confirm" class="required">Xác nhận mật khẩu:</label>
+    
+                                                <input type="password" name="" id="confirm">
+            
+                                            </div><!--/ [col] -->
+            
+                                        </li><!--/ .row -->
+                                        
+                                        <li class="row">
+            
+                                            <div class="col-xs-12">
+            
+                                                <input type="checkbox" name="" id="newsletter">
+    
+                                                <label for="newsletter">Tôi muốn đăng ký nhận tin mới từ "Đặc sản vùng miền".</label>
+            
+                                            </div><!--/ [col] -->
+            
+                                        </li><!--/ .row -->
+                                        
+                                        <li class="row">
+            
+                                            <div class="col-xs-12">
+            
+                                                <input type="checkbox" name="" id="terms">
+    
+                                                <label for="terms">Tôi đã đọc và đồng ý các điều khoản về chính sách bảo mật.</label>
+            
+                                            </div><!--/ [col] -->
+            
+                                        </li><!--/ .row -->
+                                        
+                                    </div>
+        
                                     <li class="row">
         
                                         <div class="col-xs-12">
         
-                                            <input type="checkbox" name="" id="newsletter">
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <label for="newsletter">Tôi muốn đăng ký nhận tin mới từ "Đặc sản vùng miền".</label>
-        
-                                        </div><!--/ [col] -->
-        
-                                    </li><!--/ .row -->
-                                    
-                                    <li class="row">
-        
-                                        <div class="col-xs-12">
-        
-                                            <input type="checkbox" name="" id="terms">
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <label for="terms">Tôi đã đọc và đồng ý các điều khoản về chính sách bảo mật.</label>
-        
-                                        </div><!--/ [col] -->
-        
-                                    </li><!--/ .row -->
-        
-                                    <li class="row">
-        
-                                        <div class="col-xs-12">
-        
-                                            <input checked type="checkbox" name="" id="delivery">
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <label for="delivery">Địa chỉ giao hàng và thanh toán giống nhau.</label>
+                                            <input checked type="checkbox" name="order[different_delivery]" value="true" id="different_delivery_checkbox">
+
+                                            <label for="different_delivery_checkbox">Địa chỉ giao hàng và thanh toán giống nhau.</label>
         
                                         </div>
         
@@ -735,7 +562,7 @@
           
                         <!-- - - - - - - - - - - - - - Delivery details - - - - - - - - - - - - - - - - -->
           
-                        <section class="section_offset">
+                        <section class="section_offset different_delivery_box">
           
                             <h3>Thông tin giao hàng</h3>
           
@@ -748,10 +575,7 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="first_name" class="required">Họ:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+
                                             <input type="text" name="order_delivery[first_name]" id="order_delivery_first_name">
         
                                         </div><!--/ [col] -->
@@ -759,37 +583,28 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="last_name" class="required">Tên:</label>
-<<<<<<< HEAD
-                                           
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+
                                             <input type="text" name="order_delivery[last_name]" id="order_delivery_last_name">
         
                                         </div><!--/ [col] -->
         
                                     </li><!--/ .row -->
         
-                                    <li class="row">	
-        
-                                        <div class="col-xs-6">
-        
-                                            <label for="company">Tên công ty:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <input type="text" name="order_delivery[company]" id="order_delivery_company">
-        
-                                        </div><!--/ [col] -->
+                                    <li class="row">
                                         
                                         <div class="col-xs-6">
         
-                                            <label for="address" class="required">Địa chỉ:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <input type="text" name="order_delivery[address]" id="order_delivery_address">
+                                            <label for="email" class="required">Email:</label>
+
+                                            <input type="text" name="order_delivery[email]" id="order_delivery_email">
+        
+                                        </div><!--/ [col] -->
+        
+                                        <div class="col-xs-6">
+        
+                                            <label for="phone" class="required">Số điện thoại:</label>
+
+                                            <input type="text" name="order_delivery[phone]" id="order_delivery_phone">
         
                                         </div><!--/ [col] -->
         
@@ -799,27 +614,33 @@
         
                                         <div class="col-xs-6">
         
-                                            <label for="city" class="required">Thành phố:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
-                                            <input type="text" name="order_delivery[city]" id="order_delivery_city">
+                                            <label for="company">Tên công ty:</label>
+
+                                            <input type="text" name="order_delivery[company]" id="order_delivery_company">
         
                                         </div><!--/ [col] -->
                                         
                                         <div class="col-xs-6">
         
                                             <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
-<<<<<<< HEAD
-                                            
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+
                                             <input type="text" name="order_delivery[zip_code]" id="order_delivery_zip_code">
         
                                         </div><!--/ [col] -->
         
                                     </li><!--/ .row -->
+                                    
+                                    <li class="row">
+        
+                                        <div class="col-xs-12">
+        
+                                            <label for="address" class="required">Địa chỉ:</label>
+
+                                            <input type="text" name="order_delivery[address]" id="order_delivery_address">
+        
+                                        </div><!--/ [col] -->
+        
+                                    </li><!-- / .row -->
         
                                     <li class="row">
         
@@ -841,24 +662,16 @@
         
                                         <div class="col-sm-6">
         
-<<<<<<< HEAD
                                             <label>Tỉnh/Thành phố</label>
-=======
-                                            <label>Tỉnh</label>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
         
                                             <div>
         
                                                 <select name="">
         
                                                     <option value="dongnnaiprovine">Đồng Nai</option>
-<<<<<<< HEAD
                                                     
                                                     <option value="hochiminhcity">TP.Hồ Chí Minh</option>
-                                                    
-=======
-                                                    <option value="hochiminhcity">TP.Hồ Chí Minh</option>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+
                                                     <option value="vungtauprovine">Vũng Tàu</option>
         
                                                 </select>
@@ -896,10 +709,7 @@
                                     <p class="subcaption bold">Giao hàng trực tiếp</p>
       
                                     <input checked type="radio" name="radio_3" id="radio_button_4">
-<<<<<<< HEAD
-                                    
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
+
                                     <label for="radio_button_4">Phí giao hàng 50,000 đ</label>
       
                                 </li>
@@ -1084,9 +894,9 @@
                         
                         <footer class="bottom_box on_the_sides">
       
-                            <div id="coupon-heading" class="field_heading">Tôi có mã Coupon</div>
+                            <div id="coupon-heading" class="field_heading" onclick="$('#coupon-content').toggle()">Tôi có mã Coupon</div>
                             
-                            <div id="coupon-content" style="display: block;">
+                            <div id="coupon-content" style="display: none;">
                                 
                                 <input type="text" name="" value="">
                                 
@@ -1094,9 +904,9 @@
                             
                             </div>
                             
-                            <div id="coupon-heading" class="field_heading">Tôi có mã Voucher</div>
+                            <div id="voucher-heading" class="field_heading" onclick="$('#voucher-content').toggle()">Tôi có mã Voucher</div>
                             
-                            <div id="coupon-content" style="display: block;">
+                            <div id="voucher-content" style="display: none;">
                                 
                                 <input type="text" name="" value="">
                                 
@@ -1125,13 +935,8 @@
                             </div>
       
                             <div class="right_side">
-<<<<<<< HEAD
                                 
                                 <%= f.submit "Gửi đơn hàng", class: "button_blue middle_btn" %>
-=======
-      
-                                <button class="button_blue middle_btn">Gửi đơn hàng</button>
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
       
                             </div>
       
@@ -1184,5 +989,17 @@
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
-  
+    <script>
+        $('#different_delivery_checkbox').change(function() {
+            var val = $(this).is(":checked");
+            if(val) {
+                $('.different_delivery_box').hide();
+            }
+            else {
+                $('.different_delivery_box').show();
+            }
+        });
+        $('#different_delivery_checkbox').trigger("change");
+    </script>
+    
 </body>

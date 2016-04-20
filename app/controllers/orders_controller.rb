@@ -3,17 +3,27 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(params[:order])
+    @order = Order.new(order_params)
     @customer = Customer.new(customer_params)
     @order.customer = @customer
     
-    @order_delivery = OrderDelivery.new(order_delivery_params)
+    if params[:order][:different_delivery] == "true"
+      @order_delivery = OrderDelivery.new(
+        first_name: @customer.first_name,
+        last_name: @customer.last_name,
+        email: @customer.email,
+        phone: @customer.phone,
+        company: @customer.company,
+        zip_code: @customer.zip_code,
+        address: @customer.address,
+      )
+    else
+      @order_delivery = OrderDelivery.new(order_delivery_params)
+    end
+    
     @order.order_delivery = @order_delivery
     
-<<<<<<< HEAD
     @order.user_id = current_user.id if current_user.present?
-=======
->>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
     respond_to do |format|
       if @order.save
         @order.save_from_cart(@cart)
@@ -36,7 +46,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_id, :order_detail_id, :order_delivery_id, order_details_attributes: [:id, :order_id, :product_id, :quantity, :_destroy])
+      params.require(:order).permit(:customer_id, :order_detail_id, :order_delivery_id, order_details_attributes: [:id, :order_id, :product_id, :quantity, :different_delivery, :_destroy])
     end
     
     def customer_params
