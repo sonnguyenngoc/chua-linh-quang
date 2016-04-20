@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :line_item_compares
+  resources :compares
   scope "(:locale)", locale: /vi|en/ do
     root "home#index"
     

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419073354) do
+ActiveRecord::Schema.define(version: 20160419084328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,11 @@ ActiveRecord::Schema.define(version: 20160419073354) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "compares", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -109,6 +114,16 @@ ActiveRecord::Schema.define(version: 20160419073354) do
     t.datetime "updated_at", null: false
     t.integer  "order_id"
   end
+
+  create_table "line_item_compares", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "compare_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "line_item_compares", ["compare_id"], name: "index_line_item_compares_on_compare_id", using: :btree
+  add_index "line_item_compares", ["product_id"], name: "index_line_item_compares_on_product_id", using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -237,6 +252,8 @@ ActiveRecord::Schema.define(version: 20160419073354) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "line_item_compares", "compares"
+  add_foreign_key "line_item_compares", "products"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
 end

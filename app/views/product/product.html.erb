@@ -21,13 +21,20 @@
                 <ul class="breadcrumbs">
                     
                     <li><%= link_to "Trang chủ", root_path %></li>
-                    <li>
-                        <% @product.categories.each do |categories| %>
-                            <%= hidden_field_tag categories.id %>
-                            <%= link_to categories.name, { controller: "product", action: "category", category_id: categories.id } %> /
-                        <% end %>
-                        <%= @product.name %>
-                    </li>
+                    
+					<li>
+                        
+						<% @product.categories.each do |categories| %>
+                            
+							<%= hidden_field_tag categories.id %>
+                           
+						    <%= link_to categories.name, { controller: "product", action: "category", category_id: categories.id } %> /
+                        
+						<% end %>
+                        
+						<%= @product.name %>
+                    
+					</li>
 
                 </ul>
 
@@ -36,7 +43,8 @@
                 <div class="section_offset">
 
                     <div class="row">
-                        <aside class="col-md-3 col-sm-4 has_mega_menu">
+                        
+						<aside class="col-md-3 col-sm-4 has_mega_menu">
                             
                             <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 

@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   include CurrentCart
   before_action :set_cart
+  include CompareList
+  before_action :set_compare
   
   layout :layout_by_resource
   protect_from_forgery with: :exception

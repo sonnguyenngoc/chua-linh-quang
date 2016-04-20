@@ -139,11 +139,15 @@
                                 <ul class="shop_links_list">
 
                                     <li>
+                                       
                                         <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (0)</a>
                                         
                                     </li>
+                                    
                                     <li>
-                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (0)</a>
+                                        
+                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (<%= @compare.get_number_items %>)</a>
+                                    
                                     </li>
 
                                 </ul><!--/ .align_right.shop_links-->
