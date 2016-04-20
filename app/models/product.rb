@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :line_item_comparies
   has_many :categories_products
+  has_many :wish_lists
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :areas
   belongs_to :manufacturer
@@ -106,6 +107,10 @@ class Product < ActiveRecord::Base
     records = records.where("products.status LIKE ?", "%#{status}%")
     records = records.joins(:categories).where(categories: {id: category})
     return records
+  end
+  
+  def wish_by? user
+    wish_lists.exists? user_id: user
   end
   
   private

@@ -110,7 +110,7 @@
                                                 
                                                 <label for="first_name" class="required">Họ:</label>
                                                 
-                                                <input type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %>">
+                                                <input readonly type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %>">
           
                                             </div><!--/ [col] -->
           
@@ -118,7 +118,7 @@
                                                 
                                                 <label for="last_name" class="required">Tên:</label>
                                                 
-                                                <input type="text" name="customer[last_name]" id="customer_last_name" value="<%= current_user.last_name %>">
+                                                <input readonly type="text" name="customer[last_name]" id="customer_last_name" value="<%= current_user.last_name %>">
           
                                             </div><!--/ [col] -->
           
@@ -130,7 +130,7 @@
           
                                                 <label for="email" class="required">Email:</label>
                                                 
-                                                <input type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
+                                                <input readonly type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
           
                                             </div><!--/ [col] -->
                                             
@@ -138,7 +138,7 @@
           
                                                 <label for="phone" class="required">Số điện thoại:</label>
                                                 
-                                                <input type="text" name="customer[phone]" id="customer_phone" value="<%= current_user.phone %>">
+                                                <input readonly type="text" name="customer[phone]" id="customer_phone" value="<%= current_user.phone %>">
           
                                             </div><!--/ [col] -->
           
@@ -150,7 +150,7 @@
           
                                                 <label for="company">Tên công ty:</label>
                                                 
-                                                <input type="text" name="customer[company]" id="customer_company" value="<%= current_user.company %>">
+                                                <input readonly type="text" name="customer[company]" id="customer_company" value="<%= current_user.company %>">
           
                                             </div><!--/ [col] -->
                                             
@@ -158,7 +158,7 @@
           
                                                 <label for="zip_code">Mã bưu chính ZIP CODE:</label>
                                                 
-                                                <input type="text" name="customer[zip_code]" id="customer_zip_code" value="<%= current_user.zip_code %>">
+                                                <input readonly type="text" name="customer[zip_code]" id="customer_zip_code" value="<%= current_user.zip_code %>">
           
                                             </div><!--/ [col] -->
           
@@ -170,7 +170,7 @@
           
                                                 <label for="address" class="required">Địa chỉ:</label>
                                                 
-                                                <input type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
+                                                <input readonly type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
           
                                             </div><!--/ [col] -->
           
@@ -182,15 +182,7 @@
                                                 
                                                 <label class="required">Quốc gia</label>
           
-                                                <div>
-          
-                                                    <select name="">
-                                                        
-                                                        <option value="Vietnam">Việt Nam</option>
-          
-                                                    </select>
-          
-                                                </div>
+                                                <input readonly type="text" name="customer[country]" id="customer_country" value="<%= current_user.country %>">
           
                                             </div><!--/ [col] -->
           
@@ -198,19 +190,7 @@
           
                                                 <label>Tỉnh/Thành phố</label>
           
-                                                <div>
-          
-                                                    <select name="">
-          
-                                                        <option value="dongnnaiprovine">Đồng Nai</option>
-                                                        
-                                                        <option value="hochiminhcity">TP.Hồ Chí Minh</option>
-                                                        
-                                                        <option value="vungtauprovine">Vũng Tàu</option>
-          
-                                                    </select>
-          
-                                                </div>
+                                                <input readonly type="text" name="customer[province]" id="customer_province" value="<%= current_user.area.name %>">
           
                                             </div><!--/ [col] -->
           
@@ -316,7 +296,7 @@
         
                                             <div>
         
-                                                <select name="">
+                                                <select name="order_delivery[country]">
                                                     
                                                     <option value="Vietnam">Việt Nam</option>
         
@@ -332,13 +312,13 @@
         
                                             <div>
         
-                                                <select name="">
+                                                <select name="order_delivery[province]">
         
-                                                    <option value="dongnnaiprovine">Đồng Nai</option>
+                                                    <% Area.get_list_province_city.each do |area| %>
+          
+                                                        <option <%= "selected" if (current_user.province.to_i == area.id) %> value="<%= area.id %>"><%= area.name %></option>
                                                     
-                                                    <option value="hochiminhcity">TP.Hồ Chí Minh</option>
-                                                    
-                                                    <option value="vungtauprovine">Vũng Tàu</option>
+                                                    <% end %>
         
                                                 </select>
         
@@ -448,7 +428,7 @@
         
                                             <div>
         
-                                                <select name="">
+                                                <select name="customer[country]">
                                                     
                                                     <option value="Vietnam">Việt Nam</option>
         
@@ -464,13 +444,13 @@
         
                                             <div>
         
-                                                <select name="">
+                                                <select name="customer[province]">
         
-                                                    <option value="dongnnaiprovine">Đồng Nai</option>
+                                                    <% Area.get_list_province_city.each do |area| %>
+          
+                                                        <option value="<%= area.id %>"><%= area.name %></option>
                                                     
-                                                    <option value="hochiminhcity">TP.Hồ Chí Minh</option>
-                                                   
-                                                    <option value="vungtauprovine">Vũng Tàu</option>
+                                                    <% end %>
         
                                                 </select>
         
@@ -650,7 +630,7 @@
         
                                             <div>
         
-                                                <select name="">
+                                                <select name="order_delivery[country]">
                                                     
                                                     <option value="Vietnam">Việt Nam</option>
         
@@ -666,13 +646,13 @@
         
                                             <div>
         
-                                                <select name="">
+                                                <select name="order_delivery[province]">
         
-                                                    <option value="dongnnaiprovine">Đồng Nai</option>
+                                                    <% Area.get_list_province_city.each do |area| %>
+          
+                                                        <option value="<%= area.id %>"><%= area.name %></option>
                                                     
-                                                    <option value="hochiminhcity">TP.Hồ Chí Minh</option>
-
-                                                    <option value="vungtauprovine">Vũng Tàu</option>
+                                                    <% end %>
         
                                                 </select>
         
@@ -703,23 +683,24 @@
                             <p class="page_title">Chọn hình thức vận chuyển cho đơn hàng này.</p>
       
                             <ul class="shipping_method">
+                                
+                                <% @delivery_method.each do |item| %>
       
-                                <li>
-      
-                                    <p class="subcaption bold">Giao hàng trực tiếp</p>
-      
-                                    <input checked type="radio" name="radio_3" id="radio_button_4">
-
-                                    <label for="radio_button_4">Phí giao hàng 50,000 đ</label>
-      
-                                </li>
+                                    <li>
+          
+                                        <input checked type="radio" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id">
+    
+                                        <label for="order_delivery_delivery_method_id"><%= item.title %></label>
+          
+                                    </li>
+                                    
+                                <% end %>
       
                             </ul>
       
                         </div>
       
                     </section>
-      
       
                     <!-- - - - - - - - - - - - - - End of shipping method - - - - - - - - - - - - - - - - -->
       
@@ -756,7 +737,6 @@
                         </div>
       
                     </section>
-      
       
                     <!-- - - - - - - - - - - - - - End of payment information - - - - - - - - - - - - - - - - -->
       
@@ -949,7 +929,6 @@
                             </div>
       
                         </footer>
-      
       
                     </section>
       

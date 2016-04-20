@@ -16,7 +16,7 @@
 
                             <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
                             
-                            <%= link_to image_tag("/frontend/images/logo.png"), root_path, class: "logo" %>
+                            <%= link_to image_tag("/frontend/images/logo.png"), home_path, class: "logo" %>
 
                             <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
 
@@ -30,7 +30,7 @@
 
                                 <ul class="topbar">
 
-                                    <li><%= link_to "Trang chủ", root_path %></li>
+                                    <li><%= link_to "Trang chủ", home_path %></li>
                                     <% if current_user.present? %>
                                         <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
                                     <% else %>
@@ -146,7 +146,7 @@
 
                                     <li>
                                        
-                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (0)</a>
+                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> <%= "(" + current_user.wish_lists.count + ")" if current_user.present?  %></a>
                                         
                                     </li>
                                     

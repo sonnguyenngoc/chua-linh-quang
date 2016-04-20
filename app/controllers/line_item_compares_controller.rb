@@ -57,7 +57,7 @@ class LineItemComparesController < ApplicationController
   def destroy
     @line_item_compare.destroy
     respond_to do |format|
-      format.html { redirect_to line_item_compares_url, notice: 'Line item compare was successfully destroyed.' }
+      format.html { redirect_to controller: "product", action: "comparison" }
       format.json { head :no_content }
     end
   end

@@ -43,4 +43,8 @@ class AccountController < ApplicationController
 	@order = Order.find(params[:order_id])
     @title_head = "Chi tiết đơn hàng"
   end
+  
+  def wishlist
+    @title_head = "Sản phẩm yêu thích"
+  end
 end

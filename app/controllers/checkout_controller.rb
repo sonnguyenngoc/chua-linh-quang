@@ -11,6 +11,8 @@ class CheckoutController < ApplicationController
     end
     @order = Order.new
     @customer = Customer.new
+    @delivery_method = DeliveryMethod.all
+    @payment_method = PaymentMethod.all
     session[:user_return_to] = checkout_path
   end
   

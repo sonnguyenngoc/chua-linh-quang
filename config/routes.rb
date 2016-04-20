@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  
-  resources :line_item_compares
-  resources :compares
   scope "(:locale)", locale: /vi|en/ do
     root "home#countdown"
     get "home" => "home#index", as: :home
@@ -79,6 +76,9 @@ Rails.application.routes.draw do
     resources :line_items
     resources :customers
     resources :orders
+    resources :wish_lists
+    resources :line_item_compares
+    resources :compares
     #end of resources
   
     namespace :admin, path: "hkpanel" do
@@ -122,6 +122,9 @@ Rails.application.routes.draw do
       end
       resources :newsletters
       resources :contacts
+      resources :wish_lists
+      resources :payment_methods
+      resources :delivery_methods
     end
   end
 end

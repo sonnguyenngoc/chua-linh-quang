@@ -29,176 +29,184 @@
                 <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
   
                 <h1><%= @title_head %></h1>
+                
+                <% if @compare.line_item_compares.count > 0 %>
   
-                <div class="table_wrap">
-                    
-                    <table class="table_type_1 compare">
-  
-                        <tbody>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Hình ảnh</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td>
-                                        
-                                        <%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.id } %>
+                    <div class="table_wrap">
+                        
+                        <table class="table_type_1 compare">
       
-                                    </td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Tên sản phẩm</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td>
-  
-                                        <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.id } %>
+                            <tbody>
       
-                                    </td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Đánh giá</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td>
-  
-                                        <div class="v_baseline">
-      
-                                            <ul class="rating">
-                                                <li class="active"></li>
-                                                <li class="active"></li>
-                                                <li class="active"></li>
-                                                <li class="active"></li>
-                                                <li></li>
-                                            </ul>
-      
-                                            <a href="#" class="small_link">3 Đánh giá</a>
-      
-                                        </div>
-      
-                                    </td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Giá</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td class="total"><%= format_number(item.product.price) %> đ</td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Mô tả</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td>
+                                <tr>
                                     
-                                        <p class="text-justifly"><%= item.product.short_description %></p>
-                                        
-                                    </td>
-                                
-                                <% end %>
-  
-                                
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Nhãn hàng</th>
-  
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td>
+                                    <th class="row_title_col">Hình ảnh</th>
                                     
-                                       <%= link_to item.product.manufacturer.name, { controller: "manufacturer", action: "list" } %>
-                                        
-                                    </td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Tình trạng</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td>
-                                    
-                                        <span class="in_stock">Còn trong kho</span> 20 sản phẩm.
+                                    <% LineItemCompare.get_all_items.each do |item| %>
       
-                                    </td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Mã sản phẩm</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td><%= item.product.code %></td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                            <tr>
-                                
-                                <th class="row_title_col">Thao tác</th>
-                                
-                                <% LineItemCompare.get_all_items.each do |item| %>
-  
-                                    <td>
-      
-                                        <div class="buttons_row">
+                                        <td>
                                             
-                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: item), class: "button_blue middle_btn add_to_cart" %>
+                                            <%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.id } %>
+          
+                                        </td>
+                                    
+                                    <% end %>
       
-                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào yêu thích</span></a>
+                                </tr>
       
-                                            <a href="#" class="button_dark_grey middle_btn icon_btn tooltip_container"><span class="tooltip top">Loại khỏi danh sách so sánh</span><i class="icon-cancel-2"></i></a>
+                                <tr>
+                                    
+                                    <th class="row_title_col">Tên sản phẩm</th>
+                                    
+                                    <% LineItemCompare.get_all_items.each do |item| %>
       
-                                        </div>
+                                        <td>
       
-                                    </td>
-                                
-                                <% end %>
-  
-                            </tr>
-  
-                        </tbody>
-  
-                    </table>
-  
-                </div>
+                                            <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.id } %>
+          
+                                        </td>
+                                    
+                                    <% end %>
+      
+                                </tr>
+      
+                                <tr>
+                                    
+                                    <th class="row_title_col">Đánh giá</th>
+                                    
+                                    <% LineItemCompare.get_all_items.each do |item| %>
+      
+                                        <td>
+      
+                                            <div class="v_baseline">
+          
+                                                <ul class="rating">
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+                                                </ul>
+          
+                                                <a href="#" class="small_link">3 Đánh giá</a>
+          
+                                            </div>
+          
+                                        </td>
+                                    
+                                    <% end %>
+      
+                                </tr>
+      
+                                <tr>
+                                    
+                                    <th class="row_title_col">Giá</th>
+                                    
+                                    <% LineItemCompare.get_all_items.each do |item| %>
+      
+                                        <td class="total"><%= format_number(item.product.price) %> đ</td>
+                                    
+                                    <% end %>
+      
+                                </tr>
+      
+                                <tr>
+                                    
+                                    <th class="row_title_col">Mô tả</th>
+                                    
+                                    <% LineItemCompare.get_all_items.each do |item| %>
+      
+                                        <td>
+                                        
+                                            <p class="text-justifly"><%= item.product.short_description %></p>
+                                            
+                                        </td>
+                                    
+                                    <% end %>
+      
+                                    
+      
+                                </tr>
+      
+                                <tr>
+                                    
+                                    <th class="row_title_col">Nhãn hàng</th>
+      
+                                    <% LineItemCompare.get_all_items.each do |item| %>
+      
+                                        <td>
+                                        
+                                           <%= link_to item.product.manufacturer.name, { controller: "manufacturer", action: "list" } %>
+                                            
+                                        </td>
+                                    
+                                    <% end %>
+      
+                                </tr>
+      
+                                <tr>
+                                    
+                                    <th class="row_title_col">Tình trạng</th>
+                                    
+                                    <% LineItemCompare.get_all_items.each do |item| %>
+      
+                                        <td>
+                                        
+                                            <span class="in_stock">Còn trong kho</span> 20 sản phẩm.
+          
+                                        </td>
+                                    
+                                    <% end %>
+      
+                                </tr>
+      
+                                <tr>
+                                    
+                                    <th class="row_title_col">Mã sản phẩm</th>
+                                    
+                                    <% LineItemCompare.get_all_items.each do |item| %>
+      
+                                        <td><%= item.product.code %></td>
+                                    
+                                    <% end %>
+      
+                                </tr>
+      
+                                <tr>
+                                    
+                                    <th class="row_title_col">Thao tác</th>
+                                    
+                                    <% LineItemCompare.get_all_items.each do |item| %>
+      
+                                        <td>
+          
+                                            <div class="buttons_row">
+                                                
+                                                <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: item), class: "button_blue middle_btn add_to_cart" %>
+          
+                                                <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào yêu thích</span></a>
+                                                
+                                                <%= link_to '<span class="tooltip top">Loại khỏi danh sách so sánh</span><i class="icon-cancel-2"></i>'.html_safe , {controller: "product", action: "comparison", do: 'remove_item', line_item_compare_id: item.id }, {class: "button_dark_grey middle_btn icon_btn tooltip_container"} %>
+          
+                                            </div>
+          
+                                        </td>
+                                    
+                                    <% end %>
+      
+                                </tr>
+      
+                            </tbody>
+      
+                        </table>
+      
+                    </div>
+                    
+                <% else %>
+                    
+                    <p class="box">Danh sách so sánh trống!</p>
+                    
+                <% end %>
   
             </div><!--/ .container-->
   

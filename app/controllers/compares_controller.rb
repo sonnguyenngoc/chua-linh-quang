@@ -28,7 +28,7 @@ class ComparesController < ApplicationController
 
     respond_to do |format|
       if @compare.save
-        format.html { redirect_to @compare, notice: 'Compare was successfully created.' }
+        format.html { redirect_to controller: "product", action: "comparison" }
         format.json { render :show, status: :created, location: @compare }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class ComparesController < ApplicationController
   def destroy
     @compare.destroy
     respond_to do |format|
-      format.html { redirect_to compares_url, notice: 'Compare was successfully destroyed.' }
+      format.html { redirect_to controller: "product", action: "comparison" }
       format.json { head :no_content }
     end
   end
