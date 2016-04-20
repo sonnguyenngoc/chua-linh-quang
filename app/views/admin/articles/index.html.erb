@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold">Articles</span></h4>
+                        <h4><span class="text-semibold"><%= t(:articles) %></span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
-                        <li><%= link_to '<i class="icon-home2 position-left"></i> Home'.html_safe, { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_articles_path %>">Article</a></li>
-                        <li class="active">Articles</li>
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_articles_path %>"><%= t(:article) %></a></li>
+                        <li class="active"><%= t(:articles) %></li>
                     </ul>
                 </div>
             </div>
@@ -51,8 +51,8 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading col-md-12">
-                        <h5 class="panel-title col-md-6"><span class="text-semibold">Listing Articles</span></h5>
-                        <%= link_to 'New Article', new_admin_article_path, class: 'btn btn-primary pull-right' %>
+                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_articles) %></span></h5>
+                        <%= link_to t(:new_article), new_admin_article_path, class: 'btn btn-primary pull-right' %>
                     </div>
                     
                     <div class="filter-box">
@@ -60,7 +60,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Category</label>
+                                        <label class="" ><%= t(:category) %></label>
                                         <div>
                                             <%= select_tag(:article_category_id, options_from_collection_for_select(ArticleCategory.all, :id, :name, :selected => params[:article_category_id]), include_blank: "All", class: "select") %>
                                         </div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Sort By</label>
+                                        <label class="" ><%= t(:sort_by) %></label>
                                         <div>
                                             <%= select_tag(:sort_by, options_for_select(Article.sort_by, :selected => params[:sort_by]), class: "select") %>
                                         </div>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Sort Order</label>
+                                        <label class="" ><%= t(:sort_order) %></label>
                                         <div>
                                             <%= select_tag(:sort_order, options_for_select(Article.sort_orders, :selected => params[:sort_order]), class: "select") %>
                                         </div>
@@ -84,9 +84,9 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Filter</label>
+                                        <label class="" ><%= t(:filter) %></label>
                                         <div class="input-group">
-                                            <input type="text" name="keyword" class="form-control" placeholder="Enter Keyword" value="<%= params[:keyword] %>">
+                                            <input type="text" name="keyword" class="form-control" placeholder="<%= t(:placeholder_filter) %>" value="<%= params[:keyword] %>">
                                             <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
                                         </div>
                                     </div>
@@ -98,12 +98,12 @@
                     <table class="table">
                         <thead>
                             <tr class="bg-teal-800">
-                                <th>Picture</th>
-                                <th>Title / Tags</th>
-                                <th>Content</th>
-                                <th>Categories</th>
-                                <th>Created At</th>
-                                <th class="text-center">Actions</th>
+                                <th><%= t(:picture) %></th>
+                                <th><%= t(:title) %>/<%= t(:tags) %></th>
+                                <th><%= t(:content) %></th>
+                                <th><%= t(:category) %></th>
+                                <th><%= t(:created_at) %></th>
+                                <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,10 +129,10 @@
                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_article_path(item) %>
+                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_article_path(item) %>
                                                     </li>
                                                     <li>
-                                                        <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
                                                     </li>
                                                 </ul>
                                             </li>

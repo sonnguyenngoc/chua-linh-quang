@@ -20,5 +20,5 @@ class OrderDetail < ActiveRecord::Base
   def total
     price*quantity
   end
-    
+  
 end

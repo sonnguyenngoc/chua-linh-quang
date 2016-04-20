@@ -115,6 +115,11 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
+      resources :orders do
+        collection do
+          get 'search'
+        end
+      end
       resources :newsletters
       resources :contacts
     end

@@ -177,7 +177,7 @@
                                                         <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), edit_admin_product_path(item) %>
                                                     </li>
                                                     <li>
-                                                        <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                        <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
                                                     </li>
                                                 </ul>
                                             </li>
