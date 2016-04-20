@@ -10,15 +10,13 @@ en:
   my_profile: "My profile"
   account_settings: "Account settings"
   logout: "Logout"
-  #-------------------------------------
-  product: "Product"
-  products: "Products"
-  categories: "Categories"
-  manufacturers: "Manufacturers"
-  areas: "Areas"
+  
   #filter
   listing_products: "Listing Products"
   listing_categories: "Listing Categories"
+  listing_manufacturers: "Listing Manufacturers"
+  listing_areas: "Listing Areas"
+  listing_articles: "Listing Articles"
   category: "Category"
   status: "Status"
   filter: "Filter"
@@ -28,7 +26,10 @@ en:
   
   #table
   list_image: "Image"
-  list_name: "Name"
+  list_product_name: "Name"
+  list_category_name: "Name"
+  list_manufacturer_name: "Name"
+  list_area_name: "Name"
   list_price: "Price"
   list_quantity: "Quantity"
   list_categories: "Categories"
@@ -37,15 +38,25 @@ en:
   list_status: "Status"
   created_at: "Created At"
   actions: "Actions"
+  address: "Address"
   save: "Save"
   cancel: "Cancel"
   edit: "Edit"
   delete: "Delete"
+  #------------------------------------
   new_product: "New Product"
   new_category: "New Category"
+  new_manufacturer: "New Manufacturer"
+  new_area: "New Area"
+  new_article: "New Article"
   edit_product: "Edit Product"
+  edit_category: "Edit Category"
+  edit_manufacturer: "Edit Manufacturer"
+  edit_area: "Edit Area"
+  edit_article: "Edit Article"
   list_product_code: "Product Code"
   unit: "Unit"
+  
   #form
   tab_product_info: "Product Information"
   tab_product_status: "Product Status"
@@ -53,34 +64,61 @@ en:
   tab_product_images: "Product Images"
   short_description: "Short Description"
   tags: "Tags"
+  title: "Title"
+  content: "Content"
+  confirm_delete: "Are you sure?"
   related_articles: "Related Articles"
   hot: "Hot Product"
   new: "New Product"
   bestseller: "Bestseller Product"
   prominent: "Prominent Product"
   introduction: "Introduction"
+  picture: "Picture"
   related_photos: "Related Photos"
+  related_areas: "Related Areas"
+  
+  #-------------------------------------
+  product: "Product"
+  products: "Products"
+  categories: "Categories"
+  manufacturers: "Manufacturers"
+  areas: "Areas"
+  
   #-------------------------------------
   article: "Article"
   articles: "Articles"
   article_categories: "Article Categories"
+  placeholder_categories: "Choose the categories for article..."
+  related_products: "Related Products"
+  code_status: "Code"
+  categories_article: "Categories of Article"
+  list_categories_article_name: "Name"
+  related_categories: "Related Categories"
+  
   #-------------------------------------
   orders: "Orders"
+  
   #-------------------------------------
   comments: "Comments"
+  
   #-------------------------------------
   delivery_method: "Delivery Method"
   delivery_methods: "Delivery Methods"
+  
   #-------------------------------------
   payment: "Payments"
   payments: "Payments"
+  
   #-------------------------------------
   customer: "Customers"
   customers: "Customers"
+  
   #-------------------------------------
   user: "Users"
   users: "Users"
+  
   #-------------------------------------
   settings: "Settings"
+  
   #-------------------------------------
   voucher_coupon: "Voucher/Coupon"

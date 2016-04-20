@@ -344,8 +344,12 @@
                         <h4>Tài khoản</h4>
 
                         <ul class="list_of_links">
-
-                            <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
+ 
+                            <% if current_user.present? %>
+                                <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
+                            <% else %>
+                                <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "login" } %></li>
+                            <% end %>
                             <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "order" } %></li>
                             <li><%= link_to "Sản phẩm trả lại", { controller: "account", action: "return_product" } %></li>
                             <li><%= link_to "Danh sách sản phẩm yêu thích", { controller: "account", action: "wishlist" } %></li>

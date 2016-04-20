@@ -1,0 +1,73 @@
+body {
+	font-family:Helvetica, Arial,sans-serif;
+	font-size:14px;
+	line-height:18px;
+	background: #fff url(../img/bg_blue.png) repeat-x top left;
+	color:#898989;
+	}
+	#wrapper {
+padding-bottom:70px;
+width:800px;
+margin:auto;
+text-align:center;
+background:url(../img/light_3.png) no-repeat top center;
+}
+	.countdown_section {
+	display: block;
+	float: left;
+	padding-top:55px;
+	text-align: center;
+	background:url(../img/circle_4.png) no-repeat center top;
+	height:137px;
+	margin-bottom:30px;
+	
+}
+.countdown_amount {
+	font-size:75px;
+	color:#18293b;
+	font-family: 'DINBlackRegular';
+}
+.count_titles {
+	margin-top:80px;
+	display:block;
+	font-size:18px;
+	color:#5b5a56;
+	text-transform:uppercase;
+	font-family: 'DINMediumRegular';
+}
+/* TIPOGRAPHY ================================================================================= */
+h1 {
+	font-size:30px;
+	text-transform:uppercase;
+	color:#f2dea0;
+	margin-bottom:7px;
+	text-shadow: 1px 1px 2px #111;
+	font-family: 'DINBlackRegular';
+}
+h2 {
+	font-size:18px;
+	color:#fff;
+	text-shadow: 1px 1px 2px #111;
+	font-family: 'DINMediumRegular';
+	margin-bottom:30px;
+}
+.send_bt {
+	background:url(../img/button_4.png) no-repeat top left;
+	width:83px;
+	height:37px;
+	text-indent:-9999px;
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: 4px;
+	left:468px;
+	border:none;
+}
+
+a:link, a:visited {
+	text-decoration:none;
+	color:#344e63;
+}
+a:hover {
+	text-decoration: underline;
+}

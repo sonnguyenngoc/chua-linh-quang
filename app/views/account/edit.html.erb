@@ -20,9 +20,11 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
-                    <li>Edit Information</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                    
+					<li><%= @title_head %></li>
 
                 </ul>
 
@@ -30,84 +32,349 @@
 
                     <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
                       
-                        <%= render 'menu_account_login' %>
+                        <%= render "module/menu_account_logged" %>
 
                     </aside>
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1 class="tall">My Account Information</h1>
+                        <h1 class="tall"><%= @title_head %></h1>
                         
-                        <h3>Your Personal Details</h3>
+                        <h3>Thông tin cá nhân</h3>
+						
+						<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
                         
-                        <div class="table_wrap bordered_content">
-                            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
-                              
-                                <ul class="padded margin-b">
-                                  <li class="row">
-                                    <div class="col-xs-12 required">
-                                      <label for="input-firstname" class="col-sm-2 control-label">First Name</label>
-                                      <div class="form_el">
-                                        <input type="text" class="form-control" id="input-firstname" placeholder="First Name" value="" name="firstname" vk_11575="subscribed">
-                                      </div>
-                                    </div>
-                                  </li>
-                                  
-                                  <li class="row">
-                                    <div class="col-xs-12 required">
-                                      <label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
-                                      <div class="form_el">
-                                        <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname" vk_11575="subscribed">
-                                      </div>
-                                    </div>
-                                  </li>
-                                  
-                                  <li class="row">
-                                    <div class="col-xs-12 required">
-                                      <label for="input-email" class="col-sm-2 control-label">E-Mail</label>
-                                      <div class="form_el">
-                                        <input type="text" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email" vk_11575="subscribed">
-                                      </div>
-                                    </div>
-                                  </li>
-                                  
-                                  <li class="row">
-                                    <div class="col-xs-12 required">
-                                      <label for="input-telephone" class="col-sm-2 control-label">Telephone</label>
-                                      <div class="form_el">
-                                        <input type="text" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="telephone" vk_11575="subscribed">
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li class="row">
-                                    <div class="col-xs-12">
-                                      <label for="input-fax" class="col-sm-2 control-label">Fax</label>
-                                      <div class="form_el">
-                                        <input type="text" class="form-control" id="input-fax" placeholder="Fax" value="" name="fax" vk_11575="subscribed">
-                                      </div>
-                                    </div>
-                                  </li>
-                                  
-                                </ul>
-                              
-                            </form>
-                          
-                        </div>
-                        <footer class="bottom_box on_the_sides">
-
-							<div class="left_side">
-
-								<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Back</a>
-
+							<div class="table_wrap bordered_content">
+	
+								<%= devise_error_messages! %>
+								
+								<ul class="padded margin-b">
+									
+									<li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-firstname" class="col-sm-2 control-label">Họ</label>
+											
+											<div class="form_el">
+												
+												<%= f.text_field :first_name, class: "form-control", value: current_user.first_name %>
+											
+											</div>
+										
+										</div>
+									
+									</li>
+								  
+									<li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-lastname" class="col-sm-2 control-label">Tên</label>
+											
+											<div class="form_el">
+												
+												<%= f.text_field :last_name, class: "form-control", value: current_user.last_name %>
+											
+											</div>
+										
+										</div>
+									
+									</li>
+								  
+									<li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-email" class="col-sm-2 control-label">Email</label>
+											
+											<div class="form_el">
+												
+												<%= f.email_field :email, class: "form-control", value: current_user.email %>
+											
+											</div>
+										
+										</div>
+									
+									</li>
+									
+									<li class="row">
+										
+										<div class="col-xs-12 required">
+											
+											<label for="input-telephone" class="col-sm-2 control-label">Số điện thoại</label>
+											
+											<div class="form_el">
+												
+												<%= f.text_field :phone, class: "form-control", value: current_user.phone %>
+											
+											</div>
+										
+										</div>
+									
+									</li>
+									
+									<li class="row">
+									  
+										<div class="col-xs-12">
+											
+											<label for="input-fax" class="col-sm-2 control-label">Số fax</label>
+											
+											<div class="form_el">
+												
+												<%= f.text_field :fax, class: "form-control", value: current_user.fax %>
+											
+											</div>
+										
+										</div>
+									
+									</li>
+								  
+								</ul>
+							  
 							</div>
-
-							<div class="right_side">
-
-								<a href="#" class="button_blue middle_btn">Continue</a>
-
+							
+							<h3>Thông tin địa chỉ</h3>
+							
+							<div class="table_wrap bordered_content">
+							
+								<div>
+								  
+									<ul class="padded margin-b">
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-company" class="col-sm-2 control-label">Tên công ty</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :company, class: "form-control", value: current_user.company %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12 required">
+							  
+												<label for="input-lastname" class="col-sm-2 control-label">Địa chỉ 1</label>
+							  
+												<div class="form_el">
+							  
+													<%= f.text_field :address_1, class: "form-control", value: current_user.address_1 %>
+							  
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12 required">
+							  
+												<label for="input-email" class="col-sm-2 control-label">Địa chỉ 2</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :address_2, class: "form-control", value: current_user.address_2 %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+										  <div class="col-xs-12 required">
+							
+											<label for="input-telephone" class="col-sm-2 control-label">Thành phố</label>
+							
+											<div class="form_el">
+							
+												<%= f.text_field :city, class: "form-control", value: current_user.city %>
+							
+											</div>
+							
+										  </div>
+							
+										</li>
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-fax" class="col-sm-2 control-label">Mã bưu chính</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :zip_code, class: "form-control", value: current_user.zip_code %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-fax" class="col-sm-2 control-label">Quốc gia</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :country, class: "form-control", value: current_user.country %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-fax" class="col-sm-2 control-label">Tỉnh</label>
+							  
+												<div class="form_el">
+							  
+													<%= f.text_field :province, class: "form-control", value: current_user.province %>
+							  
+												</div>
+							  
+											</div>
+							
+										</li>
+									  
+									</ul>
+								  
+								</div>
+							  
 							</div>
-
-						</footer>
+							
+							<h3>Thông tin mật khẩu</h3>
+							
+							<div class="table_wrap bordered_content">
+							
+								<div>
+								  
+									<ul class="padded margin-b">
+										
+										<li class="row">
+							  
+											<div class="col-xs-12">
+								
+												<label for="input-company" class="col-sm-2 control-label">Mật khẩu hiện tại</label>
+								  
+												<div class="form_el">
+								  
+													<%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+								  
+												</div>
+								
+											</div>
+								
+										</li>
+							
+										<li class="row">
+							  
+										  <div class="col-xs-12">
+							  
+											  <label for="input-company" class="col-sm-2 control-label">Mật khẩu mới</label>
+								
+											  <div class="form_el">
+								
+												  <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+								
+											  </div>
+							  
+										  </div>
+							  
+										</li>
+									  
+										<li class="row">
+							  
+										  <div class="col-xs-12 required">
+							  
+											  <label for="input-password-confirm" class="col-sm-2 control-label">Xác nhận mật khẩu mới</label>
+								
+											  <div class="form_el">
+								
+												  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+								
+											  </div>
+							  
+										  </div>
+							  
+										</li>
+									  
+									</ul>
+								  
+								</div>
+							  
+							</div>
+							
+							<h3>Đăng ký nhận tin mới</h3>
+	
+							<div class="table_wrap bordered_content">
+								
+								<div>
+								
+									<div>
+								
+										<div class="padded">
+								
+											<fieldset>
+								
+												<label style="text-align: left;">Nhận tin mới</label>
+								
+												<div class="form_el no_b_margin">
+								
+													<input checked="" type="radio" name="radio_2" id="radio_3">
+							
+													<label for="radio_3">Đồng ý</label>
+		
+													<input type="radio" name="radio_2" id="radio_4">
+							
+													<label for="radio_4">Không đồng ý</label>
+								
+												</div>
+								
+											</fieldset>
+								
+										</div>
+								
+									</div>                                                
+								
+								</div>
+							
+							</div>
+							
+							<footer class="bottom_box on_the_sides">
+	
+								<div class="left_side">
+	
+									<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Trở về</a>
+	
+								</div>
+	
+								<div class="right_side">
+									
+									<%= f.submit "Cập nhật thông tin", class: "button_blue middle_btn" %>
+	
+								</div>
+	
+							</footer>
+						
+						<% end %>
 
                     </main>
 

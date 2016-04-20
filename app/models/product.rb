@@ -1,8 +1,10 @@
 class Product < ActiveRecord::Base
   validates :name, :price, :quantity, :unit, :manufacturer_id, :short_description, presence: true
   before_destroy :ensure_not_referenced_by_any_line_item
+  before_destroy :ensure_not_referenced_by_any_line_item_compare
   
   has_many :line_items
+  has_many :line_item_comparies
   has_many :categories_products
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :areas
@@ -113,6 +115,16 @@ class Product < ActiveRecord::Base
         return true
       else
         errors.add(:base, 'Line Items present')
+        return false
+      end
+    end
+    
+    # ensure that there are no line items compare referencing this product
+    def ensure_not_referenced_by_any_line_item_compare
+      if line_item_comparies.empty?
+        return true
+      else
+        errors.add(:base, 'Compare of Line Items present')
         return false
       end
     end

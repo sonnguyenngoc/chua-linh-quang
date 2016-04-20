@@ -1,383 +1,242 @@
 <body>
 
-  <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
-
-  <div class="wide_layout">
-
-      <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-      <%= render 'home/header' %>
-      
-      <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-      <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-      <div class="secondary_page_wrapper">
-
-          <div class="container">
-
-              <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-              <ul class="breadcrumbs">
-
-                  <li><a href="<%= root_path %>">Trang chủ</a></li>
-                  <li>So sánh sản phẩm</li>
-
-              </ul>
-
-              <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
-
-              <h1>So sánh sản phẩm</h1>
-
-              <div class="table_wrap">
-                  
-                  <table class="table_type_1 compare">
-
-                      <tbody>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Hình ảnh</th>
-
-                              <td>
-
-                                  <a href="#"><img src="/frontend/images/product_thumb_4.jpg" alt=""></a>
-
-                              </td>
-
-                              <td>
-
-                                  <a href="#"><img src="/frontend/images/product_thumb_5.jpg" alt=""></a>
-
-                              </td>
-
-                              <td>
-
-                                  <a href="#"><img src="/frontend/images/product_thumb_6.jpg" alt=""></a>
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Tên sản phẩm</th>
-
-                              <td>
-
-                                  <a href="#">Adipiscing aliquet sed in lacus, Liqui-gels 24</a>
-
-                              </td>
-
-                              <td>
-
-                                  <a href="#">Quisque diam lorem, interdum vitae,dapibus ac</a>
-
-                              </td>
-
-                              <td>
-
-                                  <a href="#">Interdum vitae dapibus ac quisque diam lorem 160 ea</a>
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Đánh giá</th>
-
-                              <td>
-
-                                  <div class="v_baseline">
-
-                                      <ul class="rating">
-                                          <li class="active"></li>
-                                          <li class="active"></li>
-                                          <li class="active"></li>
-                                          <li class="active"></li>
-                                          <li></li>
-                                      </ul>
-
-                                      <a href="#" class="small_link">3 Đánh giá</a>
-
-                                  </div>
-
-                              </td>
-
-                              <td>
-
-                                  <div class="v_baseline">
-
-                                      <ul class="rating">
-                                          <li></li>
-                                          <li></li>
-                                          <li></li>
-                                          <li></li>
-                                          <li></li>
-                                      </ul>
-
-                                      <span class="small_link">0 Đánh giá</span>
-
-                                  </div>
-
-                              </td>
-
-                              <td>
-
-                                  <div class="v_baseline">
-
-                                      <ul class="rating">
-                                          <li class="active"></li>
-                                          <li class="active"></li>
-                                          <li class="active"></li>
-                                          <li></li>
-                                          <li></li>
-                                      </ul>
-
-                                      <a href="#" class="small_link">5 Đánh giá</a>
-
-                                  </div>
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Giá</th>
-
-                              <td class="total">$5.99</td>
-
-                              <td class="total">$8.99</td>
-
-                              <td class="total">$76.99</td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Mô tả</th>
-
-                              <td>
-                                  
-                                  <p>Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna.</p>
-
-                              </td>
-
-                              <td>
-                                  
-                                  <p>﻿Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros.</p>
-
-                              </td>
-
-                              <td>
-                                  
-                                  <p>﻿Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel. Cursus eleifend, elit. Aenean auctor wisi et urna.</p>
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Nhãn hàng</th>
-
-                              <td>
-                                  
-                                  <a href="#">Chanel</a>
-
-                              </td>
-
-                              <td>
-                                  
-                                  <a href="#">G&amp;D</a>
-
-                              </td>
-
-                              <td>
-                                  
-                                  <a href="#">Naiki</a>
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Tình trạng</th>
-
-                              <td>
-                                  
-                                  <span class="in_stock">in stock</span> 20 item (s)
-
-                              </td>
-
-                              <td>
-                                  
-                                  <span class="out_of_stock">out of stock</span>
-
-                              </td>
-
-                              <td>
-                                  
-                                  <span class="in_stock">in stock</span> 28 item (s)
-
-                              </td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">SKU</th>
-
-                              <td>PS06</td>
-
-                              <td>PS02</td>
-
-                              <td>PS23</td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Size</th>
-
-                              <td>XL</td>
-
-                              <td>S</td>
-
-                              <td>L</td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Màu sắc</th>
-
-                              <td>Red</td>
-
-                              <td>Green</td>
-
-                              <td>Blue</td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Trọng lượng</th>
-
-                              <td>0,3 kg</td>
-
-                              <td>0,24 kg</td>
-
-                              <td>1,460 kg</td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Kích thước<br>(L x W x H)</th>
-
-                              <td>40x20x74 Cm</td>
-
-                              <td>220x12x5 Cm</td>
-
-                              <td>140x230x120 Cm</td>
-
-                          </tr>
-
-                          <tr>
-                              
-                              <th class="row_title_col">Xử lý</th>
-
-                              <td>
-
-                                  <div class="buttons_row">
-                                  
-                                      <a href="#" class="button_blue middle_btn">Thêm giỏ hàng</a>
-
-                                      <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào yêu thích</span></a>
-
-                                      <a href="#" class="button_dark_grey middle_btn icon_btn tooltip_container"><span class="tooltip top">Loại khỏi danh sách so sánh</span><i class="icon-cancel-2"></i></a>
-
-                                  </div>
-
-                              </td>
-
-                              <td>
-
-                                  <div class="buttons_row">
-                                  
-                                      <a href="#" class="button_blue middle_btn">Thêm giỏ hàng</a>
-
-                                      <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào yêu thích</span></a>
-
-                                      <a href="#" class="button_dark_grey middle_btn icon_btn tooltip_container"><span class="tooltip top">Loại khỏi danh sách so sánh</span><i class="icon-cancel-2"></i></a>
-
-                                  </div>
-
-                              </td>
-
-                              <td>
-
-                                  <div class="buttons_row">
-                                  
-                                      <a href="#" class="button_blue middle_btn">Thêm giỏ hàng</a>
-
-                                      <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào yêu thích</span></a>
-
-                                      <a href="#" class="button_dark_grey middle_btn icon_btn tooltip_container"><span class="tooltip top">Loại khỏi danh sách so sánh</span><i class="icon-cancel-2"></i></a>
-
-                                  </div>
-
-                              </td>
-
-                          </tr>
-
-                      </tbody>
-
-                  </table>
-
-              </div>
-
-          </div><!--/ .container-->
-
-      </div><!--/ .page_wrapper-->
-      
-      <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-      <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-      <%= render 'home/footer' %>
-      
-      <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-  </div><!--/ [layout]-->
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
   
-  <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-  <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-  <%= render 'home/social_feeds' %>
-
-  <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    <div class="wide_layout">
   
-  <!-- Include Libs & Plugins
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-  <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-  <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-  <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-  <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-  <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-  <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-  <%= javascript_include_tag '/frontend/js/retina.min.js' %>
-  <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-  <!-- Theme files
-  ============================================ -->
-  <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-  <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+  
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+  
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+  
+        <div class="secondary_page_wrapper">
+  
+            <div class="container">
+  
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+  
+                <ul class="breadcrumbs">
+  
+                      <li><%= link_to "Trang chủ", root_path %></li>
+                      
+                      <li><%= @title_head %></li>
+  
+                </ul>
+  
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+  
+                <h1><%= @title_head %></h1>
+  
+                <div class="table_wrap">
+                    
+                    <table class="table_type_1 compare">
+  
+                        <tbody>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Hình ảnh</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td>
+                                        
+                                        <%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.id } %>
+      
+                                    </td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Tên sản phẩm</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td>
+  
+                                        <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.id } %>
+      
+                                    </td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Đánh giá</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td>
+  
+                                        <div class="v_baseline">
+      
+                                            <ul class="rating">
+                                                <li class="active"></li>
+                                                <li class="active"></li>
+                                                <li class="active"></li>
+                                                <li class="active"></li>
+                                                <li></li>
+                                            </ul>
+      
+                                            <a href="#" class="small_link">3 Đánh giá</a>
+      
+                                        </div>
+      
+                                    </td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Giá</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td class="total"><%= format_number(item.product.price) %> đ</td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Mô tả</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td>
+                                    
+                                        <p class="text-justifly"><%= item.product.short_description %></p>
+                                        
+                                    </td>
+                                
+                                <% end %>
+  
+                                
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Nhãn hàng</th>
+  
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td>
+                                    
+                                       <%= link_to item.product.manufacturer.name, { controller: "manufacturer", action: "list" } %>
+                                        
+                                    </td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Tình trạng</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td>
+                                    
+                                        <span class="in_stock">Còn trong kho</span> 20 sản phẩm.
+      
+                                    </td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Mã sản phẩm</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td><%= item.product.code %></td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                            <tr>
+                                
+                                <th class="row_title_col">Thao tác</th>
+                                
+                                <% LineItemCompare.get_all_items.each do |item| %>
+  
+                                    <td>
+      
+                                        <div class="buttons_row">
+                                            
+                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: item), class: "button_blue middle_btn add_to_cart" %>
+      
+                                            <a href="#" class="button_dark_grey middle_btn def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào yêu thích</span></a>
+      
+                                            <a href="#" class="button_dark_grey middle_btn icon_btn tooltip_container"><span class="tooltip top">Loại khỏi danh sách so sánh</span><i class="icon-cancel-2"></i></a>
+      
+                                        </div>
+      
+                                    </td>
+                                
+                                <% end %>
+  
+                            </tr>
+  
+                        </tbody>
+  
+                    </table>
+  
+                </div>
+  
+            </div><!--/ .container-->
+  
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+  
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+  
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+  
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+  
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+  
+    <%= render 'module/social_feeds' %>
+  
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+  
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
 
 </body>

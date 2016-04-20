@@ -31,7 +31,11 @@
                                 <ul class="topbar">
 
                                     <li><%= link_to "Trang chủ", root_path %></li>
-                                    <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                                    <% if current_user.present? %>
+                                        <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                                    <% else %>
+                                        <li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                                    <% end %>
                                     <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "shopping_cart" } %></li>
                                     <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
                                     <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
@@ -141,11 +145,15 @@
                                 <ul class="shop_links_list">
 
                                     <li>
+                                       
                                         <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (0)</a>
                                         
                                     </li>
+                                    
                                     <li>
-                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (0)</a>
+                                        
+                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (<%= @compare.get_number_items %>)</a>
+                                    
                                     </li>
 
                                 </ul><!--/ .align_right.shop_links-->

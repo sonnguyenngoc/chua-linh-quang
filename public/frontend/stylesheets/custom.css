@@ -126,7 +126,8 @@ body {
 }
 .refresh_checkout {
     margin-left: 6px;
-    padding-top: 2px;
+    padding-top: 5px;
+    margin-top: 3px;
 }
 .fa-refresh-checkout:before {
     line-height: 20px !important;
@@ -159,7 +160,28 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
 .theme_menu > li > a {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: medium none;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 0;
     border-width: 0;
+}
+form:not(.type_2) label {
+    width: 170px;
+}
+form:not(.type_2) .form_el {
+    width: calc(100% - 170px);
+}
+.v_centered > *:not(:first-child) {
+    margin-left: 5px;
+}
+input:not([type="submit"]), textarea, .active_option {
+    color: #777777;
+}
+form ul > li:not(:last-child) {
+    margin-bottom: 10px;
+}
+.quick_create_user_box  li.row {
+    margin-bottom: 10px;
+}
+.quick_create_user_box  li.row:last-child {
+    margin-bottom: 30px;
 }

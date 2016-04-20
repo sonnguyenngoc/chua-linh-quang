@@ -101,7 +101,7 @@
 
                                     <div class="v_centered">
 
-                                        <span>Show:</span>
+                                        <span>Hiển thị:</span>
 
                                         <div class="">
 
@@ -123,7 +123,7 @@
 
                                     <div class="v_centered">
 
-                                        <span>Sort by:</span>
+                                        <span>Sắp xếp:</span>
 
                                         <div class="sort_select">
                                             
@@ -166,7 +166,9 @@
                             <div class="table_layout" id="products_container">
 
                                 <div class="table_row">
+                                    
                                     <% @products.each_with_index do |product, index| %>
+                                        
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
     
                                         <div class="table_cell">
@@ -200,8 +202,8 @@
                                                         </div><!--/ .centered_buttons -->
     
                                                         <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-    
-                                                        <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+                                                        
+                                                        <%= button_to '<span class="tooltip left">Thêm vào danh mục so sánh</span>'.html_safe, line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
     
                                                     </div><!--/ .actions_wrap-->
                                                     
@@ -212,13 +214,13 @@
                                                 <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
     
                                                 <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-    
+                                                
                                                 <div class="description">
                                                     
                                                     <div class="nowrap-ellipsis">
-                                                        
-                                                        <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
-                                                    
+                                                       
+                                                       <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                       
                                                     </div>
     
                                                     <div class="clearfix product_info">

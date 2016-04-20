@@ -6,8 +6,12 @@ class CheckoutController < ApplicationController
   
   def checkout
     @title_head = "Đặt hàng"
+    if @cart.line_items.empty?
+      redirect_to shopping_cart_path
+    end
     @order = Order.new
     @customer = Customer.new
+    session[:user_return_to] = checkout_path
   end
   
   def success
