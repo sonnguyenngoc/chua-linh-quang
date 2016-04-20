@@ -1,0 +1,25 @@
+<%= form_for(@line_item_compare) do |f| %>
+  <% if @line_item_compare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@line_item_compare.errors.count, "error") %> prohibited this line_item_compare from being saved:</h2>
+
+      <ul>
+      <% @line_item_compare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :product_id %><br>
+    <%= f.text_field :product_id %>
+  </div>
+  <div class="field">
+    <%= f.label :compare_id %><br>
+    <%= f.text_field :compare_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

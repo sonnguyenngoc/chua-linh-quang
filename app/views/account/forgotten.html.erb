@@ -20,9 +20,11 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
-                    <li>Forgotten Password</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                    
+					<li><%= @title_head %></li>
 
                 </ul>
 
@@ -32,35 +34,57 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <%= render 'menu_account_logout' %>
+                        <%= render 'module/menu_account_not_signed' %>
 
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
-                        <h1>Forgot Your Password?</h1>
-                        <div class="bordered_content box">
-                            <div class="padded_ex_bottom">
-                                <p>Enter the e-mail address associated with your account. Click submit to have your password e-mailed to you.</p>
-                                <form action="account/forgotten" method="post" enctype="multipart/form-data">
-                                  <fieldset>
-                                      <div class="form-group required">
-                                          <label class="control-label" for="input-email" style="text-align: left;">E-Mail Address</label>
-                                          <input type="email" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control">
-                                      </div>
-                                  </fieldset>
-                                </form>
+ 
+					    <h1>Bạn không nhớ mật khẩu của tài khoản mình?</h1>
+                        
+						<div class="bordered_content box">
+                            
+							<div class="padded_ex_bottom">
+                                
+								<p>Nhập email đăng ký cho tài khoản. Chọn Lấy lại mật khẩu để gửi một mail xác nhận đổi mật khẩu vào email đăng ký.</p>
+                                
+								<form action="account/forgotten" method="post" enctype="multipart/form-data">
+                                  
+									<fieldset>
+										
+										<div class="form-group required">
+											
+											<label class="control-label" for="input-email" style="text-align: left;">Địa chỉ email</label>
+											
+											<input type="email" name="email" value="" placeholder="Nhập địa chỉ email" id="input-email" class="form-control">
+										
+										</div>
+									
+									</fieldset>
+                                
+								</form>
                             </div>
+							
                             <div class="bottom_buttons">
-                                <div class="bottom on_the_sides">
-                                    <div class="left_side v_centered">
-                                        <a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Back</a>
-                                    </div>
+                                
+								<div class="bottom on_the_sides">
+                                    
+									<div class="left_side v_centered">
+                                        
+										<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'login'}) %>">Trở về</a>
+                                    
+									</div>
 									
                                     <div class="right_side">
-                                        <a class="button_blue middle_btn" href="#">Continue</a>
-                                    </div>
+                                        
+										<a class="button_blue middle_btn" href="#">Lấy lại mật khẩu</a>
+                                    
+									</div>
+								
 								</div>
-                            </div>
+                           
+						    </div>
+
                         </div>
 
                     </main><!--/ [col]-->

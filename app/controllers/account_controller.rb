@@ -10,7 +10,37 @@ class AccountController < ApplicationController
   def register
     @title_head = "Đăng ký"
   end
+  
   def my_account
-  	@title_head = ""
+  	@title_head = "Tài khoản của tôi"
+  end
+  
+  def forgotten
+	@title_head = "Quên mật khẩu"
+  end
+  
+  def edit
+    @title_head = "Chỉnh sửa tài khoản"
+  end
+  
+  def password
+    @title_head = "Thay đổi mật khẩu"
+  end
+  
+  def address
+    @title_head = "Địa chỉ đặt hàng"
+  end
+  
+  def address_edit
+    @title_head = "Thay đổi địa chỉ đặt hàng"
+  end
+  
+  def order
+    @title_head = "Lịch sử đặt hàng"
+  end
+  
+  def order_info
+	@order = Order.find(params[:order_id])
+    @title_head = "Chi tiết đơn hàng"
   end
 end

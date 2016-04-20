@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @line_item_compare.product %>
+</p>
+
+<p>
+  <strong>Compare:</strong>
+  <%= @line_item_compare.compare %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_compare_path(@line_item_compare) %> |
+<%= link_to 'Back', line_item_compares_path %>

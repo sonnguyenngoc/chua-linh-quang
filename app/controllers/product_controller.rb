@@ -17,4 +17,8 @@ class ProductController < ApplicationController
     render :layout => false
   end
   
+  def comparison
+    @title_head = "So sánh sản phẩm"
+  end
+  
 end

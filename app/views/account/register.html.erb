@@ -20,9 +20,11 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Tài khoản</li>
-                    <li><%= @title_head %></li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                    
+					<li><%= @title_head %></li>
 
                 </ul>
 
@@ -30,7 +32,7 @@
 
                     <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
                       
-                        <%= render 'menu_account_login' %>
+                        <%= render 'module/menu_account_not_signed' %>
 
                     </aside>
 
@@ -215,7 +217,7 @@
 							
 											<div class="col-xs-12">
 							  
-												<label for="input-fax" class="col-sm-2 control-label">Mã bưu chính ZIP/CODE</label>
+												<label for="input-fax" class="col-sm-2 control-label">Mã bưu chính</label>
 								
 												<div class="form_el">
 								

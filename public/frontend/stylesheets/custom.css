@@ -1,3 +1,6 @@
+body {
+    font-family: Helvetica,Arial,sans-serif;
+}
 .tweets_span {
     font-size: 13px;
     display: block;
@@ -153,3 +156,29 @@ input[type='text'], input[type='password'], input[type='email'], input[type='tel
 .padded li.row {
     margin-bottom: 10px;
 }
+.theme_menu > li > a {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+<<<<<<< HEAD
+    font-size: 14px;
+    border-radius: 0;
+    border-width: 0;
+}
+form:not(.type_2) label {
+    width: 170px;
+}
+form:not(.type_2) .form_el {
+    width: calc(100% - 170px);
+}
+.v_centered > *:not(:first-child) {
+    margin-left: 5px;
+}
+input:not([type="submit"]), textarea, .active_option {
+    color: #777777;
+}
+=======
+    font-size: 16px;
+    border-radius: 0;
+    border-width: 0;
+}
+>>>>>>> 207f992434023709bf4639942a1f71a4dd9431be
