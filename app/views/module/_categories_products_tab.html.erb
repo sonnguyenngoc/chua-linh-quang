@@ -7,7 +7,7 @@
         <!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
         
         <ul class="tabs_nav clearfix">
-            <% Category.get_by_status(status, 5).each_with_index do |category,index| %>
+            <% Category.get_by_status(status).each_with_index do |category,index| %>
                 <li><a href="#tab-<%= status %>-<%= index %>"><%= category.name %></a></li>
             <% end %>
         </ul>
@@ -18,14 +18,14 @@
         <!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
 
         <div class="tab_containers_wrap">
-            <% Category.get_by_status(status, 10).each_with_index do |category,index| %>
+            <% Category.get_by_status(status).each_with_index do |category,index| %>
                 <div id="tab-<%= status %>-<%= index %>" class="tab_container">
     
                     <!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
                     
                     <div class="owl_carousel carousel_in_tabs type_2">
                         
-                        <% Product.get_by_category_status(category, status, 5).each do |product| %>
+                        <% Product.get_by_category_status(category, status).each do |product| %>
                         
                             <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
         

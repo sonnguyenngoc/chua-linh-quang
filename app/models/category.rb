@@ -75,9 +75,8 @@ class Category < ActiveRecord::Base
     return records   
   end
   
-
-  def self.get_by_status(status, limit=5)
-    self.all.limit(5)
+  def self.get_by_status(status)
+    self.all.where(level: 2)
   end 
   # get json for tree draggable index
   def self.get_tree_json
