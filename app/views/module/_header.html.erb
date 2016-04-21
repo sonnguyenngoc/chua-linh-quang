@@ -145,9 +145,17 @@
                                 <ul class="shop_links_list">
 
                                     <li>
-                                       
-                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> <%= "(" + current_user.wish_lists.count + ")" if current_user.present?  %></a>
                                         
+                                        <% if current_user.present? %>
+                                       
+                                            <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (<%= + current_user.wish_lists.count %>)</a>
+                                        
+                                        <% else %>
+                                            
+                                            <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "login" } %> (0)</a>
+                                            
+                                        <% end %>
+                                    
                                     </li>
                                     
                                     <li>

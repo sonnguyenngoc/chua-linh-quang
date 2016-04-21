@@ -9,7 +9,6 @@ class Order < ActiveRecord::Base
       self.order_details.create(product_id: item.product_id, quantity: item.quantity)
     end
   end
-  
 
   #total price orders (backend)
   def total_order

@@ -326,8 +326,8 @@
                                     <ul class="tabs_nav clearfix">
             
                                         <li><a href="#tab-description">Mô tả sản phẩm</a></li>
-                                        <li><a href="#tab-questions" data-toggle="tab">Câu hỏi về sản phẩm (0)</a></li>
-                                        <li><a href="#tab-review">Đánh giá sản phẩm (0)</a></li>
+                                        <li><a href="#tab-questions" data-toggle="tab">Câu hỏi về sản phẩm (<%= @product.questions.count %>)</a></li>
+                                        <li><a href="#tab-review">Đánh giá sản phẩm (<%= @product.comments.count %>)</a></li>
             
                                     </ul>
                                     
@@ -347,69 +347,163 @@
             
                                         <!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
             
-                                        <!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
+                                        <!-- - - - - - - - - - - - - - Question form - - - - - - - - - - - - - - - - -->
             
                                         <div id="tab-questions" class="tab_container">
                                             
-                                            <div id="question" style="margin-bottom:25px"><p style="margin-top:5px;">Chưa có câu hỏi nào cho sản phẩm.</p></div>
-                                            
-                                            <h2 id="ask_heading">Hỏi về sản phẩm</h2>
+                                            <section class="section_offset">
             
-                                            <form novalidate="" enctype="multipart/form-data" class="contactform type_2" id="contact_form">
-        
-                                                <ul>
-                                                
-                                                    <li class="row">
-        
-                                                        <div class="col-sm-12">
+                                                <h3>Câu hỏi từ khách hàng</h3>
+            
+                                                <ul class="reviews">
+            
+                                                    <li>
+            
+                                                        <!-- - - - - - - - - - - - - - Review - - - - - - - - - - - - - - - - -->
                                                         
-                                                            <label for="cf_name" class="required">Họ & Tên</label>
-                                                            <input type="text" required="" name="cf_name" id="cf_name" title="Name">
-        
-                                                        </div><!--/ [col]-->
-        
-                                                    </li><!--/ .row -->
-                                                    
-                                                    <li class="row">
-        
-                                                        <div class="col-sm-12">
-        
-                                                            <label for="cf_email" class="required">Địa chỉ email</label>
-                                                            <input type="email" required="" name="cf_email" id="cf_email" title="Email">
-        
-                                                        </div><!--/ [col]-->
-        
-                                                    </li><!--/ .row -->
-        
-                                                    <li class="row">
-        
-                                                        <div class="col-xs-12">
-        
-                                                            <label for="cf_message" class="required">Nội dung câu hỏi</label>
-                                                            <textarea id="cf_message" required="" name="cf_message" title="Message" rows="6"></textarea>
-        
-                                                        </div><!--/ [col]-->
-        
-                                                    </li><!--/ .row -->
-                                                    
-                                                    <li class="row">
-        
-                                                        <div class="col-xs-12">
-        
-                                                            <label for="cf_message" class="required">Trả lời câu hỏi dưới đây</label>
-                                                            <span class="input-group-addon captcha_wrap">Captcha</span>
-        
-                                                        </div><!--/ [col]-->
-        
-                                                    </li><!--/ .row -->
-        
+                                                        <article class="review">
+															
+															<% if @product.questions.count > 0 %>
+															
+																<% @product.questions.each do |question| %>
+				
+																	<!-- - - - - - - - - - - - - - Review body - - - - - - - - - - - - - - - - -->
+					
+																	<div class="review-body">
+					
+																		<div class="review-meta">
+					
+																			<span class="bold alightleft"><%= question.name %></span>, <%= question.created_at.strftime("%d-%m-%Y") %>
+					
+																		</div>
+																		
+																		<div class="review-meta">
+					
+																			<p class="alightleft"><%= question.email %></p>
+					
+																		</div>
+					
+																		<p class="justifly"><%= question.content %></p>
+					
+																	</div>
+					
+																	<!-- - - - - - - - - - - - - - End of review body - - - - - - - - - - - - - - - - -->
+				
+																<% end %>
+															
+															<% else %>
+																
+																<p class="box">Chưa có câu hỏi nào cho sản phẩm.</p>
+																
+															<% end %>
+														
+														</article>
+            
+                                                        <!-- - - - - - - - - - - - - - End of review - - - - - - - - - - - - - - - - -->
+            
+                                                    </li>
+            
                                                 </ul>
-									
-                                                <button class="button_blue middle_btn alignright" type="submit" form="contact_form">Gửi câu hỏi</button>
-        
-                                            </form><!--/ .contactform -->
-        
-                                            <!-- - - - - - - - - - - - - - End of contact form - - - - - - - - - - - - - - - - -->
+            
+                                            </section><!--/ .section_offset -->
+                                            
+                                            <section class="section_offset">
+            
+                                                <h3>Viết câu hỏi cho sản phẩm</h3>
+            
+                                                <div class="row">
+            
+                                                    <div class="col-lg-12 col-md-12">
+											
+														<%= form_for @question, html: {class: "type_2"} do |f| %>
+														
+															<% if current_user.present? %>
+																
+																<%= f.hidden_field :user_id, value: current_user.id %>
+															
+															<% end %>
+														
+															<%= f.hidden_field :product_id, value: @product.id %>
+					
+															<ul>
+															
+																<li class="row">
+					
+																	<div class="col-sm-12">
+																	
+																		<label for="cf_name" class="required">Họ & Tên</label>
+																		
+																		<% if current_user.present? %>
+																			
+																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true %>
+																		
+																		<% else %>
+																			
+																			<%= f.text_field :name %>
+																			
+																		<% end %>
+					
+																	</div><!--/ [col]-->
+					
+																</li><!--/ .row -->
+																
+																<li class="row">
+					
+																	<div class="col-sm-12">
+					
+																		<label for="cf_email" class="required">Địa chỉ email</label>
+																		
+																		<% if current_user.present? %>
+																			
+																			<%= f.email_field :email, value: current_user.email, readonly: true %>
+																		
+																		<% else %>
+																			
+																			<%= f.email_field :email %>
+																			
+																		<% end %>
+					
+																	</div><!--/ [col]-->
+					
+																</li><!--/ .row -->
+					
+																<li class="row">
+					
+																	<div class="col-xs-12">
+					
+																		<label for="cf_message" class="required">Nội dung câu hỏi</label>
+																		
+																		<%= f.text_area :content, rows: "6" %>
+					
+																	</div><!--/ [col]-->
+					
+																</li><!--/ .row -->
+																
+																<li class="row">
+					
+																	<div class="col-xs-12">
+					
+																		<label for="cf_message" class="required">Trả lời câu hỏi dưới đây</label>
+																		
+																		<span class="input-group-addon captcha_wrap">Captcha</span>
+					
+																	</div><!--/ [col]-->
+					
+																</li><!--/ .row -->
+					
+															</ul>
+															
+															<%= f.submit "Gửi câu hỏi", class: "button_blue middle_btn alignright" %>
+					
+														<% end %><!--/ .questionform -->
+					
+														<!-- - - - - - - - - - - - - - End of question form - - - - - - - - - - - - - - - - -->
+														
+													</div>
+													
+												</div>
+												
+											</section>
                                         
                                         </div><!--/ #tab-2-->
             
@@ -430,34 +524,44 @@
                                                         <!-- - - - - - - - - - - - - - Review - - - - - - - - - - - - - - - - -->
                                                         
                                                         <article class="review">
-            
-                                                            <!-- - - - - - - - - - - - - - Review body - - - - - - - - - - - - - - - - -->
-            
-                                                            <div class="review-body">
-            
-                                                                <div class="review-meta">
-            
-                                                                    <span class="bold alightleft">Ivana Wrong</span>, 12/4/2014
-                                                                    
-                                                                    <ul class="rating alightright">
-
-                                                                        <li class="active"></li>
-                                                                        <li class="active"></li>
-                                                                        <li class="active"></li>
-                                                                        <li></li>
-                                                                        <li></li>
-                            
-                                                                    </ul>
-            
-                                                                </div>
-            
-                                                                <p>Aliquam Erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo.</p>
-            
-                                                            </div>
-            
-                                                            <!-- - - - - - - - - - - - - - End of review body - - - - - - - - - - - - - - - - -->
-            
-                                                        </article>
+															
+															<% if @product.comments.count > 0 %>
+															
+																<% @product.comments.each do |comment| %>
+				
+																	<!-- - - - - - - - - - - - - - Review body - - - - - - - - - - - - - - - - -->
+					
+																	<div class="review-body">
+					
+																		<div class="review-meta">
+					
+																			<span class="bold alightleft"><%= comment.name %></span>, <%= comment.created_at.strftime("%d-%m-%Y") %>
+																			
+																			<ul class="rating alightright">
+																				
+																				<% (1..comment.star).each do |star| %>
+																					<li class="active"></li>
+																				<% end %>
+									
+																			</ul>
+					
+																		</div>
+					
+																		<p class="justifly"><%= comment.content %></p>
+					
+																	</div>
+					
+																	<!-- - - - - - - - - - - - - - End of review body - - - - - - - - - - - - - - - - -->
+				
+																<% end %>
+															
+															<% else %>
+																
+																<p class="box">Chưa có đánh giá nào cho sản phẩm.</p>
+																
+															<% end %>
+														
+														</article>
             
                                                         <!-- - - - - - - - - - - - - - End of review - - - - - - - - - - - - - - - - -->
             
@@ -469,15 +573,23 @@
             
                                             <section class="section_offset">
             
-                                                <h3>Đánh giá sản phẩm</h3>
+                                                <h3>Viết đánh giá cho sản phẩm</h3>
             
                                                 <div class="row">
             
                                                     <div class="col-lg-12 col-md-12">
             
                                                         <!-- - - - - - - - - - - - - - Review form - - - - - - - - - - - - - - - - -->
-            
-                                                        <form class="type_2">
+														
+														<%= form_for @comment, html: {class: "type_2"} do |f| %>
+														
+															<% if current_user.present? %>
+																
+																<%= f.hidden_field :user_id, value: current_user.id %>
+															
+															<% end %>
+														
+															<%= f.hidden_field :product_id, value: @product.id %>
             
                                                             <ul>
             
@@ -486,7 +598,16 @@
                                                                     <div class="col-sm-12">
                                                                         
                                                                         <label for="cf_name" class="required">Họ & Tên</label>
-                                                                        <input type="text" name="" id="nickname">
+                                                                        
+																		<% if current_user.present? %>
+																			
+																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true %>
+																		
+																		<% else %>
+																			
+																			<%= f.text_field :name %>
+																			
+																		<% end %>
             
                                                                     </div>
             
@@ -498,7 +619,7 @@
             
                                                                         <label for="cf_name" class="required">Nội dung</label>
             
-                                                                        <textarea rows="5" id="review_message"></textarea>
+                                                                        <%= f.text_area :content, rows: "5" %>
             
                                                                     </div>
             
@@ -511,33 +632,28 @@
                                                                         <label for="cf_name" class="required">Đánh giá</label>
                     
                                                                         <div class="form_el">
-                    
-                                                                            <input checked="" type="radio" name="radio_2" id="radio_1">
-                                                                            <label for="radio_1">Rất kém</label>
-                    
-                                                                            <input type="radio" name="radio_2" id="radio_2">
-                                                                            <label for="radio_2">Kém</label>
-                                                                            
-                                                                            <input type="radio" name="radio_2" id="radio_3">
-                                                                            <label for="radio_3">Bình thường</label>
-                                                                            
-                                                                            <input type="radio" name="radio_2" id="radio_4">
-                                                                            <label for="radio_4">Tốt</label>
-                                                                            
-                                                                            <input type="radio" name="radio_2" id="radio_5">
-                                                                            <label for="radio_5">Rất tốt</label>
+																			
+																			<%= f.radio_button :star, '1' %><label for="comment_star_1">Rất kém</label>
+																			
+																			<%= f.radio_button :star, '2' %><label for="comment_star_2">Kém</label>
+																			
+																			<%= f.radio_button :star, '3' %><label for="comment_star_3">Bình thường</label>
+																			
+																			<%= f.radio_button :star, '4' %><label for="comment_star_4">Tốt</label>
+																			
+																			<%= f.radio_button :star, '5' %><label for="comment_star_5">Rất tốt</label>
                     
                                                                         </div>
                     
                                                                     </div>
                     
                                                                 </li>
-									
-                                                                <button class="button_blue middle_btn alignright" type="submit" form="contact_form">Gửi đánh giá</button>
+																
+																<%= f.submit "Gửi đánh giá", class: "button_blue middle_btn alignright" %>
             
                                                             </ul>
             
-                                                        </form>
+                                                        <% end %>
             
                                                         <!-- - - - - - - - - - - - - - End of review form - - - - - - - - - - - - - - - - -->
             

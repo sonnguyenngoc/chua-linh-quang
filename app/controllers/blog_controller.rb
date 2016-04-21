@@ -7,6 +7,7 @@ class BlogController < ApplicationController
   def show
     @title_head = "Chi tiết bài viết"
     @blog = Article.find(params[:blog_id])
+    @comment = CommentArticle.new
   end
   
   def article_category

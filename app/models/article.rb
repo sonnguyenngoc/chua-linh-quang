@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   mount_uploader :image_url, ArticleUploader
   has_and_belongs_to_many :article_categories
   has_and_belongs_to_many :products
+  has_many :comment_articles
   
   def self.get_lastest_blog_posts
     self.order("created_at DESC").first(3)

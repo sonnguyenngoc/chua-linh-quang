@@ -4,8 +4,16 @@
 
     <div class="theme_box">
 
-        <form class="type_2">
-
+        <%= form_for @comment, html: {class: "type_2"} do |f| %>
+            
+            <% if current_user.present? %>
+																
+                <%= f.hidden_field :user_id, value: current_user.id %>
+            
+            <% end %>
+        
+            <%= f.hidden_field :article_id, value: @blog.id %>
+            
             <ul>
 
                 <li class="row">
@@ -13,14 +21,32 @@
                     <div class="col-sm-6">
 
                         <label for="lc_name" class="required">Tên</label>
-                        <input type="text" name="" id="lc_name">
+                        
+                        <% if current_user.present? %>
+																			
+                            <%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true %>
+                        
+                        <% else %>
+                            
+                            <%= f.text_field :name %>
+                            
+                        <% end %>
 
                     </div>
 
                     <div class="col-sm-6">
 
                         <label for="lc_email" class="required">Địa chỉ e-mail</label>
-                        <input type="email" name="" id="lc_email">
+                        
+                        <% if current_user.present? %>
+																			
+                            <%= f.text_field :email, value: current_user.email, readonly: true %>
+                        
+                        <% else %>
+                            
+                            <%= f.text_field :email %>
+                            
+                        <% end %>
 
                     </div>
 
@@ -31,17 +57,18 @@
                     <div class="col-xs-12">
 
                         <label for="lc_message">Nội dung</label>
-                        <textarea name="" id="lc_message" rows="6"></textarea>
+                        
+                        <%= f.text_area :content, rows: "6s" %>
 
                     </div>
 
                 </li>
+                
+                <%= f.submit "Đăng bình luận", class: "button_blue middle_btn alignright" %>
 
             </ul>
 
-        </form>
-        
-    <button class="button_blue middle_btn alignright" form="leave_comment" type="submit">Đăng bình luận</button>
+        <% end %> 
 
     </div>
 

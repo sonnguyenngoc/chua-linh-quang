@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     @order.order_delivery = @order_delivery
     
     @order.user_id = current_user.id if current_user.present?
-    
+
     respond_to do |format|
       if @order.save
         @order.save_from_cart(@cart)
@@ -58,6 +58,6 @@ class OrdersController < ApplicationController
     end
     
     def order_delivery_params
-      params.require(:order_delivery).permit(:first_name, :last_name, :company, :address, :city, :zip_code, :country, :province, :delivery_method_id, :payment_method_id, :message)
+      params.require(:order_delivery).permit(:first_name, :last_name, :company, :address, :city, :zip_code, :country, :province, :email, :phone, :delivery_method_id, :payment_method_id, :message)
     end
 end

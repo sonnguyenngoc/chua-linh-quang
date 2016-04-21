@@ -64,17 +64,17 @@
 									
 										<td style="width: 50%;" class="left">
 											
-											Mã đơn hàng: #<%= @order.id %><br>
+											<strong>Mã đơn hàng:</strong> #<%= @order.id %><br>
 											
-											Ngày đặt hàng: <%= @order.created_at.strftime("%d-%m-%Y") %>
+											<strong>Ngày đặt hàng:</strong> <%= @order.created_at.strftime("%d-%m-%Y") %>
 										
 										</td>
 									
 										<td style="width: 50%;" class="left">
 										  
-											Hình thức thanh toán: Cash On Delivery<br>
+											<strong>Hình thức thanh toán:</strong> <%= @order.order_delivery.delivery_method.title %><br>
 										  
-											Hình thức vận chuyển: Flat Shipping Rate
+											<strong>Hình thức vận chuyển:</strong> <%= @order.order_delivery.payment_method.title %>
 										
 										</td>
 									

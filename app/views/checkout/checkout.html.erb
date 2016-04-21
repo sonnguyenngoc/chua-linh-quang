@@ -688,9 +688,9 @@
       
                                     <li>
           
-                                        <input checked type="radio" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id">
+                                        <input checked type="radio" value="<%= item.id %>" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id_<%= item.id %>">
     
-                                        <label for="order_delivery_delivery_method_id"><%= item.title %></label>
+                                        <label for="order_delivery_delivery_method_id_<%= item.id %>"><%= item.title %></label>
           
                                     </li>
                                     
@@ -716,12 +716,17 @@
       
                             <ul class="simple_vertical_list">
       
-                                <li>
+                                <% @payment_method.each do |item| %>
       
-                                    <input type="radio" checked name="radio_4" id="radio_button_5">
-                                    <label for="radio_button_5">Tiền mặt</label>
-      
-                                </li>
+                                    <li>
+          
+                                        <input checked type="radio" value="<%= item.id %>"  name="order_delivery[payment_method_id]" id="order_delivery_payment_method_id_<%= item.id %>">
+    
+                                        <label for="order_delivery_payment_method_id_<%= item.id %>"><%= item.title %></label>
+          
+                                    </li>
+                                    
+                                <% end %>
                                 
                                 <br/>
                                 

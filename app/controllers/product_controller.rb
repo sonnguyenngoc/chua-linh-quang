@@ -10,6 +10,8 @@ class ProductController < ApplicationController
   def product
     @title_head = "Trang sản phẩm"
     @product = Product.find(params[:product_id])
+    @comment = Comment.new
+    @question = Question.new
   end
   
   def quick_view

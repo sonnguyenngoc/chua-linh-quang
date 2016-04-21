@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     # end product
     
     # resources
+    resources :comments
     resources :newsletters
     resources :contacts
     devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
@@ -79,6 +80,8 @@ Rails.application.routes.draw do
     resources :wish_lists
     resources :line_item_compares
     resources :compares
+    resources :questions
+    resources :comment_articles
     #end of resources
   
     namespace :admin, path: "hkpanel" do
