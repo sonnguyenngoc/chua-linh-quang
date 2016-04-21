@@ -42,7 +42,7 @@
                                     
                                     <th class="row_title_col">Hình ảnh</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td>
                                             
@@ -58,7 +58,7 @@
                                     
                                     <th class="row_title_col">Tên sản phẩm</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td>
       
@@ -74,7 +74,7 @@
                                     
                                     <th class="row_title_col">Đánh giá</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td>
       
@@ -102,7 +102,7 @@
                                     
                                     <th class="row_title_col">Giá</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td class="total"><%= format_number(item.product.price) %> đ</td>
                                     
@@ -114,7 +114,7 @@
                                     
                                     <th class="row_title_col">Mô tả</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td>
                                         
@@ -132,7 +132,7 @@
                                     
                                     <th class="row_title_col">Nhãn hàng</th>
       
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td>
                                         
@@ -148,7 +148,7 @@
                                     
                                     <th class="row_title_col">Tình trạng</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td>
                                         
@@ -164,7 +164,7 @@
                                     
                                     <th class="row_title_col">Mã sản phẩm</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td><%= item.product.code %></td>
                                     
@@ -176,7 +176,7 @@
                                     
                                     <th class="row_title_col">Thao tác</th>
                                     
-                                    <% LineItemCompare.get_all_items.each do |item| %>
+                                    <% @compare.line_item_compares.get_all_items.each do |item| %>
       
                                         <td>
           

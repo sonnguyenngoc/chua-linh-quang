@@ -37,6 +37,23 @@ class LineItemComparesController < ApplicationController
       end
     end
   end
+  
+  # POST /line_item_compares
+  # POST /line_item_compares.json
+  def add_item
+    product = Product.find(params[:product_id])
+    @line_item_compare = @compare.line_item_compares.build(product: product)
+    
+    respond_to do |format|
+      if @line_item_compare.save
+        format.html { redirect_to controller: "product", action: "product", product_id: product.id }
+        format.json { render :show, status: :created, location: @line_item_compare }
+      else
+        format.html { render :new }
+        format.json { render json: @line_item_compare.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /line_item_compares/1
   # PATCH/PUT /line_item_compares/1.json

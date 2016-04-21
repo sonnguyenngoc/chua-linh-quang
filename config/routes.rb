@@ -77,8 +77,16 @@ Rails.application.routes.draw do
     resources :line_items
     resources :customers
     resources :orders
-    resources :wish_lists
-    resources :line_item_compares
+    resources :wish_lists do
+      collection do
+        get 'add_item'
+      end
+    end
+    resources :line_item_compares do
+      collection do
+        get 'add_item'
+      end
+    end
     resources :compares
     resources :questions
     resources :comment_articles

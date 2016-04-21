@@ -7,19 +7,24 @@
         <!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
         
         <ul class="tabs_nav clearfix">
-            <% Category.get_by_status(status).each_with_index do |category,index| %>
-                <li><a href="#tab-<%= status %>-<%= index %>"><%= category.name %></a></li>
-            <% end %>
-        </ul>
+            
+			<% Category.get_by_status(status).each_with_index do |category,index| %>
+               
+				<li><a href="#tab-<%= status %>-<%= index %>"><%= category.name %></a></li>
+            
+			<% end %>
         
-
+		</ul>
+        
         <!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
 
         <!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
 
         <div class="tab_containers_wrap">
+			
             <% Category.get_by_status(status).each_with_index do |category,index| %>
-                <div id="tab-<%= status %>-<%= index %>" class="tab_container">
+                
+				<div id="tab-<%= status %>-<%= index %>" class="tab_container">
     
                     <!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
                     

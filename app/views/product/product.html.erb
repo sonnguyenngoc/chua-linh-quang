@@ -295,11 +295,15 @@
 											
 											<% if current_user.present? %>
 											
-												<%= button_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+												<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+											
+											<% else %>
+												
+												<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
 											
 											<% end %>
 											
-											<button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Thêm vào danh sách so sánh</span></button>
+											<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
 											
 											<a href="#tab-questions" data-toggle="tooltip" class="button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container"><span class="tooltip top">Câu hỏi về sản phẩm</span></a>
 
