@@ -75,6 +75,7 @@ class Category < ActiveRecord::Base
     return records   
   end
   
+<<<<<<< HEAD
 
   def self.get_by_status(status, limit=5)
     cats = []
@@ -82,6 +83,10 @@ class Category < ActiveRecord::Base
       cats << p.categories.map(&:id)
     end
     self.where(id: cats.uniq).limit(5)
+=======
+  def self.get_by_status(status)
+    self.all.where(level: 1)
+>>>>>>> b0cd8f865f83db8c18aedceef42a6a3b3b07d536
   end 
   # get json for tree draggable index
   def self.get_tree_json
