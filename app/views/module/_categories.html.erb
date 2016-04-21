@@ -28,7 +28,7 @@
     
                     <div class="mega_menu clearfix">
                         
-                        <% category.children.each do |child_1| %>
+                        <% category.children.order(:ordered).each do |child_1| %>
     
                             <!-- - - - - - - - - - - - - - Mega menu item - - - - - - - - - - - - - - - - -->
         
@@ -38,7 +38,7 @@
                             
                                 <ul class="list_of_links">
                                     
-                                    <% child_1.children.each do |child_2| %>
+                                    <% child_1.children.order(:ordered).each do |child_2| %>
         
                                         <li><%= link_to child_2.name, { controller: "product", action: "category", category_id: child_2.id } %></li>
                                         
