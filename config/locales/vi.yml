@@ -31,7 +31,7 @@ vi:
   list_manufacturer_name: "Tên nhãn hàng"
   list_area_name: "Tên khu vực"
   list_price: Giá
-  list_quantity: "Số lượng"
+  list_quantity: "Trọng lượng/Khối lượng/Dung tích"
   list_categories: "Chuyên mục"
   list_description: "Mô tả"
   list_areas: "Khu vực"

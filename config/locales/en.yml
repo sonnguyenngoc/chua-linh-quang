@@ -31,7 +31,7 @@ en:
   list_manufacturer_name: "Name"
   list_area_name: "Name"
   list_price: "Price"
-  list_quantity: "Quantity"
+  list_quantity: "Weight/Glosbe/Volume"
   list_categories: "Categories"
   list_description: "Description"
   list_areas: "Areas"

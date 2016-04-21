@@ -105,14 +105,22 @@
                                 <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
 
                                 <div class="alignright site_settings">
+                                    
+                                    <% if params[:locale] == "vi" %>
 
                                     <span class="current open_"><img src="/frontend/images/flag_vn.jpg" alt="">Vietnam</span>
-
+                                    
+                                    <% else %>
+                                        
+                                        <span class="current open_"><img src="/frontend/images/flag_en.jpg" alt="">English</span>
+                                        
+                                    <% end %>
+                                    
                                     <ul class="dropdown site_setting_list language">
 
-                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
+                                        <li class="animated_item"><a href="<%= url_for( :locale => 'vi' ) %>"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
                                     
-                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
+                                        <li class="animated_item"><a href="<%= url_for( :locale => 'en' ) %>"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
                                         
                                     </ul>
 

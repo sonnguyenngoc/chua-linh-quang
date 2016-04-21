@@ -188,3 +188,6 @@ form ul > li:not(:last-child) {
 #qLoverlay {
     display: none !important;
 }
+.add_to_cart_category {
+    margin-top: 5px;
+}
