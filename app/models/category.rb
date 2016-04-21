@@ -75,9 +75,14 @@ class Category < ActiveRecord::Base
     return records   
   end
   
-  def self.get_by_status(status)
-    self.all.where(level: 1)
-  end 
+  def self.get_by_status(status, limit=5)
+    cats = []
+    Product.where("products.status LIKE ?", "%#{status}%").each do |p|
+      cats << p.categories.map(&:id)
+    end
+    self.where(id: cats.uniq).limit(5)
+  end
+  
   # get json for tree draggable index
   def self.get_tree_json
     arr = []
