@@ -98,6 +98,8 @@ $(document).ready(function(){
 <!--<p>Lorem ipsum dolor sit amet, eu eos minim euismod maiestatis, cu diam. 
     <span class="get">Get notified when we launch!!</span></p>-->
 
+<%= Article.find(6).content.html_safe %>
+
 <!-- Start newsletter form -->
 <div id="form_bg" style="display: none">
 	<form method="post" id="myform" action="/counter/index_4.php">
