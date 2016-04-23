@@ -4,7 +4,7 @@ class Admin::DeliveryMethodsController < ApplicationController
   # GET /delivery_methods
   # GET /delivery_methods.json
   def index
-    @delivery_methods = DeliveryMethod.all
+    @delivery_methods = DeliveryMethod.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /delivery_methods/1
@@ -28,7 +28,7 @@ class Admin::DeliveryMethodsController < ApplicationController
 
     respond_to do |format|
       if @delivery_method.save
-        format.html { redirect_to [:admin, @delivery_method], notice: 'Delivery method was successfully created.' }
+        format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Delivery method was successfully created.' }
         format.json { render :show, status: :created, location: @delivery_method }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::DeliveryMethodsController < ApplicationController
   def update
     respond_to do |format|
       if @delivery_method.update(delivery_method_params)
-        format.html { redirect_to [:admin, @delivery_method], notice: 'Delivery method was successfully updated.' }
+        format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Delivery method was successfully updated.' }
         format.json { render :show, status: :ok, location: @delivery_method }
       else
         format.html { render :edit }

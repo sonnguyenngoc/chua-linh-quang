@@ -134,8 +134,10 @@ Rails.application.routes.draw do
       resources :newsletters
       resources :contacts
       resources :wish_lists
+      resources :comments
       resources :payment_methods
       resources :delivery_methods
+      resources :slideshows
     end
   end
 end

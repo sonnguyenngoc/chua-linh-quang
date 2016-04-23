@@ -17,6 +17,7 @@ vi:
   listing_manufacturers: "Danh sách nhãn hàng"
   listing_areas: "Danh sách vùng/khu vực"
   listing_articles: "Danh sách bài viết"
+  listing_slideshows: "Danh sách trình chiếu"
   category: "Chuyên mục"
   status: "Trạng thái"
   filter: "Tìm kiếm"
@@ -49,11 +50,13 @@ vi:
   new_manufacturer: "Tạo nhãn hàng"
   new_area: "Tạo khu vực"
   new_article: "Tạo bài viết"
+  new_slideshow: "Tạo trình chiếu"
   edit_product: "Chỉnh sửa sản phẩm"
   edit_category: "Chỉnh sửa chuyên mục"
   edit_manufacturer: "Chỉnh sửa nhãn hàng"
   edit_area: "Chỉnh sửa khu vực"
   edit_article: "Chỉnh sửa bài viết"
+  edit_slideshow: "Chỉnh sửa trình chiếu"
   list_product_code: "Mã sản phẩm"
   unit: "Đơn vị"
   
@@ -95,19 +98,37 @@ vi:
   list_categories_article_name: "Tên chuyên mục bài viết"
   related_categories: "Chuyên mục liên quan"
   
+  #slideshow
+  slideshows: "Trình chiếu"
+  image: "Hình ảnh"
+  title_1: "Tiêu đề 1"
+  title_2: "Tiêu đề 2"
+  button_name: "Tên nút"
+  link: "Liên kết"
+  
   #-------------------------------------
   orders: "Đơn đặt hàng"
   
   #-------------------------------------
-  comments: "Bình luận"
+  comment: "Bình luận"
+  comments: "Danh sách bình luận"
+  customer_name: "Tên khách hàng"
+  product_name: "Tên sản phẩm"
+  star: "sao"
+  rating: "Đánh giá"
   
   #-------------------------------------
   delivery_method: "Hình thức giao hàng"
-  delivery_methods: "Hình thức giao hàng"
+  delivery_methods: "Danh sách hình thức giao hàng"
+  new_delivery_method: "Tạo mới hình thức giao hàng"
+  listing_delivery_methods: "Danh sách hình thức giao hàng"
   
   #-------------------------------------
-  payment: "Thanh toán"
-  payments: "Danh sách thanh toán"
+  payment_method: "Hình thức thanh toán"
+  payment_methods: "Danh sách hình thức thanh toán"
+  new_delivery_method: "Tạo mới hình thức thanh toán"
+  edit_payment_method: "Chỉnh sửa hình thức thanh toán"
+  listing_delivery_methods: "Danh sách hình thức thanh toán"
   
   #-------------------------------------
   customer: "Khách hàng"
@@ -122,3 +143,17 @@ vi:
   
   #-------------------------------------
   voucher_coupon: "Phiếu mua hàng/Quà tặng"
+  
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "Không có "
+        one:   "Hiển thị 1 "
+        other: "Hiển thị toàn bộ %{count} "
+      single_page_html:
+        zero:  "Không có "
+        one:   "Hiển thị 1 "
+        other: "Hiển thị toàn bộ %{count} "
+
+      multi_page: "Hiển thị %{from} - %{to} của %{count} "
+      multi_page_html: "Hiển thị %{from} - %{to} của %{count} "

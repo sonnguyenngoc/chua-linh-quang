@@ -4,7 +4,7 @@ class Admin::PaymentMethodsController < ApplicationController
   # GET /payment_methods
   # GET /payment_methods.json
   def index
-    @payment_methods = PaymentMethod.all
+    @payment_methods = PaymentMethod.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /payment_methods/1
