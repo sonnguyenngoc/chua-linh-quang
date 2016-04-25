@@ -100,7 +100,7 @@ class Category < ActiveRecord::Base
     ActionView::Base.send(:include, Rails.application.routes.url_helpers)
     str = ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-edit"></i>'.html_safe, {controller: "admin/categories", action: "edit", id: self.id})
     str += " "
-    str += ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-trash"></i>'.html_safe, {controller: "admin/categories", action: "destroy", id: self.id}, "data-method": "delete").html_safe
+    str += ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-trash"></i>'.html_safe, {controller: "admin/categories", action: "destroy", id: self.id}, "data-method" => "delete")
     str
   end
   
