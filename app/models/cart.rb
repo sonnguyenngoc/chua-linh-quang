@@ -24,7 +24,28 @@ class Cart < ActiveRecord::Base
     self.line_items.each do |od|
       amount += od.total_item
     end
+    
+    if voucher.present?
+      amount = amount - voucher.price
+    end
+    
+    if coupon.present?
+      amount = amount - coupon.price
+    end
+    
     return amount
+  end
+  
+  def voucher
+    return nil if !voucher_code.present?
+    
+    return Voucher.get_by_code(voucher_code)
+  end
+  
+  def coupon
+    return nil if !coupon_code.present?
+    
+    return Coupon.get_by_code(coupon_code)
   end
 
 end

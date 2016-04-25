@@ -39,7 +39,9 @@
             <li>
                 <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span><%= t(:orders) %></span></a>
                 <ul>
-                    <li><%= link_to t(:orders), admin_orders_path %></li>
+                    <li class="<%= "active" if ["admin/orders"].include?(params[:controller]) %>">
+                        <%= link_to t(:orders), admin_orders_path %>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -69,7 +71,12 @@
             <li>
                 <a href="#"><i class="glyphicon glyphicon-gift"></i> <span><%= t(:voucher_coupon) %></span></a>
                 <ul>
-                    <li></li>
+                    <li class="<%= "active" if ["admin/vouchers"].include?(params[:controller]) %>">
+                        <%= link_to t(:vouchers), admin_vouchers_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/coupons"].include?(params[:controller]) %>">
+                        <%= link_to t(:coupons), admin_coupons_path %>
+                    </li>
                 </ul>
             </li>
             <li>

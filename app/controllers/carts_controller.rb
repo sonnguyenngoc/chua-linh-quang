@@ -58,6 +58,30 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  #use_voucher
+  def use_voucher
+    if Voucher.is_valid_code(params[:code])
+      @cart.voucher_code = params[:code]
+      @cart.save
+      flash[:voucher_success] = true
+    else
+      flash[:voucher_error] = true
+    end
+    redirect_to controller: "checkout", action: "checkout"
+  end
+  
+  #use_coupon
+  def use_coupon
+    if Coupon.is_valid_code(params[:code])
+      @cart.coupon_code = params[:code]
+      @cart.save
+      flash[:coupon_success] = true
+    else
+      flash[:coupon_error] = true
+    end
+    redirect_to controller: "checkout", action: "checkout"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

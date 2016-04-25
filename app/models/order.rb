@@ -16,6 +16,25 @@ class Order < ActiveRecord::Base
     self.order_details.each do |tt|
       total += tt.total
     end
+    
+    return total
+  end
+  
+  #total price orders with voucher and voucher (backend)
+  def total_with_voucher_coupon
+    total = 0.0
+    self.order_details.each do |tt|
+      total += tt.total
+    end
+    
+    if !self.voucher_price.nil?
+      total = total - voucher_price
+    end
+    
+    if !self.coupon_price.nil?
+      total = total - coupon_price
+    end
+    
     return total
   end
   

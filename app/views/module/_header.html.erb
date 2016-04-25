@@ -228,8 +228,18 @@
                                             <ul class="total_info">
 
                                                 <li><span class="price">Thuế:</span> 0.000 đ</li>
+                                                
+                                                <% if @cart.voucher.present? %>
 
-                                                <li><span class="price">Giảm giá:</span> 0.000 đ</li>
+                                                    <li><span class="price">Voucher:</span>- <%= format_number(@cart.voucher.price) %> đ</li>
+                                                    
+                                                <% end %>
+                                                
+                                                <% if @cart.coupon.present? %>
+
+                                                    <li><span class="price">Coupon:</span>- <%= format_number(@cart.coupon.price) %> đ</li>
+                                                    
+                                                <% end %>
 
                                                 <li class="total"><b><span class="price">Tổng:</span> <%= format_number(@cart.total_order) %> đ</b></li>
 

@@ -143,6 +143,19 @@ en:
   
   #-------------------------------------
   voucher_coupon: "Voucher/Coupon"
+  coupons: "Coupons"
+  vouchers: "Vouchers"
+  listing_coupons: "Listing Coupons"
+  new_coupon: "New Coupon"
+  edit_coupon: "Edit Coupon"
+  from_date: "From date"
+  to_date: "To date"
+  description: "Description"
+  listing_vouchers: "Listing Coupons"
+  new_voucher: "New Voucher"
+  edit_voucher: "Edit Voucher"
+  price_coupon: "Price"
+  quantity_coupon: "Quantity"
   
   will_paginate:
     page_entries_info:

@@ -1,0 +1,68 @@
+<% if @voucher.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @voucher.errors.full_messages.each do |message| %>
+                - <%= message %><br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @voucher], html: {class: "form-horizontal"} do |f| %>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:title) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="control-label col-lg-2"><%= t(:from_date) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon-calendar5"></i></span>
+                <%= f.text_field :from_date, value: @voucher.from_date.strftime("%d %B, %Y"), class: "form-control pickadate-selectors" %>
+            </div>
+        </div>     
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-lg-2"><%= t(:to_date) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon-calendar5"></i></span>
+                <%= f.text_field :to_date, value: @voucher.to_date.strftime("%d %B, %Y"), class: "form-control pickadate-selectors" %>
+            </div>
+        </div>     
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:quantity) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :quantity, class: "form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:price) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :price, class: "form-control", value: format_number(@voucher.price)  %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label"><%= t(:description) %></label>
+        <div class="col-lg-10">
+            <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_vouchers_path, class: "btn btn-danger"%>
+    </div>
+    
+<% end %>
