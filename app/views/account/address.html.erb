@@ -63,15 +63,13 @@
 										
 										<%= current_user.first_name + ' ' + current_user.last_name %><br/>
 										
-										<%= current_user.address_1 + ', ' + current_user.city + ', ' + current_user.province + ', ' + current_user.country + '.' %>
+										<%= current_user.address_1 + ', ' + current_user.area.name + ', ' + current_user.country + '.' %>
 									
 									</td>
                                     
                                     <td data-title="Action" class="product_actions_col">
 										
-										<%= link_to '<i class="icon-pencil"></i>'.html_safe, { controller: "account", action: "address_edit" }, class: "button_dark_grey icon_btn edit_product" %>
-
-                                        <a href="#" class="button_dark_grey icon_btn remove_product"><i class="icon-cancel-2"></i></a>
+										<%= link_to '<i class="icon-pencil"></i>'.html_safe, { controller: "account", action: "edit" }, class: "button_dark_grey icon_btn edit_product" %>
 
                                     </td>
                                   
@@ -85,15 +83,9 @@
                           
                         <footer class="bottom_box on_the_sides">
 
-							<div class="left_side">
-
-								<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'my_account'}) %>">Trở về</a>
-
-							</div>
-
 							<div class="right_side">
 
-								<a href="<%= url_for({controller: 'account', action: 'address_edit'}) %>" class="button_blue middle_btn">Thêm địa chỉ giao hàng mới</a>
+								<%= link_to "Trở về", { controller: 'account', action: 'my_account' }, class: "button_blue middle_btn" %>
 
 							</div>
 

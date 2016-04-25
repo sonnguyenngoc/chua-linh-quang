@@ -16,7 +16,7 @@
 
                             <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
                             
-                            <%= link_to image_tag("/frontend/images/logo.png"), root_path, class: "logo" %>
+                            <%= link_to image_tag("/frontend/images/logo.png"), home_path, class: "logo" %>
 
                             <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
 
@@ -30,7 +30,7 @@
 
                                 <ul class="topbar">
 
-                                    <li><%= link_to "Trang chủ", root_path %></li>
+                                    <li><%= link_to "Trang chủ", home_path %></li>
                                     <% if current_user.present? %>
                                         <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
                                     <% else %>
@@ -70,9 +70,15 @@
                                             
                                             <option value="">Tất cả</option>
                                             
-                                            <% Area.all.each do |item| %>
+                                            <% Area.where(level: 2).each do |item| %>
                                                     
                                                 <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
+                                                
+                                                <% item.children.each do |child| %>
+                                                    
+                                                    <option value="<%= child.id %>" class="list_category_option">-- <%= child.name %></option>
+                                                                                               
+                                                <% end %>
                                                                                            
                                             <% end %>
                                         
@@ -99,14 +105,22 @@
                                 <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
 
                                 <div class="alignright site_settings">
+                                    
+                                    <% if params[:locale] == "vi" %>
 
                                     <span class="current open_"><img src="/frontend/images/flag_vn.jpg" alt="">Vietnam</span>
-
+                                    
+                                    <% else %>
+                                        
+                                        <span class="current open_"><img src="/frontend/images/flag_en.jpg" alt="">English</span>
+                                        
+                                    <% end %>
+                                    
                                     <ul class="dropdown site_setting_list language">
 
-                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
+                                        <li class="animated_item"><a href="<%= url_for( :locale => 'vi' ) %>"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
                                     
-                                        <li class="animated_item"><a href="#"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
+                                        <li class="animated_item"><a href="<%= url_for( :locale => 'en' ) %>"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
                                         
                                     </ul>
 
@@ -139,9 +153,17 @@
                                 <ul class="shop_links_list">
 
                                     <li>
-                                       
-                                        <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (0)</a>
                                         
+                                        <% if current_user.present? %>
+                                       
+                                            <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (<%= + current_user.wish_lists.count %>)</a>
+                                        
+                                        <% else %>
+                                            
+                                            <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "login" } %> (0)</a>
+                                            
+                                        <% end %>
+                                    
                                     </li>
                                     
                                     <li>

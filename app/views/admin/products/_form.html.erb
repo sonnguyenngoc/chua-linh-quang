@@ -72,8 +72,8 @@
                     <label class="col-lg-2 control-label" ><%= t(:list_areas) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <select name="area_ids[]" class="select select-item-color" data-placeholder="<%= t(:list_areas) %>....." multiple="multiple">
-                            <% Area.get_select_options.each do |item| %>
-                                <option <%= "selected" if @product.areas.include?(item) %> value="<%= item.id %>"><%= item.get_name_area %></option>
+                            <% Area.get_list_province_city.each do |item| %>
+                                <option <%= "selected" if @product.areas.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
                             <% end %>
                         </select>
                     </div>

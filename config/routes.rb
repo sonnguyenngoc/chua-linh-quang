@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  
-  resources :line_item_compares
-  resources :compares
   scope "(:locale)", locale: /vi|en/ do
     root "home#countdown"
     get "home" => "home#index", as: :home
@@ -72,6 +69,7 @@ Rails.application.routes.draw do
     # end product
     
     # resources
+    resources :comments
     resources :newsletters
     resources :contacts
     devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
@@ -79,6 +77,19 @@ Rails.application.routes.draw do
     resources :line_items
     resources :customers
     resources :orders
+    resources :wish_lists do
+      collection do
+        get 'add_item'
+      end
+    end
+    resources :line_item_compares do
+      collection do
+        get 'add_item'
+      end
+    end
+    resources :compares
+    resources :questions
+    resources :comment_articles
     #end of resources
   
     namespace :admin, path: "hkpanel" do
@@ -122,6 +133,11 @@ Rails.application.routes.draw do
       end
       resources :newsletters
       resources :contacts
+      resources :wish_lists
+      resources :comments
+      resources :payment_methods
+      resources :delivery_methods
+      resources :slideshows
     end
   end
 end

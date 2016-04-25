@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419084328) do
+ActiveRecord::Schema.define(version: 20160422092821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,26 @@ ActiveRecord::Schema.define(version: 20160419084328) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "comment_articles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "name"
+    t.text     "content"
+    t.integer  "star"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "compares", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -113,6 +133,13 @@ ActiveRecord::Schema.define(version: 20160419084328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "order_id"
+  end
+
+  create_table "delivery_methods", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "line_item_compares", force: :cascade do |t|
@@ -149,6 +176,7 @@ ActiveRecord::Schema.define(version: 20160419084328) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "status"
   end
 
   create_table "order_deliveries", force: :cascade do |t|
@@ -166,6 +194,8 @@ ActiveRecord::Schema.define(version: 20160419084328) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "order_id"
+    t.string   "email"
+    t.string   "phone"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -179,10 +209,11 @@ ActiveRecord::Schema.define(version: 20160419084328) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "user_id"
-    t.string   "status",     default: "Pending"
+    t.string   "status",             default: "Pending"
+    t.boolean  "different_delivery", default: false
   end
 
   create_table "parent_article_categories", force: :cascade do |t|
@@ -195,6 +226,13 @@ ActiveRecord::Schema.define(version: 20160419084328) do
   create_table "parent_categories", force: :cascade do |t|
     t.integer  "parent_id"
     t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -221,6 +259,28 @@ ActiveRecord::Schema.define(version: 20160419084328) do
     t.datetime "updated_at",        null: false
     t.string   "tags"
     t.text     "status"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "content"
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "slideshows", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "title_1"
+    t.string   "title_2"
+    t.string   "name_button"
+    t.string   "link"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "color_1"
+    t.string   "color_2"
   end
 
   create_table "users", force: :cascade do |t|
@@ -251,6 +311,13 @@ ActiveRecord::Schema.define(version: 20160419084328) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "wish_lists", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   add_foreign_key "line_item_compares", "compares"
   add_foreign_key "line_item_compares", "products"

@@ -10,6 +10,8 @@ class ProductController < ApplicationController
   def product
     @title_head = "Trang sản phẩm"
     @product = Product.find(params[:product_id])
+    @comment = Comment.new
+    @question = Question.new
   end
   
   def quick_view
@@ -19,6 +21,7 @@ class ProductController < ApplicationController
   
   def comparison
     @title_head = "So sánh sản phẩm"
+    @compare.remove_item(params[:line_item_compare_id]) if params[:do] == "remove_item"
   end
   
 end

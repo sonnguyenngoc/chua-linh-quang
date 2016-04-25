@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
       elsif (devise_controller? && resource_name == :user && action_name != 'edit') || controller_name == 'passwords'
         "login"
       elsif controller_name == "main" || controller_name == "products" || controller_name == "categories" || controller_name == "manufacturers" ||
-            controller_name == "articles" || controller_name == "article_categories" || controller_name == "areas" || controller_name == "orders"
+            controller_name == "articles" || controller_name == "article_categories" || controller_name == "areas" || controller_name == "orders" || controller_name == "slideshows" ||
+            controller_name == "delivery_methods" || controller_name == "payment_methods" || controller_name == "comments"
         authenticate_user!
         "backend"
       end

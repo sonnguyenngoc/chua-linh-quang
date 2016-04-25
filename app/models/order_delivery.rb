@@ -1,5 +1,7 @@
 class OrderDelivery < ActiveRecord::Base
   belongs_to :order
+  belongs_to :delivery_method
+  belongs_to :payment_method
   
   def name
     first_name + " " + last_name
@@ -14,4 +16,5 @@ class OrderDelivery < ActiveRecord::Base
     
     return str.join(", ")
   end
+
 end

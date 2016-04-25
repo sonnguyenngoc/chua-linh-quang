@@ -28,6 +28,9 @@
                     <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
                         <%= link_to t(:articles), admin_articles_path %>
                     </li>
+                    <li class="<%= "active" if ["admin/slideshows"].include?(params[:controller]) %>">
+                        <%= link_to t(:slideshows), admin_slideshows_path %>
+                    </li>
                     <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
                         <%= link_to t(:article_categories), admin_article_categories_path %>
                     </li>
@@ -40,21 +43,27 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="glyphicon glyphicon-comment"></i> <span><%= t(:comments) %></span></a>
+                <a href="#"><i class="glyphicon glyphicon-comment"></i> <span><%= t(:comment) %></span></a>
                 <ul>
-                    <li><%= link_to t(:comments), "" %></li>
+                    <li class="<%= "active" if ["admin/comments"].include?(params[:controller]) %>">
+                        <%= link_to t(:comments), admin_comments_path %>
+                    </li>
                 </ul>
             </li>
-            <li>
+            <li >
                 <a href="#"><i class="icon-truck"></i> <span><%= t(:delivery_method) %></span></a>
                 <ul>
-                    <li><%= link_to t(:delivery_methods), "" %></li>
+                    <li class="<%= "active" if ["admin/delivery_methods"].include?(params[:controller]) %>">
+                        <%= link_to t(:delivery_methods), admin_delivery_methods_path %>
+                    </li>
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="icon-paypal"></i> <span><%= t(:payment) %></span></a>
+                <a href="#"><i class="icon-paypal"></i> <span><%= t(:payment_method) %></span></a>
                 <ul>
-                    <li><%= link_to t(:payments), "" %></li>
+                    <li class="<%= "active" if ["admin/payment_methods"].include?(params[:controller]) %>">
+                        <%= link_to t(:payment_methods), admin_payment_methods_path %>
+                    </li>
                 </ul>
             </li>
             <li>

@@ -1,9 +1,8 @@
 class Article < ActiveRecord::Base
-  validates :code, uniqueness: true
-  
   mount_uploader :image_url, ArticleUploader
   has_and_belongs_to_many :article_categories
   has_and_belongs_to_many :products
+  has_many :comment_articles
   
   def self.get_lastest_blog_posts
     self.order("created_at DESC").first(3)
@@ -41,6 +40,61 @@ class Article < ActiveRecord::Base
       ["DESC","desc"],
       ["ASC","asc"],
     ]
+  end
+  
+  #the highest product quality
+  
+  def self.get_highest_product_quality
+    records = self.all
+    records = records.where(code: "the_highest_product_quality")
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #fast & free delivery
+  def self.get_fast_free_delivery
+    records = self.all
+    records = records.where(code: "fast_free_delivery")
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #safe & secure payment
+  def self.get_safe_secure_order
+    records = self.all
+    records = records.where(code: "safe_secure_order")
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #100% money back guaranteed
+  def self.get_money_back
+    records = self.all
+    records = records.where(code: "money_back")
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #get percent off fo reorder
+  def self.get_percent_off
+    records = self.all
+    records = records.where(code: "get_5_percent_off")
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #free pills on every order
+  def self.get_favorable_gift
+    records = self.all
+    records = records.where(code: "favorable_gift")
+    records.order("created_at DESC").first
+    
+    return records
   end
   
   #Filter, Sort

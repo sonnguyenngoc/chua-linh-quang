@@ -75,10 +75,14 @@ class Category < ActiveRecord::Base
     return records   
   end
   
-
   def self.get_by_status(status, limit=5)
-    self.all.limit(5)
-  end 
+    cats = []
+    Product.where("products.status LIKE ?", "%#{status}%").each do |p|
+      cats << p.categories.map(&:id)
+    end
+    self.where(id: cats.uniq).limit(5)
+  end
+  
   # get json for tree draggable index
   def self.get_tree_json
     arr = []
@@ -87,9 +91,9 @@ class Category < ActiveRecord::Base
       c.children.order("ordered").each do |c2|
         child = {"key" => c2.id, "title" => "<span class='c-item' parent='#{c.id}' rel='#{c2.id}' ordered='#{c2.ordered}'>#{c2.name}</span> | #{c2.html_actions}", "expanded" => true, "folder" => true, "children" => []}
         c2.children.order("ordered").each do |c3|
-          child[:children] << {"key" => c3.id, "title" => "<span class='c-item' parent='#{c2.id}' rel='#{c3.id}' ordered='#{c3.ordered}'>#{c3.name}</span> | #{c3.html_actions}", "expanded" => true, "folder" => true, "children" => []}
+          child["children"] << {"key" => c3.id, "title" => "<span class='c-item' parent='#{c2.id}' rel='#{c3.id}' ordered='#{c3.ordered}'>#{c3.name}</span> | #{c3.html_actions}", "expanded" => true, "folder" => true, "children" => []}
         end
-        row[:children] << child
+        row["children"] << child
       end
       arr << row
     end

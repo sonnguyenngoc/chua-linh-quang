@@ -82,4 +82,28 @@ class Area < ActiveRecord::Base
     return records   
   end
   
+  # get level of category
+  def get_level
+    level = 1
+    p = parent
+    while !p.nil?
+      level += 1
+      p = p.parent
+    end
+    
+    return level
+  end
+  
+  def self.get_list_province_city
+    self.all.where(level: 2)
+  end
+  
+  # update all categories level
+  def self.update_all_level
+    Area.all.each do |c|
+      c.update_attribute(:level, c.get_level)
+    end
+
+  end
+  
 end

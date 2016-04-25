@@ -3,15 +3,31 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(params[:order])
+    if params[:order].present?
+      @order = Order.new(order_params)
+    else
+      @order = Order.new
+    end
     @customer = Customer.new(customer_params)
     @order.customer = @customer
+    if @order.different_delivery == true
+      @order_delivery = OrderDelivery.new(
+        first_name: @customer.first_name,
+        last_name: @customer.last_name,
+        email: @customer.email,
+        phone: @customer.phone,
+        company: @customer.company,
+        zip_code: @customer.zip_code,
+        address: @customer.address,
+      )
+    else
+      @order_delivery = OrderDelivery.new(order_delivery_params)
+    end
     
-    @order_delivery = OrderDelivery.new(order_delivery_params)
     @order.order_delivery = @order_delivery
     
     @order.user_id = current_user.id if current_user.present?
-    
+
     respond_to do |format|
       if @order.save
         @order.save_from_cart(@cart)
@@ -34,7 +50,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_id, :order_detail_id, :order_delivery_id, order_details_attributes: [:id, :order_id, :product_id, :quantity, :_destroy])
+      params.require(:order).permit(:different_delivery, order_details_attributes: [:id, :order_id, :product_id, :quantity, :_destroy])
     end
     
     def customer_params
@@ -42,6 +58,6 @@ class OrdersController < ApplicationController
     end
     
     def order_delivery_params
-      params.require(:order_delivery).permit(:first_name, :last_name, :company, :address, :city, :zip_code, :country, :province, :delivery_method_id, :payment_method_id, :message)
+      params.require(:order_delivery).permit(:first_name, :last_name, :company, :address, :city, :zip_code, :country, :province, :email, :phone, :delivery_method_id, :payment_method_id, :message)
     end
 end

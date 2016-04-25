@@ -6,10 +6,13 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :line_item_comparies
   has_many :categories_products
+  has_many :wish_lists
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :areas
   belongs_to :manufacturer
   has_many :product_images
+  has_many :comments
+  has_many :questions
   accepts_nested_attributes_for :product_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
   has_and_belongs_to_many :articles
   
@@ -95,17 +98,20 @@ class Product < ActiveRecord::Base
     
     return records
   end
-
   
   def statuses
     status.to_s.split(",")
   end
   
-  def self.get_by_category_status(category, status, limit=5)
+  def self.get_by_category_status(category, status)
     records = self.all
     records = records.where("products.status LIKE ?", "%#{status}%")
     records = records.joins(:categories).where(categories: {id: category})
     return records
+  end
+  
+  def wish_by? user
+    wish_lists.exists? user_id: user
   end
   
   private

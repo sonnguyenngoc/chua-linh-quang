@@ -41,94 +41,102 @@
                     <main class="col-md-9 col-sm-8">
                         
 						<h1><%= @title_head %></h1>
+						
+						<% if current_user.orders.count > 0 %>
                         
-						<div class="bordered_content box">
-                            
-							<table class="compare-info">
-                              
-								<tbody>
-									
-									<% current_user.orders.each do |item| %>
-									
-										<tr>
-											
-											<td class="history">Mã đơn hàng</td>
-											
-											<td>#<%= item.id %></td>
+							<div class="bordered_content box">
+								
+								<table class="compare-info">
+								  
+									<tbody>
 										
-										</tr>
+										<% current_user.orders.each do |item| %>
 										
-										<tr>
-											
-											<td class="history">Trạng thái đơn hàng</td>
-											
-											<td><span class="warning"><%= item.status %></span></td>
-										
-										</tr>
-										
-										<tr>
-											
-											<td class="history">Ngày đặt hàng</td>
-											
-											<td><%= item.created_at.strftime("%d-%m-%Y") %></td>
-										
-										</tr>
-										
-										<tr>
-											
-											<td class="history">Số lượng sản phẩm</td>
-											
-											<td><%= item.order_details.count %></td>
-										
-										</tr>
-										
-										<tr>
-											
-											<td class="history">Tên khách hàng</td>
-											
-											<td><%= item.customer.first_name + " " + item.customer.last_name %></td>
-										
-										</tr>
-										
-										<tr class="totals price">
-											
-											<td class="history">Tổng tiền đơn hàng</td>
-											
-											<td><%= format_number(item.total) %> đ</td>
-										
-										</tr>
-										
-										<tr>
-											
-											<td class="white_back" colspan="2">
+											<tr>
 												
-												<%= link_to "Xem chi tiết", { controller: 'account', action: 'order_info', order_id: item.id }, class: "button_grey middle_btn" %>
+												<td class="history">Mã đơn hàng</td>
+												
+												<td>#<%= item.id %></td>
 											
-											</td>
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Trạng thái đơn hàng</td>
+												
+												<td><span class="warning"><%= item.status %></span></td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Ngày đặt hàng</td>
+												
+												<td><%= item.created_at.strftime("%d-%m-%Y") %></td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Số lượng sản phẩm</td>
+												
+												<td><%= item.order_details.count %></td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Tên khách hàng</td>
+												
+												<td><%= item.customer.first_name + " " + item.customer.last_name %></td>
+											
+											</tr>
+											
+											<tr class="totals price">
+												
+												<td class="history">Tổng tiền đơn hàng</td>
+												
+												<td><%= format_number(item.total) %> đ</td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="white_back" colspan="2">
+													
+													<%= link_to "Xem chi tiết", { controller: 'account', action: 'order_info', order_id: item.id }, class: "button_grey middle_btn" %>
+												
+												</td>
+											
+											</tr>
 										
-										</tr>
+										<% end %>
 									
-									<% end %>
+									</tbody>
 								
-								</tbody>
-                            
-							</table>
-                            
-							<div class="bottom_buttons">
+								</table>
 								
-								<div class="bottom on_the_sides">
+								<div class="bottom_buttons">
 									
-									<div class="right_side v_centered">
+									<div class="bottom on_the_sides">
 										
-										<%= link_to "Trở về", { controller: "account", action: "my_account" }, class: "button_blue middle_btn" %>
-									
+										<div class="right_side v_centered">
+											
+											<%= link_to "Trở về", { controller: "account", action: "my_account" }, class: "button_blue middle_btn" %>
+										
+										</div>
+										
 									</div>
-									
+								
 								</div>
-                            
+							
 							</div>
-                        
-						</div>
+								
+						<% else %>
+							
+							<p class="box">Danh sách lịch sử đơn đặt hàng trống!</p>
+							
+						<% end %>
 
                     </main><!--/ [col]-->
 

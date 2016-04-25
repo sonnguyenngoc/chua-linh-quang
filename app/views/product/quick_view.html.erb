@@ -126,6 +126,13 @@
 							<td><span class="in_stock">Có hàng</span></td>
 
 						</tr>
+						
+						<tr>
+
+							<td>Trọng lượng/Khối lượng/Dung tích: </td>
+							<td><%= format_number(@product.quantity) + "" + @product.unit %></td>
+			
+						</tr>
 
 					</tbody>
 
@@ -166,12 +173,20 @@
 			<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
 
 			<div class="buttons_row">
+				
+				<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart" %>
 
-				<button class="button_blue middle_btn">Thêm vào giỏ hàng</button>
-
-				<button class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip top">Thêm vào mục yêu thích</span></button>
-
-				<button class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip top">Thêm vào danh sách so sánh</span></button>
+				<% if current_user.present? %>
+											
+					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+				
+				<% else %>
+					
+					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+				
+				<% end %>
+				
+				<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
 
 			</div>
 
