@@ -76,11 +76,13 @@ class CartsController < ApplicationController
     if Coupon.is_valid_code(params[:code])
       @cart.coupon_code = params[:code]
       @cart.save
-      flash[:coupon_success] = true
+      @coupon_error = false
+      render "/checkout/_checkout_cart_items", layout: nil
     else
-      flash[:coupon_error] = true
+      @coupon_error = true
+      render "/checkout/_checkout_cart_items", layout: nil
     end
-    redirect_to controller: "checkout", action: "checkout"
+    #redirect_to controller: "checkout", action: "checkout"
   end
 
   private

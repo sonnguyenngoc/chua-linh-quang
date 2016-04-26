@@ -12,14 +12,6 @@
    
     <a href="<%= url_for({controller: 'account', action: 'order'}) %>" class="list-group-item dark_hover">Lịch sử đặt hàng</a> 
     
-    <a href="<%= url_for({controller: 'account', action: 'recurring_payments'}) %>" class="list-group-item dark_hover">Thanh toán định kỳ</a> 
-    
-    <a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>" class="list-group-item dark_hover">Điểm thưởng</a> 
-    
-    <a href="<%= url_for({controller: 'account', action: 'return_list'}) %>" class="list-group-item dark_hover">Hàng trả lại</a> 
-    
-    <a href="<%= url_for({controller: 'account', action: 'transaction'}) %>" class="list-group-item dark_hover">Giao dịch</a> 
-    
     <%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete, class: "list-group-item dark_hover") %>
 
 </div>

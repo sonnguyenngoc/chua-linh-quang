@@ -58,7 +58,8 @@ class Product < ActiveRecord::Base
     
     #Category filter
     if params[:category_id].present?
-        records = records.joins(:categories).where(categories: {id: params[:category_id]})
+      category = Category.find(params[:category_id])
+      records = records.joins(:categories).where(categories: {id: category.get_all_related_ids})
     end
     
     #Area filter

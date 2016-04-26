@@ -55,10 +55,10 @@
                             <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
-
-                            <form class="clearfix search" %>
+                            
+                            <%= form_tag({controller: "product", action: "search"}, method: "get", class: "clearfix search") do %>
     
-                                <input type="text" name="search" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
+                                <input type="text" name="keyword" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
                                 
                                 <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
     
@@ -66,19 +66,13 @@
                                     
                                      <div class="">
     
-                                        <select class="select_header" name="category_id">
+                                        <select class="select_header" name="area_id">
                                             
                                             <option value="">Tất cả</option>
                                             
                                             <% Area.where(level: 2).each do |item| %>
                                                     
                                                 <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
-                                                
-                                                <% item.children.each do |child| %>
-                                                    
-                                                    <option value="<%= child.id %>" class="list_category_option">-- <%= child.name %></option>
-                                                                                               
-                                                <% end %>
                                                                                            
                                             <% end %>
                                         
@@ -92,7 +86,7 @@
     
                                 <button class="button_blue def_icon_btn alignleft"></button>
     
-                            </form><!--/ #search-->
+                            <% end %><!--/ #search-->
                             
                             <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
 

@@ -24,4 +24,8 @@ class ProductController < ApplicationController
     @compare.remove_item(params[:line_item_compare_id]) if params[:do] == "remove_item"
   end
   
+  def search
+    @title_head = "Kết quả tìm kiếm"
+    @products = Product.search(params).paginate(:page => params[:page], :per_page => 15).order("name ASC")
+  end
 end
