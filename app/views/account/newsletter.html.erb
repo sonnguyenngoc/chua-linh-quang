@@ -20,9 +20,11 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
-                    <li>Newsletter</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                    
+					<li><%= @title_head %></li>
 
                 </ul>
 
@@ -32,13 +34,13 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <%= render 'menu_account_login' %>
+                        <%= render "module/menu_account_logged" %>
 
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
 
-                        <h1>Newsletter Subscription</h1>
+                        <h1><%= @title_head %></h1>
 
                         <div class="table_wrap bordered_content">
                             
@@ -50,15 +52,15 @@
                             
                                         <fieldset>
                             
-                                            <label style="text-align: left;">Subscribe</label>
+                                            <label style="text-align: left;">Đăng ký nhận tin mới</label>
                             
                                             <div class="form_el no_b_margin">
                             
                                                 <input checked="" type="radio" name="radio_2" id="radio_3">
-                                                <label for="radio_3">Yes</label>
+                                                <label for="radio_3">Có</label>
     
                                                 <input type="radio" name="radio_2" id="radio_4">
-                                                <label for="radio_4">No</label>
+                                                <label for="radio_4">Không</label>
                             
                                             </div>
                             

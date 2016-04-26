@@ -229,7 +229,7 @@
       
                                 <div class="theme_box">
       
-                                    <p class="form_caption">Nhập địa chỉ của bạn vào bên dưới</p>
+                                    <p class="form_caption">Chọn địa chỉ của bạn vào bên dưới:</p>
       
                                     <form id="estimate_shipping" class="type_2">
       
@@ -239,45 +239,29 @@
                                                 
                                                 <div class="col-xs-12">
       
-                                                    <label>Tỉnh/TP</label>
+                                                    <label>Tỉnh/Thành/Khu vực</label>
       
-                                                    <div class="custom_select">
+                                                    <div class="">
       
                                                         <select>
                                                             
-                                                            <option value="Hanoi">Hà Nội</option>
-                                                            <option value="Danang">Đà Nẵng</option>
-                                                            <option value="HCM">TP.Hồ Chí Minh</option>
-                                                            <option selected value="Dalat">Đà Lạt</option>
+                                                            <% Area.where(level: 2).each do |item| %>
+                                                    
+                                                                <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
+                                                                
+                                                                <% item.children.each do |child| %>
+                                                                    
+                                                                    <option value="<%= child.id %>" class="list_category_option">-- <%= child.name %></option>
+                                                                                                               
+                                                                <% end %>
+                                                                                                           
+                                                            <% end %>
                                                             
-      
                                                         </select>
       
                                                     </div>
       
                                                 </div>
-      
-                                            </li>
-      
-                                            <li class="row">
-                                                
-                                                <div class="col-lg-7 col-md-6">
-      
-                                                    <label>Quận/Huyện/Thị xã</label>
-      
-                                                    <div class="custom_select">
-      
-                                                        <select>
-      
-                                                            <option value="Alabama">Thủ Đức</option>
-                                                            <option value="Illinois">12</option>
-                                                            <option value="Kansas">Gò Vấp</option>
-      
-                                                        </select>
-      
-                                                    </div>
-      
-                                                </div><!--/ [col] -->
       
                                             </li>
       

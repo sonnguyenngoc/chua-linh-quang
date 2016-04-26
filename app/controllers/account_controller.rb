@@ -47,4 +47,8 @@ class AccountController < ApplicationController
   def wishlist
     @title_head = "Sản phẩm yêu thích"
   end
+  
+  def newsletter
+	@title_head = "Đăng ký nhận tin mới"
+  end
 end
