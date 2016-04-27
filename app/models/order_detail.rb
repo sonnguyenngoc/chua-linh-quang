@@ -21,4 +21,10 @@ class OrderDetail < ActiveRecord::Base
     price*quantity
   end
   
+  def self.get_order_details
+    #records = self.all
+    #records = records.where(order_id: params[:order_id])
+    #return records
+  end
+  
 end

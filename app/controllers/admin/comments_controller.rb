@@ -1,10 +1,16 @@
 class Admin::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all.paginate(:page => params[:page], :per_page => 10)
+    @comments = Comment.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @comments = Comment.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/comments/index"
   end
 
   # GET /comments/1

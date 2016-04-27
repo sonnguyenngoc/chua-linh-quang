@@ -55,6 +55,22 @@
                         <%= link_to t(:new_delivery_method), new_admin_delivery_method_path, class: 'btn btn-primary pull-right' %>
                     </div>
                     
+                    <div class="filter-box">
+                        <%= form_for("", url: {controller: 'delivery_methods', action: 'search'}, method: "get") do |f| %>
+                            <div class="row">
+                                <div class="col-md-3 pull-right">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:filter) %></label>
+                                        <div class="input-group">
+                                            <input type="text" name="keyword" class="form-control" placeholder="<%= t(:placeholder_filter) %>" value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        <% end %>
+                    </div>
+                    
                     <table class="table">
                         <thead>
                             <tr class="bg-teal-800">

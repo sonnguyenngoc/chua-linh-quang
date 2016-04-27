@@ -15,4 +15,19 @@ class Customer < ActiveRecord::Base
     
     return str.join(", ")
   end
+  
+  #
+  def self.sort_by
+    [
+      ["Last Bought","last_bought"]
+    ]
+  end
+  
+  def self.sort_order
+    [
+      ["ASC","asc"],
+      ["DESC","desc"],
+    ]
+  end
+
 end

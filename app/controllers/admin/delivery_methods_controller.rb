@@ -6,8 +6,13 @@ class Admin::DeliveryMethodsController < ApplicationController
   def index
     @delivery_methods = DeliveryMethod.all.paginate(:page => params[:page], :per_page => 10)
   end
+  
+  def search
+    @delivery_methods = DeliveryMethod.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/delivery_methods/index"
+  end
 
-  # GET /delivery_methods/1
+  # GET /delivery_methods/1 
   # GET /delivery_methods/1.json
   def show
   end

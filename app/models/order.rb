@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
   
   def self.sort_by
     [
-      ["Created At", "created_at"]
+      ["Created At", "orders.created_at"]
     ]
   end
   def self.sort_order
@@ -36,7 +36,7 @@ class Order < ActiveRecord::Base
     
     # Customer filter
     if params[:customer_id].present?
-        records = records.where(customer_id: params[:customer_id])
+        records = records.includes(:customer).where(customers: {id: params[:customer_id]})
     end
     
     #Product filter
@@ -46,8 +46,8 @@ class Order < ActiveRecord::Base
     
     #From Date filter
     if params[:from_date].present? && params[:to_date].present?
-      records = records.where('created_at >= ?', params[:from_date].to_date.beginning_of_day)
-                        .where('created_at <= ?', params[:to_date].to_date.end_of_day)
+      records = records.where('orders.created_at >= ?', params[:from_date].to_date.beginning_of_day)
+                        .where('orders.created_at <= ?', params[:to_date].to_date.end_of_day)
     end
     
     #Search keyword filter

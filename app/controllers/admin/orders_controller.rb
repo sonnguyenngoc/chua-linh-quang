@@ -4,11 +4,12 @@ class Admin::OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.search(params)
+    @orders = Order.search(params).paginate(:page => params[:page], :per_page => 10)
+    #@order_details = Order.get_order_details
   end
   
   def search
-    @orders = Order.search(params)
+    @orders = Order.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/orders/index"
   end
 
