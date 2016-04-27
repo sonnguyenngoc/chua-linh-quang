@@ -2,7 +2,7 @@
 
     <!-- - - - - - - - - - - - - - Bottom part - - - - - - - - - - - - - - - - -->
 
-    <div class="bottom_part">
+    <div class="bottom_part header_top">
 
         <div class="sticky_part">
 
@@ -139,126 +139,11 @@
                                 <!-- - - - - - - - - - - - - - End of currency change - - - - - - - - - - - - - - - - -->
 
                             </div><!--/ .clearfix-->
-
-                            <div class="align_right v_centered align_shopping_cart">
-
-                                <!-- - - - - - - - - - - - - - Wishlist & compare counters - - - - - - - - - - - - - - - - -->
-
-                                <ul class="shop_links_list">
-
-                                    <li>
-                                        
-                                        <% if current_user.present? %>
-                                       
-                                            <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "wishlist" } %> (<%= + current_user.wish_lists.count %>)</a>
-                                        
-                                        <% else %>
-                                            
-                                            <a href="#" class="small_link"><i class="icon-heart-5"></i> <%= link_to "Yêu thích", { controller: "account", action: "login" } %> (0)</a>
-                                            
-                                        <% end %>
-                                    
-                                    </li>
-                                    
-                                    <li>
-                                        
-                                        <a href="#" class="small_link"><i class="icon-resize-small"></i> <%= link_to "So sánh", { controller: "product", action: "comparison" } %> (<%= @compare.get_number_items %>)</a>
-                                    
-                                    </li>
-
-                                </ul><!--/ .align_right.shop_links-->
                             
-                                <!-- - - - - - - - - - - - - - End of wishlist & compare counters - - - - - - - - - - - - - - - - -->
+                            <div class="ajax_shopping_carts align_right v_centered align_shopping_cart">
 
-                                <!-- - - - - - - - - - - - - - Shopping cart - - - - - - - - - - - - - - - - -->
-
-                                <div class="shopping_cart_wrap">
-
-                                    <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.get_number_items %>">
-                                        <b class="title">Giỏ hàng</b>
-                                        <b class="total_price"><%= format_number(@cart.total_order) %> đ</b>
-                                    </button>
-
-                                    <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
-
-                                    <div class="shopping_cart dropdown">
-                                        
-                                        <% @cart.line_items.each do |item| %>
-
-                                            <div class="animated_item">
-    
-                                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-    
-                                                <div class="clearfix sc_product">
-                                                    
-                                                    <% if item.product.get_main_image.present? %>
-																
-                                                        <%= link_to image_tag(item.product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
-                                                    
-                                                    <% else %>
-                                                        
-                                                        <%= link_to image_tag("/frontend/images/smaller_image.png"), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
-                                                    
-                                                    <% end %>
-    
-                                                    <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_name" %>
-    
-                                                    <p><%= item.quantity %> x <%= format_number(item.product.price) %> đ</p>
-    
-                                                    <%= link_to "" , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "close"}  %>
-    
-                                                </div><!--/ .clearfix.sc_product-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-    
-                                            </div><!--/ .animated_item-->
-                                        
-                                        <% end %>
-
-                                        <div class="animated_item">
-
-                                            <!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
-
-                                            <ul class="total_info">
-
-                                                <li><span class="price">Thuế:</span> 0.000 đ</li>
-                                                
-                                                <% if @cart.voucher.present? %>
-
-                                                    <li><span class="price">Voucher:</span>- <%= format_number(@cart.voucher.price) %> đ</li>
-                                                    
-                                                <% end %>
-                                                
-                                                <% if @cart.coupon.present? %>
-
-                                                    <li><span class="price">Coupon:</span>- <%= format_number(@cart.coupon.price) %> đ</li>
-                                                    
-                                                <% end %>
-
-                                                <li class="total"><b><span class="price">Tổng:</span> <%= format_number(@cart.total_order) %> đ</b></li>
-
-                                            </ul>
-                                            
-                                            <!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .animated_item-->
-
-                                        <div class="animated_item">
-                                            
-                                            <%= link_to "Xem giỏ hàng", { controller: "checkout", action: "shopping_cart" }, class: "button_grey" %>
-                                            
-                                            <%= link_to "Đặt hàng", { controller: "checkout", action: "checkout" }, class: "button_blue" %>
-
-                                        </div><!--/ .animated_item-->
-
-                                    </div><!--/ .shopping_cart.dropdown-->
-
-                                    <!-- - - - - - - - - - - - - - End of products list - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .shopping_cart_wrap.align_left-->
-                                
-                                <!-- - - - - - - - - - - - - - End of shopping cart - - - - - - - - - - - - - - - - -->
-
+                                <%= render "/module/shopping_cart_items" %>
+                            
                             </div><!--/ .align_right-->
 
                         </div><!--/ [col]-->

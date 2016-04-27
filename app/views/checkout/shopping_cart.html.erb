@@ -185,151 +185,9 @@
       
                     <div class="section_offset">
       
-                        <div class="row">
+                        <div class="row total_price_shopping_cart">
                             
-                            <section class="col-sm-4">
-      
-                                <h3>Sử dụng Voucher</h3>
-      
-                                <div class="theme_box">
-      
-                                    <p class="form_caption">Nhập mã số phiếu voucher (nếu có)</p>
-      
-                                    <form id="discount_code">
-      
-                                        <ul>
-      
-                                            <li class="row">
-      
-                                                <div class="col-xs-12">
-      
-                                                    <input type="text" name="">
-      
-                                                </div>
-      
-                                            </li>
-      
-                                        </ul>
-      
-                                    </form>
-      
-                                </div><!--/ .theme_box -->
-      
-                                <footer class="bottom_box">
-      
-                                    <button type="submit" form="discount_code" class="button_grey middle_btn">Áp dụng</button>
-      
-                                </footer>
-      
-                            </section><!--/ [col] -->
-                            
-                            <section class="col-sm-4">
-      
-                                <h3>Ước tính chi phí giao hàng và thuế</h3>
-      
-                                <div class="theme_box">
-      
-                                    <p class="form_caption">Chọn địa chỉ của bạn vào bên dưới:</p>
-      
-                                    <form id="estimate_shipping" class="type_2">
-      
-                                        <ul>
-      
-                                            <li class="row">
-                                                
-                                                <div class="col-xs-12">
-      
-                                                    <label>Tỉnh/Thành/Khu vực</label>
-      
-                                                    <div class="">
-      
-                                                        <select>
-                                                            
-                                                            <% Area.where(level: 2).each do |item| %>
-                                                    
-                                                                <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
-                                                                
-                                                                <% item.children.each do |child| %>
-                                                                    
-                                                                    <option value="<%= child.id %>" class="list_category_option">-- <%= child.name %></option>
-                                                                                                               
-                                                                <% end %>
-                                                                                                           
-                                                            <% end %>
-                                                            
-                                                        </select>
-      
-                                                    </div>
-      
-                                                </div>
-      
-                                            </li>
-      
-                                        </ul>
-      
-                                    </form>
-      
-                                </div><!--/ .theme_box -->
-      
-                                <footer class="bottom_box">
-      
-                                    <button type="submit" form="estimate_shipping" class="button_grey middle_btn">Nhận báo giá</button>
-      
-                                </footer><!--/ .bottom_box -->
-      
-                            </section><!--/ [col] -->
-      
-                            <section class="col-sm-4">
-      
-                                <h3>Tổng cộng tiền hàng</h3>
-      
-                                <div class="table_wrap">
-      
-                                    <table class="zebra">
-      
-                                        <tfoot>
-      
-                                            <tr>
-                                                    
-                                                <td>Tiền hàng</td>
-                                                <td><%= format_number(@cart.total_order) %> đ</td>
-      
-                                            </tr>
-                                            
-                                            <tr>
-                                                    
-                                                <td>Eco Tax (-2.00)</td>
-                                                <td>0 đ</td>
-      
-                                            </tr>
-                                            
-                                            <tr>
-                                                    
-                                                <td>VAT</td>
-                                                <td>0 đ</td>
-      
-                                            </tr>
-      
-                                            <tr class="total">
-                                                    
-                                                <td>Tổng cộng</td>
-                                                <td><%= format_number(@cart.total_order) %> đ</td>
-      
-                                            </tr>
-      
-                                        </tfoot>
-      
-                                    </table>
-      
-                                </div>
-      
-                                <footer class="bottom_box">
-      
-                                    <%= link_to "Tiến hành thanh toán", { controller: "checkout", action: "checkout" }, class: 'button_blue middle_btn' %>
-      
-                                </footer>
-      
-                            </section><!-- / [col] -->
+                            <%= render "total_price_carts" %>
       
                         </div><!--/ .row -->
                         
@@ -381,5 +239,31 @@
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+    <script>
+        
+        // using voucher code
+        $(document).on("click",".voucher_button", function()
+        {
+            var code = $('input.voucher_code').val();
+            
+            $('.voucher_loading').show();
+            
+            if(code.length) {
+                var url = "<%= shopping_cart_use_voucher_carts_path %>";
+                //window.location = url;
+                
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    data: { code: code }
+                })
+                .done(function( msg ) {
+                  $(".total_price_shopping_cart").html(msg);
+                });
+            }
+        });
+        
+    </script>
   
 </body>

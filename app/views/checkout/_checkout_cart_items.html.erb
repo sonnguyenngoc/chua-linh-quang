@@ -146,7 +146,7 @@
             <tr>
                 
                 <td colspan="4" class="grandtotal">Tổng tiền đơn hàng</td>
-                <td class="grandtotal"><%= format_number(@cart.total_order) %> đ</td>
+                <td class="grandtotal"><%= format_number(@cart.total_order_sale) %> đ</td>
 
             </tr>
 
@@ -160,7 +160,7 @@
    
     <!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
     
-    <% if flash[:voucher_error].present? %>
+    <% if @voucher_error == true %>
         
         <div class="alert_box error">
 
@@ -176,11 +176,11 @@
     
     <!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
     
-    <% if flash[:voucher_success].present? %>
+    <% if @voucher_error == false %>
         
         <div class="alert_box success">
 
-            Sử dụng mã voucher thành công.
+            Sử dụng mã Voucher thành công.
 
             <a class="close"></a>
 
@@ -195,6 +195,8 @@
     <div id="voucher-content" style="display: none;">
         
         <input type="text" class="voucher_code" value="<%= @cart.voucher_code %>">
+        
+        <div class="voucher_loading" style="display: none">Processing...</div>
         
         <a href="#code" class="button_blue middle_btn voucher_button">Sử dụng mã Voucher</a>
     
@@ -237,7 +239,9 @@
     <div id="coupon-content" style="display: none;">
         
         <input type="text" class="coupon_code" value="<%= @cart.coupon_code %>">
-        <div class="loading" style="display: none">Processing...</div>
+        
+        <div class="coupon_loading" style="display: none">Processing...</div>
+        
         <a href="#coupon" class="button_blue middle_btn coupon_button">Sử dụng mã Coupon</a>
     
     </div>
@@ -264,7 +268,7 @@
 
     <div class="right_side">
         
-        <button type="submit" value="Gửi đơn hàng" class="button_blue middle_btn"></button>
+        <%= button_tag "Gửi đơn hàng", class: "button_blue middle_btn" %>
 
     </div>
 

@@ -3,93 +3,47 @@
     <h3>Sản phẩm bán chạy</h3>
 
     <ul class="products_list_widget">
+        
+        <% Product.get_by_bestseller.each do | product | %>
 
-        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-        <li>
-            
-            <a href="#" class="product_thumb">
+            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+            <li>
                 
-                <img src="/frontend/images/product_thumb_10.jpg" alt="">
-
-            </a>
-
-            <div class="wrapper">
-
-                <a href="#" class="product_title">Integer rutrum ante eu lacus...</a>
-
-                <div class="clearfix product_info">
-
-                    <p class="product_price alignleft"><b>$5.99</b></p><br/>
-
-                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                    <ul class="rating alignleft">
-
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class=""></li>
-
-                    </ul>
-                    
-                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
+                <%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+    
+                <div class="wrapper">
+    
+                    <%= link_to product.name, { controller: "product", action: "product", product_id: product }, class: "product_title" %>
+    
+                    <div class="clearfix product_info">
+    
+                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+    
+                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+    
+                        <ul class="rating alignleft">
+    
+                            <li class="active"></li>
+                            <li class="active"></li>
+                            <li class="active"></li>
+                            <li class="active"></li>
+                            <li class=""></li>
+    
+                        </ul>
+                        
+                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+    
+                    </div>
+    
                 </div>
-
-            </div>
-
-        </li>
-
-        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-        <li>
+    
+            </li>
+    
+            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
             
-            <a href="#" class="product_thumb">
-                
-                <img src="/frontend/images/product_thumb_11.jpg" alt="">
-
-            </a>
-
-            <div class="wrapper">
-
-                <a href="#" class="product_title">Vestibulum ante ipsum primis in...</a>
-
-                <div class="clearfix product_info">
-
-                    <p class="product_price alignleft"><b>$5.99</b></p><br/>
-
-                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                    <ul class="rating alignleft">
-
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class="active"></li>
-                        <li class=""></li>
-
-                    </ul>
-                    
-                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                </div>
-
-            </div>
-
-        </li>
-
-        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+        <% end %>
 
     </ul><!--/ .list_of_products-->
-
-    <footer class="bottom_box">
-
-        <a href="shop_product_comparison.html" class="button_grey middle_btn">Xem toàn bộ</a>
-
-    </footer>
 
 </section>

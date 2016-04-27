@@ -25,6 +25,15 @@ class Cart < ActiveRecord::Base
       amount += od.total_item
     end
     
+    return amount
+  end
+  
+  def total_order_sale
+    amount = 0.0
+    self.line_items.each do |od|
+      amount += od.total_item
+    end
+    
     if voucher.present?
       amount = amount - voucher.price
     end

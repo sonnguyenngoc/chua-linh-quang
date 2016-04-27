@@ -1,7 +1,7 @@
 class Coupon < ActiveRecord::Base
   
   def codes
-    code.split(",")
+    code.split("][").map {|s| s.gsub("]","").gsub("[","") }
   end
   
   def self.is_valid_code(code)
@@ -23,24 +23,24 @@ class Coupon < ActiveRecord::Base
       arr << c
     end
     
-    self.code = arr.join(",")
+    self.code = "["+arr.join("][")+"]"
   end
   
   def generate_code
     code = create_code
  
     #ensure that the coupon code is unique.
-    @coupon = Coupon.where("code LIKE ?", "%#{code}%").first
+    @coupon = Coupon.where("code LIKE ?", "%[#{code}]%").first
     while !@coupon.nil?
       code = create_code
-      @coupon = Coupon.where("code LIKE ?", "%#{code}%").first
+      @coupon = Coupon.where("code LIKE ?", "%[#{code}]%").first
     end
  
     return code
   end
   
   def self.get_by_code(code)
-    self.where("Lower(code) Like ? ", "%#{code.downcase.strip}%").first
+    self.where("Lower(code) Like ? ", "%[#{code.downcase.strip}]%").first
   end
  
   protected

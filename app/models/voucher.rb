@@ -1,7 +1,7 @@
 class Voucher < ActiveRecord::Base
   
   def codes
-    code.split(",")
+    code.split("][").map {|s| s.gsub("]","").gsub("[","") }
   end
   
   def self.is_valid_code(code)
@@ -23,29 +23,29 @@ class Voucher < ActiveRecord::Base
       arr << c
     end
     
-    self.code = arr.join(",")
+    self.code = "["+arr.join("][")+"]"
   end
   
   def generate_code
     code = create_code
  
     #ensure that the voucher code is unique.
-    @voucher = Voucher.where("code LIKE ?", "%#{code}%").first
+    @voucher = Voucher.where("code LIKE ?", "%[#{code}]%").first
     while !@voucher.nil?
       code = create_code
-      @voucher = Voucher.where("code LIKE ?", "%#{code}%").first
+      @voucher = Voucher.where("code LIKE ?", "%[#{code}]%").first
     end
  
     return code
   end
   
   def self.get_by_code(code)
-    self.where("Lower(code) Like ? ", "%#{code.downcase.strip}%").first
+    self.where("Lower(code) Like ? ", "%[#{code.downcase.strip}]%").first
   end
  
   protected
   def create_code
-    chars = ("0".."9").to_a
+    chars = ('0'..'9').to_a + ('A'..'Z').to_a
  
     code = ""
     1.upto(8) { |i| 

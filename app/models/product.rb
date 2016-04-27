@@ -111,6 +111,13 @@ class Product < ActiveRecord::Base
     return records
   end
   
+  def self.get_by_bestseller
+    records = self.all
+    records = records.where("products.status LIKE ?", "%#{'bestseller'}%")
+    records = records.order("updated_at DESC").first(3)
+    return records
+  end
+  
   def wish_by? user
     wish_lists.exists? user_id: user
   end

@@ -194,3 +194,6 @@ form ul > li:not(:last-child) {
 .search > * {
     border-left: 2px solid #4ac4fa !important;
 }
+.header_top {
+    padding-top: 10px;
+}

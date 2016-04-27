@@ -64,11 +64,27 @@ class CartsController < ApplicationController
     if Voucher.is_valid_code(params[:code])
       @cart.voucher_code = params[:code]
       @cart.save
-      flash[:voucher_success] = true
+      @voucher_error = false
+      render "/checkout/_checkout_cart_items", layout: nil
     else
-      flash[:voucher_error] = true
+      @voucher_error = true
+      render "/checkout/_checkout_cart_items", layout: nil
     end
-    redirect_to controller: "checkout", action: "checkout"
+    #redirect_to controller: "checkout", action: "checkout"
+  end
+  
+  #use_voucher
+  def shopping_cart_use_voucher
+    if Voucher.is_valid_code(params[:code])
+      @cart.voucher_code = params[:code]
+      @cart.save
+      @voucher_error = false
+      render "/checkout/_total_price_carts", layout: nil
+    else
+      @voucher_error = true
+      render "/checkout/_total_price_carts", layout: nil
+    end
+    #redirect_to controller: "checkout", action: "checkout"
   end
   
   #use_coupon

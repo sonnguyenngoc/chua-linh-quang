@@ -756,12 +756,24 @@
         $('#different_delivery_checkbox').trigger("change");
         
         // using voucher code
-        $(".voucher_button").click(function()
+        $(document).on("click",".voucher_button", function()
         {
             var code = $('input.voucher_code').val();
+            
+            $('.voucher_loading').show();
+            
             if(code.length) {
-                var url = "<%= use_voucher_carts_path %>?code="+code;
-                window.location = url;
+                var url = "<%= use_voucher_carts_path %>";
+                //window.location = url;
+                
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    data: { code: code }
+                })
+                .done(function( msg ) {
+                  $(".checkout_order_items").html(msg);
+                });
             }
         });
         
@@ -770,7 +782,7 @@
         {
             var code = $('input.coupon_code').val();
             
-            $('.loading').show();
+            $('.coupon_loading').show();
             
             if(code.length) {
                 var url = "<%= use_coupon_carts_path %>";
@@ -783,7 +795,6 @@
                 })
                 .done(function( msg ) {
                   $(".checkout_order_items").html(msg);
-                  
                 });
             }
         });
