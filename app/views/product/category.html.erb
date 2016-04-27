@@ -96,52 +96,50 @@
                             <header class="top_box on_the_sides">
 
                                 <div class="left_side clearfix v_centered">
+                                    
+                                    <%= form_tag({controller: "product", action: "category"}, method: "get") do %>
                                   
-                                    <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
-
-                                    <div class="v_centered">
-
-                                        <span>Hiển thị:</span>
-
-                                        <div class="">
-
-                                            <select name="">
-
-                                                <option value="15">15</option>
-                                                <option value="12">12</option>
-                                                <option value="9">9</option>
-
-                                            </select>
-
-                                        </div>
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
-
-                                    <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
-
-                                    <div class="v_centered">
-
-                                        <span>Sắp xếp:</span>
-
-                                        <div class="sort_select">
+                                        <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+    
+                                        <div class="v_centered">
+    
+                                            <span>Hiển thị:</span>
+    
+                                            <div class="">
+    
+                                                <select name="number">
+    
+                                                    <option value="15">15</option>
+                                                    <option value="12">12</option>
+                                                    <option value="9">9</option>
+    
+                                                </select>
+    
+                                            </div>
                                             
-                                            <select name="">
-                                                    
-                                                <option value="Default">Mặc định</option>
-                                                <option value="Price">Tên (A - Z)</option>
-                                                <option value="Name">Tên (Z - A)</option>
-                                                <option value="Date">Giá (Cao - Thấp)</option>
-                                                <option value="Date">Giá (Thấp - Cao)</option>
-
-                                            </select>
-
+                                            <span>Sắp xếp:</span>
+    
+                                            <div class="sort_select">
+                                                
+                                                <select name="sort_group">
+                                                        
+                                                    <option value="">Mặc định</option>
+                                                    <option <%= "selected" if params[:sort_group] == "name_asc" %> value="name_asc">Tên (A - Z)</option>
+                                                    <option <%= "selected" if params[:sort_group] == "name_desc" %> value="name_desc">Tên (Z - A)</option>
+                                                    <option <%= "selected" if params[:sort_group] == "price_desc" %> value="price_desc">Giá (Cao - Thấp)</option>
+                                                    <option <%= "selected" if params[:sort_group] == "price_asc" %> value="price_asc">Giá (Thấp - Cao)</option>
+    
+                                                </select>
+    
+                                            </div>
+                                            
+                                            <button type="submit" class="button_blue middle_btn" style="margin-top: 10px;">Sắp xếp</button>
+    
                                         </div>
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
+    
+                                        <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
+                                    
+                                    <% end %>
 
                                 </div>
 

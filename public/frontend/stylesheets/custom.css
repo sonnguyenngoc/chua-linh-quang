@@ -197,3 +197,11 @@ form ul > li:not(:last-child) {
 .header_top {
     padding-top: 10px;
 }
+.total_info [class*="price"] {
+    width: 100px;
+}
+@media only screen and (max-height: 900px) {    
+    .social_feeds {
+        top: 130px;
+    }
+}

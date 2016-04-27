@@ -20,6 +20,22 @@ class Category < ActiveRecord::Base
     category = Category.find(params[:category_id])
     records = Product.joins(:categories).where(categories: {id: category.get_all_related_ids}).uniq
     
+    if params[:sort_group] == "name_asc"
+      records = records.order("products.name ASC")
+    end
+    
+    if params[:sort_group] == "name_desc"
+      records = records.order("products.name DESC")
+    end
+    
+    if params[:sort_group] == "price_asc"
+      records = records.order("products.price ASC")
+    end
+    
+    if params[:sort_group] == "price_desc"
+      records = records.order("products.price DESC")
+    end
+    
     return records
   end
   

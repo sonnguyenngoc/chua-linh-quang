@@ -79,7 +79,9 @@
                                         <%= item.star %> <%= t(:star) %>
                                     </td>
                                     <td>
-                                        <%= item.user.first_name + " " + item.user.last_name %>
+                                        <% if !item.user_id.nil? %>
+                                            <%= item.user.first_name + " " + item.user.last_name %>
+                                        <% end %>
                                     </td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">

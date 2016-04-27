@@ -19,6 +19,22 @@ class Product < ActiveRecord::Base
   def self.get_products_for_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
     
+    if params[:sort_group] == "name_asc"
+      records = records.order("products.name ASC")
+    end
+    
+    if params[:sort_group] == "name_desc"
+      records = records.order("products.name DESC")
+    end
+    
+    if params[:sort_group] == "price_asc"
+      records = records.order("products.price ASC")
+    end
+    
+    if params[:sort_group] == "price_desc"
+      records = records.order("products.price DESC")
+    end
+    
     return records
   end
   

@@ -50,6 +50,9 @@
                     <li class="<%= "active" if ["admin/comments"].include?(params[:controller]) %>">
                         <%= link_to t(:comments), admin_comments_path %>
                     </li>
+                    <li class="<%= "active" if ["admin/comment_articles"].include?(params[:controller]) %>">
+                        <%= link_to t(:comment_articles), admin_comment_articles_path %>
+                    </li>
                 </ul>
             </li>
             <li >

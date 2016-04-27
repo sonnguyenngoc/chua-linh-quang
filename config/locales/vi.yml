@@ -111,11 +111,13 @@ vi:
   
   #-------------------------------------
   comment: "Bình luận"
-  comments: "Danh sách bình luận"
+  comments: "Bình luận sản phẩm"
+  comment_articles: "Bình luận bài viết"
   customer_name: "Tên khách hàng"
   product_name: "Tên sản phẩm"
   star: "sao"
   rating: "Đánh giá"
+  article_title: "Tiêu đề bài viết"
   
   #-------------------------------------
   delivery_method: "Hình thức giao hàng"

@@ -32,7 +32,7 @@
 
     <div class="shopping_cart_wrap">
 
-        <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.get_number_items %>">
+        <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.line_items.count_items %>">
             <b class="title">Giỏ hàng</b>
             <b class="total_price"><%= format_number(@cart.total_order_sale) %> đ</b>
         </button>

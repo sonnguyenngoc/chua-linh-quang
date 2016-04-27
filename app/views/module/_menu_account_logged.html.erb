@@ -2,15 +2,17 @@
 
 <div class="list-group box">
     
-    <a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="list-group-item dark_hover">Tài khoản của tôi</a> 
+    <a href="<%= url_for({controller: 'account', action: 'my_account'}) %>" class="list-group-item dark_hover">Tài khoản của tôi</a>
     
     <a href="<%= url_for({controller: 'account', action: 'edit'}) %>" class="list-group-item dark_hover">Chỉnh sửa thông tin</a>
     
-    <a href="<%= url_for({controller: 'account', action: 'address'}) %>" class="list-group-item dark_hover">Địa chỉ cho đơn hàng</a> 
+    <a href="<%= url_for({controller: 'account', action: 'address'}) %>" class="list-group-item dark_hover">Địa chỉ cho đơn hàng</a>
     
-    <a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>" class="list-group-item dark_hover">Sản phẩm yêu thích</a> 
+    <a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>" class="list-group-item dark_hover">Sản phẩm yêu thích</a>
    
-    <a href="<%= url_for({controller: 'account', action: 'order'}) %>" class="list-group-item dark_hover">Lịch sử đặt hàng</a> 
+    <a href="<%= url_for({controller: 'account', action: 'order'}) %>" class="list-group-item dark_hover">Lịch sử đặt hàng</a>
+    
+    <a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>" class="list-group-item dark_hover">Đăng ký nhận tin mới</a>
     
     <%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete, class: "list-group-item dark_hover") %>
 

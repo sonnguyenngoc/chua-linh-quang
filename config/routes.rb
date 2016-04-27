@@ -141,6 +141,7 @@ Rails.application.routes.draw do
       resources :contacts
       resources :wish_lists
       resources :comments
+      resources :comment_articles
       resources :payment_methods
       resources :delivery_methods
       resources :slideshows
