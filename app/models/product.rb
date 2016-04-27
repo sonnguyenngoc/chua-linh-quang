@@ -19,6 +19,22 @@ class Product < ActiveRecord::Base
   def self.get_products_for_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
     
+    if params[:sort_group] == "name_asc"
+      records = records.order("products.name ASC")
+    end
+    
+    if params[:sort_group] == "name_desc"
+      records = records.order("products.name DESC")
+    end
+    
+    if params[:sort_group] == "price_asc"
+      records = records.order("products.price ASC")
+    end
+    
+    if params[:sort_group] == "price_desc"
+      records = records.order("products.price DESC")
+    end
+    
     return records
   end
   
@@ -58,7 +74,8 @@ class Product < ActiveRecord::Base
     
     #Category filter
     if params[:category_id].present?
-        records = records.joins(:categories).where(categories: {id: params[:category_id]})
+      category = Category.find(params[:category_id])
+      records = records.joins(:categories).where(categories: {id: category.get_all_related_ids})
     end
     
     #Area filter
@@ -107,6 +124,13 @@ class Product < ActiveRecord::Base
     records = self.all
     records = records.where("products.status LIKE ?", "%#{status}%")
     records = records.joins(:categories).where(categories: {id: category})
+    return records
+  end
+  
+  def self.get_by_bestseller
+    records = self.all
+    records = records.where("products.status LIKE ?", "%#{'bestseller'}%")
+    records = records.order("updated_at DESC").first(3)
     return records
   end
   

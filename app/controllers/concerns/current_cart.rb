@@ -1,7 +1,7 @@
 module CurrentCart
   extend ActiveSupport::Concern
   private
-    def set_cart
+    def get_cart
       @cart = Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
       @cart = Cart.create

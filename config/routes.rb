@@ -73,7 +73,13 @@ Rails.application.routes.draw do
     resources :newsletters
     resources :contacts
     devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
-    resources :carts
+    resources :carts do
+      collection do
+        get "use_voucher"
+        get "shopping_cart_use_voucher"
+        get "use_coupon"
+      end
+    end
     resources :line_items
     resources :customers
     resources :orders
@@ -159,7 +165,11 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
+
+      resources :comment_articles
       resources :slideshows
+      resources :vouchers
+      resources :coupons
     end
   end
 end

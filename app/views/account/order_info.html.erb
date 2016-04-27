@@ -158,9 +158,9 @@
 									
 									<tr>
 										
-										<td colspan="3"></td>
+										<td colspan="2"></td>
 										
-										<td class="right">Tổng tiền:</td>
+										<td colspan="2" class="right">Tổng tiền:</td>
 										
 										<td class="right price"><%= format_number(@order.total) %> đ</td>
 									
@@ -168,21 +168,49 @@
 									
 									<tr>
 										
-										<td colspan="3"></td>
+										<td colspan="2"></td>
 										
-										<td class="right">Chi phí vận chuyển:</td>
+										<td colspan="2" class="right">Chi phí vận chuyển:</td>
 										
 										<td class="right price">0.0 đ</td>
 									
 									</tr>
 									
+									<% if @order.voucher_code %>
+										
+										<tr>
+										
+											<td colspan="2"></td>
+											
+											<td colspan="2" class="right">Voucher:</td>
+											
+											<td class="right price">- <%=  format_number(@order.voucher_price) %> đ</td>
+										
+										</tr>
+									
+									<% end %>
+								
+									<% if @order.coupon_code %>
+										
+										<tr>
+										
+											<td colspan="2"></td>
+											
+											<td colspan="2" class="right">Coupon:</td>
+											
+											<td class="right price">- <%=  format_number(@order.coupon_price) %> đ</td>
+										
+										</tr>
+									
+									<% end %>
+									
 									<tr>
 										
-										<td colspan="3"></td>
+										<td colspan="2"></td>
 										
-										<td class="right">Tổng tiền đơn hàng:</td>
+										<td colspan="2" class="right">Tổng tiền cho đơn hàng:</td>
 										
-										<td class="right price"><%= format_number(@order.total) %> đ</td>
+										<td class="right price"><%= format_number(@order.total_with_voucher_coupon) %> đ</td>
 									
 									</tr>
 								

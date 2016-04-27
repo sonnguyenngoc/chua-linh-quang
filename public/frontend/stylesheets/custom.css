@@ -116,7 +116,7 @@
     width: 97px;
 }
 .align_shopping_cart {
-    width: 110% !important;
+    width: 115% !important;
 }
 .action_checkout {
     white-space: nowrap;
@@ -190,4 +190,18 @@ form ul > li:not(:last-child) {
 }
 .infoblock.type_2 .caption {
     padding: 8px;
+}
+.search > * {
+    border-left: 2px solid #4ac4fa !important;
+}
+.header_top {
+    padding-top: 10px;
+}
+.total_info [class*="price"] {
+    width: 100px;
+}
+@media only screen and (max-height: 900px) {    
+    .social_feeds {
+        top: 130px;
+    }
 }

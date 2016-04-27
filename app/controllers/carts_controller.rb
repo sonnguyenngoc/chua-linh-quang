@@ -58,6 +58,48 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  #use_voucher
+  def use_voucher
+    if Voucher.is_valid_code(params[:code])
+      @cart.voucher_code = params[:code]
+      @cart.save
+      @voucher_error = false
+      render "/checkout/_checkout_cart_items", layout: nil
+    else
+      @voucher_error = true
+      render "/checkout/_checkout_cart_items", layout: nil
+    end
+    #redirect_to controller: "checkout", action: "checkout"
+  end
+  
+  #use_voucher
+  def shopping_cart_use_voucher
+    if Voucher.is_valid_code(params[:code])
+      @cart.voucher_code = params[:code]
+      @cart.save
+      @voucher_error = false
+      render "/checkout/_total_price_carts", layout: nil
+    else
+      @voucher_error = true
+      render "/checkout/_total_price_carts", layout: nil
+    end
+    #redirect_to controller: "checkout", action: "checkout"
+  end
+  
+  #use_coupon
+  def use_coupon
+    if Coupon.is_valid_code(params[:code])
+      @cart.coupon_code = params[:code]
+      @cart.save
+      @coupon_error = false
+      render "/checkout/_checkout_cart_items", layout: nil
+    else
+      @coupon_error = true
+      render "/checkout/_checkout_cart_items", layout: nil
+    end
+    #redirect_to controller: "checkout", action: "checkout"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

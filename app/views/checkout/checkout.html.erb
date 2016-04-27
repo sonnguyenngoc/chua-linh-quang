@@ -67,10 +67,16 @@
                                 <br/>
                             
                                 <footer class="on_the_sides">
+                                    
+                                    <div class="left_side">
+              
+                                        <%= link_to "Đăng ký", { controller: "account", action: "register" }, class: "button_grey middle_btn" %>
+              
+                                    </div>
           
                                     <div class="right_side">
               
-                                        <%= button_tag "Đăng nhập", class: "button_blue middle_btn"%>
+                                        <%= button_tag "Đăng nhập", class: "button_blue middle_btn" %>
               
                                     </div>
               
@@ -464,66 +470,6 @@
         
                                         <div class="col-xs-12">
         
-                                            <input type="checkbox" name="order[quick_create_user]" id="quick_create_user" onclick="$('.quick_create_user_box').toggle()">
-                                            
-                                            <label for="quick_create_user">Sử dụng thông tin để tạo tài khoản mới.</label>
-        
-                                        </div><!--/ [col] -->
-        
-                                    </li><!--/ .row -->
-                                    
-                                    <div class="quick_create_user_box" style="display: none">
-                                    
-                                        <li class="row">
-            
-                                            <div class="col-sm-6">
-            
-                                                <label for="password" class="required">Mật khẩu:</label>
-    
-                                                <input type="password" name="" id="password">
-            
-                                            </div><!--/ [col] -->
-            
-                                            <div class="col-sm-6">
-            
-                                                <label for="confirm" class="required">Xác nhận mật khẩu:</label>
-    
-                                                <input type="password" name="" id="confirm">
-            
-                                            </div><!--/ [col] -->
-            
-                                        </li><!--/ .row -->
-                                        
-                                        <li class="row">
-            
-                                            <div class="col-xs-12">
-            
-                                                <input type="checkbox" name="" id="newsletter">
-    
-                                                <label for="newsletter">Tôi muốn đăng ký nhận tin mới từ "Đặc sản vùng miền".</label>
-            
-                                            </div><!--/ [col] -->
-            
-                                        </li><!--/ .row -->
-                                        
-                                        <li class="row">
-            
-                                            <div class="col-xs-12">
-            
-                                                <input type="checkbox" name="" id="terms">
-    
-                                                <label for="terms">Tôi đã đọc và đồng ý các điều khoản về chính sách bảo mật.</label>
-            
-                                            </div><!--/ [col] -->
-            
-                                        </li><!--/ .row -->
-                                        
-                                    </div>
-        
-                                    <li class="row">
-        
-                                        <div class="col-xs-12">
-        
                                             <input checked type="checkbox" name="order[different_delivery]" value="true" id="different_delivery_checkbox">
 
                                             <label for="different_delivery_checkbox">Địa chỉ giao hàng và thanh toán giống nhau.</label>
@@ -688,7 +634,7 @@
       
                                     <li>
           
-                                        <input checked type="radio" value="<%= item.id %>" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id_<%= item.id %>">
+                                        <input type="radio" value="<%= item.id %>" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id_<%= item.id %>">
     
                                         <label for="order_delivery_delivery_method_id_<%= item.id %>"><%= item.title %></label>
           
@@ -720,7 +666,7 @@
       
                                     <li>
           
-                                        <input checked type="radio" value="<%= item.id %>"  name="order_delivery[payment_method_id]" id="order_delivery_payment_method_id_<%= item.id %>">
+                                        <input type="radio" value="<%= item.id %>"  name="order_delivery[payment_method_id]" id="order_delivery_payment_method_id_<%= item.id %>">
     
                                         <label for="order_delivery_payment_method_id_<%= item.id %>"><%= item.title %></label>
           
@@ -747,193 +693,9 @@
       
                     <!-- - - - - - - - - - - - - - Order review - - - - - - - - - - - - - - - - -->
       
-                    <section class="section_offset">
+                    <section class="section_offset checkout_order_items">
       
-                        <h3>Giỏ hàng</h3>
-      
-                        <div class="table_wrap">
-      
-                            <table class="table_type_1 order_review">
-      
-                                <thead>
-                                    
-                                    <tr>
-                                        
-                                        <th class="product_sku_col">Hình ảnh</th>
-                                        <th class="product_title_col">Tên sản phẩm</th>
-                                        <th class="product_total_col">Số lượng</th>
-                                        <th class="product_qty_col">Giá</th>
-                                        <th class="product_total_col">Thành tiền</th>
-      
-                                    </tr>
-      
-                                </thead>
-      
-                                <tbody>
-      
-                                    <% @cart.line_items.each do |item| %>
-              
-                                        <tr>
-                                            
-                                            <input type="hidden" name="line_items[id]" value="<%= item.id %>">
-          
-                                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                                                
-                                            <td class="product_image_col" data-title="Product Image">
-                                                
-                                                <% if item.product.get_main_image.present? %>
-                                                
-                                                    <%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product.id }, title: item.product.name %>
-                                                   
-                                                <% else %>
-                                                
-                                                    <img src="/frontend/images/small_image.png" alt="">                                                           
-                                                
-                                                <% end %>   
-                                                    
-                                            </td>
-          
-                                            <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
-          
-                                            <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
-          
-                                            <td data-title="Product Name">
-                                                
-                                                <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_title" %><br/>
-          
-                                                <%= link_to item.product.manufacturer.name, { controller: "manufacturer", action: "list"} %>
-                                            
-                                            </td>
-          
-                                            <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
-          
-                                            <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
-          
-                                            <td data-title="Quantity">
-          
-                                                <div class="min clearfix action_checkout">
-          
-                                                    <input class="display_inline qty_input" type="text" name="quantities[<%= item.id %>]" value="<%= item.quantity %>">
-          
-                                                    <a class="button_dark_grey icon_btn edit_product refresh_checkout">
-                                                        
-                                                        <i class='fa fa-refresh fa-refresh-checkout'></i>
-                                                    
-                                                    </a>
-                  
-                                                    <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product remove_checkout"} %>
-                                                        
-                                                </div><!--/ .qty.min.clearfix-->
-          
-                                            </td>
-          
-                                            <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
-                                            
-                                            <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
-          
-                                            <td class="subtotal" data-title="Price">
-                                                
-                                                <%= format_number(item.product.price) %> đ
-          
-                                            </td>
-          
-                                            <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
-          
-          
-                                            <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
-          
-                                            <td class="total" data-title="Total">
-          
-                                                <%= format_number(item.total_item) %> đ
-          
-                                            </td>
-          
-                                            <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
-          
-                                        </tr>
-                                        
-                                    <% end %>
-      
-                                </tbody>
-      
-                                <tfoot>
-      
-                                    <tr>
-                                        
-                                        <td colspan="4" class="bold">Tổng tiền</td>
-                                        <td class="total"><%= format_number(@cart.total_order) %> đ</td>
-      
-                                    </tr>
-      
-                                    <tr>
-                                        
-                                        <td colspan="4" class="bold">Phí vận chuyển</td>
-                                        <td class="total">0,0 đ</td>
-      
-                                    </tr>
-      
-                                    <tr>
-                                        
-                                        <td colspan="4" class="grandtotal">Tổng tiền đơn hàng</td>
-                                        <td class="grandtotal"><%= format_number(@cart.total_order) %> đ</td>
-      
-                                    </tr>
-      
-                                </tfoot>
-      
-                            </table>
-      
-                        </div><!--/ .table_wrap -->
-                        
-                        <footer class="bottom_box on_the_sides">
-      
-                            <div id="coupon-heading" class="field_heading" onclick="$('#coupon-content').toggle()">Tôi có mã Coupon</div>
-                            
-                            <div id="coupon-content" style="display: none;">
-                                
-                                <input type="text" name="" value="">
-                                
-                                <a href="#" class="button_blue middle_btn">Sử dụng mã Coupon</a>
-                            
-                            </div>
-                            
-                            <div id="voucher-heading" class="field_heading" onclick="$('#voucher-content').toggle()">Tôi có mã Voucher</div>
-                            
-                            <div id="voucher-content" style="display: none;">
-                                
-                                <input type="text" name="" value="">
-                                
-                                <a href="#" class="button_blue middle_btn">Sử dụng mã Voucher</a>
-                            
-                            </div>
-      
-                        </footer>
-      
-                        <footer class="bottom_box on_the_sides">
-                            
-                            <div class="left_side">
-                                
-                                <label>Tôi đã đọc và đồng ý các điều khoản
-                                
-                                    <a class="agree" href="" alt="Terms &amp; Conditions">
-                                        
-                                        <b>Chính sách bảo mật</b>
-                                        
-                                    </a>
-                                    
-                                </label>
-                                
-                                <input checked type="checkbox" name="" class="agree">
-      
-                            </div>
-      
-                            <div class="right_side">
-                                
-                                <%= f.submit "Gửi đơn hàng", class: "button_blue middle_btn" %>
-      
-                            </div>
-      
-                        </footer>
+                        <%= render "checkout_cart_items" %>
       
                     </section>
       
@@ -992,6 +754,51 @@
             }
         });
         $('#different_delivery_checkbox').trigger("change");
+        
+        // using voucher code
+        $(document).on("click",".voucher_button", function()
+        {
+            var code = $('input.voucher_code').val();
+            
+            $('.voucher_loading').show();
+            
+            if(code.length) {
+                var url = "<%= use_voucher_carts_path %>";
+                //window.location = url;
+                
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    data: { code: code }
+                })
+                .done(function( msg ) {
+                  $(".checkout_order_items").html(msg);
+                });
+            }
+        });
+        
+        // using coupon code
+        $(document).on("click",".coupon_button", function()
+        {
+            var code = $('input.coupon_code').val();
+            
+            $('.coupon_loading').show();
+            
+            if(code.length) {
+                var url = "<%= use_coupon_carts_path %>";
+                //window.location = url;
+                
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    data: { code: code }
+                })
+                .done(function( msg ) {
+                  $(".checkout_order_items").html(msg);
+                });
+            }
+        });
+        
     </script>
     
 </body>

@@ -20,8 +20,9 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Beauty</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    
+                    <li><%= @title_head %></li>
 
                 </ul>
 
@@ -39,61 +40,7 @@
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1>Seach - abcdefhg</h1>                       
-                        <div class="bordered_content box">
-                            <div class="padded">
-                              <div class="row">
-                                <div class="col-sm-6 form-group">
-                                  <input type="text" name="search_page" value="aaaaaaaaaaaa" placeholder="Keywords" id="input-search" class="form-control" vk_16032="subscribed">
-                                </div>
-                                <div class="col-sm-6 form-group">
-                                  <select name="category_id" class="form-control">
-                                      <option value="0">All Categories</option>
-                                      <option value="65">Allergy &amp; Sinus</option>
-                                          <option value="68">Diabetes Management</option>
-                                          <option value="63">Diet &amp; Fitness</option>
-                                          <option value="69">Digestion &amp; Nausea</option>
-                                          <option value="70">Eye Care</option>
-                                          <option value="73">Health Clearance</option>
-                                          <option value="75">Home Tests</option>
-                                      <option value="62">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Baby Needs</option>
-                                  </select>
-                                </div>
-                              </div>
-                              
-                              <div class="row">
-                                <div class="col-sm-6 form_el">
-                                  
-                                      <input checked="" type="checkbox" name="description" id="description" value="1">
-                                      <label for="description">Search in product descriptions</label>
-      
-                                </div>
-                                <div class="col-sm-6 form_el">
-                                  
-                                  <input checked="" type="checkbox" name="sub_category" id="sub_category" value="1">
-                                  <label for="sub_category">Search in subcategories</label>
-                                  
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <div class="bottom_buttons">
-                              <a href="#" class="button_blue middle_btn">Search</a>
-                            </div>
-                          
-                        </div>
-                        
-                        <!---->
-
-                        <section class="section_offset">
-                            
-                            <!--<h3>Products meeting the search criteria</h3>
-                            <p>There is no product that matches the search criteria.</p>-->
-                            <h1>Beauty</h1>
-
-                            <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula. Aliquam dapibus tincidunt metus. Praesent justo dolor, lobortis quis, lobortis dignissim, pulvinar ac, lorem. Vestibulum sed ante. Donec sagittis euismod purus. Sed ut perspiciatis sit voluptatem accusantim doloremque laudantim.</p>
-
-                        </section>
+                        <h1>Kết quả tìm kiếm - <%= params[:keyword] %></h1>                       
 
                         <!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
 
@@ -107,9 +54,9 @@
 
                                     <div class="v_centered">
 
-                                        <span>Show:</span>
+                                        <span>Hiển thị:</span>
 
-                                        <div class="custom_select">
+                                        <div class="">
 
                                             <select name="">
 
@@ -131,9 +78,9 @@
 
                                     <div class="v_centered">
 
-                                        <span>Sort by:</span>
+                                        <span>Sắp xếp:</span>
 
-                                        <div class="custom_select sort_select">
+                                        <div class="sort_select">
                                             
                                             <select name="">
                                                     
@@ -173,688 +120,160 @@
                             <div class="table_layout" id="products_container">
 
                                 <div class="table_row">
-
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_7.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$5.99</b></p>
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="rating alignright">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                    
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Sed ut perspiciatis unde, Liqui-gels 24 capsules</a>
-
-                                                <a href="#" class="product_category">Beauty Clearance</a>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                                
-                                                    <ul class="rating">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-
-                                                    </ul>
-                                                        
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="topbar">
-
-                                                        <li><a href="#">3 Review(s)</a></li>
-                                                        <li><a href="#">Add Your Review</a></li>
-
-                                                    </ul>
-
-                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                                <a href="#" class="learn_more">Learn More</a>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="actions">
-
-                                                <p class="product_price bold">$5.99</p>
-
-                                                <ul class="seller_stats">
-
-                                                    <li>Shipping: <span class="success">Free Shipping</span></li>
-                                                    <li>Availability: <span class="success">in stock</span></li>
-                                                    <li class="seller_info_wrap">
-
-                                                        Seller: <span class="seller_name">johnsmith</span>
-
-                                                        <div class="seller_info_dropdown">
-
-                                                            <ul class="seller_stats">
-
-                                                                <li>
-                                                                    
-                                                                    <ul class="topbar">
-                                                                        
-                                                                        <li>China (Mainland)</li>
-
-                                                                        <li><a href="#">Contact Details</a></li>
-
-                                                                    </ul>
-
-                                                                </li>
-
-                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
-
-                                                            </ul>
-
-                                                            <div class="v_centered">
-
-                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
-
-                                                                <a href="#" class="small_link">Chat Now</a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </li>
-
-                                                </ul>
-
-                                                <ul class="buttons_col">
-
-                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
-
-                                                </ul>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_8.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                                                <div class="label_bestseller">Bestseller</div>
-
-                                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$8.99</b></p>
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="rating alignright">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-
-                                                    </ul>
-                                                    
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Nemo enim ipsam voluptatem quia, 4.25 fl oz (126ml)</a>
-
-                                                <a href="#" class="product_category">Bath &amp; Spa</a>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                                
-                                                    <ul class="rating">
-
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-
-                                                    </ul>
-                                                        
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="topbar">
-
-                                                        <li><a href="#">3 Review(s)</a></li>
-                                                        <li><a href="#">Add Your Review</a></li>
-
-                                                    </ul>
-
-                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                                <a href="#" class="learn_more">Learn More</a>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="actions">
-
-                                                <p class="product_price bold">$8.99</p>
-
-                                                <ul class="seller_stats">
-
-                                                    <li>Shipping: $11.24/piece</li>
-                                                    <li>Availability: <span class="success">in stock</span></li>
-                                                    <li class="seller_info_wrap">
-
-                                                        Seller: <span class="seller_name">johnsmith</span>
-
-                                                        <div class="seller_info_dropdown">
-
-                                                            <ul class="seller_stats">
-
-                                                                <li>
-                                                                    
-                                                                    <ul class="topbar">
-                                                                        
-                                                                        <li>China (Mainland)</li>
-
-                                                                        <li><a href="#">Contact Details</a></li>
-
-                                                                    </ul>
-
-                                                                </li>
-
-                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
-
-                                                            </ul>
-
-                                                            <div class="v_centered">
-
-                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
-
-                                                                <a href="#" class="small_link">Chat Now</a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </li>
-
-                                                </ul>
-
-                                                <ul class="buttons_col">
-
-                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
-
-                                                </ul>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_9.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Quis autem vel eum iure reing elit, 2mg</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$76.99</b></p>
-
-                                                </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Quis autem vel eum iure reing elit, 2mg</a>
-
-                                                <a href="#" class="product_category">Beauty Clearance</a>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="topbar">
-
-                                                        <li>0 Review(s)</li>
-                                                        <li><a href="#">Add Your Review</a></li>
-
-                                                    </ul>
-
-                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
-
-                                                </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                                <a href="#" class="learn_more">Learn More</a>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="actions">
-
-                                                <p class="product_price bold">$76.99</p>
-
-                                                <ul class="seller_stats">
-
-                                                    <li>Shipping: <span class="success">Free Shipping</span></li>
-                                                    <li>Availability: <span class="success">in stock</span></li>
-                                                    <li class="seller_info_wrap">
-
-                                                        Seller: <span class="seller_name">johnsmith</span>
-
-                                                        <div class="seller_info_dropdown">
-
-                                                            <ul class="seller_stats">
-
-                                                                <li>
-                                                                    
-                                                                    <ul class="topbar">
-                                                                        
-                                                                        <li>China (Mainland)</li>
-
-                                                                        <li><a href="#">Contact Details</a></li>
-
-                                                                    </ul>
-
-                                                                </li>
-
-                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
-
-                                                            </ul>
-
-                                                            <div class="v_centered">
-
-                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
-
-                                                                <a href="#" class="small_link">Chat Now</a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </li>
-
-                                                </ul>
-
-                                                <ul class="buttons_col">
-
-                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
-
-                                                </ul>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .table_row -->
-
-                                <div class="table_row">
-
-                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
+                                    
+                                    <% @products.each_with_index do |product, index| %>
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                        <div class="product_item">
-
-                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <div class="image_wrap">
-
-                                                <img src="/frontend/images/product_img_6.jpg" alt="">
-
-                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                                <div class="actions_wrap">
-
-                                                    <div class="centered_buttons">
-
-                                                        <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="/frontend/modals/quick_view.html">Xem nhanh</a>
-
-                                                        <a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
-
-                                                    </div><!--/ .centered_buttons -->
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-
-                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
-
-                                                </div><!--/ .actions_wrap-->
-                                                
-                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                                                <div class="label_new">New</div>
-
-                                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/. image_wrap-->
-
-                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <div class="description">
-
-                                                <a href="#">Aliquam congue fermentum nisl, 100mg, Softgels 120 ea</a>
-
-                                                <div class="clearfix product_info">
-
-                                                    <p class="product_price alignleft"><b>$75.39</b></p>
-
+    
+                                        <div class="table_cell">
+    
+                                            <div class="product_item">
+    
+                                                <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="image_wrap">
+    
+                                                    <% if product.get_main_image.present? %>
+																
+                                                        <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                    
+                                                    <% else %>
+                                                        
+                                                        <img src="/frontend/images/medium_image.png" alt="">
+                                                    
+                                                    <% end %>
+    
+                                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+    
+                                                    <div class="actions_wrap">
+    
+                                                        <div class="centered_buttons">
+    
+                                                            <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
+                                                            
+                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category" %>
+    
+                                                        </div><!--/ .centered_buttons -->
+    
+                                                        <% if current_user.present? %>
+											
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+                                                        
+                                                        <% else %>
+                                                            
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+                                                        
+                                                        <% end %>
+                                                        
+                                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
+    
+                                                    </div><!--/ .actions_wrap-->
+                                                    
+                                                    <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+    
+                                                </div><!--/. image_wrap-->
+    
+                                                <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                                <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="description">
+    
+                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+    
+                                                    <div class="clearfix product_info">
+    
+                                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+    
+                                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+    
+                                                        <ul class="rating alignright">
+    
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li></li>
+    
+                                                        </ul>
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+    
+                                                    </div>
+    
                                                 </div>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="full_description">
-
-                                                <a href="#" class="product_title">Aliquam congue fermentum nisl, 100mg, Softgels 120 ea</a>
-
-                                                <a href="#" class="product_category">Beauty Clearance</a>
-
-                                                <div class="v_centered product_reviews">
-
-                                                    <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
-
-                                                    <ul class="topbar">
-
-                                                        <li>0 Review(s)</li>
-                                                        <li><a href="#">Add Your Review</a></li>
-
+    
+                                                <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+    
+                                                <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="full_description">
+    
+                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title" %>
+    
+                                                    <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+    
+                                                    <div class="v_centered product_reviews">
+    
+                                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                                    
+                                                        <ul class="rating">
+    
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li></li>
+    
+                                                        </ul>
+                                                            
+                                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+    
+                                                    </div>
+    
+                                                    <p class="text-justifly"><%= product.short_description %></p>
+    
+                                                </div>
+    
+                                                <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+    
+                                                <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="actions">
+    
+                                                    <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+    
+                                                    <ul class="buttons_col">
+                                                        
+                                                        <li><%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %></li>
+                                                        
+                                                        <% if current_user.present? %>
+                                                            
+                                                            <li><%= link_to '<i class="icon-heart-5"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link" %></li>
+                                                        
+                                                        <% else %>
+                                                            
+                                                            <li><%= link_to '<i class="icon-heart-5"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link" %></li>
+                                                            
+                                                        <% end %>
+                                                        
+                                                        <li><%= link_to '<i class="icon-resize-small"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link" %></li>
+    
                                                     </ul>
-
-                                                    <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
-
+    
                                                 </div>
-
-                                                <p>Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
-
-                                                <a href="#" class="learn_more">Learn More</a>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                            <div class="actions">
-
-                                                <p class="product_price bold">$75.39</p>
-
-                                                <ul class="seller_stats">
-
-                                                    <li>Shipping: $16.63/piece</li>
-                                                    <li>Availability: <span class="success">in stock</span></li>
-                                                    <li class="seller_info_wrap">
-
-                                                        Seller: <span class="seller_name">johnsmith</span>
-
-                                                        <div class="seller_info_dropdown">
-
-                                                            <ul class="seller_stats">
-
-                                                                <li>
-                                                                    
-                                                                    <ul class="topbar">
-                                                                        
-                                                                        <li>China (Mainland)</li>
-
-                                                                        <li><a href="#">Contact Details</a></li>
-
-                                                                    </ul>
-
-                                                                </li>
-
-                                                                <li><span class="bold">99.8%</span> Positive Feedback</li>
-
-                                                            </ul>
-
-                                                            <div class="v_centered">
-
-                                                                <a href="#" class="button_blue mini_btn">Contact Seller</a>
-
-                                                                <a href="#" class="small_link">Chat Now</a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </li>
-
-                                                </ul>
-
-                                                <ul class="buttons_col">
-
-                                                    <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Thêm vào mục yêu thích</a></li>
-
-                                                    <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Thêm vào mục so sánh</a></li>
-
-                                                </ul>
-
-                                            </div>
-
-                                            <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .product_item-->
+    
+                                                <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+    
+                                            </div><!--/ .product_item-->
+    
+                                        </div>
+    
+                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+                                
+                                <%= "</div><!--/ .table_row --><div class=\"table_row\"><!--/ .table_row -->".html_safe if index%3 == 2 %>
                                         
-                                        <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-
-                                    </div>
-
-                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .table_row -->
+                                    <% end %>
 
                             </div><!--/ .table_layout -->
 
@@ -862,21 +281,13 @@
 
                                 <div class="left_side">
 
-                                    <p>Showing 1 to 3 of 45 (15 Pages)</p>
+                                    <p><%= page_entries_info @products %> sản phẩm.</p>
 
                                 </div>
 
                                 <div class="right_side">
 
-                                    <ul class="pags">
-
-                                        <li><a href="#"></a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#"></a></li>
-
-                                    </ul>
+                                    <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
 
                                 </div>
 

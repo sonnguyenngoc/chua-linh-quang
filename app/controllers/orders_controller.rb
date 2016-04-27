@@ -27,7 +27,17 @@ class OrdersController < ApplicationController
     @order.order_delivery = @order_delivery
     
     @order.user_id = current_user.id if current_user.present?
-
+    
+    if @cart.coupon.present?
+        @order.coupon_code = @cart.coupon_code
+        @order.coupon_price = @cart.coupon.price
+    end
+    
+    if @cart.voucher.present?
+        @order.voucher_code = @cart.voucher_code
+        @order.voucher_price = @cart.voucher.price
+    end
+    
     respond_to do |format|
       if @order.save
         @order.save_from_cart(@cart)

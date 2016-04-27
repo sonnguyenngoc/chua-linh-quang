@@ -43,3 +43,7 @@
 .category_taggable_list, .category_taggable_list .fancytree-icon::after {
     font-size: 20px;
 }
+.font-small {
+    font-size: small;
+    margin-bottom: 5px;
+}

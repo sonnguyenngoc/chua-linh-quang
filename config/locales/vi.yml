@@ -9,7 +9,7 @@ vi:
   design_by: "Thiết kế bởi"
   my_profile: "Hồ sơ"
   account_settings: "Cài đặt tài khoản"
-  logout: "Đăng thoát"
+  logout: "Đăng xuất"
   
   #filter
   listing_products: "Danh sách sản phẩm"
@@ -111,11 +111,13 @@ vi:
   
   #-------------------------------------
   comment: "Bình luận"
-  comments: "Danh sách bình luận"
+  comments: "Bình luận sản phẩm"
+  comment_articles: "Bình luận bài viết"
   customer_name: "Tên khách hàng"
   product_name: "Tên sản phẩm"
   star: "sao"
   rating: "Đánh giá"
+  article_title: "Tiêu đề bài viết"
   
   #-------------------------------------
   question: "Câu hỏi"
@@ -151,7 +153,20 @@ vi:
   settings: "Cài đặt"
   
   #-------------------------------------
-  voucher_coupon: "Phiếu mua hàng/Quà tặng"
+  voucher_coupon: "Phiếu mua hàng/Mã giảm giá"
+  vouchers: "Phiếu mua hàng"
+  coupons: "Mã giảm giá"
+  listing_coupons: "Danh sách mã giảm giá"
+  new_coupon: "Tạo mới"
+  edit_coupon: "Chỉnh sửa"
+  from_date: "Từ ngày"
+  to_date: "Đến ngày"
+  description: "Mô tả"
+  listing_vouchers: "Danh sách phiếu mua hàng"
+  new_voucher: "Tạo mới"
+  edit_voucher: "Chỉnh sửa"
+  price_coupon: "Số tiền"
+  quantity_coupon: "Số lượng"
   
   will_paginate:
     page_entries_info:
