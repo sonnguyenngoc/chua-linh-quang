@@ -60,11 +60,16 @@
         </div>
     </div>
     
-    <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:listing_codes) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-10">
+    <% if !@coupon.code.nil? %>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" ><%= t(:listing_codes) %> <span class='text-danger'>*</span></label>
+            <div class="col-lg-10">
+                <% @coupon.codes.each do |code| %>
+                    <span class="label bg-primary font-small"><%= code %></span>
+                <% end %>
+            </div>
         </div>
-    </div>
+    <% end %>
 
     <div class="text-right">
         <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
