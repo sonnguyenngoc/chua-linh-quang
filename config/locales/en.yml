@@ -130,8 +130,8 @@ en:
   listing_delivery_methods: "Listing Delivery Methods"
   
   #-------------------------------------
-  payment_method: "Payments"
-  payment_methods: "Payments"
+  payment_method: "Payment Method"
+  payment_methods: "Payment Methods"
   new_delivery_method: "New Payment Method"
   edit_payment_method: "Edit Payment Method"
   listing_delivery_methods: "Listing Payment Methods"
