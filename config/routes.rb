@@ -140,10 +140,33 @@ Rails.application.routes.draw do
       resources :newsletters
       resources :contacts
       resources :wish_lists
-      resources :comments
+      resources :comments do
+        collection do
+          get 'search'
+        end
+      end
+      resources :questions do
+        collection do
+          get 'search'
+        end
+      end
+      resources :customers do
+        collection do
+          get 'search'
+        end
+      end
+      resources :payment_methods do
+        collection do
+          get 'search'
+        end
+      end
+      resources :delivery_methods do
+        collection do
+          get 'search'
+        end
+      end
+
       resources :comment_articles
-      resources :payment_methods
-      resources :delivery_methods
       resources :slideshows
       resources :vouchers
       resources :coupons

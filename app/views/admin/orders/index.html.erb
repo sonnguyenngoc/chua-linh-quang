@@ -129,11 +129,14 @@
                             <% @orders.each do |item| %>
                                 <tr>
                                     <td><%= item.customer.name %></td>
-                                    <% item.order_details.each do |detail| %>
-                                        <td><%= detail.product.name %> - (x<%= detail.quantity %>)</td>
-                                    <% end %>
+                                    <td>
+                                        <% item.order_details.each do |detail| %>
+                                            <%= detail.product.name %> - (x<%= detail.quantity %>)
+                                            <br />
+                                        <% end %>
+                                    </td>
                                     <td><%= format_number(item.total_order) %> đ</td>
-                                    <td></td>
+                                    <td><span class="label label-success">Pending...</span></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <ul class="icons-list">
@@ -144,10 +147,7 @@
                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_order_path(item) %>
-                                                    </li>
-                                                    <li>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i> View'.html_safe, {controller: "admin/orders", action: "show", id: item.id} %>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -159,7 +159,10 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            
+                            <div class="dataTables_info" ><%= page_entries_info @orders %></div>
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <%= will_paginate @orders, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                            </div>
                         </div>
                     </div>
                 </div>

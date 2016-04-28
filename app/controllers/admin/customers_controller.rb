@@ -1,10 +1,10 @@
-class CustomersController < ApplicationController
+class Admin::CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    @customers = Customer.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /customers/1

@@ -120,6 +120,10 @@ en:
   article_title: "Title"
   
   #-------------------------------------
+  question: "Question"
+  questions: "Questions"
+  
+  #-------------------------------------
   delivery_method: "Delivery Method"
   delivery_methods: "Delivery Methods"
   new_delivery_method: "New Delivery Method"
@@ -133,8 +137,13 @@ en:
   listing_delivery_methods: "Listing Payment Methods"
   
   #-------------------------------------
-  customer: "Customers"
+  customer: "Customer"
   customers: "Customers"
+  email: "Email"
+  phone: "Phone"
+  company: "Company"
+  info: "Information"
+  last_bought: "Last Bought"
   
   #-------------------------------------
   user: "Users"

@@ -120,6 +120,10 @@ vi:
   article_title: "Tiêu đề bài viết"
   
   #-------------------------------------
+  question: "Câu hỏi"
+  questions: "Danh sách câu hỏi"
+  
+  #-------------------------------------
   delivery_method: "Hình thức giao hàng"
   delivery_methods: "Danh sách hình thức giao hàng"
   new_delivery_method: "Tạo mới hình thức giao hàng"
@@ -135,6 +139,11 @@ vi:
   #-------------------------------------
   customer: "Khách hàng"
   customers: "Danh sách khách hàng"
+  email: "Email"
+  phone: "Điện thoại"
+  company: "Công ty"
+  info: "Thông tin"
+  last_bought: "Lần mua cuối"
   
   #-------------------------------------
   user: "Người dùng"

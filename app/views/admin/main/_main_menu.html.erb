@@ -55,6 +55,14 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-question-sign"></i> <span><%= t(:question) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/questions"].include?(params[:controller]) %>">
+                        <%= link_to t(:questions), admin_questions_path %>
+                    </li>
+                </ul>
+            </li>
             <li >
                 <a href="#"><i class="icon-truck"></i> <span><%= t(:delivery_method) %></span></a>
                 <ul>
@@ -85,7 +93,9 @@
             <li>
                 <a href="#"><i class="icon-people"></i> <span><%= t(:customer) %></span></a>
                 <ul>
-                    <li><%= link_to t(:customers), "" %></li>
+                    <li class="<%= "active" if ["admin/customers"].include?(params[:controller]) %>">
+                        <%= link_to t(:customers), admin_customers_path %>
+                    </li>
                 </ul>
             </li>
             <li>
