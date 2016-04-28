@@ -208,3 +208,9 @@ form ul > li:not(:last-child) {
 input[type="radio"] + label::before {
     background: #E8E8E8;
 }
+.small_add_cart_button {
+    padding: 5px 11px 4px;
+}
+.add_success {
+    display: none;
+}

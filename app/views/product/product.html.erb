@@ -284,7 +284,7 @@
 											<div class="qty min clearfix">
 
 												<button class="theme_button" data-direction="minus">&#45;</button>
-												<input type="text" name="" value="1">
+												<input type="text" name="" class="quantity" value="1">
 												<button class="theme_button" data-direction="plus">&#43;</button>
 
 											</div>
@@ -296,8 +296,10 @@
 										<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
 
 										<div class="buttons_row">
-
-											<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart" %>
+											
+											<a href="#" class="button_dark_grey add_success" data-modal-url="<%= add_success_path %>">Success</a>
+														
+											<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart add_to_cart_button" %>
 											
 											<% if current_user.present? %>
 											
@@ -733,7 +735,7 @@
 				
 																	<a href="#" class="button_dark_grey quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
 				
-																	<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue add_to_cart" %>
+																	<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue add_to_cart add_to_cart_button small_add_cart_button" %>
 				
 																</div><!--/ .centered_buttons -->
 				
@@ -815,7 +817,7 @@
 
 													<a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
 
-													<a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+													<a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
 
 												</div><!--/ .centered_buttons -->
 
@@ -901,11 +903,29 @@
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
     <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+	<%= javascript_include_tag '/frontend/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
 
     <!-- Theme files
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+	
+	<script>
+		$(document).on("click", ".add_to_cart_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url,
+				data: {quantity: $("input.quantity").val()}
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_success").trigger("click")
+			});
+		});
+	</script>
     
 </body>

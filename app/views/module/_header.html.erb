@@ -161,3 +161,15 @@
     <!-- - - - - - - - - - - - - - End of bottom part - - - - - - - - - - - - - - - - -->
 
 </header>
+<script>
+    function get_cart() {
+        var url = "<%= cart_carts_path %>";
+        $.ajax({
+            method: "GET",
+            url: url   
+        })
+        .done(function( msg ) {
+		  $(".ajax_shopping_carts").html(msg);
+		});
+    }
+</script>
