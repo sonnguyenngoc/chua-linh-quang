@@ -110,7 +110,7 @@ vi:
   orders: "Đơn đặt hàng"
   
   #-------------------------------------
-  comment: "Bình luận"
+  comment_question: "Bình luận/Câu hỏi"
   comments: "Bình luận sản phẩm"
   comment_articles: "Bình luận bài viết"
   customer_name: "Tên khách hàng"

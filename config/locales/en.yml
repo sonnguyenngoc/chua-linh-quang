@@ -110,7 +110,7 @@ en:
   orders: "Orders"
   
   #-------------------------------------
-  comment: "Comment"
+  comment_question: "Comment/Question"
   comments: "Comment Products"
   comment_articles: "Comment Articles"
   customer_name: "Customer Name"

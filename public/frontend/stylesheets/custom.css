@@ -205,3 +205,6 @@ form ul > li:not(:last-child) {
         top: 130px;
     }
 }
+input[type="radio"] + label::before {
+    background: #E8E8E8;
+}
