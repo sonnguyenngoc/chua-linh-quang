@@ -230,3 +230,17 @@ input[type="radio"] + label::before {
 .user_input input.error, .user_input textarea.error {
 	border-color: red;
 }
+.sticky_part.sticky .header_logo {
+    height: 80px;
+}
+.header_logo .logo img {
+    width: 200px;
+}
+.sticky_part.sticky .logo {
+    overflow: hidden;
+    height: 72px;
+}
+.sticky_part.sticky .logo > img {
+    width: 224px;
+    margin-top: -11px;
+}
