@@ -21,9 +21,13 @@ class InformationController < ApplicationController
     @title_head = "Sitemap"
   end
   
+  def faq
+    @title_head = "FAQ"
+  end
+  
   def delivery
-    @delivery_information = Article.where(code: "delivery_information").first
-    @title_head = @delivery_information.title
+    @delivery_information = Article.all.where(code: "delivery_information").first
+    @title_head = "Thông tin giao hàng"
   end
   
   def privacy_policy
