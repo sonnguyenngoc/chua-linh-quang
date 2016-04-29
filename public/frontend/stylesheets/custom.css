@@ -244,3 +244,12 @@ input[type="radio"] + label::before {
     width: 224px;
     margin-top: -11px;
 }
+.company_info {
+    margin-bottom: 20px;
+}
+.company_name {
+    margin-bottom: 7px !important;
+}
+.footer_section_3 {
+    padding-top: 10px;
+}
