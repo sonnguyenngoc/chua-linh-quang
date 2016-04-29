@@ -19,7 +19,15 @@ class ProductController < ApplicationController
     render :layout => false
   end
   
-  def add_success
+  def add_cart_success
+    render :layout => false
+  end
+  
+  def add_wishlist_success
+    render :layout => false
+  end
+  
+  def add_compare_success
     render :layout => false
   end
   

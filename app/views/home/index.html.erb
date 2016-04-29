@@ -46,7 +46,13 @@
 
 				<!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
 				
-				<a href="#" class="button_dark_grey add_success" data-modal-url="<%= add_success_path %>">Success</a>
+				<a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
+											
+											<a href="#" class="button_dark_grey add_wishlist_success" data-modal-url="<%= add_wishlist_success_path %>">Success</a>
+											
+											<a href="#" class="button_dark_grey add_compare_success" data-modal-url="<%= add_compare_success_path %>">Success</a>
+				
+				<a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
 
 				<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
 
@@ -136,8 +142,38 @@
 			})
 			.done(function( msg ) {
 				get_cart();
-				$(".add_success").trigger("click")
+				$(".add_cart_success").trigger("click")
 			});
+		});
+		$(document).on("click", ".add_to_wishlist_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_wishlist_success").trigger("click");
+			});
+		});
+		$(document).on("click", ".add_to_compare_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_compare_success").trigger("click");
+			});
+		});
+		$(document).on("click", ".no_singed_button", function(e){
+			e.preventDefault();
+			$(".no_singed").trigger("click")
 		});
 	</script>
 	

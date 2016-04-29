@@ -211,6 +211,15 @@ input[type="radio"] + label::before {
 .small_add_cart_button {
     padding: 5px 11px 4px;
 }
-.add_success {
+.add_cart_success {
+    display: none;
+}
+.add_wishlist_success {
+    display: none;
+}
+.add_compare_success {
+    display: none;
+}
+.no_singed {
     display: none;
 }

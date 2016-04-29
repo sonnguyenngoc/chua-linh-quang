@@ -51,4 +51,8 @@ class AccountController < ApplicationController
   def newsletter
 	@title_head = "Đăng ký nhận tin mới"
   end
+  
+  def no_singed
+	render :layout => false
+  end
 end

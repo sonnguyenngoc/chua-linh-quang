@@ -125,6 +125,8 @@
                                     
                                         <a href="#" class="button_dark_grey add_success" data-modal-url="<%= add_success_path %>">Success</a>
 
+                                        <a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
+                                        
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
     
                                         <div class="table_cell">
@@ -163,7 +165,7 @@
                                                         
                                                         <% else %>
                                                             
-                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
                                                         
                                                         <% end %>
                                                         
@@ -361,6 +363,10 @@
 				get_cart();
 				$(".add_success").trigger("click")
 			});
+		});
+        $(document).on("click", ".no_singed_button", function(e){
+			e.preventDefault();
+			$(".no_singed").trigger("click")
 		});
 	</script>
     

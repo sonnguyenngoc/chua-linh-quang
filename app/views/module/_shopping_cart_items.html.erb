@@ -65,7 +65,7 @@
     
                             <p><%= item.quantity %> x <%= format_number(item.product.price) %> đ</p>
     
-                            <%= link_to "" , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "close"}  %>
+                            <%= link_to "" , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "close remove_item"}  %>
     
                         </div><!--/ .clearfix.sc_product-->
                         
