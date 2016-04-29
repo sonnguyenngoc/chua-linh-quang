@@ -5,6 +5,74 @@
 <div id="quick_view" class="modal_window">
 
 	<button class="close arcticmodal-close"></button>
+	
+	<div class="quick_view_add_cart_success">
+		
+		<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+		
+		<div class="alert_box success">
+
+			<b>Thêm thành công!</b> Xem <%= link_to "giỏ hàng", { controller: "checkout", action: "shopping_cart" } %> của bạn.
+
+			<a class="close"></a>
+
+		</div>
+		
+		<!--/ .alert_box.success -->
+		
+		<br/>
+		
+	</div>
+	
+	<div class="quick_view_add_wishlist_success">
+		
+		<div class="alert_box info">
+
+			<b>Thêm thành công!</b> Xem <%= link_to "danh sách", { controller: "account", action: "wishlist" } %> sản phẩm yêu thích.
+	
+			<a class="close"></a>
+	
+		</div>
+		
+		<!--/ .alert_box.info -->
+		
+		<br/>
+		
+	</div>
+	
+	<div class="quick_view_add_wishlist_error">
+		
+		<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+		
+		<div class="alert_box info">
+
+			<b>Thêm thất bại!</b> Bạn cần <%= link_to "đăng nhập", { controller: "account", action: "login" } %> hoặc <%= link_to "đăng ký", { controller: "account", action: "register" } %> để thêm sản phẩm vào danh sách yêu thích.
+	
+			<a class="close"></a>
+	
+		</div>
+		
+		<br/>
+		
+	</div>
+	
+	<div class="quick_view_add_compare_success">
+		
+		<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+		
+		<div class="alert_box success">
+
+			<b>Thêm thành công!</b> Xem <%= link_to "danh sách", { controller: "product", action: "comparison" } %> sản phẩm so sánh.
+
+			<a class="close"></a>
+
+		</div>
+		
+		<!--/ .alert_box.success -->
+		
+		<br/>
+		
+	</div>
 
 	<div class="clearfix">
 
@@ -73,19 +141,23 @@
 
 			<div class="description_section v_centered">
 
-				<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-			
-				<ul class="rating">
+				<% if @product.count_stars.length > 0 %>
 
-					<li class="active"></li>
-					<li class="active"></li>
-					<li class="active"></li>
-					<li></li>
-					<li></li>
-
-				</ul>
+					<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
 					
-				<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+					<ul class="rating">
+						
+						<% (1..@product.average_stars).each do |star| %>
+
+							<li class="active"></li>
+						
+						<% end %>
+
+					</ul>
+						
+					<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+				<% end %>
 
 				<!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
 
@@ -160,7 +232,7 @@
 				<div class="qty min clearfix">
 
 					<button class="theme_button" data-direction="minus">&#45;</button>
-					<input type="text" name="" value="1">
+					<input type="text" name="" class="quantity" value="1">
 					<button class="theme_button" data-direction="plus">&#43;</button>
 
 				</div>
@@ -173,19 +245,19 @@
 
 			<div class="buttons_row">
 				
-				<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart" %>
+				<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart quick_view_add_to_cart_button" %>
 
 				<% if current_user.present? %>
 											
-					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container quick_view_add_to_wishlist_button" %>
 				
 				<% else %>
 					
-					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container error_quick_view_add_to_wishlist_button" %>
 				
 				<% end %>
 				
-				<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
+				<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container quick_view_add_to_compare_button" %>
 
 			</div>
 
@@ -198,6 +270,84 @@
 	</div>
 
 </div>
+
+<script>
+	$(document).on("click", ".quick_view_add_to_cart_button", function(e){
+		e.preventDefault();
+		
+		var url = $(this).attr("href");
+		$.ajax({
+			method: "GET",
+			url: url,
+			data: {quantity: $("input.quantity").val()}
+		})
+		.done(function( msg ) {
+			get_cart();
+			$(".quick_view_add_cart_success").show();
+	
+			$(".quick_view_add_wishlist_success").hide();
+			
+			$(".quick_view_add_wishlist_error").hide();
+			
+			$(".quick_view_add_compare_success").hide();
+		});
+	});
+	$(document).on("click", ".quick_view_add_to_wishlist_button", function(e){
+		e.preventDefault();
+		
+		var url = $(this).attr("href");
+		$.ajax({
+			method: "GET",
+			url: url
+		})
+		.done(function( msg ) {
+			get_cart();
+			$(".quick_view_add_cart_success").hide();
+	
+			$(".quick_view_add_wishlist_success").show();
+			
+			$(".quick_view_add_wishlist_error").hide();
+			
+			$(".quick_view_add_compare_success").hide();
+		});
+	});
+	$(document).on("click", ".error_quick_view_add_to_wishlist_button", function(e){
+		e.preventDefault();
+		$(".quick_view_add_cart_success").hide();
+	
+		$(".quick_view_add_wishlist_success").hide();
+		
+		$(".quick_view_add_wishlist_error").show();
+		
+		$(".quick_view_add_compare_success").hide();
+	});
+	$(document).on("click", ".quick_view_add_to_compare_button", function(e){
+		e.preventDefault();
+		
+		var url = $(this).attr("href");
+		$.ajax({
+			method: "GET",
+			url: url
+		})
+		.done(function( msg ) {
+			get_cart();
+			$(".quick_view_add_cart_success").hide();
+	
+			$(".quick_view_add_wishlist_success").hide();
+			
+			$(".quick_view_add_wishlist_error").hide();
+			
+			$(".quick_view_add_compare_success").show();
+		});
+	});
+	$(".quick_view_add_cart_success").hide();
+	
+	$(".quick_view_add_wishlist_success").hide();
+	
+	$(".quick_view_add_wishlist_error").hide();
+	
+	$(".quick_view_add_compare_success").hide();
+</script>
 
 <!--==================================
 		End quick view modal window

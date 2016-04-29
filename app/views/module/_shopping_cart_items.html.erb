@@ -41,65 +41,85 @@
 
         <div class="shopping_cart dropdown">
             
-            <% @cart.line_items.each do |item| %>
-
-                <div class="animated_item">
-
-                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                    <div class="clearfix sc_product">
-                        
-                        <% if item.product.get_main_image.present? %>
-                                    
-                            <%= link_to image_tag(item.product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
-                        
-                        <% else %>
+            <% if @cart.get_number_items > 0 %>
+            
+                <% @cart.line_items.each do |item| %>
+    
+                    <div class="animated_item">
+    
+                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+                        <div class="clearfix sc_product">
                             
-                            <%= link_to image_tag("/frontend/images/smaller_image.png"), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
+                            <% if item.product.get_main_image.present? %>
+                                        
+                                <%= link_to image_tag(item.product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
+                            
+                            <% else %>
+                                
+                                <%= link_to image_tag("/frontend/images/smaller_image.png"), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
+                            
+                            <% end %>
+    
+                            <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_name" %>
+    
+                            <p><%= item.quantity %> x <%= format_number(item.product.price) %> đ</p>
+    
+                            <%= link_to "" , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "close remove_item"}  %>
+    
+                        </div><!--/ .clearfix.sc_product-->
                         
+                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+    
+                    </div><!--/ .animated_item-->
+                
+                <% end %>
+    
+                <div class="animated_item">
+    
+                    <!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
+    
+                    <ul class="total_info">
+    
+                        <li><span class="price">Thành tiền:</span> <%= format_number(@cart.total_order) %> đ</li>
+                        
+                        <% if @cart.voucher.present? %>
+    
+                            <li><span class="price">Voucher:</span>- <%= format_number(@cart.voucher.price) %> đ</li>
+                            
                         <% end %>
-
-                        <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_name" %>
-
-                        <p><%= item.quantity %> x <%= format_number(item.product.price) %> đ</p>
-
-                        <%= link_to "" , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "close"}  %>
-
-                    </div><!--/ .clearfix.sc_product-->
+                        
+                        <% if @cart.coupon.present? %>
+    
+                            <li><span class="price">Coupon:</span>- <%= format_number(@cart.coupon.price) %> đ</li>
+                            
+                        <% end %>
+    
+                        <li class="total"><b><span class="price">Tổng:</span> <%= format_number(@cart.total_order_sale) %> đ</b></li>
+    
+                    </ul>
                     
-                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
+                    <!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
+    
+                </div><!--/ .animated_item-->
+                
+            <% else %>
+                
+                <div class="animated_item">
+    
+                    <!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
+    
+                    <ul class="total_info">
+    
+                        <li>Giỏ hàng trống!</li>
+    
+                    </ul>
+                    
+                    <!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
+    
                 </div><!--/ .animated_item-->
             
             <% end %>
-
-            <div class="animated_item">
-
-                <!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
-
-                <ul class="total_info">
-
-                    <li><span class="price">Thành tiền:</span> <%= format_number(@cart.total_order) %> đ</li>
-                    
-                    <% if @cart.voucher.present? %>
-
-                        <li><span class="price">Voucher:</span>- <%= format_number(@cart.voucher.price) %> đ</li>
-                        
-                    <% end %>
-                    
-                    <% if @cart.coupon.present? %>
-
-                        <li><span class="price">Coupon:</span>- <%= format_number(@cart.coupon.price) %> đ</li>
-                        
-                    <% end %>
-
-                    <li class="total"><b><span class="price">Tổng:</span> <%= format_number(@cart.total_order_sale) %> đ</b></li>
-
-                </ul>
-                
-                <!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
-
-            </div><!--/ .animated_item-->
 
             <div class="animated_item">
                 

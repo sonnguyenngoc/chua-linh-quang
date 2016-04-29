@@ -196,21 +196,25 @@
 										<h3 class="offset_title"><%= @product.name %></h3>
 
 										<div class="description_section v_centered">
+											
+											<% if @product.count_stars.length > 0 %>
 
-											<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-										
-											<ul class="rating">
-
-												<li class="active"></li>
-												<li class="active"></li>
-												<li class="active"></li>
-												<li></li>
-												<li></li>
-
-											</ul>
+												<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
 												
-											<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+												<ul class="rating">
+													
+													<% (1..@product.average_stars).each do |star| %>
+	
+														<li class="active"></li>
+													
+													<% end %>
+	
+												</ul>
+													
+												<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
 
+											<% end %>
+											
 											<!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
 
 											<ul class="topbar">
@@ -284,7 +288,7 @@
 											<div class="qty min clearfix">
 
 												<button class="theme_button" data-direction="minus">&#45;</button>
-												<input type="text" name="" value="1">
+												<input type="text" name="" class="quantity" value="1">
 												<button class="theme_button" data-direction="plus">&#43;</button>
 
 											</div>
@@ -296,20 +300,28 @@
 										<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
 
 										<div class="buttons_row">
-
-											<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart" %>
+											
+											<a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
+											
+											<a href="#" class="button_dark_grey add_wishlist_success" data-modal-url="<%= add_wishlist_success_path %>">Success</a>
+											
+											<a href="#" class="button_dark_grey add_compare_success" data-modal-url="<%= add_compare_success_path %>">Success</a>
+														
+											<a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
+											
+											<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart add_to_cart_button" %>
 											
 											<% if current_user.present? %>
 											
-												<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+												<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
 											
 											<% else %>
 												
-												<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+												<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
 											
 											<% end %>
 											
-											<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
+											<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
 											
 											<a href="#tab-questions" data-toggle="tooltip" class="button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container"><span class="tooltip top">Câu hỏi về sản phẩm</span></a>
 
@@ -445,11 +457,11 @@
 																		
 																		<% if current_user.present? %>
 																			
-																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true %>
+																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
 																		
 																		<% else %>
 																			
-																			<%= f.text_field :name %>
+																			<%= f.text_field :name, required: true %>
 																			
 																		<% end %>
 					
@@ -465,11 +477,11 @@
 																		
 																		<% if current_user.present? %>
 																			
-																			<%= f.email_field :email, value: current_user.email, readonly: true %>
+																			<%= f.email_field :email, value: current_user.email, readonly: true, required: true %>
 																		
 																		<% else %>
 																			
-																			<%= f.email_field :email %>
+																			<%= f.email_field :email, required: true %>
 																			
 																		<% end %>
 					
@@ -483,7 +495,7 @@
 					
 																		<label for="cf_message" class="required">Nội dung câu hỏi</label>
 																		
-																		<%= f.text_area :content, rows: "6" %>
+																		<%= f.text_area :content, rows: "6", required: true %>
 					
 																	</div><!--/ [col]-->
 					
@@ -611,11 +623,11 @@
                                                                         
 																		<% if current_user.present? %>
 																			
-																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true %>
+																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
 																		
 																		<% else %>
 																			
-																			<%= f.text_field :name %>
+																			<%= f.text_field :name, required: true %>
 																			
 																		<% end %>
             
@@ -629,7 +641,7 @@
             
                                                                         <label for="cf_name" class="required">Nội dung</label>
             
-                                                                        <%= f.text_area :content, rows: "5" %>
+                                                                        <%= f.text_area :content, rows: "5", required: true %>
             
                                                                     </div>
             
@@ -643,15 +655,15 @@
                     
                                                                         <div class="form_el">
 																			
-																			<%= f.radio_button :star, '1' %><label for="comment_star_1">Rất kém</label>
+																			<%= f.radio_button :star, '1', required: true %><label for="comment_star_1">Rất kém</label>
 																			
-																			<%= f.radio_button :star, '2' %><label for="comment_star_2">Kém</label>
+																			<%= f.radio_button :star, '2', required: true %><label for="comment_star_2">Kém</label>
 																			
-																			<%= f.radio_button :star, '3' %><label for="comment_star_3">Bình thường</label>
+																			<%= f.radio_button :star, '3', required: true %><label for="comment_star_3">Bình thường</label>
 																			
-																			<%= f.radio_button :star, '4' %><label for="comment_star_4">Tốt</label>
+																			<%= f.radio_button :star, '4', required: true %><label for="comment_star_4">Tốt</label>
 																			
-																			<%= f.radio_button :star, '5' %><label for="comment_star_5">Rất tốt</label>
+																			<%= f.radio_button :star, '5', required: true %><label for="comment_star_5">Rất tốt</label>
                     
                                                                         </div>
                     
@@ -733,13 +745,21 @@
 				
 																	<a href="#" class="button_dark_grey quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
 				
-																	<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue add_to_cart" %>
+																	<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue add_to_cart add_to_cart_button small_add_cart_button" %>
 				
 																</div><!--/ .centered_buttons -->
-				
-																<a href="#" class="button_dark_grey def_icon_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-				
-																<a href="#" class="button_dark_grey def_icon_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách so sánh</span></a>
+																
+																<% if current_user.present? %>
+											
+																	<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+																
+																<% else %>
+																	
+																	<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn add_to_wishlist tooltip_container no_singed_button" %>
+																
+																<% end %>
+															
+																<%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn add_to_compare tooltip_container add_to_compare_button" %>
 				
 															</div><!--/ .actions_wrap-->
 															
@@ -815,7 +835,7 @@
 
 													<a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
 
-													<a href="#" class="button_blue middle_btn add_to_cart">Thêm giỏ hàng</a>
+													<a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
 
 												</div><!--/ .centered_buttons -->
 
@@ -901,11 +921,59 @@
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
     <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+	<%= javascript_include_tag '/frontend/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
 
     <!-- Theme files
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+	
+	<script>
+		$(document).on("click", ".add_to_cart_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url,
+				data: {quantity: $("input.quantity").val()}
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_cart_success").trigger("click")
+			});
+		});
+		$(document).on("click", ".add_to_wishlist_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_wishlist_success").trigger("click");
+			});
+		});
+		$(document).on("click", ".add_to_compare_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_compare_success").trigger("click");
+			});
+		});
+		$(document).on("click", ".no_singed_button", function(e){
+			e.preventDefault();
+			$(".no_singed").trigger("click")
+		});
+	</script>
     
 </body>

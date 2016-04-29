@@ -2,40 +2,49 @@ class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
-  # GET /carts
-  # GET /carts.json
-  def index
-    @carts = Cart.all
-  end
-
-  # GET /carts/1
-  # GET /carts/1.json
-  def show
-  end
-
-  # GET /carts/new
-  def new
-    @cart = Cart.new
-  end
-
-  # GET /carts/1/edit
-  def edit
-  end
-
-  # POST /carts
-  # POST /carts.json
-  def create
-    @cart = Cart.new(cart_params)
-
-    respond_to do |format|
+  ## GET /carts
+  ## GET /carts.json
+  #def index
+  #  @carts = Cart.all
+  #end
+  #
+  ## GET /carts/1
+  ## GET /carts/1.json
+  #def show
+  #end
+  #
+  ## GET /carts/new
+  #def new
+  #  @cart = Cart.new
+  #end
+  #
+  ## GET /carts/1/edit
+  #def edit
+  #end
+  #
+  ## POST /carts
+  ## POST /carts.json
+  #def create
+  #  @cart = Cart.new(cart_params)
+  #
+  #  respond_to do |format|
+  #    if @cart.save
+  #      format.html { redirect_to controller: "checkout", action: "shopping_cart" }
+  #      format.json { render :show, status: :created, location: @cart }
+  #    else
+  #      format.html { render :new }
+  #      format.json { render json: @cart.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
+  
+  def cart
       if @cart.save
-        format.html { redirect_to controller: "checkout", action: "shopping_cart" }
-        format.json { render :show, status: :created, location: @cart }
+        render "/module/_shopping_cart_items", layout: nil
+        @success = true
       else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+        @success = false
       end
-    end
   end
 
   # PATCH/PUT /carts/1

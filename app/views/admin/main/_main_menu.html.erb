@@ -45,7 +45,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="glyphicon glyphicon-comment"></i> <span><%= t(:comment) %></span></a>
+                <a href="#"><i class="glyphicon glyphicon-comment"></i> <span><%= t(:comment_question) %></span></a>
                 <ul>
                     <li class="<%= "active" if ["admin/comments"].include?(params[:controller]) %>">
                         <%= link_to t(:comments), admin_comments_path %>
@@ -53,11 +53,6 @@
                     <li class="<%= "active" if ["admin/comment_articles"].include?(params[:controller]) %>">
                         <%= link_to t(:comment_articles), admin_comment_articles_path %>
                     </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><i class="glyphicon glyphicon-question-sign"></i> <span><%= t(:question) %></span></a>
-                <ul>
                     <li class="<%= "active" if ["admin/questions"].include?(params[:controller]) %>">
                         <%= link_to t(:questions), admin_questions_path %>
                     </li>

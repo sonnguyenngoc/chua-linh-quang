@@ -19,6 +19,18 @@ class ProductController < ApplicationController
     render :layout => false
   end
   
+  def add_cart_success
+    render :layout => false
+  end
+  
+  def add_wishlist_success
+    render :layout => false
+  end
+  
+  def add_compare_success
+    render :layout => false
+  end
+  
   def comparison
     @title_head = "So sánh sản phẩm"
     @compare.remove_item(params[:line_item_compare_id]) if params[:do] == "remove_item"

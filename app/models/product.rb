@@ -138,6 +138,27 @@ class Product < ActiveRecord::Base
     wish_lists.exists? user_id: user
   end
   
+  #average stars - count stars
+  def count_stars
+    arr = []
+    self.comments.each do |item|
+      arr << item.star
+    end
+    
+    return arr
+  end
+  
+  #average stars
+  def average_stars
+    if count_stars.length > 0
+      sum = 0
+      total_stars = count_stars.each { |b| sum += b }
+      average = sum / count_stars.length
+    end
+    
+    return average
+  end
+  
   private
     # ensure that there are no line items referencing this product
     def ensure_not_referenced_by_any_line_item

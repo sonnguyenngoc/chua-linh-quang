@@ -58,7 +58,7 @@
 											
 											<div class="form_el">
 												
-												<%= f.text_field :first_name, class: "form-control", value: current_user.first_name %>
+												<%= f.text_field :first_name, class: "form-control", value: current_user.first_name, required: true %>
 											
 											</div>
 										
@@ -74,7 +74,7 @@
 											
 											<div class="form_el">
 												
-												<%= f.text_field :last_name, class: "form-control", value: current_user.last_name %>
+												<%= f.text_field :last_name, class: "form-control", value: current_user.last_name, required: true %>
 											
 											</div>
 										
@@ -90,7 +90,7 @@
 											
 											<div class="form_el">
 												
-												<%= f.email_field :email, class: "form-control", value: current_user.email, readonly: true %>
+												<%= f.email_field :email, class: "form-control", value: current_user.email, readonly: true, required: true %>
 											
 											</div>
 										
@@ -106,7 +106,7 @@
 											
 											<div class="form_el">
 												
-												<%= f.text_field :phone, class: "form-control", value: current_user.phone %>
+												<%= f.text_field :phone, class: "form-control", value: current_user.phone, required: true%>
 											
 											</div>
 										
@@ -166,7 +166,7 @@
 							  
 												<div class="form_el">
 							  
-													<%= f.text_field :address_1, class: "form-control", value: current_user.address_1 %>
+													<%= f.text_field :address_1, class: "form-control", value: current_user.address_1, required: true %>
 							  
 												</div>
 							  
@@ -216,7 +216,7 @@
 								
 													<div>
         
-														<select name="user[country]">
+														<select required="required" name="user[country]">
 															
 															<option value="Vietnam">Việt Nam</option>
 				
@@ -240,7 +240,7 @@
 													
 													<div>
 							  
-														<select name="user[province]">
+														<select required="required" name="user[province]">
 			
 															<% Area.get_list_province_city.each do |area| %>
 				  
@@ -280,7 +280,7 @@
 								  
 												<div class="form_el">
 								  
-													<%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+													<%= f.password_field :current_password, autocomplete: "off", class: "form-control", required: true %>
 								  
 												</div>
 								
@@ -296,7 +296,7 @@
 								
 											  <div class="form_el">
 								
-												  <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+												  <%= f.password_field :password, autocomplete: "off", class: "form-control", required: true %>
 								
 											  </div>
 							  
@@ -312,7 +312,7 @@
 								
 											  <div class="form_el">
 								
-												  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+												  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", required: true %>
 								
 											  </div>
 							  

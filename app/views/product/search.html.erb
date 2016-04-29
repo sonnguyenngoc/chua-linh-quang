@@ -122,7 +122,11 @@
                                 <div class="table_row">
                                     
                                     <% @products.each_with_index do |product, index| %>
+                                    
+                                        <a href="#" class="button_dark_grey add_success" data-modal-url="<%= add_success_path %>">Success</a>
 
+                                        <a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
+                                        
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
     
                                         <div class="table_cell">
@@ -151,7 +155,7 @@
     
                                                             <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
                                                             
-                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category" %>
+                                                            <%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category add_to_cart_button" %>
     
                                                         </div><!--/ .centered_buttons -->
     
@@ -161,7 +165,7 @@
                                                         
                                                         <% else %>
                                                             
-                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
                                                         
                                                         <% end %>
                                                         
@@ -336,6 +340,7 @@
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
     <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag '/frontend/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
     <%= stylesheet_link_tag '/frontend/css/custom.css' %>
 
@@ -343,5 +348,26 @@
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+    <script>
+		$(document).on("click", ".add_to_cart_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url,
+				data: {quantity: $("input.quantity").val()}
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_success").trigger("click")
+			});
+		});
+        $(document).on("click", ".no_singed_button", function(e){
+			e.preventDefault();
+			$(".no_singed").trigger("click")
+		});
+	</script>
     
 </body>

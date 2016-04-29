@@ -57,22 +57,22 @@
                                         <div class="centered_buttons">
         
                                             <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
-                                                            
-                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+											
+											<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category add_to_cart_button" %>
         
                                         </div><!--/ .centered_buttons -->
         
                                         <% if current_user.present? %>
 											
-											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
 										
 										<% else %>
 											
-											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
 										
 										<% end %>
         
-                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
+                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
         
                                     </div><!--/ .actions_wrap-->
                                     
@@ -106,21 +106,25 @@
         
                                     <div class="clearfix product_info">
         
-                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                        <% if product.count_stars.length > 0 %>
+
+											<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+											
+											<ul class="rating alignright">
+												
+												<% (1..product.average_stars).each do |star| %>
+
+													<li class="active"></li>
+												
+												<% end %>
+
+											</ul>
+												
+											<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+										<% end %>
         
-                                        <ul class="rating alignright">
-        
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li></li>
-        
-                                        </ul>
-        
-                                        <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-        
-                                        <p class="product_price alignleft"><s>$9.99</s> <b><%= format_number(product.price) %> đ</b></p>
+                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
         
                                     </div><!--/ .clearfix.product_info-->
         

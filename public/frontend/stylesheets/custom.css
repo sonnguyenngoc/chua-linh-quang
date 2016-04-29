@@ -205,3 +205,21 @@ form ul > li:not(:last-child) {
         top: 130px;
     }
 }
+input[type="radio"] + label::before {
+    background: #E8E8E8;
+}
+.small_add_cart_button {
+    padding: 5px 11px 4px;
+}
+.add_cart_success {
+    display: none;
+}
+.add_wishlist_success {
+    display: none;
+}
+.add_compare_success {
+    display: none;
+}
+.no_singed {
+    display: none;
+}

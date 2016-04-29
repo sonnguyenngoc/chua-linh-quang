@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  validates :name, :content, :star, presence: true
   belongs_to :product
   belongs_to :user
   
@@ -7,6 +8,7 @@ class Comment < ActiveRecord::Base
       ["Created At", "comments.created_at"]
     ]
   end
+  
   def self.sort_order
     [
       ["ASC","asc"],

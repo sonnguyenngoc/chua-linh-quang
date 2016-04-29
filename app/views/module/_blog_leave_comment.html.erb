@@ -24,11 +24,11 @@
                         
                         <% if current_user.present? %>
 																			
-                            <%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true %>
+                            <%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
                         
                         <% else %>
                             
-                            <%= f.text_field :name %>
+                            <%= f.text_field :name, required: true %>
                             
                         <% end %>
 
@@ -40,11 +40,11 @@
                         
                         <% if current_user.present? %>
 																			
-                            <%= f.text_field :email, value: current_user.email, readonly: true %>
+                            <%= f.text_field :email, value: current_user.email, readonly: true, required: true %>
                         
                         <% else %>
                             
-                            <%= f.text_field :email %>
+                            <%= f.text_field :email, required: true %>
                             
                         <% end %>
 
@@ -58,7 +58,7 @@
 
                         <label for="lc_message">Nội dung</label>
                         
-                        <%= f.text_area :content, rows: "6s" %>
+                        <%= f.text_area :content, rows: "6", required: true %>
 
                     </div>
 

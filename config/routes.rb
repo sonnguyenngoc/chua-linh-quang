@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get "account/password" => "account#password", as: :password
     get "account/voucher" => "account#voucher", as: :voucher
     get "account/voucher/success" => "account#voucher_success", as: :voucher_success
+    get "account/no_singed" => "account/no_singed", as: :no_singed
     # end account
     
     # checkout
@@ -62,6 +63,9 @@ Rails.application.routes.draw do
     get "product/comparison" => "product#comparison", as: :comparison
     get "product/product/:product_id" => "product#product", as: :product
     get "product/quick_view/:product_id" => "product#quick_view", as: :quick_view
+    get "product/add_cart_success" => "product/add_cart_success", as: :add_cart_success
+    get "product/add_wishlist_success" => "product/add_wishlist_success", as: :add_wishlist_success
+    get "product/add_compare_success" => "product/add_compare_success", as: :add_compare_success
     get "product/search" => "product#search", as: :search
     get "product/testimonial" => "product#testimonial", as: :testimonial
     get "product/testimonialform" => "product#testimonialform", as: :testimonialform
@@ -75,12 +79,17 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
     resources :carts do
       collection do
+        get "cart"
         get "use_voucher"
         get "shopping_cart_use_voucher"
         get "use_coupon"
       end
     end
-    resources :line_items
+    resources :line_items do
+      collection do
+        get "add_to_cart"
+      end
+    end
     resources :customers
     resources :orders
     resources :wish_lists do
