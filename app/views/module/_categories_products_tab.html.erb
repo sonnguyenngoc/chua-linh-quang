@@ -106,21 +106,25 @@
         
                                     <div class="clearfix product_info">
         
-                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                        <% if product.count_stars.length > 0 %>
+
+											<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+											
+											<ul class="rating alignright">
+												
+												<% (1..product.average_stars).each do |star| %>
+
+													<li class="active"></li>
+												
+												<% end %>
+
+											</ul>
+												
+											<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+										<% end %>
         
-                                        <ul class="rating alignright">
-        
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li class="active"></li>
-                                            <li></li>
-        
-                                        </ul>
-        
-                                        <!-- - - - - - - - - - - - - - End product rating - - - - - - - - - - - - - - - - -->
-        
-                                        <p class="product_price alignleft"><s>$9.99</s> <b><%= format_number(product.price) %> đ</b></p>
+                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
         
                                     </div><!--/ .clearfix.product_info-->
         

@@ -20,19 +20,23 @@
     
                         <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
     
-                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-    
-                        <ul class="rating alignleft">
-    
-                            <li class="active"></li>
-                            <li class="active"></li>
-                            <li class="active"></li>
-                            <li class="active"></li>
-                            <li class=""></li>
-    
-                        </ul>
-                        
-                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                        <% if product.count_stars.length > 0 %>
+
+                            <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                            
+                            <ul class="rating">
+                                
+                                <% (1..product.average_stars).each do |star| %>
+
+                                    <li class="active"></li>
+                                
+                                <% end %>
+
+                            </ul>
+                                
+                            <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                        <% end %>
     
                     </div>
     

@@ -62,7 +62,7 @@
 		
 		<div class="alert_box success">
 
-			<b>Thêm thành công!</b> Xem <%= link_to "danh sách", { controller: "checkout", action: "shopping_cart" } %> sản phẩm so sánh.
+			<b>Thêm thành công!</b> Xem <%= link_to "danh sách", { controller: "product", action: "comparison" } %> sản phẩm so sánh.
 
 			<a class="close"></a>
 
@@ -141,19 +141,23 @@
 
 			<div class="description_section v_centered">
 
-				<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-			
-				<ul class="rating">
+				<% if @product.count_stars.length > 0 %>
 
-					<li class="active"></li>
-					<li class="active"></li>
-					<li class="active"></li>
-					<li></li>
-					<li></li>
-
-				</ul>
+					<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
 					
-				<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+					<ul class="rating">
+						
+						<% (1..@product.average_stars).each do |star| %>
+
+							<li class="active"></li>
+						
+						<% end %>
+
+					</ul>
+						
+					<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+				<% end %>
 
 				<!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
 
