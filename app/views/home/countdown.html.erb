@@ -81,14 +81,84 @@ $(document).ready(function(){
 });
 </script>
 <style>
-    .count_titles {
-        font-family: Arial;
-    }
-	#logo {
+.count_titles {
+		font-family: Arial;
+}
+#logo {
 		margin: auto;
 		padding-bottom: 30px;
 		padding-top: 30px;
-	}
+}
+.intro-boxes {
+		margin: 40px 0;
+		width: 100%;
+}
+.intro-box {
+		float: left;
+		padding: 1%;
+		width: 47%;
+		height: 500px;
+		border: solid 1px #ddd;
+}
+.intro-box.right {
+		float: right;
+}
+.intro-box .title {
+		color: #555;
+		font-size: 150%;
+		line-height: 28px;
+		font-weight: bold;
+}
+.intro-box .article_content {
+    color: #555;
+    font-size: 115%;
+    line-height: 22px;
+    margin-top: 12px;
+    padding: 10px;
+    text-align: left;
+}
+#form_contact {
+		
+}
+#form_contact input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    padding: 7px 10px;
+    width: 500px;
+}
+#form_contact textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    height: 110px;
+    margin-top: 5px;
+    padding: 10px;
+    width: 500px;
+}
+#form_contact button {
+    background: #519f18 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    margin: 5px;
+    padding: 5px 20px;
+	cursor: pointer;
+}
+#form_contact button:hover {
+		opacity: 0.9;
+}
+#form_contact label {
+    color: #333;
+    display: block;
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 10px;
+}
 </style>
 </head>
 
@@ -130,16 +200,48 @@ $(document).ready(function(){
     <h2 style="visibility: hidden">Lorem ipsum dolor sit amet, vel brute quaestio volutpat no, eu est delenit signiferumque.</h2>
 <div id="defaultCountdown"></div>
 <div class="clr"></div>
-<div style="font-size: 180%; line-height: 32px; color: #555"><%= Article.find(30).content.html_safe %></div>
+<div style="font-size: 180%; line-height: 32px; color: #555; font-weight: bold; margin-bottom: 20px">Mời Quý Bạn đón nhận những món đặc sản<br />
+từ khắp mọi miền đất nước</div>
+
+
+<%
+countdown_left = !Article.where(code: "countdown_left").first.nil? ? Article.where(code: "countdown_left").first : Article.new
+countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.where(code: "countdown_right").first : Article.new
+%>
+
+<% if countdown_left.title.present? and countdown_right.title.present? %>
+
+<div class="intro-boxes">
+		<div class="intro-box">
+				<strong class="title"><%= countdown_left.title %></strong>
+				<div class="article_content">
+						<%= countdown_right.content.html_safe %>
+				</div>
+		</div>
+		<div class="intro-box right">
+				<strong class="title"><%= countdown_left.title %></strong>
+				<div class="article_content">
+						<%= countdown_right.content.html_safe %>
+				</div>
+		</div>
+		<br style="clear: both" />
+</div>
+
+<% end %>
+
+
 <!-- Start newsletter form -->
-<div id="form_bg" style="display: none">
+<div id="form_contact">
+		<label>Mọi thông tin xin gửi email cho chúng tôi!</label>
 	<form method="post" id="myform" action="/counter/index_4.php">
-	<input name="Email" type="text" class="required email" value="enter your email address.." onclick="clickclear(this, 'enter your email address..')" onfocus="clickclear(this, 'enter your email address..')" onblur="clickrecall(this,'enter your email 	address..')"/>    
-	<button type="submit" class="send_bt">Send Message</button>
+		<input name="Email" type="text" class="required email" placeholder="Nhập địa chỉ email của bạn" /> <!--value="nhập địa chỉ email của bạn.." onclick="clickclear(this, 'nhập địa chỉ email của bạn..')" onfocus="clickclear(this, 'nhập địa chỉ email của bạn..')" onblur="clickrecall(this,'nhập địa chỉ email của bạn..')" />-->
+		<br /><textarea placeholder="Nội dung liên hệ"></textarea>
+		<br /><button type="submit" class="">Gửi thông tin</button>
     </form>
     						
 		<!-- END SEND MAIL SCRIPT -->    
 </div>
+
 
 </div><!-- End wrapper -->
 
@@ -147,7 +249,7 @@ $(document).ready(function(){
 <div id="footer">
 <ul>
     <li><a href="#">Twitter</a></li>
-    <li class="last"><a href="#">Facebook</a></li>
+    <li class="last"><a target="_blank" href="https://www.facebook.com/DacSanVungMien.net">Facebook</a></li>
 </ul>
 <div class="clr"></div>
 Copyright © 2016 DacSanVungMien.net
