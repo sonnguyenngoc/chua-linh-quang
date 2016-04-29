@@ -145,13 +145,18 @@ $(document).ready(function(){
 label.error {
 		display: none !important;
 }
+
+#form_contact {
+    display: inline-block;
+    width: 540px;
+}
 #form_contact textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     color: #333;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 16px;
-    height: 110px;
+    height: 210px;
     margin-top: 5px;
     padding: 10px;
     width: 500px;
@@ -255,37 +260,58 @@ countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.w
 
 <% if countdown_left.title.present? and countdown_right.title.present? %>
 
-<div class="intro-boxes">
-		<div class="intro-box">
-				<strong class="title"><%= countdown_left.title %></strong>
-				<div class="article_content">
-						<%= countdown_left.content.html_safe %>
-				</div>
-		</div>
-		<div class="intro-box right">
-				<strong class="title"><%= countdown_left.title %></strong>
-				<div class="article_content">
-						<%= countdown_right.content.html_safe %>
-				</div>
-		</div>
-		<br style="clear: both" />
-</div>
-
+						<div class="intro-boxes">
+								<div class="intro-box">
+										<strong class="title"><%= countdown_left.title %></strong>
+										<div class="article_content">
+												<%= countdown_left.content.html_safe %>
+										</div>
+								</div>
+								<div class="intro-box right">
+										<strong class="title"><%= countdown_left.title %></strong>
+										<div class="article_content">
+												<%= countdown_right.content.html_safe %>
+										</div>
+								</div>
+								<br style="clear: both" />
+						</div>
+				
 <% end %>
 
-
-<!-- Start newsletter form -->
-<div id="form_contact" style="display: none">
-		<label>Mọi thông tin xin gửi email cho chúng tôi!</label>
-		<form method="post" id="x_form_contact" action="/counter/index_4.php">
-			<input name="Email" type="text" class="required email" placeholder="Nhập địa chỉ email của bạn" /> <!--value="nhập địa chỉ email của bạn.." onclick="clickclear(this, 'nhập địa chỉ email của bạn..')" onfocus="clickclear(this, 'nhập địa chỉ email của bạn..')" onblur="clickrecall(this,'nhập địa chỉ email của bạn..')" />-->
-			<br /><textarea class="required" placeholder="Nội dung liên hệ"></textarea>
-			<br /><button type="submit" class="">Gửi thông tin</button>
-		</form>
-    						
-		<!-- END SEND MAIL SCRIPT -->    
+<div style="">
+		<div style="display: inline">
+				<!-- Start newsletter form -->
+								<div id="form_contact" style="display: ">
+										<label>Mọi thông tin xin gửi email cho chúng tôi!</label>
+										<form method="post" id="x_form_contact" action="/counter/index_4.php">
+											<input name="Email" type="text" class="required email" placeholder="Nhập địa chỉ email của bạn" /> <!--value="nhập địa chỉ email của bạn.." onclick="clickclear(this, 'nhập địa chỉ email của bạn..')" onfocus="clickclear(this, 'nhập địa chỉ email của bạn..')" onblur="clickrecall(this,'nhập địa chỉ email của bạn..')" />-->
+											<br /><textarea class="required" placeholder="Nội dung liên hệ"></textarea>
+											<br /><button type="submit" class="">Gửi thông tin</button>
+										</form>
+															
+										<!-- END SEND MAIL SCRIPT -->    
+								</div>
+		</div>
+								
+		<div style="display: inline">
+								<div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+								<div class="fb-xfbml-parse-ignore">
+									<blockquote cite="https://www.facebook.com/DacSanVungMien.net">
+										<a href="https://www.facebook.com/DacSanVungMien.net">Market Online</a>
+									</blockquote>
+								</div>
+							</div>
+								<div id="fb-root"></div>
+								<script>(function(d, s, id) {
+								  var js, fjs = d.getElementsByTagName(s)[0];
+								  if (d.getElementById(id)) return;
+								  js = d.createElement(s); js.id = id;
+								  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+								  fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));</script>
+		</div>
+		
 </div>
-
 
 </div><!-- End wrapper -->
 
@@ -293,7 +319,7 @@ countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.w
 <div id="footer">
 <ul>
     <!--<li><a href="#">Twitter</a></li>-->
-    <li class="last"><a target="_blank" href="https://www.facebook.com/DacSanVungMien.net">Facebook</a></li>
+    <!--<li class="last"><a target="_blank" href="https://www.facebook.com/DacSanVungMien.net">Facebook</a></li>-->
 </ul>
 
 <div class="share_bottom_countdown">
