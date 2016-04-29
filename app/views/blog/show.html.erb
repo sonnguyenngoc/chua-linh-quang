@@ -175,7 +175,7 @@
 
                             <footer class="bottom_box">
 
-                                Từ khóa bài viết: <a href="#">beauty</a>, <a href="#">medicine</a>, <a href="#">health</a>
+                                Từ khóa bài viết: <% @blog.split_tags.each do |tag| %> <a href="#"><%= tag %></a> <% end %>
 
                             </footer>
 

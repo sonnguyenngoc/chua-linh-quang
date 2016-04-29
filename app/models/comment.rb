@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
       ["Created At", "comments.created_at"]
     ]
   end
+  
   def self.sort_order
     [
       ["ASC","asc"],
