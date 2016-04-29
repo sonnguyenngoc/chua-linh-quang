@@ -8,6 +8,10 @@ class Article < ActiveRecord::Base
     self.order("created_at DESC").first(3)
   end
   
+  def split_tags
+    tags.split(",").map {|s| s.to_s }
+  end
+  
   def self.get_all_blogs
     self.all.order("created_at DESC")
   end
