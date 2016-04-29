@@ -20,9 +20,11 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Account</li>
-                    <li>Gift Voucher</li>
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                    
+					<li><%= @title_head %></li>
 
                 </ul>
 
@@ -32,13 +34,13 @@
 
                     <aside class="col-md-3 col-sm-4">
 
-                        <%= render 'menu_account_login' %>
+                        <%= render "module/menu_account_logged" %>
 
                     </aside><!--/ [col]-->
 
                     <main class="col-md-9 col-sm-8">
 
-                        <h1>Purchase a Gift Certificate</h1>
+                        <h1><%= @title_head %></h1>
                         
                         <div class="table_wrap bordered_content">
                         

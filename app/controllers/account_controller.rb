@@ -55,4 +55,8 @@ class AccountController < ApplicationController
   def no_singed
 	render :layout => false
   end
+  
+  def voucher
+	@title_head = "Phiếu quà tặng"
+  end
 end

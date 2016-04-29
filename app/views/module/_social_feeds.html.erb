@@ -71,9 +71,9 @@
                
               <div class="animated_item">
 
-                  <p class="form_caption">Lorem ipsum dolor sit amet, adipis mauris accumsan.</p>
+                  <p class="form_caption">Điền thông tin và tin nhắn để gửi đến Đặc sản vùng miền.</p>
 
-                  <form class="contactform" novalidate>
+                  <%= form_for Contact.new do |f| %>
 
                       <ul>
 
@@ -81,7 +81,7 @@
 
                               <div class="col-xs-12">
 
-                                  <input type="text" required title="Name" name="cf_name" placeholder="Your name">
+                                  <input type="text" required title="Name" id="contact_name" name="contact[name]" placeholder="Họ & tên">
 
                               </div>
 
@@ -91,7 +91,7 @@
 
                               <div class="col-xs-12">
 
-                                  <input type="email" required title="Email" name="cf_email" placeholder="Your address">
+                                  <input type="email" required title="Email" id="contact_email" name="contact[email]" placeholder="Your address">
 
                               </div>
 
@@ -101,7 +101,7 @@
 
                               <div class="col-xs-12">
 
-                                  <textarea placeholder="Message" required title="Message" name="cf_message" rows="6"></textarea>
+                                  <textarea placeholder="Message" required title="Message" id="contact_message" name="contact[message]" rows="6"></textarea>
 
                               </div>
 
@@ -111,7 +111,7 @@
 
                               <div class="col-xs-12">
 
-                                  <button class="button_grey middle_btn">Send</button>
+                                  <button class="button_grey middle_btn">Gửi liên hệ</button>
 
                               </div>
 
@@ -119,7 +119,7 @@
 
                       </ul>
 
-                  </form>
+                  <% end %>
 
               </div><!--/ .animated_item-->
 

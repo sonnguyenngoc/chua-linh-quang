@@ -223,3 +223,10 @@ input[type="radio"] + label::before {
 .no_singed {
     display: none;
 }
+.user_input {
+	height: auto;
+	min-height: 35px;
+}
+.user_input input.error, .user_input textarea.error {
+	border-color: red;
+}
