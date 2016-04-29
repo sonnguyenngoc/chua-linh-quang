@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feedbacks
   scope "(:locale)", locale: /vi|en/ do
     root "home#countdown"
     get "home" => "home#index", as: :home
@@ -179,6 +180,7 @@ Rails.application.routes.draw do
       resources :slideshows
       resources :vouchers
       resources :coupons
+      resources :companies
     end
   end
 end

@@ -40,7 +40,6 @@ $(function () {
 	var austDay = new Date();
 	austDay = new Date('2016-06-15');
 	$('#defaultCountdown').countdown({until: austDay});
-	
 		
 });
 </script>
@@ -277,11 +276,16 @@ countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.w
 <!-- Start newsletter form -->
 <div id="form_contact" style="display: none">
 		<label>Mọi thông tin xin gửi email cho chúng tôi!</label>
-		<form method="post" id="x_form_contact" action="/counter/index_4.php">
+		
+		<%= form_for Feedback.new, html: {id: "x_form_contact"} do |f| %>
+			
 			<input name="Email" type="text" class="required email" placeholder="Nhập địa chỉ email của bạn" /> <!--value="nhập địa chỉ email của bạn.." onclick="clickclear(this, 'nhập địa chỉ email của bạn..')" onfocus="clickclear(this, 'nhập địa chỉ email của bạn..')" onblur="clickrecall(this,'nhập địa chỉ email của bạn..')" />-->
+			
 			<br /><textarea class="required" placeholder="Nội dung liên hệ"></textarea>
+			
 			<br /><button type="submit" class="">Gửi thông tin</button>
-		</form>
+		
+		<% end %>
     						
 		<!-- END SEND MAIL SCRIPT -->    
 </div>
