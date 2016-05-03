@@ -146,9 +146,21 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
-      resources :newsletters
-      resources :contacts
-      resources :wish_lists
+      resources :newsletters do
+        collection do
+          get 'search'
+        end
+      end
+      resources :contacts do
+        collection do
+          get 'search'
+        end
+      end
+      resources :wish_lists do
+        collection do
+          get 'search'
+        end
+      end
       resources :comments do
         collection do
           get 'search'
@@ -175,10 +187,26 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :comment_articles
-      resources :slideshows
-      resources :vouchers
-      resources :coupons
+      resources :comment_articles do
+        collection do
+          get 'search'
+        end
+      end
+      resources :slideshows do
+        collection do
+          get 'search'
+        end
+      end
+      resources :vouchers do
+        collection do
+          get 'search'
+        end
+      end
+      resources :coupons do
+        collection do
+          get 'search'
+        end
+      end
     end
   end
 end

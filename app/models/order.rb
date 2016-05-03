@@ -96,5 +96,8 @@ class Order < ActiveRecord::Base
     end
     return amount
   end
+  
+  def date_delivery
+  end
 
 end

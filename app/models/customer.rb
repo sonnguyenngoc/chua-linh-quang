@@ -19,7 +19,7 @@ class Customer < ActiveRecord::Base
   #
   def self.sort_by
     [
-      ["Last Bought","last_bought"]
+      ["Last Bought","customers.created_at"]
     ]
   end
   
@@ -29,5 +29,22 @@ class Customer < ActiveRecord::Base
       ["DESC","desc"],
     ]
   end
+  
+  def self.search(params)
+    records = self.all
+    
+    #Search keyword filter
+    if params[:keyword].present?
+        records = records.where("LOWER(CONCAT(customers.first_name,' ',customers.last_name,' ',customers.email,' ',customers.phone,' ',customers.company,' ',customers.address,' ',customers.city,' ',customers.zip_code,' ',customers.country,' ',customers.province)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+    end
+    
+    # for sorting
+    sort_by = params[:sort_by].present? ? params[:sort_by] : "customers.created_at"
+    sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
+    records = records.order("#{sort_by} #{sort_order}")
+    
+    return records   
+  end
+
 
 end

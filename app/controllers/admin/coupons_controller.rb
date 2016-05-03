@@ -4,7 +4,12 @@ class Admin::CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all.paginate(:page => params[:page], :per_page => 10)
+    @coupons = Coupon.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search 
+    @coupons = Coupon.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/coupons/index"
   end
 
   # GET /coupons/1

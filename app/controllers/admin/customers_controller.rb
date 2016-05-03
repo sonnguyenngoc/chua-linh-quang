@@ -4,7 +4,12 @@ class Admin::CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all.paginate(:page => params[:page], :per_page => 10)
+    @customers = Customer.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @customers = Customer.search(params).paginate(:page => params[:page], :per_page => 10)
+    render 'admin/customers/index'
   end
 
   # GET /customers/1

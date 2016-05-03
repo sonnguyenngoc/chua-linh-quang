@@ -144,6 +144,8 @@ en:
   company: "Company"
   info: "Information"
   last_bought: "Last Bought"
+  customer_detail: "Customer Detail"
+  customer_info: "Customer Information"
   
   #-------------------------------------
   user: "Users"

@@ -55,6 +55,38 @@
                         <%= link_to t(:new_voucher), new_admin_voucher_path, class: 'btn btn-primary pull-right' %>
                     </div>
                     
+                    <div class="filter-box">
+                        <%= form_for("", url: {controller: 'vouchers', action: 'search'}, method: "get") do |f| %>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:sort_by) %></label>
+                                        <div>
+                                            <%= select_tag(:sort_by, options_for_select(Voucher.sort_by, :selected => params[:sort_by]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:sort_order) %></label>
+                                        <div>
+                                            <%= select_tag(:sort_order, options_for_select(Voucher.sort_order, :selected => params[:sort_order]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 pull-right">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:filter) %></label>
+                                        <div class="input-group">
+                                            <input type="text" name="keyword" class="form-control" placeholder="<%= t(:placeholder_filter) %>" value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        <% end %>
+                    </div>
+                    
                     <table class="table">
                         <thead>
                             <tr class="bg-teal-800">

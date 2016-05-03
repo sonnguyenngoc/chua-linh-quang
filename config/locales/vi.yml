@@ -21,7 +21,7 @@ vi:
   category: "Chuyên mục"
   status: "Trạng thái"
   filter: "Tìm kiếm"
-  placeholder_filter: "Nhập tìm kiếm theo tên..."
+  placeholder_filter: "Nhập từ khóa tìm kiếm ..."
   sort_by: "Sắp xếp theo"
   sort_order: "Sắp tăng/giảm"
   
@@ -144,6 +144,8 @@ vi:
   company: "Công ty"
   info: "Thông tin"
   last_bought: "Lần mua cuối"
+  customer_detail: "Thông tin chi tiết khách hàng"
+  customer_info: "Thông tin khách hàng"
   
   #-------------------------------------
   user: "Người dùng"

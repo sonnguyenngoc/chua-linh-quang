@@ -4,7 +4,12 @@ class Admin::CommentArticlesController < ApplicationController
   # GET /comment_articles
   # GET /comment_articles.json
   def index
-    @comment_articles = CommentArticle.all.paginate(:page => params[:page], :per_page => 10)
+    @comment_articles = CommentArticle.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @comment_articles = CommentArticle.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/comment_articles/index"
   end
 
   # GET /comment_articles/1

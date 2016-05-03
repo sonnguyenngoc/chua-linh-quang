@@ -69,14 +69,14 @@
                             <p>Họ tên: <%= @order.order_delivery.name %></p>
                             <p>Công ty: </p>
                             <p>Địa chỉ: <%= @order.order_delivery.display_address %></p>
-                            <p>Ngày đặt hàng: 18/04/2016</p>
-                            <p>Ngày giao hàng: 25/04/2016</p>
+                            <p>Ngày đặt hàng: <%= @order.created_at.strftime("%d/%m/%Y") %></p>
+                            <p>Ngày giao hàng: ...</p>
                         </div>
                     </div>
                     <div class="panel-body col-md-12">
                         <div class="col-md-6">
                             <h6><b>Hình thức vận chuyển</b></h6>
-                            <p>Chưa có dữ liệu </p>
+                            <p><%= @order.order_delivery.delivery_method.title %> </p>
                         </div>
                         <div class="col-md-6">
                             <h6><b>Hình thức thanh toán</b></h6>

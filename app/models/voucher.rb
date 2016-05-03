@@ -56,4 +56,33 @@ class Voucher < ActiveRecord::Base
     }
     return code
   end
+  
+  #Filter, search
+  def self.sort_by
+    [
+      ["Created At","vouchers.created_at"]
+    ]
+  end
+  def self.sort_order
+    [
+      ["ASC", "asc"],
+      ["DESC", "desc"],
+    ]
+  end
+  def self.search(params)
+    records = self.all
+    
+    #Search keyword filter
+    if params[:keyword].present?
+        records = records.where("LOWER(vouchers.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+    end
+    
+    # for sorting
+    sort_by = params[:sort_by].present? ? params[:sort_by] : "vouchers.created_at"
+    sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
+    records = records.order("#{sort_by} #{sort_order}")
+    
+    return records   
+  end
+  
 end
