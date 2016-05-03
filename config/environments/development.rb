@@ -40,4 +40,17 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  # set delivery method to :smtp, :sendmail or :test
+  config.action_mailer.delivery_method = :smtp
+  
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'soft.support@hoangkhang.com.vn',
+    :password             => 'aA456321@#$',
+    :authentication       => "plain",
+   :enable_starttls_auto => true
+  }
 end

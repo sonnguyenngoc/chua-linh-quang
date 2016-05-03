@@ -32,7 +32,7 @@
         <link rel="stylesheet" type="text/css" href="css/ie.css" />
 <![endif]-->
 <!-- JQUERY -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 <!-- JQUERY COUNTDOWN -->
 <script type="text/javascript" src="/countdown/js/jquery.countdown.js"></script>
 <script type="text/javascript">
@@ -40,6 +40,7 @@ $(function () {
 	var austDay = new Date();
 	austDay = new Date('2016-06-15');
 	$('#defaultCountdown').countdown({until: austDay});
+		
 });
 </script>
 <script type="text/javascript">
@@ -63,14 +64,14 @@ function clickrecall(thisfield, defaulttext, color) {
 }
 </script>
 <!-- Jquery Validate-->
-<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-    $("#myform").validate();
+    $("#x_form_contact").validate();
   });
   </script>
   <!-- STYLE SWITCHER -->
-<link href="css/switcher.css" rel="stylesheet" type="text/css" />
+<link href="/countdown/css/switcher.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 $(document).ready(function(){
 	$(".trigger").click(function(){
@@ -78,17 +79,138 @@ $(document).ready(function(){
 		$(this).toggleClass("active");
 		return false;
 	});
+		
+		var max_height = 0;
+		$('.intro-box').each(function() {
+				var height = $(this).height();
+				if (height > max_height) {
+                    max_height = height;
+                }
+		});
+		$('.intro-box').height(max_height);
 });
 </script>
 <style>
-    .count_titles {
-        font-family: Arial;
-    }
-	#logo {
+.count_titles {
+		font-family: Arial;
+}
+#logo {
 		margin: auto;
 		padding-bottom: 30px;
 		padding-top: 30px;
-	}
+}
+.intro-boxes {
+		margin: 40px 0;
+		width: 100%;
+}
+.intro-box {
+		float: left;
+		padding: 1%;
+		width: 47%;
+		height: auto;
+		border: solid 1px #ddd;
+}
+.intro-box.right {
+		float: right;
+}
+.intro-box .title {
+		color: #555;
+		font-size: 150%;
+		line-height: 28px;
+		font-weight: bold;
+}
+.intro-box .article_content {
+    color: #555;
+    font-size: 115%;
+    line-height: 22px;
+    margin-top: 12px;
+    padding: 10px;
+    text-align: left;
+}
+#form_contact {
+		
+}
+#form_contact input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    padding: 7px 10px;
+    width: 500px;
+}
+#form_contact .error {
+		border-color: red;
+}
+label.error {
+		display: none !important;
+}
+
+#form_contact {
+    display: inline-block;
+    width: 540px;
+}
+#form_contact textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    height: 210px;
+    margin-top: 5px;
+    padding: 10px;
+    width: 500px;
+}
+#form_contact button {
+    background: #519f18 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    margin: 5px;
+    padding: 5px 20px;
+	cursor: pointer;
+}
+#form_contact button:hover {
+		opacity: 0.9;
+}
+#form_contact label {
+    color: #333;
+    display: block;
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 10px;
+}
+#company_info {
+		color: #333;
+		font-size: 14px;
+		padding: 20px;
+		background: #333;
+		color: #fff;
+		
+}
+#company_info a {
+		color: #fff;
+}
+#company_info h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+#company_info p {
+		margin-bottom: 5px;
+}
+.share_bottom_countdown {
+		margin-top: 120px;
+}
+
+.addthis_toolbox {
+    display: block;
+    margin: auto;
+    width: 230px;
+}
+#footer {
+		width: 100%;
+		min-width: 1000px;
+}
 </style>
 </head>
 
@@ -130,15 +252,72 @@ $(document).ready(function(){
     <h2 style="visibility: hidden">Lorem ipsum dolor sit amet, vel brute quaestio volutpat no, eu est delenit signiferumque.</h2>
 <div id="defaultCountdown"></div>
 <div class="clr"></div>
-<div style="font-size: 180%; line-height: 32px; color: #555"><%= Article.find(30).content.html_safe %></div>
-<!-- Start newsletter form -->
-<div id="form_bg" style="display: none">
-	<form method="post" id="myform" action="/counter/index_4.php">
-	<input name="Email" type="text" class="required email" value="enter your email address.." onclick="clickclear(this, 'enter your email address..')" onfocus="clickclear(this, 'enter your email address..')" onblur="clickrecall(this,'enter your email 	address..')"/>    
-	<button type="submit" class="send_bt">Send Message</button>
-    </form>
-    						
-		<!-- END SEND MAIL SCRIPT -->    
+<div style="font-size: 180%; line-height: 32px; color: #555; font-weight: bold; margin-bottom: 40px">Mời Quý Bạn đón nhận những món đặc sản<br />
+từ khắp mọi miền đất nước</div>
+
+
+<%
+countdown_left = !Article.where(code: "countdown_left").first.nil? ? Article.where(code: "countdown_left").first : Article.new
+countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.where(code: "countdown_right").first : Article.new
+%>
+
+<% if countdown_left.title.present? and countdown_right.title.present? %>
+
+						<div class="intro-boxes">
+								<div class="intro-box">
+										<strong class="title"><%= countdown_left.title %></strong>
+										<div class="article_content">
+												<%= countdown_left.content.html_safe %>
+										</div>
+								</div>
+								<div class="intro-box right">
+										<strong class="title"><%= countdown_left.title %></strong>
+										<div class="article_content">
+												<%= countdown_right.content.html_safe %>
+										</div>
+								</div>
+								<br style="clear: both" />
+						</div>
+				
+<% end %>
+
+<div style="margin-top: 80px">
+		<div style="display: inline">
+				<!-- Start newsletter form -->
+				<div id="form_contact" style="display: ">
+						<label>Mọi thông tin xin gửi email cho chúng tôi!</label>
+						
+						<%= form_for Feedback.new, html: {id: "x_form_contact"} do |f| %>
+							
+							<input name="feedback[email]" id="feeback_email" type="text" class="required email" placeholder="Nhập địa chỉ email của bạn" /> <!--value="nhập địa chỉ email của bạn.." onclick="clickclear(this, 'nhập địa chỉ email của bạn..')" onfocus="clickclear(this, 'nhập địa chỉ email của bạn..')" onblur="clickrecall(this,'nhập địa chỉ email của bạn..')" />-->
+							
+							<br /><textarea class="required" name="feedback[content]" id="feedback_content" placeholder="Nội dung liên hệ"></textarea>
+							
+							<br /><button type="submit" class="">Gửi thông tin</button>
+						
+						<% end %>
+											
+						<!-- END SEND MAIL SCRIPT -->    
+				</div>
+		</div>
+								
+		<div style="display: inline">
+				<div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+				<div class="fb-xfbml-parse-ignore">
+					<blockquote cite="https://www.facebook.com/DacSanVungMien.net">
+						<a href="https://www.facebook.com/DacSanVungMien.net">Market Online</a>
+					</blockquote>
+				</div>
+			</div>
+				<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+		</div>
 </div>
 
 </div><!-- End wrapper -->
@@ -146,11 +325,51 @@ $(document).ready(function(){
 <!-- Start footer -->
 <div id="footer">
 <ul>
-    <li><a href="#">Twitter</a></li>
-    <li class="last"><a href="#">Facebook</a></li>
+    <!--<li><a href="#">Twitter</a></li>-->
+    <!--<li class="last"><a target="_blank" href="https://www.facebook.com/DacSanVungMien.net">Facebook</a></li>-->
 </ul>
-<div class="clr"></div>
-Copyright © 2016 DacSanVungMien.net
+
+<div class="share_bottom_countdown">
+		<!-- AddThis Button BEGIN -->
+
+				<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+				<a class="addthis_button_facebook"></a>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_google_plusone_share"></a>
+				<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+				</div>
+				<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+
+		<!-- AddThis Button END -->
+</div>
+								
+<div style="width: 100%; display: block; float: left; min-width: auto;" id="company_info">
+					  <div style="" class="cleft">
+					  <h4>CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI - FBMN</h4>
+					  
+					  <p><strong>Văn phòng:</strong> 444/4 Cách Mạng Tháng 8, Phường 11, Quận 3, TP.HCM
+					  </p>
+					  <p><strong>GPĐK:</strong> 0312919617 - Cấp ngày 10-09-2014 </p>
+					  
+					  </div>
+					  <div style="" class="cright">
+						<p>
+						<strong>
+						  VPGD:
+						</strong>
+						Block B R.606 - Indochina Park Tower, 04 Nguyễn Đình Chiểu, Quận 1, TP.HCM
+						</p>
+						<p>
+						<strong>ĐT:</strong> (84) 08.66886622&nbsp;&nbsp;
+						<strong>Hotline:</strong> 098.168.1939&nbsp;&nbsp;<strong>						Email:</strong> <a href="mailto:DacSanVungMien.net@gmail.com">DacSanVungMien.net@gmail.com</a>
+					  </p>
+					  </div>
+  
+	  </div>
+
+<!--<div class="clr"></div>
+Copyright © 2016 DacSanVungMien.net-->
 </div><!-- End footer -->
 
 </div><!-- End container main -->

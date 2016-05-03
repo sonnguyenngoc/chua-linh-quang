@@ -223,3 +223,33 @@ input[type="radio"] + label::before {
 .no_singed {
     display: none;
 }
+.user_input {
+	height: auto;
+	min-height: 35px;
+}
+.user_input input.error, .user_input textarea.error {
+	border-color: red;
+}
+.sticky_part.sticky .header_logo {
+    height: 80px;
+}
+.header_logo .logo img {
+    width: 200px;
+}
+.sticky_part.sticky .logo {
+    overflow: hidden;
+    height: 72px;
+}
+.sticky_part.sticky .logo > img {
+    width: 224px;
+    margin-top: -11px;
+}
+.company_info {
+    margin-bottom: 20px;
+}
+.company_name {
+    margin-bottom: 7px !important;
+}
+.footer_section_3 {
+    padding-top: 10px;
+}

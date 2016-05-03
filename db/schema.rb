@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425075501) do
+ActiveRecord::Schema.define(version: 20160429062814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,20 @@ ActiveRecord::Schema.define(version: 20160425075501) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "name"
+    t.string   "head_office_address"
+    t.string   "certificate_no"
+    t.datetime "date_of_issue"
+    t.string   "sales_office_address"
+    t.string   "phone"
+    t.string   "hotline"
+    t.string   "email"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "compares", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -154,6 +168,13 @@ ActiveRecord::Schema.define(version: 20160425075501) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string   "email"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "line_item_compares", force: :cascade do |t|

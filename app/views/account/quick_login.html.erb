@@ -30,7 +30,7 @@
 				
 				<label for="login_email">Địa chỉ email</label>
 				
-				<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Nhập địa chỉ email..." %>
+				<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Nhập địa chỉ email...", required: true %>
 			
 			</li>
 
@@ -38,7 +38,7 @@
 				
 				<label for="login_password">Mật khẩu</label>
 				
-				<%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nhập mật khẩu..." %>
+				<%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nhập mật khẩu...", required: true %>
 			
 			</li>
 
