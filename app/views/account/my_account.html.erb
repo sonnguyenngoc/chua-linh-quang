@@ -1,0 +1,128 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    
+                    <li><%= @title_head %></li>
+
+                </ul>
+
+                <div class="row">
+
+                    <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
+                        
+                        <%= render "module/menu_account_logged" %>
+
+                    </aside>
+
+                    <main class="col-md-9 col-sm-8">
+                        
+                        <h1><%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></h1>
+                        
+                        <div class="bordered_content padded box">
+                            
+                            <h4>Tài khoản của tôi</h4>
+                            
+                            <ul class="list-unstyled margin-b">
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'edit'}) %>">Chỉnh sửa thông tin tài khoản</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'address'}) %>">Xem địa chỉ đặt hàng</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'wishlist'}) %>">Xem danh sách sản phẩm yêu thích</a></li>
+                            
+                            </ul>
+                            
+                            <h4>Đơn hàng của tôi</h4>
+                            
+                            <ul class="list-unstyled margin-b">
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'order'}) %>">Xem lịch sử đặt hàng</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'reward_points'}) %>">Điểm thưởng của tôi</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'return_list'}) %>">Xem yêu cầu trả hàng</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'transaction'}) %>">Giao dịch của bạn</a></li>
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'recurring_payments'}) %>">Thanh toán định kỳ</a></li>
+                            
+                            </ul>
+                            
+                            <h4>Đăng ký nhận tin mới</h4>
+                            
+                            <ul class="list-unstyled margin-b">
+                                
+                                <li><a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>">Theo dõi / Hủy nhận tin mới</a></li>
+                            
+                            </ul>
+                        
+                        </div>
+
+                    </main>
+
+                </div><!--/ .row -->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer'%>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

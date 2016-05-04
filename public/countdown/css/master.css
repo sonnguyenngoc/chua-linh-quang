@@ -1,0 +1,233 @@
+/* RESET ================================================================================= */
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License:none (public domain)*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	display:block;
+}
+body {
+	line-height:1;
+}
+ol,ul {
+	list-style:none;
+}
+blockquote,q {
+	quotes:none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+	content:'';
+	content:none;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+p {
+	margin:0 0 10px 0;
+}
+strong {
+	font-weight: 700;
+}
+/* BODY ================================================================================= */
+body {
+	font-family:Helvetica, Arial,sans-serif;
+	font-size:14px;
+	line-height:18px;
+	background: #fff url(../img/bg_yellow.png) repeat-x top left;
+	color:#898989;
+	}
+html, body {
+   height:100%;
+   margin:0;
+   padding:0;
+}
+#container_main {
+   position:relative;
+min-height:100%;
+}
+#wrapper {
+padding-bottom:70px;
+width:800px;
+margin:auto;
+text-align:center;
+background:url(../img/light.png) no-repeat top center;
+}
+/* HEADER ================================================================================= */
+#logo {
+margin:auto;
+padding-top:50px;
+padding-bottom:50px;
+}
+/* COUNTER  ================================================================================= */
+.hasCountdown {
+}
+.countdown_rtl {
+	direction: rtl;
+}
+.countdown_holding span {
+	
+}
+.countdown_row {
+	clear: both;
+	width: 100%;
+	padding: 0;
+	text-align: center;
+	
+}
+.countdown_show1 .countdown_section {
+	width: 98%;
+}
+.countdown_show2 .countdown_section {
+	width: 48%;
+}
+.countdown_show3 .countdown_section {
+	width: 32.5%;
+}
+.countdown_show4 .countdown_section {
+	width: 24.5%;
+}
+.countdown_show5 .countdown_section {
+	width: 19.5%;
+}
+.countdown_show6 .countdown_section {
+	width: 16.25%;
+}
+.countdown_show7 .countdown_section {
+	width: 14%;
+}
+.countdown_section {
+	display: block;
+	float: left;
+	padding-top:55px;
+	text-align: center;
+	background:url(../img/circle.png) no-repeat center top;
+	height:137px;
+	margin-bottom:30px;
+	
+}
+.countdown_amount {
+	font-size:75px;
+	color:#4f2936;
+	 font-family: 'DINBlackRegular';
+}
+.count_titles {
+	margin-top:80px;
+	display:block;
+	font-size:18px;
+	color:#fcbd47;
+	text-transform:uppercase;
+	font-family: 'DINMediumRegular';
+}
+/* FOOTER  ================================================================================= */
+#footer {
+	height:30px;
+	 clear: both; width:100%;  position:absolute; 
+   bottom:0;
+   padding: 20px 0;
+   color:#c8c8c8;
+   text-align:center;
+   font-size:12px;
+}
+#footer li {
+	display:inline;
+	padding-right: 12px;
+	background: url(../img/footer_divider.png) no-repeat center right;
+}
+#footer li.last {
+	background: none;
+}
+/* TIPOGRAPHY ================================================================================= */
+h1 {
+	font-size:30px;
+	text-transform:uppercase;
+	color:#fff799;
+	margin-bottom:5px;
+	text-shadow: 1px 1px 2px #bc761f;
+	font-family: 'DINBlackRegular';
+}
+h2 {
+	font-size:18px;
+	color:#fff;
+	text-shadow: 1px 1px 2px #bc761f;
+	font-family: 'DINMediumRegular';
+	margin-bottom:30px;
+}
+.get {
+	display:block;
+	font-size:18px; font-weight:bold;
+	margin-top:15px;
+}
+/* OTHER STYLES ================================================================================= */
+.clr {
+	clear:both; height:1px;
+}
+a:link, a:visited {
+	text-decoration:none;
+	color:#6a4954;
+}
+a:hover {
+	text-decoration: underline;
+}
+/* FORM STYLES ================================================================================= */
+
+#form_bg {
+	background:url(../img/bg_form.png) no-repeat top left;
+	width:555px;
+	height:43px;
+	position:relative;
+	margin:auto;
+}
+#form_bg input {
+	position:absolute;
+	top: 3px;
+	left:3px;
+	border:none;
+	background:none;
+	padding:10px;
+	width:440px;
+	font-size:14px;
+	font-weight:bold;
+	color:#c4c4c4;
+	display:block;
+}
+.send_bt {
+	background:url(../img/button.png) no-repeat top left;
+	width:83px;
+	height:37px;
+	text-indent:-9999px;
+	display:block;
+	cursor:pointer;
+	position:absolute; 
+	top: 4px;
+	left:468px;
+	border:none;
+}
+
+.success {
+	font-weight:bold;
+	color:#acd373;
+}
+
+/* error message */
+/*.error {
+	background-color: #FC0;
+	font-size:11px;
+	padding:2px 5px;
+	color:#000;
+	width:110px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	margin:0 0 10px 0;
+	position:absolute;
+	top: 50px;
+	left:0px;
+	
+}*/

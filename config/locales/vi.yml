@@ -1,0 +1,185 @@
+vi:
+  #-------------------------------------
+  home: "Trang chủ"
+  dashboard: "Bảng điều khiển"
+  welcome: "CHÀO MỪNG QUẢN TRỊ VIÊN"
+  admin: "Quản trị viên"
+  location: "Hồ Chí Minh, Việt Nam"
+  copyright: "Bản quyền"
+  design_by: "Thiết kế bởi"
+  my_profile: "Hồ sơ"
+  account_settings: "Cài đặt tài khoản"
+  logout: "Đăng xuất"
+  
+  #filter
+  listing_products: "Danh sách sản phẩm"
+  listing_categories: "Danh sách chuyên mục"
+  listing_manufacturers: "Danh sách nhãn hàng"
+  listing_areas: "Danh sách vùng/khu vực"
+  listing_articles: "Danh sách bài viết"
+  listing_slideshows: "Danh sách trình chiếu"
+  category: "Chuyên mục"
+  status: "Trạng thái"
+  filter: "Tìm kiếm"
+  placeholder_filter: "Nhập từ khóa tìm kiếm ..."
+  sort_by: "Sắp xếp theo"
+  sort_order: "Sắp tăng/giảm"
+  
+  #table
+  list_image: "Hình ảnh"
+  list_product_name: "Tên sản phẩm"
+  list_category_name: "Tên chuyên mục"
+  list_manufacturer_name: "Tên nhãn hàng"
+  list_area_name: "Tên khu vực"
+  list_price: Giá
+  list_quantity: "Trọng lượng/Khối lượng/Dung tích"
+  list_categories: "Chuyên mục"
+  list_description: "Mô tả"
+  list_areas: "Khu vực"
+  list_status: "Trạng thái"
+  created_at: "Ngày tạo"
+  actions: "Thao tác"
+  address: "Địa chỉ"
+  save: "Lưu"
+  cancel: "Hủy"
+  edit: "Sửa"
+  delete: "Xoá"
+  #-------------------------------
+  new_product: "Tạo sản phẩm"
+  new_category: "Tạo chuyên mục"
+  new_manufacturer: "Tạo nhãn hàng"
+  new_area: "Tạo khu vực"
+  new_article: "Tạo bài viết"
+  new_slideshow: "Tạo trình chiếu"
+  edit_product: "Chỉnh sửa sản phẩm"
+  edit_category: "Chỉnh sửa chuyên mục"
+  edit_manufacturer: "Chỉnh sửa nhãn hàng"
+  edit_area: "Chỉnh sửa khu vực"
+  edit_article: "Chỉnh sửa bài viết"
+  edit_slideshow: "Chỉnh sửa trình chiếu"
+  list_product_code: "Mã sản phẩm"
+  unit: "Đơn vị"
+  
+  #form
+  tab_product_info: "Thông tin"
+  tab_product_status: "Trạng thái"
+  tab_product_intro: "Giới thiệu"
+  tab_product_images: "Hình ảnh"
+  short_description: "Mô tả ngắn"
+  tags: "Thẻ"
+  title: "Tiêu đề"
+  content: "Nội dung"
+  confirm_delete: "Bạn có chắc không?"
+  related_articles: "Bài viết liên quan"
+  hot: "Sản phẩm HOT"
+  new: "Sản phẩm MỚI"
+  bestseller: "Sản phẩm BÁN CHẠY"
+  prominent: "Sản phẩm NỔI BẬT"
+  introduction: "Giới thiệu"
+  picture: "Hình ảnh"
+  related_photos: "Các hình ảnh liên quan"
+  related_areas: "Vùng liên quan"
+  
+  #-------------------------------------
+  product: "Sản phẩm"
+  products: "Danh sách sản phẩm"
+  categories: "Danh sách chuyên mục"
+  manufacturers: "Nhãn hàng/Nhà sản xuất"
+  areas: "Khu vực/Vùng miền"
+  
+  #-------------------------------------
+  article: "Bài viết"
+  articles: "Danh sách bài viết"
+  article_categories: "Chuyên mục"
+  placeholder_categories: "Lựa chọn chuyên mục cho bài viết..."
+  related_products: "Sản phẩm liên quan"
+  code_status: "Mã trạng thái"
+  categories_article: "Chuyên mục của bài viết"
+  list_categories_article_name: "Tên chuyên mục bài viết"
+  related_categories: "Chuyên mục liên quan"
+  
+  #slideshow
+  slideshows: "Trình chiếu"
+  image: "Hình ảnh"
+  title_1: "Tiêu đề 1"
+  title_2: "Tiêu đề 2"
+  button_name: "Tên nút"
+  link: "Liên kết"
+  
+  #-------------------------------------
+  orders: "Đơn đặt hàng"
+  
+  #-------------------------------------
+  comment_question: "Bình luận/Câu hỏi"
+  comments: "Bình luận sản phẩm"
+  comment_articles: "Bình luận bài viết"
+  customer_name: "Tên khách hàng"
+  product_name: "Tên sản phẩm"
+  star: "sao"
+  rating: "Đánh giá"
+  article_title: "Tiêu đề bài viết"
+  
+  #-------------------------------------
+  question: "Câu hỏi"
+  questions: "Danh sách câu hỏi"
+  
+  #-------------------------------------
+  delivery_method: "Hình thức giao hàng"
+  delivery_methods: "Danh sách hình thức giao hàng"
+  new_delivery_method: "Tạo mới hình thức giao hàng"
+  listing_delivery_methods: "Danh sách hình thức giao hàng"
+  
+  #-------------------------------------
+  payment_method: "Hình thức thanh toán"
+  payment_methods: "Danh sách hình thức thanh toán"
+  new_delivery_method: "Tạo mới hình thức thanh toán"
+  edit_payment_method: "Chỉnh sửa hình thức thanh toán"
+  listing_delivery_methods: "Danh sách hình thức thanh toán"
+  
+  #-------------------------------------
+  customer: "Khách hàng"
+  customers: "Danh sách khách hàng"
+  email: "Email"
+  phone: "Điện thoại"
+  company: "Công ty"
+  info: "Thông tin"
+  last_bought: "Lần mua cuối"
+  customer_detail: "Thông tin chi tiết khách hàng"
+  customer_info: "Thông tin khách hàng"
+  
+  #-------------------------------------
+  user: "Người dùng"
+  users: "Danh sách người dùng"
+  
+  #-------------------------------------
+  settings: "Cài đặt"
+  
+  #-------------------------------------
+  voucher_coupon: "Phiếu mua hàng/Mã giảm giá"
+  vouchers: "Phiếu mua hàng"
+  coupons: "Mã giảm giá"
+  listing_coupons: "Danh sách mã giảm giá"
+  new_coupon: "Tạo mới"
+  edit_coupon: "Chỉnh sửa"
+  from_date: "Từ ngày"
+  to_date: "Đến ngày"
+  description: "Mô tả"
+  listing_vouchers: "Danh sách phiếu mua hàng"
+  new_voucher: "Tạo mới"
+  edit_voucher: "Chỉnh sửa"
+  price_coupon: "Số tiền"
+  quantity_coupon: "Số lượng"
+  
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "Không có "
+        one:   "Hiển thị 1 "
+        other: "Hiển thị toàn bộ %{count} "
+      single_page_html:
+        zero:  "Không có "
+        one:   "Hiển thị 1 "
+        other: "Hiển thị toàn bộ %{count} "
+
+      multi_page: "Hiển thị %{from} - %{to} của %{count} "
+      multi_page_html: "Hiển thị %{from} - %{to} của %{count} "

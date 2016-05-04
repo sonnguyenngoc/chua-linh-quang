@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Basic page needs
+		============================================ -->
+		<title><%= @title_head %> | Đặc sản vùng miền </title>
+		<%= csrf_meta_tags %>
+		<meta charset="utf-8">
+		<meta name="author" content="">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+
+		<!-- Mobile specific metas
+		============================================ -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Favicon
+		============================================ -->
+		<%= favicon_link_tag '/frontend/images/fav_icon.ico', rel: 'icon', type: 'image/x-icon' %>
+
+		<!-- Google web fonts
+		============================================ -->
+		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,700,700italic,900,900italic" %>
+
+		<!-- Libs CSS
+		============================================ -->
+		<%= stylesheet_link_tag "/frontend/css/animate.css" %>
+		<%= stylesheet_link_tag "/frontend/css/fontello.css" %>
+		<%= stylesheet_link_tag "/frontend/css/bootstrap.min.css" %>
+		<%= stylesheet_link_tag "/frontend/css/font-awesome.min.css"%>
+		<%= stylesheet_link_tag "/frontend/css/font-awesome.css" %>
+		
+		<!-- Theme CSS
+		============================================ -->
+		<%= stylesheet_link_tag "/frontend/js/rs-plugin/css/settings.css" %>
+		<%= stylesheet_link_tag "/frontend/js/owlcarousel/owl.carousel.css" %>
+		<%= stylesheet_link_tag "/frontend/js/arcticmodal/jquery.arcticmodal.css" %>
+		<%= stylesheet_link_tag "/frontend/css/style.css" %>
+		<%= stylesheet_link_tag "/frontend/stylesheets/custom.css" %>
+
+		<!-- JS Libs
+		============================================ -->
+		<%= javascript_include_tag "/frontend/js/modernizr.js" %>
+		
+		
+		<!-- Old IE stylesheet
+		============================================ -->
+		<!--[if lte IE 9]>
+		<%= stylesheet_link_tag '/frontend/css/oldie.css' %>
+		<![endif]-->
+		
+		<!-- JS for Rails -->
+		<%= javascript_include_tag 'application' %>
+		<!-- /js for rails -->
+		
+		<!-- Css Product Image Zoom
+		============================================ -->
+		<%= stylesheet_link_tag '/frontend/js/fancybox/source/jquery.fancybox.css' %>
+		<%= stylesheet_link_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-thumbs.css' %>
+	</head>
+	<%= yield %>
+</html>

@@ -1,0 +1,185 @@
+en:
+  #-------------------------------------
+  home: "Home"
+  dashboard: "Dashboard"
+  welcome: "WELCOME TO ADMINISTRATOR"
+  admin: "Administrator"
+  location: "HCMC, Vietnam"
+  copyright: "Copyright"
+  design_by: "Designed by"
+  my_profile: "My profile"
+  account_settings: "Account settings"
+  logout: "Logout"
+  
+  #filter
+  listing_products: "Listing Products"
+  listing_categories: "Listing Categories"
+  listing_manufacturers: "Listing Manufacturers"
+  listing_areas: "Listing Areas"
+  listing_articles: "Listing Articles"
+  listing_slideshows: "Listing Slideshows"
+  category: "Category"
+  status: "Status"
+  filter: "Filter"
+  placeholder_filter: "Search by name..."
+  sort_by: "Sort By"
+  sort_order: "Sort Order"
+  
+  #table
+  list_image: "Image"
+  list_product_name: "Name"
+  list_category_name: "Name"
+  list_manufacturer_name: "Name"
+  list_area_name: "Name"
+  list_price: "Price"
+  list_quantity: "Weight/Glosbe/Volume"
+  list_categories: "Categories"
+  list_description: "Description"
+  list_areas: "Areas"
+  list_status: "Status"
+  created_at: "Created At"
+  actions: "Actions"
+  address: "Address"
+  save: "Save"
+  cancel: "Cancel"
+  edit: "Edit"
+  delete: "Delete"
+  #------------------------------------
+  new_product: "New Product"
+  new_category: "New Category"
+  new_manufacturer: "New Manufacturer"
+  new_area: "New Area"
+  new_article: "New Article"
+  new_slideshow: "New Slideshow"
+  edit_product: "Edit Product"
+  edit_category: "Edit Category"
+  edit_manufacturer: "Edit Manufacturer"
+  edit_area: "Edit Area"
+  edit_article: "Edit Article"
+  edit_slideshow: "Edit Slideshow"
+  list_product_code: "Product Code"
+  unit: "Unit"
+  
+  #form
+  tab_product_info: "Product Information"
+  tab_product_status: "Product Status"
+  tab_product_intro: "Product intro"
+  tab_product_images: "Product Images"
+  short_description: "Short Description"
+  tags: "Tags"
+  title: "Title"
+  content: "Content"
+  confirm_delete: "Are you sure?"
+  related_articles: "Related Articles"
+  hot: "Hot Product"
+  new: "New Product"
+  bestseller: "Bestseller Product"
+  prominent: "Prominent Product"
+  introduction: "Introduction"
+  picture: "Picture"
+  related_photos: "Related Photos"
+  related_areas: "Related Areas"
+  
+  #-------------------------------------
+  product: "Product"
+  products: "Products"
+  categories: "Categories"
+  manufacturers: "Manufacturers"
+  areas: "Areas"
+  
+  #-------------------------------------
+  article: "Article"
+  articles: "Articles"
+  article_categories: "Article Categories"
+  placeholder_categories: "Choose the categories for article..."
+  related_products: "Related Products"
+  code_status: "Code"
+  categories_article: "Categories of Article"
+  list_categories_article_name: "Name"
+  related_categories: "Related Categories"
+  
+  #slideshow
+  slideshows: "Slideshows"
+  image: "Image"
+  title_1: "Title 1"
+  title_2: "Title 2"
+  button_name: "Button Name"
+  link: "Link"
+        
+  #-------------------------------------
+  orders: "Orders"
+  
+  #-------------------------------------
+  comment_question: "Comment/Question"
+  comments: "Comment Products"
+  comment_articles: "Comment Articles"
+  customer_name: "Customer Name"
+  product_name: "Product Name"
+  star: "star"
+  rating: "Rating"
+  article_title: "Title"
+  
+  #-------------------------------------
+  question: "Question"
+  questions: "Questions"
+  
+  #-------------------------------------
+  delivery_method: "Delivery Method"
+  delivery_methods: "Delivery Methods"
+  new_delivery_method: "New Delivery Method"
+  listing_delivery_methods: "Listing Delivery Methods"
+  
+  #-------------------------------------
+  payment_method: "Payment Method"
+  payment_methods: "Payment Methods"
+  new_delivery_method: "New Payment Method"
+  edit_payment_method: "Edit Payment Method"
+  listing_delivery_methods: "Listing Payment Methods"
+  
+  #-------------------------------------
+  customer: "Customer"
+  customers: "Customers"
+  email: "Email"
+  phone: "Phone"
+  company: "Company"
+  info: "Information"
+  last_bought: "Last Bought"
+  customer_detail: "Customer Detail"
+  customer_info: "Customer Information"
+  
+  #-------------------------------------
+  user: "Users"
+  users: "Users"
+  
+  #-------------------------------------
+  settings: "Settings"
+  
+  #-------------------------------------
+  voucher_coupon: "Voucher/Coupon"
+  coupons: "Coupons"
+  vouchers: "Vouchers"
+  listing_coupons: "Listing Coupons"
+  new_coupon: "New Coupon"
+  edit_coupon: "Edit Coupon"
+  from_date: "From date"
+  to_date: "To date"
+  description: "Description"
+  listing_vouchers: "Listing Coupons"
+  new_voucher: "New Voucher"
+  edit_voucher: "Edit Voucher"
+  price_coupon: "Price"
+  quantity_coupon: "Quantity"
+  
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "No found "
+        one:   "Displaying 1 "
+        other: "Displaying all "
+      single_page_html:
+        zero:  "No found "
+        one:   "Displaying 1 "
+        other: "Displaying "
+
+      multi_page: "Displaying  %{from} - %{to} of %{count} "
+      multi_page_html: "Displaying  %{from} - %{to} of %{count} "

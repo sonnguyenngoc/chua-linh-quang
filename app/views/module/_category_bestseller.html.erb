@@ -1,0 +1,53 @@
+<section class="section_offset">
+
+    <h3>Sản phẩm bán chạy</h3>
+
+    <ul class="products_list_widget">
+        
+        <% Product.get_by_bestseller.each do | product | %>
+
+            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+            <li>
+                
+                <%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+    
+                <div class="wrapper">
+    
+                    <%= link_to product.name, { controller: "product", action: "product", product_id: product }, class: "product_title" %>
+    
+                    <div class="clearfix product_info">
+    
+                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+    
+                        <% if product.count_stars.length > 0 %>
+
+                            <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                            
+                            <ul class="rating">
+                                
+                                <% (1..product.average_stars).each do |star| %>
+
+                                    <li class="active"></li>
+                                
+                                <% end %>
+
+                            </ul>
+                                
+                            <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                        <% end %>
+    
+                    </div>
+    
+                </div>
+    
+            </li>
+    
+            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+            
+        <% end %>
+
+    </ul><!--/ .list_of_products-->
+
+</section>

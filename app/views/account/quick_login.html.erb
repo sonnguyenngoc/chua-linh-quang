@@ -1,0 +1,89 @@
+<!--==================================
+		Login modal window
+======================================-->
+
+<div id="login_mw" class="modal_window">
+
+	<button class="close arcticmodal-close"></button>
+
+	<header class="on_the_sides">
+
+		<div class="left_side">
+
+			<h2>Đăng nhập</h2>
+
+		</div>
+
+		<div class="right_side">
+			
+			<%= link_to "Đăng ký", { controller: "account", action: "register" }, class: "button_grey middle_btn" %>
+
+		</div>
+
+	</header><!--/ .on_the_sides-->
+
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
+
+		<ul>
+
+			<li>
+				
+				<label for="login_email">Địa chỉ email</label>
+				
+				<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Nhập địa chỉ email...", required: true %>
+			
+			</li>
+
+			<li>
+				
+				<label for="login_password">Mật khẩu</label>
+				
+				<%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nhập mật khẩu...", required: true %>
+			
+			</li>
+
+			<li>
+				
+				<input type="checkbox" name="" id="checkbox_1">
+				
+				<label for="checkbox_1">Ghi nhớ tài khoản</label>
+			
+			</li>
+
+			<li class="v_centered">
+				
+				<%= button_tag "Đăng nhập", class: "button_blue middle_btn"%>
+				
+				<%= link_to "Quên mật khẩu?", { controller: "account", action: "forgotten" }, class: "small_link" %>
+			
+			</li>
+
+		</ul>
+
+	<% end %>
+
+	<hr>
+
+	<div class="streamlined">
+							
+		<h4 class="streamlined_title">Đăng nhập bằng</h4>
+
+		<!--Social icon's list-->
+		<ul class="horizontal_list social_btns">
+
+			<li><a href="#" class="icon_btn middle_btn social_facebook tooltip_container"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></a></li>
+			
+			<li><a href="#" class="icon_btn middle_btn social_twitter tooltip_container"><i class="icon-twitter"></i><span class="tooltip top">Twitter</span></a></li>
+			
+			<li><a href="#" class="icon_btn middle_btn social_googleplus tooltip_container"><i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span></a></li>
+
+		</ul><!--/ .horizontal_list.wrapper.social_btns-->
+		<!--End social icon's list-->
+
+	</div><!--/ .streamlined-->
+
+</div>
+
+<!--==================================
+		End login modal window
+======================================-->

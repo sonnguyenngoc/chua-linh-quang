@@ -1,0 +1,18 @@
+<section class="section_offset">
+
+    <h3>Đăng ký nhận tin mới</h3>
+
+    <div class="theme_box">
+        
+        <%= form_for Newsletter.new, html: {class: 'newsletter clearfix'} do |f| %>
+
+            <%= f.email_field :email, placeholder: 'Nhập email tại đây...', required: true %>
+                                
+            <button type="submit" class="button_blue def_icon_btn"></button>
+
+        <% end %>
+
+    </div>
+    <!--/ .theme_box-->
+
+</section>

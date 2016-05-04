@@ -1,0 +1,99 @@
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
+
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold"><%= t(:edit_manufacturer) %></span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_manufacturers_path %>"><%= t(:product) %></a></li>
+                        <li><a href="<%= admin_manufacturers_path %>"><%= t(:manufacturers) %></a></li>
+                        <li class="active"><%= t(:edit_manufacturer) %></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Horizontal form options -->
+                <div class="row">
+                    <div class="col-md-12">
+            
+                        <!-- Basic layout-->
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title"><%= t(:edit_manufacturer) %></h5>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <% if notice.present? %>
+                                    <div class="alert alert-success alert-styled-left">
+                                        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                        <span class="text-semibold"><%= notice %></span>
+                                    </div>
+                                <% end %>
+                                <%= render 'form' %>
+                            </div>
+            
+                        </div>
+                        <!-- /basic layout -->
+                    </div>
+                </div>
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
+<!-- /theme JS files -->

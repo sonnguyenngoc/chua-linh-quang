@@ -1,0 +1,81 @@
+<% if @article.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @article.errors.full_messages.each do |message| %>
+                - <%= message %><br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @article], html: {class: "form-horizontal"} do |f| %>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:picture) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <div class="uploader bg-teal-400">
+                <%= f.file_field :image_url, class: "file-styled", require: true %>
+                <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
+            </div>
+            <span class="help-block">Accepted formats: gif, png, jpg.</span>
+            <%= image_tag(@article.image_url.medium_image, size: "202x128", class: "img-rouded") %>
+        </div>
+    </div>
+            
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:title) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group field">
+        <label class="col-lg-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <select name="category_ids[]" class="select-item-color" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
+                <% @article_categories.each do |item| %>
+                    <option <%= "selected" if @article.article_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:content) %> <span class='text-danger'>*</span></label>
+    </div>
+    <div class="mb-15">
+        <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:tags) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :tags, class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:related_products) %></label>
+        <div class="col-lg-10">
+            <select name="product_ids[]" class="select-item-color" data-placeholder="Related Products..." multiple="multiple">
+                <% @products.each do |item| %>
+                    <option <%= "selected" if @article.products.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:code_status) %></label>
+        <div class="col-lg-10">
+            <%= f.text_field :code, class: "form-control", disabled: true %>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+        <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_articles_path, class: "btn btn-danger"%>
+    </div>
+    
+<% end %>

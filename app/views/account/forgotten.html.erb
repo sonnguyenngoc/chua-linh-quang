@@ -1,0 +1,134 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                    
+					<li><%= @title_head %></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render 'module/menu_account_not_signed' %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+ 
+					    <h1>Bạn không nhớ mật khẩu của tài khoản mình?</h1>
+                        
+						<div class="bordered_content box">
+                            
+							<div class="padded_ex_bottom">
+                                
+								<p>Nhập email đăng ký cho tài khoản. Chọn Lấy lại mật khẩu để gửi một mail xác nhận đổi mật khẩu vào email đăng ký.</p>
+                                
+								<form action="account/forgotten" method="post" enctype="multipart/form-data">
+                                  
+									<fieldset>
+										
+										<div class="form-group required">
+											
+											<label class="control-label" for="input-email" style="text-align: left;">Địa chỉ email</label>
+											
+											<input type="email" name="email" required="required" value="" placeholder="Nhập địa chỉ email" id="input-email" class="form-control">
+										
+										</div>
+									
+									</fieldset>
+                                
+								</form>
+                            </div>
+							
+                            <div class="bottom_buttons">
+                                
+								<div class="bottom on_the_sides">
+                                    
+									<div class="left_side v_centered">
+                                        
+										<a class="button_grey middle_btn" href="<%= url_for({controller: 'account', action: 'login'}) %>">Trở về</a>
+                                    
+									</div>
+									
+                                    <div class="right_side">
+                                        
+										<a class="button_blue middle_btn" href="#">Lấy lại mật khẩu</a>
+                                    
+									</div>
+								
+								</div>
+                           
+						    </div>
+
+                        </div>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

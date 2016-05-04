@@ -1,0 +1,117 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li><%= @title_head %></li>
+
+                </ul>
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                        <%= render "module/categories" %>
+
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                        <div class="section_offset">
+
+                            <a href="#" class="banner">
+
+                                <img src="/frontend/images/banner_img_10.png" alt="">
+
+                            </a>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+                        
+                        <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'module/newsletter' %>
+
+                        <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+
+                        <h1><%= @title_head %></h1>
+
+                        <div class="theme_box clearfix">
+
+                            <% @about_us.each do |about| %>
+                                
+                                <%= about.content.html_safe %>
+                            
+                            <% end %>
+
+                        </div><!--/ .theme_box-->
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

@@ -1,0 +1,186 @@
+<header id="header" class="type_2">
+
+    <!-- - - - - - - - - - - - - - Bottom part - - - - - - - - - - - - - - - - -->
+
+    <div class="bottom_part header_top">
+
+        <div class="sticky_part">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="main_header_row">
+
+                        <div class="col-sm-3 header_logo">
+
+                            <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
+                            
+                            <%= link_to image_tag("/frontend/images/logo_dsvm.png", class: ""), home_path, class: "logo" %>
+
+                            <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
+
+                        </div><!--/ [col]-->
+
+                        <div class="col-lg-6 col-md-5 col-sm-6">
+
+                            <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
+
+                            <nav>
+
+                                <ul class="topbar">
+
+                                    <li><%= link_to "Trang chủ", home_path %></li>
+                                    <% if current_user.present? %>
+                                        <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                                    <% else %>
+                                        <li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                                    <% end %>
+                                    <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "shopping_cart" } %></li>
+                                    <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
+                                    <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
+                                    <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
+                                    <li><%= link_to "FAQ", { controller: "information", action: "faq" } %></li>
+                                    <% if current_user.present? %>
+                                        <% if user_signed_in? %>
+                                            <li><%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %></li>
+                                        <%end%>
+                                    <% else %>
+                                        <li><a href="#" data-modal-url="<%= quick_login_path %>">Đăng nhập</a></li>
+                                    <% end %>  
+                                </ul>
+
+                            </nav>
+
+                            <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
+
+                            <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
+                            
+                            <%= form_tag({controller: "product", action: "search"}, method: "get", class: "clearfix search") do %>
+    
+                                <input type="text" name="keyword" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
+                                
+                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+    
+                                <div class="search_category alignleft">
+                                    
+                                     <div class="">
+    
+                                        <select class="select_header" name="area_id">
+                                            
+                                            <option value="">Tất cả</option>
+                                            
+                                            <% Area.where(level: 2).each do |item| %>
+                                                    
+                                                <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
+                                                                                           
+                                            <% end %>
+                                        
+                                        </select>
+    
+                                    </div><!--/ .custom_select -->
+    
+                                </div><!--/ .search_category.alignleft-->
+    
+                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+    
+                                <button class="button_blue def_icon_btn alignleft"></button>
+    
+                            <% end %><!--/ #search-->
+                            
+                            <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+
+                        </div><!--/ [col]-->
+
+                        <div class="col-lg-3 col-md-4 col-sm-3">
+
+                            <div class="clearfix">
+
+                                <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
+
+                                <div class="alignright site_settings">
+                                    
+                                    <% if params[:locale] == "vi" %>
+
+                                    <span class="current open_"><img src="/frontend/images/flag_vn.jpg" alt="">Vietnam</span>
+                                    
+                                    <% else %>
+                                        
+                                        <span class="current open_"><img src="/frontend/images/flag_en.jpg" alt="">English</span>
+                                        
+                                    <% end %>
+                                    
+                                    <ul class="dropdown site_setting_list language">
+
+                                        <li class="animated_item"><a href="<%= url_for( :locale => 'vi' ) %>"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
+                                    
+                                        <li class="animated_item"><a href="<%= url_for( :locale => 'en' ) %>"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
+                                        
+                                    </ul>
+
+                                </div><!--/ .alignright.site_settings-->
+
+                                <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
+                                
+                                <!-- - - - - - - - - - - - - - Currency change - - - - - - - - - - - - - - - - -->
+
+                                <div class="alignright site_settings currency">
+
+                                    <span class="current open_">VND</span>
+
+                                    <ul class="dropdown site_setting_list">
+
+                                        <li class="animated_item"><a href="#">VND</a></li>
+
+                                    </ul>
+
+                                </div><!--/ .alignright.site_settings.currency-->
+
+                                <!-- - - - - - - - - - - - - - End of currency change - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .clearfix-->
+                            
+                            <div class="ajax_shopping_carts align_right v_centered align_shopping_cart">
+
+                                <%= render "/module/shopping_cart_items" %>
+                            
+                            </div><!--/ .align_right-->
+
+                        </div><!--/ [col]-->
+
+                    </div><!--/ .main_header_row-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div>
+
+    </div><!--/ .bottom_part -->
+
+    <!-- - - - - - - - - - - - - - End of bottom part - - - - - - - - - - - - - - - - -->
+
+</header>
+<script>
+    function get_cart() {
+        var url = "<%= cart_carts_path %>";
+        $.ajax({
+            method: "GET",
+            url: url   
+        })
+        .done(function( msg ) {
+		  $(".ajax_shopping_carts").html(msg);
+		});
+    }
+    $(document).on("click", ".remove_item", function(e){
+        e.preventDefault();
+        var url = $(this).attr("href");
+        $.ajax({
+            method: "GET",
+            url: url
+        })
+        .done(function( msg ) {
+            get_cart();
+		});
+    });
+</script>

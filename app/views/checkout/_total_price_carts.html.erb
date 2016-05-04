@@ -1,0 +1,193 @@
+
+<section class="col-sm-4 ">
+
+    <h3>Sử dụng Voucher</h3>
+
+    <div class="theme_box">
+
+        <p class="form_caption">Nhập mã số phiếu voucher (nếu có)</p>
+
+        <div>
+
+            <ul>
+                
+                <!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+    
+                <% if @voucher_error == true %>
+                    
+                    <li><div class="alert_box error">
+            
+                        Mã Voucher không hợp lệ. Quý khách hàng vui lòng thử lại!
+            
+                        <a class="close"></a>
+            
+                    </div></li>
+               
+                <% end %>
+                
+                <!--/ .alert_box.warning -->
+                
+                <!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+                
+                <% if @voucher_error == false %>
+                    
+                    <li><div class="alert_box success">
+            
+                        Sử dụng mã Voucher thành công.
+            
+                        <a class="close"></a>
+            
+                    </div></li>
+               
+                <% end %>
+                
+                <!--/ .alert_box.success -->
+
+                <li class="row">
+
+                    <div class="col-xs-12">
+
+                        <input type="text" class="voucher_code" value="<%= @cart.voucher_code %>">
+                        
+                        <div class="voucher_loading" style="display: none">Processing...</div>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div><!--/ .theme_box -->
+
+    <footer class="bottom_box">
+
+        <a href="#code" class="button_grey middle_btn voucher_button">Áp dụng</a>
+
+    </footer>
+
+</section><!--/ [col] -->
+
+<section class="col-sm-4">
+
+    <h3>Ước tính chi phí giao hàng và thuế</h3>
+
+    <div class="theme_box">
+
+        <p class="form_caption">Chọn địa chỉ của bạn vào bên dưới:</p>
+
+        <form id="estimate_shipping" class="type_2">
+
+            <ul>
+
+                <li class="row">
+                    
+                    <div class="col-xs-12">
+
+                        <label>Tỉnh/Thành/Khu vực</label>
+
+                        <div class="">
+
+                            <select>
+                                
+                                <% Area.where(level: 2).each do |item| %>
+                        
+                                    <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
+                                    
+                                    <% item.children.each do |child| %>
+                                        
+                                        <option value="<%= child.id %>" class="list_category_option">-- <%= child.name %></option>
+                                                                                   
+                                    <% end %>
+                                                                               
+                                <% end %>
+                                
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </form>
+
+    </div><!--/ .theme_box -->
+
+    <footer class="bottom_box">
+
+        <button type="submit" form="estimate_shipping" class="button_grey middle_btn">Nhận báo giá</button>
+
+    </footer><!--/ .bottom_box -->
+
+</section><!--/ [col] -->
+
+<section class="col-sm-4">
+
+    <h3>Tổng cộng tiền hàng</h3>
+
+    <div class="table_wrap">
+
+        <table class="zebra">
+
+            <tfoot>
+        
+                <tr>
+                        
+                    <td>Thành tiền</td>
+                    <td><%= format_number(@cart.total_order) %> đ</td>
+        
+                </tr>
+                
+                <% if !@cart.voucher.nil? %>
+                    
+                    <tr>
+                        
+                        <td>Voucher</td>
+                        <td>- <%= format_number(@cart.voucher.price) %> đ</td>
+        
+                    </tr>
+                
+                <% end %>
+            
+                <% if !@cart.coupon.nil? %>
+                    
+                    <tr>
+                        
+                        <td>Coupon</td>
+                        <td>- <%= format_number(@cart.coupon.price) %> đ</td>
+        
+                    </tr>
+                
+                <% end %>
+                
+                <tr>
+                        
+                    <td>VAT</td>
+                    <td>0 đ</td>
+        
+                </tr>
+        
+                <tr class="grandtotal">
+                        
+                    <td>Tổng</td>
+                    <td><%= format_number(@cart.total_order_sale) %> đ</td>
+        
+                </tr>
+        
+            </tfoot>
+        
+        </table>
+
+    </div>
+
+    <footer class="bottom_box">
+
+        <%= link_to "Tiến hành thanh toán", { controller: "checkout", action: "checkout" }, class: 'button_blue middle_btn' %>
+
+    </footer>
+
+</section><!-- / [col] -->

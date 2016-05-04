@@ -1,0 +1,257 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                    
+					<li><%= @title_head %></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render "module/menu_account_logged" %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+
+                        <h1><%= @title_head %></h1>
+                        
+                        <div class="table_wrap bordered_content">
+                        
+						    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+								
+								
+                              
+                                <ul class="padded">
+									
+									<p class="margin-b">This gift certificate will be emailed to the recipient after your order has been paid for.</p>
+						
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-to-name" class="col-sm-2 control-label" style="padding-left: 0px;">Recipient's Name</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-to-name" placeholder="Recipient's Name" value="" name="to_name" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-to-email" class="col-sm-2 control-label" style="padding-left: 0px;">Recipient's e-mail</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-to-email" placeholder="Recipient's e-mail" value="" name="to_email" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-from-name" class="col-sm-2 control-label" style="padding-left: 0px;">Your Name</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-from-name" placeholder="Your Name" value="" name="from_name" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+									
+									<li class="row">
+						
+									  <div class="col-xs-12 required">
+						
+										<label for="input-from-email" class="col-sm-2 control-label" style="padding-left: 0px;">Your e-mail</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-from-email" placeholder="Your e-mail" value="" name="from_email" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+                                    
+                                    <li class="row">
+                        
+                                        <div class="form-group required">
+                        
+                                            <label class="col-sm-2 control-label" style="padding-left: 0px;">Gift Certificate Theme</label>
+                        
+                                            <ul class="col-sm-10 form_el" style="padding-left: 0px;">
+                        
+                                                <li class="col-sm-10">
+                                                  
+                                                    <input checked="" type="radio" name="voucher_theme_id" id="radio_birthday">
+                        
+                                                    <label for="radio_birthday">Birthday</label>
+                                                    
+                                                </li>
+                        
+                                                <li class="radio col-sm-10">
+                                                  
+                                                    <input type="radio" name="voucher_theme_id" id="radio_christmas">
+                        
+                                                    <label for="radio_christmas">Christmas</label>
+                        
+                                                </li>
+                        
+                                                <li class="radio col-sm-10">
+                        
+                                                    <input type="radio" name="voucher_theme_id" id="radio_general">
+                        
+                                                    <label for="radio_general">General</label>
+                        
+                                                </li>
+                        
+                                            </ul>
+                        
+                                        </div>
+                        
+                                    </li>
+                                    
+                                    <li class="row">
+                        
+                                        <div class="col-sm-12">
+                        
+                                            <label for="input-comment" class="col-sm-2 control-label" style="padding-left: 0px;">Message</label>
+                        
+                                            <div class="form_el">
+                        
+                                                <textarea class="form-control" id="input-message" placeholder="Message" cols="40" rows="5" name="message"></textarea>
+                        
+                                            </div>
+                        
+                                        </div>
+                        
+                                    </li>
+						
+									<li class="row">
+						
+									  <div class="col-xs-12">
+						
+										<label for="input-amount" class="col-sm-2 control-label" style="padding-left: 0px;">Amount</label>
+						
+										<div class="form_el">
+						
+										  <input type="text" class="form-control" id="input-amount" placeholder="Amount" value="1.00" name="amount" vk_11575="subscribed">
+						
+										</div>
+						
+									  </div>
+						
+									</li>
+                                  
+                                </ul>
+                              
+                            </form>
+                          
+                        </div>
+                        
+                        <footer class="bottom_box on_the_sides">
+
+							<div class="left_side">
+						
+								<input checked="" type="checkbox" name="description" id="description" value="1">
+						
+								<label for="description">I understand that gift certificates are non-refundable.</label>
+                               
+							</div>
+						
+							<div class="right_side">
+						
+								<a href="<%= url_for ({controller: 'account', action: "voucher_success"}) %>" class="button_blue middle_btn">Continue</a>
+						
+							</div>
+
+						</footer>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

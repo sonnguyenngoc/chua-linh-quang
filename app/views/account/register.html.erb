@@ -1,0 +1,423 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
+                    
+					<li><%= @title_head %></li>
+
+                </ul>
+
+                <div class="row">
+
+                    <aside id="column-left" class="col-md-3 col-sm-4 has_mega_menu">
+                      
+                        <%= render 'module/menu_account_not_signed' %>
+
+                    </aside>
+
+                    <main class="col-md-9 col-sm-8">
+                        
+                        
+						<h1 class="tall">Đăng ký tài khoản</h1>
+                        
+						<p>Nếu bạn đã có tài khoản. Vui lòng đăng nhập tại <%= link_to "trang đăng nhập", { controller: "account", action: "login" } %>.</p>
+                        
+						<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-horizontal") do |f| %>
+						
+							<%= devise_error_messages! %>
+							
+							<h3>Thông tin cá nhân</h3>
+							
+							<div class="table_wrap bordered_content margin-b">
+							
+								<div>
+								  
+									<ul class="padded">
+										
+										<li class="row">
+							
+											<div class="col-xs-12 required">
+							  
+												<label for="input-firstname" class="col-sm-2 control-label">Họ</label>
+								
+												<div class="form_el">
+													
+													<%= f.text_field :first_name, autofocus: true, class: "form-control", required: true %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12 required">
+							  
+												<label for="input-lastname" class="col-sm-2 control-label">Tên</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :last_name, class: "form-control", required: true %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12 required">
+							  
+												<label for="input-email" class="col-sm-2 control-label">Email</label>
+								
+												<div class="form_el">
+													
+													<%= f.email_field :email, class: "form-control", required: true %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12 required">
+							  
+												<label for="input-telephone" class="col-sm-2 control-label">Số điện thoại</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :phone, class: "form-control", required: true %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+							
+										<li class="row">
+							
+										  <div class="col-xs-12">
+							
+											<label for="input-fax" class="col-sm-2 control-label">Số fax</label>
+							
+											<div class="form_el">
+							
+												<%= f.text_field :fax, class: "form-control" %>
+							
+											</div>
+							
+										  </div>
+							
+										</li>
+									  
+									</ul>
+								  
+								</div>
+							  
+							</div>
+							
+							<h3>Thông tin địa chỉ</h3>
+							
+							<div class="table_wrap bordered_content margin-b">
+							
+								<div>
+								  
+									<ul class="padded">
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-company" class="col-sm-2 control-label">Tên công ty</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :company, class: "form-control" %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12 required">
+							  
+												<label for="input-lastname" class="col-sm-2 control-label">Địa chỉ 1</label>
+							  
+												<div class="form_el">
+							  
+													<%= f.text_field :address_1, class: "form-control", required: true %>
+							  
+												</div>
+							  
+											</div>
+							
+										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-email" class="col-sm-2 control-label">Địa chỉ 2</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :address_2, class: "form-control" %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-fax" class="col-sm-2 control-label">Mã bưu chính</label>
+								
+												<div class="form_el">
+								
+													<%= f.text_field :zip_code, class: "form-control" %>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-fax" class="col-sm-2 control-label">Quốc gia</label>
+								
+												<div class="form_el">
+								
+													<div>
+        
+														<select required name="user[country]">
+															
+															<option value="Vietnam">Việt Nam</option>
+				
+														</select>
+				
+													</div>
+								
+												</div>
+							  
+											</div>
+							
+										</li>
+							
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-fax" class="col-sm-2 control-label">Tỉnh</label>
+							  
+												<div class="form_el">
+							  
+													<div>
+							  
+														<select required name="user[province]">
+			
+															<% Area.get_list_province_city.each do |area| %>
+				  
+																<option value="<%= area.id %>"><%= area.name %></option>
+															
+															<% end %>
+				
+														</select>
+													
+													</div>
+							  
+												</div>
+							  
+											</div>
+							
+										</li>
+									  
+									</ul>
+								  
+								</div>
+							  
+							</div>
+							
+							<h3>Thông tin mật khẩu</h3>
+							
+							<div class="table_wrap bordered_content margin-b">
+							
+								<div>
+								  
+									<ul class="padded">
+							
+									  <li class="row">
+							
+										<div class="col-xs-12 required">
+							
+											<label for="input-company" class="col-sm-2 control-label">Mật khẩu</label>
+							  
+											<div class="form_el">
+							  
+												<%= f.password_field :password, autocomplete: "off", class: "form-control", required: true %>
+							  
+											</div>
+							
+										</div>
+							
+									  </li>
+									  
+									  <li class="row">
+							
+										<div class="col-xs-12 required">
+							
+											<label for="input-password-confirm" class="col-sm-2 control-label">Xác nhận mật khẩu</label>
+							  
+											<div class="form_el">
+							  
+												<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", required: true %>
+							  
+											</div>
+							
+										</div>
+							
+									  </li>
+									  
+									</ul>
+								  
+								</div>
+							  
+							</div>
+							
+							<h3>Đăng ký nhận tin mới</h3>
+	
+							<div class="table_wrap bordered_content">
+								
+								<div>
+								
+									<div>
+								
+										<div class="padded">
+								
+											<fieldset>
+								
+												<label style="text-align: left;">Nhận tin mới</label>
+								
+												<div class="form_el no_b_margin">
+								
+													<input checked="" type="radio" name="radio_2" id="radio_3">
+							
+													<label for="radio_3">Đồng ý</label>
+		
+													<input type="radio" name="radio_2" id="radio_4">
+							
+													<label for="radio_4">Không đồng ý</label>
+								
+												</div>
+								
+											</fieldset>
+								
+										</div>
+								
+									</div>                                                
+								
+								</div>
+							
+							</div>
+							
+							<footer class="bottom_box on_the_sides">
+	
+								<div class="left_side">
+							
+									<input checked="" type="checkbox" name="description" id="description" value="1">
+							
+									<label for="description">I have read and agree to the <a href="#" class="agree"><b>Privacy Policy</b></a></label>
+								   
+								</div>
+							
+								<div class="right_side">
+									
+									<%= f.submit "Đăng ký", class: "button_blue middle_btn" %>
+							
+								</div>
+	
+							</footer>
+						
+						<% end %>
+
+                    </main>
+
+                </div><!--/ .row -->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer'%>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

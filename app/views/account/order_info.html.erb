@@ -1,0 +1,311 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                    
+                    <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "order" } %></li>
+                    
+					<li><%= @title_head %></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+
+                        <%= render "module/menu_account_logged" %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+                      
+						<h1><%= @title_head %></h1>
+                       
+					    <div class="box">
+                            
+							<table class="list">
+                              
+								<thead>
+								  
+									<tr>
+									  
+										<td colspan="2" class="contrast_font">Chi tiết đơn hàng</td>
+								   
+									</tr>
+								
+								</thead>
+                              
+								<tbody>
+                                
+									<tr>              
+									
+										<td style="width: 50%;" class="left">
+											
+											<strong>Mã đơn hàng:</strong> #<%= @order.id %><br>
+											
+											<strong>Ngày đặt hàng:</strong> <%= @order.created_at.strftime("%d-%m-%Y") %>
+										
+										</td>
+									
+										<td style="width: 50%;" class="left">
+										  
+											<strong>Hình thức thanh toán:</strong> <%= @order.order_delivery.delivery_method.title %><br>
+										  
+											<strong>Hình thức vận chuyển:</strong> <%= @order.order_delivery.payment_method.title %>
+										
+										</td>
+									
+									</tr>
+                              
+								</tbody>
+                            
+							</table>
+                            
+                            <table class="list">
+								
+								<thead>
+									
+									<tr>
+										
+										<td class="left">Địa chỉ thanh toán</td>
+										
+										<td class="left">Địa chỉ giao hàng</td>
+									
+									</tr>
+								
+								</thead>
+								
+								<tbody>
+									
+									<tr>
+										
+										<td class="left"><%= @order.customer.address %></td>
+										
+										<td class="left"><%= @order.order_delivery.address %></td>
+									
+									</tr>
+								
+								</tbody>
+                            
+							</table>
+                            
+                            <table class="list">
+								
+								<thead>
+									
+									<tr>
+										
+										<td class="product_title_col">Tên sản phẩm</td>
+										
+										<td class="left">Mã sản phẩm</td>
+										
+										<td class="right">Số lượng</td>
+										
+										<td class="right">Giá</td>
+										
+										<td class="right">Thành tiền</td>
+									
+									</tr>
+								
+								</thead>
+								
+								<tbody>
+									
+									<% @order.order_details.each do |item| %>
+										
+										<tr>
+											
+											<td><%= item.product_name %></td>
+											
+											<td class="left"><%= item.product.code %></td>
+											
+											<td class="right"><%= item.quantity %></td>
+											
+											<td class="right"><%= format_number(item.price) %> đ</td>
+											
+											<td class="right"><%= format_number(item.total) %> đ</td>
+										
+										</tr>
+									
+									<% end %>
+								
+								</tbody>
+								
+								<tfoot>
+									
+									<tr>
+										
+										<td colspan="2"></td>
+										
+										<td colspan="2" class="right">Tổng tiền:</td>
+										
+										<td class="right price"><%= format_number(@order.total) %> đ</td>
+									
+									</tr>
+									
+									<tr>
+										
+										<td colspan="2"></td>
+										
+										<td colspan="2" class="right">Chi phí vận chuyển:</td>
+										
+										<td class="right price">0.0 đ</td>
+									
+									</tr>
+									
+									<% if @order.voucher_code %>
+										
+										<tr>
+										
+											<td colspan="2"></td>
+											
+											<td colspan="2" class="right">Voucher:</td>
+											
+											<td class="right price">- <%=  format_number(@order.voucher_price) %> đ</td>
+										
+										</tr>
+									
+									<% end %>
+								
+									<% if @order.coupon_code %>
+										
+										<tr>
+										
+											<td colspan="2"></td>
+											
+											<td colspan="2" class="right">Coupon:</td>
+											
+											<td class="right price">- <%=  format_number(@order.coupon_price) %> đ</td>
+										
+										</tr>
+									
+									<% end %>
+									
+									<tr>
+										
+										<td colspan="2"></td>
+										
+										<td colspan="2" class="right">Tổng tiền cho đơn hàng:</td>
+										
+										<td class="right price"><%= format_number(@order.total_with_voucher_coupon) %> đ</td>
+									
+									</tr>
+								
+								</tfoot>
+                            
+							</table>
+                            
+                            <h3>Lịch sử đơn hàng</h3>
+                            
+                            <table class="list last">
+								
+								<thead>
+									
+									<tr>
+										
+										<td class="left">Ngày đặt hàng</td>
+										
+										<td class="left">Trạng thái đơn hàng</td>
+									
+									</tr>
+								
+								</thead>
+								
+								<tbody>
+									
+									<tr>
+										
+										<td class="left"><%= @order.created_at.strftime("%d-%m-%Y") %></td>
+										
+										<td class="left"><span class="warning"><%= @order.status %></span></td>
+									
+									</tr>
+								
+								</tbody>
+                            
+							</table>
+                            
+							<div class="bottom_buttons bordered_content">
+                                
+								<div class="bottom on_the_sides">
+                                  
+									<div class="right_side v_centered">
+									  
+									  <a class="button_blue middle_btn" href="<%= url_for({controller: 'account', action: 'order'}) %>">Quay lại danh sách đơn hàng</a>
+									
+									</div>
+                                
+								</div>
+                           
+						    </div>
+                        
+						</div>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

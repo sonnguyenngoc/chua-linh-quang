@@ -1,0 +1,75 @@
+<section class="section_offset">
+
+    <h3>Viết bình luận</h3>
+
+    <div class="theme_box">
+
+        <%= form_for @comment, html: {class: "type_2"} do |f| %>
+            
+            <% if current_user.present? %>
+																
+                <%= f.hidden_field :user_id, value: current_user.id %>
+            
+            <% end %>
+        
+            <%= f.hidden_field :article_id, value: @blog.id %>
+            
+            <ul>
+
+                <li class="row">
+                    
+                    <div class="col-sm-6">
+
+                        <label for="lc_name" class="required">Tên</label>
+                        
+                        <% if current_user.present? %>
+																			
+                            <%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
+                        
+                        <% else %>
+                            
+                            <%= f.text_field :name, required: true %>
+                            
+                        <% end %>
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <label for="lc_email" class="required">Địa chỉ e-mail</label>
+                        
+                        <% if current_user.present? %>
+																			
+                            <%= f.text_field :email, value: current_user.email, readonly: true, required: true %>
+                        
+                        <% else %>
+                            
+                            <%= f.text_field :email, required: true %>
+                            
+                        <% end %>
+
+                    </div>
+
+                </li>
+
+                <li class="row">
+
+                    <div class="col-xs-12">
+
+                        <label for="lc_message">Nội dung</label>
+                        
+                        <%= f.text_area :content, rows: "6", required: true %>
+
+                    </div>
+
+                </li>
+                
+                <%= f.submit "Đăng bình luận", class: "button_blue middle_btn alignright" %>
+
+            </ul>
+
+        <% end %> 
+
+    </div>
+
+</section>

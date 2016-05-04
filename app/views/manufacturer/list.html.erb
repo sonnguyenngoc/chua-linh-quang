@@ -1,0 +1,127 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><a href="<%= root_path %>">Trang chủ</a></li>
+                    <li><%= @title_head %></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 has_mega_menu">
+
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+                        
+                        <%= render "module/categories" %>
+                        
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                    
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9">
+
+                        <h1><%= @title_head %></h1>
+
+                        <div class="table_layout">
+
+                            <div class="table_row">
+                                
+                                <% @manufacturers.each_with_index do |manufacturer, index| %>
+
+                                    <div class="table_cell">
+    
+                                        <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
+    
+                                        <figure class="manufacturer">
+                                            
+                                            <%= link_to image_tag(manufacturer.image_url.small_image), { controller: "manufacturer", action: "products", manufacturer_id: manufacturer.id }, class: "thumbnail" %>
+    
+                                            <figcaption>
+    
+                                                <%= link_to manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: manufacturer.id }, class: "thumbnail" %>
+    
+                                            </figcaption>
+    
+                                        </figure>
+    
+                                        <!-- - - - - - - - - - - - - - End of manufacturer - - - - - - - - - - - - - - - - -->
+    
+                                    </div>
+                                    
+                                <% if index%4 == 3 %>
+                                    
+                                    </div><!--/ .table_row -->
+
+                                    <div class="table_row">
+                                     
+                                <% end %>
+                                
+                            <% end %>
+
+                        </div><!--/ .table_layout -->
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag "/frontend/js/jquery-2.1.1.min.js" %>
+    <%= javascript_include_tag "/frontend/js/queryloader2.min.js" %>
+    <%= javascript_include_tag "/frontend/js/jquery.appear.js" %>
+    <%= javascript_include_tag "/frontend/js/owlcarousel/owl.carousel.min.js" %>
+    <%= javascript_include_tag "/frontend/twitter/jquery.tweet.min.js" %>
+    <%= javascript_include_tag "/frontend/js/arcticmodal/jquery.arcticmodal.js" %>
+    <%= javascript_include_tag "/frontend/js/colorpicker/colorpicker.js" %>
+    <%= javascript_include_tag "/frontend/js/retina.min.js" %>
+    <%= javascript_include_tag "http://s7.addthis.com/js/300/addthis_widget.js" %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag "/frontend/js/theme.plugins.js" %>
+    <%= javascript_include_tag "/frontend/js/theme.core.js" %>
+    
+</body>

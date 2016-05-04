@@ -1,0 +1,185 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+					
+                    <li><%= link_to "Trang chủ", root_path %></li>
+						
+					<li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
+                    
+					<li><%= @title_head %></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4">
+						
+                        <%= render "module/menu_account_logged" %>
+
+                    </aside><!--/ [col]-->
+
+                    <main class="col-md-9 col-sm-8">
+                        
+						<h1><%= @title_head %></h1>
+						
+						<% if current_user.orders.count > 0 %>
+                        
+							<div class="bordered_content box">
+								
+								<table class="compare-info">
+								  
+									<tbody>
+										
+										<% current_user.orders.each do |item| %>
+										
+											<tr>
+												
+												<td class="history">Mã đơn hàng</td>
+												
+												<td>#<%= item.id %></td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Trạng thái đơn hàng</td>
+												
+												<td><span class="warning"><%= item.status %></span></td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Ngày đặt hàng</td>
+												
+												<td><%= item.created_at.strftime("%d-%m-%Y") %></td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Số lượng sản phẩm</td>
+												
+												<td><%= item.order_details.count %></td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="history">Tên khách hàng</td>
+												
+												<td><%= item.customer.first_name + " " + item.customer.last_name %></td>
+											
+											</tr>
+											
+											<tr class="totals price">
+												
+												<td class="history">Tổng tiền đơn hàng</td>
+												
+												<td><%= format_number(item.total_with_voucher_coupon) %> đ</td>
+											
+											</tr>
+											
+											<tr>
+												
+												<td class="white_back" colspan="2">
+													
+													<%= link_to "Xem chi tiết", { controller: 'account', action: 'order_info', order_id: item.id }, class: "button_grey middle_btn" %>
+												
+												</td>
+											
+											</tr>
+										
+										<% end %>
+									
+									</tbody>
+								
+								</table>
+								
+								<div class="bottom_buttons">
+									
+									<div class="bottom on_the_sides">
+										
+										<div class="right_side v_centered">
+											
+											<%= link_to "Trở về", { controller: "account", action: "my_account" }, class: "button_blue middle_btn" %>
+										
+										</div>
+										
+									</div>
+								
+								</div>
+							
+							</div>
+								
+						<% else %>
+							
+							<p class="box">Danh sách lịch sử đơn đặt hàng trống!</p>
+							
+						<% end %>
+
+                    </main><!--/ [col]-->
+
+                </div><!--/ .row-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

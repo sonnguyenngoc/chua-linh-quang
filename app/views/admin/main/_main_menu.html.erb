@@ -1,0 +1,118 @@
+<div class="sidebar-category sidebar-category-visible">
+    <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion">
+
+            <!-- Main -->
+            <li class="navigation-header"><span></span> <i class="icon-menu"></i></li>
+            <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>'.html_safe + t(:dashboard) +'</span>'.html_safe, { controller: "main", action: "index" } %></li>
+            <li>
+                <a href="#"><i class="icon-stack2"></i> <span><%= t(:product) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/products"].include?(params[:controller]) %>">
+                        <%= link_to t(:products), admin_products_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/categories"].include?(params[:controller]) %>">
+                        <%= link_to t(:categories), admin_categories_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/manufacturers"].include?(params[:controller]) %>">
+                        <%= link_to t(:manufacturers), admin_manufacturers_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/areas"].include?(params[:controller]) %>">
+                        <%= link_to t(:areas), admin_areas_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
+                        <%= link_to t(:articles), admin_articles_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/slideshows"].include?(params[:controller]) %>">
+                        <%= link_to t(:slideshows), admin_slideshows_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
+                        <%= link_to t(:article_categories), admin_article_categories_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span><%= t(:orders) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/orders"].include?(params[:controller]) %>">
+                        <%= link_to t(:orders), admin_orders_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-comment"></i> <span><%= t(:comment_question) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/comments"].include?(params[:controller]) %>">
+                        <%= link_to t(:comments), admin_comments_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/comment_articles"].include?(params[:controller]) %>">
+                        <%= link_to t(:comment_articles), admin_comment_articles_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/questions"].include?(params[:controller]) %>">
+                        <%= link_to t(:questions), admin_questions_path %>
+                    </li>
+                </ul>
+            </li>
+            <li >
+                <a href="#"><i class="icon-truck"></i> <span><%= t(:delivery_method) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/delivery_methods"].include?(params[:controller]) %>">
+                        <%= link_to t(:delivery_methods), admin_delivery_methods_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="icon-paypal"></i> <span><%= t(:payment_method) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/payment_methods"].include?(params[:controller]) %>">
+                        <%= link_to t(:payment_methods), admin_payment_methods_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-gift"></i> <span><%= t(:voucher_coupon) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/vouchers"].include?(params[:controller]) %>">
+                        <%= link_to t(:vouchers), admin_vouchers_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/coupons"].include?(params[:controller]) %>">
+                        <%= link_to t(:coupons), admin_coupons_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="icon-people"></i> <span><%= t(:customer) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/customers"].include?(params[:controller]) %>">
+                        <%= link_to t(:customers), admin_customers_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
+                <ul>
+                    <li><%= link_to t(:users), "" %></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-fire"></i> <span><%= t(:company) %></span></a>
+                <ul>
+                    <li  class="<%= "active" if ["admin/companies"].include?(params[:controller]) %>">
+                        <%= link_to t(:companies), admin_companies_path %>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-cog"></i> <span><%= t(:settings) %></span></a>
+                <ul>
+                    <li></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

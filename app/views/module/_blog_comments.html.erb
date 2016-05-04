@@ -1,0 +1,61 @@
+<section class="section_offset">
+                            
+    <h3>Bình luận</h3>
+
+    <ol class="comments-list">
+        
+        <% if @blog.comment_articles.count > 0 %>
+        
+            <% @blog.comment_articles.each do |comment| %>
+    
+                <!-- - - - - - - - - - - - - - Comment (level 1) - - - - - - - - - - - - - - - - -->
+        
+                <li class="comment">
+        
+                    <article>
+        
+                        <!-- - - - - - - - - - - - - - Avatar - - - - - - - - - - - - - - - - -->
+                    
+                        <div class="avatar">
+        
+                            <img src="/frontend/images/comment_author_photo.jpg" alt="">
+        
+                        </div>
+        
+                        <!-- - - - - - - - - - - - - - End of avatar - - - - - - - - - - - - - - - - -->
+        
+                        <!-- - - - - - - - - - - - - - Comment body - - - - - - - - - - - - - - - - -->
+        
+                        <div class="comment-body">
+        
+                            <header class="comment-meta">
+        
+                                <h6 class="comment-author"><%= comment.name %></h6>, <%= comment.created_at.strftime("%d-%m-%Y") %>
+        
+                            </header>
+        
+                            <p class="text-justifly"><%= comment.content %></p>
+        
+                        </div>
+        
+                        <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
+        
+                        <a href="#" class="button_grey icon_btn comment-reply-link"><i class="icon-reply-4"></i></a>
+        
+                    </article>
+        
+                </li>
+        
+                <!-- - - - - - - - - - - - - - End of comment (level 1) - - - - - - - - - - - - - - - - -->
+                
+            <% end %>
+            
+        <% else %>
+            
+            <p class="box">Chưa có bình luận nào cho bài viết.</p>
+            
+        <% end %>
+
+    </ol>
+
+</section>

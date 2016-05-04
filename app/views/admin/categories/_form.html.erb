@@ -1,0 +1,78 @@
+<% if @category.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @category.errors.full_messages.each do |message| %>
+                - <%= message %><br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @category], html: {class: "form-horizontal"} do |f| %>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:list_category_name) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label t(:list_description), class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+            <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <%= f.label "Parent", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+            <div class="row-fluid">
+                <div class="radio">
+                    <%= radio_button_tag 'parent_id', "", @category.parent.empty?, :id => "category_none", class: "styled-level-1" %>
+                    <label for="category_none"><%= t(:none) %></label>
+                </div>
+            </div>
+            <% Category.all.each do |category| %>
+                <% if category.level == 1 %>
+                    <% if @category.id != category.id %>
+                        <div class="row-fluid">
+                            <div class="radio">
+                                <%= radio_button_tag 'parent_id', category.id, @category.parent.include?(category), id: "category_#{category.id}", class: "styled-level-1" %>
+                                <label for="category_<%= category.id %>"><%= category.name %></label>
+                            </div>
+                        </div>
+                    <% end %>
+                    <% category.children.each do |child_1| %>                        
+                        <% if @category.id != child_1.id %>
+                            <div class="row-fluid" style="margin-left: 30px">
+                                <div class="radio">
+                                    <%= radio_button_tag 'parent_id', child_1.id, @category.parent.include?(child_1), :id => "category_#{child_1.id}", class: "styled-level-2" %>
+                                    <label for="category_<%= child_1.id %>"><%= child_1.name %></label>
+                                </div>
+                            </div>
+                        <% end %>
+                        <% child_1.children.each do |child_2| %>
+                            <% if @category.id != child_2.id %>
+                                <div class="row-fluid" style="margin-left: 60px">
+                                    <div class="radio">
+                                        <%= radio_button_tag 'category[parent_id]', child_2.id, @category.parent.include?(child_2), :id => "category_#{child_2.id}", class: "styled-level-3" %>
+                                        <label for="category_<%= child_2.id %>"><%= child_2.name %></label>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_categories_path, class: "btn btn-danger"%>
+    </div>
+    
+<% end %>

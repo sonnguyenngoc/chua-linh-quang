@@ -1,0 +1,224 @@
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
+
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold"><%= t(:products) %></span></h4>
+                    </div>
+                    
+                </div>
+                
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_products_path %>"><%= t(:product) %></a></li>
+                        <li class="active"><%= t(:products) %></li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+                <!-- Basic datatable -->
+                <div class="panel panel-flat">
+                    <div class="panel-heading col-md-12">
+                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_products) %></span></h5>
+                        <%= link_to t(:new_product), new_admin_product_path, class: 'btn btn-primary pull-right' %>
+                    </div>
+                    <div class="filter-box">
+                        <%= form_for("", url: {controller: "products", action: "search"}, method: "get") do |f| %>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:manufacturers) %></label>
+                                        <div>
+                                            <%= select_tag(:manufacturer_id, options_from_collection_for_select(Manufacturer.all, :id, :name, :selected => params[:manufacturer_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:category) %></label>
+                                        <div>
+                                            <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name, :selected => params[:category_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:areas) %></label>
+                                        <div>
+                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:status) %></label>
+                                        <div>
+                                            <%= select_tag(:status_id, options_for_select(Product.status_options, :selected => params[:status_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:filter) %></label>
+                                        <div class="input-group">
+                                            <input type="text" name="keyword" class="form-control" placeholder="<%= t(:placeholder_filter) %>" value="<%= params[:keyword] %>">
+                                            <a class="input-group-addon keyword_search_button"><i class="icon-search4"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-2">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:sort_by) %></label>
+                                        <div>
+                                            <%= select_tag(:sort_by, options_for_select(Product.sort_by, :selected => params[:sort_by]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:sort_order) %></label>
+                                        <div>
+                                            <%= select_tag(:sort_order, options_for_select(Product.sort_order, :selected => params[:sort_order]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>                            
+                        <% end %>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="bg-teal-800">
+                                <th><%= t(:list_image) %></th>
+                                <th><%= t(:list_product_name) %></th>
+                                <th><%= t(:list_price) %> (VNĐ)</th>
+                                <th><%= t(:list_quantity) %></th>
+                                <th><%= t(:list_categories) %></th>
+                                <th><%= t(:list_areas) %></th>
+                                <th><%= t(:list_status) %></th>
+                                <th><%= t(:created_at) %></th>
+                                <th class="text-center"><%= t(:actions) %></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @products.each do |item| %>
+                                <tr>
+                                    <td>
+                                        <% if item.get_main_image.present? %>
+                                            <%= link_to image_tag(item.get_main_image.image_url.small_image), edit_admin_product_path(item), title: item.name %>
+                                        <% else %>
+                                            <%= link_to image_tag("/frontend/images/small_image.png"), edit_admin_product_path(item), title: item.name %>
+                                        <% end %>
+                                    </td>
+                                    <td>
+                                        <%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %>
+                                        <br/><%= item.code %>
+                                        <br/><%= item.manufacturer.name %>
+                                    </td>
+                                    </td>
+                                    <td><%= format_number(item.price) %></td>
+
+                                    <td><%= format_number(item.quantity) %> (<%= item.unit %>)</td>
+                                    <td>
+                                        <%= item.categories.map(&:name).join("<br/>").html_safe %>
+                                    </td>
+                                    <td>
+                                        <%= item.areas.map(&:name).join("<br/>").html_safe %>
+                                    </td>
+                                    <td>
+                                        <%= item.status %>
+                                    </td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), edit_admin_product_path(item) %>
+                                                    </li>
+                                                    <li>
+                                                        <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_wrapper no-footer">
+                        <div class="datatable-footer showed">
+                            <div class="dataTables_info" ><%= page_entries_info @products %></div>
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /basic datatable -->
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_products.js' %>
+<!-- /theme JS files -->

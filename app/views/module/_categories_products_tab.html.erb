@@ -1,0 +1,155 @@
+<section class="section_offset animated transparent" data-animation="fadeInDown"> 
+
+    <h3><%= title %></h3>
+
+    <div class="tabs type_2 products">
+
+        <!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
+        
+        <ul class="tabs_nav clearfix">
+            
+			<% Category.get_by_status(status).each_with_index do |category,index| %>
+               
+				<li><a href="#tab-<%= status %>-<%= index %>"><%= category.name %></a></li>
+            
+			<% end %>
+        
+		</ul>
+        
+        <!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
+
+        <div class="tab_containers_wrap">
+			
+            <% Category.get_by_status(status).each_with_index do |category,index| %>
+                
+				<div id="tab-<%= status %>-<%= index %>" class="tab_container">
+    
+                    <!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
+                    
+                    <div class="owl_carousel carousel_in_tabs type_2">
+                        
+                        <% Product.get_by_category_status(category, status).each do |product| %>
+                        
+                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+        
+                            <div class="product_item">
+        
+                                <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+        
+                                <div class="image_wrap">
+        
+                                    <% if product.get_main_image.present? %>
+																
+                                        <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                    
+                                    <% else %>
+                                        
+                                        <img src="/frontend/images/medium_image.png" alt="">
+                                    
+                                    <% end %>
+        
+                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+        
+                                    <div class="actions_wrap">
+        
+                                        <div class="centered_buttons">
+        
+                                            <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
+											
+											<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category add_to_cart_button" %>
+        
+                                        </div><!--/ .centered_buttons -->
+        
+                                        <% if current_user.present? %>
+											
+											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+										
+										<% else %>
+											
+											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
+										
+										<% end %>
+        
+                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
+        
+                                    </div><!--/ .actions_wrap-->
+                                    
+                                    <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+        
+                                </div><!--/. image_wrap-->
+        
+                                <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
+        
+                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+        
+                                <!--<div class="label_offer percentage">
+        
+                                    <!--<div>30%</div>OFF
+        
+                                </div>-->
+        
+                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+        
+                                <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
+        
+                                <!--<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>-->
+        
+                                <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
+        
+                                <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
+        
+                                <div class="description">
+        
+                                    <p><%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %></p>
+        
+                                    <div class="clearfix product_info">
+        
+                                        <% if product.count_stars.length > 0 %>
+
+											<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+											
+											<ul class="rating alignright">
+												
+												<% (1..product.average_stars).each do |star| %>
+
+													<li class="active"></li>
+												
+												<% end %>
+
+											</ul>
+												
+											<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+										<% end %>
+        
+                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+        
+                                    </div><!--/ .clearfix.product_info-->
+        
+                                </div>
+        
+                                <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
+        
+                            </div><!--/ .product_item-->
+                            
+                            <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+                        
+                        <% end %>
+                        
+                    </div><!--/ .owl_carousel-->
+                    
+                    <!-- - - - - - - - - - - - - - End of carousel of today's deals - - - - - - - - - - - - - - - - -->
+    
+                </div><!--/ #tab-1-->
+            
+            <% end %>
+
+        </div>
+
+        <!-- - - - - - - - - - - - - - End of tabs containers - - - - - - - - - - - - - - - - -->
+
+    </div>
+
+</section><!--/ .section_offset-->

@@ -1,0 +1,102 @@
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
+
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold"><%= t(:new_article) %></span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_articles_path %>"><%= t(:article) %></a></li>
+                        <li><a href="<%= admin_articles_path %>"><%= t(:articles) %></a></li>
+                        <li class="active"><%= t(:new_article) %></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Horizontal form options -->
+                <div class="row">
+                    <div class="col-md-12">
+            
+                        <!-- Basic layout-->
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title"><%= t(:new_article) %></h5>
+                            </div>
+                            
+                            <div class="panel-body">
+                                <%= render 'form' %>
+                            </div>
+            
+                        </div>
+                        <!-- /basic layout -->
+                    </div>
+                </div>
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
+<%= javascript_include_tag '//cdn.ckeditor.com/4.5.7/full/ckeditor.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/colors_primary.js' %>
+<!-- /theme JS files -->
+<script>
+    // Full featured editor
+    CKEDITOR.replace( 'editor-full', {
+        height: '400px',
+        extraPlugins: 'forms'
+    });
+</script>
