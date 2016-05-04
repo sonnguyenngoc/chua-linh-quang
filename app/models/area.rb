@@ -66,7 +66,7 @@ class Area < ActiveRecord::Base
     
     #Parent filter
     if params[:parent_id].present?
-        records = records.joins(:areas).where("areas.parent_id = ?", params[:parent_id])
+        records = records.where(parent_id: params[:parent_id])
     end
     
     #Search keyword filter

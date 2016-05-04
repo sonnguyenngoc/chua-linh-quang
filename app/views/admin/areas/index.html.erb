@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label class="" >Parent</label>
                                         <div>
-                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:parent_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
                                         </div>
                                     </div>
                                 </div>

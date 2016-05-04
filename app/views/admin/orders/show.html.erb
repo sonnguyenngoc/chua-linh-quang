@@ -70,7 +70,6 @@
                             <p>Công ty: </p>
                             <p>Địa chỉ: <%= @order.order_delivery.display_address %></p>
                             <p>Ngày đặt hàng: <%= @order.created_at.strftime("%d/%m/%Y") %></p>
-                            <p>Ngày giao hàng: ...</p>
                         </div>
                     </div>
                     <div class="panel-body col-md-12">
@@ -80,7 +79,7 @@
                         </div>
                         <div class="col-md-6">
                             <h6><b>Hình thức thanh toán</b></h6>
-                            <p>Chưa có dữ liệu </p>
+                            <p><%= @order.order_delivery.payment_method.title %> </p>
                         </div>
                     </div>
                     
@@ -95,35 +94,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- @order_details.each do |item| -->
+                            <% @order.order_details.each_with_index do |item, index| %>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Item</td>
-                                    <td>2</td>
-                                    <td>120.000</td>
-                                    <td>240.000</td>
+                                    <td><%= index + 1 %></td>
+                                    <td><%= item.product_name %></td>
+                                    <td><%= item.quantity %></td>
+                                    <td><%= item.price %></td>
+                                    <td><%= item.total %></td>
                                 </tr>
+                            <% end %>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2"><b>Tổng tiền hàng</b></td>
-                                <td colspan="1"><b>372.000</b></td>
+                                <td colspan="1"><b><%= @order.total_order %></b></td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2"><b>Phí vận chuyển</b></td>
-                                <td colspan="1"><b>372.000</b></td>
+                                <td colspan="1"><b>.....</b></td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2"><b>Giảm giá</b></td>
-                                <td colspan="1"><b>372.000</b></td>
+                                <td colspan="1"><b>.....</b></td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                                 <td colspan="2"><b style="color: #018bcb">Tổng tiền thanh toán</b></td>
-                                <td colspan="1"><b style="color: #018bcb">372.000</b></td>
+                                <td colspan="1"><b style="color: #018bcb">.....</b></td>
                             </tr>
                         </tfoot>
                     </table>
