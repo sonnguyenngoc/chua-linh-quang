@@ -6,11 +6,15 @@
   
         <ul class="tags_cloud">
             
-            <% Article.get_keyword_article.keywords.each do |item| %>
-                                    
-                <li><a href="#" class="button_grey"><%= item.html_safe %></a></li>
+            <% if !Article.get_keyword_article.nil? %>
             
-            <% end %>
+                <% Article.get_keyword_article.keywords.each do |item| %>
+                                        
+                    <li><a href="#" class="button_grey"><%= item.html_safe %></a></li>
+                
+                <% end %>
+            
+            <% end %>    
   
         </ul><!--/ .tags_cloud-->
         

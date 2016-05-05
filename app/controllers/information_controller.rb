@@ -7,6 +7,7 @@ class InformationController < ApplicationController
   def contact_us
     @title_head = "Liên hệ"
     @contact = Contact.new
+    @company = Company.all
   end
   
   def finish_contact_us
