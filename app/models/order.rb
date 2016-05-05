@@ -16,7 +16,6 @@ class Order < ActiveRecord::Base
     self.order_details.each do |tt|
       total += tt.total
     end
-    
     return total
   end
   
@@ -95,6 +94,18 @@ class Order < ActiveRecord::Base
       amount += od.total
     end
     return amount
+  end
+  
+  def discount
+    discount = 0.0
+    discount = voucher_price.to_f + coupon_price.to_f
+    return discount
+  end
+  
+  def total_payment
+    ttpm = 0.0
+    ttpm = total - discount
+    return ttpm
   end
 
 end
