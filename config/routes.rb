@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     resources :testimonials
     root "home#countdown"
