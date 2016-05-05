@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :testimonials
   scope "(:locale)", locale: /vi|en/ do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
@@ -67,8 +68,8 @@ Rails.application.routes.draw do
     get "san-pham/them-vao-so-sanh-san-pham-thanh-cong" => "product/add_wishlist_success", as: :add_wishlist_success
     get "san-pham/them-vao-san-pham-yeu-thich-thanh-cong" => "product/add_compare_success", as: :add_compare_success
     get "san-pham/ket-qua-tim-kiem" => "product#search", as: :search
-    get "san-pham/y-kien-khach-hang" => "product#testimonial", as: :testimonial
-    get "san-pham/gui-y-kien-khach-hang" => "product#testimonialform", as: :testimonialform
+    get "san-pham/y-kien-khach-hang" => "product#testimonial", as: :testimonial_list
+    get "san-pham/gui-y-kien-khach-hang" => "product#testimonialform", as: :testimonial_form
     get "san-pham/dac-biet" => "product#special", as: :special
     # end product
     

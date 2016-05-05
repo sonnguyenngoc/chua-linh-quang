@@ -275,6 +275,16 @@ input[type="radio"] + label::before {
 #new_contact_form .error {
     border-color: red;
 }
+#new_testimonial .error{
+    border-color: red;
+}
 label.error {
 	display: none !important;
+}
+.theme_menu > li > a {
+    position: relative;
+    display: block;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    padding: 11px 40px 10px 19px;
 }
