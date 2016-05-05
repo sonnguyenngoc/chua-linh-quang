@@ -48,39 +48,13 @@
 	
 								<div class="left_side v_centered">
 	
-									<p class="visible_pages">Showing 1 to 10 of 30 (3 pages)</p>
-	
-									<span>Show:</span> 
-	
-									<div class="">
-	
-										<select name="">
-	
-											<option value="10">10</option>
-											
-											<option value="5">5</option>
-	
-										</select>
-	
-									</div>
+									<p class="visible_pages"><%= page_entries_info @products %> sản phẩm yêu thích.</p>
 	
 								</div>
 	
 								<div class="right_side">
 								
-									<ul class="pags">
-	
-										<li><a href="#"></a></li>
-										
-										<li class="active"><a href="#">1</a></li>
-										
-										<li><a href="#">2</a></li>
-										
-										<li><a href="#">3</a></li>
-										
-										<li><a href="#"></a></li>
-	
-									</ul>
+									<%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
 	
 								</div>
 	
@@ -107,7 +81,7 @@
 	
 									<tbody>
 										
-										<% current_user.wish_lists.each do |item| %>
+										<% @products.each do |item| %>
 	
 											<tr>
 		
@@ -187,39 +161,13 @@
 	
 								<div class="left_side v_centered">
 	
-									<p class="visible_pages">Showing 1 to 10 of 30 (3 pages)</p>
-	
-									<span>Show:</span> 
-	
-									<div class="">
-	
-										<select name="">
-	
-											<option value="10">10</option>
-											
-											<option value="5">5</option>
-	
-										</select>
-	
-									</div>
+									<p class="visible_pages"><%= page_entries_info @products %> sản phẩm yêu thích.</p>
 	
 								</div>
-								
+	
 								<div class="right_side">
-	
-									<ul class="pags">
-	
-										<li><a href="#"></a></li>
-										
-										<li class="active"><a href="#">1</a></li>
-										
-										<li><a href="#">2</a></li>
-										
-										<li><a href="#">3</a></li>
-										
-										<li><a href="#"></a></li>
-	
-									</ul>
+								
+									<%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
 	
 								</div>
 	
