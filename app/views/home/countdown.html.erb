@@ -345,6 +345,7 @@ countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.w
 </div>
 								
 <div style="width: 100%; display: block; float: left; min-width: auto;" id="company_info">
+				<% if !Company.first.nil? %>
 					  <div style="" class="cleft">
 					  <h4><%= Company.first.name %></h4>
 					  
@@ -365,7 +366,7 @@ countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.w
 						<strong>Hotline:</strong> <%= Company.first.hotline %>&nbsp;&nbsp;<strong>						Email:</strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a>
 					  </p>
 					  </div>
-  
+				<% end %>
 	  </div>
 
 <!--<div class="clr"></div>
