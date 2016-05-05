@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /vi|en/ do
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
     
