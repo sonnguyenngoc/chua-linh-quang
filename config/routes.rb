@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :testimonials
-  scope "(:locale)", locale: /vi|en/ do
+
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
+    resources :testimonials
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
     
