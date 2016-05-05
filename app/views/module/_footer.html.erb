@@ -214,7 +214,7 @@
     
                                                 <span><i class="icon-calendar"></i> <%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>
                                                 
-                                                <span><i class="icon-comment"></i> 3</span>
+                                                <span><i class="icon-comment"></i> <%= blog.comment_articles.count %></span>
                                                 
                                             </div><!--/ .entry_meta-->
     
