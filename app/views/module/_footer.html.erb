@@ -214,7 +214,7 @@
     
                                                 <span><i class="icon-calendar"></i> <%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>
                                                 
-                                                <span><i class="icon-comment"></i> 3</span>
+                                                <span><i class="icon-comment"></i> <%= blog.comment_articles.count %></span>
                                                 
                                             </div><!--/ .entry_meta-->
     
@@ -417,7 +417,7 @@
 
             <p class="copyright">
                 &copy; 2016 <%= link_to "Đặc sản vùng miền", { controller: "information", action: "about_us" }, target: "_blank" %>. All Rights Reserved.<br/>
-                Thiết kế bởi <%= link_to "Hoang Khang Incotech", "http://hoangkhang.com.vn/", target: "_blank" %>
+                Thiết kế bởi <%= link_to "DacSanVungMien.net", "http://dacsanvungmien.net/", target: "_blank" %>
             </p>
 
         </div><!--/ .container -->

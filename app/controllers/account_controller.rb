@@ -46,6 +46,7 @@ class AccountController < ApplicationController
   
   def wishlist
     @title_head = "Sản phẩm yêu thích"
+    @products = current_user.wish_lists.paginate(:page => params[:page], :per_page => 6)
   end
   
   def newsletter

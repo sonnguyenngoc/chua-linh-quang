@@ -132,25 +132,16 @@
 
                                     <div class="col-sm-7">
 
-                                        <p class="form_caption">Ut tellus dolor dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis.</p>
+                                        <p class="form_caption"><%= @company.first.name %></p>
 
                                         <ul class="c_info_list">
 
-                                            <li class="c_info_location">8901 Marmora Road, Glasgow, D04 89GR.</li>
-                                            <li class="c_info_phone">800-599-65-80</li>
-                                            <li class="c_info_mail"><a href="mailto:#">info@companyname.com</a></li>
-                                            <li class="c_info_schedule">
-
-                                                <ul>
-
-                                                    <li>Monday-Friday: 8.00-20.00</li>
-                                                    <li>Saturday: 9.00-15.00</li>
-                                                    <li>Sunday: closed</li>
-
-                                                </ul>
-
-                                            </li>
-
+                                            <li class="c_info_location">Văn phòng: <%= @company.first.head_office_address %></li>
+                                            <li class="c_info_phone">ĐT: <%= @company.first.phone %></li>
+                                            <li class="c_info_phone">Hotline: <%= @company.first.hotline %></li>
+                                            <li class="c_info_mail"><a href="mailto:<%= @company.first.email %>"><%= @company.first.email %></a></li>
+                                            <li class="c_info_location">Văn phòng giao dịch: <%= @company.first.sales_office_address %></li>
+                                            
                                         </ul>
 
                                     </div><!--/ [col]-->

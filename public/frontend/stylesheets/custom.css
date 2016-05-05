@@ -272,6 +272,9 @@ input[type="radio"] + label::before {
 #new_contact .error {
     border-color: red;
 }
+#new_contact_form .error {
+    border-color: red;
+}
 label.error {
 	display: none !important;
 }
