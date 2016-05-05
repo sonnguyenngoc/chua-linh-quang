@@ -101,6 +101,15 @@ class Article < ActiveRecord::Base
     return records
   end
   
+  #keywords
+  def keywords
+    self.tags.split(",")
+  end
+  
+  def self.get_keyword_article
+      self.all.where(code: "keywords").first 
+  end
+  
   #Filter, Sort
   def self.search(params)
     records = self.all

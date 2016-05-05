@@ -253,3 +253,25 @@ input[type="radio"] + label::before {
 .footer_section_3 {
     padding-top: 10px;
 }
+
+#new_order .error {
+	border-color: red;
+}
+#new_comment_article .error {
+    border-color: red;
+}
+#new_user .error {
+    border-color: red;
+}
+#new_question .error {
+    border-color: red;
+}
+#new_comment .error {
+    border-color: red;
+}
+#new_contact .error {
+    border-color: red;
+}
+label.error {
+	display: none !important;
+}

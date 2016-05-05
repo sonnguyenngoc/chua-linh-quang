@@ -4,7 +4,7 @@ class Admin::CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /companies/1
@@ -28,7 +28,7 @@ class Admin::CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to [:admin, @company], notice: 'Company was successfully created.' }
+        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to [:admin, @company], notice: 'Company was successfully updated.' }
+        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }

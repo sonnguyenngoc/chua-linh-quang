@@ -1,43 +1,140 @@
-<p id="notice"><%= notice %></p>
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
 
-<h1>Listing Companies</h1>
+<!-- Page container -->
+<div class="page-container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Image url</th>
-      <th>Name</th>
-      <th>Head office address</th>
-      <th>Certificate no</th>
-      <th>Date of issue</th>
-      <th>Sales office address</th>
-      <th>Phone</th>
-      <th>Hotline</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <!-- Page content -->
+    <div class="page-content">
 
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.image_url %></td>
-        <td><%= company.name %></td>
-        <td><%= company.head_office_address %></td>
-        <td><%= company.certificate_no %></td>
-        <td><%= company.date_of_issue %></td>
-        <td><%= company.sales_office_address %></td>
-        <td><%= company.phone %></td>
-        <td><%= company.hotline %></td>
-        <td><%= company.email %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
 
-<br>
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
 
-<%= link_to 'New Company', new_company_path %>
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold"><%= t(:customer) %></span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_companies_path %>"><%= t(:company) %></a></li>
+                        <li class="active"><%= t(:companies) %></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Basic datatable -->
+                <div class="panel panel-flat">
+                    
+                    <div class="panel-heading col-md-12">
+                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:companies) %></span></h5>
+                        <%= link_to t(:new_company), new_admin_company_path, class: 'btn btn-primary pull-right' %>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr class="bg-teal-800">
+                                <th><%= t(:logo) %></th>
+                                <th><%= t(:company_name) %></th>
+                                <th><%= t(:phone) %></th>
+                                <th><%= t(:hotline) %></th>
+                                <th><%= t(:email) %></th>
+                                <th><%= t(:created_at) %></th>
+                                <th class="text-center"><%= t(:actions) %></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @companies.each do |item| %>
+                                <tr>
+                                    <td>
+                                        <div class="media-left">
+                                            <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_company_path(item) %>
+                                        </div>
+                                    </td>
+                                    <td><%= item.name %></td>
+                                    <td><%= item.phone %></td>
+                                    <td><%= item.hotline %></td>
+                                    <td><%= item.email %></td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_company_path(item) %>
+                                                    </li>
+                                                    <li>
+                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_wrapper no-footer">
+                        <div class="datatable-footer showed">
+                            <div class="dataTables_info" ><%= page_entries_info @customers %></div>
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <%= will_paginate @customers, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /basic datatable -->
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_manufacturers.js' %>
+<!-- /theme JS files -->

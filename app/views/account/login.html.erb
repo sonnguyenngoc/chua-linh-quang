@@ -76,7 +76,7 @@
 															
 															<label class="control-label" for="input-email" style="text-align: left;">Địa chỉ email</label>
 															
-															<p class="user_input"><%= f.email_field :email, class: "form-control", placeholder: "Nhập địa chỉ email...", required: true %></p>
+															<p class="user_input"><%= f.email_field :email, class: "form-control required", placeholder: "Nhập địa chỉ email..." %></p>
 														
 														</div>
 														
@@ -84,7 +84,7 @@
 															
 															<label class="control-label" for="input-password" style="text-align: left;">Password</label>
 															
-															<p class="user_input"><%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nhập mật khẩu...", required: true %></p>
+															<p class="user_input"><%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %></p>
 														
 														</div>
 														
@@ -171,10 +171,17 @@
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
     <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+    <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 
     <!-- Theme files
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
-    
+    <script>
+        
+        $(document).ready(function(){
+            $("#new_user").validate();
+        });
+        
+    </script>
 </body>

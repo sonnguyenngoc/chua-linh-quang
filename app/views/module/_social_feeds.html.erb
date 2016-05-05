@@ -147,7 +147,8 @@
                
               <div class="animated_item">
                   
-                  <p class="c_info_location">8901 Marmora Road,<br>Glasgow, D04 89GR.</p>
+                  <p class="c_info_location">VP: <%= Company.first.head_office_address %></p>
+                  <p class="c_info_location">VPGD: <%= Company.first.sales_office_address %></p>
 
                   <div class="proportional_frame">
 
@@ -157,19 +158,9 @@
 
                   <ul class="c_info_list">
 
-                      <li class="c_info_phone">800-599-65-80</li>
-                      <li class="c_info_mail"><a href="mailto:#">info@companyname.com</a></li>
-                      <li class="c_info_schedule">
-
-                          <ul>
-
-                              <li>Monday-Friday: 8.00-20.00</li>
-                              <li>Saturday: 9.00-15.00</li>
-                              <li>Sunday: closed</li>
-
-                          </ul>
-
-                      </li>
+                      <li class="c_info_phone">ĐT: <%= Company.first.phone %></li>
+                      <li class="c_info_phone">Hotline: <%= Company.first.hotline %></li>
+                      <li class="c_info_mail">Email: <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a></li>
 
                   </ul>
 

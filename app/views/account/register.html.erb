@@ -63,7 +63,7 @@
 								
 												<div class="form_el">
 													
-													<%= f.text_field :first_name, autofocus: true, class: "form-control", required: true %>
+													<%= f.text_field :first_name, autofocus: true, class: "form-control required" %>
 								
 												</div>
 							  
@@ -79,7 +79,7 @@
 								
 												<div class="form_el">
 								
-													<%= f.text_field :last_name, class: "form-control", required: true %>
+													<%= f.text_field :last_name, class: "form-control required" %>
 								
 												</div>
 							  
@@ -95,7 +95,7 @@
 								
 												<div class="form_el">
 													
-													<%= f.email_field :email, class: "form-control", required: true %>
+													<%= f.email_field :email, class: "form-control required email" %>
 								
 												</div>
 							  
@@ -111,7 +111,7 @@
 								
 												<div class="form_el">
 								
-													<%= f.text_field :phone, class: "form-control", required: true %>
+													<%= f.text_field :phone, class: "form-control required" %>
 								
 												</div>
 							  
@@ -173,7 +173,7 @@
 							  
 												<div class="form_el">
 							  
-													<%= f.text_field :address_1, class: "form-control", required: true %>
+													<%= f.text_field :address_1, class: "form-control required" %>
 							  
 												</div>
 							  
@@ -223,7 +223,7 @@
 								
 													<div>
         
-														<select required name="user[country]">
+														<select class="required" name="user[country]">
 															
 															<option value="Vietnam">Việt Nam</option>
 				
@@ -247,7 +247,7 @@
 							  
 													<div>
 							  
-														<select required name="user[province]">
+														<select class="required" name="user[province]">
 			
 															<% Area.get_list_province_city.each do |area| %>
 				  
@@ -287,7 +287,7 @@
 							  
 											<div class="form_el">
 							  
-												<%= f.password_field :password, autocomplete: "off", class: "form-control", required: true %>
+												<%= f.password_field :password, autocomplete: "off", class: "form-control required" %>
 							  
 											</div>
 							
@@ -303,7 +303,7 @@
 							  
 											<div class="form_el">
 							  
-												<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", required: true %>
+												<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control required" %>
 							  
 											</div>
 							
@@ -414,10 +414,18 @@
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
     <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+    <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 
     <!-- Theme files
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    <script>
+        
+        $(document).ready(function(){
+            $("#new_user").validate();
+        });
+        
+    </script>
     
 </body>
