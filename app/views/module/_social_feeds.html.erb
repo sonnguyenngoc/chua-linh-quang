@@ -146,9 +146,10 @@
               </div><!--/ .animated_item-->
                
               <div class="animated_item">
-                  
-                  <p class="c_info_location">VP: <%= Company.first.head_office_address %></p>
-                  <p class="c_info_location">VPGD: <%= Company.first.sales_office_address %></p>
+                    <% if !Company.first.nil? %>
+                        <p class="c_info_location">VP: <%= Company.first.head_office_address %></p>
+                        <p class="c_info_location">VPGD: <%= Company.first.sales_office_address %></p>
+                    <% end %>
 
                   <div class="proportional_frame">
 
@@ -157,11 +158,11 @@
                   </div>
 
                   <ul class="c_info_list">
-
-                      <li class="c_info_phone">ĐT: <%= Company.first.phone %></li>
-                      <li class="c_info_phone">Hotline: <%= Company.first.hotline %></li>
-                      <li class="c_info_mail">Email: <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a></li>
-
+                        <% if !Company.first.nil? %>
+                            <li class="c_info_phone">ĐT: <%= Company.first.phone %></li>
+                            <li class="c_info_phone">Hotline: <%= Company.first.hotline %></li>
+                            <li class="c_info_mail">Email: <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a></li>
+                        <% end %>
                   </ul>
 
               </div><!--/ .animated_item-->
