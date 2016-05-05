@@ -385,13 +385,13 @@
         <div class="container company_info">
             
             <p class="copyright">
-                
-                <h4 class="company_name"><%= Company.first.name %></h4>  
-                <strong>Văn phòng: </strong> <%= Company.first.head_office_address %> </br>
-                <strong>GPĐK: </strong> <%= Company.first.certificate_no %> - Cấp ngày <%= Company.first.date_of_issue.strftime("%d-%m-%Y") %> <br/>
-                <strong>VPGD: </strong><%= Company.first.sales_office_address %><br/>
-                <strong>ĐT: </strong> <%= Company.first.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.first.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a><br/>
-                
+                <% if !Company.first.nil? %>
+                    <h4 class="company_name"><%= Company.first.name %></h4>  
+                    <strong>Văn phòng: </strong> <%= Company.first.head_office_address %> </br>
+                    <strong>GPĐK: </strong> <%= Company.first.certificate_no %> - Cấp ngày <%= Company.first.date_of_issue.strftime("%d-%m-%Y") %> <br/>
+                    <strong>VPGD: </strong><%= Company.first.sales_office_address %><br/>
+                    <strong>ĐT: </strong> <%= Company.first.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.first.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a><br/>
+                <% end %>
             </p>
             
         </div>
