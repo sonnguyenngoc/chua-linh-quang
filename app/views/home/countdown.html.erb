@@ -257,8 +257,8 @@ từ khắp mọi miền đất nước</div>
 
 
 <%
-countdown_left = !Article.where(code: "countdown_left").first.nil? ? Article.where(code: "countdown_left").first : Article.new
-countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.where(code: "countdown_right").first : Article.new
+countdown_left = !Article.joins(:code_status).where(code_statuses: { title: 'countdown_left' }).first.nil? ? Article.joins(:code_status).where(code_statuses: { title: 'countdown_left' }).first : Article.new
+countdown_right = !Article.joins(:code_status).where(code_statuses: { title: 'countdown_right' }).first.nil? ? Article.joins(:code_status).where(code_statuses: { title: 'countdown_right' }).first : Article.new
 %>
 
 <% if countdown_left.title.present? and countdown_right.title.present? %>

@@ -3,9 +3,10 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :article_categories
   has_and_belongs_to_many :products
   has_many :comment_articles
+  belongs_to :code_status
   
   def self.get_lastest_blog_posts
-    self.order("created_at DESC").first(3)
+    self.joins(:code_status).where(code_statuses: { title: 'news' }).first(3)
   end
   
   def split_tags
@@ -13,7 +14,7 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_all_blogs
-    self.all.order("created_at DESC")
+    self.all.joins(:code_status).where(code_statuses: { title: 'news' }).order("created_at DESC")
   end
   
   def self.get_blog_about_us
@@ -28,6 +29,7 @@ class Article < ActiveRecord::Base
     article_categories.each do |c|
       cat_ids += c.get_all_related_ids
     end
+    records = records.joins(:code_status).where(code_statuses: { title: 'news' })
     records = Article.joins(:article_categories).where(article_categories: {id: cat_ids}).uniq
     
     return records
@@ -50,7 +52,7 @@ class Article < ActiveRecord::Base
   
   def self.get_highest_product_quality
     records = self.all
-    records = records.where(code: "the_highest_product_quality")
+    records = records.joins(:code_status).where(code_statuses: { title: 'the_highest_product_quality' })
     records.order("created_at DESC").first
     
     return records
@@ -59,7 +61,7 @@ class Article < ActiveRecord::Base
   #fast & free delivery
   def self.get_fast_free_delivery
     records = self.all
-    records = records.where(code: "fast_free_delivery")
+    records = records.joins(:code_status).where(code_statuses: { title: 'fast_free_delivery' })
     records.order("created_at DESC").first
     
     return records
@@ -68,7 +70,7 @@ class Article < ActiveRecord::Base
   #safe & secure payment
   def self.get_safe_secure_order
     records = self.all
-    records = records.where(code: "safe_secure_order")
+    records = records.joins(:code_status).where(code_statuses: { title: 'safe_secure_order' })
     records.order("created_at DESC").first
     
     return records
@@ -77,7 +79,7 @@ class Article < ActiveRecord::Base
   #100% money back guaranteed
   def self.get_money_back
     records = self.all
-    records = records.where(code: "money_back")
+    records = records.joins(:code_status).where(code_statuses: { title: 'money_back' })
     records.order("created_at DESC").first
     
     return records
@@ -86,7 +88,7 @@ class Article < ActiveRecord::Base
   #get percent off fo reorder
   def self.get_percent_off
     records = self.all
-    records = records.where(code: "get_5_percent_off")
+    records = records.joins(:code_status).where(code_statuses: { title: 'get_5_percent_off' })
     records.order("created_at DESC").first
     
     return records
@@ -95,7 +97,7 @@ class Article < ActiveRecord::Base
   #free pills on every order
   def self.get_favorable_gift
     records = self.all
-    records = records.where(code: "favorable_gift")
+    records = records.joins(:code_status).where(code_statuses: { title: 'favorable_gift' })
     records.order("created_at DESC").first
     
     return records
@@ -107,7 +109,7 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_keyword_article
-      self.all.where(code: "keywords").first 
+      self.all.joins(:code_status).where(code_statuses: { title: 'keywords' }).first 
   end
   
   #Filter, Sort
