@@ -113,66 +113,42 @@
                         <h4>Ý kiến khách hàng</h4>
 
                         <ul class="list_of_entries">
+                            
+                            <% Testimonial.all.limit(2).each do |item| %>
 
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Sample Name, London</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some f..</p>
-
-                                        </div><!--/ .entry_meta-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Sample Name, London</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some f..</p>
-
-                                        </div><!--/ .entry_meta-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+    
+                                <li>
+                                        
+                                    <article class="entry">
+    
+                                        <div class="wrapper">
+    
+                                            <h6 class="entry_title"><%= link_to item.name + ", " + item.city, testimonial_list_path %></h6>
+    
+                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+    
+                                            <div class="entry_meta">
+    
+                                                <p class="text-justify"><%= truncate(strip_tags(item.content), length: 150) %></p>
+    
+                                            </div><!--/ .entry_meta-->
+    
+                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+    
+                                        </div><!--/ .wrapper-->
+    
+                                    </article><!--/ .clearfix-->
+    
+                                </li>
+    
+                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                            
+                            <% end %>
 
                         </ul>
                         
-                        <a href="#" class="button_grey middle_btn">Xem toàn bộ</a>
+                        <%= link_to "Xem toàn bộ", testimonial_list_path, class: "button_grey middle_btn" %>
 
                     </section><!--/ .widget-->
 
@@ -386,11 +362,11 @@
             
             <p class="copyright">
                 <% if !Company.first.nil? %>
-                    <h4 class="company_name"><%= Company.first.name %></h4>  
+                    <h3 class="company_name"><%= Company.first.name %></h3>  
                     <strong>Văn phòng: </strong> <%= Company.first.head_office_address %> </br>
-                    <strong>GPĐK: </strong> <%= Company.first.certificate_no %> - Cấp ngày <%= Company.first.date_of_issue.strftime("%d-%m-%Y") %> <br/>
-                    <strong>VPGD: </strong><%= Company.first.sales_office_address %><br/>
-                    <strong>ĐT: </strong> <%= Company.first.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.first.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a><br/>
+                    <strong>Giấy Phép Đăng Ký: </strong> <%= Company.first.certificate_no %> - Cấp ngày <%= Company.first.date_of_issue.strftime("%d-%m-%Y") %> <br/>
+                    <strong>Văn Phòng Giao Dịch: </strong><%= Company.first.sales_office_address %><br/>
+                    <strong>Điện Thoại: </strong> <%= Company.first.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.first.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a><br/>
                 <% end %>
             </p>
             

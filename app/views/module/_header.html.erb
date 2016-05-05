@@ -31,23 +31,60 @@
                                 <ul class="topbar">
 
                                     <li><%= link_to "Trang chủ", home_path %></li>
-                                    <% if current_user.present? %>
-                                        <li><%= link_to "Tài khoản", { controller: "account", action: "my_account" } %></li>
-                                    <% else %>
-                                        <li><%= link_to "Tài khoản", { controller: "account", action: "login" } %></li>
-                                    <% end %>
+                                    <li><%= link_to "Về chúng tôi", about_us_path %></li>
                                     <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "shopping_cart" } %></li>
                                     <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
                                     <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
                                     <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
                                     <li><%= link_to "FAQ", { controller: "information", action: "faq" } %></li>
-                                    <% if current_user.present? %>
-                                        <% if user_signed_in? %>
-                                            <li><%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %></li>
-                                        <%end%>
-                                    <% else %>
-                                        <li><a href="#" data-modal-url="<%= quick_login_path %>">Đăng nhập</a></li>
-                                    <% end %>  
+                                    <li class="has_submenu">
+
+                                        <a href="#">Tài khoản</a>
+                                        
+                                        <% if current_user.present? %>
+                                        
+                                            <!-- - - - - - - - - - - - - - Submenu (level 2) - - - - - - - - - - - - - - - - -->
+        
+                                            <ul class="theme_menu submenu">
+                                                        
+                                                <li class="current"><%= link_to "Tài khoản của tôi", my_account_path %></li>
+        
+                                                <li><%= link_to "Chỉnh sửa thông tin", edit_path %></li>
+        
+                                                <li><%= link_to "Địa chỉ cho đơn hàng", address_path %></li>
+                                                
+                                                <li><%= link_to "Sản phẩm yêu thích", wishlist_path %></li>
+                                                
+                                                <li><%= link_to "Lịch sử đặt hàng", account_order_path %></li>
+                                                
+                                                <li><%= link_to "Đăng ký nhận tin mới", newsletter_path %></li>
+                                                
+                                                <li><%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %></li>
+        
+                                            </ul>
+        
+                                            <!-- - - - - - - - - - - - - - End submenu (level 2) - - - - - - - - - - - - - - - - -->
+    
+                                        <% else %>
+                                            
+                                            <!-- - - - - - - - - - - - - - Submenu (level 2) - - - - - - - - - - - - - - - - -->
+        
+                                            <ul class="theme_menu submenu">
+                                                        
+                                                <li class="current"><%= link_to "Đăng nhập", login_path %></li>
+        
+                                                <li><%= link_to "Đăng ký", register_path %></li>
+        
+                                                <li><%= link_to "Quên mật khẩu", forgotten_path %></li>
+        
+                                            </ul>
+        
+                                            <!-- - - - - - - - - - - - - - End submenu (level 2) - - - - - - - - - - - - - - - - -->
+                                            
+                                        <% end %>
+                                    
+                                    </li>
+                                    
                                 </ul>
 
                             </nav>
@@ -58,7 +95,7 @@
                             
                             <%= form_tag({controller: "product", action: "search"}, method: "get", class: "clearfix search") do %>
     
-                                <input type="text" name="keyword" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
+                                <input type="text" name="keyword" tabindex="1" value="<%= params[:keyword] if params[:keyword].present? %>" placeholder="Tìm kiếm..." class="alignleft">
                                 
                                 <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
     
