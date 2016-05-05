@@ -107,7 +107,22 @@ vi:
   link: "Liên kết"
   
   #-------------------------------------
+  order: "Đơn hàng"
   orders: "Đơn đặt hàng"
+  info_customer: "Thông tin khách hàng"
+  info_delivery: "Thông tin giao hàng"
+  order_detail: "Chi tiết đơn hàng"
+  STT: "STT"
+  items: "Tên sản phẩm"
+  quantity: "Số lượng"
+  unit_price: "Đơn giá"
+  total_price: "Thành tiền"
+  total_price_item: "Tổng tiền hàng"
+  delivery_price: "Phí vận chuyển"
+  discount: "Giảm giá"
+  total_payment: "Tổng tiền thanh toán"
+  full_name: "Họ & tên"
+  order_date: "Ngày đặt hàng"
   
   #-------------------------------------
   comment_question: "Bình luận/Câu hỏi"
