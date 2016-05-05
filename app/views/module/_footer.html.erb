@@ -85,16 +85,18 @@
                         <h4>Từ khóa phổ biến</h4>
                         
                         <div class="tags_container">
-
-                            <ul class="tags_cloud">
-                                
-                                <% Article.get_keyword_article.keywords.each do |item| %>
+                            
+                            <% if !Article.get_keyword_article.nil? %>
+                                <ul class="tags_cloud">
                                     
-                                    <li><a href="#" class="button_grey"><%= item.html_safe %></a></li>
-                                
-                                <% end %>
-
-                            </ul><!--/ .tags_cloud-->
+                                    <% Article.get_keyword_article.keywords.each do |item| %>
+                                        
+                                        <li><a href="#" class="button_grey"><%= item.html_safe %></a></li>
+                                    
+                                    <% end %>
+    
+                                </ul><!--/ .tags_cloud-->
+                            <% end %>
                             
                         </div>
                     
