@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :feedbacks
-  
+  scope "(:locale)", locale: /vi|en/ do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
     
@@ -108,8 +108,6 @@ Rails.application.routes.draw do
     resources :comment_articles
     #end of resources
   
-  
-  scope "(:locale)", locale: /vi|en/ do
     namespace :admin, path: "hkpanel" do
       get "/" => "main#index"
       resources :shopping_carts
