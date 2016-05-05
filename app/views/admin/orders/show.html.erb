@@ -39,9 +39,9 @@
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_orders_path %>">Order</a></li>
-                        <li><a href="<%= admin_orders_path %>">Orders</a></li>
-                        <li class="active">Order Detail</li>
+                        <li><a href="<%= admin_orders_path %>"><%= t(:order) %></a></li>
+                        <li><a href="<%= admin_orders_path %>"><%= t(:orders) %></a></li>
+                        <li class="active"><%= t(:order_detail) %></li>
                     </ul>
                 </div>
             </div>
@@ -53,32 +53,32 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title">Order Detail</h5>
+                        <h5 class="panel-title"><%= t(:order_detail) %></h5>
                     </div>
                     <div class="panel-body col-md-12">
                         <div class="col-md-6">
-                            <h6><b>Thông tin khách hàng</b></h6>
-                            <p>Họ tên: <%= @order.customer.name %></p>
-                            <p>Công ty: <%= @order.customer.company %></p>
-                            <p>Địa chỉ: <%= @order.customer.display_address %></p>
-                            <p>Điện thoại: <%= @order.customer.phone %></p>
-                            <p>E-mail: <%= @order.customer.email %></p>
+                            <h6><b><%= t(:info_customer) %></b></h6>
+                            <p><%= t(:full_name) %>: <%= @order.customer.name %></p>
+                            <p><%= t(:company) %>: <%= @order.customer.company %></p>
+                            <p><%= t(:address) %>: <%= @order.customer.display_address %></p>
+                            <p><%= t(:phone) %>: <%= @order.customer.phone %></p>
+                            <p><%= t(:email) %>: <%= @order.customer.email %></p>
                         </div>
                         <div class="col-md-6">
-                            <h6><b>Thông tin giao hàng</b></h6>
+                            <h6><b><%= t(:info_delivery) %></b></h6>
                             <p>Họ tên: <%= @order.order_delivery.name %></p>
-                            <p>Công ty: </p>
-                            <p>Địa chỉ: <%= @order.order_delivery.display_address %></p>
-                            <p>Ngày đặt hàng: <%= @order.created_at.strftime("%d/%m/%Y") %></p>
+                            <p><%= t(:company) %>: <%= @order.order_delivery.company %></p>
+                            <p><%= t(:address) %>: <%= @order.order_delivery.display_address %></p>
+                            <p><%= t(:order_date) %>: <%= @order.created_at.strftime("%d/%m/%Y") %></p>
                         </div>
                     </div>
                     <div class="panel-body col-md-12">
                         <div class="col-md-6">
-                            <h6><b>Hình thức vận chuyển</b></h6>
+                            <h6><b><%= t(:delivery_method) %></b></h6>
                             <p><%= @order.order_delivery.delivery_method.title %> </p>
                         </div>
                         <div class="col-md-6">
-                            <h6><b>Hình thức thanh toán</b></h6>
+                            <h6><b><%= t(:payment_method) %></b></h6>
                             <p><%= @order.order_delivery.payment_method.title %> </p>
                         </div>
                     </div>
@@ -86,11 +86,11 @@
                     <table class="table datatable-basic table-bordered table-striped table-hover">
                         <thead>
                             <tr class="bg-teal-800">
-                                <th>STT</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Đơn giá (VNĐ)</th>
-                                <th>Thành tiền (VNĐ)</th>
+                                <th><%= t(:STT) %></th>
+                                <th><%= t(:items) %></th>
+                                <th><%= t(:quantity) %></th>
+                                <th><%= t(:unit_price) %> (VNĐ)</th>
+                                <th><%= t(:total_price) %> (VNĐ)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,31 +99,31 @@
                                     <td><%= index + 1 %></td>
                                     <td><%= item.product_name %></td>
                                     <td><%= item.quantity %></td>
-                                    <td><%= item.price %></td>
-                                    <td><%= item.total %></td>
+                                    <td><%= format_number(item.price) %></td>
+                                    <td><%= format_number(item.total) %></td>
                                 </tr>
                             <% end %>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="2"></td>
-                                <td colspan="2"><b>Tổng tiền hàng</b></td>
-                                <td colspan="1"><b><%= @order.total_order %></b></td>
+                                <td colspan="2"><b><%= t(:total_price_item) %></b></td>
+                                <td colspan="1"><b><%= format_number(@order.total_order) %></b></td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
-                                <td colspan="2"><b>Phí vận chuyển</b></td>
-                                <td colspan="1"><b>.....</b></td>
+                                <td colspan="2"><b><%= t(:delivery_price) %></b></td>
+                                <td colspan="1"><b>...</b></td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
-                                <td colspan="2"><b>Giảm giá</b></td>
-                                <td colspan="1"><b>.....</b></td>
+                                <td colspan="2"><b><%= t(:discount) %></b></td>
+                                <td colspan="1"><b><%= format_number(@order.discount) %></b></td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
-                                <td colspan="2"><b style="color: #018bcb">Tổng tiền thanh toán</b></td>
-                                <td colspan="1"><b style="color: #018bcb">.....</b></td>
+                                <td colspan="2"><b style="color: #018bcb"><%= t(:total_payment) %></b></td>
+                                <td colspan="1"><b style="color: #018bcb"><%= format_number(@order.total_payment) %></b></td>
                             </tr>
                         </tfoot>
                     </table>

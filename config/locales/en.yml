@@ -107,7 +107,22 @@ en:
   link: "Link"
         
   #-------------------------------------
+  order: "Order"
   orders: "Orders"
+  info_customer: "Customer Informations"
+  info_delivery: "Delivery Informations"
+  order_detail: "Order Detail"
+  STT: "No."
+  items: "Items"
+  quantity: "Quantity"
+  unit_price: "Unit Price"
+  total_price: "Total"
+  total_price_item: "Total Price Items"
+  delivery_price: "Delivery Price"
+  discount: "Discount"
+  total_payment: "Total Payment"
+  full_name: "Full Name"
+  order_date: "Order Date"
   
   #-------------------------------------
   comment_question: "Comment/Question"
