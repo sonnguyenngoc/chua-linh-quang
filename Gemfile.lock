@@ -195,6 +195,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
+  omniauth
   omniauth-facebook
   pg (~> 0.15)
   rails (= 4.2.5.2)

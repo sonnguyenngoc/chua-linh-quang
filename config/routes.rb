@@ -4,72 +4,72 @@ Rails.application.routes.draw do
     get "san-pham" => "home#index", as: :home
     
     # account
-    get "account/login" => "account#login", as: :login
-    get "account/quick_login" => "account#quick_login", as: :quick_login
-    get "account/logout" => "account#logout", as: :logout
-    get "account/forgotten" => "account#forgotten", as: :forgotten
-    get "account/my_account" => "account#my_account", as: :my_account
-    get "account/wishlist" => "account#wishlist", as: :wishlist
-    get "account/register" => "account#register", as: :register
-    get "account/order" => "account#order", as: :account_order
-    get "account/order/info/:order_id" => "account#order_info", as: :order_info
-    get "account/address" => "account#address", as: :address
-    get "account/address/edit" => "account#address_edit", as: :address_edit
-    get "account/download" => "account#download", as: :download
-    get "account/recurring" => "account#recurring_payments", as: :recurring_payments
-    get "account/reward_points" => "account#reward_points", as: :reward_points
-    get "account/return" => "account#return_list", as: :return_list
-    get "account/return/add" => "account#return_product", as: :return_product
-    get "account/transaction" => "account#transaction", as: :transaction
-    get "account/newsletter" => "account#newsletter", as: :newsletter
-    get "account/edit" => "account#edit", as: :edit
-    get "account/password" => "account#password", as: :password
-    get "account/voucher" => "account#voucher", as: :voucher
-    get "account/voucher/success" => "account#voucher_success", as: :voucher_success
-    get "account/no_singed" => "account/no_singed", as: :no_singed
+    get "tai-khoan/dang-nhap" => "account#login", as: :login
+    get "tai-khoan/dang-nhap-nhanh" => "account#quick_login", as: :quick_login
+    get "tai-khoan/dang-xuat" => "account#logout", as: :logout
+    get "tai-khoan/quen-mat-khau" => "account#forgotten", as: :forgotten
+    get "tai-khoan/tai-khoan-cua-toi" => "account#my_account", as: :my_account
+    get "tai-khoan/san-pham-yeu-thich" => "account#wishlist", as: :wishlist
+    get "tai-khoan/dang-ky" => "account#register", as: :register
+    get "tai-khoan/lich-su-dat-hang" => "account#order", as: :account_order
+    get "tai-khoan/lich-su-dat-hang/trang-chi-tiet/:order_id" => "account#order_info", as: :order_info
+    get "tai-khoan/dia-chi-cho-don-hang" => "account#address", as: :address
+    get "tai-khoan/dia-chi-cho-don-hang/chinh-sua" => "account#address_edit", as: :address_edit
+    get "tai-khoan/download" => "account#download", as: :download
+    get "tai-khoan/recurring" => "account#recurring_payments", as: :recurring_payments
+    get "tai-khoan/reward_points" => "account#reward_points", as: :reward_points
+    get "tai-khoan/return" => "account#return_list", as: :return_list
+    get "tai-khoan/return/add" => "account#return_product", as: :return_product
+    get "tai-khoan/transaction" => "account#transaction", as: :transaction
+    get "tai-khoan/dang-ky-nhan-tin-moi" => "account#newsletter", as: :newsletter
+    get "tai-khoan/chinh-sua-thong-tin" => "account#edit", as: :edit
+    get "tai-khoan/mat-khau" => "account#password", as: :password
+    get "tai-khoan/phieu-mua-hang" => "account#voucher", as: :voucher
+    get "tai-khoan/phieu-mua-hang/phieu-mua-hang-da-dung" => "account#voucher_success", as: :voucher_success
+    get "tai-khoan/chua-dang-nhap" => "account/no_singed", as: :no_singed
     # end account
     
     # checkout
-    get "checkout/shopping_cart" => "checkout#shopping_cart", as: :shopping_cart
-    get "checkout/checkout" => "checkout#checkout", as: :checkout
-    get "checkout/success" => "checkout#success", as: :success
+    get "dat-hang/gio-hang" => "checkout#shopping_cart", as: :shopping_cart
+    get "dat-hang/dat-hang" => "checkout#checkout", as: :checkout
+    get "dat-hang/dat-hang-thanh-cong" => "checkout#success", as: :success
     # end checkout
     
     # blog
-    get "blog" => "blog#index", as: :index
-    get "blog/show/:blog_id" => "blog#show", as: :show
-    get "blog/article_category/:article_category_id" => "blog#article_category", as: :article_category
+    get "bai-viet" => "blog#index", as: :index
+    get "bai-viet/chi-tiet-bai-viet/:blog_id" => "blog#show", as: :show
+    get "bai-viet/chuyen-muc-bai-viet/:article_category_id" => "blog#article_category", as: :article_category
     # end blog
     
     # information
-    get "information/about_us" => "information#about_us", as: :about_us
-    get "information/contact_us" => "information#contact_us", as: :contact_us
-    get "information/finish_contact_us" => "information#finish_contact_us", as: :finish_contact_us
-    get "information/finish_newsletter" => "information#finish_newsletter", as: :finish_newsletter
-    get "information/delivery" => "information#delivery", as: :delivery
-    get "information/faq" => "information#faq", as: :faq
-    get "information/privacy_policy" => "information#privacy_policy", as: :privacy_policy
-    get "information/terms_conditions" => "information#terms_conditions", as: :terms_conditions
-    get "information/sitemap" => "information#sitemap", as: :sitemap
+    get "thong-tin/ve-chung-toi" => "information#about_us", as: :about_us
+    get "thong-tin/lien-he" => "information#contact_us", as: :contact_us
+    get "thong-tin/gui-lien-he-thanh-cong" => "information#finish_contact_us", as: :finish_contact_us
+    get "thong-tin/dang-ky-thanh-cong" => "information#finish_newsletter", as: :finish_newsletter
+    get "thong-tin/thong-tin-giao-hang" => "information#delivery", as: :delivery
+    get "thong-tin/cau-hoi-thuong-gap" => "information#faq", as: :faq
+    get "thong-tin/chinh-sach-bao-mat" => "information#privacy_policy", as: :privacy_policy
+    get "thong-tin/dieu-khoan-dieu-kien" => "information#terms_conditions", as: :terms_conditions
+    get "thong-tin/so-do-website" => "information#sitemap", as: :sitemap
     # end information
     
     # manufacturer
-    get "manufacturer/list" => "manufacturer#list", as: :list
-    get "manufacturer/products/:manufacturer_id" => "manufacturer#products", as: :products
+    get "thuong-hieu-cung-cap/danh-sach" => "manufacturer#list", as: :list
+    get "thuong-hieu-cung-cap/danh-sach-san-pham/:manufacturer_id" => "manufacturer#products", as: :products
     # end manufacturer
     
     # product
-    get "product/category/:category_id" => "product#category", as: :category
-    get "product/comparison" => "product#comparison", as: :comparison
-    get "product/product/:product_id" => "product#product", as: :product
-    get "product/quick_view/:product_id" => "product#quick_view", as: :quick_view
-    get "product/add_cart_success" => "product/add_cart_success", as: :add_cart_success
-    get "product/add_wishlist_success" => "product/add_wishlist_success", as: :add_wishlist_success
-    get "product/add_compare_success" => "product/add_compare_success", as: :add_compare_success
-    get "product/search" => "product#search", as: :search
-    get "product/testimonial" => "product#testimonial", as: :testimonial
-    get "product/testimonialform" => "product#testimonialform", as: :testimonialform
-    get "product/special" => "product#special", as: :special
+    get "san-pham/chuyen-muc/:category_id" => "product#category", as: :category
+    get "san-pham/san-pham-so-sanh" => "product#comparison", as: :comparison
+    get "san-pham/chi-tiet-san-pham/:product_id" => "product#product", as: :product
+    get "san-pham/xem-nhanh/:product_id" => "product#quick_view", as: :quick_view
+    get "san-pham/them-vao-gio-hang-thanh-cong" => "product/add_cart_success", as: :add_cart_success
+    get "san-pham/them-vao-so-sanh-san-pham-thanh-cong" => "product/add_wishlist_success", as: :add_wishlist_success
+    get "san-pham/them-vao-san-pham-yeu-thich-thanh-cong" => "product/add_compare_success", as: :add_compare_success
+    get "san-pham/ket-qua-tim-kiem" => "product#search", as: :search
+    get "san-pham/y-kien-khach-hang" => "product#testimonial", as: :testimonial
+    get "san-pham/gui-y-kien-khach-hang" => "product#testimonialform", as: :testimonialform
+    get "san-pham/dac-biet" => "product#special", as: :special
     # end product
     
     # resources
