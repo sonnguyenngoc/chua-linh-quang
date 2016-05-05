@@ -88,24 +88,11 @@
 
                             <ul class="tags_cloud">
                                 
-                                <li><a href="#" class="button_grey">allergy</a></li>
-                                <li><a href="#" class="button_grey">baby</a></li>
-                                <li><a href="#" class="button_grey">beauty</a></li>
-                                <li><a href="#" class="button_grey">ear care</a></li>
-                                <li><a href="#" class="button_grey">for her</a></li>
-                                <li><a href="#" class="button_grey">for him</a></li>
-                                <li><a href="#" class="button_grey">first aid</a></li>
-                                <li><a href="#" class="button_grey">gift sets</a></li>
-                                <li><a href="#" class="button_grey">spa</a></li>
-                                <li><a href="#" class="button_grey">hair care</a></li>
-                                <li><a href="#" class="button_grey">herbs</a></li>
-                                <li><a href="#" class="button_grey">medicine</a></li>
-                                <li><a href="#" class="button_grey">natural</a></li>
-                                <li><a href="#" class="button_grey">oral care</a></li>
-                                <li><a href="#" class="button_grey">pain</a></li>
-                                <li><a href="#" class="button_grey">pedicure</a></li>
-                                <li><a href="#" class="button_grey">personal care</a></li>
-                                <li><a href="#" class="button_grey">probiotics</a></li>
+                                <% Article.get_keyword_article.keywords.each do |item| %>
+                                    
+                                    <li><a href="#" class="button_grey"><%= item.html_safe %></a></li>
+                                
+                                <% end %>
 
                             </ul><!--/ .tags_cloud-->
                             
@@ -397,11 +384,11 @@
             
             <p class="copyright">
                 
-                <h4 class="company_name">CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI - FBMN</h4>  
-                <strong>Văn phòng: </strong> 444/4 Cách Mạng Tháng 8, Phường 11, Quận 3, TP.HCM </br>
-                <strong>GPĐK: </strong> 0312919617 - Cấp ngày 10-09-2014 <br/>
-                <strong>VPGD: </strong>Block B R.606 - Indochina Park Tower, 04 Nguyễn Đình Chiểu, Quận 1, TP.HCM<br/>
-                <strong>ĐT: </strong> (84) 08.66886622&nbsp;&nbsp;<strong> Hotline: </strong> 098.168.1939&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:DacSanVungMien.net@gmail.com">DacSanVungMien.net@gmail.com</a><br/>
+                <h4 class="company_name"><%= Company.first.name %></h4>  
+                <strong>Văn phòng: </strong> <%= Company.first.head_office_address %> </br>
+                <strong>GPĐK: </strong> <%= Company.first.certificate_no %> - Cấp ngày <%= Company.first.date_of_issue.strftime("%d-%m-%Y") %> <br/>
+                <strong>VPGD: </strong><%= Company.first.sales_office_address %><br/>
+                <strong>ĐT: </strong> <%= Company.first.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.first.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a><br/>
                 
             </p>
             

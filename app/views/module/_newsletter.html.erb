@@ -6,7 +6,7 @@
         
         <%= form_for Newsletter.new, html: {class: 'newsletter clearfix'} do |f| %>
 
-            <%= f.email_field :email, placeholder: 'Nhập email tại đây...', required: true %>
+            <%= f.email_field :email, placeholder: 'Nhập email tại đây...', class: "required" %>
                                 
             <button type="submit" class="button_blue def_icon_btn"></button>
 

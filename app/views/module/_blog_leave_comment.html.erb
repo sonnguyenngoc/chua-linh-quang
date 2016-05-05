@@ -24,11 +24,11 @@
                         
                         <% if current_user.present? %>
 																			
-                            <%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
+                            <%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, class: "required" %>
                         
                         <% else %>
                             
-                            <%= f.text_field :name, required: true %>
+                            <%= f.text_field :name, class: "required" %>
                             
                         <% end %>
 
@@ -40,11 +40,11 @@
                         
                         <% if current_user.present? %>
 																			
-                            <%= f.text_field :email, value: current_user.email, readonly: true, required: true %>
+                            <%= f.text_field :email, value: current_user.email, readonly: true, class: "required email" %>
                         
                         <% else %>
                             
-                            <%= f.text_field :email, required: true %>
+                            <%= f.text_field :email, class: "required email" %>
                             
                         <% end %>
 
@@ -56,9 +56,9 @@
 
                     <div class="col-xs-12">
 
-                        <label for="lc_message">Nội dung</label>
+                        <label for="lc_message" class="required">Nội dung</label>
                         
-                        <%= f.text_area :content, rows: "6", required: true %>
+                        <%= f.text_area :content, rows: "6", class: "required" %>
 
                     </div>
 

@@ -461,7 +461,7 @@
 																		
 																		<% else %>
 																			
-																			<%= f.text_field :name, required: true %>
+																			<%= f.text_field :name, class: "required" %>
 																			
 																		<% end %>
 					
@@ -481,7 +481,7 @@
 																		
 																		<% else %>
 																			
-																			<%= f.email_field :email, required: true %>
+																			<%= f.email_field :email, class: "required email" %>
 																			
 																		<% end %>
 					
@@ -495,7 +495,7 @@
 					
 																		<label for="cf_message" class="required">Nội dung câu hỏi</label>
 																		
-																		<%= f.text_area :content, rows: "6", required: true %>
+																		<%= f.text_area :content, rows: "6", class: "required" %>
 					
 																	</div><!--/ [col]-->
 					
@@ -627,7 +627,7 @@
 																		
 																		<% else %>
 																			
-																			<%= f.text_field :name, required: true %>
+																			<%= f.text_field :name, class: "required" %>
 																			
 																		<% end %>
             
@@ -641,7 +641,7 @@
             
                                                                         <label for="cf_name" class="required">Nội dung</label>
             
-                                                                        <%= f.text_area :content, rows: "5", required: true %>
+                                                                        <%= f.text_area :content, rows: "5", class: "required" %>
             
                                                                     </div>
             
@@ -655,15 +655,15 @@
                     
                                                                         <div class="form_el">
 																			
-																			<%= f.radio_button :star, '1', required: true %><label for="comment_star_1">Rất kém</label>
+																			<%= f.radio_button :star, '1' %><label for="comment_star_1">Rất kém</label>
 																			
-																			<%= f.radio_button :star, '2', required: true %><label for="comment_star_2">Kém</label>
+																			<%= f.radio_button :star, '2' %><label for="comment_star_2">Kém</label>
 																			
-																			<%= f.radio_button :star, '3', required: true %><label for="comment_star_3">Bình thường</label>
+																			<%= f.radio_button :star, '3' %><label for="comment_star_3">Bình thường</label>
 																			
-																			<%= f.radio_button :star, '4', required: true %><label for="comment_star_4">Tốt</label>
+																			<%= f.radio_button :star, '4' %><label for="comment_star_4">Tốt</label>
 																			
-																			<%= f.radio_button :star, '5', required: true %><label for="comment_star_5">Rất tốt</label>
+																			<%= f.radio_button :star, '5', checked: true %><label for="comment_star_5">Rất tốt</label>
                     
                                                                         </div>
                     
@@ -923,6 +923,7 @@
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
 	<%= javascript_include_tag '/frontend/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 
     <!-- Theme files
     ============================================ -->
@@ -974,6 +975,12 @@
 			e.preventDefault();
 			$(".no_singed").trigger("click")
 		});
+        $(document).ready(function(){
+            $("#new_question").validate();
+        });
+        $(document).ready(function(){
+            $("#new_comment").validate();
+        });
 	</script>
     
 </body>

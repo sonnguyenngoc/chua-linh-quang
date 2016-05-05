@@ -346,11 +346,11 @@ countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.w
 								
 <div style="width: 100%; display: block; float: left; min-width: auto;" id="company_info">
 					  <div style="" class="cleft">
-					  <h4>CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI - FBMN</h4>
+					  <h4><%= Company.first.name %></h4>
 					  
-					  <p><strong>Văn phòng:</strong> 444/4 Cách Mạng Tháng 8, Phường 11, Quận 3, TP.HCM
+					  <p><strong>Văn phòng:</strong> <%= Company.first.head_office_address %>
 					  </p>
-					  <p><strong>GPĐK:</strong> 0312919617 - Cấp ngày 10-09-2014 </p>
+					  <p><strong>GPĐK:</strong> <%= Company.first.certificate_no %> - Cấp ngày <%= Company.first.date_of_issue.strftime("%d-%m-%Y") %> </p>
 					  
 					  </div>
 					  <div style="" class="cright">
@@ -358,11 +358,11 @@ countdown_right = !Article.where(code: "countdown_right").first.nil? ? Article.w
 						<strong>
 						  VPGD:
 						</strong>
-						Block B R.606 - Indochina Park Tower, 04 Nguyễn Đình Chiểu, Quận 1, TP.HCM
+						<%= Company.first.sales_office_address %>
 						</p>
 						<p>
-						<strong>ĐT:</strong> (84) 08.66886622&nbsp;&nbsp;
-						<strong>Hotline:</strong> 098.168.1939&nbsp;&nbsp;<strong>						Email:</strong> <a href="mailto:DacSanVungMien.net@gmail.com">DacSanVungMien.net@gmail.com</a>
+						<strong>ĐT:</strong> <%= Company.first.phone %>&nbsp;&nbsp;
+						<strong>Hotline:</strong> <%= Company.first.hotline %>&nbsp;&nbsp;<strong>						Email:</strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a>
 					  </p>
 					  </div>
   

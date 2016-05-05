@@ -76,14 +76,14 @@
                                             <div class="col-sm-6">
                                             
                                                 <%= f.label "Họ và Tên", class: "required" %>
-                                                <%= f.text_field :name, required: true %>
+                                                <%= f.text_field :name, class: "required" %>
 
                                             </div><!--/ [col]-->
 
                                             <div class="col-sm-6">
 
                                                 <%= f.label "Địa chỉ email", class: "required" %>
-                                                <%= f.email_field :email, required: true %>
+                                                <%= f.email_field :email, class: "required email" %>
 
                                             </div><!--/ [col]-->
 
@@ -94,7 +94,7 @@
                                             <div class="col-xs-12">
 
                                                 <%= f.label "Lời nhắn", class: "required" %>
-                                                <%= f.text_area :message, rows: '10', required: true %>
+                                                <%= f.text_area :message, rows: '10', class: "required" %>
 
                                             </div><!--/ [col]-->
 
@@ -198,10 +198,20 @@
     <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 
     <!-- Theme files
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
-    
+    <script>
+        
+        $(document).ready(function(){
+            $("#new_contact").validate();
+        });
+        $(document).ready(function(){
+            $("#new_newsletter").validate();
+        });
+
+    </script>
 </body>

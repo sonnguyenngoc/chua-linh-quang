@@ -49,14 +49,14 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="email" class="required">Tài khoản: </label>
-                                            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Nhập địa chỉ email..." %>
+                                            <%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
       
                                         </div><!--/ [col] -->
       
                                         <div class="col-sm-6">
                                             
                                             <label for="email" class="required">Mật khẩu</label>
-                                            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nhập mật khẩu..." %>
+                                            <%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
       
                                         </div><!--/ [col] -->
       
@@ -116,7 +116,7 @@
                                                 
                                                 <label for="first_name" class="required">Họ:</label>
                                                 
-                                                <input readonly type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %>">
+                                                <input class="required" readonly type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %>">
           
                                             </div><!--/ [col] -->
           
@@ -124,7 +124,7 @@
                                                 
                                                 <label for="last_name" class="required">Tên:</label>
                                                 
-                                                <input readonly type="text" name="customer[last_name]" id="customer_last_name" value="<%= current_user.last_name %>">
+                                                <input class="required" readonly type="text" name="customer[last_name]" id="customer_last_name" value="<%= current_user.last_name %>">
           
                                             </div><!--/ [col] -->
           
@@ -136,7 +136,7 @@
           
                                                 <label for="email" class="required">Email:</label>
                                                 
-                                                <input readonly type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
+                                                <input class="required email" readonly type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
           
                                             </div><!--/ [col] -->
                                             
@@ -144,7 +144,7 @@
           
                                                 <label for="phone" class="required">Số điện thoại:</label>
                                                 
-                                                <input readonly type="text" name="customer[phone]" id="customer_phone" value="<%= current_user.phone %>">
+                                                <input class="required" readonly type="text" name="customer[phone]" id="customer_phone" value="<%= current_user.phone %>">
           
                                             </div><!--/ [col] -->
           
@@ -176,7 +176,7 @@
           
                                                 <label for="address" class="required">Địa chỉ:</label>
                                                 
-                                                <input readonly type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
+                                                <input class="required" readonly type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
           
                                             </div><!--/ [col] -->
           
@@ -188,7 +188,7 @@
                                                 
                                                 <label class="required">Quốc gia</label>
           
-                                                <input readonly type="text" name="customer[country]" id="customer_country" value="<%= current_user.country %>">
+                                                <input class="required" readonly type="text" name="customer[country]" id="customer_country" value="<%= current_user.country %>">
           
                                             </div><!--/ [col] -->
           
@@ -228,7 +228,7 @@
                                             
                                             <label for="first_name" class="required">Họ:</label>
                                             
-                                            <input type="text" name="order_delivery[first_name]" id="order_delivery_first_name" value="<%= current_user.first_name %>">
+                                            <input class="required" type="text" name="order_delivery[first_name]" id="order_delivery_first_name" value="<%= current_user.first_name %>">
         
                                         </div><!--/ [col] -->
         
@@ -236,7 +236,7 @@
                                             
                                             <label for="last_name" class="required">Tên:</label>
                                             
-                                            <input type="text" name="order_delivery[last_name]" id="order_delivery_last_name" value="<%= current_user.last_name %>">
+                                            <input class="required" type="text" name="order_delivery[last_name]" id="order_delivery_last_name" value="<%= current_user.last_name %>">
         
                                         </div><!--/ [col] -->
         
@@ -248,7 +248,7 @@
         
                                             <label for="email" class="required">Email:</label>
                                            
-                                            <input type="text" name="order_delivery[email]" id="order_delivery_email" value="<%= current_user.email %>">
+                                            <input class="required email" type="text" name="order_delivery[email]" id="order_delivery_email" value="<%= current_user.email %>">
         
                                         </div><!--/ [col] -->
                                         
@@ -256,7 +256,7 @@
         
                                             <label for="phone" class="required">Số điện thoại:</label>
                                             
-                                            <input type="text" name="order_delivery[phone]" id="order_delivery_phone" value="<%= current_user.phone %>">
+                                            <input class="required" type="text" name="order_delivery[phone]" id="order_delivery_phone" value="<%= current_user.phone %>">
         
                                         </div><!--/ [col] -->
         
@@ -288,7 +288,7 @@
         
                                             <label for="address" class="required">Địa chỉ:</label>
                                             
-                                            <input type="text" name="order_delivery[address]" id="order_delivery_address" value="<%= current_user.address_1 %>">
+                                            <input class="required" type="text" name="order_delivery[address]" id="order_delivery_address" value="<%= current_user.address_1 %>">
         
                                         </div><!--/ [col] -->
         
@@ -302,7 +302,7 @@
         
                                             <div>
         
-                                                <select name="order_delivery[country]">
+                                                <select class="required" name="order_delivery[country]">
                                                     
                                                     <option value="Vietnam">Việt Nam</option>
         
@@ -318,7 +318,7 @@
         
                                             <div>
         
-                                                <select name="order_delivery[province]">
+                                                <select class="required" name="order_delivery[province]">
         
                                                     <% Area.get_list_province_city.each do |area| %>
           
@@ -360,7 +360,7 @@
                                             
                                             <label for="first_name" class="required">Họ:</label>
                                             
-                                            <input type="text" name="customer[first_name]" id="customer_first_name">
+                                            <input class="required" type="text" name="customer[first_name]" id="customer_first_name">
         
                                         </div><!--/ [col] -->
         
@@ -368,7 +368,7 @@
                                             
                                             <label for="last_name" class="required">Tên:</label>
                                             
-                                            <input type="text" name="customer[last_name]" id="customer_last_name">
+                                            <input class="required" type="text" name="customer[last_name]" id="customer_last_name">
         
                                         </div><!--/ [col] -->
         
@@ -380,7 +380,7 @@
                                             
                                             <label for="email" class="required">Email:</label>
 
-                                            <input type="text" name="customer[email]" id="customer_email">
+                                            <input class="required" type="text" name="customer[email]" id="customer_email">
         
                                         </div><!--/ [col] -->
         
@@ -388,7 +388,7 @@
                                             
                                             <label for="phone" class="required">Số điện thoại:</label>
 
-                                            <input type="text" name="customer[phone]" id="customer_phone">
+                                            <input class="required" type="text" name="customer[phone]" id="customer_phone">
         
                                         </div><!--/ [col] -->
         
@@ -420,7 +420,7 @@
         
                                             <label for="address" class="required">Địa chỉ:</label>
 
-                                            <input type="text" name="customer[address]" id="customer_address">
+                                            <input class="required" type="text" name="customer[address]" id="customer_address">
         
                                         </div><!--/ [col] -->
         
@@ -434,7 +434,7 @@
         
                                             <div>
         
-                                                <select name="customer[country]">
+                                                <select class="required" name="customer[country]">
                                                     
                                                     <option value="Vietnam">Việt Nam</option>
         
@@ -446,11 +446,11 @@
         
                                         <div class="col-sm-6">
         
-                                            <label>Tỉnh/Thành phố</label>
+                                            <label class="required">Tỉnh/Thành phố</label>
         
                                             <div>
         
-                                                <select name="customer[province]">
+                                                <select class="required" name="customer[province]">
         
                                                     <% Area.get_list_province_city.each do |area| %>
           
@@ -502,7 +502,7 @@
                                             
                                             <label for="first_name" class="required">Họ:</label>
 
-                                            <input type="text" name="order_delivery[first_name]" id="order_delivery_first_name">
+                                            <input class="required" type="text" name="order_delivery[first_name]" id="order_delivery_first_name">
         
                                         </div><!--/ [col] -->
         
@@ -510,7 +510,7 @@
                                             
                                             <label for="last_name" class="required">Tên:</label>
 
-                                            <input type="text" name="order_delivery[last_name]" id="order_delivery_last_name">
+                                            <input class="required" type="text" name="order_delivery[last_name]" id="order_delivery_last_name">
         
                                         </div><!--/ [col] -->
         
@@ -522,7 +522,7 @@
         
                                             <label for="email" class="required">Email:</label>
 
-                                            <input type="text" name="order_delivery[email]" id="order_delivery_email">
+                                            <input class="required" type="text" name="order_delivery[email]" id="order_delivery_email">
         
                                         </div><!--/ [col] -->
         
@@ -530,7 +530,7 @@
         
                                             <label for="phone" class="required">Số điện thoại:</label>
 
-                                            <input type="text" name="order_delivery[phone]" id="order_delivery_phone">
+                                            <input class="required" type="text" name="order_delivery[phone]" id="order_delivery_phone">
         
                                         </div><!--/ [col] -->
         
@@ -562,7 +562,7 @@
         
                                             <label for="address" class="required">Địa chỉ:</label>
 
-                                            <input type="text" name="order_delivery[address]" id="order_delivery_address">
+                                            <input class="required" type="text" name="order_delivery[address]" id="order_delivery_address">
         
                                         </div><!--/ [col] -->
         
@@ -576,7 +576,7 @@
         
                                             <div>
         
-                                                <select name="order_delivery[country]">
+                                                <select class="required" name="order_delivery[country]">
                                                     
                                                     <option value="Vietnam">Việt Nam</option>
         
@@ -588,11 +588,11 @@
         
                                         <div class="col-sm-6">
         
-                                            <label>Tỉnh/Thành phố</label>
+                                            <label class="required">Tỉnh/Thành phố</label>
         
                                             <div>
         
-                                                <select name="order_delivery[province]">
+                                                <select class="required" name="order_delivery[province]">
         
                                                     <% Area.get_list_province_city.each do |area| %>
           
@@ -634,7 +634,7 @@
       
                                     <li>
           
-                                        <input type="radio" value="<%= item.id %>" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id_<%= item.id %>">
+                                        <input checked type="radio" value="<%= item.id %>" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id_<%= item.id %>">
     
                                         <label for="order_delivery_delivery_method_id_<%= item.id %>"><%= item.title %></label>
           
@@ -666,7 +666,7 @@
       
                                     <li>
           
-                                        <input type="radio" value="<%= item.id %>"  name="order_delivery[payment_method_id]" id="order_delivery_payment_method_id_<%= item.id %>">
+                                        <input checked type="radio" value="<%= item.id %>"  name="order_delivery[payment_method_id]" id="order_delivery_payment_method_id_<%= item.id %>">
     
                                         <label for="order_delivery_payment_method_id_<%= item.id %>"><%= item.title %></label>
           
@@ -738,7 +738,8 @@
     <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-  
+    <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+    
     <!-- Theme files
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
@@ -799,6 +800,16 @@
                   get_cart();
                 });
             }
+        });
+        
+    </script>
+    <script>
+        
+        $(document).ready(function(){
+            $("#new_user").validate();
+        });
+        $(document).ready(function(){
+            $("#new_order").validate();
         });
         
     </script>
