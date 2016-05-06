@@ -103,6 +103,15 @@ class Article < ActiveRecord::Base
     return records
   end
   
+  #get footer about us
+  def self.get_footer_about_us
+    records = self.all
+    records = records.joins(:code_status).where(code_statuses: { title: 'about_us' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
   #keywords
   def keywords
     self.tags.split(",")

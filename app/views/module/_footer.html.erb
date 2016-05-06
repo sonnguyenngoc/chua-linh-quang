@@ -87,6 +87,7 @@
                         <div class="tags_container">
                             
                             <% if !Article.get_keyword_article.nil? %>
+                               
                                 <ul class="tags_cloud">
                                     
                                     <% Article.get_keyword_article.keywords.each do |item| %>
@@ -96,6 +97,7 @@
                                     <% end %>
     
                                 </ul><!--/ .tags_cloud-->
+                           
                             <% end %>
                             
                         </div>
@@ -241,11 +243,23 @@
                     <section class="widget">
 
                         <h4>Về chúng tôi</h4>
-
-                        <p class="about_us">Mauris accumsan nulla vel diam. Sed in lacus ut enim adipiscing aliquet. Nulla venenatis. In pede mi, aliquet sit amet, euis- mod in auctor ut, ligula. Aliquam dapibus tincidunt metus.</p>
                         
-                        <p>Email us: <a href="mailto:company@companyname.com">company@company.com</a><br></p>
-
+                        <% if Article.get_footer_about_us.count == 1 %>
+                        
+                            <% Article.get_footer_about_us.each do |blog| %>
+    
+                                <p class="about_us"><%= blog.content.html_safe %></p>
+                                
+                            <% end %>
+                            
+                        <% end %>
+                        
+                        <% if !Company.get_company.nil? %>
+                        
+                            <p>Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br></p>
+                        
+                        <% end %>
+                        
                     </section>
                     
                     <!-- - - - - - - - - - - - - - End of about us widget - - - - - - - - - - - - - - - - -->
@@ -361,13 +375,21 @@
         <div class="container company_info">
             
             <p class="copyright">
-                <% if !Company.first.nil? %>
-                    <h3 class="company_name"><%= Company.first.name %></h3>  
-                    <strong>Văn phòng: </strong> <%= Company.first.head_office_address %> </br>
-                    <strong>Giấy Phép Đăng Ký: </strong> <%= Company.first.certificate_no %> - Cấp ngày <%= Company.first.date_of_issue.strftime("%d-%m-%Y") %> <br/>
-                    <strong>Văn Phòng Giao Dịch: </strong><%= Company.first.sales_office_address %><br/>
-                    <strong>Điện Thoại: </strong> <%= Company.first.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.first.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a><br/>
+              
+                <% if !Company.get_company.nil? %>
+                   
+                    <h3 class="company_name"><%= Company.get_company.name %></h3>  
+                   
+                    <strong>Văn phòng: </strong> <%= Company.get_company.head_office_address %> </br>
+                   
+                    <strong>Giấy Phép Đăng Ký: </strong> <%= Company.get_company.certificate_no %> - Cấp ngày <%= Company.get_company.date_of_issue.strftime("%d-%m-%Y") %> <br/>
+                   
+                    <strong>Văn Phòng Giao Dịch: </strong><%= Company.get_company.sales_office_address %><br/>
+                   
+                    <strong>Điện Thoại: </strong> <%= Company.get_company.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.get_company.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br/>
+               
                 <% end %>
+            
             </p>
             
         </div>

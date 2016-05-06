@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     resources :testimonials
     root "home#countdown"
-    get "san-pham" => "home#index", as: :home
+    get "trang-chu" => "home#index", as: :home
     
     # account
     get "tai-khoan/dang-nhap" => "account#login", as: :login
@@ -64,9 +64,9 @@ Rails.application.routes.draw do
     get "san-pham/san-pham-so-sanh" => "product#comparison", as: :comparison
     get "san-pham/chi-tiet-san-pham/:product_id" => "product#product", as: :product
     get "san-pham/xem-nhanh/:product_id" => "product#quick_view", as: :quick_view
-    get "san-pham/them-vao-gio-hang-thanh-cong" => "product/add_cart_success", as: :add_cart_success
-    get "san-pham/them-vao-so-sanh-san-pham-thanh-cong" => "product/add_wishlist_success", as: :add_wishlist_success
-    get "san-pham/them-vao-san-pham-yeu-thich-thanh-cong" => "product/add_compare_success", as: :add_compare_success
+    get "product/add_cart_success" => "product/add_cart_success", as: :add_cart_success
+    get "product/add_wishlist_success" => "product/add_wishlist_success", as: :add_wishlist_success
+    get "product/add_compare_success" => "product/add_compare_success", as: :add_compare_success
     get "san-pham/ket-qua-tim-kiem" => "product#search", as: :search
     get "san-pham/y-kien-khach-hang" => "product#testimonial", as: :testimonial_list
     get "san-pham/gui-y-kien-khach-hang" => "product#testimonialform", as: :testimonial_form

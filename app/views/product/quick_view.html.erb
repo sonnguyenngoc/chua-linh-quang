@@ -162,8 +162,16 @@
 				<!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
 
 				<ul class="topbar">
+                    
+                    <% if @product.comments.count == 0 %>
 
-					<li><a href="#"><%= @product.comments.count %> đánh giá sản phẩm.</a></li>
+                        <li><%= link_to "Chưa đánh giá sản phẩm.", { controller: "product", action: "product", product_id: @product.id, status: "tab_comment" } %></li>
+                        
+                    <% else %>
+                        
+                        <li><a href="#"><%= @product.comments.count %> đánh giá sản phẩm.</a></li>
+                        
+                    <% end %>
 
 				</ul>
 
@@ -200,7 +208,7 @@
 						
 						<tr>
 
-							<td>Trọng lượng/Khối lượng/Dung tích: </td>
+							<td>Đơn vị: </td>
 							<td><%= format_number(@product.quantity) + "" + @product.unit %></td>
 			
 						</tr>
@@ -249,17 +257,19 @@
 
 				<% if current_user.present? %>
 											
-					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container quick_view_add_to_wishlist_button" %>
+					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: @product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container quick_view_add_to_wishlist_button" %>
 				
 				<% else %>
 					
-					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container error_quick_view_add_to_wishlist_button" %>
+					<%= link_to '<span class="tooltip top">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container error_quick_view_add_to_wishlist_button" %>
 				
 				<% end %>
 				
-				<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container quick_view_add_to_compare_button" %>
+				<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container quick_view_add_to_compare_button" %>
 
-			</div>
+                <%= link_to '<span class="tooltip top">Câu hỏi về sản phẩm</span>'.html_safe, { controller: "product", action: "product", product_id: @product.id, status: "tab-questions"}, class: "color_facebook button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container" %>
+            
+            </div>
 
 			<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
 
