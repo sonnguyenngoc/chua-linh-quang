@@ -30,13 +30,10 @@
 
                                 <ul class="topbar">
 
-                                    <li><%= link_to "Trang chủ", home_path %></li>
-                                    <li><%= link_to "Về chúng tôi", about_us_path %></li>
-                                    <li><%= link_to "Giỏ hàng", { controller: "checkout", action: "shopping_cart" } %></li>
-                                    <li><%= link_to "Thanh toán", { controller: "checkout", action: "checkout" } %></li>
-                                    <li><%= link_to 'Bài viết', {controller: 'blog', action: 'index'} %></li>
+                                    <li><%= link_to "Giới thiệu", about_us_path %></li>
+                                    <li><%= link_to 'Tin tức', {controller: 'blog', action: 'index'} %></li>
                                     <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
-                                    <li><%= link_to "FAQ", { controller: "information", action: "faq" } %></li>
+                                    <li><%= link_to "Hỏi & Đáp", { controller: "information", action: "faq" } %></li>
                                     <li class="has_submenu">
 
                                         <a href="#">Tài khoản</a>

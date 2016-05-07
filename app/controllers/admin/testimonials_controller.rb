@@ -4,7 +4,12 @@ class Admin::TestimonialsController < ApplicationController
   # GET /testimonials
   # GET /testimonials.json
   def index
-    @testimonials = Testimonial.all.paginate(:page => params[:page], :per_page => 10)
+    @testimonials = Testimonial.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @testimonials = Testimonial.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/testimonials/index"
   end
 
   # GET /testimonials/1

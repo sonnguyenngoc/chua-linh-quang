@@ -56,6 +56,9 @@
                     <li class="<%= "active" if ["admin/questions"].include?(params[:controller]) %>">
                         <%= link_to t(:questions), admin_questions_path %>
                     </li>
+                    <li class="<%= "active" if ["admin/testimonials"].include?(params[:controller]) %>">
+                        <%= link_to t(:testimonials), admin_testimonials_path %>
+                    </li>
                 </ul>
             </li>
             <li >

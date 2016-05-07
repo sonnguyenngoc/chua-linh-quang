@@ -134,6 +134,12 @@ class Product < ActiveRecord::Base
     return records
   end
   
+  def self.get_all_product_by_status
+    records = self.all
+    #records = records.where("products.status LIKE ?", "%#{status}%")
+    return records
+  end
+  
   def wish_by? user
     wish_lists.exists? user_id: user
   end

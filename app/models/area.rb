@@ -54,8 +54,8 @@ class Area < ActiveRecord::Base
   
   def self.sort_order
     [
+      ["ASC","asc"],
       ["DESC","desc"],
-      ["ASC","asc"]
     ]
   end
   

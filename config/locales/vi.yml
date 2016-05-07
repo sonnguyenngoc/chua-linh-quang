@@ -125,7 +125,7 @@ vi:
   order_date: "Ngày đặt hàng"
   
   #-------------------------------------
-  comment_question: "Bình luận/Câu hỏi"
+  comment_question: "Bình luận/Câu hỏi/Ý kiến"
   comments: "Bình luận sản phẩm"
   comment_articles: "Bình luận bài viết"
   customer_name: "Tên khách hàng"
@@ -133,6 +133,7 @@ vi:
   star: "sao"
   rating: "Đánh giá"
   article_title: "Tiêu đề bài viết"
+  testimonials: "Ý kiến khách hàng"
   
   #-------------------------------------
   question: "Câu hỏi"
