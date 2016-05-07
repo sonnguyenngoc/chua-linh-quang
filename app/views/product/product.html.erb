@@ -333,7 +333,7 @@
 											
 											<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
 											
-											<a href="#tab-questions" data-toggle="tooltip" class="color_facebook button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container"><span class="tooltip top">Câu hỏi về sản phẩm</span></a>
+											<a href="<%= url_for(status: "tab-questions") %>" data-toggle="tooltip" class="color_facebook button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container"><span class="tooltip top">Câu hỏi về sản phẩm</span></a>
 
 										</div>
 

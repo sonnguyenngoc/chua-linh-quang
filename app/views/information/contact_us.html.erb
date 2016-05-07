@@ -138,11 +138,11 @@
     
                                             <ul class="c_info_list">
     
-                                                <li class="c_info_location">Văn phòng: <%= @company.get_company.head_office_address %></li>
+                                                <li class="c_info_location">Văn phòng: <%= @company.get_company.head_office_address + ", " +  @company.get_company.area.name  %></li>
                                                 <li class="c_info_phone">ĐT: <%= @company.get_company.phone %></li>
                                                 <li class="c_info_phone">Hotline: <%= @company.get_company.hotline %></li>
                                                 <li class="c_info_mail"><a href="mailto:<%= @company.get_company.email %>"><%= @company.get_company.email %></a></li>
-                                                <li class="c_info_location">Văn phòng giao dịch: <%= @company.get_company.sales_office_address %></li>
+                                                <li class="c_info_location">Văn phòng giao dịch: <%= @company.get_company.sales_office_address + ", " +  @company.get_company.area.name  %></li>
                                                 
                                             </ul>
                                             

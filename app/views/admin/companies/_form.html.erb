@@ -32,6 +32,13 @@
     </div>
         
     <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:type) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.select(:type_company, ['Branch Office', 'Head Office'], {}, { :class => 'select' })%>
+        </div>
+    </div>
+        
+    <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:phone) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.text_field :phone, class: "form-control" %>
@@ -74,9 +81,23 @@
     </div>
         
     <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:head_area) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.collection_select(:head_area_id, Area.all.where(level: 2), :id, :name, {:prompt => "Chọn khu vực..."}, {class: "select"}) %>
+        </div>
+    </div>
+        
+    <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:sales_office_address) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.text_field :sales_office_address, class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:branch_area) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.collection_select(:branch_area_id, Area.all.where(level: 2), :id, :name, {:prompt => "Chọn khu vực..."}, {class: "select"}) %>
         </div>
     </div>
 

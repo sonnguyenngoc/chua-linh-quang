@@ -187,9 +187,9 @@
                 
                 <% if !Company.get_company.nil? %>
                     
-                    <p class="c_info_location">VP: <%= Company.get_company.head_office_address %></p>
+                    <p class="c_info_location">VP: <%= Company.get_company.head_office_address + ", " + Company.get_company.area.name %></p>
                     
-                    <p class="c_info_location">VPGD: <%= Company.get_company.sales_office_address %></p>
+                    <p class="c_info_location">VPGD: <%= Company.get_company.sales_office_address + ", " + Company.get_company.area.name %></p>
                 
                 <% end %>
 
