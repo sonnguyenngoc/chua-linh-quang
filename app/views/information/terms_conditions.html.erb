@@ -21,7 +21,7 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li><%= @terms_information.title %></li>
+                    <li><%= @title_head %></li>
 
                 </ul>
 
@@ -53,11 +53,15 @@
 
                     <main class="col-md-9 col-sm-8">
                         
-                        <h1><%= @terms_information.title %></h1>
+                        <h1><%= @title_head %></h1>
                         
                         <div class="bordered_content padded box">
+                            
+                            <% @terms_information.each do |terms_information| %>
+                                    
+                                <%= terms_information.content.html_safe %>
                                 
-                        <%= @terms_information.content.html_safe %>
+                            <% end %>
                             
                         </div>
 

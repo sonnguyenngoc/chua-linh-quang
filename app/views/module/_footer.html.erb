@@ -14,7 +14,7 @@
 
                     <section class="widget">
 
-                        <h4>Latest Tweets</h4>
+                        <h4>Tin tức Facebook</h4>
                         
                         <ul class="list_of_entries">
 
@@ -22,45 +22,49 @@
 
                             <li>
                                     
-                                <article class="entry">
+                                <div class="animated_item">
 
-                                    <div class="wrapper">
-
-                                        <div class="entry_meta">
+                                    <div style="display: inline">
+                                        
+                                        <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                           
+                                            <div class="fb-xfbml-parse-ignore">
+                                                
+                                                <blockquote cite="https://www.facebook.com/DacSanVungMien.net">
+                                                   
+                                                    <a href="https://www.facebook.com/DacSanVungMien.net">DacSanVungMien.net</a>
+                                               
+                                                </blockquote>
                                             
-                                            <p>Cosyone Opencart Theme is finally updated to support Opencart 2.0.1! Get the update from <a href="http://t.co/IaqcfWSQip" target="_blank">http://t.co/IaqcfWSQip</a></p>
-                                            
+                                            </div>
+                                        
                                         </div>
                                         
-                                        <span class="tweets_span">over a year ago</span>
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
+                                        <div id="fb-root"></div>
+                                        
+                                        <script>
+                                        
+                                            (function(d, s, id) {
+                                            
+                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                
+                                                if (d.getElementById(id)) return;
+                                                
+                                                js = d.createElement(s); js.id = id;
+                                                
+                                                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                                                
+                                                fjs.parentNode.insertBefore(js, fjs);
+                                            
+                                            }
+                                            
+                                            (document, 'script', 'facebook-jssdk'));
+                                        
+                                        </script>
                                     
-                                <article class="entry">
-
-                                    <div class="wrapper">
-
-                                        <div class="entry_meta">
-                                            
-                                            <p>Cosyone Opencart Theme is finally updated to support Opencart 2.0.1! Get the update from <a href="http://t.co/IaqcfWSQip" target="_blank">http://t.co/IaqcfWSQip</a></p>
-                                            
-                                        </div>
-                                        
-                                        <span class="tweets_span">over a year ago</span>
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
+                                    </div>
+                    
+                                </div><!--/ .animated_item-->
 
                             </li>
 
@@ -68,7 +72,7 @@
 
                         </ul>
                         
-                        <a href="#" class="button_grey middle_btn">Theo dõi trang</a>
+                        <%= link_to "Theo dõi trang", "https://www.facebook.com/DacSanVungMien.net/", class: "button_grey middle_btn", target: "_blank" %>
                         
                     </section><!--/ .widget-->
                     
@@ -238,36 +242,6 @@
 
                 <div class="col-md-3 col-sm-6">
 
-                    <!-- - - - - - - - - - - - - - About us widget- - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Về chúng tôi</h4>
-                        
-                        <% if Article.get_footer_about_us.count == 1 %>
-                        
-                            <% Article.get_footer_about_us.each do |blog| %>
-    
-                                <p class="about_us"><%= blog.content.html_safe %></p>
-                                
-                            <% end %>
-                            
-                        <% end %>
-                        
-                        <% if !Company.get_company.nil? %>
-                        
-                            <p>Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br></p>
-                        
-                        <% end %>
-                        
-                    </section>
-                    
-                    <!-- - - - - - - - - - - - - - End of about us widget - - - - - - - - - - - - - - - - -->
-
-                </div><!--/ [col]-->
-
-                <div class="col-md-3 col-sm-6">
-
                     <!-- - - - - - - - - - - - - - Information widget - - - - - - - - - - - - - - - - -->
 
                     <section class="widget">
@@ -301,8 +275,7 @@
                         <ul class="list_of_links">
 
                             <li><%= link_to "Thương hiệu sản phẩm", { controller: "manufacturer", action: "list" } %></li>
-                            <li><%= link_to "Phiếu quà tặng", { controller: "account", action: "voucher" } %></li>
-                            <li><%= link_to "Đại lý", "" %></li>
+                            <li><%= link_to "Chi nhánh cung cấp", list_branch_path %></li>
                             <li><%= link_to "Đặc biệt", { controller: "product", action: "special" } %></li>
                             <li><%= link_to "Sơ đồ website", { controller: "information", action: "sitemap" } %></li>
 
@@ -357,6 +330,29 @@
                     <!-- - - - - - - - - - - - - - End my account widget - - - - - - - - - - - - - - - - -->
 
                 </div>
+                
+                <div class="col-md-3 col-sm-6">
+
+                    <!-- - - - - - - - - - - - - - About us widget- - - - - - - - - - - - - - - - -->
+
+                    <section class="widget">
+
+                        <h4>Chăm sóc khách hàng</h4>
+
+                        <ul class="list_of_links">
+
+                            <li><%= link_to "Trung tâm hỗ trợ khách hàng", "" %></li>
+                            <li><%= link_to "Chính sách thanh toán", "" %></li>
+                            <li><%= link_to "Chính sách giao hàng", "" %></li>
+                            <li><%= link_to "Chính sách bảo hành", "" %></li>
+
+                        </ul>
+                        
+                    </section>
+                    
+                    <!-- - - - - - - - - - - - - - End of about us widget - - - - - - - - - - - - - - - - -->
+
+                </div><!--/ [col]-->
 
             </div><!--/ .row-->
 

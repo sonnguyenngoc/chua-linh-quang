@@ -68,8 +68,18 @@
                                 <%= about.content.html_safe %>
                             
                             <% end %>
-
+                        
                         </div><!--/ .theme_box-->
+                        
+                        <footer class="bottom_box on_the_sides">
+
+                                <div class="left_side">
+
+                                    <%= link_to "Xem danh sách tất cả chi nhánh", { controller: "branch", action: "list" }, class: "button_blue middle_btn" %>
+    
+                                </div>
+
+                        </footer>
 
                     </main><!--/ [col]-->
 
