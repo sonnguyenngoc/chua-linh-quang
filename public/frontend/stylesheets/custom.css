@@ -343,3 +343,23 @@ ul > li > .def_icon_btn.middle_btn {
 .actions_wrap > .centered_buttons_category {
     width: 28%;
 }
+.color_red {
+    background-color: red;
+}
+.color_orange {
+    background-color: orange;
+}
+.color_facebook {
+    background-color: #103480;
+}
+.button_blue {
+    background-color: #428bca;
+}
+.button_blue:hover {
+    color: #fff;
+    background: #4ac4fa;
+    border-color: #4ac4fa;
+}
+.topbar > li:not(:last-child)::after, .bottombar > li:not(:last-child)::after {
+    color: black;
+}

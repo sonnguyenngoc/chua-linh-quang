@@ -69,7 +69,7 @@
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:code_status) %></label>
         <div class="col-lg-10">
-            <%= f.text_field :code, class: "form-control" %>
+            <%= f.collection_select(:code_status_id, CodeStatus.get_all_statuses, :id, :title, {}, {class: "code_status"}) %>
         </div>
     </div>
 

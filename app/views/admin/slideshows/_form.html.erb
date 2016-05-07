@@ -49,6 +49,13 @@
     </div>
         
     <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:style) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.select(:style, ['fade', 'boxfade', 'boxslide', 'curtain-1', 'curtain-2', 'curtain-3', 'slidedown', 'slideup', 'slideleft', 'slideright', 'slotfade-hor', 'slotfade-ver', 'slotside-hor', 'slotside-ver', 'slotzoom-hor', 'slotzoom-ver', 'papercut', 'cubic', 'flyin', '3dcurtain-horizontal', '3dcurtain-vertical', 'turnoff'], {}, { :class => 'select' })%>
+        </div>
+    </div>
+        
+    <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:button_name) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.text_field :name_button, class: "form-control" %>

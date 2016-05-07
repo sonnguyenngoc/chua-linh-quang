@@ -131,18 +131,22 @@
                                     </div><!--/ [col]-->
 
                                     <div class="col-sm-7">
+                                        
+                                        <% if !@company.get_company.nil? %>
 
-                                        <p class="form_caption"><%= @company.first.name %></p>
-
-                                        <ul class="c_info_list">
-
-                                            <li class="c_info_location">Văn phòng: <%= @company.first.head_office_address %></li>
-                                            <li class="c_info_phone">ĐT: <%= @company.first.phone %></li>
-                                            <li class="c_info_phone">Hotline: <%= @company.first.hotline %></li>
-                                            <li class="c_info_mail"><a href="mailto:<%= @company.first.email %>"><%= @company.first.email %></a></li>
-                                            <li class="c_info_location">Văn phòng giao dịch: <%= @company.first.sales_office_address %></li>
+                                            <p class="form_caption"><%= @company.get_company.name %></p>
+    
+                                            <ul class="c_info_list">
+    
+                                                <li class="c_info_location">Văn phòng: <%= @company.get_company.head_office_address + ", " +  @company.get_company.area.name  %></li>
+                                                <li class="c_info_phone">ĐT: <%= @company.get_company.phone %></li>
+                                                <li class="c_info_phone">Hotline: <%= @company.get_company.hotline %></li>
+                                                <li class="c_info_mail"><a href="mailto:<%= @company.get_company.email %>"><%= @company.get_company.email %></a></li>
+                                                <li class="c_info_location">Văn phòng giao dịch: <%= @company.get_company.sales_office_address + ", " +  @company.get_company.area.name  %></li>
+                                                
+                                            </ul>
                                             
-                                        </ul>
+                                        <% end %>
 
                                     </div><!--/ [col]-->
 

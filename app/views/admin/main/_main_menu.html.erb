@@ -34,6 +34,9 @@
                     <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
                         <%= link_to t(:article_categories), admin_article_categories_path %>
                     </li>
+                    <li class="<%= "active" if ["admin/code_statuses"].include?(params[:controller]) %>">
+                        <%= link_to t(:code_statuses), admin_code_statuses_path %>
+                    </li>
                 </ul>
             </li>
             <li>

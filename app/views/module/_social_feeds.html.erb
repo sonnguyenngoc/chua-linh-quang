@@ -25,7 +25,7 @@
                             
                             <blockquote cite="https://www.facebook.com/DacSanVungMien.net">
                                
-                                <a href="https://www.facebook.com/DacSanVungMien.net">Market Online</a>
+                                <a href="https://www.facebook.com/DacSanVungMien.net">DacSanVungMien.net</a>
                            
                             </blockquote>
                         
@@ -185,11 +185,11 @@
                
               <div class="animated_item">
                 
-                <% if !Company.first.nil? %>
+                <% if !Company.get_company.nil? %>
                     
-                    <p class="c_info_location">VP: <%= Company.first.head_office_address %></p>
+                    <p class="c_info_location">VP: <%= Company.get_company.head_office_address + ", " + Company.get_company.area.name %></p>
                     
-                    <p class="c_info_location">VPGD: <%= Company.first.sales_office_address %></p>
+                    <p class="c_info_location">VPGD: <%= Company.get_company.sales_office_address + ", " + Company.get_company.area.name %></p>
                 
                 <% end %>
 
@@ -201,13 +201,13 @@
 
                     <ul class="c_info_list">
                        
-                        <% if !Company.first.nil? %>
+                        <% if !Company.get_company.nil? %>
                            
-                            <li class="c_info_phone">ĐT: <%= Company.first.phone %></li>
+                            <li class="c_info_phone">ĐT: <%= Company.get_company.phone %></li>
                            
-                            <li class="c_info_phone">Hotline: <%= Company.first.hotline %></li>
+                            <li class="c_info_phone">Hotline: <%= Company.get_company.hotline %></li>
                             
-                            <li class="c_info_mail">Email: <a href="mailto:<%= Company.first.email %>"><%= Company.first.email %></a></li>
+                            <li class="c_info_mail">Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a></li>
                         
                         <% end %>
                     
