@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
-    resources :testimonials
     root "home#countdown"
     get "trang-chu" => "home#index", as: :home
     
@@ -75,6 +74,7 @@ Rails.application.routes.draw do
     get "san-pham/y-kien-khach-hang" => "product#testimonial", as: :testimonial_list
     get "san-pham/gui-y-kien-khach-hang" => "product#testimonialform", as: :testimonial_form
     get "san-pham/dac-biet" => "product#special", as: :special
+    get "san-pham/tat-ca" => "product#view_all_product_by_status", as: :view_all_product_by_status
     # end product
     
     # resources
@@ -93,6 +93,7 @@ Rails.application.routes.draw do
     resources :line_items do
       collection do
         get "add_to_cart"
+        #get "add_cart_buy_now"
       end
     end
     resources :customers
@@ -111,6 +112,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :comment_articles
     resources :feedbacks
+    resources :testimonials
     #end of resources
   
     namespace :admin, path: "hkpanel" do
@@ -209,6 +211,11 @@ Rails.application.routes.draw do
         end
       end
       resources :coupons do
+        collection do
+          get 'search'
+        end
+      end
+      resources :testimonials do
         collection do
           get 'search'
         end

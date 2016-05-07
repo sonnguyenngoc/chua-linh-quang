@@ -288,6 +288,61 @@ label.error {
     border: 1px solid #eaeaea;
     padding: 11px 40px 10px 19px;
 }
+.tooltip_container .tooltip {
+    background: #7ad04d;
+}
+.tooltip.top::before {
+    border-top: 7px solid #7ad04d;
+}
+.tooltip.left::before {
+    border-left: 7px solid #7ad04d;
+}
+.tooltip.right::before {
+    border-right: 7px solid #7ad04d;
+}
+.mrg-top {
+    margin-top: 20px;
+}
+.mrg-show-category {
+    margin-right: 10px;
+}
+.single_product_description .product_price {
+    float: left;
+    margin-top: 10px;
+}
+.description_section_2:not(:last-child) {
+    float: left;
+    margin-left: 55px;
+}
+.single_product_description .buttons_row {
+    clear: both;
+}
+ul > li > .def_icon_btn.middle_btn {
+    width: 30px;
+    height: 30px;
+}
+.rate {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+.topbar > .rate:not(:last-child)::after, .bottombar > li:not(:last-child)::after {
+    content: none;
+}
+.button_buy_now {
+    color: #fff;
+    background-color: #ff6550;
+    border-color: #ff6550;
+    border-radius: 3px;
+}
+.button_buy_now:hover {
+    color: #fff;
+    background-color: #eb5b4c;
+    border-color: #eb5b4c;
+    border-radius: 3px;
+}
+.actions_wrap > .centered_buttons_category {
+    width: 28%;
+}
 .color_red {
     background-color: red;
 }

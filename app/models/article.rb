@@ -42,8 +42,8 @@ class Article < ActiveRecord::Base
   
   def self.sort_orders
     [
-      ["DESC","desc"],
       ["ASC","asc"],
+      ["DESC","desc"],
     ]
   end
   
