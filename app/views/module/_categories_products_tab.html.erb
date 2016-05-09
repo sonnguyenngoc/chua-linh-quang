@@ -1,7 +1,11 @@
 <section class="section_offset animated transparent" data-animation="fadeInDown"> 
-
-    <h3><%= title %></h3>
-
+	
+	<% if status == "deal" %>
+		<h3 class="widget_title offset_title"><%= title %></h3>
+	<% else %>
+		<h3><%= title %></h3>
+	<% end %>
+		
     <div class="tabs type_2 products">
 
         <!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
@@ -64,15 +68,15 @@
         
                                         <% if current_user.present? %>
 											
-											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
 										
 										<% else %>
 											
-											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
+											<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
 										
 										<% end %>
         
-                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
+                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
         
                                     </div><!--/ .actions_wrap-->
                                     
@@ -82,21 +86,25 @@
         
                                 <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
         
-                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-        
-                                <!--<div class="label_offer percentage">
-        
-                                    <!--<div>30%</div>OFF
-        
-                                </div>-->
-        
-                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-        
-                                <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-        
-                                <!--<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>-->
-        
-                                <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
+								<% if status == "deal" %>
+									
+									<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+									
+									<div class="label_offer percentage">
+			
+										<div>30%</div>OFF
+			
+									</div>
+			
+									<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+			
+									<!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
+			
+									<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>
+			
+									<!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
+									
+								<% end %>
         
                                 <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
         
@@ -153,9 +161,20 @@
 		<!-- - - - - - - - - - - - - - View all - - - - - - - - - - - - - - - - -->
 		
 		<footer class="bottom_box">
-
-				<a href="<%= url_for(controller: "product", action: "view_all_product_by_status") %>" class="button_grey middle_btn">Xem tất cả</a>
-            
+			
+			<% if status == "deal" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-khuyen-mai"}, class: "button_grey middle_btn" %>
+			<% elsif status == "prominent" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "san-pham-noi-bat"}, class: "button_grey middle_btn" %>
+			<% elsif status == "bestseller" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "san-pham-ban-chay"}, class: "button_grey middle_btn" %>
+			<% elsif status == "new" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "san-pham-moi"}, class: "button_grey middle_btn" %>
+			<% elsif status == "imported" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-nhap-khau"}, class: "button_grey middle_btn" %>
+			<% end %>
+			
+			
 		</footer>
 		
 		<!-- - - - - - - - - - - - - - End of view all - - - - - - - - - - - - - - - - -->

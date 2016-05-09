@@ -81,6 +81,35 @@
                                         <% end %>
                                     
                                     </li>
+                                    <li class="has_submenu">
+
+                                        <a href="#">Chăm sóc khách hàng</a>
+                                        
+                                            <!-- - - - - - - - - - - - - - Submenu (level 2) - - - - - - - - - - - - - - - - -->
+        
+                                            <ul class="theme_menu submenu">
+                                                
+                                                <% if !Company.get_company.nil? %>
+                                                        
+                                                    <li class=""><a>Hotline: <%= Company.get_company.hotline %></a></li>
+                                                    
+                                                <% end %>
+        
+                                                <li><%= link_to "Câu hỏi thường gặp", { controller: "information", action: "faq" } %></li>
+        
+                                                <li><%= link_to "Chính sách bảo mật", { controller: "information", action: "privacy_policy" } %></li>
+                                                
+                                                <li><%= link_to "Chính sách giao hàng", { controller: "information", action: "delivery" } %></li>
+                                                
+                                                <li><%= link_to "Điều khoản sử dụng", { controller: "information", action: "terms_conditions" } %></li>
+                                                
+                                                <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
+        
+                                            </ul>
+        
+                                            <!-- - - - - - - - - - - - - - End submenu (level 2) - - - - - - - - - - - - - - - - -->
+                                    
+                                    </li>
                                     
                                 </ul>
 

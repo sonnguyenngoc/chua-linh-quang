@@ -53,8 +53,18 @@ class ProductController < ApplicationController
     end
     
     def view_all_product_by_status
-        @title_head = "Tất cả sản phẩm"
-        @view_all = Product.get_all_product_by_status
+        if params[:st] == "deal"
+            @title_head = "Hàng khuyến mãi"
+        elsif params[:st] == "prominent"
+            @title_head = "Sản phẩm nổi bật"
+        elsif params[:st] == "bestseller"
+            @title_head = "Sản phẩm bán chạy"
+        elsif params[:st] == "new"
+            @title_head = "Sản phẩm mới"
+        elsif params[:st] == "imported"
+            @title_head = "Hàng nhập khẩu"
+        end
+        @view_all_products = Product.get_all_product_by_status(params[:st]).paginate(:page => params[:page], :per_page => 15)
     end
     
     def add_cart_buy_now

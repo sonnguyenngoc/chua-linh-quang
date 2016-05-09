@@ -21,8 +21,18 @@
                 <ul class="breadcrumbs">
 
                     <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li>Sản phẩm mới</li>
-                    <li>Hiển thị tất cả</li>
+                    <li><a href="<%= root_path %>">Sản phẩm</a></li>
+                    <% if params[:st] == "deal" %>
+                      <li>Hàng khuyến mãi</li>
+                    <% elsif params[:st] == "prominent" %>
+                      <li>Sản phẩm nổi bật</li>
+                    <% elsif params[:st] == "bestseller" %>
+                      <li>Sản phẩm bán chạy</li>
+                    <% elsif params[:st] == "new" %>
+                      <li>Sản phẩm mới</li>
+                    <% elsif params[:st] == "imported" %>
+                      <li>Hàng nhập khẩu</li>
+                    <% end %>
 
                 </ul>
 
@@ -35,12 +45,6 @@
                         <%= render "module/categories" %>
 
                         <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
-
-                        <%= render "module/filter" %>
-
-                        <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
@@ -82,11 +86,19 @@
                         
                         <!--render 'todays_deals'-->
 
-                        <section class="section_offset">
-
-                            <h1><%= @category.name %></h1>
-
-                            <p><%= @category.description %></p>
+                        <section class="">
+                          
+                          <% if params[:st] == "deal" %>
+                            <h1>Hàng khuyến mãi</h1>
+                          <% elsif params[:st] == "prominent" %>
+                            <h1>Sản phẩm nổi bật</h1>
+                          <% elsif params[:st] == "bestseller" %>
+                            <h1>Sản phẩm bán chạy</h1>
+                          <% elsif params[:st] == "new" %>
+                            <h1>Sản phẩm mới</h1>
+                          <% elsif params[:st] == "imported" %>
+                            <h1>Hàng nhập khẩu</h1>
+                          <% end %>
 
                         </section>
 
@@ -98,7 +110,7 @@
 
                                 <div class="left_side clearfix v_centered">
                                     
-                                    <%= form_tag({controller: "product", action: "category"}, method: "get") do %>
+                                    <%= form_tag({controller: "product", action: "view_all_product_by_status"}, method: "get") do %>
                                   
                                         <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
     
@@ -168,7 +180,7 @@
 
                                 <div class="table_row">
                                     
-                                    <% @products.each_with_index do |product, index| %>
+                                    <% @view_all_products.each_with_index do |product, index| %>
                                     
                                         <a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
 											
@@ -202,7 +214,7 @@
     
                                                     <div class="actions_wrap">
     
-                                                        <div class="centered_buttons centered_buttons_category">
+                                                        <div class="centered_buttons">
                                                             
                                                             <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
                                                             
@@ -322,13 +334,13 @@
 
                                 <div class="left_side">
 
-                                    <p><%= page_entries_info @products %> sản phẩm.</p>
+                                    <p><%= page_entries_info @view_all_products %> sản phẩm.</p>
     
                                 </div>
 
                                 <div class="right_side">
                                 
-                                    <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                                    <%= will_paginate @view_all_products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
     
                                 </div>
 

@@ -199,7 +199,7 @@
 											<!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
 
 											<ul class="topbar">
-
+												
 												<li class="rate">
 													<% if @product.comments.count == 0 %>
 
@@ -321,7 +321,7 @@
 											<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart add_to_cart_button" %>
 
 											<%= link_to 'Mua ngay', add_to_cart_line_items_path(product_id: @product), class: "button_buy_now middle_btn add_to_cart" %>
-
+											
 										</div>
 
 										<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->

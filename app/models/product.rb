@@ -134,11 +134,25 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  def self.get_all_product_by_status
+  def self.get_all_product_by_status(status)
     records = self.all
-    #records = records.where("products.status LIKE ?", "%#{status}%")
+    records = records.where("products.status LIKE ?", "%#{status}%")
     return records
   end
+  
+  #def display_title_head
+  #  if params[:st] == "deal"
+  #    st = "hang-khuyen-mai"
+  #  elsif params[:st] == "prominent"
+  #    st = "san-pham-noi-bat"
+  #  elsif params[:st] == "bestseller"
+  #    st = "san-pham-ban-chay"
+  #  elsif params[:st] == "new"
+  #    st = "san-pham-moi"
+  #  elsif params[:st] == "imported"
+  #    st = "hang-nhap-khau"
+  #  end
+  #end
   
   def wish_by? user
     wish_lists.exists? user_id: user
