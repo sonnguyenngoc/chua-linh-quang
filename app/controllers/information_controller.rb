@@ -27,18 +27,18 @@ class InformationController < ApplicationController
   end
   
   def delivery
-    @delivery_information = Article.all.where(code: "delivery_information").first
+    @delivery_information = Article.get_delivery_information
     @title_head = "Thông tin giao hàng"
   end
   
   def privacy_policy
-    @privacy_information = Article.where(code: "privacy_policy").first
-    @title_head = @privacy_information.title
+    @privacy_policy = Article.get_privacy_policy
+    @title_head = "Chính sách bảo mật"
   end
   
   def terms_conditions
-    @terms_information = Article.where(code: "terms_conditions").first
-    @title_head = @terms_information.title
+    @terms_information = Article.get_terms_conditions
+    @title_head = "Điều khoản & Điều kiện"
   end
 
 end

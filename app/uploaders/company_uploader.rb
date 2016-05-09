@@ -39,6 +39,10 @@ class CompanyUploader < CarrierWave::Uploader::Base
   version :logo do
     process :resize_to_fit => [489, 395]
   end
+  
+  version :small_image do
+    process :resize_to_fit => [173, 173]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

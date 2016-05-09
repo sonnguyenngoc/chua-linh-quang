@@ -6,4 +6,8 @@ class Company < ActiveRecord::Base
     def self.get_company
         self.all.where(type_company: "Head Office").order("created_at DESC").first
     end
+    
+    def self.get_branch
+        self.all.where(type_company: "Branch Office").order("created_at DESC")
+    end
 end

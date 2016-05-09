@@ -41,8 +41,6 @@
                         
 						<h1 class="tall">Đăng ký tài khoản</h1>
                         
-						<p>Nếu bạn đã có tài khoản. Vui lòng đăng nhập tại <%= link_to "trang đăng nhập", { controller: "account", action: "login" } %>.</p>
-                        
 						<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-horizontal") do |f| %>
 						
 							<%= devise_error_messages! %>
@@ -359,7 +357,7 @@
 							
 									<input checked="" type="checkbox" name="description" id="description" value="1">
 							
-									<label for="description">I have read and agree to the <a href="#" class="agree"><b>Privacy Policy</b></a></label>
+									<label for="description">Tôi đã đọc và đồng ý các <%= link_to "Chính sách bảo mật", privacy_policy_path, class: "argee", target: "_blank" %> của công ty.</label>
 								   
 								</div>
 							

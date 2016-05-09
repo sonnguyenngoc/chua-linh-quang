@@ -58,6 +58,10 @@ Rails.application.routes.draw do
     get "thuong-hieu-cung-cap/danh-sach-san-pham/:manufacturer_id" => "manufacturer#products", as: :products
     # end manufacturer
     
+    # branch
+    get "chi-nhanh/danh-sach" => "branch#list", as: :list_branch
+    # end branch
+    
     # product
     get "san-pham/chuyen-muc/:category_id" => "product#category", as: :category
     get "san-pham/san-pham-so-sanh" => "product#comparison", as: :comparison

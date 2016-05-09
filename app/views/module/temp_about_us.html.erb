@@ -1,0 +1,17 @@
+<h4>Về chúng tôi</h4>
+
+<% if Article.get_footer_about_us.count == 1 %>
+
+    <% Article.get_footer_about_us.each do |blog| %>
+
+        <p class="about_us"><%= blog.content.html_safe %></p>
+        
+    <% end %>
+    
+<% end %>
+
+<% if !Company.get_company.nil? %>
+
+    <p>Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br></p>
+
+<% end %>

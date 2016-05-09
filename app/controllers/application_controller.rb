@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   protected
     def layout_by_resource
       if controller_name == "home" || controller_name == "account" || controller_name == "checkout" || controller_name == "blog" ||
-        controller_name == "information" || controller_name == "manufacturer" || controller_name == "product"
+        controller_name == "information" || controller_name == "manufacturer" || controller_name == "product" || controller_name == "branch"
         "frontend"
       elsif controller_name == "account"
         authenticate_user!
