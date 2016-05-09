@@ -16,7 +16,7 @@
 
                             <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
                             
-                            <%= link_to image_tag("/frontend/images/logo_dsvm.png", class: ""), home_path, class: "logo" %>
+                            <%= link_to image_tag("/frontend/images/dsvm_logo2.png", class: ""), home_path, class: "logo" %>
 
                             <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
 
@@ -98,19 +98,30 @@
     
                                 <div class="search_category alignleft">
                                     
-                                     <div class="">
-    
-                                        <select class="select_header" name="area_id">
-                                            
-                                            <option value="">Tất cả</option>
-                                            
-                                            <% Area.where(level: 2).each do |item| %>
+                                     <div class="search_category_box">
+                                        <h4>Tất cả khu vực</h4>
+                                        <input type="hidden" name="area_id" />
+                                        <ul style="display: none">
+                                            <li value="">
+                                                <a href="#">Tất cả khu vực</a>
+                                            </li>
+                                            <% Area.where(level: 1).each do |item| %>
                                                     
-                                                <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
+                                                <li value="<%= item.id %>">
+                                                    <a class="level-<%= item.level %>" href="#"><%= item.name %></a>
+                                                </li>
+                                                
+                                                <% item.children.each do |child| %>
+                                                    
+                                                    <li value="<%= child.id %>">
+                                                        <a class="level-<%= child.level %>" href="#"><%= child.name %></a>
+                                                    </li>
+                                                                                               
+                                                <% end %>
                                                                                            
                                             <% end %>
                                         
-                                        </select>
+                                        </ul>
     
                                     </div><!--/ .custom_select -->
     
@@ -217,4 +228,25 @@
             get_cart();
 		});
     });
+    
+    
+    $(".search_category_box ul").height($(window).height()-150);
+    $( window ).resize(function() {
+        $(".search_category_box ul").height($(window).height()-150);
+    });
+    $(document).on("click", ".search_category_box h4", function(e){
+        var box = $(".search_category_box");
+        box.find("ul").toggle();
+    });    
+    $(document).on("click", ".search_category_box a", function(e){
+        var box = $(".search_category_box");
+        var menu = $(".search_category_box ul");
+        var value = $(this).attr("value");
+        var text = $(this).html();
+        
+        box.find("h4").html(text);
+        menu.hide();        
+    });
+    
 </script>
+

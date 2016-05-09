@@ -2,7 +2,7 @@
 
     <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-    <div class="wide_layout">
+    <div class="wide_layout page_with_main_nav">
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
@@ -18,27 +18,7 @@
 
                 <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-                <ul class="breadcrumbs">
-                    
-                    <li><%= link_to "Trang chủ", root_path %></li>
-                    
-					<li>
-                        
-						<% @product.categories.each do |categories| %>
-                            
-							<%= hidden_field_tag categories.id %>
-                           
-						    <%= link_to categories.name, { controller: "product", action: "category", category_id: categories.id } %> /
-                        
-						<% end %>
-                        
-						<%= @product.name %>
-                        
-                        <%= params[:status] %>
-                    
-					</li>
-
-                </ul>
+                
 
                 <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
 
@@ -113,9 +93,33 @@
 						</aside>
 
                         <main class="col-md-9 col-sm-8">
+							
+							<%= render 'module/main_nav_right' %>
 
                             <!-- - - - - - - - - - - - - - Product images & description - - - - - - - - - - - - - - - - -->
-
+							
+							<ul class="breadcrumbs">
+                    
+								<li><%= link_to "Trang chủ", root_path %></li>
+								
+								<li>
+									
+									<% @product.categories.each do |categories| %>
+										
+										<%= hidden_field_tag categories.id %>
+									   
+										<%= link_to categories.name, { controller: "product", action: "category", category_id: categories.id } %> /
+									
+									<% end %>
+									
+									<%= @product.name %>
+									
+									<%= params[:status] %>
+								
+								</li>
+			
+							</ul>
+							
 							<section class="section_offset">
 
 								<div class="clearfix">
@@ -328,7 +332,7 @@
 										
 										<!-- - - - - - - - - - - - - - Share - - - - - - - - - - - - - - - - -->
 										
-										<div class="v_centered mrg-top">
+										<div class="v_centered mrg-top mrg-top-35">
 
 											<div class="addthis_widget_container">
 												<!-- AddThis Button BEGIN -->
