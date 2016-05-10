@@ -134,7 +134,7 @@
                                             <li value="">
                                                 <a href="#">Tất cả khu vực</a>
                                             </li>
-                                            <% Area.where(level: 2).each do |item| %>
+                                            <% Area.order("display_order").where(level: 2).each do |item| %>
                                             
                                                 <li value="<%= item.id %>">
                                                     <a class="level-<%= item.level %>" href="#"><%= item.name %></a>
