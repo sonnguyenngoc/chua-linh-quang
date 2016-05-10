@@ -529,3 +529,6 @@ form ul > li:not(:last-child) {
         width: 1280px;
     }
 }
+#open_shopping_cart .total_price {
+    font-size: 16px;
+}
