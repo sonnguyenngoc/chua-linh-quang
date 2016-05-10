@@ -511,3 +511,16 @@ form ul > li:not(:last-child) {
 /*.boder-left {
     border-left: 1px solid #eaeaea;
 }*/
+.search .def_icon_btn {
+    border-radius: 0 3px 3px 0;
+    margin-right: 10px;
+}
+.search input {
+    width: calc(100% - 295px);
+}
+.newsletter > button, .search > *:last-child {
+    border-radius: 3px;
+}
+.search_category {
+    width: 235px;
+}
