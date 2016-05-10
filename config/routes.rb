@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#countdown"
-    get "trang-chu" => "home#index", as: :home
+    get "san-pham" => "home#index", as: :home
     
     # account
     get "tai-khoan/dang-nhap" => "account#login", as: :login
