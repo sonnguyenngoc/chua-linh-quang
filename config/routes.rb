@@ -221,7 +221,11 @@ Rails.application.routes.draw do
         end
       end
       resources :companies
-      resources :code_statuses
+      resources :code_statuses do
+        collection do
+          get 'search'
+        end
+      end
     end
   end
 end

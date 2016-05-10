@@ -4,7 +4,12 @@ class Admin::CodeStatusesController < ApplicationController
   # GET /code_statuses
   # GET /code_statuses.json
   def index
-    @code_statuses = CodeStatus.all.paginate(:page => params[:page], :per_page => 10)
+    @code_statuses = CodeStatus.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @code_statuses = CodeStatus.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/code_statuses/index"
   end
 
   # GET /code_statuses/1

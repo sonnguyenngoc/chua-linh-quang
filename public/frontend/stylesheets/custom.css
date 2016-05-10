@@ -524,3 +524,12 @@ form ul > li:not(:last-child) {
 .search_category {
     width: 235px;
 }
+.menu-categories-contact {
+    z-index: 110;
+}
+.content-contact {
+    z-index: 109;
+}
+.zoomContainer {
+    z-index: 100;
+}
