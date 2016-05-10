@@ -75,6 +75,8 @@ vi:
   new: "Sản phẩm MỚI"
   bestseller: "Sản phẩm BÁN CHẠY"
   prominent: "Sản phẩm NỔI BẬT"
+  imported: "Hàng NHẬP KHẨU"
+  deal: "Hàng KHUYẾN MÃI"
   introduction: "Giới thiệu"
   picture: "Hình ảnh"
   related_photos: "Các hình ảnh liên quan"

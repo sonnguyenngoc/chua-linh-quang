@@ -75,6 +75,8 @@ en:
   new: "New Product"
   bestseller: "Bestseller Product"
   prominent: "Prominent Product"
+  imported: "Imported Product"
+  deal: "Deal Product"
   introduction: "Introduction"
   picture: "Picture"
   related_photos: "Related Photos"

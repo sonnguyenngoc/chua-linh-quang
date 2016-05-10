@@ -340,8 +340,11 @@ ul > li > .def_icon_btn.middle_btn {
     border-color: #eb5b4c;
     border-radius: 3px;
 }
-.actions_wrap > .centered_buttons_category {
+/*.actions_wrap > .centered_buttons_category {
     width: 28%;
+}*/
+a.add_to_cart_button {
+    display: inline-block !important;
 }
 .color_red {
     background-color: red;
@@ -492,4 +495,19 @@ form ul > li:not(:last-child) {
 }
 /*.search .button_blue {
     background-color: #498ba4;
+}*/
+.mrg-button-contact {
+    margin-top: 20px;
+}
+.message-label-contact {
+    margin-top: 5px;
+}
+.table_layout_fix {
+    width: calc(100% + 0px) !important;
+}
+.box_fix {
+    border-top: 1px solid #eaeaea;
+}
+/*.boder-left {
+    border-left: 1px solid #eaeaea;
 }*/

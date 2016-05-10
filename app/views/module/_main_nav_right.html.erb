@@ -1,17 +1,17 @@
     <div class="main_menu_right">
         <h3>
-            <a href="#">Khuyến mãi</a>
+            <%= link_to 'Khuyến mãi', { controller: "product", action: "view_all_product_by_status", st: 'deal', url: "hang-khuyen-mai"} %>
         </h3>
         <h3>
-            <a href="#">Nổi bật</a>
+            <%= link_to 'Nổi bật', { controller: "product", action: "view_all_product_by_status", st: 'prominent', url: "san-pham-noi-bat"} %>
         </h3>
         <h3>
-            <a href="#">Hàng bán chạy</a>
+            <%= link_to 'Hàng bán chạy', { controller: "product", action: "view_all_product_by_status", st: 'bestseller', url: "san-pham-ban-chay"} %>
         </h3>
         <h3>
-            <a href="#">Sản phẩm mới</a>
+            <%= link_to 'Sản phẩm mới', { controller: "product", action: "view_all_product_by_status", st: 'new', url: "san-pham-moi"} %>
         </h3>
         <h3>
-            <a href="#">Hàng nhập khẩu</a>
+            <%= link_to 'Hàng nhập khẩu', { controller: "product", action: "view_all_product_by_status", st: 'imported', url: "hang-nhap-khau"} %>
         </h3>
     </div>

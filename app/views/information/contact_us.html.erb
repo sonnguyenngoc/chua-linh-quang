@@ -62,7 +62,7 @@
         
                         </ul>
 
-                        <h1 class="page_title"><%= @title_head %></h1>
+                        <h1><%= @title_head %></h1>
 
                         <section class="section_offset">
                             
@@ -96,14 +96,14 @@
 
                                             <div class="col-xs-12">
 
-                                                <%= f.label "Lời nhắn", class: "required" %>
+                                                <%= f.label "Lời nhắn", class: "required message-label-contact" %>
                                                 <%= f.text_area :message, rows: '10', class: "required" %>
 
                                             </div><!--/ [col]-->
 
                                         </li><!--/ .row -->
                                         
-                                        <%= f.submit 'Gửi lời nhắn', class: 'button_dark_grey middle_btn alignright' %>
+                                        <%= f.submit 'Gửi lời nhắn', class: 'button_dark_grey middle_btn alignright mrg-button-contact' %>
 
                                     </ul>
 

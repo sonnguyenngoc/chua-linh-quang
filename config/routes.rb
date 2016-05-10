@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     get "san-pham/y-kien-khach-hang" => "product#testimonial", as: :testimonial_list
     get "san-pham/gui-y-kien-khach-hang" => "product#testimonialform", as: :testimonial_form
     get "san-pham/dac-biet" => "product#special", as: :special
-    get "san-pham/xem-tat-ca/:url" => "product#view_all_product_by_status", as: :view_all_product_by_status
+    get "san-pham/:url/:st" => "product#view_all_product_by_status", as: :view_all_product_by_status
     # end product
     
     # resources
@@ -93,7 +93,7 @@ Rails.application.routes.draw do
     resources :line_items do
       collection do
         get "add_to_cart"
-        #get "add_cart_buy_now"
+        get "add_cart_buy_now"
       end
     end
     resources :customers

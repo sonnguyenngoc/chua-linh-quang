@@ -252,8 +252,8 @@
 				
 				<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: @product), class: "button_blue middle_btn add_to_cart quick_view_add_to_cart_button" %>
 				
-				<%= link_to 'Mua ngay', add_to_cart_line_items_path(product_id: @product), class: "button_buy_now middle_btn add_to_cart" %>
-            
+				<%= link_to 'Mua ngay', add_cart_buy_now_line_items_path(product_id: @product), class: "button_buy_now middle_btn add_to_cart" %>
+				
             </div>
 
 			<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->

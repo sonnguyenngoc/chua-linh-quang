@@ -121,7 +121,7 @@
 
                             </header>
 
-                            <div class="table_layout" id="products_container">
+                            <div class="table_layout table_layout_fix" id="products_container">
 
                                 <div class="table_row">
                                     
@@ -285,25 +285,25 @@
 
                             </div><!--/ .table_layout -->
 
-                            <footer class="bottom_box on_the_sides">
-
-                                <div class="left_side">
-
-                                    <p><%= page_entries_info @products %> sản phẩm.</p>
-
-                                </div>
-
-                                <div class="right_side">
-
-                                    <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-
-                                </div>
-
-                            </footer>
-
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of products - - - - - - - - - - - - - - - - -->
+                        
+                        <footer class="bottom_box box_fix">
+
+                            <div class="left_side">
+
+                                <p><%= page_entries_info @products %> sản phẩm.</p>
+
+                            </div>
+
+                            <div class="right_side">
+
+                                <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+
+                            </div>
+
+                        </footer>
 
                     </main>
 
