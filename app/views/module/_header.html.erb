@@ -140,7 +140,7 @@
                                                     <a class="level-<%= item.level %>" href="#"><%= item.name %></a>
                                                 </li>
                                                 
-                                                <% item.children.order("display_order DESC").each do |child| %>
+                                                <% item.children.order("display_order").each do |child| %>
 
                                                     <li value="<%= child.id %>">
                                                         <a class="level-<%= child.level %>" href="#"><%= child.name %></a>
