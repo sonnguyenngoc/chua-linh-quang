@@ -524,3 +524,8 @@ form ul > li:not(:last-child) {
 .search_category {
     width: 235px;
 }
+@media (min-width: 1360px) {
+    .container {
+        width: 1280px;
+    }
+}
