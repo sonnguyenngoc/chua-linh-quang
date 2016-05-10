@@ -134,13 +134,13 @@
                                             <li value="">
                                                 <a href="#">Tất cả khu vực</a>
                                             </li>
-                                            <% Area.where(level: 1).each do |item| %>
+                                            <% Area.where(level: 2).each do |item| %>
                                             
                                                 <li value="<%= item.id %>">
                                                     <a class="level-<%= item.level %>" href="#"><%= item.name %></a>
                                                 </li>
                                                 
-                                                <% item.children.each do |child| %>
+                                                <% item.children.order("display_order DESC").each do |child| %>
 
                                                     <li value="<%= child.id %>">
                                                         <a class="level-<%= child.level %>" href="#"><%= child.name %></a>
