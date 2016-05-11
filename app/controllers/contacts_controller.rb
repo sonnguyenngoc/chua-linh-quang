@@ -8,10 +8,9 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if verify_recaptcha(model: @contact) && @contact.save
         format.html { redirect_to controller: "information", action: "finish_contact_us" }
-        format.json { render :show, status: :created, location: @contact }
       else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.html { redirect_to controller: "information", action: "contact_us" }
+        @success = false
       end
     end
   end

@@ -547,3 +547,6 @@ form ul > li:not(:last-child) {
 .recaptcha_contact {
     margin-top: 20px;
 }
+.warning_contact {
+    margin-bottom: 20px;
+}
