@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     status = verify_google_recptcha(SECRET_KEY, params["g-recaptcha-response"])
     respond_to do |format|
-      if verify_recaptcha(model: @contact) && @contact.save
+      if @contact.save
         format.html { redirect_to controller: "information", action: "finish_contact_us" }
       else
         flash[:notice] = "Post successfully created"
