@@ -246,7 +246,7 @@
 
                     <section class="widget">
 
-                        <h4>Thông tin</h4>
+                        <h4>Giới thiệu</h4>
 
                         <ul class="list_of_links">
 
@@ -270,13 +270,13 @@
 
                     <section class="widget">
 
-                        <h4>Extras</h4>
+                        <h4>Thông tin</h4>
 
                         <ul class="list_of_links">
 
                             <li><%= link_to "Thương hiệu sản phẩm", { controller: "manufacturer", action: "list" } %></li>
-                            <li><%= link_to "Chi nhánh cung cấp", list_branch_path %></li>
-                            <li><%= link_to "Đặc biệt", { controller: "product", action: "special" } %></li>
+                            <li><%= link_to "Chi nhánh", list_branch_path %></li>
+                            <li><%= link_to "Sản phẩm đặc biệt", { controller: "product", action: "special" } %></li>
                             <li><%= link_to "Sơ đồ website", { controller: "information", action: "sitemap" } %></li>
 
                         </ul>
@@ -303,9 +303,11 @@
                                 
                                 <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "order" } %></li>
                                 
-                                <li><%= link_to "Sản phẩm trả lại", { controller: "account", action: "return_product" } %></li>
+                                <!--<li><%= link_to "Sản phẩm trả lại", { controller: "account", action: "return_product" } %></li>-->
+
+                                <li><%= link_to "Sản phẩm yêu thích", { controller: "account", action: "wishlist" } %></li>
                                 
-                                <li><%= link_to "Danh sách sản phẩm yêu thích", { controller: "account", action: "wishlist" } %></li>
+                                <!--<li><%= link_to "Nhận tin mới", { controller: "account", action: "newsletter" } %></li>-->
                             
                             <% else %>
                                 
