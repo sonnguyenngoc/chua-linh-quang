@@ -68,17 +68,21 @@
                             
                             <div class="theme_box">
                                 
-                                <!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+                                <% if @success == false %>
                                 
-                                <div class="alert_box warning warning_contact">
+                                    <!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+                                    
+                                    <div class="alert_box warning warning_contact">
+    
+                                        <b>Thông báo!</b> Quý khách chưa chọn xác nhận recaptcha.
+    
+                                        <button class="close"></button>
 
-									<b>Thông báo!</b> Quý khách chưa chọn xác nhận recaptcha.
-
-									<button class="close"></button>
-
-								</div>
-                                
-                                <!--/ .alert_box.warning -->
+                                    </div>
+                                    
+                                    <!--/ .alert_box.warning -->
+                                    
+                                <% end %>
 
                                 <!-- - - - - - - - - - - - - - Contact form - - - - - - - - - - - - - - - - -->
 
