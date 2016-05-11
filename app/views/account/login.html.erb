@@ -71,6 +71,22 @@
 												<div class=" top">
 													
 													<h4>Đã có tài khoản</h4>
+													
+														<% if @success == false %>
+															
+															<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+															
+															<div class="alert_box error">
+
+																<b>Đăng nhập thất bại!</b> Tài khoản hoặc mật khẩu không chính xác.
+							
+																<button class="close"></button>
+							
+															</div>
+															
+															<!--/ .alert_box.error -->
+															
+														<% end %>
 														
 														<div class="form-group">
 															
