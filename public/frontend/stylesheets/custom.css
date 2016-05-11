@@ -524,3 +524,6 @@ form ul > li:not(:last-child) {
 .search_category {
     width: 235px;
 }
+.line_product_info {
+    width: 40%;
+}

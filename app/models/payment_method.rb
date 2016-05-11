@@ -11,4 +11,8 @@ class PaymentMethod < ActiveRecord::Base
     return records   
   end
   
+  def self.get_all_payment_methods
+    self.all.order("created_at DESC")
+  end
+  
 end
