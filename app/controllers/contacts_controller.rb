@@ -7,10 +7,10 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if verify_recaptcha(model: @contact) && @contact.save
-        redirect_to controller: "information", action: "finish_contact_us"
+        format.html { redirect_to controller: "information", action: "finish_contact_us" }
       else
         flash[:notice] = "Post successfully created"
-        redirect_to controller: "information", action: "contact_us"
+        format.html { redirect_to controller: "information", action: "contact_us" }
       end
     end
   end
