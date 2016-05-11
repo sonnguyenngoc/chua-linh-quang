@@ -69,23 +69,31 @@
 
     <li>
 
-        <button class="icon_btn middle_btn social_twitter open_"><i class="icon-twitter"></i></button>
+        <button class="icon_btn middle_btn social_googleplus open_"><i class="icon-googleplus-rect"></i></button>
 
         <section class="dropdown">
 
             <div class="animated_item">
 
-                <h3 class="title">Latest Tweets</h3>
+                <h3 class="title">Google +</h3>
 
             </div><!--/ .animated_item-->
 
-            <div class="tweet_list_wrap"></div>
+            <div class="animated_item">
+                
+                <!-- Place this tag where you want the widget to render. -->
+                <div class="g-person" data-width="230" data-href="//plus.google.com/u/0/104171666401993038308" data-rel="author"></div>
+                
+            </div>
              
             <footer class="animated_item bottom_box">
-
-                <a href="#" class="button_grey middle_btn twitter_follow">Follow Us</a>	
+                
+                <%= link_to "Vào trang", "//plus.google.com/u/0/104171666401993038308", class: "button_grey middle_btn", target: "_blank" %>
 
             </footer><!--/ .animated_item-->
+            
+            <!-- Place this tag in your head or just before your close body tag. -->
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
 
         </section><!--/ .dropdown-->
 

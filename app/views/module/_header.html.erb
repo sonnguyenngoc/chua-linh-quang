@@ -25,10 +25,12 @@
                         <div class="col-lg-6 col-md-5 col-sm-6">
 
                             <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
+
                             
                             <%= render "module/verytop_menu_bar", prefix: "" %>
                             
                             
+
 
                             <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
 
@@ -133,9 +135,11 @@
     });
     
     
-    $(".search_category_box ul").height($(window).height()-150);
+    $( document ).ready(function() {
+        $(".search_category_box ul").height($(window).height()-100);
+    });
     $( window ).resize(function() {
-        $(".search_category_box ul").height($(window).height()-150);
+        $(".search_category_box ul").height($(window).height()-100);
     });
     $(document).on("click", ".search_category_box h4", function(e){
         var box = $(".search_category_box");
@@ -153,8 +157,8 @@
     $(document).mouseup(function (e)
     {
         var container = $(".search_category_box ul");
-    
-        if (!container.is(e.target) // if the target of the click isn't the container...
+
+        if (e.target.className != 'area_current' && !container.is(e.target) // if the target of the click isn't the container...
             && container.has(e.target).length === 0) // ... nor a descendant of the container
         {
             container.hide();

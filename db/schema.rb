@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506090959) do
+ActiveRecord::Schema.define(version: 20160510094925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 20160506090959) do
     t.string   "name"
     t.integer  "level"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "parent_id"
+    t.integer  "areatype_id"
+    t.integer  "display_order"
   end
 
   create_table "areas_products", force: :cascade do |t|
@@ -219,9 +221,9 @@ ActiveRecord::Schema.define(version: 20160506090959) do
 
   create_table "newsletters", force: :cascade do |t|
     t.string   "email"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "status",     default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "status"
   end
 
   create_table "order_deliveries", force: :cascade do |t|
@@ -369,6 +371,8 @@ ActiveRecord::Schema.define(version: 20160506090959) do
     t.string   "city"
     t.string   "provider"
     t.string   "uid"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

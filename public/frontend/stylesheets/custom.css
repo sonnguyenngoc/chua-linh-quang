@@ -524,6 +524,18 @@ form ul > li:not(:last-child) {
 .search_category {
     width: 185px;
 }
+.line_product_info {
+    width: 40%;
+}
+.menu-categories-contact {
+    z-index: 110;
+}
+.content-contact {
+    z-index: 109;
+}
+.zoomContainer {
+    z-index: 100;
+}
 @media (min-width: 1360px) {
     .container {
         width: 1280px;

@@ -23,7 +23,8 @@ class InformationController < ApplicationController
   end
   
   def faq
-    @title_head = "FAQ"
+    @title_head = "Câu hỏi thường gặp"
+    @faq = Article.get_faq
   end
   
   def delivery

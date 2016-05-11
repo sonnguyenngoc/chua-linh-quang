@@ -1,12 +1,12 @@
                             <%= form_tag({controller: "product", action: "search"}, method: "get", class: "clearfix search") do %>
                               
-                                   <input type="text" name="keyword" tabindex="1" value="<%= params[:keyword] if params[:keyword].present? %>" placeholder="Tìm kiếm..." class="alignleft left_search">
+                                   <input type="text" name="keyword" tabindex="1" value="<%= params[:keyword] if params[:keyword].present? %>" placeholder="Tìm kiếm..." class="alignleft before_search">
                                    
-                                   <button class="button_blue def_icon_btn alignleft search_button_top left_search"></button>
+                                   <button class="button_blue def_icon_btn alignleft search_button_top before_search"></button>
                                 
                                 <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
     
-                                <div class="search_category alignleft">
+                                <div class="search_category alignleft after_search">
                                     
                                      <div class="search_category_box">
                                         <h4><i class="fa fa-map-marker"></i> <span class="area_current">Tất cả khu vực</span></h4>

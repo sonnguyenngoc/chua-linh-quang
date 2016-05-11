@@ -32,21 +32,21 @@
         content: '\eb0c';
     }
     .top_mobile_button {
-        padding: 12px 10px 10px 5px;
-        font-size: 27px;
+        padding: 8px 3px;
+        font-size: 21px;
         background: #555;
         color: #fff;
-        width: 50px;
-        height: 50px;
+        width: 35px;
+        height: 35px;
         border-radius: 3px;
         float: right;
         display: inline-block;
-        margin-left: 10px;
+        margin-left: 5px;
     }
     .top_mobile_button.main_menu {
         color: #666;
         background: #fff;
-        padding: 10px 3px;
+        padding: 6px 0px;
         border: solid 2px #aaa;
     }
     .top_mobile_button:hover {
@@ -66,8 +66,8 @@
         border: solid 1px #ddd;
         border-radius: 3px;
         z-index: 200;
-        margin-top: 50px;
-        width: 90%;
+        margin-top: 34px;
+        width: 140%;
         right: 15px;
         position: absolute;
     }
@@ -90,17 +90,18 @@
         font-weight: normal;
     }
     .mobile_header .logo img {
-        height: 75px;
+        height: 60px;
     }
     .main_menu_right {
         display: none;
     }
     .customer_care_box h5 {
         clear: both;
-        padding-top: 12px;
+        padding-top: 10px;
         text-align: right;
-        font-size: 14px;
-        margin: 0
+        font-size: 13px;
+        margin: 0;
+        white-space: nowrap;
     }
     .customer_care_box .menu_container ul.topbar_mobile {
         margin-top: 5px;
@@ -128,7 +129,24 @@
         font-size: 21px;
         height: 44px;
     }
-    .mobile_footer .left_search {
-        visibility: hidden;
+    .mobile_footer .before_search {
+        display: none;
+    }
+    .search input {
+        width: calc(100% - 105px);
+    }
+    .mobile_footer .search_category {
+        float: right;
+    }
+    .mobile_footer .menu_search_close {
+        right: 20px;
+    }
+    .search_category_box ul {
+        bottom: 42px;
+        right: -1px;
+        width: calc(100% + 2px);
+    }
+    .search_category {
+        width: calc(100% - 50px) !important;
     }
 }

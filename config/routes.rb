@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
     get "tai-khoan/dang-nhap-nhanh" => "account#quick_login", as: :quick_login
     get "tai-khoan/dang-xuat" => "account#logout", as: :logout
     get "tai-khoan/quen-mat-khau" => "account#forgotten", as: :forgotten
+    resources :password_resets
     get "tai-khoan/tai-khoan-cua-toi" => "account#my_account", as: :my_account
     get "tai-khoan/san-pham-yeu-thich" => "account#wishlist", as: :wishlist
     get "tai-khoan/dang-ky" => "account#register", as: :register
@@ -221,7 +223,11 @@ Rails.application.routes.draw do
         end
       end
       resources :companies
-      resources :code_statuses
+      resources :code_statuses do
+        collection do
+          get 'search'
+        end
+      end
     end
   end
 end

@@ -39,6 +39,10 @@ class Category < ActiveRecord::Base
     return records
   end
   
+  def get_current_level
+    self.level
+  end
+  
   def get_all_related_ids
       arr = []
       arr << self.id

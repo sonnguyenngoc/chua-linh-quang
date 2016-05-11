@@ -23,7 +23,7 @@
       
       <div class="customer_care_box">
         <h5>
-          <a href="#" class="care_open_button">
+          <a href="#search" class="care_open_button">
             <i class="icon-phone"></i> Chăm sóc khách hàng
           </a>
         </h5>
@@ -45,8 +45,12 @@
 <div class="mobile_footer mobile_element">
   <div class="row">
     <div class="col-xs-12">
-      <a class="top_mobile_button menu_search" href="#">
+      <a class="top_mobile_button menu_search after_search" href="#search">
         <i class="icon-search"></i>
+      </a>
+      
+      <a class="top_mobile_button menu_search_close before_search" href="#close">
+        <i class="icon-cancel"></i>
       </a>
       
       <%= render "module/top_search_form" %>
@@ -89,10 +93,13 @@
     
     
     $(document).on("click", ".mobile_footer .menu_search", function(e){
-        var box = $(".mobile_footer .left_search");
-        box.css('visibility','visible');
-        $(this).hide();
-        $(".mobile_footer input.left_search").focus();
-    });    
+        $(".mobile_footer .before_search").show();
+        $(".mobile_footer input.before_search").focus();
+        $(".mobile_footer .after_search").hide();
+    });
+    $(document).on("click", ".mobile_footer .menu_search_close", function(e){
+        $(".mobile_footer .before_search").hide();
+        $(".mobile_footer .after_search").show();
+    });   
 </script>
     

@@ -20,9 +20,6 @@
 
                 <ul class="breadcrumbs">
 
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li><%= @title_head %></li>
-
                 </ul>
 
                 <div class="row">
@@ -52,6 +49,15 @@
                     </aside>
 
                     <main class="col-md-9 col-sm-8">
+                        
+                        <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                        <ul class="breadcrumbs">
+        
+                            <li><a href="<%= root_path %>">Trang chủ</a></li>
+                            <li><%= @title_head %></li>
+        
+                        </ul>
                         
                         <h1><%= @title_head %></h1>
                         

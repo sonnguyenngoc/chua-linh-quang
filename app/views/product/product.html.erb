@@ -254,29 +254,40 @@
 
 													<tr>
 
-														<td><b>Thương hiệu sản phẩm:</b> </td>
+														<td class="line_product_info"><b>Thương hiệu sản phẩm:</b> </td>
 														<td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: @product.manufacturer_id } %></td>
 
 													</tr>
 
 													<tr>
 
-														<td><b>Mã sản phẩm:</b> </td>
+														<td class="line_product_info"><b>Mã sản phẩm:</b> </td>
 														<td><%= @product.code %></td>
 
 													</tr>
 
 													<tr>
 
-														<td><b>Trạng thái:</b> </td>
+														<td class="line_product_info"><b>Trạng thái:</b> </td>
 														<td>Có hàng</td>
 
 													</tr>
 													
 													<tr>
 
-														<td><b>Đơn vị:</b> </td>
+														<td class="line_product_info"><b>Đơn vị:</b> </td>
 														<td><%= format_number(@product.quantity) + "" + @product.unit %></td>
+
+													</tr>
+													
+													<tr>
+
+														<td class="line_product_info"><b>Phương thức thanh toán:</b> </td>
+														<td>
+															<% PaymentMethod.get_all_payment_methods.each do |item| %>
+																<%= item.title + ", " %>
+															<% end %>
+														</td>
 
 													</tr>
 
