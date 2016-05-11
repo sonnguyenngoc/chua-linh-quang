@@ -1,0 +1,44 @@
+                            <%= form_tag({controller: "product", action: "search"}, method: "get", class: "clearfix search") do %>
+                              
+                                   <input type="text" name="keyword" tabindex="1" value="<%= params[:keyword] if params[:keyword].present? %>" placeholder="Tìm kiếm..." class="alignleft before_search">
+                                   
+                                   <button class="button_blue def_icon_btn alignleft search_button_top before_search"></button>
+                                
+                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+    
+                                <div class="search_category alignleft after_search">
+                                    
+                                     <div class="search_category_box">
+                                        <h4><i class="fa fa-map-marker"></i> <span class="area_current">Tất cả khu vực</span></h4>
+                                        <input type="hidden" name="area_id" />
+                                        <ul style="display: none">
+                                            <li value="">
+                                                <a href="#">Tất cả khu vực</a>
+                                            </li>
+                                            <% Area.order("display_order").where(level: 2).each do |item| %>
+                                            
+                                                <li value="<%= item.id %>">
+                                                    <a class="level-<%= item.level %>" href="#"><%= item.name %></a>
+                                                </li>
+                                                
+                                                <% item.children.order("display_order").each do |child| %>
+
+                                                    <li value="<%= child.id %>">
+                                                        <a class="level-<%= child.level %>" href="#"><%= child.name %></a>
+                                                    </li>
+                                                                                               
+                                                <% end %>
+                                                                                           
+                                            <% end %>
+                                        
+                                        </ul>
+    
+                                    </div><!--/ .custom_select -->
+    
+                                </div><!--/ .search_category.alignleft-->
+    
+                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+    
+                                
+    
+                            <% end %><!--/ #search-->

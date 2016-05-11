@@ -25,142 +25,14 @@
                         <div class="col-lg-6 col-md-5 col-sm-6">
 
                             <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
-
-                            <nav>
-
-                                <ul class="topbar">
-
-                                    <li><%= link_to "Giới thiệu", about_us_path %></li>
-                                    <li><%= link_to 'Tin tức', {controller: 'blog', action: 'index'} %></li>
-                                    <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
-                                    <li><%= link_to "Câu hỏi thường gặp", { controller: "information", action: "faq" } %></li>
-                                    <li class="has_submenu">
-
-                                        <a href="#">Tài khoản</a>
-                                        
-                                        <% if current_user.present? %>
-                                        
-                                            <!-- - - - - - - - - - - - - - Submenu (level 2) - - - - - - - - - - - - - - - - -->
-        
-                                            <ul class="theme_menu submenu">
-                                                        
-                                                <li><%= link_to "Tài khoản của tôi", my_account_path %></li>
-        
-                                                <li><%= link_to "Chỉnh sửa thông tin", edit_path %></li>
-        
-                                                <li><%= link_to "Địa chỉ cho đơn hàng", address_path %></li>
-                                                
-                                                <li><%= link_to "Sản phẩm yêu thích", wishlist_path %></li>
-                                                
-                                                <li><%= link_to "Lịch sử đặt hàng", account_order_path %></li>
-                                                
-                                                <li><%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %></li>
-        
-                                            </ul>
-        
-                                            <!-- - - - - - - - - - - - - - End submenu (level 2) - - - - - - - - - - - - - - - - -->
-    
-                                        <% else %>
-                                            
-                                            <!-- - - - - - - - - - - - - - Submenu (level 2) - - - - - - - - - - - - - - - - -->
-        
-                                            <ul class="theme_menu submenu">
-                                                        
-                                                <li><%= link_to "Đăng nhập", login_path %></li>
-        
-                                                <li><%= link_to "Đăng ký", register_path %></li>
-        
-                                                <li><%= link_to "Quên mật khẩu", forgotten_path %></li>
-        
-                                            </ul>
-        
-                                            <!-- - - - - - - - - - - - - - End submenu (level 2) - - - - - - - - - - - - - - - - -->
-                                            
-                                        <% end %>
-                                    
-                                    </li>
-                                    <li class="has_submenu">
-
-                                        <a href="#">Chăm sóc khách hàng</a>
-                                        
-                                            <!-- - - - - - - - - - - - - - Submenu (level 2) - - - - - - - - - - - - - - - - -->
-        
-                                            <ul class="theme_menu submenu">
-                                                
-                                                <% if !Company.get_company.nil? %>
-                                                        
-                                                    <li class=""><a>Hotline: <%= Company.get_company.hotline %></a></li>
-                                                    
-                                                <% end %>
-        
-                                                <li><%= link_to "Câu hỏi thường gặp", { controller: "information", action: "faq" } %></li>
-        
-                                                <li><%= link_to "Chính sách bảo mật", { controller: "information", action: "privacy_policy" } %></li>
-                                                
-                                                <li><%= link_to "Chính sách giao hàng", { controller: "information", action: "delivery" } %></li>
-                                                
-                                                <li><%= link_to "Điều khoản sử dụng", { controller: "information", action: "terms_conditions" } %></li>
-                                                
-                                                <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
-        
-                                            </ul>
-        
-                                            <!-- - - - - - - - - - - - - - End submenu (level 2) - - - - - - - - - - - - - - - - -->
-                                    
-                                    </li>
-                                    
-                                </ul>
-
-                            </nav>
+                            
+                            <%= render "module/verytop_menu_bar", prefix: "" %>
 
                             <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
                             
-                            <%= form_tag({controller: "product", action: "search"}, method: "get", class: "clearfix search") do %>
-    
-                                <input type="text" name="keyword" tabindex="1" value="<%= params[:keyword] if params[:keyword].present? %>" placeholder="Tìm kiếm..." class="alignleft">
-                                
-                                <button class="button_blue def_icon_btn alignleft search_button_top"></button>
-                                
-                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
-    
-                                <div class="search_category alignleft">
-                                    
-                                     <div class="search_category_box">
-                                        <h4><i class="fa fa-map-marker"></i> <span class="area_current">Tất cả khu vực</span></h4>
-                                        <input type="hidden" name="area_id" />
-                                        <ul style="display: none">
-                                            <li value="">
-                                                <a href="#">Tất cả khu vực</a>
-                                            </li>
-                                            <% Area.order("display_order").where(level: 2).each do |item| %>
-                                            
-                                                <li value="<%= item.id %>">
-                                                    <a class="level-<%= item.level %>" href="#"><%= item.name %></a>
-                                                </li>
-                                                
-                                                <% item.children.order("display_order").each do |child| %>
-
-                                                    <li value="<%= child.id %>">
-                                                        <a class="level-<%= child.level %>" href="#"><%= child.name %></a>
-                                                    </li>
-                                                                                               
-                                                <% end %>
-                                                                                           
-                                            <% end %>
-                                        
-                                        </ul>
-    
-                                    </div><!--/ .custom_select -->
-    
-                                </div><!--/ .search_category.alignleft-->
-    
-                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-    
-                                
-    
-                            <% end %><!--/ #search-->
+                            <%= render "module/top_search_form" %>                            
                             
                             <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
 
@@ -259,9 +131,11 @@
     });
     
     
-    $(".search_category_box ul").height($(window).height()-150);
+    $( document ).ready(function() {
+        $(".search_category_box ul").height($(window).height()-100);
+    });
     $( window ).resize(function() {
-        $(".search_category_box ul").height($(window).height()-150);
+        $(".search_category_box ul").height($(window).height()-100);
     });
     $(document).on("click", ".search_category_box h4", function(e){
         var box = $(".search_category_box");
@@ -279,8 +153,8 @@
     $(document).mouseup(function (e)
     {
         var container = $(".search_category_box ul");
-    
-        if (!container.is(e.target) // if the target of the click isn't the container...
+
+        if (e.target.className != 'area_current' && !container.is(e.target) // if the target of the click isn't the container...
             && container.has(e.target).length === 0) // ... nor a descendant of the container
         {
             container.hide();
@@ -289,3 +163,4 @@
     
 </script>
 
+<%= render "module/mobile_header" %>

@@ -1,0 +1,105 @@
+<div class="mobile_header mobile_element">
+  <div class="row">
+    <div class="col-xs-5" style="padding-right: 0">
+      <%= link_to image_tag("/frontend/images/dsvm_logo2.png", class: ""), home_path, class: "logo" %>
+    </div>
+    <div class="col-xs-7 text-right" style="padding-left: 0">
+      <a class="top_mobile_button main_menu" href="#">
+        <i class="icon-menu"></i>        
+      </a>
+      <a class="top_mobile_button menu_chat" href="#">
+        <i class="icon-comment"></i>
+      </a>
+      <a class="top_mobile_button menu_cart" href="<%= url_for(controller: "checkout", action: "shopping_cart") %>">
+        <i class="icon-basket"></i>
+        <% if @cart.line_items.count_items > 0 %>
+          <span class="badge badge-info"><number><%= @cart.line_items.count_items %></number></span>
+        <% end %>
+      </a>
+      
+      <div class="mobile_top_menu verytop_menu" style="display: none">
+        <%= render "module/verytop_menu_bar", prefix: "_mobile" %>
+      </div>
+      
+      <div class="customer_care_box">
+        <h5>
+          <a href="#search" class="care_open_button">
+            <i class="icon-phone"></i> Chăm sóc khách hàng
+          </a>
+        </h5>
+        
+        <div class="mobile_top_menu menu_container" style="display: none">
+            <ul class="topbar_mobile">
+                
+                <%= render "module/customer_care_items" %>
+
+            </ul>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
+    
+<div class="mobile_footer mobile_element">
+  <div class="row">
+    <div class="col-xs-12">
+      <a class="top_mobile_button menu_search after_search" href="#search">
+        <i class="icon-search"></i>
+      </a>
+      
+      <a class="top_mobile_button menu_search_close before_search" href="#close">
+        <i class="icon-cancel"></i>
+      </a>
+      
+      <%= render "module/top_search_form" %>
+
+    </div>
+  </div>
+</div>
+    
+<script>
+    $(document).on("click", ".top_mobile_button.main_menu", function(e){
+        var box = $(".verytop_menu");
+        box.toggle();
+    });    
+    $(document).mouseup(function (e)
+    {
+        var container = $(".verytop_menu");
+    
+        if (e.target.className != 'icon-menu' && !container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            container.hide();
+        }
+    });
+    
+    $(document).on("click", ".customer_care_box h5 a", function(e){
+        var box = $(".customer_care_box .menu_container");
+        box.toggle();
+    });    
+    $(document).mouseup(function (e)
+    {
+        var container = $(".customer_care_box .menu_container");
+        if (e.target.className != 'care_open_button' && !container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            container.hide();
+        }
+    });
+    
+    
+    
+    
+    $(document).on("click", ".mobile_footer .menu_search", function(e){
+        $(".mobile_footer .before_search").show();
+        $(".mobile_footer input.before_search").focus();
+        $(".mobile_footer .after_search").hide();
+    });
+    $(document).on("click", ".mobile_footer .menu_search_close", function(e){
+        $(".mobile_footer .before_search").hide();
+        $(".mobile_footer .after_search").show();
+    });   
+</script>
+    
