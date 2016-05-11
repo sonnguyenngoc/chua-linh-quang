@@ -1,10 +1,17 @@
 class ContactsController < ApplicationController
-
+  
+  def verify_google_recptcha(secret_key,response)
+    status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
+    logger.info "---------------status ==> #{status}"
+    hash = JSON.parse(status)
+    hash["success"] == true ? true : false
+  end
+  
   # POST /contacts
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-
+    status = verify_google_recptcha(SECRET_KEY, params["g-recaptcha-response"])
     respond_to do |format|
       if verify_recaptcha(model: @contact) && @contact.save
         format.html { redirect_to controller: "information", action: "finish_contact_us" }
