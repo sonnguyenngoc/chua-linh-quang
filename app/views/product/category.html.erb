@@ -140,14 +140,18 @@
                                         <span>Hiển thị:</span>
         
                                         <div class="">
+                                            
+                                            <% form_for ("") %>
     
-                                            <select name="number">
-    
-                                                <option value="15">15</option>
-                                                <option value="12">12</option>
-                                                <option value="9">9</option>
-    
-                                            </select>
+                                                <select name="number">
+        
+                                                    <option value="15">15</option>
+                                                    <option value="12">12</option>
+                                                    <option value="9">9</option>
+        
+                                                </select>
+                                                
+                                            <% end %>
     
                                         </div>
                                         
@@ -169,7 +173,7 @@
 
                             </header>
 
-                            <div class="table_layout" id="products_container">
+                            <div class="table_layout table_layout_fix" id="products_container">
 
                                 <div class="table_row">
                                     
