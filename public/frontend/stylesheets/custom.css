@@ -516,13 +516,13 @@ form ul > li:not(:last-child) {
     margin-right: 10px;
 }
 .search input {
-    width: calc(100% - 295px);
+    width: calc(100% - 245px);
 }
 .newsletter > button, .search > *:last-child {
     border-radius: 3px;
 }
 .search_category {
-    width: 235px;
+    width: 185px;
 }
 @media (min-width: 1360px) {
     .container {
