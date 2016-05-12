@@ -66,6 +66,7 @@ Rails.application.routes.draw do
     
     # product
     get "san-pham/chuyen-muc/:category_id" => "product#category", as: :category
+    get "san-pham/tat-ca-chuyen-muc" => "product#all_category", as: :all_category
     get "san-pham/san-pham-so-sanh" => "product#comparison", as: :comparison
     get "san-pham/chi-tiet-san-pham/:product_id" => "product#product", as: :product
     get "san-pham/xem-nhanh/:product_id" => "product#quick_view", as: :quick_view
