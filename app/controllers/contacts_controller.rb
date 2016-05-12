@@ -10,9 +10,9 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    SECRET_KEY = "6Le7mh8TAAAAAGKRPjxYnO9t0O1_m8dgxa-EgcOB"
+    @secret_key = "6Le7mh8TAAAAAGKRPjxYnO9t0O1_m8dgxa-EgcOB"
     @contact = Contact.new(contact_params)
-    status = verify_google_recaptcha(SECRET_KEY, params["g-recaptcha-response"])
+    status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
       if @contact.save && status
         format.html { redirect_to controller: "information", action: "finish_contact_us" }
