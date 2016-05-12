@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   
   def change_current_area
     area = Area.where(id: params[:area_id]).first
-    session[:current_area_id] = area.id
+    session[:current_area_id] = area.nil? ? nil : area.id
     
     redirect_to :back
   end

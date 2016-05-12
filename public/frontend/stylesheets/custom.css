@@ -550,3 +550,11 @@ form ul > li:not(:last-child) {
 .warning_contact {
     margin-bottom: 20px;
 }
+.current_area_size {
+    color: #777;
+    font-size: 18px;
+}
+.current_area_size_category {
+    font-size: 30px;
+    color: #777;
+}
