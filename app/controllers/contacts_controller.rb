@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   
-  def verify_google_recptcha(secret_key,response)
+  def verify_google_recaptcha(secret_key,response)
     status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
     logger.info "---------------status ==> #{status}"
     hash = JSON.parse(status)
