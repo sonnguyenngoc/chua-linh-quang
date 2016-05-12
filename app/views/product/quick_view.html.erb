@@ -83,8 +83,16 @@
 			<!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
 
 			<div class="image_preview_container" id="qv_preview">
-
-				<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
+				
+				<% if product.get_main_image.present? %>
+                                                                            
+					<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
+				
+				<% else %>
+					
+					<img id="img_zoom" data-zoom-image="/frontend/images/big_image.png" src="/frontend/images/large_image.png" alt="">
+				
+				<% end %>
 
 			</div><!--/ .image_preview_container-->
 
@@ -95,10 +103,18 @@
 			<div class="product_preview" data-output="#qv_preview">
 
 				<div class="owl_carousel" id="thumbnails">
-				
-					<% @product.product_images.each do |item| %>
+					
+					<% if product.get_main_image.present? %>
+                                                                            
+						<% @product.product_images.each do |item| %>
 
 						<img src="<%= item.image_url.small_image %>" data-large-image="<%= item.image_url.large_image %>" alt="">
+					
+					<% end %>
+					
+					<% else %>
+						
+						<img src="/frontend/images/small_image.png" alt="">
 					
 					<% end %>
 
