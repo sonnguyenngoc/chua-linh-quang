@@ -558,3 +558,6 @@ form ul > li:not(:last-child) {
     font-size: 30px;
     color: #777;
 }
+.name_area_footer {
+    margin-top: 20px;
+}
