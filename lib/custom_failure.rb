@@ -1,15 +1,14 @@
 class CustomFailure < Devise::FailureApp
-    def redirect_url
-       login_path
-       @success = false
-    end
+  def redirect_url
+    login_path
+  end
 
-    # You need to override respond to eliminate recall
-    def respond
-      if http_auth?
-        http_auth
-      else
-        redirect
-      end
+  def respond
+    if http_auth?
+      http_auth
+    else
+      flash[:error] = "Đăng nhập thất bại!"
+      redirect
     end
+  end
 end
