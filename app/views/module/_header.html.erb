@@ -141,15 +141,16 @@
         var box = $(".search_category_box");
         box.find("ul").toggle();
     });    
-    $(document).on("click", ".search_category_box a", function(e){
-        var box = $(".search_category_box");
-        var menu = $(".search_category_box ul");
-        var value = $(this).attr("value");
-        var text = $(this).html();
-        
-        box.find(".area_current").html(text);
-        menu.hide();        
-    });
+    //$(document).on("click", ".search_category_box a", function(e){
+    //    var box = $(".search_category_box");
+    //    var menu = $(".search_category_box ul");
+    //    var value = $(this).parent().attr("value");
+    //    var text = $(this).html();
+    //    $("input[name=area_id]").val(value);
+    //    box.find(".area_current").html(text);
+    //    menu.hide();
+    //    $(this).parents("form").submit();
+    //});
     $(document).mouseup(function (e)
     {
         var container = $(".search_category_box ul");

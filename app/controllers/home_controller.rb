@@ -7,4 +7,11 @@ class HomeController < ApplicationController
   def countdown
     render layout: nil
   end
+  
+  def change_current_area
+    area = Area.where(id: params[:area_id]).first
+    session[:current_area_id] = area.id
+    
+    redirect_to :back
+  end
 end

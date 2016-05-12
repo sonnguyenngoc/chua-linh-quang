@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
     
+    # change current area session
+    get "change_current_area/:area_id" => "home#change_current_area", as: :change_current_area
+    
     # account
     get "tai-khoan/dang-nhap" => "account#login", as: :login
     get "tai-khoan/dang-nhap-nhanh" => "account#quick_login", as: :quick_login
@@ -116,6 +119,7 @@ Rails.application.routes.draw do
     resources :feedbacks
     resources :testimonials
     #end of resources
+
   
     namespace :admin, path: "hkpanel" do
       get "/" => "main#index"

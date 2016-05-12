@@ -9,11 +9,11 @@
                                 <div class="search_category alignleft after_search">
                                     
                                      <div class="search_category_box">
-                                        <h4><i class="fa fa-map-marker"></i> <span class="area_current">Tất cả khu vực</span></h4>
+                                        <h4><i class="fa fa-map-marker"></i> <span class="area_current"><%= @current_area.name %></span></h4>
                                         <input type="hidden" name="area_id" />
                                         <ul style="display: none">
                                             <li value="">
-                                                <a href="#">Tất cả khu vực</a>
+                                                <a href="#"><%= @current_area.name %></a>
                                             </li>
                                             <% Area.order("display_order").where(level: 2).each do |item| %>
                                             
@@ -24,7 +24,7 @@
                                                 <% item.children.order("display_order").each do |child| %>
 
                                                     <li value="<%= child.id %>">
-                                                        <a class="level-<%= child.level %>" href="#"><%= child.name %></a>
+                                                        <a class="level-<%= child.level %>" href="<%= change_current_area_path(child.id) %>"><%= child.name %></a>
                                                     </li>
                                                                                                
                                                 <% end %>
