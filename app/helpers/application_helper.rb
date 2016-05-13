@@ -14,4 +14,5 @@ module ApplicationHelper
       number_to_currency(number, precision: prec, separator: ".", unit: '', delimiter: ",")
     end
   end
+  
 end

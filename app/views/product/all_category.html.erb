@@ -1,0 +1,112 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <ul class="breadcrumbs">
+
+                    <li><%= link_to "Trang chủ", root_path %></li>
+                    <li><%= @title_head %></li>
+
+                </ul>
+
+                <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                <h1><%= @title_head %></h1>
+
+                <div class="theme_box clearfix">
+
+                    <div class="row">
+
+                        <div class="col-sm-3">
+                          
+                            <% Category.get_all_categories.each_with_index do |category,index| %>
+                            
+                              <% category.children.each do |child_1| %>
+                              
+                                <% if child_1.children.count > 0 %>
+
+                                  <section class="section_offset">
+      
+                                      <h4><%= link_to child_1.name, { controller: "product", action: "category", category_id: child_1 } %></h4>
+                                      
+                                      <ul class="list_type_5 links">
+                                          
+                                          <% child_1.children.each do |child_2| %>
+                                          
+                                              <li><%= link_to child_2.name, { controller: "product", action: "category", category_id: child_2 } %></li>
+                                         
+                                          <% end %>
+                                      
+                                      </ul>
+      
+                                  </section><!--/ .section_offset -->
+                                  
+                                <% end %>
+                                
+                              <% end %>
+                              
+                              
+                              <%= '</div><!--/ [col]--> <div class="col-sm-3">'.html_safe if index%3 == 2 %>
+                                    
+                              <% end %>
+                    </div><!--/ .row-->						
+                    
+                </div><!--/ .theme_box-->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer' %>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

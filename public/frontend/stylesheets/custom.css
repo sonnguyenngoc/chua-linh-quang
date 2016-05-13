@@ -516,13 +516,16 @@ form ul > li:not(:last-child) {
     margin-right: 10px;
 }
 .search input {
-    width: calc(100% - 295px);
+    width: calc(100% - 245px);
 }
 .newsletter > button, .search > *:last-child {
     border-radius: 3px;
 }
 .search_category {
-    width: 235px;
+    width: 185px;
+}
+.line_product_info {
+    width: 40%;
 }
 .menu-categories-contact {
     z-index: 110;
@@ -561,4 +564,21 @@ form ul > li:not(:last-child) {
 }
 p.text-justifly {
     text-align: justify;
+}
+.recaptcha_contact {
+    margin-top: 20px;
+}
+.warning_contact {
+    margin-bottom: 20px;
+}
+.current_area_size {
+    color: #777;
+    font-size: 18px;
+}
+.current_area_size_category {
+    font-size: 30px;
+    color: #777;
+}
+.name_area_footer {
+    margin-top: 20px;
 }

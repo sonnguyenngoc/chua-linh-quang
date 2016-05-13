@@ -12,8 +12,6 @@
    
     <a href="<%= url_for({controller: 'account', action: 'order'}) %>" class="list-group-item dark_hover">Lịch sử đặt hàng</a>
     
-    <a href="<%= url_for({controller: 'account', action: 'newsletter'}) %>" class="list-group-item dark_hover">Đăng ký nhận tin mới</a>
-    
     <%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete, class: "list-group-item dark_hover") %>
 
 </div>

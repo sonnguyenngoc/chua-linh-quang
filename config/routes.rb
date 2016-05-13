@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
+
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
+    
+    # change current area session
+    get "change_current_area/:area_id" => "home#change_current_area", as: :change_current_area
     
     # account
     get "tai-khoan/dang-nhap" => "account#login", as: :login
     get "tai-khoan/dang-nhap-nhanh" => "account#quick_login", as: :quick_login
     get "tai-khoan/dang-xuat" => "account#logout", as: :logout
     get "tai-khoan/quen-mat-khau" => "account#forgotten", as: :forgotten
+    resources :password_resets
     get "tai-khoan/tai-khoan-cua-toi" => "account#my_account", as: :my_account
     get "tai-khoan/san-pham-yeu-thich" => "account#wishlist", as: :wishlist
     get "tai-khoan/dang-ky" => "account#register", as: :register
@@ -64,6 +69,7 @@ Rails.application.routes.draw do
     
     # product
     get "san-pham/chuyen-muc/:category_id" => "product#category", as: :category
+    get "san-pham/tat-ca-chuyen-muc" => "product#all_category", as: :all_category
     get "san-pham/san-pham-so-sanh" => "product#comparison", as: :comparison
     get "san-pham/chi-tiet-san-pham/:product_id" => "product#product", as: :product
     get "san-pham/xem-nhanh/:product_id" => "product#quick_view", as: :quick_view
@@ -114,6 +120,7 @@ Rails.application.routes.draw do
     resources :feedbacks
     resources :testimonials
     #end of resources
+
   
     namespace :admin, path: "hkpanel" do
       get "/" => "main#index"

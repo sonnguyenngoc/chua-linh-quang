@@ -16,7 +16,7 @@ class AccountController < ApplicationController
   end
   
   def forgotten
-	@title_head = "Quên mật khẩu"
+		@title_head = "Quên mật khẩu"
   end
   
   def edit

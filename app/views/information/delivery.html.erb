@@ -2,7 +2,7 @@
 
     <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-    <div class="wide_layout">
+    <div class="wide_layout page_with_main_nav">
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
@@ -19,9 +19,6 @@
                 <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
                 <ul class="breadcrumbs">
-
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li><%= @title_head %></li>
 
                 </ul>
 
@@ -52,6 +49,17 @@
                     </aside>
 
                     <main class="col-md-9 col-sm-8">
+                        
+                        <%= render 'module/main_nav_right' %>
+                        
+                        <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                        <ul class="breadcrumbs">
+        
+                            <li><a href="<%= root_path %>">Trang chủ</a></li>
+                            <li><%= @title_head %></li>
+        
+                        </ul>
                         
                         <h1><%= @title_head %></h1>
                         

@@ -809,7 +809,13 @@
             $("#new_user").validate();
         });
         $(document).ready(function(){
-            $("#new_order").validate();
+            $("#new_order").validate({
+                rules: {
+                    argee: {
+                      required: true
+                    }
+                }
+            });
         });
         
     </script>

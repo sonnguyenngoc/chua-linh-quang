@@ -83,8 +83,16 @@
 			<!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
 
 			<div class="image_preview_container" id="qv_preview">
-
-				<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
+				
+				<% if @product.get_main_image.present? %>
+                                                                            
+					<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
+				
+				<% else %>
+					
+					<img id="img_zoom" data-zoom-image="/frontend/images/big_image.png" src="/frontend/images/large_image.png" alt="">
+				
+				<% end %>
 
 			</div><!--/ .image_preview_container-->
 
@@ -95,10 +103,18 @@
 			<div class="product_preview" data-output="#qv_preview">
 
 				<div class="owl_carousel" id="thumbnails">
-				
-					<% @product.product_images.each do |item| %>
+					
+					<% if @product.get_main_image.present? %>
+                                                                            
+						<% @product.product_images.each do |item| %>
 
 						<img src="<%= item.image_url.small_image %>" data-large-image="<%= item.image_url.large_image %>" alt="">
+					
+					<% end %>
+					
+					<% else %>
+						
+						<img src="/frontend/images/small_image.png" alt="">
 					
 					<% end %>
 
@@ -184,30 +200,41 @@
 
 						<tr>
 
-							<td>Thương hiệu sản phẩm: </td>
+							<td class="line_product_info"><b>Thương hiệu sản phẩm:</b> </td>
 							<td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: @product.manufacturer_id } %></td>
 
 						</tr>
 
 						<tr>
 
-							<td>Mã sản phẩm: </td>
+							<td class="line_product_info"><b>Mã sản phẩm:</b> </td>
 							<td><%= @product.code %></td>
 
 						</tr>
 
 						<tr>
 
-							<td>Trạng thái: </td>
-							<td><span class="in_stock">Có hàng</span></td>
+							<td class="line_product_info"><b>Trạng thái:</b> </td>
+							<td>Có hàng</td>
 
 						</tr>
 						
 						<tr>
 
-							<td>Đơn vị: </td>
+							<td class="line_product_info"><b>Đơn vị:</b> </td>
 							<td><%= format_number(@product.quantity) + "" + @product.unit %></td>
-			
+
+						</tr>
+						
+						<tr>
+
+							<td class="line_product_info"><b>Phương thức thanh toán:</b> </td>
+							<td>
+								<% PaymentMethod.get_all_payment_methods.each do |item| %>
+									<%= item.title + ", " %>
+								<% end %>
+							</td>
+
 						</tr>
 
 					</tbody>

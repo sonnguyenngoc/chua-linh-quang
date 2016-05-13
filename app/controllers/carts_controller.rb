@@ -57,6 +57,15 @@ class CartsController < ApplicationController
     
     redirect_to controller: 'checkout', action: 'shopping_cart'
   end
+  
+  def update_cart_checkout
+    params[:quantities].each do |q|
+      li = LineItem.find(q[0])
+      li.update_attribute(:quantity, q[1])
+    end
+    
+    redirect_to controller: 'checkout', action: 'shopping_cart'
+  end
 
   # DELETE /carts/1
   # DELETE /carts/1.json

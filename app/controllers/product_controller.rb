@@ -7,6 +7,10 @@ class ProductController < ApplicationController
         @manufacturers = Manufacturer.get_all_manufacturers
     end
     
+    def all_category
+        @title_head = "Tất cả chuyên mục"
+    end
+    
     def product
         @title_head = "Trang sản phẩm"
         @product = Product.find(params[:product_id])

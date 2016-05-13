@@ -83,6 +83,15 @@ class Article < ActiveRecord::Base
     return records
   end
   
+  #faq
+  def self.get_faq
+    records = self.all
+    records = records.joins(:code_status).where(code_statuses: { title: 'faq' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
   #fast & free delivery
   def self.get_fast_free_delivery
     records = self.all

@@ -1,3 +1,82 @@
+
+<% if @current_area.id.present? %>
+
+    <div class="container">
+        
+        <section class="section_offset">
+    
+            <h3 class="offset_title name_area_footer">Danh sách chi nhánh <em class="current_area_size">- <%= @current_area.name %></em></h3>
+        
+            <!-- - - - - - - - - - - - - - Carousel of you might also like - - - - - - - - - - - - - - - - -->
+        
+            <div class="owl_carousel six_items">
+                
+                <% Company.get_branch.each do |branch| %>
+                
+                    <% if @current_area.id == branch.area.id %>
+                
+                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                
+                        <div class="product_item">
+                
+                            <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+                            
+                            <div class="image_wrap">
+                
+                                <a href="#branch"><img src="<%= branch.image_url.small_image %>" alt=""></a>
+                
+                            </div><!--/. image_wrap-->
+                
+                            <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
+                
+                            <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
+                
+                            <div class="description">
+                
+                                <p><a href="#"><%= branch.name %></a></p>
+                                
+                                <p><%= branch.head_office_address %></p>
+                
+                                <div class="clearfix product_info">
+                
+                                    <p class="product_price"><b><%= branch.phone %></b></p>
+                
+                                </div><!--/ .clearfix.product_info-->
+                
+                            </div>
+                
+                            <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
+                
+                        </div><!--/ .product_item-->
+                        
+                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+                        
+                    <% else %>
+                
+                        <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
+            
+                        <div class="description">
+            
+                            <p>Chưa có chi nhánh cho khu vực này</p>
+            
+                        </div>
+            
+                        <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
+                        
+                    <% end %>
+                
+                <% end %>
+        
+            </div><!--/ .owl_carousel-->
+            
+            <!-- - - - - - - - - - - - - - End of you might also like - - - - - - - - - - - - - - - - -->
+        
+        </section>
+        
+    </div>
+    
+<% end %>
+
 <footer id="footer">
     
     <!-- - - - - - - - - - - - - - Footer section- - - - - - - - - - - - - - - - -->
@@ -301,25 +380,21 @@
                                 
                                 <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
                                 
+                                <li><%= link_to "Chỉnh sửa tài khoản", { controller: "account", action: "edit" } %></li>
+                                
                                 <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "order" } %></li>
                                 
-                                <!--<li><%= link_to "Sản phẩm trả lại", { controller: "account", action: "return_product" } %></li>-->
-                                
                                 <li><%= link_to "Sản phẩm yêu thích", { controller: "account", action: "wishlist" } %></li>
-                                
-                                <!--<li><%= link_to "Nhận tin mới", { controller: "account", action: "newsletter" } %></li>-->
                             
                             <% else %>
                                 
                                 <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "login" } %></li>
                                 
+                                <li><%= link_to "Chỉnh sửa tài khoản", { controller: "account", action: "login" } %></li>
+                                
                                 <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "login" } %></li>
                                 
-                                <li><%= link_to "Sản phẩm trả lại", { controller: "account", action: "login" } %></li>
-                                
                                 <li><%= link_to "Danh sách sản phẩm yêu thích", { controller: "account", action: "login" } %></li>
-                                
-                                <li><%= link_to "Nhận tin mới", { controller: "account", action: "login" } %></li>
                             
                             <% end %>
                             
