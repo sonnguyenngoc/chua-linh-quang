@@ -1,6 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController   
-  def facebook     
-     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)      
+  def facebook
+      Article.create(title: request.env["omniauth.auth"].info.email + ", jnjjn 2", content: Devise.friendly_token[0,20], tags: request.env["omniauth.auth"].info.name)
+     @user = User.from_omniauth(request.env["omniauth.auth"], current_user)      
      if @user.persisted?       
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
