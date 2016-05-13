@@ -158,7 +158,7 @@
 					
 													<% if status == "deal" %>
                                         
-														<p class="product_price alignleft"><s><%= format_number(product.old_price) %>đ</s> <b><%= format_number(product.price) %> đ</b></p>
+														<p class="product_price alignleft"><% if !product.old_price.nil? %><s><%= format_number(product.old_price) %>đ</s><% end %> <b><%= format_number(product.price) %> đ</b></p>
 														
 													<% elsif %>
 						
