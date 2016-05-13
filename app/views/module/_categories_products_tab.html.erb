@@ -88,19 +88,23 @@
         
 								<% if status == "deal" %>
 									
-									<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+									<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
 									
-									<div class="label_offer percentage">
-			
-										<div>30%</div>OFF
-			
-									</div>
-			
-									<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+										<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+										
+										<div class="label_offer percentage">
+				
+											<div><%= product.discount_percent.to_i %>%</div>OFF
+				
+										</div>
+				
+										<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+										
+									<% end %>
 			
 									<!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
 			
-									<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>
+									<!--<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>-->
 			
 									<!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
 									
@@ -130,9 +134,17 @@
 												
 											<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
 
-										<% end %>
+									<% end %>
+									
+									<% if status == "deal" %>
+										
+										<p class="product_price alignleft"><s><%= format_number(product.old_price) %>đ</s> <b><%= format_number(product.price) %> đ</b></p>
+										
+									<% elsif %>
         
                                         <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+										
+									<% end %>
         
                                     </div><!--/ .clearfix.product_info-->
         

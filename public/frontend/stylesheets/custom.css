@@ -343,9 +343,9 @@ ul > li > .def_icon_btn.middle_btn {
 /*.actions_wrap > .centered_buttons_category {
     width: 28%;
 }*/
-a.add_to_cart_button {
+/*a.add_to_cart_button {
     display: inline-block !important;
-}
+}*/
 .color_red {
     background-color: red;
 }
@@ -540,4 +540,25 @@ form ul > li:not(:last-child) {
 }
 #open_shopping_cart .total_price {
     font-size: 16px;
+}
+.border-top {
+    border-top: 1px solid #eaeaea;
+}
+.btn_add_to_cart_list_view {
+    font-size: 16px;
+}
+.actions {
+    width: 185px !important;
+}
+.icon_link_fix > i[class|="icon"] {
+    margin-right: 0px;
+}
+.icon_red {
+    color: red !important;
+}
+.icon_orange {
+    color: orange !important;
+}
+p.text-justifly {
+    text-align: justify;
 }
