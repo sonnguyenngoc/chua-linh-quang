@@ -45,6 +45,8 @@
                                                 <li><%= link_to "Đăng nhập bằng Facebook", user_omniauth_authorize_path(:facebook) %></li>
         
                                                 <li><%= link_to "Đăng ký", register_path %></li>
+                                                
+                                                <li><%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %></li>
         
                                                 <li><%= link_to "Quên mật khẩu", forgotten_path %></li>
         
