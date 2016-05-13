@@ -13,12 +13,12 @@
                                         <input type="hidden" name="area_id" />
                                         <ul style="display: none">
                                             <li value="">
-                                                <a href="#"><%= @current_area.name %></a>
+                                                <a href="<%= change_current_area_path(-1) %>">Tất cả khu vực</a>
                                             </li>
                                             <% Area.order("display_order").where(level: 2).each do |item| %>
                                             
                                                 <li value="<%= item.id %>">
-                                                    <a class="level-<%= item.level %>" href="#"><%= item.name %></a>
+                                                    <a class="level-<%= item.level %>" href="<%= change_current_area_path(item.id) %>"><%= item.name %></a>
                                                 </li>
                                                 
                                                 <% item.children.order("display_order").each do |child| %>

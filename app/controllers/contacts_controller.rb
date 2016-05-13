@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
       if @contact.save && status
         format.html { redirect_to controller: "information", action: "finish_contact_us" }
       else
-        flash[:notice] = "Post successfully created"
+        flash[:notice] = "Gửi tin nhắn liên hệ thất bại"
         format.html { redirect_to controller: "information", action: "contact_us" }
       end
     end

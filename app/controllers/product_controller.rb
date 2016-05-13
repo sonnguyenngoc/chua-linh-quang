@@ -2,7 +2,7 @@ class ProductController < ApplicationController
     def category
         @title_head = "Trang chuyên mục"
         @category = Category.find(params[:category_id])
-        @products = @category.get_products_for_categories(params).paginate(:page => params[:page], :per_page => 15)
+        @products = @category.get_products_for_categories(params).paginate(:page => params[:page], :per_page => params[:number])
         @areas = Area.get_all_areas
         @manufacturers = Manufacturer.get_all_manufacturers
     end
@@ -43,7 +43,7 @@ class ProductController < ApplicationController
     
     def search
         @title_head = "Kết quả tìm kiếm"
-        @products = Product.search(params).paginate(:page => params[:page], :per_page => 15).order("name ASC")
+        @products = Product.search(params).paginate(:page => params[:page], :per_page => params[:number])
     end
     
     def testimonial

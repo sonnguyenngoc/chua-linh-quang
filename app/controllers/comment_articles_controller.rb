@@ -25,14 +25,13 @@ class CommentArticlesController < ApplicationController
   # POST /comment_articles.json
   def create
     @comment_article = CommentArticle.new(comment_article_params)
-
+  
     respond_to do |format|
       if @comment_article.save
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
-        format.json { render :show, status: :created, location: @comment_article }
       else
-        format.html { render :new }
-        format.json { render json: @comment_article.errors, status: :unprocessable_entity }
+        flash[:notice] = "Đăng bình luận thất bại"
+        format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
       end
     end
   end

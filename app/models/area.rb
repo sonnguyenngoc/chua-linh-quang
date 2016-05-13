@@ -95,7 +95,7 @@ class Area < ActiveRecord::Base
   end
   
   def self.get_list_province_city
-    self.all.where(level: 2)
+    self.all.where(level: 3)
   end
   
   # update all categories level

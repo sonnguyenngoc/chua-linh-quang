@@ -28,10 +28,11 @@
                     
                     </aside><!--/ [col]-->
 
-                    <main class="col-md-9">
+
+                    <main class="col-md-9 col-sm-8">
                         
                         <%= render 'module/main_nav_right' %>
-                        
+
                         <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
                         <ul class="breadcrumbs">
@@ -72,16 +73,34 @@
                                     </div>
                                     
                                 <% if index%4 == 3 %>
-                                    
+                                        
                                     </div><!--/ .table_row -->
-
-                                    <div class="table_row">
-                                     
+    
+                                <div class="table_row">
+                                         
                                 <% end %>
                                 
-                            <% end %>
+                                <% end %>
 
-                        </div><!--/ .table_layout -->
+                            </div><!--/ .table_layout -->
+                            
+                        </div>
+                        
+                        <footer class="bottom_box on_the_sides">
+
+                            <div class="left_side">
+
+                                <p><%= page_entries_info @manufacturers %> thương hiệu.</p>
+
+                            </div>
+
+                            <div class="right_side">
+                            
+                                <%= will_paginate @manufacturers, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+
+                            </div>
+
+                        </footer>
 
                     </main><!--/ [col]-->
 

@@ -4,47 +4,105 @@
 
     <ul class="products_list_widget">
         
-        <% Product.get_by_bestseller.each do | product | %>
-
-            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+        <% if @current_area.id.present? %>
+        
+            <% Product.get_by_bestseller.each do | product | %>
+            
+                <% product.areas.each do |area| %>
+													
+					<% if @current_area.id == area.id %>
     
-            <li>
+                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                 
-                <%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
-    
-                <div class="wrapper">
-    
-                    <%= link_to product.name, { controller: "product", action: "product", product_id: product }, class: "product_title" %>
-    
-                    <div class="clearfix product_info">
-    
-                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
-    
-                        <% if product.count_stars.length > 0 %>
-
-                            <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                        <li>
                             
-                            <ul class="rating">
-                                
-                                <% (1..product.average_stars).each do |star| %>
-
-                                    <li class="active"></li>
-                                
-                                <% end %>
-
-                            </ul>
-                                
-                            <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-
-                        <% end %>
+                            <%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+                
+                            <div class="wrapper">
+                
+                                <%= link_to product.name, { controller: "product", action: "product", product_id: product }, class: "product_title" %>
+                
+                                <div class="clearfix product_info">
+                
+                                    <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+                
+                                    <% if product.count_stars.length > 0 %>
+            
+                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                        
+                                        <ul class="rating">
+                                            
+                                            <% (1..product.average_stars).each do |star| %>
+            
+                                                <li class="active"></li>
+                                            
+                                            <% end %>
+            
+                                        </ul>
+                                            
+                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+            
+                                    <% end %>
+                
+                                </div>
+                
+                            </div>
+                
+                        </li>
+                
+                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+                        
+                    <% end %>
+                    
+                <% end %>
+                
+            <% end %>
+            
+        <% else %>
+            
+            <% Product.get_by_bestseller.each do | product | %>
     
+                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+        
+                <li>
+                    
+                    <%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+        
+                    <div class="wrapper">
+        
+                        <%= link_to product.name, { controller: "product", action: "product", product_id: product }, class: "product_title" %>
+        
+                        <div class="clearfix product_info">
+        
+                            <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+        
+                            <% if product.count_stars.length > 0 %>
+    
+                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                
+                                <ul class="rating">
+                                    
+                                    <% (1..product.average_stars).each do |star| %>
+    
+                                        <li class="active"></li>
+                                    
+                                    <% end %>
+    
+                                </ul>
+                                    
+                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+    
+                            <% end %>
+        
+                        </div>
+        
                     </div>
-    
-                </div>
-    
-            </li>
-    
-            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+        
+                </li>
+        
+                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+                
+            <% end %>
             
         <% end %>
 

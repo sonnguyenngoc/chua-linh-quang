@@ -18,8 +18,6 @@
 
                 <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
-                
-
                 <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
 
                 <div class="section_offset">
@@ -102,6 +100,8 @@
                     
 								<li><%= link_to "Trang chủ", root_path %></li>
 								
+								<% if @current_area.id.present? %><li><%= link_to @current_area.name, change_current_area_path(@current_area.id) %></li><% end %>
+								
 								<li>
 									
 									<% @product.categories.each do |categories| %>
@@ -113,8 +113,6 @@
 									<% end %>
 									
 									<%= @product.name %>
-									
-									<%= params[:status] %>
 								
 								</li>
 			
@@ -750,81 +748,173 @@
             
                                             <div class="owl_carousel carousel_in_tabs type_2">
 												
-												<% @product.get_related_products.each do |product| %>
+												<% if @current_area.id.present? %>
+												
+													<% @product.get_related_products.each do |product| %>
+													
+														<% product.areas.each do |area| %>
+													
+															<% if @current_area.id == area.id %>
+													
+																<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+							
+																<div class="product_item">
+							
+																	<!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+							
+																	<div class="image_wrap">
+							
+																		<% if product.get_main_image.present? %>
+																			
+																			<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+																		
+																		<% else %>
+																			
+																			<img src="/frontend/images/medium_image.png" alt="">
+																		
+																		<% end %>
+							
+																		<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+							
+																		<div class="actions_wrap">
+							
+																			<div class="centered_buttons">
+							
+																				<a href="#" class="button_dark_grey quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
+							
+																				<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue add_to_cart add_to_cart_button small_add_cart_button" %>
+							
+																			</div><!--/ .centered_buttons -->
+																			
+																			<% if current_user.present? %>
+														
+																				<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+																			
+																			<% else %>
+																				
+																				<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn add_to_wishlist tooltip_container no_singed_button" %>
+																			
+																			<% end %>
+																		
+																			<%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn add_to_compare tooltip_container add_to_compare_button" %>
+							
+																		</div><!--/ .actions_wrap-->
+																		
+																		<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+							
+																	</div><!--/. image_wrap-->
+							
+																	<!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+							
+																	<!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+							
+																	<div class="description">
+																		
+																		<div class="nowrap-ellipsis">
+																			
+																			<%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+																		
+																		</div>
+																		
+																		<div class="clearfix product_info">
+							
+																			<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+							
+																		</div>
+							
+																	</div>
+							
+																	<!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+							
+																</div><!--/ .product_item-->
+																
+																<!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+														
+															<% end %>	
+														
+														<% end %>
+														
+													<% end %>
+												
+												<% else %>
+													
+													<% @product.get_related_products.each do |product| %>
                                                 
-													<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-				
-													<div class="product_item">
-				
-														<!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-				
-														<div class="image_wrap">
-				
-															<% if product.get_main_image.present? %>
-																
-																<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
-															
-															<% else %>
-																
-																<img src="/frontend/images/medium_image.png" alt="">
-															
-															<% end %>
-				
-															<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-				
-															<div class="actions_wrap">
-				
-																<div class="centered_buttons">
-				
-																	<a href="#" class="button_dark_grey quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
-				
-																	<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue add_to_cart add_to_cart_button small_add_cart_button" %>
-				
-																</div><!--/ .centered_buttons -->
-																
-																<% if current_user.present? %>
-											
-																	<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+														<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+					
+														<div class="product_item">
+					
+															<!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+					
+															<div class="image_wrap">
+					
+																<% if product.get_main_image.present? %>
+																	
+																	<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
 																
 																<% else %>
 																	
-																	<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn add_to_wishlist tooltip_container no_singed_button" %>
+																	<img src="/frontend/images/medium_image.png" alt="">
 																
 																<% end %>
-															
-																<%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn add_to_compare tooltip_container add_to_compare_button" %>
-				
-															</div><!--/ .actions_wrap-->
-															
-															<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-				
-														</div><!--/. image_wrap-->
-				
-														<!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-				
-														<!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-				
-														<div class="description">
-															
-															<div class="nowrap-ellipsis">
+					
+																<!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+					
+																<div class="actions_wrap">
+					
+																	<div class="centered_buttons">
+					
+																		<a href="#" class="button_dark_grey quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
+					
+																		<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue add_to_cart add_to_cart_button small_add_cart_button" %>
+					
+																	</div><!--/ .centered_buttons -->
+																	
+																	<% if current_user.present? %>
+												
+																		<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+																	
+																	<% else %>
+																		
+																		<%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn add_to_wishlist tooltip_container no_singed_button" %>
+																	
+																	<% end %>
 																
-																<%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
-															
+																	<%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn add_to_compare tooltip_container add_to_compare_button" %>
+					
+																</div><!--/ .actions_wrap-->
+																
+																<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+					
+															</div><!--/. image_wrap-->
+					
+															<!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+					
+															<!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+					
+															<div class="description">
+																
+																<div class="nowrap-ellipsis">
+																	
+																	<%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+																
+																</div>
+																
+																<div class="clearfix product_info">
+					
+																	<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+					
+																</div>
+					
 															</div>
-															
-															<div class="clearfix product_info">
-				
-																<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
-				
-															</div>
-				
-														</div>
-				
-														<!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-				
-													</div><!--/ .product_item-->
-													
-													<!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+					
+															<!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+					
+														</div><!--/ .product_item-->
+														
+														<!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+														
+													<% end %>
 													
 												<% end %>
             

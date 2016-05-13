@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+  
   # POST /orders
   # POST /orders.json
   def create
@@ -44,10 +45,9 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         format.html { redirect_to controller: "checkout", action: "success" }
-        format.json { render :show, status: :created, location: @order }
       else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        flash[:notice] = "Gửi đơn hàng thất bại"
+        format.html { redirect_to controller: "checkout", action: "success" }
       end
     end
   end
