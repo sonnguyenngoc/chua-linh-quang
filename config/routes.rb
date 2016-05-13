@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
-  
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
@@ -90,6 +88,7 @@ Rails.application.routes.draw do
     resources :newsletters
     resources :contacts
     # devise_for :users, skip: :omniauth_callbacks, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
+    devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
     resources :carts do
       collection do
         get "cart"
