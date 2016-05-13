@@ -585,3 +585,6 @@ p.text-justifly {
 .name_area_footer {
     margin-top: 20px;
 }
+.current_area_size {
+    white-space: nowrap;
+}
