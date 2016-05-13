@@ -80,13 +80,13 @@
     
     <!-- - - - - - - - - - - - - - Footer section- - - - - - - - - - - - - - - - -->
 
-    <div class="footer_section">
+    <div class="footer_section section_1">
 
         <div class="container">
 
             <div class="row">
 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-xs-6 col-md-3 col-sm-6">
 
                     <!-- - - - - - - - - - - - - - About us widget- - - - - - - - - - - - - - - - -->
 
@@ -158,7 +158,7 @@
 
                 </div><!--/ [col]-->
 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-xs-6 col-md-3 col-sm-6">
 
                     <!-- - - - - - - - - - - - - - Information widget - - - - - - - - - - - - - - - - -->
 
@@ -188,7 +188,7 @@
                 
                 </div><!--/ [col]-->
 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-xs-6 col-md-3 col-sm-6">
 
                     <!-- - - - - - - - - - - - - - My account widget - - - - - - - - - - - - - - - - -->
 
@@ -240,7 +240,7 @@
 
                 </div>
 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-xs-6 col-md-3 col-sm-6">
 
                     <!-- - - - - - - - - - - - - - Blog widget - - - - - - - - - - - - - - - - -->
 
@@ -312,123 +312,133 @@
 
     <!-- - - - - - - - - - - - - - Footer section- - - - - - - - - - - - - - - - -->
 
-    <div class="footer_section">
+    <div class="footer_section section_2">
 
         <div class="container">
-
+            
             <div class="row">
 
-                <div class="col-md-3 col-sm-6">
+                <div class="col-xs-12 col-md-6 col-sm-12">
 
-                    <!-- - - - - - - - - - - - - - Information widget - - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Giới thiệu</h4>
-
-                        <ul class="list_of_links">
-
-                            <li><%= link_to "Về chúng tôi", { controller: "information", action: "about_us" } %></li>
-                            <li><%= link_to "Thông tin giao hàng", { controller: "information", action: "delivery" } %></li>
-                            <li><%= link_to "Chính sách bảo mật", { controller: "information", action: "privacy_policy" } %></li>
-                            <li><%= link_to "Điều khoản sử dụng dịch vụ", { controller: "information", action: "terms_conditions" } %></li>
-                            <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
-
-                        </ul>
-
-                    </section><!--/ .widget-->
-                    
-                    <!-- - - - - - - - - - - - - - End of information widget - - - - - - - - - - - - - - - - -->
-                
-                </div><!--/ [col]-->
-
-                <div class="col-md-3 col-sm-6">
-
-                    <!-- - - - - - - - - - - - - - Extras widget - - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Thông tin</h4>
-
-                        <ul class="list_of_links">
-
-                            <li><%= link_to "Thương hiệu sản phẩm", { controller: "manufacturer", action: "list" } %></li>
-                            <li><%= link_to "Chi nhánh", list_branch_path %></li>
-                            <li><%= link_to "Sản phẩm đặc biệt", { controller: "product", action: "special" } %></li>
-                            <li><%= link_to "Sơ đồ website", { controller: "information", action: "sitemap" } %></li>
-
-                        </ul>
-
-                    </section><!--/ .widget-->
-
-                    <!-- - - - - - - - - - - - - - End of extras widget - - - - - - - - - - - - - - - - -->
-
-                </div><!--/ [col]-->
-
-                <div class="col-md-3 col-sm-6">
-
-                    <!-- - - - - - - - - - - - - - My account widget - - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Tài khoản</h4>
-
-                        <ul class="list_of_links">
- 
-                            <% if current_user.present? %>
-                                
-                                <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
-                                
-                                <li><%= link_to "Chỉnh sửa tài khoản", { controller: "account", action: "edit" } %></li>
-                                
-                                <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "order" } %></li>
-                                
-                                <li><%= link_to "Sản phẩm yêu thích", { controller: "account", action: "wishlist" } %></li>
+                    <div class="row">
+        
+                        <div class="col-xs-6 col-md-6 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - Information widget - - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Giới thiệu</h4>
+        
+                                <ul class="list_of_links">
+        
+                                    <li><%= link_to "Về chúng tôi", { controller: "information", action: "about_us" } %></li>
+                                    <li><%= link_to "Thông tin giao hàng", { controller: "information", action: "delivery" } %></li>
+                                    <li><%= link_to "Chính sách bảo mật", { controller: "information", action: "privacy_policy" } %></li>
+                                    <li><%= link_to "Điều khoản sử dụng dịch vụ", { controller: "information", action: "terms_conditions" } %></li>
+                                    <li><%= link_to "Liên hệ", { controller: "information", action: "contact_us" } %></li>
+        
+                                </ul>
+        
+                            </section><!--/ .widget-->
                             
-                            <% else %>
-                                
-                                <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "login" } %></li>
-                                
-                                <li><%= link_to "Chỉnh sửa tài khoản", { controller: "account", action: "login" } %></li>
-                                
-                                <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "login" } %></li>
-                                
-                                <li><%= link_to "Danh sách sản phẩm yêu thích", { controller: "account", action: "login" } %></li>
-                            
-                            <% end %>
-                            
-                        </ul>
-
-                    </section><!--/ .widget-->
-
-                    <!-- - - - - - - - - - - - - - End my account widget - - - - - - - - - - - - - - - - -->
-
-                </div>
-                
-                <div class="col-md-3 col-sm-6">
-
-                    <!-- - - - - - - - - - - - - - About us widget- - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Chăm sóc khách hàng</h4>
-
-                        <ul class="list_of_links">
-
-                            <li><%= link_to "Trung tâm hỗ trợ khách hàng", "" %></li>
-                            <li><%= link_to "Chính sách thanh toán", "" %></li>
-                            <li><%= link_to "Chính sách giao hàng", "" %></li>
-                            <li><%= link_to "Chính sách bảo hành", "" %></li>
-
-                        </ul>
+                            <!-- - - - - - - - - - - - - - End of information widget - - - - - - - - - - - - - - - - -->
                         
-                    </section>
+                        </div><!--/ [col]-->
+        
+                        <div class="col-xs-6 col-md-6 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - Extras widget - - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Thông tin</h4>
+        
+                                <ul class="list_of_links">
+        
+                                    <li><%= link_to "Thương hiệu sản phẩm", { controller: "manufacturer", action: "list" } %></li>
+                                    <li><%= link_to "Chi nhánh", list_branch_path %></li>
+                                    <li><%= link_to "Sản phẩm đặc biệt", { controller: "product", action: "special" } %></li>
+                                    <li><%= link_to "Sơ đồ website", { controller: "information", action: "sitemap" } %></li>
+        
+                                </ul>
+        
+                            </section><!--/ .widget-->
+        
+                            <!-- - - - - - - - - - - - - - End of extras widget - - - - - - - - - - - - - - - - -->
+        
+                        </div><!--/ [col]-->
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-sm-12 footer_second_row">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - My account widget - - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Tài khoản</h4>
+        
+                                <ul class="list_of_links">
+         
+                                    <% if current_user.present? %>
+                                        
+                                        <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "my_account" } %></li>
+                                        
+                                        <li><%= link_to "Chỉnh sửa tài khoản", { controller: "account", action: "edit" } %></li>
+                                        
+                                        <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "order" } %></li>
+                                        
+                                        <li><%= link_to "Sản phẩm yêu thích", { controller: "account", action: "wishlist" } %></li>
+                                    
+                                    <% else %>
+                                        
+                                        <li><%= link_to "Tài khoản của tôi", { controller: "account", action: "login" } %></li>
+                                        
+                                        <li><%= link_to "Chỉnh sửa tài khoản", { controller: "account", action: "login" } %></li>
+                                        
+                                        <li><%= link_to "Lịch sử đặt hàng", { controller: "account", action: "login" } %></li>
+                                        
+                                        <li><%= link_to "Danh sách sản phẩm yêu thích", { controller: "account", action: "login" } %></li>
+                                    
+                                    <% end %>
+                                    
+                                </ul>
+        
+                            </section><!--/ .widget-->
+        
+                            <!-- - - - - - - - - - - - - - End my account widget - - - - - - - - - - - - - - - - -->
+        
+                        </div>
+                        
+                        <div class="col-xs-6 col-md-6 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - About us widget- - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Chăm sóc khách hàng</h4>
+        
+                                <ul class="list_of_links">
+        
+                                    <li><%= link_to "Trung tâm hỗ trợ khách hàng", "" %></li>
+                                    <li><%= link_to "Chính sách thanh toán", "" %></li>
+                                    <li><%= link_to "Chính sách giao hàng", "" %></li>
+                                    <li><%= link_to "Chính sách bảo hành", "" %></li>
+        
+                                </ul>
+                                
+                            </section>
+                            
+                            <!-- - - - - - - - - - - - - - End of about us widget - - - - - - - - - - - - - - - - -->
+        
+                        </div><!--/ [col]-->
+        
+                    </div><!--/ .row-->
                     
-                    <!-- - - - - - - - - - - - - - End of about us widget - - - - - - - - - - - - - - - - -->
-
-                </div><!--/ [col]-->
-
-            </div><!--/ .row-->
+                </div>
+            </div>
 
         </div><!--/ .container -->
 

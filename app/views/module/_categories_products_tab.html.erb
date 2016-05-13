@@ -1,9 +1,9 @@
 <section class="section_offset animated transparent" data-animation="fadeInDown"> 
 	
 	<% if status == "deal" %>
-		<h3 class="widget_title offset_title"><%= title %><% if @current_area.id.present? %><em class="current_area_size"> - <i class="fa fa-map-marker"></i> <%= @current_area.name %></em><% end %></h3>
+		<h3 class="widget_title offset_title"><%= title %><% if @current_area.id.present? %>&nbsp;&nbsp;<em class="current_area_size"> <i class="fa fa-map-marker"></i> <%= @current_area.name %></em><% end %></h3>
 	<% else %>
-		<h3><%= title %><% if @current_area.id.present? %><em class="current_area_size"> - <i class="fa fa-map-marker"></i> <%= @current_area.name %></em><% end %></h3>
+		<h3><%= title %><% if @current_area.id.present? %>&nbsp;&nbsp;<em class="current_area_size"> <i class="fa fa-map-marker"></i> <%= @current_area.name %></em><% end %></h3>
 	<% end %>
 		
     <div class="tabs type_2 products">

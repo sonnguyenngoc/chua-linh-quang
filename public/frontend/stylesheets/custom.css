@@ -571,6 +571,9 @@ p.text-justifly {
 .warning_contact {
     margin-bottom: 20px;
 }
+.main_slider {
+    margin-top: -15px;
+}
 .current_area_size {
     color: #777;
     font-size: 18px;
@@ -582,6 +585,6 @@ p.text-justifly {
 .name_area_footer {
     margin-top: 20px;
 }
-form ul > li:not(:last-child) {
-    margin-bottom: 10px !important;
+.current_area_size {
+    white-space: nowrap;
 }
