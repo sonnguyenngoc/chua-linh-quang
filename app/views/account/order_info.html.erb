@@ -71,10 +71,26 @@
 										</td>
 									
 										<td style="width: 50%;" class="left">
+											
+											<% if !@order.order_delivery.payment_method.nil? %>
 										  
-											<strong>Hình thức thanh toán:</strong> <%= @order.order_delivery.payment_method.title %><br>
-										  
-											<strong>Hình thức vận chuyển:</strong> <%= @order.order_delivery.delivery_method.title %>
+												<strong>Hình thức thanh toán:</strong> <%= @order.order_delivery.payment_method.title %><br>
+											
+											<% else %>
+												
+												<strong>Hình thức thanh toán:</strong> <br>
+											
+											<% end %>
+											
+											<% if !@order.order_delivery.delivery_method.nil? %>
+											  
+												<strong>Hình thức vận chuyển:</strong> <%= @order.order_delivery.delivery_method.title %>
+											
+											<% else %>
+												
+												<strong>Hình thức vận chuyển:</strong> <br>
+											
+											<% end %>
 										
 										</td>
 									

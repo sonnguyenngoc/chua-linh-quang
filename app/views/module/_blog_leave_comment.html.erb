@@ -3,6 +3,22 @@
     <h3>Viết bình luận</h3>
 
     <div class="theme_box">
+		
+		<% if !flash[:notice].nil? %>
+                                
+			<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+			
+			<div class="alert_box warning warning_contact">
+
+				<b>Thông báo!</b> Quý khách chưa chọn xác nhận recaptcha.
+
+				<button class="close"></button>
+
+			</div>
+			
+			<!--/ .alert_box.warning -->
+			
+		<% end %>
 
         <%= form_for @comment, html: {class: "type_2"} do |f| %>
             
@@ -63,6 +79,12 @@
                     </div>
 
                 </li>
+				
+				<div class="alignleft">
+
+					<div class="g-recaptcha" data-sitekey="6Le7mh8TAAAAALNVSNBWWfIHmrp-pZfOCoToS2p5"></div>
+
+				</div><!--/ .row -->
                 
                 <%= f.submit "Đăng bình luận", class: "button_blue middle_btn alignright" %>
 
