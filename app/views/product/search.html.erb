@@ -43,9 +43,9 @@
                             <li><%= @title_head %></li>
         
                         </ul>
-                        
-                        <h1>Kết quả tìm kiếm:  <%= params[:keyword] %></h1>                       
 
+                        <h1>Kết quả tìm kiếm <% if params[:keyword].present? %>- <%= params[:keyword] %><% end %></h1>
+                        
                         <!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
 
                         <div class="section_offset">
@@ -55,11 +55,11 @@
                                 <div class="left_side clearfix v_centered">
                                     
                                     <%= form_tag({controller: "product", action: "search"}, method: "get") do %>
-
+                                    
                                         <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
     
                                         <div class="v_centered">
-    
+
                                             <span>Sắp xếp:</span>
     
                                             <div class="sort_select">
@@ -111,16 +111,16 @@
                                         </div>
     
                                         <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
-                                        
+
                                     <% end %>
 
                                     <!-- - - - - - - - - - - - - - Product layout type - - - - - - - - - - - - - - - - -->
 
                                     <div class="layout_type buttons_row" data-table-container="#products_container">
 
-                                        <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Grid View</span></a>
+                                        <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Xem dạng lưới</span></a>
 
-                                        <a href="#" data-table-layout="list_view list_view_products" class="button_grey middle_btn icon_btn tooltip_container"><i class="icon-th-list"></i><span class="tooltip top">List View</span></a>
+                                        <a href="#" data-table-layout="list_view list_view_products" class="button_grey middle_btn icon_btn tooltip_container"><i class="icon-th-list"></i><span class="tooltip top">Xem dạng danh sách</span></a>
 
                                     </div>
 
