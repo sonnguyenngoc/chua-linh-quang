@@ -1,16 +1,9 @@
 class OrdersController < ApplicationController
 
-  def verify_google_recaptcha(secret_key,response)
-    status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
-    logger.info "---------------status ==> #{status}"
-    hash = JSON.parse(status)
-    hash["success"] == true ? true : false
-  end
   
   # POST /orders
   # POST /orders.json
   def create
-    @secret_key = "6Le7mh8TAAAAAGKRPjxYnO9t0O1_m8dgxa-EgcOB"
     if params[:order].present?
       @order = Order.new(order_params)
     else
@@ -46,10 +39,8 @@ class OrdersController < ApplicationController
         @order.voucher_price = @cart.voucher.price
     end
     
-    status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
-    
     respond_to do |format|
-      if @order.save && status
+      if @order.save
         @order.save_from_cart(@cart)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil

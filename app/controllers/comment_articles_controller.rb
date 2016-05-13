@@ -20,23 +20,14 @@ class CommentArticlesController < ApplicationController
   # GET /comment_articles/1/edit
   def edit
   end
-  
-  def verify_google_recaptcha(secret_key,response)
-    status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
-    logger.info "---------------status ==> #{status}"
-    hash = JSON.parse(status)
-    hash["success"] == true ? true : false
-  end
 
   # POST /comment_articles
   # POST /comment_articles.json
   def create
-    @secret_key = "6Le7mh8TAAAAAGKRPjxYnO9t0O1_m8dgxa-EgcOB"
     @comment_article = CommentArticle.new(comment_article_params)
   
-    status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
-      if @comment_article.save && status
+      if @comment_article.save
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
       else
         flash[:notice] = "Đăng bình luận thất bại"
