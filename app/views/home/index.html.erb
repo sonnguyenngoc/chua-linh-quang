@@ -17,11 +17,11 @@
 
 			<div class="container">
 
-				<div class="section_offset">
+				<div class="section_offset home_top_box">
 
 					<div class="row">
 						
-						<aside class="col-md-3 has_mega_menu">
+						<aside class="col-md-3 has_mega_menu home_top_categories">
 
 							<!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 							
@@ -32,8 +32,9 @@
 						</aside><!--/ [col]-->
 
 						<!-- - - - - - - - - - - - - - Main slider - - - - - - - - - - - - - - - - -->
-
-						<%= render "module/main_slider" %>
+						<div class="col-md-9 home_main_slider">
+							<%= render "module/main_slider" %>							
+						</div><!--/ [col]-->
 
 						<!-- - - - - - - - - - - - - - End of main slider - - - - - - - - - - - - - - - - -->
 
@@ -42,55 +43,58 @@
 				</div><!--/ .section_offset-->
 
 				<!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
-
-				<%= render "module/infoblocks" %>
-
+				<div class="home_infoblocks">
+					<%= render "module/infoblocks" %>
+				</div>
 				<!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
 				
-				<a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
-											
-				<a href="#" class="button_dark_grey add_wishlist_success" data-modal-url="<%= add_wishlist_success_path %>">Success</a>
 				
-				<a href="#" class="button_dark_grey add_compare_success" data-modal-url="<%= add_compare_success_path %>">Success</a>
+				<div class="home_main">
+					<a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
+												
+					<a href="#" class="button_dark_grey add_wishlist_success" data-modal-url="<%= add_wishlist_success_path %>">Success</a>
+					
+					<a href="#" class="button_dark_grey add_compare_success" data-modal-url="<%= add_compare_success_path %>">Success</a>
+					
+					<a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
+	
+					<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
+	
+					<%= render "module/categories_products_tab", title: "DEAL TỐT HÔM NAY", status: "deal" %>
+	
+					<!-- - - - - - - - - - - - - - End of taday's deals - - - - - - - - - - - - - - - - -->
+	
+					<!-- - - - - - - - - - - - - - Featured products - - - - - - - - - - - - - - - - -->
+	
+					<%= render "module/categories_products_tab", title: "NỔI BẬT", status: "prominent" %>
+	
+					<!-- - - - - - - - - - - - - - End of featured products - - - - - - - - - - - - - - - - -->
+	
+					<!-- - - - - - - - - - - - - - Bestsellers - - - - - - - - - - - - - - - - -->
+	
+					<%= render "module/categories_products_tab", title: "BÁN CHẠY", status: "bestseller" %>
+	
+					<!-- - - - - - - - - - - - - - End of bestsellers - - - - - - - - - - - - - - - - -->
+	
+					<!-- - - - - - - - - - - - - - New arrivals - - - - - - - - - - - - - - - - -->
+	
+					<%= render "module/categories_products_tab", title: "SẢN PHẨM MỚI", status: "new" %>
+	
+					<!-- - - - - - - - - - - - - - End of new arrivals - - - - - - - - - - - - - - - - -->
+	
+					<!-- - - - - - - - - - - - - - Banners - - - - - - - - - - - - - - - - -->
+	
+					<%= render "module/banners" %>
+	
+					<!-- - - - - - - - - - - - - - End of banners - - - - - - - - - - - - - - - - -->
+	
+					<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
+	
+					<%= render "module/categories_products_tab", title: "HÀNG NHẬP KHẨU", status: "imported" %>
+	
+					<!-- - - - - - - - - - - - - - End of taday's deals - - - - - - - - - - - - - - - - -->
+				</div>
 				
-				<a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
-
-				<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
-
-				<%= render "module/categories_products_tab", title: "DEAL TỐT HÔM NAY", status: "deal" %>
-
-				<!-- - - - - - - - - - - - - - End of taday's deals - - - - - - - - - - - - - - - - -->
-
-				<!-- - - - - - - - - - - - - - Featured products - - - - - - - - - - - - - - - - -->
-
-				<%= render "module/categories_products_tab", title: "NỔI BẬT", status: "prominent" %>
-
-				<!-- - - - - - - - - - - - - - End of featured products - - - - - - - - - - - - - - - - -->
-
-				<!-- - - - - - - - - - - - - - Bestsellers - - - - - - - - - - - - - - - - -->
-
-				<%= render "module/categories_products_tab", title: "BÁN CHẠY", status: "bestseller" %>
-
-				<!-- - - - - - - - - - - - - - End of bestsellers - - - - - - - - - - - - - - - - -->
-
-				<!-- - - - - - - - - - - - - - New arrivals - - - - - - - - - - - - - - - - -->
-
-				<%= render "module/categories_products_tab", title: "SẢN PHẨM MỚI", status: "new" %>
-
-				<!-- - - - - - - - - - - - - - End of new arrivals - - - - - - - - - - - - - - - - -->
-
-				<!-- - - - - - - - - - - - - - Banners - - - - - - - - - - - - - - - - -->
-
-				<%= render "module/banners" %>
-
-				<!-- - - - - - - - - - - - - - End of banners - - - - - - - - - - - - - - - - -->
-
-				<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
-
-				<%= render "module/categories_products_tab", title: "HÀNG NHẬP KHẨU", status: "imported" %>
-
-				<!-- - - - - - - - - - - - - - End of taday's deals - - - - - - - - - - - - - - - - -->
-
 			</div><!--/ .container-->
 
 		</div><!--/ .page_wrapper-->
