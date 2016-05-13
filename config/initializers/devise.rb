@@ -266,5 +266,5 @@ Devise.setup do |config|
   config.warden do |manager|
     manager.failure_app = CustomFailure
   end
-  config.omniauth :facebook, "1549707298663855", "9d42bad00796ccb8a1284b274cf3ad6c"
+  config.omniauth :facebook, "1238119839582178", "95c748070a2701da22e36e6ebd168208", callback_url: "http://dacsanvungmien.net/tai-khoan/tai-khoan-cua-toi"
 end
