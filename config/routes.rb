@@ -90,6 +90,8 @@ Rails.application.routes.draw do
     resources :newsletters
     resources :contacts
     devise_for :users, skip: :omniauth_callbacks, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
+    get 'auth/:provider', to: 'sessions#create'
+    get 'auth/failure', to: redirect('/')
     resources :carts do
       collection do
         get "cart"

@@ -108,11 +108,23 @@
 											
 											<td>
 												
-												<div class="bottom">
+												<div class="bottom alignleft">
 												  
 												  <div id="social_login_content_holder"></div>
 												  
 												  <input type="submit" value="Đăng nhập" class="btn btn-primary" >
+											  
+												</div>
+												
+												<div class="bottom alignright">
+												  
+												  <ul class="horizontal_list social_btns">
+
+													<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, "/auth/facebook", id: "sign_in", class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
+													<li><a href="#" class="icon_btn middle_btn social_twitter tooltip_container"><i class="icon-twitter"></i><span class="tooltip top">Twitter</span></a></li>
+													<li><a href="#" class="icon_btn middle_btn social_googleplus tooltip_container"><i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span></a></li>
+										
+												</ul><!--/ .horizontal_list.wrapper.social_btns-->
 											  
 												</div>
 												
