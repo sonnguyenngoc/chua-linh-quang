@@ -43,6 +43,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'therubyracer'
+gem 'omniauth-digitalocean'
 gem 'mini_magick'
 gem 'carrierwave'
 gem "devise"
