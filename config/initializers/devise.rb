@@ -266,4 +266,5 @@ Devise.setup do |config|
   config.warden do |manager|
     manager.failure_app = CustomFailure
   end
+  config.omniauth :facebook, "1238119839582178", "95c748070a2701da22e36e6ebd168208"
 end
