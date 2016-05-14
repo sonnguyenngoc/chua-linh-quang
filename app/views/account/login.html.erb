@@ -121,7 +121,7 @@
 												  <ul class="horizontal_list social_btns">
 													
 													<li>
-														<fb:login-button class="icon_btn middle_btn social_facebook tooltip_container" scope="public_profile,email" onlogin="checkLoginState();"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></fb:login-button>
+														<fb:login-button class="icon_btn middle_btn social_facebook tooltip_container" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 														<div id="status"></div>
 													</li>
 													<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
@@ -249,7 +249,7 @@
 		
 		window.fbAsyncInit = function() {
 			FB.init({
-				appId      : '{1238119839582178}',
+				appId      : '1238119839582178',
 				cookie     : true,  // enable cookies to allow the server to access 
 								  // the session
 				xfbml      : true,  // parse social plugins on this page
