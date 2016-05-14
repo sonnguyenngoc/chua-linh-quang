@@ -68,7 +68,7 @@ class ProductController < ApplicationController
         elsif params[:st] == "imported"
             @title_head = "Hàng nhập khẩu"
         end
-        @view_all_products = Product.get_all_product_by_status(params[:st]).paginate(:page => params[:page], :per_page => 15)
+        @view_all_products = Product.get_all_product_by_status(params[:st]).paginate(:page => params[:page], :per_page => params[:number])
     end
     
     def add_cart_buy_now

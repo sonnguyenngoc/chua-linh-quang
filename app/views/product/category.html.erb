@@ -105,7 +105,8 @@
                                 <div class="left_side clearfix v_centered">
                                     
                                     <%= form_tag({controller: "product", action: "category"}, method: "get") do %>
-                                  
+                                        <%= hidden_field_tag "number", params[:number] %>
+                                        
                                         <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
     
                                         <div class="v_centered">
@@ -137,7 +138,8 @@
                                 <div class="right_side">
                                     
                                     <%= form_tag({controller: "product", action: "category"}, method: "get") do %>
-                                    
+                                        <%= hidden_field_tag "sort_group", params[:sort_group] %>
+                                        
                                         <div class="v_centered mrg-show-category">
                                         
                                             <span>Hiển thị:</span>
@@ -303,7 +305,7 @@
             
                                                                         <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                         
-                                                                        <ul class="rating alignright">
+                                                                        <ul class="rating">
                                                                             
                                                                             <% (1..product.average_stars).each do |star| %>
                             
@@ -448,6 +450,7 @@
                                                         <div class="nowrap-ellipsis">
                                                             
                                                             <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                            <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                         
                                                         </div>
         
@@ -459,7 +462,7 @@
     
                                                                 <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                 
-                                                                <ul class="rating alignright">
+                                                                <ul class="rating">
                                                                     
                                                                     <% (1..product.average_stars).each do |star| %>
                     
@@ -472,9 +475,9 @@
                                                                 <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
                 
                                                             <% end %>
-                                                                
+                                                            
                                                             <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
-        
+                                                        
                                                         </div>
         
                                                         <p class="text-justify"><%= product.short_description %></p>

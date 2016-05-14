@@ -89,13 +89,14 @@
                                 <div class="left_side clearfix v_centered">
                                   
                                     <%= form_tag({controller: "manufacturer", action: "products"}, method: "get") do %>
-                              
+                                        <%= hidden_field_tag "number", params[:number] %>
+                                        
                                         <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
     
                                         <div class="v_centered">
                                             
                                             <span>Sắp xếp:</span>
-    
+
                                             <div class="sort_select">
                                                 
                                                 <select name="sort_group">
@@ -121,7 +122,8 @@
                                 <div class="right_side">
                                     
                                      <%= form_tag({controller: "manufacturer", action: "products"}, method: "get") do %>
-                                
+                                        <%= hidden_field_tag "sort_group", params[:sort_group] %>
+                                        
                                         <div class="v_centered mrg-show-category">
                                         
                                             <span>Hiển thị:</span>
