@@ -590,5 +590,8 @@ p.text-justifly {
 }
 .main_cat_menu.theme_menu > li > a {
     font-size: 16px;
-    padding: 9px 15px;
+    padding: 8px 15px;
+}
+.rev_slider {
+    height: 400px !important;
 }
