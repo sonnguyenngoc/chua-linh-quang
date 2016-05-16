@@ -118,17 +118,13 @@
 												
 												<div class="bottom alignright">
 												  
-												  <ul class="horizontal_list social_btns">
-													
-													<li>
-														<fb:login-button class="icon_btn middle_btn social_facebook tooltip_container" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-														<div id="status"></div>
-													</li>
-													<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
-													<li><a href="#" class="icon_btn middle_btn social_twitter tooltip_container"><i class="icon-twitter"></i><span class="tooltip top">Twitter</span></a></li>
-													<li><a href="#" class="icon_btn middle_btn social_googleplus tooltip_container"><i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span></a></li>
-										
-												</ul><!--/ .horizontal_list.wrapper.social_btns-->
+													<ul class="horizontal_list social_btns">
+														
+														<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
+														<li><a href="#" class="icon_btn middle_btn social_twitter tooltip_container"><i class="icon-twitter"></i><span class="tooltip top">Twitter</span></a></li>
+														<li><a href="#" class="icon_btn middle_btn social_googleplus tooltip_container"><i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span></a></li>
+											
+													</ul><!--/ .horizontal_list.wrapper.social_btns-->
 											  
 												</div>
 												
