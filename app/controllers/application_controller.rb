@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
     if session[:user_return_to] == nil
-      login_path
+      my_account_path
     else
       super
     end
@@ -64,11 +64,4 @@ class ApplicationController < ActionController::Base
     @current_area = Area.where(id: session[:current_area_id]).first()
     @current_area = Area.new(name: "Tất cả khu vực") if @current_area.nil?
   end
-  
-  private
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
-  
-  helper_method :current_user
 end

@@ -272,5 +272,7 @@ Devise.setup do |config|
   
   config.omniauth :facebook, "1163981356967459", "e03c6197ee7211687558bf58a406cf31"
   
+  config.omniauth :google_oauth2, "923656642887-dhke6vl8cipcs4kquffagisid6knom3b.apps.googleusercontent.com", "DwihIQqCxgGzAXy27e98BqqH"
+  
 end
 
