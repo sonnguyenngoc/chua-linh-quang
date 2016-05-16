@@ -417,13 +417,13 @@ ul > li > .def_icon_btn.middle_btn {
 .page_with_main_nav .breadcrumbs {
     margin-bottom: 25px;
 }
-.main_cat_menu.theme_menu > li > a {
+/*.main_cat_menu.theme_menu > li > a {
     border: 0;
     border-radius: 0;
     color: #fff;
     background: #3a4950;
-}
-.main_cat_menu .mega_menu {
+}*/
+/*.main_cat_menu .mega_menu {
     margin-left: 0;
 }
 .main_cat_menu > li:hover > a,
@@ -433,7 +433,7 @@ ul > li > .def_icon_btn.middle_btn {
     color: #fff;
     background: #018bc8;
     border-color: #018bc8;
-}
+}*/
 .search_category_box h4{
     margin: 0;
     padding: 13px 10px 8px 10px;
@@ -587,4 +587,11 @@ p.text-justifly {
 }
 .current_area_size {
     white-space: nowrap;
+}
+.main_cat_menu.theme_menu > li > a {
+    font-size: 16px;
+    padding: 8px 15px;
+}
+.rev_slider {
+    height: 380px !important;
 }
