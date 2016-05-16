@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Home title:</strong>
+  <%= @option.home_title %>
+</p>
+
+<p>
+  <strong>Home meta keywords:</strong>
+  <%= @option.home_meta_keywords %>
+</p>
+
+<p>
+  <strong>Home meta description:</strong>
+  <%= @option.home_meta_description %>
+</p>
+
+<%= link_to 'Edit', edit_option_path(@option) %> |
+<%= link_to 'Back', options_path %>

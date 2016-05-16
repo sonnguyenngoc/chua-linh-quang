@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
@@ -230,6 +229,7 @@ Rails.application.routes.draw do
         end
       end
       resources :companies
+      resources :options
       resources :code_statuses do
         collection do
           get 'search'

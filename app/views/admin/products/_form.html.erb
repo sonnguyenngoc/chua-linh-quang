@@ -122,6 +122,20 @@
                         </select>
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :meta_keywords, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:meta_description) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
                     
                 <div class="text-right">
                     <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514031109) do
+ActiveRecord::Schema.define(version: 20160516090119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(version: 20160514031109) do
   create_table "article_categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "level"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
   end
 
   create_table "article_categories_articles", force: :cascade do |t|
@@ -58,6 +60,8 @@ ActiveRecord::Schema.define(version: 20160514031109) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "code_status_id"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
   end
 
   create_table "articles_products", force: :cascade do |t|
@@ -78,9 +82,11 @@ ActiveRecord::Schema.define(version: 20160514031109) do
     t.string   "name"
     t.integer  "level"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "ordered"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
   end
 
   create_table "categories_products", force: :cascade do |t|
@@ -221,9 +227,19 @@ ActiveRecord::Schema.define(version: 20160514031109) do
 
   create_table "newsletters", force: :cascade do |t|
     t.string   "email"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "status",     default: true
+  end
+
+  create_table "options", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean  "status"
+    t.string   "code"
+    t.string   "tag"
+    t.text     "value"
+    t.text     "note"
+    t.string   "title"
   end
 
   create_table "order_deliveries", force: :cascade do |t|
@@ -312,6 +328,8 @@ ActiveRecord::Schema.define(version: 20160514031109) do
     t.text     "status"
     t.decimal  "old_price"
     t.decimal  "discount_percent"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
   end
 
   create_table "questions", force: :cascade do |t|
