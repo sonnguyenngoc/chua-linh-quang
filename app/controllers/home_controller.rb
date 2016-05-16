@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @title_head = "Trang chủ"
+    @title_head = "Mua bán, phân phối sản phẩm sạch, món ngon"
     @lastest_blog_posts = Article.get_lastest_blog_posts
   end
   

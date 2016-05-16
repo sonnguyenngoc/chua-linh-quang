@@ -43,6 +43,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'therubyracer'
+gem 'omniauth-digitalocean'
 gem 'mini_magick'
 gem 'carrierwave'
 gem "devise"
@@ -52,5 +54,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'dotenv-rails', :groups => [:development, :test]
