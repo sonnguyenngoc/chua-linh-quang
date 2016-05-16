@@ -141,6 +141,24 @@
 											<% end %>
 
 											<button class="button_grey_2 icon_btn middle_btn open_qv"><i class="icon-resize-full-6"></i></button>
+											
+											<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+											
+											<% if @product.is_deal? %>
+												
+												<% if !@product.discount_percent.nil? or !product.discount_percent == 0 %>
+													
+													<div class="label_offer percentage">
+							
+														<div><%= @product.discount_percent.to_i %>%</div>OFF
+							
+													</div>
+													
+												<% end %>
+												
+											<% end %>
+							
+											<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 
 										</div><!--/ .image_preview_container-->
 
@@ -304,8 +322,16 @@
 										</div>
 
 										<hr>
+										
+										<% if @product.is_deal? %>
+											
+											<p class="product_price"><s><%= format_number(@product.old_price) %> đ</s> <b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+											
+										<% elsif %>
 
-										<p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+											<p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+										
+										<% end %>
 
 										<!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
 
@@ -801,6 +827,34 @@
 																		</div><!--/ .actions_wrap-->
 																		
 																		<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+																		
+																		<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+											
+																		<% if product.is_deal? %>
+																			
+																			<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
+																				
+																				<div class="label_offer percentage">
+														
+																					<div><%= product.discount_percent.to_i %>%</div>OFF
+														
+																				</div>
+																				
+																			<% end %>
+																			
+																		<% end %>
+											
+																		<% if product.is_new? %>
+																			
+																			<div class="label_new">
+													
+																				<div>Mới</div>
+													
+																			</div>
+																			
+																		<% end %>
+														
+																		<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 							
 																	</div><!--/. image_wrap-->
 							
@@ -817,8 +871,34 @@
 																		</div>
 																		
 																		<div class="clearfix product_info">
-							
-																			<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+																			
+																			<% if product.is_deal? %>
+																				
+																				<p class="product_price alignleft"><s><%= format_number(product.old_price) %> đ</s> <b><%= format_number(product.price) %> đ</b></p>
+																			
+																			<% elsif %>
+																				
+																				<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+																			
+																			<% end %>
+																			
+																			<% if product.count_stars.length > 0 %>
+				
+																				<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+																				
+																				<ul class="rating alignright">
+																					
+																					<% (1..product.average_stars).each do |star| %>
+									
+																						<li class="active"></li>
+																					
+																					<% end %>
+									
+																				</ul>
+																					
+																				<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+								
+																			<% end %>
 							
 																		</div>
 							
@@ -885,6 +965,34 @@
 																</div><!--/ .actions_wrap-->
 																
 																<!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+																
+																<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+											
+																<% if product.is_deal? %>
+																	
+																	<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
+																		
+																		<div class="label_offer percentage">
+												
+																			<div><%= product.discount_percent.to_i %>%</div>OFF
+												
+																		</div>
+																		
+																	<% end %>
+																	
+																<% end %>
+																
+																<% if product.is_new? %>
+																			
+																	<div class="label_new">
+											
+																		<div>Mới</div>
+											
+																	</div>
+																	
+																<% end %>
+												
+																<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 					
 															</div><!--/. image_wrap-->
 					
@@ -902,7 +1010,33 @@
 																
 																<div class="clearfix product_info">
 					
-																	<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+																	<% if product.is_deal? %>
+																				
+																		<p class="product_price alignleft"><s><%= format_number(product.old_price) %> đ</s> <b><%= format_number(product.price) %> đ</b></p>
+																	
+																	<% elsif %>
+																		
+																		<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+																	
+																<% end %>
+																
+																<% if product.count_stars.length > 0 %>
+            
+																	<!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+																	
+																	<ul class="rating alignright">
+																		
+																		<% (1..product.average_stars).each do |star| %>
+						
+																			<li class="active"></li>
+																		
+																		<% end %>
+						
+																	</ul>
+																		
+																	<!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+					
+																<% end %>
 					
 																</div>
 					

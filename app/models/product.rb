@@ -200,6 +200,18 @@ class Product < ActiveRecord::Base
     return average
   end
   
+  def has_status?(status)
+    statuses.include?(status)
+  end
+  
+  def is_deal?
+    has_status?("deal")
+  end
+  
+  def is_new?
+    has_status?("new")
+  end
+  
   private
     # ensure that there are no line items referencing this product
     def ensure_not_referenced_by_any_line_item

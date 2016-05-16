@@ -29,6 +29,11 @@ $(document).ready(function () {
         $(this).parents("form").submit();
     });
     
+    // events when changing anything in filter box
+    $(".v_centered .show_select select").change(function() {
+        $(this).parents("form").submit();
+    });
+    
     // update website layout
     update_layout();
 });
