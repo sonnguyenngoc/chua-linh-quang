@@ -590,4 +590,5 @@ p.text-justifly {
 }
 .main_cat_menu.theme_menu > li > a {
     font-size: 16px;
+    padding: 7px 15px;
 }
