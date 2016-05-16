@@ -182,6 +182,11 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
+      resources :users do
+        collection do
+          get 'search'
+        end
+      end
       resources :questions do
         collection do
           get 'search'

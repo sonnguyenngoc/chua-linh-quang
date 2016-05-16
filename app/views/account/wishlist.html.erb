@@ -89,7 +89,15 @@
 												
 												<td data-title="Product Image">
 													
-													<%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product_id } %>
+													<% if item.product.get_main_image.present? %>
+																			
+														<%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product_id } %>
+													
+													<% else %>
+														
+														<img src="/frontend/images/small_image.png" alt="">
+													
+													<% end %>
 		
 												</td>
 		

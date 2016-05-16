@@ -58,25 +58,35 @@
                     <div class="filter-box">
                         <%= form_for("", url: {controller: 'orders', action: 'search'}, method: "get") do |f| %>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="" >Customer</label>
+                                        <label class="" ><%= t(:customer) %></label>
                                         <div>
                                             <%= select_tag(:customer_id, options_for_select(Customer.all.collect {|c| [c.name,c.id]}, params[:customer_id]), include_blank: "All", class: "select") %>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="" >Product</label>
+                                        <label class="" ><%= t(:user) %></label>
                                         <div>
-                                            <%= select_tag(:product_id, options_from_collection_for_select(Product.all, :id, :name, :selected => params[:product_id]), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:user_id, options_for_select(User.all.collect {|u| [u.email,u.id]}, params[:user_id]), include_blank: "All", class: "select") %>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:product) %></label>
+                                        <div>
+                                            <%= select_tag(:product_id, options_from_collection_for_select(Product.all.order("name"), :id, :name, :selected => params[:product_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-2">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >From Date</label>
+                                        <label class="" ><%= t(:from_date) %></label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="icon-calendar"></i></span>
                                             <input type="text" class="form-control pickadate-accessibility date-select" name="from_date" value="<%= params[:from_date] %>" placeholder="From date&hellip;">
@@ -85,15 +95,13 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >To Date</label>
+                                        <label class="" ><%= t(:to_date) %></label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="icon-calendar"></i></span>
                                             <input type="text" class="form-control pickadate-accessibility date-select" name="to_date" value="<%= params[:to_date] %>" placeholder="From date&hellip;">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row row-2">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_by) %></label>

@@ -311,8 +311,8 @@ label.error {
     margin-top: 10px;
 }
 .description_section_2:not(:last-child) {
-    float: left;
-    margin-left: 55px;
+    float: right;
+    /*margin-left: 55px;*/
 }
 .single_product_description .buttons_row {
     clear: both;
@@ -587,6 +587,17 @@ p.text-justifly {
 }
 .current_area_size {
     white-space: nowrap;
+}
+.image_preview_container div.percentage {
+    border-radius: 5px;
+}
+s {
+    font-weight: 200;
+    color: #b2b2b2;
+    font-size: 14px;
+}
+.home_main_margin_top {
+    margin-top: 25px;
 }
 .main_cat_menu.theme_menu > li > a {
     font-size: 16px;

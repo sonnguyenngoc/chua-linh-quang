@@ -213,6 +213,34 @@
                                                                 </div><!--/ .actions_wrap-->
                                                                 
                                                                 <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+                                                                
+                                                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+											
+                                                                <% if product.is_deal? %>
+                                                                    
+                                                                    <% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
+                                                                        
+                                                                        <div class="label_offer percentage">
+                                                
+                                                                            <div><%= product.discount_percent.to_i %>%</div>OFF
+                                                
+                                                                        </div>
+                                                                        
+                                                                    <% end %>
+                                                                    
+                                                                <% end %>
+                                    
+                                                                <% if product.is_new? %>
+                                                                    
+                                                                    <div class="label_new">
+                                            
+                                                                        <div>Mới</div>
+                                            
+                                                                    </div>
+                                                                    
+                                                                <% end %>
+                                                
+                                                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
                 
                                                             </div><!--/. image_wrap-->
                 
@@ -229,9 +257,17 @@
                                                                 </div>
                 
                                                                 <div class="clearfix product_info">
-                
-                                                                    <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
-                
+                                                                    
+                                                                    <% if product.is_deal? %>
+                                                                        
+                                                                        <p class="product_price alignleft"><s><% format_number(product.old_price) %></s> <b><%= format_number(product.price) %> đ</b></p>
+                                                                    
+                                                                    <% else %>
+                                                                        
+                                                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+                                                                    
+                                                                    <% end %>
+                                                                
                                                                     <% if product.count_stars.length > 0 %>
         
                                                                         <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
@@ -265,8 +301,16 @@
                                                                     <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
                                                                 
                                                                 </div>
+                                                                
+                                                                <% if product.is_deal? %>
                 
-                                                                <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+                                                                    <p class="product_price bold"><s><%= format_number(product.old_price) %> đ</s><%= format_number(product.price) %> đ</p>
+                                                                    
+                                                                <% else %>
+                                                                    
+                                                                    <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+                                                                
+                                                                <% end %>
                 
                                                                 <div class="v_centered product_reviews">
                 
@@ -364,13 +408,41 @@
         
                                                             </div><!--/ .centered_buttons -->
         
-                                                            <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
+                                                            <a href="#" class="color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
         
-                                                            <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+                                                            <a href="#" class="color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
         
                                                         </div><!--/ .actions_wrap-->
                                                         
                                                         <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+                                                        
+                                                        <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+											
+                                                        <% if product.is_deal? %>
+                                                            
+                                                            <% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
+                                                                
+                                                                <div class="label_offer percentage">
+                                        
+                                                                    <div><%= product.discount_percent.to_i %>%</div>OFF
+                                        
+                                                                </div>
+                                                                
+                                                            <% end %>
+                                                            
+                                                        <% end %>
+                            
+                                                        <% if product.is_new? %>
+                                                            
+                                                            <div class="label_new">
+                                    
+                                                                <div>Mới</div>
+                                    
+                                                            </div>
+                                                            
+                                                        <% end %>
+                                        
+                                                        <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
         
                                                     </div><!--/. image_wrap-->
         
@@ -387,9 +459,17 @@
                                                         </div>
         
                                                         <div class="clearfix product_info">
-        
-                                                            <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
-        
+                                                            
+                                                            <% if product.is_deal? %>
+                
+                                                                <p class="product_price alignleft"><s><%= format_number(product.old_price) %> đ</s> <b><%= format_number(product.price) %> đ</b></p>
+                                                                
+                                                            <% else %>
+                                                                
+                                                                <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+                                                            
+                                                            <% end %>
+                                                        
                                                             <% if product.count_stars.length > 0 %>
 
                                                                 <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
@@ -421,10 +501,9 @@
                                                         <div class="nowrap-ellipsis">
                                                             
                                                             <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                            <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                         
                                                         </div>
-        
-                                                        <p class="product_price bold"><%= format_number(product.price) %> đ</p>
         
                                                         <div class="v_centered product_reviews">
         
@@ -432,7 +511,7 @@
 
                                                                 <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                 
-                                                                <ul class="rating alignright">
+                                                                <ul class="rating">
                                                                     
                                                                     <% (1..product.average_stars).each do |star| %>
                     
@@ -457,8 +536,17 @@
                                                     <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
     
                                                     <div class="actions">
-        
-                                                        <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+                                                        
+                                                        <% if product.is_deal? %>
+                
+                                                            <p class="product_price bold"><s><%= format_number(product.old_price) %> đ</s> <%= format_number(product.price) %> đ</p>
+                                                            
+                                                        <% else %>
+                                                            
+                                                            <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+                                                        
+                                                        <% end %>
+                                                        
         
                                                         <ul class="buttons_col">
                                                             

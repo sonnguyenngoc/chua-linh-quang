@@ -102,7 +102,9 @@
             <li>
                 <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
                 <ul>
-                    <li><%= link_to t(:users), "" %></li>
+                    <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
+                        <%= link_to t(:users), admin_users_path %>
+                    </li>
                 </ul>
             </li>
             <li>

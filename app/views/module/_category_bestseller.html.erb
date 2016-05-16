@@ -24,7 +24,15 @@
                 
                                 <div class="clearfix product_info">
                 
-                                    <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+									<% if product.is_deal? %>
+																				
+										<p class="product_price alignleft"><s><%= format_number(product.old_price) %></s> <b><%= format_number(product.price) %> đ</b></p><br/>
+									
+									<% elsif %>
+										
+										<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+									
+									<% end %>
                 
                                     <% if product.count_stars.length > 0 %>
             
@@ -74,7 +82,15 @@
         
                         <div class="clearfix product_info">
         
-                            <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+                            <% if product.is_deal? %>
+																				
+								<p class="product_price alignleft"><s><%= format_number(product.old_price) %></s> <b><%= format_number(product.price) %> đ</b></p><br/>
+							
+							<% elsif %>
+								
+								<p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p><br/>
+							
+							<% end %>
         
                             <% if product.count_stars.length > 0 %>
     

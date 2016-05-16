@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold"><%= t(:comment_question) %></span></h4>
+                        <h4><span class="text-semibold">Tài khoản người dùng</span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_comments_path %>"><%= t(:comment_question) %></a></li>
-                        <li class="active"><%= t(:comments) %></li>
+                        <li><a href="<%= admin_comments_path %>">Người dùng</a></li>
+                        <li class="active">Danh sách người dùng</li>
                     </ul>
                 </div>
             </div>
@@ -52,31 +52,13 @@
                 <div class="panel panel-flat">
                     
                     <div class="filter-box">
-                        <%= form_for("", url: {controller: 'comments', action: 'search'}, method: "get") do |f| %>
+                        <%= form_for("", url: {controller: "users", action: "index"}, method: "get") do |f| %>
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" ><%= t(:product) %></label>
-                                        <div>
-                                            <%= select_tag(:product_id, options_from_collection_for_select(Product.all, :id, :name, :selected => params[:product_id]), include_blank: "All", class: "select") %>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="" ><%= t(:article) %></label>
-                                        <div>
-                                            <%= select_tag(:article_id, options_from_collection_for_select(Article.all, :id, :title, :selected => params[:article_id]), include_blank: "All", class: "select") %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row-2">
-                                 <div class="col-md-3">
-                                    <div class="form-group">
                                         <label class="" ><%= t(:sort_by) %></label>
                                         <div>
-                                            <%= select_tag(:sort_by, options_for_select(Comment.sort_by, :selected => params[:sort_by]), class: "select") %>
+                                            <%= select_tag(:sort_by, options_for_select(User.sort_by, :selected => params[:sort_by]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +66,7 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_order) %></label>
                                         <div>
-                                            <%= select_tag(:sort_order, options_for_select(Comment.sort_order, :selected => params[:sort_order]), class: "select") %>
+                                            <%= select_tag(:sort_order, options_for_select(User.sort_order, :selected => params[:sort_order]), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -104,36 +86,31 @@
                     <table class="table">
                         <thead>
                             <tr class="bg-teal-800">
-                                <th><%= t(:customer_name) %></th>
-                                <th><%= t(:product_name) %></th>
-                                <th><%= t(:content) %></th>
-                                <th><%= t(:rating) %></th>
-                                <th><%= t(:user) %></th>
+                                <th><%= t(:user_name) %></th>
+                                <th><%= t(:email) %></th>
+                                <th><%= t(:phone_number) %></th>
+                                <th><%= t(:address) %></th>
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% @comments.each do |item| %>
+                            <% @users.each do |user| %>
                                 <tr>
                                     <td>
-                                        <%= item.name %>
+                                        <%= user.first_name + ' ' + user.last_name %>
                                     </td>
                                     <td>
-                                        <%= item.product.name %>
+                                        <%= user.email %>
                                     </td>
                                     <td>
-                                        <%= item.content %>
+                                        <%= user.phone %>
                                     </td>
                                     <td>
-                                        <%= item.star %> <%= t(:star) %>
+                                        <b>Add1: </b><%= truncate(user.address_1, length: 40) %> </br>
+                                        <b>Add2: </b><%= truncate(user.address_2, length: 40) %>
                                     </td>
-                                    <td>
-                                        <% if !item.user_id.nil? %>
-                                            <%= item.user.short_name %>
-                                        <% end %>
-                                    </td>
-                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <ul class="icons-list">
                                             <li class="dropdown">
@@ -143,7 +120,10 @@
                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i>Sửa'.html_safe %>
+                                                    </li>
+                                                    <li>
+                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, user], method: :delete, data: {confirm: t(:confirm_delete)} %>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -155,9 +135,9 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @comments %></div>
+                            <div class="dataTables_info" ><%= page_entries_info @users %></div>
                             <div class="dataTables_paginate paging_simple_numbers">
-                                <%= will_paginate @comments, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                                <%= will_paginate @users, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                             </div>
                         </div>
                     </div>

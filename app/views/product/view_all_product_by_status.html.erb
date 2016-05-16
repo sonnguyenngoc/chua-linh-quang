@@ -249,7 +249,7 @@
                                                     </div><!--/ .actions_wrap-->
 
                                                     <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-                                                    <% if params[:st] == "deal" %>
+                                                    <% if product.is_deal? %>
 												
                                                         <% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
                                             
@@ -267,7 +267,7 @@
                                                         
                                                     <% end %>
                                                     
-                                                    <% if params[:st] == "new" %>
+                                                    <% if product.is_new? %>
 												
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
                                                         
@@ -297,7 +297,7 @@
     
                                                     <div class="clearfix product_info">
     
-                                                        <% if params[:st] == "deal" %>
+                                                        <% if product.is_deal? %>
                                         
                                                             <p class="product_price alignleft"><s><%= format_number(product.old_price) %>đ</s> <b><%= format_number(product.price) %> đ</b></p>
                                                             
@@ -374,7 +374,7 @@
     
                                                 <div class="actions">
     
-                                                    <% if params[:st] == "deal" %>
+                                                    <% if product.is_deal? %>
                                         
                                                         <p class="product_price bold"><s><%= format_number(product.old_price) %>đ</s> <%= format_number(product.price) %> đ</p>
                                                         
@@ -386,7 +386,7 @@
     
                                                     <ul class="buttons_col">
                                                         
-                                                        <li><%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart btn_add_to_cart_list_view" %></li>
+                                                        <%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category add_to_cart_button" %>
                                                         
                                                         <% if current_user.present? %>
                                                             

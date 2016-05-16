@@ -93,6 +93,34 @@
 					<img id="img_zoom" data-zoom-image="/frontend/images/big_image.png" src="/frontend/images/large_image.png" alt="">
 				
 				<% end %>
+			
+				<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+											
+				<% if @product.is_deal? %>
+					
+					<% if !@product.discount_percent.nil? or !@product.discount_percent == 0 %>
+						
+						<div class="label_offer percentage">
+
+							<div><%= @product.discount_percent.to_i %>%</div>OFF
+
+						</div>
+						
+					<% end %>
+					
+				<% end %>
+
+				<% if @product.is_new? %>
+					
+					<div class="label_new">
+
+						<div>Mới</div>
+
+					</div>
+					
+				<% end %>
+
+				<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 
 			</div><!--/ .image_preview_container-->
 
@@ -253,7 +281,15 @@
 
 			<hr>
 
-			<p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+			<% if @product.is_deal? %>
+																				
+				<p class="product_price"><s><%= format_number(@product.old_price) %> đ</s> <b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+			
+			<% elsif %>
+				
+				<p class="product_price"><b class="theme_color"><%= format_number(@product.price) %> đ</b></p>
+			
+			<% end %>
 
 			<!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
 
