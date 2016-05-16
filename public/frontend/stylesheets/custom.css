@@ -588,3 +588,6 @@ p.text-justifly {
 .current_area_size {
     white-space: nowrap;
 }
+.main_cat_menu.theme_menu > li > a {
+    font-size: 18px;
+}
