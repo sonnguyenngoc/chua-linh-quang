@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
                     provider:access_token.provider,
                     email: data["email"],
                     uid: access_token.uid,
-                    oauth_token = access_token.credentials.token
-                    oauth_expires_at = Time.at(access_token.credentials.expires_at)
+                    oauth_token = access_token.credentials.token,
+                    oauth_expires_at = Time.at(access_token.credentials.expires_at),
                     password: Devise.friendly_token[0,20],
                 )
             end
