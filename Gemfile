@@ -56,5 +56,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'dotenv-rails', :groups => [:development, :test]

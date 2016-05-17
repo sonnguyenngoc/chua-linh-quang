@@ -151,6 +151,10 @@ class Article < ActiveRecord::Base
     self.tags.split(",")
   end
   
+  def self.get_meta_keywords(params)
+    self.where(id: params[:article_category_id])
+  end
+  
   def self.get_keyword_article
       self.all.joins(:code_status).where(code_statuses: { title: 'keywords' }).first 
   end

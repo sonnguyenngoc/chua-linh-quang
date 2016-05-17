@@ -1,10 +1,12 @@
 class ProductController < ApplicationController
     def category
-        @title_head = "Trang chuyên mục"
         @category = Category.find(params[:category_id])
         @products = @category.get_products_for_categories(params).paginate(:page => params[:page], :per_page => params[:number])
         @areas = Area.get_all_areas
         @manufacturers = Manufacturer.get_all_manufacturers
+        @title_head = @category.name
+        @META_KEYWORDS = @category.meta_keywords
+        @META_DESCRIPTION = @category.meta_description
     end
     
     def all_category
@@ -12,11 +14,12 @@ class ProductController < ApplicationController
     end
     
     def product
-        @title_head = "Trang sản phẩm"
         @product = Product.find(params[:product_id])
         @comment = Comment.new
         @question = Question.new
-        #@line_items = LineItem.all
+        @title_head = @product.name
+        @META_KEYWORDS = @product.meta_keywords
+        @META_DESCRIPTION = @product.meta_description
     end
     
     def quick_view

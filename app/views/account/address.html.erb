@@ -61,9 +61,9 @@
                                     
 									<td class="text-left">
 										
-										<%= current_user.first_name + ' ' + current_user.last_name %><br/>
+										<%= current_user.first_name.to_s + " " + current_user.last_name.to_s %><br/>
 										
-										<%= current_user.address_1 + ', ' + current_user.area.name + ', ' + current_user.country + '.' %>
+										<%= current_user.address_1.to_s + ', ' + current_user.area.name.to_s + ', ' + current_user.country.to_s + '.' %>
 									
 									</td>
                                     

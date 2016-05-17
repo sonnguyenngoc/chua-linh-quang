@@ -5,14 +5,18 @@ class BlogController < ApplicationController
   end
   
   def show
-    @title_head = "Chi tiết bài viết"
     @blog = Article.find(params[:blog_id])
     @comment = CommentArticle.new
+    @title_head = @blog.title
+    @META_KEYWORDS = @blog.meta_keywords
+    @META_DESCRIPTION = @blog.meta_description
   end
   
   def article_category
-    @title_head = "Chuyên mục bài viết"
     @article_category = ArticleCategory.find(params[:article_category_id])
     @blogs = @article_category.get_blogs_for_categories(params).paginate(:page => params[:page], :per_page => 3)
+    @title_head = @article_category.name
+    @META_KEYWORDS = @article_category.meta_keywords
+    @META_DESCRIPTION = @article_category.meta_description
   end
 end
