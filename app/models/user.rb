@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
                 return registered_user
             else
                 user = User.create(
-                    first_name: data["first_name "],
-                    last_name: data["last_name "],
+                    first_name: data["first_name"],
+                    last_name: data["last_name"],
                     provider:access_token.provider,
                     email: data["email"],
                     uid: access_token.uid,
