@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
             user.provider = auth.provider
             user.uid = auth.uid
             user.email = auth.info.email
-            user.first_name = auth.info.name
+            user.first_name = auth.info.first_name
+            user.last_name = auth.info.last_name
             user.oauth_token = auth.credentials.token
             user.oauth_expires_at = Time.at(auth.credentials.expires_at)
             user.password = Devise.friendly_token[0,20]
@@ -27,19 +28,23 @@ class User < ActiveRecord::Base
         data = access_token.info
         user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
         if user
-          return user
+            return user
         else
-          registered_user = User.where(:email => access_token.info.email).first
-          if registered_user
-            return registered_user
-          else
-            user = User.create(first_name: data["name"],
-              provider:access_token.provider,
-              email: data["email"],
-              uid: access_token.uid ,
-              password: Devise.friendly_token[0,20],
-            )
-          end
+            registered_user = User.where(:email => access_token.info.email).first
+            if registered_user
+                return registered_user
+            else
+                user = User.create(
+                    first_name: data["first_name "],
+                    last_name: data["last_name "],
+                    provider:access_token.provider,
+                    email: data["email"],
+                    uid: access_token.uid,
+                    oauth_token = access_token.credentials.token
+                    oauth_expires_at = Time.at(access_token.credentials.expires_at)
+                    password: Devise.friendly_token[0,20],
+                )
+            end
        end
     end
     
