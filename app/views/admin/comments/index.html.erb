@@ -31,7 +31,7 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold"><%= t(:comment_question) %></span></h4>
+                        <h4><span class="text-semibold"><%= t(:comments) %></span></h4>
                     </div>
                 </div>
             
@@ -64,16 +64,6 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" ><%= t(:article) %></label>
-                                        <div>
-                                            <%= select_tag(:article_id, options_from_collection_for_select(Article.all, :id, :title, :selected => params[:article_id]), include_blank: "All", class: "select") %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row-2">
-                                 <div class="col-md-3">
-                                    <div class="form-group">
                                         <label class="" ><%= t(:sort_by) %></label>
                                         <div>
                                             <%= select_tag(:sort_by, options_for_select(Comment.sort_by, :selected => params[:sort_by]), class: "select") %>
@@ -97,6 +87,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row row-2">
+                                
                             </div>
                         <% end %>
                     </div>
@@ -129,7 +122,7 @@
                                         <%= item.star %> <%= t(:star) %>
                                     </td>
                                     <td>
-                                        <% if !item.user_id.nil? %>
+                                        <% if !item.user.nil? %>
                                             <%= item.user.short_name %>
                                         <% end %>
                                     </td>

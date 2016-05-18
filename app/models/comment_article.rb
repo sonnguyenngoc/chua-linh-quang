@@ -31,7 +31,7 @@ class CommentArticle < ActiveRecord::Base
     
     #Search keyword filter
     if params[:keyword].present?
-        records = records.where("LOWER(comment_articles.content) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+        records = records.joins(:article).where("LOWER(CONCAT(comment_articles.content,' ',comment_articles.name,' ',articles.title)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
     end
     
     # for sorting
