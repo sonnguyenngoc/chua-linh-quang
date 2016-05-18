@@ -31,7 +31,7 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold"><%= t(:comment_question) %></span></h4>
+                        <h4><span class="text-semibold"><%= t(:comment_articles) %></span></h4>
                     </div>
                 </div>
             
@@ -115,8 +115,8 @@
                                         <%= item.content %>
                                     </td>
                                     <td>
-                                        <% if !item.user_id.nil? %>
-                                            <%= item.user.first_name + " " + item.user.last_name %>
+                                        <% if !item.user.nil? %>
+                                            <%= item.user.short_name %>
                                         <% end %>
                                     </td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
