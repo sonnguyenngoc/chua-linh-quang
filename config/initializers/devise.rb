@@ -270,7 +270,7 @@ Devise.setup do |config|
     manager.failure_app = CustomFailure
   end
   
-  config.omniauth :facebook, "1163981356967459", "e03c6197ee7211687558bf58a406cf31"
+  config.omniauth :facebook, "1238119839582178", "95c748070a2701da22e36e6ebd168208"
   
   config.omniauth :google_oauth2, "923656642887-dhke6vl8cipcs4kquffagisid6knom3b.apps.googleusercontent.com", "DwihIQqCxgGzAXy27e98BqqH", { }
   
