@@ -25,6 +25,8 @@ class CommentArticlesController < ApplicationController
   # POST /comment_articles.json
   def create
     @comment_article = CommentArticle.new(comment_article_params)
+    @comment_article.user_id = current_user.id if current_user.present?
+    @comment_article.parent_id = params[:parent_id] if params[:parent_id].present?
   
     respond_to do |format|
       if @comment_article.save
@@ -68,6 +70,6 @@ class CommentArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_article_params
-      params.require(:comment_article).permit(:name, :email, :content, :user_id, :article_id)
+      params.require(:comment_article).permit(:name, :email, :content, :user_id, :article_id, :parent_id)
     end
 end

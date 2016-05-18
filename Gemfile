@@ -59,3 +59,7 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'private_pub'
+gem 'thin'
+gem 'onliner'
+gem 'devise_lastseenable'

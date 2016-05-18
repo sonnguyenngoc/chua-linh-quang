@@ -3,13 +3,14 @@ class User < ActiveRecord::Base
     belongs_to :area, foreign_key: "province"
     has_many :wish_lists
     has_many :comments, dependent: :destroy
+    has_many :conversations, :foreign_key => :sender_id
     
     has_many :orders
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :omniauthable, :validatable,
-           :omniauthable
+           :omniauthable, :lastseenable
     
     def self.find_for_facebook(access_token, signed_in_resource=nil)
         data = access_token.info
@@ -87,6 +88,10 @@ class User < ActiveRecord::Base
         ]
     end
     
+    def self.display_name
+        self.first_name.to_s + " " + self.last_name.to_s
+    end
+    
     def self.search(params)
         records = self.all
         
@@ -101,5 +106,21 @@ class User < ActiveRecord::Base
         records = records.order("#{sort_by} #{sort_order}")
         
         return records
+    end
+    
+    def self.get_online_users
+        self.where("last_seen > ?", 2.minutes.ago )
+    end
+    
+    def saw
+        self.update_column(:last_seen, Time.now)
+    end
+    
+    def self.get_user
+        self.where("is_admin = ?", false)
+    end
+    
+    def self.get_online_admins
+        self.where("is_admin = ? and last_seen > ?", true, 2.minutes.ago)
     end
 end

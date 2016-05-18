@@ -4,9 +4,9 @@
 
     <ol class="comments-list">
         
-        <% if @blog.comment_articles.count > 0 %>
+        <% if @blog.comment_articles.get_comments.count > 0 %>
         
-            <% @blog.comment_articles.each do |comment| %>
+            <% @blog.comment_articles.get_comments.each do |comment| %>
     
                 <!-- - - - - - - - - - - - - - Comment (level 1) - - - - - - - - - - - - - - - - -->
         
@@ -40,9 +40,59 @@
         
                         <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
         
-                        <a href="#" class="button_grey icon_btn comment-reply-link"><i class="icon-reply-4"></i></a>
+                        <a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn comment-reply-link"><i class="icon-reply-4"></i></a>
         
                     </article>
+                    
+                    <% if comment.children.count > 0 %>
+                    
+                        <ol class="children">
+                            
+                            <% comment.children.each do |child| %>
+    
+                                <!-- - - - - - - - - - - - - - Comment (level 2) - - - - - - - - - - - - - - - - -->
+        
+                                <li class="comment">
+        
+                                    <article>
+        
+                                        <!-- - - - - - - - - - - - - - Avatar - - - - - - - - - - - - - - - - -->
+                                    
+                                        <div class="avatar">
+        
+                                            <img src="/frontend/images/comment_author_photo.jpg" alt="">
+        
+                                        </div>
+        
+                                        <!-- - - - - - - - - - - - - - End of avatar - - - - - - - - - - - - - - - - -->
+        
+                                        <!-- - - - - - - - - - - - - - Comment body - - - - - - - - - - - - - - - - -->
+        
+                                        <div class="comment-body">
+        
+                                            <header class="comment-meta">
+        
+                                                <h6 class="comment-author"><%= child.name %></h6>, <%= child.created_at.strftime("%d-%m-%Y") %>
+        
+                                            </header>
+        
+                                            <p class="text-justifly"><%= child.content %></p>
+        
+                                        </div>
+        
+                                        <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
+        
+                                    </article>
+        
+                                </li>
+        
+                                <!-- - - - - - - - - - - - - - End of comment (level 2) - - - - - - - - - - - - - - - - -->
+    
+                            <% end %>
+                            
+                        </ol>
+                        
+                    <% end %>
         
                 </li>
         

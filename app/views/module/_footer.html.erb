@@ -505,3 +505,76 @@
     <!-- - - - - - - - - - - - - - End footer section - - - - - - - - - - - - - - - - -->
 
 </footer>
+
+<div class="footer_register_box">
+    
+    <h5>Quý khách cần đăng nhập để chat với người quản trị.</h5>
+    
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
+
+		<ul>
+
+			<li>
+				
+				<label for="login_email">Địa chỉ email:</label>
+				
+				<%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
+			
+			</li>
+
+			<li>
+				
+				<label for="login_password">Mật khẩu:</label>
+				
+				<%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
+			
+			</li>
+
+			<li class="v_centered">
+				
+				<%= button_tag "Đăng nhập", class: "button_blue middle_btn"%>
+				
+				<%= link_to "Quên mật khẩu?", { controller: "account", action: "forgotten" }, class: "small_link" %>
+			
+			</li>
+
+		</ul>
+
+	<% end %>
+
+	<div class="streamlined">
+
+		<!--Social icon's list-->
+		<ul class="horizontal_list social_btns">
+
+			<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
+			<li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus tooltip_container" %></li>
+
+		</ul><!--/ .horizontal_list.wrapper.social_btns-->
+		<!--End social icon's list-->
+
+	</div><!--/ .streamlined-->
+
+</div>
+
+<script>
+    $(".botton_footer_register_box").click(function(){
+    
+        $(".footer_register_box").toggle();    
+        
+    });
+    
+    $(document).mouseup(function (e)
+    {
+        var container = $(".footer_register_box");
+        if (e.target.className != 'icon-comment' && !container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            container.hide();
+        }
+    });
+    
+    $(document).ready(function(){
+        $("#new_user").validate();
+    });
+</script>

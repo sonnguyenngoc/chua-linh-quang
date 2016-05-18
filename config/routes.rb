@@ -88,7 +88,10 @@ Rails.application.routes.draw do
     resources :comments
     resources :newsletters
     resources :contacts
-    devise_for :users, skip: :omniauth_callbacks, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
+    resources :conversations do
+      resources :messages
+    end
+    devise_for :users, skip: :omniauth_callbacks, controllers: { registrations: 'users/registrations', admin_registrations: 'admin/registrations', passwords: 'users/passwords' }
     resources :carts do
       collection do
         get "cart"

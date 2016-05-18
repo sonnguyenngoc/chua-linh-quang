@@ -1,15 +1,66 @@
 <div class="mobile_header mobile_element">
+  
   <div class="row">
+    
     <div class="col-xs-5" style="padding-right: 0">
+      
       <%= link_to image_tag("/frontend/images/dsvm_logo2.png", class: ""), home_path, class: "logo" %>
+    
     </div>
+    
     <div class="col-xs-7 text-right" style="padding-left: 0">
+      
       <a class="top_mobile_button main_menu" href="#">
+        
         <i class="icon-menu"></i>        
+      
       </a>
-      <a class="top_mobile_button menu_chat" href="#">
-        <i class="icon-comment"></i>
-      </a>
+      
+      <!--Conversation List-->
+      <% if user_signed_in? %>
+      
+        <a class="top_mobile_button menu_chat" href="#">
+          
+          <i class="icon-comment"></i>
+        
+        </a>
+        
+        <div class="mobile_top_menu conversation_list" style="display: none">
+  
+            <ul class="topbar_mobile">
+              
+                <% if Conversation.count != 0 %>
+                                            
+                    <% Conversation.all.each do |chat| %>
+  
+                        <li>
+                            
+                            <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class=""><b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %></b><br/>
+                                
+                                <p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
+                            
+                            </a>
+                        
+                        </li>
+                        
+                    <% end %>
+                
+                <% else %>
+                    
+                    <li>
+                            
+                        <a href="#"><b>Bạn chưa có cuộc trò chuyện nào...</b></a>
+                        
+                    <li>
+                
+                <% end %>
+            
+            </ul>
+            
+        </div>
+      
+      <% end %>
+      
       <a class="top_mobile_button menu_cart" href="<%= url_for(controller: "checkout", action: "shopping_cart") %>">
         <i class="icon-basket"></i>
         <% if @cart.line_items.count_items > 0 %>
@@ -75,6 +126,8 @@
         }
     });
     
+    
+    //
     $(document).on("click", ".customer_care_box h5 a", function(e){
         var box = $(".customer_care_box .menu_container");
         box.toggle();
@@ -97,6 +150,21 @@
     $(document).on("click", ".mobile_footer .menu_search_close", function(e){
         $(".mobile_footer .before_search").hide();
         $(".mobile_footer .after_search").show();
-    });   
+    });
+    
+    
+    $(document).on("click", ".top_mobile_button.menu_chat", function(e){
+        var box = $(".conversation_list");
+        box.toggle();
+    });    
+    $(document).mouseup(function (e)
+    {
+        var container = $(".conversation_list");
+        if (e.target.className != 'icon-comment' && !container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            container.hide();
+        }
+    });
 </script>
     
