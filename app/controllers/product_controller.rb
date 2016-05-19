@@ -1,6 +1,7 @@
 class ProductController < ApplicationController
     def category
         @category = Category.find(params[:category_id])
+        params[:number] = 15 if !params[:number].present?
         @products = @category.get_products_for_categories(params).paginate(:page => params[:page], :per_page => params[:number])
         @areas = Area.get_all_areas
         @manufacturers = Manufacturer.get_all_manufacturers
@@ -46,6 +47,7 @@ class ProductController < ApplicationController
     
     def search
         @title_head = "Kết quả tìm kiếm"
+        params[:number] = 15 if !params[:number].present?
         @products = Product.search(params).paginate(:page => params[:page], :per_page => params[:number])
     end
     
@@ -71,6 +73,7 @@ class ProductController < ApplicationController
         elsif params[:st] == "imported"
             @title_head = "Hàng nhập khẩu"
         end
+        params[:number] = 15 if !params[:number].present?
         @view_all_products = Product.get_all_product_by_status(params[:st]).paginate(:page => params[:page], :per_page => params[:number])
     end
     
