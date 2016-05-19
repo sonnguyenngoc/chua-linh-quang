@@ -170,7 +170,7 @@
         margin-top: 30px;
     }
     .home_infoblocks {
-        margin-top: 30px;
+        margin-top: 50px;
     }
     .page_wrapper {
         padding-bottom: 0;
@@ -212,7 +212,7 @@
         padding-bottom: 50px;
     }
     #footer {
-        margin-top: 20px;
+        /*margin-top: 20px;*/
     }
     .infoblock.type_2 .caption {
         line-height: 22px;
