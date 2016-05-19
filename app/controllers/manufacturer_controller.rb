@@ -7,6 +7,7 @@ class ManufacturerController < ApplicationController
   def products
     @title_head = "Sản phẩm thuộc thương hiệu"
     @manufacturer = Manufacturer.find(params[:manufacturer_id])
+    params[:number] = 15 if !params[:number].present?
     @products = Product.get_products_for_manufacturer(params).paginate(:page => params[:page], :per_page => params[:number])
   end
 end

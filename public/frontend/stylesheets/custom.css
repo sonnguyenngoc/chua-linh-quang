@@ -600,8 +600,10 @@ s {
     font-size: 16px;
     padding: 8px 15px;
 }
-.rev_slider {
-    height: 380px !important;
+@media (min-width: 768px) {
+    .rev_slider {
+        height: 380px !important;
+    }
 }
 ul li.comment_article_reply {
     margin-left: 2px;
@@ -653,4 +655,23 @@ p.style_chat {
     height: 350px;
     border: 3px solid #ddd;
     padding: 10px;
+}
+.home_infoblocks .button_dark_grey, .home_infoblocks  .button_black:hover {
+    background: #4ac4fa;
+}
+footer.bottom_box .button_grey {
+    float: right;
+    background: #0186c8;
+    font-size: 14px;
+    padding: 2px 10px;
+    color: #fff;
+}
+footer.bottom_box .button_grey:hover {
+    opacity: 0.8;
+}
+footer.bottom_box {
+    border: none;
+    background: none;
+    padding: 5px 0;
+    height: 35px;
 }

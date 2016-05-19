@@ -150,9 +150,9 @@ vi:
   #-------------------------------------
   payment_method: "Hình thức thanh toán"
   payment_methods: "Danh sách hình thức thanh toán"
-  new_delivery_method: "Tạo mới hình thức thanh toán"
+  new_payment_method: "Tạo mới hình thức thanh toán"
   edit_payment_method: "Chỉnh sửa hình thức thanh toán"
-  listing_delivery_methods: "Danh sách hình thức thanh toán"
+  listing_payment_methods: "Danh sách hình thức thanh toán"
   
   #-------------------------------------
   customer: "Khách hàng"

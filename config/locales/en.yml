@@ -150,9 +150,9 @@ en:
   #-------------------------------------
   payment_method: "Payment Method"
   payment_methods: "Payment Methods"
-  new_delivery_method: "New Payment Method"
+  new_payment_method: "New Payment Method"
   edit_payment_method: "Edit Payment Method"
-  listing_delivery_methods: "Listing Payment Methods"
+  listing_payment_methods: "Listing Payment Methods"
   
   #-------------------------------------
   customer: "Customer"
