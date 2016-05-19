@@ -111,8 +111,8 @@
         position: absolute;
         text-align: center;
         top: -12px;
-        margin-left: 15px;
-        width: 50px;
+        margin-left: -3px;
+        width: 35px;
     }
     .menu_cart .badge-info number {
         background: red;
