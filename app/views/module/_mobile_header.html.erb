@@ -58,7 +58,12 @@
             </ul>
             
         </div>
-      
+      <% else %>
+        <a class="top_mobile_button menu_chat" href="#">
+          
+          <i class="icon-comment"></i>
+        
+        </a>
       <% end %>
       
       <a class="top_mobile_button menu_cart" href="<%= url_for(controller: "checkout", action: "shopping_cart") %>">

@@ -656,7 +656,7 @@ p.style_chat {
     border: 3px solid #ddd;
     padding: 10px;
 }
-.button_dark_grey, .button_black:hover {
+.home_infoblocks .button_dark_grey, .home_infoblocks  .button_black:hover {
     background: #4ac4fa;
 }
 footer.bottom_box .button_grey {
