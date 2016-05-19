@@ -38,7 +38,7 @@
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_comments_path %>"><%= t(:comment_question) %></a></li>
+                        <li><a href="<%= admin_testimonials_path %>"><%= t(:comment_question) %></a></li>
                         <li class="active"><%= t(:testimonials) %></li>
                     </ul>
                 </div>
@@ -97,8 +97,8 @@
                             <% @testimonials.each do |item| %>
                                 <tr>
                                     <td>
-                                        <b><%= item.name %></b> </br>
-                                        <%= item.email %>
+                                        <b><%= link_to item.name, [:admin, item] %></b> </br>
+                                        <%= link_to item.email, [:admin, item] %>
                                     </td>
                                     <td>
                                       <%= item.city %>
@@ -116,7 +116,7 @@
                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i> View'.html_safe, {controller: "admin/testimonials", action: "show", id: item.id} %>
+                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i> View'.html_safe, [:admin, item] %>
                                                     </li>
                                                     <li>
                                                         <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
