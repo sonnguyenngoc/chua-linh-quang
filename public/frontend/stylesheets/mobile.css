@@ -35,7 +35,7 @@
     .top_mobile_button {
         padding: 8px 3px;
         font-size: 21px;
-        background: rgb(29, 161, 242);
+        background: #498ba4;
         color: #fff;
         width: 35px;
         height: 35px;
@@ -44,11 +44,14 @@
         display: inline-block;
         margin-left: 5px;
     }
+    .top_mobile_button.menu_chat {
+        background: #69d23a;
+    }
     .top_mobile_button.main_menu {
-        color: rgb(29, 161, 242);
+        color: #aaa;
         background: #fff;
         padding: 6px 0px;
-        border: solid 2px rgb(29, 161, 242);
+        border: solid 2px #aaa;
     }
     .top_mobile_button:hover {
         color: #fff;
