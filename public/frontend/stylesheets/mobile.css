@@ -227,13 +227,14 @@
     }
     .infoblock h5 {
         font-size: 13px;
+        line-height: 16px;
     }
     .infoblock.type_2 [class*="button"] {
         margin-top: 15px;
         padding: 5px 10px;
     }
     .infoblock.type_2 {
-        padding: 20px 10px;
+        padding: 10px 10px;
     }
     #footer .payments {
         display: none;
