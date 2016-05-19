@@ -48,17 +48,18 @@
         background: #69d23a;
     }
     .top_mobile_button.main_menu {
-        color: #aaa;
+        color: #dba820;
         background: #fff;
         padding: 6px 0px;
-        border: solid 2px #aaa;
+        border: solid 2px #dba820;
     }
     .top_mobile_button:hover {
         color: #fff;
         opacity: 0.8;
     }
     .top_mobile_button.main_menu:hover {
-        color: #666;
+        opacity: 0.8;
+        color: #dba820;
     }
     .top_mobile_button i {
         
