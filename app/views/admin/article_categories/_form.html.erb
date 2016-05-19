@@ -49,8 +49,8 @@
                     <p>
                         <div class="row-fluid">
                             <div class="checkbox">
-                              <%= check_box_tag 'article_category[parent_ids][]', article_category.id, @article_category.parent.include?(article_category), id: "article_category_#{article_category.id}", class: "styled-level-1" %>
-                              <%= f.label article_category.name, :for => "article_category_#{article_category.id}" %>
+                                <%= check_box_tag 'article_category[parent_ids][]', article_category.id, @article_category.parent.include?(article_category), id: "article_category_#{article_category.id}", class: "styled-level-1" %>
+                                <%= f.label article_category.name, :for => "article_category_#{article_category.id}" %>
                             </div>
                         </div>
                     </p>

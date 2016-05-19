@@ -228,6 +228,78 @@
     </li>
 
     <!-- - - - - - - - - - - - - - End google map - - - - - - - - - - - - - - - - -->
+    
+    <% if user_signed_in? %>
+        
+        <!-- - - - - - - - - - - - - - Member Online - - - - - - - - - - - - - - - - -->
+    
+        <li>
+    
+            <button class="icon_btn middle_btn member_online open_"><i class="icon-user-5"></i></button>
+    
+            <!--Location-->
+    
+            <section class="dropdown">
+    
+                <div class="animated_item">
+                    
+                    <% if current_user.is_admin == true %>
+    
+                        <h3 class="title">Thành viên đang online</h3>
+                        
+                    <% else %>
+                        
+                        <h3 class="title">Quản trị viên đang online</h3>
+                        
+                    <% end %>
+
+                </div><!--/ .animated_item-->
+                   
+                <div class="animated_item">
+                    
+                    <% if current_user.is_admin == true %>
+                    
+                        <% User.get_online_users.each do |user| %>
+                        
+                            <% if current_user.id == user.id %>
+                                
+                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
+                                
+                            <% else %>
+                                
+                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
+                                
+                            <% end %>
+                            
+                        <% end %>
+                    
+                    <% else %>
+                        
+                        <% User.get_online_admins.each do |user| %>
+                        
+                            <% if current_user.id == user.id %>
+                                
+                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
+                                
+                            <% else %>
+                                
+                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
+                                
+                            <% end %>
+                        
+                        <% end %>
+                        
+                    <% end %>
+    
+                </div><!--/ .animated_item-->
+    
+            </section><!--/ .dropdown-->
+        
+        </li>
+    
+        <!-- - - - - - - - - - - - - - End member online - - - - - - - - - - - - - - - - -->
+    
+    <% end %>
 
 </ul>
 

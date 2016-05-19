@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :get_cart
   include CompareList
   before_action :set_compare
+  before_action :user_saw
   before_filter :set_current_area
   before_action :set_current_area
   protect_from_forgery
@@ -63,5 +64,9 @@ class ApplicationController < ActionController::Base
   def set_current_area
     @current_area = Area.where(id: session[:current_area_id]).first()
     @current_area = Area.new(name: "Tất cả khu vực") if @current_area.nil?
+  end
+  
+  def user_saw
+    current_user.saw if current_user.present?
   end
 end

@@ -21,6 +21,8 @@
 		<% end %>
 
         <%= form_for @comment, html: {class: "type_2"} do |f| %>
+		
+			<%= hidden_field_tag 'parent_id' %>
             
             <% if current_user.present? %>
 																
@@ -31,6 +33,10 @@
             <%= f.hidden_field :article_id, value: @blog.id %>
             
             <ul>
+				
+				<li class="row comment_article_reply">
+					
+				</li>
 
                 <li class="row">
                     

@@ -68,21 +68,58 @@
 
                                 <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
                                 
-                                <!-- - - - - - - - - - - - - - Currency change - - - - - - - - - - - - - - - - -->
-
-                                <div class="alignright site_settings currency">
-
-                                    <span class="current open_">VND</span>
-
-                                    <ul class="dropdown site_setting_list">
-
-                                        <li class="animated_item"><a href="#">VND</a></li>
-
-                                    </ul>
-
-                                </div><!--/ .alignright.site_settings.currency-->
-
-                                <!-- - - - - - - - - - - - - - End of currency change - - - - - - - - - - - - - - - - -->
+                                <% if user_signed_in? %>
+                                
+                                    <!-- - - - - - - - - - - - - - Conversation - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="alignright site_settings">
+    
+                                        <span class="current open_"><i class="icon-comment"></i></span>
+                                        
+                                        <ul class="dropdown site_setting_list conversation">
+                                            
+                                            <% if Conversation.count != 0 %>
+                                            
+                                                <% Conversation.all.each do |chat| %>
+        
+                                                    <li class="animated_item">
+                                                        
+                                                        <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class=""><b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %></b><br/>
+                                                            
+                                                            <p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
+                                                        
+                                                        </a>
+                                                    
+                                                    </li>
+                                                    
+                                                <% end %>
+                                            
+                                            <% else %>
+                                                
+                                                <li class="animated_item">
+                                                        
+                                                    <a href="#"><b>Bạn chưa có cuộc trò chuyện nào...</b></a>
+                                                    
+                                                <li>
+                                            
+                                            <% end %>
+                                        
+                                        </ul>
+    
+                                    </div><!--/ .alignright.site_settings-->
+    
+                                    <!-- - - - - - - - - - - - - - End of conversation - - - - - - - - - - - - - - - - -->
+                                
+                                <% else %>
+                                    
+                                    <div class="alignright site_settings">
+    
+                                        <span class="botton_footer_register_box"><i class="icon-comment"></i></span>
+                                        
+                                    </div>
+                                
+                                
+                                <% end %>
 
                             </div><!--/ .clearfix-->
                             

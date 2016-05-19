@@ -174,7 +174,7 @@ input:not([type="submit"]), textarea, .active_option {
     color: #777777;
 }
 form ul > li:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 20px !important;
 }
 .quick_create_user_box  li.row {
     margin-bottom: 10px;
@@ -461,9 +461,6 @@ ul > li > .def_icon_btn.middle_btn {
 .search_category_box ul li {
     margin: 0;
 }
-form ul > li:not(:last-child) {
-    margin-bottom: 0;
-}
 .search_category_box ul li a {
     display: block;
     padding: 10px 10px;
@@ -605,4 +602,55 @@ s {
 }
 .rev_slider {
     height: 380px !important;
+}
+ul li.comment_article_reply {
+    margin-left: 2px;
+}
+ul li.comment_article_reply .comment-reply-link {
+    display: none;
+}
+.site_setting_list.conversation {
+    width: 250px;
+}
+.site_setting_list.conversation a {
+    padding: 10px 10px;
+}
+.site_setting_list.conversation {
+    max-height: 350px;
+    overflow: auto;
+}
+.conversation_list ul.topbar_mobile {
+    max-height: 300px;
+    overflow: auto;
+}
+.style_chat {
+    color: #888777;
+    font-weight: inherit
+}
+p.style_chat {
+    margin-bottom: 0px;
+}
+.member_online {
+    background-color: #00b359;
+}
+.member_online .icon-user-5 {
+    color: white;
+}
+.chatboxhead {
+    background: #4267b2 !important;
+}
+.chatboxhead h1 {
+    color: white;
+    padding-left: 64px;
+}
+.footer_register_box {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    width: 300px;
+    background: #fff;
+    height: 350px;
+    border: 3px solid #ddd;
+    padding: 10px;
 }

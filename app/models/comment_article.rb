@@ -2,6 +2,11 @@ class CommentArticle < ActiveRecord::Base
   validates :name, :email, :content, presence: true
   belongs_to :article
   belongs_to :user
+  has_many :children, class_name: "CommentArticle", foreign_key: :parent_id
+  
+  def self.get_comments
+    self.where("parent_id = -1")
+  end
   
   def self.sort_by
     [

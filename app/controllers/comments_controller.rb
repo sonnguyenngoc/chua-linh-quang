@@ -25,6 +25,8 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id if current_user.present?
+    
     respond_to do |format|
       if @comment.save
         format.html { redirect_to controller: "product", action: "product", product_id: @comment.product_id }

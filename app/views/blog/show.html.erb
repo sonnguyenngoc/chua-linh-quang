@@ -301,10 +301,21 @@
         
         $(document).ready(function(){
             $("#new_comment_article").validate();
-        });
-        $(document).ready(function(){
             $("#new_newsletter").validate();
+			
+			//
+			$(document).on('click', '.comment-reply-link', function(){
+				var value = $(this).attr("value");
+				$("input[name=parent_id]").val(value);
+				$(window).scrollTop($('#new_comment_article').offset().top-200);
+				
+				$(".comment_article_reply").html($(this).parents("article").html());
+			});
         });
+		
+		function addTextTag(text){
+			document.getElementById('parent_id').value == text;
+		}
 
     </script>
 </body>

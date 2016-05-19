@@ -1,37 +1,91 @@
-<%= form_for(@comment) do |f| %>
-  <% if @comment.errors.any? %>
+<% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @user.errors.full_messages.each do |message| %>
+                - <%= message %><br/>
+            <% end %>
+        </div>
     </div>
-  <% end %>
+<% end %>
 
-  <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.number_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :star %><br>
-    <%= f.number_field :star %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for [:admin, @user], html: {class: "form-horizontal"} do |f| %>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:first_name) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-5">
+            <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+        <label class="col-lg-2 control-label" ><%= t(:last_name) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-3">
+            <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:phone) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-5">
+            <%= f.text_field :phone, class: "form-control" %>
+        </div>
+        <label class="col-lg-2 control-label" ><%= t(:fax) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-3">
+            <%= f.text_field :fax, class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:company) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :company, class: "form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:address_1) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :address_1, class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:zip_code) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :zip_code, class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:country) %></label>
+        <div class="col-lg-10">
+            <%= f.select(:country, ['Việt Nam'], {}, { :class => 'select' })%>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:province) %></label>
+        <div class="col-lg-10">
+            <%= f.collection_select(:province, Area.get_list_province_city, :id, :name, {}, {class: "select"}) %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:is_admin) %></label>
+        <div class="col-lg-10">
+            <p>
+                <div class="row-fluid">
+                    <div class="checkbox">
+                        <%= check_box 'user', 'is_admin', {}, 'true', 'false' %>
+                        <label for="user_is_admin">Is Admin</label>
+                    </div>
+                </div>
+            </p>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_users_path, class: "btn btn-danger"%>
+    </div>
+    
 <% end %>
