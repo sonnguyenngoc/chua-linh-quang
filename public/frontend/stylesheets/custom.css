@@ -656,3 +656,16 @@ p.style_chat {
     border: 3px solid #ddd;
     padding: 10px;
 }
+.button_dark_grey, .button_black:hover {
+    background: #4ac4fa;
+}
+footer.bottom_box .button_grey {
+    background: none;
+    padding: 0;
+    text-align: right;
+    display: block;
+}
+
+footer.bottom_box .button_grey:hover {
+    color: #333;
+}
