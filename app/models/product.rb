@@ -152,6 +152,18 @@ class Product < ActiveRecord::Base
     return records
   end
   
+  def self.get_by_deal
+    records = self.all
+    records = records.where("products.status LIKE ?", "%#{'deal'}%")
+    return records
+  end
+  
+  def self.get_by_new
+    records = self.all
+    records = records.where("products.status LIKE ?", "%#{'new'}%")
+    return records
+  end
+  
   def self.get_all_product_by_status(status)
     records = self.all
     records = records.where("products.status LIKE ?", "%#{status}%")
@@ -210,6 +222,26 @@ class Product < ActiveRecord::Base
   
   def is_new?
     has_status?("new")
+  end
+  
+  def is_sold_out?
+    has_status?("sold_out")
+  end
+  
+  def display_is_new
+    display = ""
+    if is_new?
+      display = "Mới"
+    end
+    return display
+  end
+  
+  def display_is_sold_out
+    display = ""
+    if is_sold_out?
+      display = "Tạm hết hàng"
+    end
+    return display
   end
   
   private

@@ -228,13 +228,21 @@
                                                                         
                                                                     <% end %>
                                                                     
-                                                                <% end %>
-                                    
-                                                                <% if product.is_new? %>
+                                                                <% elsif product.is_new? %>
                                                                     
                                                                     <div class="label_new">
                                             
-                                                                        <div>Mới</div>
+                                                                        <div><%= product.display_is_new %></div>
+                                            
+                                                                    </div>
+                                                                    
+                                                                <% end %>
+                                                                
+                                                                <% if product.is_sold_out? %>
+                                                                    
+                                                                    <div class="lbl_right_soldout">
+                                            
+                                                                        <div><%= product.display_is_sold_out %></div>
                                             
                                                                     </div>
                                                                     
@@ -438,13 +446,21 @@
                                                                 
                                                             <% end %>
                                                             
-                                                        <% end %>
-                            
-                                                        <% if product.is_new? %>
+                                                        <% elsif product.is_new? %>
                                                             
                                                             <div class="label_new">
                                     
-                                                                <div>Mới</div>
+                                                                <div><%= product.display_is_new %></div>
+                                    
+                                                            </div>
+                                                            
+                                                        <% end %>
+                                                        
+                                                        <% if product.is_sold_out? %>
+                                                            
+                                                            <div class="lbl_right_soldout">
+                                    
+                                                                <div><%= product.display_is_sold_out %></div>
                                     
                                                             </div>
                                                             
