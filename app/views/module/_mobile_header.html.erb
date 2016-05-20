@@ -58,7 +58,12 @@
             </ul>
             
         </div>
-      
+      <% else %>
+        <a class="top_mobile_button menu_chat" href="#">
+          
+          <i class="icon-comment"></i>
+        
+        </a>
       <% end %>
       
       <a class="top_mobile_button menu_cart" href="<%= url_for(controller: "checkout", action: "shopping_cart") %>">
@@ -75,7 +80,7 @@
       <div class="customer_care_box">
         <h5>
           <a href="#search" class="care_open_button">
-            <i class="icon-phone"></i> Chăm sóc khách hàng
+            <i class="icon-phone" style="color: #ff7c00"></i> Chăm sóc khách hàng
           </a>
         </h5>
         

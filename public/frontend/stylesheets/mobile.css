@@ -35,7 +35,7 @@
     .top_mobile_button {
         padding: 8px 3px;
         font-size: 21px;
-        background: #555;
+        background: #498ba4;
         color: #fff;
         width: 35px;
         height: 35px;
@@ -44,18 +44,22 @@
         display: inline-block;
         margin-left: 5px;
     }
+    .top_mobile_button.menu_chat {
+        background: #69d23a;
+    }
     .top_mobile_button.main_menu {
-        color: #666;
+        color: #dba820;
         background: #fff;
         padding: 6px 0px;
-        border: solid 2px #aaa;
+        border: solid 2px #dba820;
     }
     .top_mobile_button:hover {
         color: #fff;
         opacity: 0.8;
     }
     .top_mobile_button.main_menu:hover {
-        color: #666;
+        opacity: 0.8;
+        color: #dba820;
     }
     .top_mobile_button i {
         
@@ -111,8 +115,8 @@
         position: absolute;
         text-align: center;
         top: -12px;
-        margin-left: 15px;
-        width: 50px;
+        margin-left: -3px;
+        width: 35px;
     }
     .menu_cart .badge-info number {
         background: red;
@@ -166,7 +170,7 @@
         margin-top: 30px;
     }
     .home_infoblocks {
-        margin-top: 30px;
+        margin-top: 50px;
     }
     .page_wrapper {
         padding-bottom: 0;
@@ -202,9 +206,13 @@
     }
     .footer_section {
         padding-top: 25px;
+        display: none;
+    }
+    .front_page #footer {
+        padding-bottom: 50px;
     }
     #footer {
-        padding-bottom: 50px;
+        /*margin-top: 20px;*/
     }
     .infoblock.type_2 .caption {
         line-height: 22px;
@@ -212,5 +220,30 @@
     }
     .row .home_intro_box:nth-child(3), .home_intro_box:nth-child(4), .home_intro_box:nth-child(5), .home_intro_box:nth-child(6)  {
         margin-top: 30px !important;
+    }
+    .infoblock.type_2 i[class|="icon"] {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+    .infoblock h5 {
+        font-size: 13px;
+        line-height: 16px;
+    }
+    .infoblock.type_2 [class*="button"] {
+        margin-top: 15px;
+        padding: 5px 10px;
+    }
+    .infoblock.type_2 {
+        padding: 10px 10px;
+    }
+    #footer .payments {
+        display: none;
+    }
+    #footer {
+        background: #444;
+        color: #eee;
+    }
+    #footer * {
+        color: #eee;
     }
 }
