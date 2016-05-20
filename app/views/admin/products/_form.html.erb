@@ -148,7 +148,7 @@
                 
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%=  %></label>
-                    <div class="col-lg-10">
+                    <div class="col-lg-12">
                         <label class="checkbox-inline">
                             <input <%= "checked" if @product.statuses.include?("deal") %> type="checkbox" name="product[status][]" value="deal"><%= t(:deal) %></label>
                         <label class="checkbox-inline">
@@ -159,6 +159,8 @@
                             <input <%= "checked" if @product.statuses.include?("new") %> type="checkbox" name="product[status][]" value="new"><%= t(:new) %></label>
                         <label class="checkbox-inline">
                             <input <%= "checked" if @product.statuses.include?("imported") %> type="checkbox" name="product[status][]" value="imported"><%= t(:imported) %></label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?("sold_out") %> type="checkbox" name="product[status][]" value="sold_out"><%= t(:sold_out) %></label>
                     </div>
                 </div>
                     

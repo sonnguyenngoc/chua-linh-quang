@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @title_head = @option.title
     @META_KEYWORDS = @option.value
     @META_DESCRIPTION = @option.note
+    @deal_tab = Product.get_by_deal
   end
   
   def countdown

@@ -285,7 +285,14 @@
 													<tr>
 
 														<td class="line_product_info"><b>Trạng thái:</b> </td>
-														<td>Có hàng</td>
+														<% if @product.is_sold_out? %>
+							
+															<td class="out_stock"><%= @product.display_is_sold_out %></td>
+														<% else %>
+															
+															<td class="in_stock">Còn hàng</td>
+															
+														<% end %>
 
 													</tr>
 													
@@ -842,14 +849,22 @@
 																				
 																			<% end %>
 																			
-																		<% end %>
-											
-																		<% if product.is_new? %>
+																		<% elsif product.is_new? %>
 																			
 																			<div class="label_new">
 													
-																				<div>Mới</div>
+																				<div><%= product.display_is_new %></div>
 													
+																			</div>
+																			
+																		<% end %>
+																		
+																		<% if product.is_sold_out? %>
+							
+																			<div class="lbl_right_soldout">
+																				
+																				<div><%= product.display_is_sold_out %></div>
+																				
 																			</div>
 																			
 																		<% end %>
@@ -980,14 +995,22 @@
 																		
 																	<% end %>
 																	
-																<% end %>
-																
-																<% if product.is_new? %>
+																<% elsif product.is_new? %>
 																			
 																	<div class="label_new">
 											
-																		<div>Mới</div>
+																		<div><%= product.display_is_new %></div>
 											
+																	</div>
+																	
+																<% end %>
+																
+																<% if product.is_sold_out? %>
+							
+																	<div class="lbl_right_soldout">
+																		
+																		<div><%= product.display_is_sold_out %></div>
+																		
 																	</div>
 																	
 																<% end %>

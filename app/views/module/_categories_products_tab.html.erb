@@ -91,44 +91,50 @@
 											</div><!--/. image_wrap-->
 					
 											<!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
+                                    
+											<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
 					
 											<% if status == "deal" %>
 												
 												<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
-                                    
-													<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
 													
 													<div class="label_offer percentage">
 							
 														<div><%= product.discount_percent.to_i %>%</div>OFF
 							
 													</div>
-							
-													<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 													
 												<% end %>
-						
-												<!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-						
-												<!--<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>-->
-						
-												<!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
 												
 											<% end %>
 											
 											<% if status == "new" %>
 												
-												<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-												
 												<div class="label_new">
 						
-													<div>Mới</div>
+													<div><%= product.display_is_new %></div>
 						
 												</div>
 						
-												<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+											<% end %>
+							
+											<% if product.is_sold_out? %>
+												
+												<div class="lbl_right_soldout">
+						
+													<div><%= product.display_is_new %></div>
+						
+												</div>
 												
 											<% end %>
+											
+											<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+						
+											<!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
+					
+											<!--<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>-->
+					
+											<!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
 					
 											<!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
 					
@@ -231,20 +237,18 @@
 									</div><!--/. image_wrap-->
 			
 									<!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-			
-									<% if status == "deal" %>
-										
-										<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
                                     
-											<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+									<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+									
+									<% if status == "deal" %>
+												
+										<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
 											
 											<div class="label_offer percentage">
 					
 												<div><%= product.discount_percent.to_i %>%</div>OFF
 					
 											</div>
-					
-											<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 											
 										<% end %>
 										
@@ -252,17 +256,25 @@
 									
 									<% if status == "new" %>
 										
-										<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-										
 										<div class="label_new">
 				
-											<div>Mới</div>
+											<div><%= product.display_is_new %></div>
 				
 										</div>
 				
-										<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+									<% end %>
+					
+									<% if product.is_sold_out? %>
+										
+										<div class="lbl_right_soldout">
+				
+											<div><%= product.display_is_sold_out %></div>
+				
+										</div>
 										
 									<% end %>
+					
+									<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 			
 									<!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
 			

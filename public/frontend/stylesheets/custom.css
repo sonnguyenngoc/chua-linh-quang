@@ -656,6 +656,32 @@ p.style_chat {
     border: 3px solid #ddd;
     padding: 10px;
 }
+[class*="lbl_right_"] {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    padding: 6px 7px 5px;
+    color: #fff;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: center;
+    /*text-transform: uppercase;*/
+    border-radius: 0 3px 3px 3px;
+}
+.lbl_right_soldout {
+    background: #555;
+}
+.table_layout.list_view_products .product_item [class*="lbl_right_"] {
+    top: 4px;
+    right: 4px;
+}
+.label_offer.percentage > div {
+    font-weight: 400;
+}
+.out_stock {
+    color: red;
+}
 .home_infoblocks .button_dark_grey, .home_infoblocks  .button_black:hover {
     background: #4ac4fa;
 }
