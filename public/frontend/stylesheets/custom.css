@@ -675,3 +675,6 @@ footer.bottom_box {
     padding: 5px 0;
     height: 35px;
 }
+.chat_box_tabs.list_type_5:not(.links) > li::before, .list_type_5.links > li > a::before {
+    background: #4CAF50;
+}

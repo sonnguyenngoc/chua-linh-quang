@@ -375,15 +375,15 @@
                                                                     
                                                                     <% if current_user.present? %>
                                                                         
-                                                                        <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix" %></li>
+                                                                        <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix add_to_wishlist_button" %></li>
                                                                     
                                                                     <% else %>
                                                                         
-                                                                        <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix" %></li>
+                                                                        <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix no_singed_button" %></li>
                                                                         
                                                                     <% end %>
                                                                     
-                                                                    <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix" %></li>
+                                                                    <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix add_to_compare_button" %></li>
                 
                                                                 </ul>
                 
@@ -606,15 +606,15 @@
                                                             
                                                             <% if current_user.present? %>
                                                                 
-                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix" %></li>
+                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix add_to_wishlist_button" %></li>
                                                             
                                                             <% else %>
                                                                 
-                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix" %></li>
+                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix no_singed_button" %></li>
                                                                 
                                                             <% end %>
                                                             
-                                                            <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix" %></li>
+                                                            <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix add_to_compare_button" %></li>
         
                                                         </ul>
         

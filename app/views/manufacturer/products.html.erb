@@ -162,7 +162,7 @@
 
                             </header>
 
-                            <div class="table_layout" id="products_container">
+                            <div class="table_layout table_layout_fix" id="products_container">
 
                                 <div class="table_row">
                                     
@@ -171,9 +171,17 @@
                                         <% @products.each_with_index do |product, index| %>
                                         
                                             <% product.areas.each do |area| %>
-                                            
+                                                
                                                 <% if @current_area.id == area.id %>
-    
+                                        
+                                                    <a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
+                                                        
+                                                    <a href="#" class="button_dark_grey add_wishlist_success" data-modal-url="<%= add_wishlist_success_path %>">Success</a>
+                                                    
+                                                    <a href="#" class="button_dark_grey add_compare_success" data-modal-url="<%= add_compare_success_path %>">Success</a>
+                                                    
+                                                    <a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
+                                                    
                                                     <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                 
                                                     <div class="table_cell">
@@ -183,9 +191,9 @@
                                                             <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
                 
                                                             <div class="image_wrap">
-                
+                                                                
                                                                 <% if product.get_main_image.present? %>
-                                                                        
+                                                                            
                                                                     <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
                                                                 
                                                                 <% else %>
@@ -198,20 +206,28 @@
                 
                                                                 <div class="actions_wrap">
                 
-                                                                    <div class="centered_buttons">
-                
+                                                                    <div class="centered_buttons centered_buttons_category">
+                                                                        
                                                                         <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
-                
+                                                                        
                                                                         <%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category add_to_cart_button" %>
                 
                                                                     </div><!--/ .centered_buttons -->
-                
-                                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-                
-                                                                    <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+                                                                    
+                                                                    <% if current_user.present? %>
+                                                        
+                                                                        <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+                                                                    
+                                                                    <% else %>
+                                                                        
+                                                                        <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
+                                                                    
+                                                                    <% end %>
+                                                                    
+                                                                    <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
                 
                                                                 </div><!--/ .actions_wrap-->
-                                                                
+
                                                                 <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
                                                                 
                                                                 <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
@@ -247,29 +263,21 @@
                                                             <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
                 
                                                             <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-                
+                                                            
                                                             <div class="description">
-                
-                                                                <div class="nowrap-ellipsis">
-                                                                    
-                                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
                                                                 
+                                                                <div class="nowrap-ellipsis">
+                                                                   
+                                                                   <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                                   
                                                                 </div>
                 
                                                                 <div class="clearfix product_info">
-                                                                    
-                                                                    <% if product.is_deal? %>
-                                                                        
-                                                                        <p class="product_price alignleft"><s><% format_number(product.old_price) %></s> <b><%= format_number(product.price) %> đ</b></p>
-                                                                    
-                                                                    <% else %>
-                                                                        
-                                                                        <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
-                                                                    
-                                                                    <% end %>
-                                                                
+                
+                                                                    <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
+                
                                                                     <% if product.count_stars.length > 0 %>
-        
+            
                                                                         <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                         
                                                                         <ul class="rating alignright">
@@ -295,27 +303,18 @@
                                                             <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
                 
                                                             <div class="full_description">
-                                                                
+                
                                                                 <div class="nowrap-ellipsis">
                                                                     
                                                                     <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                                    <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                                 
                                                                 </div>
-                                                                
-                                                                <% if product.is_deal? %>
-                
-                                                                    <p class="product_price bold"><s><%= format_number(product.old_price) %> đ</s><%= format_number(product.price) %> đ</p>
-                                                                    
-                                                                <% else %>
-                                                                    
-                                                                    <p class="product_price bold"><%= format_number(product.price) %> đ</p>
-                                                                
-                                                                <% end %>
                 
                                                                 <div class="v_centered product_reviews">
                 
                                                                     <% if product.count_stars.length > 0 %>
-
+            
                                                                         <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                         
                                                                         <ul class="rating">
@@ -344,10 +343,18 @@
     
                                                             <div class="actions">
                 
+                                                                <% if product.is_deal? %>
+                                                                                        
+                                                                    <p class="product_price bold"><s><%= format_number(product.old_price) %> đ</s> <%= format_number(product.price) %> đ</p>
+                                                                
+                                                                <% elsif %>
+                                                                    
                                                                 <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+                                                                
+                                                                <% end %>
                 
                                                                 <ul class="buttons_col">
-                                                      
+                                                                    
                                                                     <%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category add_to_cart_button" %>
                                                                     
                                                                     <% if current_user.present? %>
@@ -371,19 +378,29 @@
                                                         </div><!--/ .product_item-->
                 
                                                     </div>
-                
-                                                    <%= "</div><!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - --><div class=\"table_row\"><!--/ .table_row -->".html_safe if index%3 == 2 %>
-                                                    
-                                                <% end %>
                                                 
+                                                    <%= "</div><div class=\"table_row\"><!--/ .table_row -->".html_safe if index%3 == 2 %>
+                                                
+                                                <% end %>
+                                            
                                             <% end %>
-                                        
+                                                
                                         <% end %>
+                                        
+                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
                                     
                                     <% else %>
                                         
                                         <% @products.each_with_index do |product, index| %>
-    
+                                    
+                                            <a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
+                                                
+                                            <a href="#" class="button_dark_grey add_wishlist_success" data-modal-url="<%= add_wishlist_success_path %>">Success</a>
+                                            
+                                            <a href="#" class="button_dark_grey add_compare_success" data-modal-url="<%= add_compare_success_path %>">Success</a>
+                                            
+                                            <a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
+                                            
                                             <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
         
                                             <div class="table_cell">
@@ -393,9 +410,9 @@
                                                     <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
         
                                                     <div class="image_wrap">
-        
+                                                        
                                                         <% if product.get_main_image.present? %>
-                                                                        
+                                                                    
                                                             <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
                                                         
                                                         <% else %>
@@ -408,20 +425,28 @@
         
                                                         <div class="actions_wrap">
         
-                                                            <div class="centered_buttons">
-        
+                                                            <div class="centered_buttons centered_buttons_category">
+                                                                
                                                                 <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
-        
+                                                                
                                                                 <%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_to_cart_category add_to_cart_button" %>
         
                                                             </div><!--/ .centered_buttons -->
-        
-                                                            <a href="#" class="color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào mục yêu thích</span></a>
-        
-                                                            <a href="#" class="color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh mục so sánh</span></a>
+                                                            
+                                                            <% if current_user.present? %>
+                                                
+                                                                <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+                                                            
+                                                            <% else %>
+                                                                
+                                                                <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
+                                                            
+                                                            <% end %>
+                                                            
+                                                            <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
         
                                                         </div><!--/ .actions_wrap-->
-                                                        
+    
                                                         <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
                                                         
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
@@ -457,29 +482,29 @@
                                                     <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
         
                                                     <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-        
+                                                    
                                                     <div class="description">
-        
-                                                        <div class="nowrap-ellipsis">
-                                                            
-                                                            <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
                                                         
+                                                        <div class="nowrap-ellipsis">
+                                                           
+                                                           <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                            
                                                         </div>
         
                                                         <div class="clearfix product_info">
                                                             
                                                             <% if product.is_deal? %>
-                
+                                                                
                                                                 <p class="product_price alignleft"><s><%= format_number(product.old_price) %> đ</s> <b><%= format_number(product.price) %> đ</b></p>
                                                                 
-                                                            <% else %>
-                                                                
+                                                            <% elsif %>
+        
                                                                 <p class="product_price alignleft"><b><%= format_number(product.price) %> đ</b></p>
                                                             
                                                             <% end %>
-                                                        
+        
                                                             <% if product.count_stars.length > 0 %>
-
+    
                                                                 <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                 
                                                                 <ul class="rating alignright">
@@ -505,7 +530,7 @@
                                                     <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
         
                                                     <div class="full_description">
-                                                        
+        
                                                         <div class="nowrap-ellipsis">
                                                             
                                                             <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
@@ -515,8 +540,10 @@
         
                                                         <div class="v_centered product_reviews">
         
+                                                            <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                                        
                                                             <% if product.count_stars.length > 0 %>
-
+    
                                                                 <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                 
                                                                 <ul class="rating">
@@ -532,7 +559,9 @@
                                                                 <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
                 
                                                             <% end %>
-        
+                                                            
+                                                            <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                                                        
                                                         </div>
         
                                                         <p class="text-justify"><%= product.short_description %></p>
@@ -544,17 +573,16 @@
                                                     <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
     
                                                     <div class="actions">
-                                                        
+        
                                                         <% if product.is_deal? %>
-                
+																				
                                                             <p class="product_price bold"><s><%= format_number(product.old_price) %> đ</s> <%= format_number(product.price) %> đ</p>
-                                                            
-                                                        <% else %>
+                                                        
+                                                        <% elsif %>
                                                             
                                                             <p class="product_price bold"><%= format_number(product.price) %> đ</p>
                                                         
                                                         <% end %>
-                                                        
         
                                                         <ul class="buttons_col">
                                                             
@@ -581,16 +609,18 @@
                                                 </div><!--/ .product_item-->
         
                                             </div>
-        
-                                            <%= "</div><!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - --><div class=\"table_row\"><!--/ .table_row -->".html_safe if index%3 == 2 %>
+                                        
+                                            <%= "</div><div class=\"table_row\"><!--/ .table_row -->".html_safe if index%3 == 2 %>
                                         
                                         <% end %>
                                         
-                                    <% end %>
+                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
 
-                            </div>
-                        
-                        </div><!--/ .table_layout -->
+                                    <% end %>
+                                    
+                                </div>
+
+                            </div><!--/ .table_layout -->
 
                         <footer class="bottom_box on_the_sides">
 
@@ -658,5 +688,51 @@
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    <script>
+		$(document).on("click", ".add_to_cart_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url,
+				data: {quantity: $("input.quantity").val()}
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_cart_success").trigger("click")
+			});
+		});
+        $(document).on("click", ".add_to_wishlist_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_wishlist_success").trigger("click");
+			});
+		});
+		$(document).on("click", ".add_to_compare_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_compare_success").trigger("click");
+			});
+		});
+        $(document).on("click", ".no_singed_button", function(e){
+			e.preventDefault();
+			$(".no_singed").trigger("click")
+		});
+	</script>
     
 </body>

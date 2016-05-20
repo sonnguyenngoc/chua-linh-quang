@@ -1,0 +1,88 @@
+body {
+    min-height: 100%;
+    background-color: #f8f8f8;
+}
+#messages.tab_container .chatbox {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    right: 0 !important;
+}
+.chatboxcontent {
+    font-family: arial, sans-serif;
+    height: 250px;
+    width: 100%;
+    overflow-y: auto;
+    padding: 7px;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #eeeeee;
+    background: #e5e5e5;
+    line-height: 1.3em;
+    list-style: none;
+}
+.chatboxtextarea {
+    width: calc(100% - 52px);
+    margin-right: 5px !important;
+    padding: 3px 0pt 3px 3px;
+    border: 1px solid #eeeeee;
+    margin: 1px;
+    overflow: hidden;
+    resize: none !important;
+    float: left !important;
+}
+.mobile_button_chat {
+    padding: 12px 6px 12px 13px;
+}
+@media only screen and (max-width: 767px) {
+    .mobile_chat_box_page .tabs .tabs_nav > li {
+        float: left !important;
+        margin: 0 !important;
+        margin-right: 5px;
+    }
+    .mobile_chat_box_page .tabs .tabs_nav {
+        margin-bottom: 0;
+    }
+    .mobile_chat_box_page .tabs .tabs_nav > li:first-child > a {
+        border-radius: 0 !important;
+        border-bottom: 0px;
+    }
+    .mobile_chat_box_page .tabs .tabs_nav > li:last-child > a {
+        border-radius: 0 !important;
+    }
+    .mobile_chat_box_page .tabs:not([class*="type"]) .tabs_nav li:not(:last-child), .tabs.type_2 .tabs_nav li:not(:last-child) {
+        margin-right: 2px !important;
+    }
+    .mobile_chat_box_page .ts_nav > li > a, .tabs_nav > li > a {
+        display: block;
+        background: #fff;
+        border: 1px solid #eaeaea !important;
+    }
+}
+.chatbox_tab_container {
+    padding: 0px !important;
+}
+.secondary_page_wrapper {
+    padding: 10px 0px 0px;
+}
+.chatboxoptions {
+    display: none;
+}
+.chatboxhead h1 {
+    padding-left: 5px;
+}
+.chatboxhead {
+    padding: 6px 7px 3px;
+}
+#conversations ul li a {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: block;
+}
+#conversations ul li:last-child a {
+    border-bottom: none;
+}
+.boxed_layout, .wide_layout {
+    background: #f8f8f8;
+}

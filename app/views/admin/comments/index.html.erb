@@ -113,7 +113,7 @@
                                         <%= item.name %>
                                     </td>
                                     <td>
-                                        <%= item.product.name %>
+                                        <%= link_to item.product.name, { controller: "/product", action: "product", product_id: item.product_id }, target: "_blank" %>
                                     </td>
                                     <td>
                                         <%= item.content %>

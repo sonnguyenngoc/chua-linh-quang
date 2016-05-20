@@ -173,11 +173,15 @@
 
                             <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
 
-                            <footer class="bottom_box">
-
-                                Từ khóa bài viết: <% @blog.split_tags.each do |tag| %> <a href="#"><%= tag %></a> <% end %>
-
-                            </footer>
+                            <% if @blog.split_tags.count > 0 %>
+							
+								<footer class="bottom_box">
+	
+									Từ khóa bài viết: <% @blog.split_tags.each do |tag| %> <a href="#"><%= tag %></a> <% end %>
+	
+								</footer>
+								
+							<% end %>
 
                         </section>
 

@@ -74,19 +74,40 @@
     
                                     <div class="alignright site_settings">
     
-                                        <span class="current open_"><i class="icon-comment"></i></span>
+                                        <span class="current open_">
+                                            
+                                            <i class="icon-comment"></i>
+                                            
+                                            <% if current_user.unread_conversations_count > 0 %>
+                                                
+                                                (<%= current_user.unread_conversations_count %>)
+                                            
+                                            <% end %>
+                                        
+                                        </span>
                                         
                                         <ul class="dropdown site_setting_list conversation">
                                             
-                                            <% if Conversation.count != 0 %>
+                                            <% if current_user.involving_conversations.count != 0 %>
                                             
-                                                <% Conversation.all.each do |chat| %>
+                                                <% current_user.involving_conversations.each do |chat| %>
         
                                                     <li class="animated_item">
                                                         
-                                                        <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class=""><b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %></b><br/>
+                                                        <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class="">
+                                                            <b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>
+                                                                
+                                                                <% if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>
+                                                
+                                                                    (<%= current_user.unread_messages({conversation_id: chat.id}).count %>)
+                                                                
+                                                                <% end %>
+                                                                
+                                                            </b><br/>
                                                             
                                                             <p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
+                                                        
+                                                            <p class="style_chat"><%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %></p>
                                                         
                                                         </a>
                                                     
