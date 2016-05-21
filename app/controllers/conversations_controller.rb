@@ -24,6 +24,7 @@ class ConversationsController < ApplicationController
   end
   
   def chat_box
+    @title_head = "Cuộc hội thoại"
   end
   
   def quick_register

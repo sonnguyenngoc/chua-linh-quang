@@ -89,3 +89,6 @@ body {
 .mobile_chat_box_page section {
     padding: 0;
 }
+.mobile_logout_user {
+    margin-bottom: 10px;
+}

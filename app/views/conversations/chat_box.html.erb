@@ -320,13 +320,21 @@
 														
 														</li>
 														
-														<li>
+														<% if !Option.get_user_guest.nil? %>
 															
-															<label for="login_email">Email:</label>
-															
-															<%= f.email_field :email, class: "form-control required" %>
+															<% if Option.get_user_guest.accept_email == true %>
 														
-														</li>
+																<li>
+																	
+																	<label for="login_email">Email:</label>
+																	
+																	<%= f.email_field :email, class: "form-control required" %>
+																
+																</li>
+																
+															<% end %>
+															
+														<% end %>
 														
 														<li>
 															
