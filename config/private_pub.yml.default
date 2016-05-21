@@ -1,0 +1,10 @@
+development:
+  server: "http://ubuntu:9292/faye"
+  secret_token: "secret"
+test:
+  server: "http://ubuntu:9292/faye"
+  secret_token: "secret"
+production:
+  server: "http://example.com/faye"
+  secret_token: "24645ce899379a4ddaddcdeb296bd19820cc91ecba547c2167dcdfc606c0dffb"
+  signature_expiration: 3600 # one hour
