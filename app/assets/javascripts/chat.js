@@ -93,7 +93,8 @@ var ready = function () {
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
                 
                 if ($('.mobile_chat_box_page').length) {
-                    $("#chatbox_" + conversation_id).appendTo("#messages");
+                    // $("#chatbox_" + conversation_id).appendTo("#messages");
+                    $("#messages").html($("#chatbox_" + conversation_id));
                     $("li a[href='#messages'").trigger("click");
                     $(".chatbox").hide();
                     $("#chatbox_" + conversation_id).show();                
@@ -166,11 +167,11 @@ var ready = function () {
             $("#chatbox_" + conversation_id).show();
             
             if ($('.mobile_chat_box_page').length) {
-                $("#chatbox_" + conversation_id).appendTo("#messages");
+                // $("#chatbox_" + conversation_id).appendTo("#messages");
+                $("#messages").html($("#chatbox_" + conversation_id));
                 $("li a[href='#messages'").trigger("click");
                 $(".chatbox").hide();
-                $("#chatbox_" + conversation_id).show();
-            
+                $("#chatbox_" + conversation_id).show();            
             }
 
         },

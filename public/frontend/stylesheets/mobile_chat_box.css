@@ -42,7 +42,7 @@ body {
         margin-right: 5px;
     }
     .mobile_chat_box_page .tabs .tabs_nav {
-        margin-bottom: 0;
+        margin-bottom: 5px;
     }
     .mobile_chat_box_page .tabs .tabs_nav > li:first-child > a {
         border-radius: 0 !important;
@@ -52,7 +52,7 @@ body {
         border-radius: 0 !important;
     }
     .mobile_chat_box_page .tabs:not([class*="type"]) .tabs_nav li:not(:last-child), .tabs.type_2 .tabs_nav li:not(:last-child) {
-        margin-right: 2px !important;
+        margin-right: 5px !important;
     }
     .mobile_chat_box_page .ts_nav > li > a, .tabs_nav > li > a {
         display: block;
@@ -85,4 +85,7 @@ body {
 }
 .boxed_layout, .wide_layout {
     background: #f8f8f8;
+}
+.mobile_chat_box_page section {
+    padding: 0;
 }
