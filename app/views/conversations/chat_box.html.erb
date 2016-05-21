@@ -108,13 +108,13 @@
 
 				<div class="container">
 					
-					<% if current_user.present? %>
-					
-						<h5>Xin chào: <%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></h5>
-						
-						<%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete, class: "button_blue mobile_logout_user") %>
-					
-					<% end %>
+					<!--<% if current_user.present? %>-->
+					<!---->
+					<!--	<h5>Xin chào: <%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></h5>-->
+					<!--	-->
+					<!--	<%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %>-->
+					<!---->
+					<!--<% end %>-->
 
 					<div class="section_offset">
 
@@ -476,8 +476,12 @@
 				});
 			};
             
+			$( window ).resize(function() {
+				$( "#log" ).append( "<div>Handler for .resize() called.</div>" );
+			});
+			
             $(window).resize(function(){
-                resizeChatbox()                
+                resizeChatbox();
             });
 			
 			$(document).ready(function() {
