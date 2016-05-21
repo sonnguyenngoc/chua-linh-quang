@@ -645,17 +645,6 @@ p.style_chat {
     color: white;
     padding-left: 64px;
 }
-.footer_register_box {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 50px;
-    width: 300px;
-    background: #fff;
-    height: 350px;
-    border: 3px solid #ddd;
-    padding: 10px;
-}
 [class*="lbl_right_"] {
     position: absolute;
     top: 24px;
@@ -703,4 +692,23 @@ footer.bottom_box {
 }
 .chat_box_tabs.list_type_5:not(.links) > li::before, .list_type_5.links > li > a::before {
     background: #4CAF50;
+}
+.footer_register_box {
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    width: 350px;
+    background: #fff;
+    height: 350px;
+    border: 3px solid #ddd;
+    padding: 10px;
+}
+.footer_register_box #quick_login form:not(:last-child) {
+    margin-bottom: 10px;
+}
+.footer_register_box #quick_login form ul > li:not(:last-child) {
+    margin-bottom: 10px !important;
+}
+.footer_register_box #quick_login .streamlined ul {
+    min-width: 100px;
 }
