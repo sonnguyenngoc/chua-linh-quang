@@ -106,6 +106,7 @@ var ready = function () {
             $.get("/conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);
                 $("#chatbox_" + conversation_id + " .chatboxcontent").scrollTop($("#chatbox_" + conversation_id + " .chatboxcontent")[0].scrollHeight);
+                
             }, "html");
 
             $("#chatbox_" + conversation_id).css('bottom', '0px');
@@ -170,7 +171,7 @@ var ready = function () {
                 $("li a[href='#messages'").trigger("click");
                 $(".chatbox").hide();
                 $("#chatbox_" + conversation_id).show();
-            
+                alert($("#chatbox_" + conversation_id).length);
             }
 
         },
