@@ -468,8 +468,12 @@
 				});
 			};
             
+			$( window ).resize(function() {
+				$( "#log" ).append( "<div>Handler for .resize() called.</div>" );
+			});
+			
             $(window).resize(function(){
-                resizeChatbox()                
+                resizeChatbox();
             });
 			
 			$(document).ready(function() {
