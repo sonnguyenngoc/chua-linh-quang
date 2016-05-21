@@ -250,9 +250,9 @@ ActiveRecord::Schema.define(version: 20160520062835) do
 
   create_table "newsletters", force: :cascade do |t|
     t.string   "email"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "status",     default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "status"
   end
 
   create_table "options", force: :cascade do |t|

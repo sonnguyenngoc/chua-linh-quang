@@ -107,8 +107,9 @@
                                                             
                                                             <p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
                                                         
-                                                            <p class="style_chat"><%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %></p>
-                                                        
+                                                            <% if chat.messages.count > 0 %>
+                                                                <p class="style_chat"><%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %></p>
+                                                            <% end %>
                                                         </a>
                                                     
                                                     </li>
