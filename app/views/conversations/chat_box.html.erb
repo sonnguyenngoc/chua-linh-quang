@@ -112,7 +112,7 @@
 					
 						<h5>Xin chào: <%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></h5>
 						
-						<%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete) %>
+						<%= link_to("Đăng xuất", destroy_user_session_path, :method => :delete, class: "button_blue mobile_logout_user") %>
 					
 					<% end %>
 
@@ -320,13 +320,21 @@
 														
 														</li>
 														
-														<li>
+														<% if !Option.get_user_guest.nil? %>
 															
-															<label for="login_email">Email:</label>
-															
-															<%= f.email_field :email, class: "form-control required" %>
+															<% if Option.get_user_guest.accept_email == true %>
 														
-														</li>
+																<li>
+																	
+																	<label for="login_email">Email:</label>
+																	
+																	<%= f.email_field :email, class: "form-control required" %>
+																
+																</li>
+																
+															<% end %>
+															
+														<% end %>
 														
 														<li>
 															

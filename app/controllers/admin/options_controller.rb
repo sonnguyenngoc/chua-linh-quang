@@ -69,6 +69,6 @@ class Admin::OptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def option_params
-      params.require(:option).permit(:title, :tag, :value, :note)
+      params.require(:option).permit(:title, :tag, :value, :note, :accept_email)
     end
 end

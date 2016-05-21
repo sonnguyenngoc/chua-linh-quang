@@ -86,3 +86,6 @@ body {
 .boxed_layout, .wide_layout {
     background: #f8f8f8;
 }
+.mobile_logout_user {
+    margin-bottom: 10px;
+}
