@@ -30,10 +30,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to controller: "product", action: "product", product_id: @comment.product_id }
-        format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        flash[:notice] = "Đánh giá sản phẩm không thành công"
+        format.html { redirect_to controller: "product", action: "product", product_id: @comment.product_id }
       end
     end
   end

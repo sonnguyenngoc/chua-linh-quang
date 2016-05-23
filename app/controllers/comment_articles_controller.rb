@@ -32,7 +32,7 @@ class CommentArticlesController < ApplicationController
       if @comment_article.save
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
       else
-        flash[:notice] = "Đăng bình luận thất bại"
+        flash[:notice] = "Đăng bình luận không thành công"
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
       end
     end
