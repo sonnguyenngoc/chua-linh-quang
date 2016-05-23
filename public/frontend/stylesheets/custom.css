@@ -531,7 +531,7 @@ ul > li > .def_icon_btn.middle_btn {
     z-index: 109;
 }
 .zoomContainer {
-    z-index: 100;
+    z-index: 200;
 }
 @media (min-width: 1360px) {
     .container {
@@ -711,4 +711,7 @@ footer.bottom_box {
 }
 .footer_register_box #quick_login .streamlined ul {
     min-width: 100px;
+}
+.image_preview_container .open_qv {
+    display: none;
 }
