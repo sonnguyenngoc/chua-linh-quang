@@ -694,6 +694,7 @@ footer.bottom_box {
     background: #4CAF50;
 }
 .footer_register_box {
+    z-index: 250;
     position: fixed;
     bottom: 0;
     right: 50px;
@@ -701,7 +702,11 @@ footer.bottom_box {
     background: #fff;
     height: 350px;
     border: 3px solid #ddd;
-    padding: 10px;
+    padding: 3px 0;
+}
+.footer_register_box .section_register_box {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .footer_register_box #quick_login form:not(:last-child) {
     margin-bottom: 10px;

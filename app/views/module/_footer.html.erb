@@ -512,7 +512,7 @@
     
         <div class="footer_register_box">
         
-            <section class="col-sm-12">
+            <section class="col-sm-12 section_register_box">
         
                 <!-- - - - - - - - - - - - - - Tabs v2 - - - - - - - - - - - - - - - - -->
         
@@ -537,7 +537,7 @@
                         
                         <h3>Thông tin khách hàng</h3>
             
-                        <%= form_for User.new, url: quick_register_path, html: {class: "type_2"} do |f| %>
+                        <%= form_for User.new, url: quick_register_path, html: {class: "type_2", id: "quick_register"} do |f| %>
                     
                             <ul>
                                                     
@@ -591,9 +591,9 @@
         
                     <div id="quick_login" class="tab_container">
                         
-                        <h5>Đăng nhập</h5>
+                        <h3>Đăng nhập</h3>
             
-                        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2", id: "quick_login"}) do |f| %>
                     
                             <ul>
                     
@@ -671,5 +671,13 @@
     
     $(document).ready(function(){
         $("#new_user").validate();
+    });
+    
+    $(document).ready(function(){
+        $("#quick_register").validate();
+    });
+    
+    $(document).ready(function(){
+        $("#quick_login").validate();
     });
 </script>
