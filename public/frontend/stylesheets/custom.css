@@ -643,7 +643,7 @@ p.style_chat {
 }
 .chatboxhead h1 {
     color: white;
-    padding-left: 64px;
+    padding-left: 5px;
 }
 [class*="lbl_right_"] {
     position: absolute;
@@ -726,4 +726,7 @@ footer.bottom_box {
 }
 .image_preview_container .open_qv {
     display: none;
+}
+.unread_conversation a {
+    background: #f5f5f5 !important;
 }
