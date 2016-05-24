@@ -730,3 +730,6 @@ footer.bottom_box {
 .unread_conversation a {
     background: #f5f5f5 !important;
 }
+.unread_conversation a:hover {
+    color: black;
+}
