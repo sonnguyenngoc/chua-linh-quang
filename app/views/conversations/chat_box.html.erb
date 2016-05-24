@@ -186,11 +186,7 @@
 						
 														<% User.get_online_users.each do |user| %>
 														
-															<% if current_user.id == user.id %>
-																
-																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-																
-															<% else %>
+															<% if current_user.id != user.id %>
 																
 																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
 																
@@ -201,16 +197,8 @@
 													<% else %>
 														
 														<% User.get_admins.each do |user| %>
-														
-															<% if current_user.id == user.id %>
 																
-																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-																
-															<% else %>
-																
-																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-																
-															<% end %>
+															<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
 														
 														<% end %>
 														

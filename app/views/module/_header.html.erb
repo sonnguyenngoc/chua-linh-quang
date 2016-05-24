@@ -88,13 +88,31 @@
                                         
                                         <ul class="dropdown site_setting_list conversation">
                                             
+                                            <% if current_user.is_admin == false %>
+                  
+                                                <% User.get_admins.each do |user| %>
+                                                
+                                                   <li class="animated_item">
+                                                     
+                                                     <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>"><b><%= user.first_name.to_s + " " + user.last_name.to_s %></b><br/>
+                                                             
+                                                         <p class="style_chat">Chat với quản trị viên</p>
+                                                         
+                                                     </a>
+                                                   
+                                                   </li>
+                             
+                                                 <% end %>
+                                               
+                                            <% end %>
+                                            
                                             <% if current_user.involving_conversations.count != 0 %>
                                             
                                                 <% current_user.involving_conversations.each do |chat| %>
         
                                                     <li class="animated_item <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
                                                         
-                                                        <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class="">
+                                                        <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>">
                                                             <b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>
                                                                 
                                                                 <% if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>

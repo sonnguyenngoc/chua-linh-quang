@@ -261,11 +261,7 @@
                     
                         <% User.get_online_users.each do |user| %>
                         
-                            <% if current_user.id == user.id %>
-                                
-                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
-                                
-                            <% else %>
+                            <% if current_user.id != user.id %>
                                 
                                 <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
                                 
@@ -276,16 +272,8 @@
                     <% else %>
                         
                         <% User.get_online_admins.each do |user| %>
-                        
-                            <% if current_user.id == user.id %>
                                 
-                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
-                                
-                            <% else %>
-                                
-                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
-                                
-                            <% end %>
+                            <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
                         
                         <% end %>
                         
