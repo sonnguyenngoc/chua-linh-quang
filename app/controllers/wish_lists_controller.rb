@@ -20,17 +20,21 @@ class WishListsController < ApplicationController
   # POST /wish_lists
   # POST /wish_lists.json
   def create
-    @wish_list = WishList.new(
-      product_id: params[:product_id],
-      user_id: params[:user_id]
-    )
-    respond_to do |format|
-      if @wish_list.save
-        format.html { redirect_to controller: "account", action: "wishlist" }
-        format.json { render :show, status: :created, location: @wish_list }
-      else
-        format.html { render :new }
-        format.json { render json: @wish_list.errors, status: :unprocessable_entity }
+    exist = WishList.where(product_id: params[:product_id]).where(user_id: params[:user_id])
+            
+    if exist.count == 0
+      @wish_list = WishList.new(
+        product_id: params[:product_id],
+        user_id: params[:user_id]
+      )
+      respond_to do |format|
+          if @wish_list.save
+            format.html { redirect_to controller: "account", action: "wishlist" }
+            format.json { render :show, status: :created, location: @wish_list }
+          else
+            format.html { render :new }
+            format.json { render json: @wish_list.errors, status: :unprocessable_entity }
+          end
       end
     end
   end
@@ -38,17 +42,21 @@ class WishListsController < ApplicationController
   # POST /wish_lists
   # POST /wish_lists.json
   def add_item
-    @wish_list = WishList.new(
-      product_id: params[:product_id],
-      user_id: params[:user_id]
-    )
-    respond_to do |format|
-      if @wish_list.save
-        format.html { redirect_to controller: "account", action: "wishlist" }
-        format.json { render :show, status: :created, location: @wish_list }
-      else
-        format.html { render :new }
-        format.json { render json: @wish_list.errors, status: :unprocessable_entity }
+    exist = WishList.where(product_id: params[:product_id]).where(user_id: params[:user_id])
+            
+    if exist.count == 0
+      @wish_list = WishList.new(
+        product_id: params[:product_id],
+        user_id: params[:user_id]
+      )
+      respond_to do |format|
+          if @wish_list.save
+            format.html { redirect_to controller: "account", action: "wishlist" }
+            format.json { render :show, status: :created, location: @wish_list }
+          else
+            format.html { render :new }
+            format.json { render json: @wish_list.errors, status: :unprocessable_entity }
+          end
       end
     end
   end

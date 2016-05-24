@@ -20,6 +20,11 @@ class OrdersController < ApplicationController
         company: @customer.company,
         zip_code: @customer.zip_code,
         address: @customer.address,
+        province: @customer.province,
+        country: @customer.country,
+        delivery_method_id: params[:order_delivery][:delivery_method_id],
+        payment_method_id: params[:order_delivery][:payment_method_id],
+        message: params[:order_delivery][:message]
       )
     else
       @order_delivery = OrderDelivery.new(order_delivery_params)

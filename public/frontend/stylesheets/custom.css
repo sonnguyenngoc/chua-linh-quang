@@ -694,6 +694,7 @@ footer.bottom_box {
     background: #4CAF50;
 }
 .footer_register_box {
+    display: none;
     z-index: 250;
     position: fixed;
     bottom: 0;
@@ -716,6 +717,12 @@ footer.bottom_box {
 }
 .footer_register_box #quick_login .streamlined ul {
     min-width: 100px;
+}
+.product_item:not(.type_3) .actions_wrap .add_to_wishlist {
+    left: 40px;
+}
+.product_item:not(.type_3) .actions_wrap .add_to_compare {
+    right: 40px;
 }
 .image_preview_container .open_qv {
     display: none;

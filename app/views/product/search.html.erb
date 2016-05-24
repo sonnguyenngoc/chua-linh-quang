@@ -585,15 +585,15 @@
                                                             
                                                             <% if current_user.present? %>
                                                                 
-                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix" %></li>
+                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix add_to_wishlist_button" %></li>
                                                             
                                                             <% else %>
                                                                 
-                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix" %></li>
+                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix no_singed_button" %></li>
                                                                 
                                                             <% end %>
                                                             
-                                                            <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix" %></li>
+                                                            <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix add_to_compare_button" %></li>
         
                                                         </ul>
         
@@ -696,7 +696,33 @@
 			})
 			.done(function( msg ) {
 				get_cart();
-				$(".add_success").trigger("click")
+				$(".add_cart_success").trigger("click")
+			});
+		});
+        $(document).on("click", ".add_to_wishlist_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_wishlist_success").trigger("click");
+			});
+		});
+		$(document).on("click", ".add_to_compare_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_compare_success").trigger("click");
 			});
 		});
         $(document).on("click", ".no_singed_button", function(e){

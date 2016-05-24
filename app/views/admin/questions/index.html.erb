@@ -102,19 +102,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @questions.each do |question| %>
+                            <% @questions.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= question.name %><br />
-                                        <%= question.email %>
+                                        <%= item.name %><br />
+                                        <%= item.email %>
                                     </td>
                                     <td>
-                                        <%= question.product.name %>
+                                        <% if !item.product.nil? %>
+                                            <%= link_to item.product.name, { controller: "/product", action: "product", product_id: item.product_id }, target: "_blank" %>
+                                        <% end %>
                                     </td>
                                     <td>
-                                        <%= question.content %>
+                                        <%= item.content %>
                                     </td>
-                                    <td><%= question.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <ul class="icons-list">
                                             <li class="dropdown">
@@ -124,7 +126,7 @@
                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, question], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
                                                     </li>
                                                 </ul>
                                             </li>
