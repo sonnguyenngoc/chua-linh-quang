@@ -731,5 +731,5 @@ footer.bottom_box {
     background: #f5f5f5 !important;
 }
 .unread_conversation a:hover {
-    color: black;
+    color: grey;
 }
