@@ -761,7 +761,6 @@ h3.care {
 .unread_conversation a:hover {
     color: grey;
 }
-/***********************************************/
 /*a.img_item {
     z-index: 1;
     position: inherit;
@@ -779,5 +778,7 @@ h3.care {
 }
 .actions_wrap {
     cursor: pointer;
+}*/
+.actions_wrap {
+    cursor: pointer;
 }
-*/

@@ -146,7 +146,7 @@
 											
 											<% if @product.is_deal? %>
 												
-												<% if !@product.discount_percent.nil? or !product.discount_percent == 0 %>
+												<% if !@product.discount_percent.nil? or @product.discount_percent != 0 %>
 													
 													<div class="label_offer percentage">
 							
