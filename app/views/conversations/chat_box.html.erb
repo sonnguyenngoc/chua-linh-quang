@@ -277,7 +277,9 @@
 	
 										<ul class="tabs_nav clearfix">
 											
-											<li><a href="#register"><i class="icon-user-md"></i></a></li>
+											<li><a style="padding: 4px;" href="<%= url_for('/') %>"><img style="width: 40px" src="<%= url_for('/frontend/images/dsvm_logo2_small_50.png') %>" /></a></li>
+											
+											<li class="active"><a href="#register"><i class="icon-user-md"></i></a></li>
 											
 											<li><a href="#login"><i class="icon-login-2"></i> Đăng nhập</a></li>
 										</ul>
@@ -476,7 +478,7 @@
             });
 			
 			$(document).ready(function() {
-				setInterval("resizeChatbox();", 1000);
+				setInterval("resizeChatbox();", 100);
 				// start conversation
 				<% if params[:sender_id].present? and params[:recipient_id].present? %>
 					startConversation(<%= params[:sender_id] %>, <%= params[:recipient_id] %>)
