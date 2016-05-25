@@ -85,19 +85,19 @@
         <ul class="social_btns">
 
             <li>
-                <a href="#facebook" class="icon_btn middle_btn social_facebook tooltip_container" onclick="$('.section_follow_facebook').toggle()"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></a>
+                <a href="#facebook" class="icon_btn middle_btn social_facebook tooltip_container" box="section_follow_facebook"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></a>
             </li>
             
             <li>
-                <a href="#googleplus" class="icon_btn middle_btn social_googleplus tooltip_container" onclick="$('.section_follow_googleplus').toggle()"><i class="icon-gplus-2"></i><span class="tooltip top">Google+</span></a>
+                <a href="#googleplus" class="icon_btn middle_btn social_googleplus tooltip_container" box="section_follow_googleplus"><i class="icon-gplus-2"></i><span class="tooltip top">Google+</span></a>
             </li>
         
             <li>
-                <a href="#contact" class="icon_btn middle_btn social_contact tooltip_container" onclick="$('.section_follow_contact').toggle()"><i class="icon-mail-8"></i><span class="tooltip top">Liên hệ</span></a>
+                <a href="#contact" class="icon_btn middle_btn social_contact tooltip_container" box="section_follow_contact"><i class="icon-mail-8"></i><span class="tooltip top">Liên hệ</span></a>
             </li>
         
             <li>
-                <a href="#gmap" class="icon_btn middle_btn social_gmap tooltip_container" onclick="$('.section_follow_gmap').toggle()"><i class="icon-location-4"></i><span class="tooltip top">Thông tin công ty</span></a>
+                <a href="#gmap" class="icon_btn middle_btn social_gmap tooltip_container" box="section_follow_gmap"><i class="icon-location-4"></i><span class="tooltip top">Thông tin công ty</span></a>
             </li>
         
         </ul>
@@ -106,7 +106,7 @@
         
     </section>
     
-    <section class="section_offset section_follow_facebook" style="display: none;">
+    <section class="mobile_social_box section_offset section_follow_facebook" style="display: none;">
         
         <div class="animated_item">
 
@@ -160,7 +160,7 @@
         
     </section>
     
-    <section class="section_offset section_follow_googleplus" style="display: none;">
+    <section class="mobile_social_box section_offset section_follow_googleplus" style="display: none;">
         
         <div class="animated_item">
 
@@ -186,7 +186,7 @@
         
     </section>
     
-    <section class="section_offset section_follow_contact" style="display: none;">
+    <section class="mobile_social_box section_offset section_follow_contact" style="display: none;">
         
         <div class="animated_item">
 
@@ -250,7 +250,7 @@
         
     </section>
     
-    <section class="section_offset section_follow_gmap" style="display: none;">
+    <section class="mobile_social_box section_offset section_follow_gmap" style="display: none;">
         
         <div class="animated_item">
 
@@ -898,4 +898,15 @@
     $(document).ready(function(){
         $("#quick_login").validate();
     });
+    
+
+    $(document).ready(function() {
+        // mobile social button
+        $('.mobile_container_socical_feeds .social_btns li a').click(function() {
+            var box = $(this).attr('box');
+            $('.mobile_social_box').hide();
+            $('.'+box).show();
+        });
+    });
+
 </script>
