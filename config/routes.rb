@@ -84,6 +84,7 @@ Rails.application.routes.draw do
     get "san-pham/:url/:st" => "product#view_all_product_by_status", as: :view_all_product_by_status
     get "conversations/chat_box" => "conversations#chat_box", as: :chat_box
     post "conversations/quick_register" => "conversations#quick_register", as: :quick_register
+    post "conversations/destop_quick_register" => "conversations#destop_quick_register", as: :destop_quick_register
     # end product
     
     # resources
