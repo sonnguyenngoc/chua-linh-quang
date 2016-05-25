@@ -258,4 +258,13 @@
     .unread_conversation a {
         background: #f5f5f5 !important;
     }
+    .mobile_container_socical_feeds {
+        display: block;
+    }
+    .mobile_container_socical_feeds section ul.social_btns {
+        margin-top: 5px;
+    }
+    .section_offset:not(:last-child) {
+        margin-bottom: 10px;
+    }
 }

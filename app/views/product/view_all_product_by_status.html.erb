@@ -198,9 +198,9 @@
 
                                     <div class="layout_type buttons_row" data-table-container="#products_container">
 
-                                        <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Xem dạng lưới</span></a>
+                                        <a href="#" value="grid_view" data-table-layout="grid_view" class="change_view_button button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Xem dạng lưới</span></a>
 
-                                        <a href="#" data-table-layout="list_view list_view_products" class="button_grey middle_btn icon_btn tooltip_container"><i class="icon-th-list"></i><span class="tooltip top">Xem dạng danh sách</span></a>
+                                        <a href="#" value="list_view" data-table-layout="list_view list_view_products" class="change_view_button button_grey middle_btn icon_btn tooltip_container"><i class="icon-th-list"></i><span class="tooltip top">Xem dạng danh sách</span></a>
 
                                     </div>
 
@@ -559,6 +559,13 @@
 			e.preventDefault();
 			$(".no_singed").trigger("click")
 		});
+        $(document).on("click", ".change_view_button", function(e){
+            var type = $(this).attr('value');
+            $.cookie('type_view', type);
+        });
+        $(document).ready(function(){
+            $('.change_view_button[value='+$.cookie('type_view')+']').trigger('click');
+        });
 	</script>
     
 </body>

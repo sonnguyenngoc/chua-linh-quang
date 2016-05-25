@@ -69,7 +69,7 @@
 
     <li>
 
-        <button class="icon_btn middle_btn social_googleplus open_"><i class="icon-googleplus-rect"></i></button>
+        <button class="icon_btn middle_btn social_googleplus open_"><i class="icon-gplus-2"></i></button>
 
         <section class="dropdown">
 
@@ -189,9 +189,9 @@
 
                 <h3 class="title">Thông tin công ty</h3>
 
-              </div><!--/ .animated_item-->
+            </div><!--/ .animated_item-->
                
-              <div class="animated_item">
+            <div class="animated_item">
                 
                 <% if !Company.get_company.nil? %>
                     
@@ -207,19 +207,19 @@
 
                 </div>
 
-                    <ul class="c_info_list">
+                <ul class="c_info_list">
+                   
+                    <% if !Company.get_company.nil? %>
                        
-                        <% if !Company.get_company.nil? %>
-                           
-                            <li class="c_info_phone">ĐT: <%= Company.get_company.phone %></li>
-                           
-                            <li class="c_info_phone">Hotline: <%= Company.get_company.hotline %></li>
-                            
-                            <li class="c_info_mail">Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a></li>
+                        <li class="c_info_phone">ĐT: <%= Company.get_company.phone %></li>
+                       
+                        <li class="c_info_phone">Hotline: <%= Company.get_company.hotline %></li>
                         
-                        <% end %>
+                        <li class="c_info_mail">Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a></li>
                     
-                    </ul>
+                    <% end %>
+                
+                </ul>
 
             </div><!--/ .animated_item-->
 

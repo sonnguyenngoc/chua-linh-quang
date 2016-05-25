@@ -35,7 +35,7 @@
 
                         <div class="col-sm-3">
                           
-                            <% Category.get_all_categories.each_with_index do |category,index| %>
+                            <% Category.get_all_categories(params).each_with_index do |category,index| %>
                             
                               <% category.children.each do |child_1| %>
                               

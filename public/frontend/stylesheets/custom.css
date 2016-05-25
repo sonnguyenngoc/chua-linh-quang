@@ -675,17 +675,17 @@ p.style_chat {
 .home_infoblocks .button_dark_grey, .home_infoblocks  .button_black:hover {
     background: #4ac4fa;
 }
-footer.bottom_box .button_grey {
+footer.view_all .button_grey {
     float: right;
     background: #0186c8;
     font-size: 14px;
     padding: 2px 10px;
     color: #fff;
 }
-footer.bottom_box .button_grey:hover {
+footer.view_all .button_grey:hover {
     opacity: 0.8;
 }
-footer.bottom_box {
+footer.view_all {
     border: none;
     background: none;
     padding: 5px 0;
@@ -761,6 +761,7 @@ h3.care {
 .unread_conversation a:hover {
     color: grey;
 }
+
 /*a.img_item {
     z-index: 1;
     position: inherit;
@@ -779,6 +780,17 @@ h3.care {
 .actions_wrap {
     cursor: pointer;
 }*/
+
+.shopping_cart_wrap .shopping_cart.visible {
+    display: none;
+}
+.shopping_cart_wrap .shopping_cart.visible.active {
+    display: block;
+}
+.mobile_container_socical_feeds {
+    display: none;
+}
+
 .actions_wrap {
     cursor: pointer;
 }
