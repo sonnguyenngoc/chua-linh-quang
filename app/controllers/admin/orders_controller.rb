@@ -4,7 +4,7 @@ class Admin::OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.search(params).paginate(:page => params[:page], :per_page => 10)
+    @orders = Order.get_order_pending.paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
@@ -62,6 +62,36 @@ class Admin::OrdersController < ApplicationController
     @order.destroy
     respond_to do |format|
       format.html { redirect_to admin_orders_url, notice: 'Order was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+  
+  def pending
+    @order = Order.find(params[:id])
+    @order.status = "pending"
+    @order.save
+    respond_to do |format|
+      format.html { redirect_to admin_orders_url }
+      format.json { head :no_content }
+    end
+  end
+  
+  def finish
+    @order = Order.find(params[:id])
+    @order.status = "finished"
+    @order.save
+    respond_to do |format|
+      format.html { redirect_to admin_orders_url }
+      format.json { head :no_content }
+    end
+  end
+  
+  def cancel
+    @order = Order.find(params[:id])
+    @order.status = "cancel"
+    @order.save
+    respond_to do |format|
+      format.html { redirect_to admin_orders_url }
       format.json { head :no_content }
     end
   end

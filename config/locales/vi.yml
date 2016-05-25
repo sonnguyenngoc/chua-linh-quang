@@ -44,6 +44,8 @@ vi:
   cancel: "Hủy"
   edit: "Sửa"
   delete: "Xoá"
+  view: "Xem"
+  total: "Tổng cộng"
   #-------------------------------
   new_product: "Tạo sản phẩm"
   new_category: "Tạo chuyên mục"
@@ -77,6 +79,7 @@ vi:
   prominent: "Sản phẩm NỔI BẬT"
   imported: "Hàng NHẬP KHẨU"
   deal: "Hàng KHUYẾN MÃI"
+  sold_out: "HẾT HÀNG"
   introduction: "Giới thiệu"
   picture: "Hình ảnh"
   related_photos: "Các hình ảnh liên quan"
@@ -111,6 +114,7 @@ vi:
   #-------------------------------------
   order: "Đơn hàng"
   orders: "Đơn đặt hàng"
+  listing_orders: "Danh sách đơn đặt hàng"
   info_customer: "Thông tin khách hàng"
   info_delivery: "Thông tin giao hàng"
   order_detail: "Chi tiết đơn hàng"
@@ -181,6 +185,7 @@ vi:
   edit_coupon: "Chỉnh sửa"
   from_date: "Từ ngày"
   to_date: "Đến ngày"
+  valid_date: "Ngày hiệu lực"
   description: "Mô tả"
   listing_vouchers: "Danh sách phiếu mua hàng"
   new_voucher: "Tạo mới"

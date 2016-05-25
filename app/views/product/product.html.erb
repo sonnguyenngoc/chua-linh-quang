@@ -271,7 +271,13 @@
 													<tr>
 
 														<td class="line_product_info"><b>Thương hiệu sản phẩm:</b> </td>
-														<td><%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: @product.manufacturer_id } %></td>
+														<td>
+															<% if !@product.manufacturer.nil? %>
+																<%= link_to @product.manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: @product.manufacturer_id } %>
+															<% else %>
+																Đang cập nhật
+															<% end %>
+														</td>
 
 													</tr>
 

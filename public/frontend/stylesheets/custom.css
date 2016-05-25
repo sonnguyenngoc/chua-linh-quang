@@ -643,7 +643,7 @@ p.style_chat {
 }
 .chatboxhead h1 {
     color: white;
-    padding-left: 64px;
+    padding-left: 5px;
 }
 [class*="lbl_right_"] {
     position: absolute;
@@ -690,6 +690,33 @@ footer.bottom_box {
     padding: 5px 0;
     height: 35px;
 }
+@media only screen and (item-1) {    
+    .table_layout .product_item.tem-1, .table_layout .entry, .table_layout blockquote {
+        width: 272px;
+     }
+}
+/*Customer Care - main_nav_right*/
+h3.care {
+    float: right;
+}
+.topbar_care {
+    text-align: right;
+}
+.topbar_care > li > .submenu{
+    z-index: 121;
+}
+.topbar_care > li .submenu a {
+    padding: 8px 10px 7px !important;
+}
+.topbar_care > .has_submenu > a::after {
+    right: 0px;
+    top: 12px;
+}
+.icon-phone-care {
+    color: #018bc8;
+}
+/*END - Customer Care - main_nav_right*/
+
 .chat_box_tabs.list_type_5:not(.links) > li::before, .list_type_5.links > li > a::before {
     background: #4CAF50;
 }
@@ -727,11 +754,10 @@ footer.bottom_box {
 .image_preview_container .open_qv {
     display: none;
 }
-/*.actions_wrap > .centered_buttons {
-    position: absolute;
-    top: -170px;
-    left: 16%;
+.unread_conversation a {
+    background: #f5f5f5 !important;
 }
-.product_item:not(.type_3) .actions_wrap {
-    height: 0%;
-}*/
+.unread_conversation a:hover {
+    color: grey;
+}
+

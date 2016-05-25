@@ -49,6 +49,11 @@ class Order < ActiveRecord::Base
     ]
   end
   
+  def self.get_order_pending
+    records = self.all
+    records = records.where("LOWER(orders.status) LIKE ?", "pending")
+    return records
+  end
   def self.search(params)
     records = self.all
     
@@ -66,6 +71,14 @@ class Order < ActiveRecord::Base
     if params[:from_date].present? && params[:to_date].present?
       records = records.where('orders.created_at >= ?', params[:from_date].to_date.beginning_of_day)
                         .where('orders.created_at <= ?', params[:to_date].to_date.end_of_day)
+    end
+    #Filter by Status
+    if params[:status].present?
+        if params[:status] == "all"
+          records = records
+        else
+          records = records.where("LOWER(orders.status) LIKE ?", "#{params[:status]}")
+        end
     end
     
     #Search keyword filter
@@ -106,6 +119,20 @@ class Order < ActiveRecord::Base
     ttpm = 0.0
     ttpm = total - discount
     return ttpm
+  end
+  
+  def display_class_status
+    display = "label label-info"
+    if self.status == "pending"
+      display = "label label-info"
+    end
+    if self.status == "finished"
+      display = "label label-success"
+    end
+    if self.status == "cancel"
+      display = "label label-default"
+    end
+    return display.html_safe
   end
 
 end

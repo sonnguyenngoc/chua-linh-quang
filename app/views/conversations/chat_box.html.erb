@@ -186,11 +186,7 @@
 						
 														<% User.get_online_users.each do |user| %>
 														
-															<% if current_user.id == user.id %>
-																
-																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-																
-															<% else %>
+															<% if current_user.id != user.id %>
 																
 																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
 																
@@ -201,16 +197,8 @@
 													<% else %>
 														
 														<% User.get_admins.each do |user| %>
-														
-															<% if current_user.id == user.id %>
 																
-																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-																
-															<% else %>
-																
-																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-																
-															<% end %>
+															<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
 														
 														<% end %>
 														
@@ -232,7 +220,7 @@
 												
 													<% current_user.involving_conversations.each do |chat| %>
 			
-														<li class="animated_item">
+														<li class="animated_item <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
 															
 															<a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class="">
 																<b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>

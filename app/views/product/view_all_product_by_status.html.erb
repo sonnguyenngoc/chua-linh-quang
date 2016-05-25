@@ -71,19 +71,31 @@
                         <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
 
                         <ul class="breadcrumbs">
-        
-                            <li><a href="<%= root_path %>">Trang chủ</a></li>
-                            <li><a href="<%= root_path %>">Sản phẩm</a></li>
+                            
+                            <li><%= link_to "Trang chủ", root_path %></li>
+                            
+                            <li><%= link_to "Sản phẩm", root_path %></li>
+                            
                             <% if params[:st] == "deal" %>
-                              <li>Hàng khuyến mãi</li>
+                                
+                                <li>Hàng khuyến mãi</li>
+                            
                             <% elsif params[:st] == "prominent" %>
-                              <li>Sản phẩm nổi bật</li>
+                                
+                                <li>Sản phẩm nổi bật</li>
+                            
                             <% elsif params[:st] == "bestseller" %>
-                              <li>Sản phẩm bán chạy</li>
+                                
+                                <li>Sản phẩm bán chạy</li>
+                            
                             <% elsif params[:st] == "new" %>
-                              <li>Sản phẩm mới</li>
+                               
+                                <li>Sản phẩm mới</li>
+                            
                             <% elsif params[:st] == "imported" %>
-                              <li>Hàng nhập khẩu</li>
+                               
+                                <li>Hàng nhập khẩu</li>
+                            
                             <% end %>
         
                         </ul>
@@ -92,17 +104,27 @@
 
                         <section class="">
                           
-                          <% if params[:st] == "deal" %>
-                            <h1>Hàng khuyến mãi</h1>
-                          <% elsif params[:st] == "prominent" %>
-                            <h1>Sản phẩm nổi bật</h1>
-                          <% elsif params[:st] == "bestseller" %>
-                            <h1>Sản phẩm bán chạy</h1>
-                          <% elsif params[:st] == "new" %>
-                            <h1>Sản phẩm mới</h1>
-                          <% elsif params[:st] == "imported" %>
-                            <h1>Hàng nhập khẩu</h1>
-                          <% end %>
+                            <% if params[:st] == "deal" %>
+                                
+                                <h1>Hàng khuyến mãi</h1>
+                            
+                            <% elsif params[:st] == "prominent" %>
+                               
+                                <h1>Sản phẩm nổi bật</h1>
+                            
+                            <% elsif params[:st] == "bestseller" %>
+                                
+                                <h1>Sản phẩm bán chạy</h1>
+                            
+                            <% elsif params[:st] == "new" %>
+                               
+                                <h1>Sản phẩm mới</h1>
+                            
+                            <% elsif params[:st] == "imported" %>
+                               
+                                <h1>Hàng nhập khẩu</h1>
+                            
+                            <% end %>
 
                         </section>
 
@@ -343,7 +365,9 @@
                                                     <div class="nowrap-ellipsis">
                                                         
                                                         <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
-                                                        <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                        <% if !product.manufacturer.nil? %>
+                                                            <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                        <% end %>
                                                         
                                                     </div>
 
@@ -395,15 +419,15 @@
                                                         
                                                         <% if current_user.present? %>
                                                             
-                                                            <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix" %></li>
+                                                            <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix add_to_wishlist_button" %></li>
                                                         
                                                         <% else %>
                                                             
-                                                            <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix" %></li>
+                                                            <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix no_singed_button" %></li>
                                                             
                                                         <% end %>
                                                         
-                                                        <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix" %></li>
+                                                        <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix add_to_compare_button" %></li>
     
                                                     </ul>
     

@@ -75,11 +75,19 @@
                     <div class="panel-body col-md-12">
                         <div class="col-md-6">
                             <h6><b><%= t(:delivery_method) %></b></h6>
-                            <p><%= @order.order_delivery.delivery_method.title %> </p>
+                            <% if !@order.order_delivery.delivery_method.nil? %>
+                                <p><%= @order.order_delivery.delivery_method.title %> </p>
+                            <% else %>
+                                <p>.....</p>
+                            <% end %>
                         </div>
                         <div class="col-md-6">
                             <h6><b><%= t(:payment_method) %></b></h6>
-                            <p><%= @order.order_delivery.payment_method.title %> </p>
+                            <% if !@order.order_delivery.payment_method.nil? %>
+                                <p><%= @order.order_delivery.payment_method.title %> </p>
+                            <% else %>
+                                <p>.....</p>
+                            <% end %>
                         </div>
                     </div>
                     

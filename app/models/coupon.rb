@@ -72,6 +72,12 @@ class Coupon < ActiveRecord::Base
   def self.search(params)
     records = self.all
     
+    #From Date filter
+    if params[:from_date].present? && params[:to_date].present?
+      records = records.where('coupons.from_date >= ?', params[:from_date].to_date.beginning_of_day)
+                        .where('coupons.to_date <= ?', params[:to_date].to_date.end_of_day)
+    end
+    
     #Search keyword filter
     if params[:keyword].present?
         records = records.where("LOWER(coupons.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
