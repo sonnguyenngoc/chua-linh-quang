@@ -871,6 +871,15 @@
 <% end %>
 
 <script>
+    $(document).ready(function() {
+        // mobile social button
+        $('.mobile_container_socical_feeds .social_btns li a').click(function() {
+            var box = $(this).attr('box');
+            $('.mobile_social_box').hide();
+            $('.'+box).show();
+        });
+    });
+    
     $(".botton_footer_register_box").click(function(){
     
         $(".footer_register_box").toggle();    
@@ -900,13 +909,6 @@
     });
     
 
-    $(document).ready(function() {
-        // mobile social button
-        $('.mobile_container_socical_feeds .social_btns li a').click(function() {
-            var box = $(this).attr('box');
-            $('.mobile_social_box').hide();
-            $('.'+box).show();
-        });
-    });
+    
 
 </script>
