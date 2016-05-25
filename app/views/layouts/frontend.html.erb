@@ -96,6 +96,16 @@
 		
 		<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
 		
+		<script>
+			$(document).ready(function() {
+				$('.actions_wrap').click(function() {					
+					if(event.target.tagName == 'DIV') {
+						var url = $(this).parents(".product_item").find('.description a').eq(0).attr('href');
+						window.location = url;
+					}
+				});
+			});
+		</script>
 	</head>
 	<%= yield %>
 </html>

@@ -58,7 +58,7 @@
                     <div class="filter-box">
                         <%= form_for("", url: {controller: 'vouchers', action: 'search'}, method: "get") do |f| %>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_by) %></label>
                                         <div>
@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_order) %></label>
                                         <div>
@@ -74,7 +74,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 pull-right">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:valid_date) %></label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="icon-calendar"></i></span>
+                                            <input type="text" class="form-control pickadate-accessibility date-select" name="valid_date" value="<%= params[:valid_date] %>" placeholder="Valid date&hellip;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 pull-right">
                                     <div class="form-group">
                                         <label class="" ><%= t(:filter) %></label>
                                         <div class="input-group">
@@ -83,7 +92,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>                    
                         <% end %>
                     </div>
                     
@@ -178,4 +187,22 @@
 
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/javascripts/datatables_manufacturers.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/daterangepicker.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.date.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.time.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/legacy.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/anytime.min.js' %>
+<script>    
+    // Accessibility labels
+    $('.pickadate-accessibility').pickadate({
+        labelMonthNext: 'Go to the next month',
+        labelMonthPrev: 'Go to the previous month',
+        labelMonthSelect: 'Pick a month from the dropdown',
+        labelYearSelect: 'Pick a year from the dropdown',
+        selectMonths: true,
+        selectYears: true
+    });
+</script>
 <!-- /theme JS files -->

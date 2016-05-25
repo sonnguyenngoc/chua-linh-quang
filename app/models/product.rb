@@ -138,10 +138,15 @@ class Product < ActiveRecord::Base
     status.to_s.split(",")
   end
   
+  def display_statuses
+    @html = "<br />"
+    statuses.join(@html).html_safe
+  end
+  
   def self.get_by_category_status(category, status)
     records = self.all
-    records = records.where("products.status LIKE ?", "%#{status}%")
-    records = records.joins(:categories).where(categories: {id: category})
+    #records = records.where("products.status LIKE ?", "%#{status}%")
+    #records = records.joins(:categories).where(categories: {id: category})
     return records
   end
   

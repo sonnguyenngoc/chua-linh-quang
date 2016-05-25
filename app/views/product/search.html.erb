@@ -294,7 +294,9 @@
                                                                 <div class="nowrap-ellipsis">
                                                                     
                                                                     <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
-                                                                    <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                                    <% if !product.manufacturer.nil? %>
+                                                                        <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                                    <% end %>
                                                                 
                                                                 </div>
                 
@@ -396,7 +398,7 @@
         
                                             <div class="table_cell">
         
-                                                <div class="product_item">
+                                                <div class="product_item item-<%= index+1 %>">
         
                                                     <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
         
@@ -533,7 +535,9 @@
                                                         <div class="nowrap-ellipsis">
                                                             
                                                             <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
-                                                            <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                            <% if !product.manufacturer.nil? %>
+                                                                <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                            <% end %>
                                                         
                                                         </div>
         

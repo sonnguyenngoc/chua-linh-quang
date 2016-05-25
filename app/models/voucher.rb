@@ -72,6 +72,13 @@ class Voucher < ActiveRecord::Base
   def self.search(params)
     records = self.all
     
+    #From Date filter
+    if params[:from_date].present? && params[:to_date].present?
+      #records = records.where('vouchers.from_date >= ?', params[:from_date].to_date.beginning_of_day)
+      #                  .where('vouchers.to_date <= ?', params[:to_date].to_date.end_of_day)
+      records = records.where("#{params[:from_date]} BETWEEN ? AND ?", from_date, to_date)
+    end
+    
     #Search keyword filter
     if params[:keyword].present?
         records = records.where("LOWER(vouchers.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
