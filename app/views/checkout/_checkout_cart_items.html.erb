@@ -49,8 +49,9 @@
                     <td data-title="Product Name">
                         
                         <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_title" %><br/>
-
-                        <%= link_to item.product.manufacturer.name, { controller: "manufacturer", action: "list"} %>
+                        <% if !item.product.manufacturer.nil? %>
+                            <%= link_to item.product.manufacturer.name, { controller: "manufacturer", action: "list"} %>
+                        <% end %>
                     
                     </td>
 

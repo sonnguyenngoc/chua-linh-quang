@@ -701,3 +701,29 @@ footer.bottom_box {
     padding: 5px 0;
     height: 35px;
 }
+@media only screen and (item-1) {    
+    .table_layout .product_item.tem-1, .table_layout .entry, .table_layout blockquote {
+        width: 272px;
+     }
+}
+/*Customer Care - main_nav_right*/
+h3.care {
+    float: right;
+}
+.topbar_care {
+    text-align: right;
+}
+.topbar_care > li > .submenu{
+    z-index: 121;
+}
+.topbar_care > li .submenu a {
+    padding: 8px 10px 7px !important;
+}
+.topbar_care > .has_submenu > a::after {
+    right: 0px;
+    top: 12px;
+}
+.icon-phone-care {
+    color: #018bc8;
+}
+/*END - Customer Care - main_nav_right*/

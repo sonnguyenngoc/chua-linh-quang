@@ -343,7 +343,9 @@
                                                     <div class="nowrap-ellipsis">
                                                         
                                                         <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
-                                                        <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                        <% if !product.manufacturer.nil? %>
+                                                            <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
+                                                        <% end %>
                                                         
                                                     </div>
 

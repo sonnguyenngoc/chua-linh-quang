@@ -160,7 +160,7 @@
                         <label class="checkbox-inline">
                             <input <%= "checked" if @product.statuses.include?("imported") %> type="checkbox" name="product[status][]" value="imported"><%= t(:imported) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("sold_out") %> type="checkbox" name="product[status][]" value="sold_out"><%= t(:sold_out) %></label>
+                            <input <%= "checked" if @product.statuses.include?("sold_out") %> type="checkbox" name="product[status][]" value="sold_out"><b><%= t(:sold_out) %></b></label>
                     </div>
                 </div>
                     

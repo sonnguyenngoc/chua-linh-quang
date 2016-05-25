@@ -164,6 +164,15 @@ Rails.application.routes.draw do
         collection do
           get 'search'
         end
+        collection do
+          get 'pending'
+        end
+        collection do
+          get 'finish'
+        end
+        collection do
+          get 'cancel'
+        end
       end
       resources :newsletters do
         collection do

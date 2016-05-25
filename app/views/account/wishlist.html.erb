@@ -120,8 +120,15 @@
 												<!-- - - - - - - - - - - - - - End of product code - - - - - - - - - - - - - - - - -->
 		
 												<!-- - - - - - - - - - - - - - Product quantity - - - - - - - - - - - - - - - - -->
-		
-												 <td data-title="Status" class="success">In Stock</td>
+												<% if item.product.is_sold_out? %>
+													
+													<td data-title="Status" class="out_stock"><%= item.product.display_is_sold_out %></td>
+												 
+												<% else %>
+													
+													<td data-title="Status" class="success">Còn hàng</td>
+													
+												<% end %>
 		
 												<!-- - - - - - - - - - - - - - End of product quantity - - - - - - - - - - - - - - - - -->
 												

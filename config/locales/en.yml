@@ -44,6 +44,8 @@ en:
   cancel: "Cancel"
   edit: "Edit"
   delete: "Delete"
+  view: "View"
+  total: "Total"
   #------------------------------------
   new_product: "New Product"
   new_category: "New Category"
@@ -77,6 +79,7 @@ en:
   prominent: "Prominent Product"
   imported: "Imported Product"
   deal: "Deal Product"
+  sold_out: "SOLD OUT"
   introduction: "Introduction"
   picture: "Picture"
   related_photos: "Related Photos"
@@ -111,6 +114,7 @@ en:
   #-------------------------------------
   order: "Order"
   orders: "Orders"
+  listing_orders: "Listing Orders"
   info_customer: "Customer Informations"
   info_delivery: "Delivery Informations"
   order_detail: "Order Detail"
@@ -181,6 +185,7 @@ en:
   edit_coupon: "Edit Coupon"
   from_date: "From Date"
   to_date: "To Date"
+  valid_date: "Valid Date"
   description: "Description"
   listing_vouchers: "Listing Coupons"
   new_voucher: "New Voucher"

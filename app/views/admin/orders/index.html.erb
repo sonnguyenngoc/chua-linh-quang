@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold">Orders</span></h4>
+                        <h4><span class="text-semibold"><%= t(:orders) %></span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_areas_path %>">Order</a></li>
-                        <li class="active">Orders</li>
+                        <li><a href="<%= admin_areas_path %>"><%= t(:order) %></a></li>
+                        <li class="active"><%= t(:orders) %></li>
                     </ul>
                 </div>
             </div>
@@ -51,14 +51,14 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading col-md-12">
-                        <h5 class="panel-title col-md-6"><span class="text-semibold">Listing Orders</span></h5>
-                        <%= link_to 'New Order', new_admin_order_path, class: 'btn btn-primary pull-right' %>
+                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_orders) %></span></h5>
+                        <!--<%= link_to 'New Order', new_admin_order_path, class: 'btn btn-primary pull-right' %>-->
                     </div>
                     
                     <div class="filter-box">
                         <%= form_for("", url: {controller: 'orders', action: 'search'}, method: "get") do |f| %>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:customer) %></label>
                                         <div>
@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:user) %></label>
                                         <div>
@@ -74,11 +74,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:product) %></label>
                                         <div>
                                             <%= select_tag(:product_id, options_from_collection_for_select(Product.all.order("name"), :id, :name, :selected => params[:product_id]), include_blank: "All", class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:status) %></label>
+                                        <div>
+                                            <select name="status" class="select">
+                                                <option <%= "selected" if params[:status] == "pending" %> value="pending">Pending</option>
+                                                <option <%= "selected" if params[:status] == "finished" %> value="finished">Finished</option>
+                                                <option <%= "selected" if params[:status] == "cancel" %> value="cancel">Cancel</option>
+                                                <option <%= "selected" if params[:status] == "all" %> value="all">All</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +111,7 @@
                                         <label class="" ><%= t(:to_date) %></label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="icon-calendar"></i></span>
-                                            <input type="text" class="form-control pickadate-accessibility date-select" name="to_date" value="<%= params[:to_date] %>" placeholder="From date&hellip;">
+                                            <input type="text" class="form-control pickadate-accessibility date-select" name="to_date" value="<%= params[:to_date] %>" placeholder="To date&hellip;">
                                         </div>
                                     </div>
                                 </div>
@@ -125,11 +138,11 @@
                     <table class="table">
                         <thead>
                             <tr class="bg-teal-800">
-                                <th>Customer</th>
-                                <th>Items</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th>Created At</th>
+                                <th><%= t(:customer) %></th>
+                                <th><%= t(:items) %></th>
+                                <th><%= t(:total) %></th>
+                                <th><%= t(:status) %></th>
+                                <th><%= t(:created_at) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
@@ -144,7 +157,7 @@
                                         <% end %>
                                     </td>
                                     <td><%= format_number(item.total) %> đ</td>
-                                    <td><span class="label label-success">Pending...</span></td>
+                                    <td><span class="<%= item.display_class_status %>"><%= item.status %></span></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <ul class="icons-list">
@@ -155,7 +168,25 @@
                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i> View'.html_safe, {controller: "admin/orders", action: "show", id: item.id} %>
+                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i>'.html_safe + t(:view), {controller: "admin/orders", action: "show", id: item.id} %>
+                                                    </li>
+                                                    <% if item.status != "finished" %>
+                                                        <li>
+                                                            <%= link_to '<i class="glyphicon glyphicon-check"></i> '.html_safe + t(:finish), {controller: "admin/orders", action: "finish", id: item.id} %>
+                                                        </li>
+                                                    <% end %>
+                                                    <% if item.status != "pending" %>
+                                                        <li>
+                                                            <%= link_to '<i class="icon-reload-alt"></i> '.html_safe + t(:pending), {controller: "admin/orders", action: "pending", id: item.id} %>
+                                                        </li>
+                                                    <% end %>
+                                                    <% if item.status != "cancel" %>
+                                                        <li>
+                                                            <%= link_to '<i class="glyphicon glyphicon-ban-circle"></i> '.html_safe + t(:cancel), {controller: "admin/orders", action: "cancel", id: item.id} %>
+                                                        </li>
+                                                    <% end %>
+                                                    <li>
+                                                        <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
                                                     </li>
                                                 </ul>
                                             </li>
