@@ -267,6 +267,9 @@
     .section_offset:not(:last-child) {
         margin-bottom: 10px;
     }
+    .mobile_container_socical_feeds {
+        position: relative;
+    }
     .mobile_container_socical_feeds .social_btns {
         text-align: center;
     }
@@ -274,12 +277,19 @@
         display: inline;
         float: none;
     }
-    .mobile_container_socical_feeds .section_offset {
+    .mobile_container_socical_feeds .section_follow_facebook,
+    .mobile_container_socical_feeds .section_follow_googleplus,
+    .mobile_container_socical_feeds .section_follow_contact,
+    .mobile_container_socical_feeds .section_follow_gmap {
         position: absolute;
         background: #fff;
         border: solid 1px #ddd;
-        bottom: 48px;
+        bottom: 45px;
         padding: 10px;
         z-index: 1000;
+        width: 90%;
+    }
+    .mobile_container_socical_feeds .section_follow_gmap {
+        bottom: 55px;
     }
 }
