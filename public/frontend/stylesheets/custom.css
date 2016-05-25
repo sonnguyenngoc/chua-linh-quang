@@ -794,3 +794,6 @@ h3.care {
 .actions_wrap {
     cursor: pointer;
 }
+.chat_box_page .mobile_container_socical_feeds {
+    display: none;
+}
