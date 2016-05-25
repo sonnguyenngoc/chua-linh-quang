@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_filter :authenticate_user!, except: [:chat_box, :quick_register]
+  before_filter :authenticate_user!, except: [:chat_box, :quick_register, :destop_quick_register]
 
   layout false
 
@@ -38,6 +38,19 @@ class ConversationsController < ApplicationController
     sign_in(:user, user)
     
     redirect_to chat_box_path(new_user: true)
+  end
+  
+  def destop_quick_register
+    generated_password = Devise.friendly_token.first(8)
+    if params[:user][:email].present?
+      generated_email = params[:user][:email]
+    else
+      generated_email = (0..8).map{('a'..'z').to_a[rand(26)]}.join+"@gmail.com"
+    end
+    user = User.create!(:first_name => params[:user][:first_name], :email => generated_email, :password => generated_password)
+    sign_in(:user, user)
+    
+    redirect_to my_account_path(new_user: true)
   end
 
   private
