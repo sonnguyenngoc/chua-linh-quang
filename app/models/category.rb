@@ -12,8 +12,12 @@ class Category < ActiveRecord::Base
     self.save
   end
   
-  def self.get_all_categories
-    self.all.order("ordered, created_at ASC")
+  def self.get_all_categories(params)
+      if params[:category_id].present?
+        self.find(params[:category_id]).children
+      else
+        self.where(level: 1)
+      end
   end
   
   def get_products_for_categories(params)

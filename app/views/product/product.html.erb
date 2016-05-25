@@ -413,7 +413,7 @@
             
                                         <li><a href="#tab-description">Mô tả sản phẩm</a></li>
                                         <li class="<%= "active" if params[:status] == "tab-questions" %>"><a href="#tab-questions" data-toggle="tab">Câu hỏi về sản phẩm (<%= @product.questions.count %>)</a></li>
-                                        <li><a href="#tab-review">Đánh giá sản phẩm (<%= @product.comments.count %>)</a></li>
+                                        <li class="<%= "active" if params[:status] == "tab_comment" %>"><a href="#tab-review">Đánh giá sản phẩm (<%= @product.comments.count %>)</a></li>
             
                                     </ul>
                                     

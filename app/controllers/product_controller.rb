@@ -61,6 +61,10 @@ class ProductController < ApplicationController
         @testimonial = Testimonial.new
     end
     
+    def special
+        @title_head = "Sản phẩm đặc biệt"
+    end
+    
     def view_all_product_by_status
         if params[:st] == "deal"
             @title_head = "Hàng khuyến mãi"
@@ -83,10 +87,10 @@ class ProductController < ApplicationController
     @line_item = @cart.add_product(product.id, quantity)
     @line_item.save
 
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to controller: "checkout", action: "checkout", product_id: product.id }
-      end
-    end
+        respond_to do |format|
+          if @line_item.save
+            format.html { redirect_to controller: "checkout", action: "checkout", product_id: product.id }
+          end
+        end
     end
 end
