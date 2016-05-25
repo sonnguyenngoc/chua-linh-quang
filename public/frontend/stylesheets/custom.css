@@ -727,3 +727,11 @@ footer.bottom_box {
 .image_preview_container .open_qv {
     display: none;
 }
+/*.actions_wrap > .centered_buttons {
+    position: absolute;
+    top: -170px;
+    left: 16%;
+}
+.product_item:not(.type_3) .actions_wrap {
+    height: 0%;
+}*/

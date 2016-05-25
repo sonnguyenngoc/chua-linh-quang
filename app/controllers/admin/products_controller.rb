@@ -43,6 +43,8 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.categories.clear
+    @categories = Category.all
+    @articles = Article.all
     if params[:category_ids].present?
       params[:category_ids].each do |id|      
         @product.categories << Category.find(id)
@@ -77,7 +79,8 @@ class Admin::ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-  
+    @categories = Category.all
+    @articles = Article.all
     if params[:category_ids].present?
         @product.categories.clear
         params[:category_ids].each do |id|      

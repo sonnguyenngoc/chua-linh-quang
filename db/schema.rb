@@ -13,132 +13,129 @@
 
 ActiveRecord::Schema.define(version: 20160521024747) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "areas", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "level"
-    t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "parent_id"
-    t.integer  "areatype_id"
-    t.integer  "display_order"
+    t.string   "name",          limit: 255
+    t.integer  "level",         limit: 4
+    t.text     "description",   limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "parent_id",     limit: 4
+    t.integer  "areatype_id",   limit: 4
+    t.integer  "display_order", limit: 4
   end
 
   create_table "areas_products", force: :cascade do |t|
-    t.integer  "area_id"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "area_id",    limit: 4
+    t.integer  "product_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "article_categories", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "level"
-    t.string   "meta_keywords"
-    t.text     "meta_description"
+    t.string   "name",             limit: 255
+    t.text     "description",      limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "level",            limit: 4
+    t.string   "meta_keywords",    limit: 255
+    t.text     "meta_description", limit: 65535
   end
 
   create_table "article_categories_articles", force: :cascade do |t|
-    t.integer  "article_id"
-    t.integer  "article_category_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "article_id",          limit: 4
+    t.integer  "article_category_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string   "image_url"
-    t.string   "title"
-    t.text     "content"
-    t.string   "tags"
-    t.integer  "article_category_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "code_status_id"
-    t.string   "meta_keywords"
-    t.text     "meta_description"
+    t.string   "image_url",           limit: 255
+    t.string   "title",               limit: 255
+    t.text     "content",             limit: 65535
+    t.string   "tags",                limit: 255
+    t.integer  "article_category_id", limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "code_status_id",      limit: 4
+    t.string   "meta_keywords",       limit: 255
+    t.text     "meta_description",    limit: 65535
   end
 
   create_table "articles_products", force: :cascade do |t|
-    t.integer  "article_id"
-    t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "article_id", limit: 4
+    t.integer  "product_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "carts", force: :cascade do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "voucher_code"
-    t.string   "coupon_code"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "voucher_code", limit: 255
+    t.string   "coupon_code",  limit: 255
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "level"
-    t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "ordered"
-    t.string   "meta_keywords"
-    t.text     "meta_description"
+    t.string   "name",             limit: 255
+    t.integer  "level",            limit: 4
+    t.text     "description",      limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "ordered",          limit: 4
+    t.string   "meta_keywords",    limit: 255
+    t.text     "meta_description", limit: 65535
   end
 
   create_table "categories_products", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "product_id",  limit: 4
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "code_statuses", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "comment_articles", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "article_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "parent_id",  default: -1
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "article_id", limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "parent_id",  limit: 4,     default: -1
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "product_id"
-    t.string   "name"
-    t.text     "content"
-    t.integer  "star"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "product_id", limit: 4
+    t.string   "name",       limit: 255
+    t.text     "content",    limit: 65535
+    t.integer  "star",       limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string   "image_url"
-    t.string   "name"
-    t.string   "head_office_address"
-    t.string   "certificate_no"
+    t.string   "image_url",            limit: 255
+    t.string   "name",                 limit: 255
+    t.string   "head_office_address",  limit: 255
+    t.string   "certificate_no",       limit: 255
     t.datetime "date_of_issue"
-    t.string   "sales_office_address"
-    t.string   "phone"
-    t.string   "hotline"
-    t.string   "email"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "head_area_id"
-    t.integer  "branch_area_id"
-    t.string   "type_company"
+    t.string   "sales_office_address", limit: 255
+    t.string   "phone",                limit: 255
+    t.string   "hotline",              limit: 255
+    t.string   "email",                limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "head_area_id",         limit: 4
+    t.integer  "branch_area_id",       limit: 4
+    t.string   "type_company",         limit: 255
   end
 
   create_table "compares", force: :cascade do |t|
@@ -147,101 +144,101 @@ ActiveRecord::Schema.define(version: 20160521024747) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.text     "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255
+    t.text     "message",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "sender_id",    limit: 4
+    t.integer  "recipient_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "coupons", force: :cascade do |t|
-    t.string   "name"
-    t.string   "code"
+    t.string   "name",        limit: 255
+    t.string   "code",        limit: 255
     t.datetime "from_date"
     t.datetime "to_date"
-    t.text     "description"
-    t.integer  "quantity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.decimal  "price"
+    t.text     "description", limit: 65535
+    t.integer  "quantity",    limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.decimal  "price",                     precision: 10
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "company"
-    t.string   "address"
-    t.string   "city"
-    t.integer  "zip_code"
-    t.string   "country"
-    t.string   "province"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "order_id"
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.string   "email",      limit: 255
+    t.string   "phone",      limit: 255
+    t.string   "company",    limit: 255
+    t.string   "address",    limit: 255
+    t.string   "city",       limit: 255
+    t.integer  "zip_code",   limit: 4
+    t.string   "country",    limit: 255
+    t.string   "province",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "order_id",   limit: 4
   end
 
   create_table "delivery_methods", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.string   "email"
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",      limit: 255
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "line_item_compares", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "compare_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "product_id", limit: 4
+    t.integer  "compare_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "line_item_compares", ["compare_id"], name: "index_line_item_compares_on_compare_id", using: :btree
   add_index "line_item_compares", ["product_id"], name: "index_line_item_compares_on_product_id", using: :btree
 
   create_table "line_items", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "cart_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "quantity",   default: 1
+    t.integer  "product_id", limit: 4
+    t.integer  "cart_id",    limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "quantity",   limit: 4, default: 1
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "manufacturers", force: :cascade do |t|
-    t.string   "image_url"
-    t.string   "name"
-    t.string   "address"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "image_url",   limit: 255
+    t.string   "name",        limit: 255
+    t.string   "address",     limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.text     "body",            limit: 65535
+    t.integer  "conversation_id", limit: 4
+    t.integer  "user_id",         limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.datetime "seen"
   end
 
@@ -249,200 +246,200 @@ ActiveRecord::Schema.define(version: 20160521024747) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "newsletters", force: :cascade do |t|
-    t.string   "email"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "status",     default: true
+    t.string   "email",      limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.boolean  "status",                 default: true
   end
 
   create_table "options", force: :cascade do |t|
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "code"
-    t.string   "tag"
-    t.text     "value"
-    t.text     "note"
-    t.string   "title"
-    t.boolean  "accept_email", default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "code",         limit: 255
+    t.string   "tag",          limit: 255
+    t.text     "value",        limit: 65535
+    t.text     "note",         limit: 65535
+    t.string   "title",        limit: 255
+    t.boolean  "accept_email",               default: false
   end
 
   create_table "order_deliveries", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "company"
-    t.string   "address"
-    t.string   "city"
-    t.integer  "zip_code"
-    t.string   "country"
-    t.string   "province"
-    t.integer  "delivery_method_id"
-    t.integer  "payment_method_id"
-    t.text     "message"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "order_id"
-    t.string   "email"
-    t.string   "phone"
+    t.string   "first_name",         limit: 255
+    t.string   "last_name",          limit: 255
+    t.string   "company",            limit: 255
+    t.string   "address",            limit: 255
+    t.string   "city",               limit: 255
+    t.integer  "zip_code",           limit: 4
+    t.string   "country",            limit: 255
+    t.string   "province",           limit: 255
+    t.integer  "delivery_method_id", limit: 4
+    t.integer  "payment_method_id",  limit: 4
+    t.text     "message",            limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "order_id",           limit: 4
+    t.string   "email",              limit: 255
+    t.string   "phone",              limit: 255
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "product_id"
-    t.integer  "quantity"
-    t.decimal  "price"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "product_name"
+    t.integer  "order_id",     limit: 4
+    t.integer  "product_id",   limit: 4
+    t.integer  "quantity",     limit: 4
+    t.decimal  "price",                    precision: 10
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "product_name", limit: 255
   end
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.integer  "user_id"
-    t.string   "status",             default: "Pending"
-    t.boolean  "different_delivery", default: false
-    t.string   "voucher_code"
-    t.decimal  "voucher_price"
-    t.string   "coupon_code"
-    t.decimal  "coupon_price"
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+    t.integer  "user_id",            limit: 4
+    t.string   "status",             limit: 255,                default: "Pending"
+    t.boolean  "different_delivery",                            default: false
+    t.string   "voucher_code",       limit: 255
+    t.decimal  "voucher_price",                  precision: 10
+    t.string   "coupon_code",        limit: 255
+    t.decimal  "coupon_price",                   precision: 10
   end
 
   create_table "parent_article_categories", force: :cascade do |t|
-    t.integer  "parent_id"
-    t.integer  "article_category_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "parent_id",           limit: 4
+    t.integer  "article_category_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "parent_categories", force: :cascade do |t|
-    t.integer  "parent_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "parent_id",   limit: 4
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "payment_methods", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "product_images", force: :cascade do |t|
-    t.integer  "product_id"
-    t.string   "image_url"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "is_main",    default: "False"
+    t.integer  "product_id", limit: 4
+    t.string   "image_url",  limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "is_main",    limit: 255, default: "False"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.string   "code"
-    t.decimal  "quantity"
-    t.string   "unit"
-    t.decimal  "price"
-    t.text     "short_description"
-    t.text     "description"
-    t.integer  "manufacturer_id"
-    t.integer  "product_image_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "tags"
-    t.text     "status"
-    t.decimal  "old_price"
-    t.decimal  "discount_percent"
-    t.string   "meta_keywords"
-    t.text     "meta_description"
+    t.string   "name",              limit: 255
+    t.string   "code",              limit: 255
+    t.decimal  "quantity",                        precision: 10
+    t.string   "unit",              limit: 255
+    t.decimal  "price",                           precision: 10
+    t.text     "short_description", limit: 65535
+    t.text     "description",       limit: 65535
+    t.integer  "manufacturer_id",   limit: 4
+    t.integer  "product_image_id",  limit: 4
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "tags",              limit: 255
+    t.text     "status",            limit: 65535
+    t.decimal  "old_price",                       precision: 10
+    t.decimal  "discount_percent",                precision: 10
+    t.string   "meta_keywords",     limit: 255
+    t.text     "meta_description",  limit: 65535
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.text     "content"
-    t.integer  "product_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255
+    t.text     "content",    limit: 65535
+    t.integer  "product_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "slideshows", force: :cascade do |t|
-    t.string   "image_url"
-    t.string   "title_1"
-    t.string   "title_2"
-    t.string   "name_button"
-    t.string   "link"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "color_1"
-    t.string   "color_2"
-    t.string   "style"
+    t.string   "image_url",   limit: 255
+    t.string   "title_1",     limit: 255
+    t.string   "title_2",     limit: 255
+    t.string   "name_button", limit: 255
+    t.string   "link",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "color_1",     limit: 255
+    t.string   "color_2",     limit: 255
+    t.string   "style",       limit: 255
   end
 
   create_table "testimonials", force: :cascade do |t|
-    t.string   "name"
-    t.string   "city"
-    t.string   "email"
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "city",       limit: 255
+    t.string   "email",      limit: 255
+    t.string   "content",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255,   default: "",    null: false
+    t.string   "encrypted_password",     limit: 255,   default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone"
-    t.integer  "fax"
-    t.string   "company"
-    t.string   "address_1"
-    t.string   "address_2"
-    t.integer  "zip_code"
-    t.string   "country"
-    t.string   "province"
-    t.string   "city"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "password_reset_token"
+    t.text     "current_sign_in_ip",     limit: 65535
+    t.text     "last_sign_in_ip",        limit: 65535
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "phone",                  limit: 255
+    t.integer  "fax",                    limit: 4
+    t.string   "company",                limit: 255
+    t.string   "address_1",              limit: 255
+    t.string   "address_2",              limit: 255
+    t.integer  "zip_code",               limit: 4
+    t.string   "country",                limit: 255
+    t.string   "province",               limit: 255
+    t.string   "city",                   limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "password_reset_token",   limit: 255
     t.datetime "password_reset_sent_at"
-    t.string   "oauth_token"
+    t.string   "oauth_token",            limit: 255
     t.datetime "oauth_expires_at"
     t.datetime "last_seen"
-    t.boolean  "is_admin",               default: false
+    t.boolean  "is_admin",                             default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "vouchers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "code"
+    t.string   "name",        limit: 255
+    t.string   "code",        limit: 255
     t.datetime "from_date"
     t.datetime "to_date"
-    t.text     "description"
-    t.integer  "quantity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.decimal  "price"
+    t.text     "description", limit: 65535
+    t.integer  "quantity",    limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.decimal  "price",                     precision: 10
   end
 
   create_table "wish_lists", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "product_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_foreign_key "line_item_compares", "compares"

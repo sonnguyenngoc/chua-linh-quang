@@ -95,6 +95,18 @@
 		
 		<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
 		
+		<script>
+			$(document).ready(function() {
+				$('.actions_wrap').click(function() {
+					var url = $(this).parents(".product_item").find('.description a').eq(0).attr('href');
+					window.location = url;
+				});
+				
+				$('.actions_wrap').click(function() {
+					event.stopPropagation();
+				});
+			});
+		</script>
 	</head>
 	<%= yield %>
 </html>
