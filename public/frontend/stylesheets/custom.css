@@ -760,4 +760,6 @@ h3.care {
 .unread_conversation a:hover {
     color: grey;
 }
-
+.actions_wrap {
+    cursor: pointer;
+}
