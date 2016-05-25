@@ -109,7 +109,9 @@
                                         <%= item.name %>
                                     </td>
                                     <td>
-                                        <%= item.article.title %>
+                                        <% if !item.article.nil? %>
+                                            <%= link_to item.article.title, { controller: "/blog", action: "show", blog_id: item.article_id }, target: "_blank" %>
+                                        <% end %>
                                     </td>
                                     <td>
                                         <%= item.content %>

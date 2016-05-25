@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
     belongs_to :area, foreign_key: "province"
     has_many :wish_lists
     has_many :comments, dependent: :destroy
-    has_many :conversations, :foreign_key => :sender_id
+    # has_many :conversations, -> { order "updated_at DESC" }, :foreign_key => :sender_id
+    has_many :messages
+    
     
     has_many :orders
     # Include default devise modules. Others available are:
@@ -116,11 +118,49 @@ class User < ActiveRecord::Base
         self.update_column(:last_seen, Time.now)
     end
     
-    def self.get_user
+    def self.get_users
         self.where("is_admin = ?", false)
+    end
+    
+    def self.get_admins
+        self.where("is_admin = ?", true)
     end
     
     def self.get_online_admins
         self.where("is_admin = ? and last_seen > ?", true, 2.minutes.ago)
+    end
+    
+    def display_user_name
+        self.first_name.to_s + " " + self.last_name.to_s
+    end
+    
+    def involving_conversations
+        Conversation.where("conversations.sender_id =? OR conversations.recipient_id =?",self.id,self.id)
+    end
+    
+    def sent_messages
+    end
+    
+    def received_messages
+      records = Message.joins(:conversation)
+                .where("conversations.sender_id =? OR conversations.recipient_id =?", self.id, self.id)
+                .where.not(user_id: self.id)
+    end
+    
+    def unread_messages(params=nil)
+        records = received_messages.where(seen: nil)
+        if params.present? and params[:conversation_id].present?
+            records = records.where(conversation_id: params[:conversation_id])
+        end
+        
+        return records
+    end
+    
+    def unread_conversations_count
+        unread_messages.group("conversations.id").distinct.count("conversations.id").count
+    end
+    
+    def see(c)
+        c.messages.where.not(user_id: self.id).update_all(seen: Time.now)
     end
 end

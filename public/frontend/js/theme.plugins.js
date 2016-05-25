@@ -250,7 +250,7 @@
 
 			if($('#img_zoom').length){
 				$('#img_zoom').elevateZoom({
-					zoomType: "inner",
+					//zoomType: "inner",
 					gallery:'thumbnails',
 					galleryActiveClass: 'active',
 					cursor: "crosshair",
@@ -296,7 +296,6 @@
 					var min = ui.values[0].toFixed(2),
 						max = ui.values[1].toFixed(2),
 						range = $(this).siblings('.range');
-
 
 					range.children('.min_value').val(min).next().val(max);
 

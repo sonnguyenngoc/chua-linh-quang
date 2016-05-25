@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get "tai-khoan/mat-khau" => "account#password", as: :password
     get "tai-khoan/phieu-mua-hang" => "account#voucher", as: :voucher
     get "tai-khoan/phieu-mua-hang/phieu-mua-hang-da-dung" => "account#voucher_success", as: :voucher_success
-    get "tai-khoan/chua-dang-nhap" => "account/no_singed", as: :no_singed
+    get "account/no_singed" => "account/no_singed", as: :no_singed
     # end account
     
     # checkout
@@ -82,6 +82,8 @@ Rails.application.routes.draw do
     get "san-pham/gui-y-kien-khach-hang" => "product#testimonialform", as: :testimonial_form
     get "san-pham/dac-biet" => "product#special", as: :special
     get "san-pham/:url/:st" => "product#view_all_product_by_status", as: :view_all_product_by_status
+    get "conversations/chat_box" => "conversations#chat_box", as: :chat_box
+    post "conversations/quick_register" => "conversations#quick_register", as: :quick_register
     # end product
     
     # resources

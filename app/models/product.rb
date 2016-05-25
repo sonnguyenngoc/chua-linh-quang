@@ -11,8 +11,8 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :areas
   belongs_to :manufacturer
   has_many :product_images
-  has_many :comments
-  has_many :questions
+  has_many :comments, dependent: :destroy
+  has_many :questions, dependent: :destroy
   accepts_nested_attributes_for :product_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
   has_and_belongs_to_many :articles
   

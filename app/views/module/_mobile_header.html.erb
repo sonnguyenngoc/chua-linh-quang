@@ -22,6 +22,12 @@
         <a class="top_mobile_button menu_chat" href="#">
           
           <i class="icon-comment"></i>
+          
+          <% if current_user.unread_conversations_count > 0 %>
+            
+            <span class="badge badge-info"><number><%= current_user.unread_conversations_count %></number></span>
+          
+          <% end %>
         
         </a>
         
@@ -29,15 +35,50 @@
   
             <ul class="topbar_mobile">
               
-                <% if Conversation.count != 0 %>
-                                            
-                    <% Conversation.all.each do |chat| %>
-  
-                        <li>
-                            
-                            <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class=""><b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %></b><br/>
+                <% if current_user.is_admin == false %>
+                  
+                   <% User.get_admins.each do |user| %>
+                   
+                      <li>
+                        
+                        <a href="<%= chat_box_path(sender_id: current_user.id, recipient_id: user.id) %>"><b><%= user.first_name.to_s + " " + user.last_name.to_s %></b><br/>
                                 
-                                <p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
+                            <p class="style_chat">Chat với quản trị viên</p>
+                            
+                        </a>
+                      
+                      </li>
+
+                    <% end %>
+                  
+                <% end %>
+              
+                <% if current_user.involving_conversations.count != 0 %>
+                                            
+                    <% current_user.involving_conversations.each do |chat| %>
+  
+                        <li class="<%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
+                            
+                            <a href="<%= chat_box_path(chat_id: chat.id) %>">
+                              
+                              <b>
+                                
+                                <%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>
+                                
+                                <% if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>
+              
+                                  (<span class="badge badge-info conversation_<%= chat.id %>_<%= current_user.id %>"><number><%= current_user.unread_messages({conversation_id: chat.id}).count %></number></span>)
+                                
+                                
+                                <% end %>
+                              
+                              </b><br/>
+                                
+                              <p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
+                              
+                              <% if chat.messages.count > 0 %>
+                                <p class="style_chat"><%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %></p>
+                              <% end %>
                             
                             </a>
                         
@@ -58,23 +99,47 @@
             </ul>
             
         </div>
+        
       <% else %>
+        
         <a class="top_mobile_button menu_chat" href="#">
           
-          <i class="icon-comment"></i>
+            <i class="icon-comment"></i>
         
         </a>
+        
+        <div class="mobile_top_menu conversation_list" style="display: none">
+  
+            <ul class="topbar_mobile">
+                    
+                <li>
+                        
+                    <a href="<%= chat_box_path %>" class="no_singed"><b>Chat với quản trị viên</b></a>
+                    
+                <li>
+            
+            </ul>
+            
+        </div>
+        
       <% end %>
       
       <a class="top_mobile_button menu_cart" href="<%= url_for(controller: "checkout", action: "shopping_cart") %>">
+       
         <i class="icon-basket"></i>
+        
         <% if @cart.line_items.count_items > 0 %>
-          <span class="badge badge-info"><number><%= @cart.line_items.count_items %></number></span>
+         
+            <span class="badge badge-info"><number><%= @cart.line_items.count_items %></number></span>
+       
         <% end %>
+     
       </a>
       
       <div class="mobile_top_menu verytop_menu" style="display: none">
-        <%= render "module/verytop_menu_bar", prefix: "_mobile" %>
+          
+          <%= render "module/verytop_menu_bar", prefix: "_mobile" %>
+      
       </div>
       
       <div class="customer_care_box">

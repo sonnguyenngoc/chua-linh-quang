@@ -27,8 +27,10 @@ class ApplicationController < ActionController::Base
             controller_name == "coupons" || controller_name == "vouchers" || controller_name == "comment_articles" || controller_name == "companies" || controller_name == "code_statuses" || controller_name == "testimonials" ||
             controller_name == "options" || controller_name == "users"
 
-        authenticate_user!
-        "backend"
+          authenticate_user!
+          
+          redirect_to root_path if current_user.is_admin != true
+          "backend"
       end
     end
     

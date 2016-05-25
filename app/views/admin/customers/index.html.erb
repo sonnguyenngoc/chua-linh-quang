@@ -97,7 +97,7 @@
                             <% @customers.each do |customer| %>
                                 <tr>
                                     <td>
-                                        <%= customer.name %>
+                                        <%= link_to customer.name, [:admin, customer] %>
                                     </td>
                                     <td>
                                         <%= customer.email %> <br />

@@ -29,11 +29,10 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to controller: "product", action: "product", product_id: @question.id }
-        format.json { render :show, status: :created, location: @question }
+        format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
       else
-        format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+        flash[:notice] = "Đăng câu hỏi không thành công"
+        format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
       end
     end
   end

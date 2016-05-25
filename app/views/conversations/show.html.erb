@@ -1,4 +1,4 @@
-<div class="chatboxhead">
+<div class="chatboxhead" receiver_id="<%= @reciever.id %>">
   
   <div class="chatboxtitle">
    
@@ -36,6 +36,8 @@
   <%= form_for([@conversation, @message], :remote => true, :html => {id: "conversation_form_#{@conversation.id}"}) do |f| %>
      
       <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @conversation.id %>
+      
+      <a href="#chat" class="button_blue chat_send_button mobile_button_chat"><i class="icon-edit"></i></a>
   
   <% end %>
 
@@ -67,3 +69,10 @@
         //e.unbind(); //unbind. to stop multiple form submit.
     });
 </script>
+
+<% publish_to @path do %>
+    var id = "<%= @conversation.id %>";
+    var chatbox = $("#chatbox_" + id + " .chatboxcontent");
+    var reciever_id = <%= current_user.id %>;
+    $("body").addClass("yyyy");
+<% end %>

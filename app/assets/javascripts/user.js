@@ -58,7 +58,10 @@ var ready = function () {
         var id = $(this).data('cid');
         chatBox.checkInputKey(event, $(this), id);
     });
-
+    $(document).on('click', '.chat_send_button', function (event) {
+        var id = $('.chatboxtextarea').data('cid');
+        chatBox.sendMessage(event, $('.chatboxtextarea'), id);
+    });
     /**
      * When a conversation link is clicked show up the respective
      * conversation chatbox

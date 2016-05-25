@@ -86,6 +86,15 @@
         border-bottom: solid 1px #ddd;
         font-weight: 700;
     }
+    .mobile_top_menu ul li a.no_singed {
+        display: block;
+        padding: 20px 45px;
+        background: #4AC8FA;
+        border-bottom: solid 1px #ddd;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+    }
     .mobile_top_menu ul li a:hover {
         color: #333;
         background: #f8f8f8;
@@ -111,14 +120,14 @@
     .customer_care_box .menu_container ul.topbar_mobile {
         margin-top: 5px;
     }
-    .menu_cart .badge-info {
+    .top_mobile_button .badge-info {
         position: absolute;
         text-align: center;
         top: -12px;
         margin-left: -3px;
         width: 35px;
     }
-    .menu_cart .badge-info number {
+    .top_mobile_button .badge-info number {
         background: red;
         font-size: 11px;
         padding: 4px 5px;
@@ -215,7 +224,7 @@
         /*margin-top: 20px;*/
     }
     .infoblock.type_2 .caption {
-        line-height: 22px;
+        line-height: 16px;
         height: 45px;
     }
     .row .home_intro_box:nth-child(3), .home_intro_box:nth-child(4), .home_intro_box:nth-child(5), .home_intro_box:nth-child(6)  {
@@ -245,5 +254,8 @@
     }
     #footer * {
         color: #eee;
+    }
+    .unread_conversation a {
+        background: #f5f5f5 !important;
     }
 }

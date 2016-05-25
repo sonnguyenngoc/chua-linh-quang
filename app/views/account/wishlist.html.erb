@@ -82,6 +82,8 @@
 									<tbody>
 										
 										<% @products.each do |item| %>
+										
+											<a href="#" class="button_dark_grey add_cart_success" data-modal-url="<%= add_cart_success_path %>">Success</a>
 	
 											<tr>
 		
@@ -145,8 +147,8 @@
 													<ul class="buttons_col">
 		
 														<li>
-														   
-															<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: item.product_id), class: "button_blue add_to_cart" %>
+															
+															<%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: item.product_id), class: "button_blue add_to_cart add_to_cart_button" %>
 														
 														</li>
 		
@@ -238,5 +240,22 @@
     ============================================ -->
     <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
     <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+	
+	<script>
+		$(document).on("click", ".add_to_cart_button", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			$.ajax({
+				method: "GET",
+				url: url,
+				data: {quantity: $("input.quantity").val()}
+			})
+			.done(function( msg ) {
+				get_cart();
+				$(".add_cart_success").trigger("click")
+			});
+		});
+	</script>
     
 </body>

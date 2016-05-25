@@ -91,6 +91,14 @@ var ready = function () {
                     chatBox.restructure();
                 }
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
+                
+                if ($('.mobile_chat_box_page').length) {
+                    // $("#chatbox_" + conversation_id).appendTo("#messages");
+                    $("#messages").html($("#chatbox_" + conversation_id));
+                    $("li a[href='#messages'").trigger("click");
+                    $(".chatbox").hide();
+                    $("#chatbox_" + conversation_id).show();                
+                }
                 return;
             }
 
@@ -157,6 +165,14 @@ var ready = function () {
             });
 
             $("#chatbox_" + conversation_id).show();
+            
+            if ($('.mobile_chat_box_page').length) {
+                // $("#chatbox_" + conversation_id).appendTo("#messages");
+                $("#messages").html($("#chatbox_" + conversation_id));
+                $("li a[href='#messages'").trigger("click");
+                $(".chatbox").hide();
+                $("#chatbox_" + conversation_id).show();            
+            }
 
         },
 
@@ -196,6 +212,22 @@ var ready = function () {
             } else {
                 $(chatboxtextarea).css('overflow', 'auto');
             }
+
+        },
+        
+        sendMessage: function (event, chatboxtextarea, conversation_id) {
+                event.preventDefault();
+
+                message = chatboxtextarea.val();
+                message = message.replace(/^\s+|\s+$/g, "");
+
+                if (message != '') {
+                    $('#conversation_form_' + conversation_id).submit();
+                    $(chatboxtextarea).val('');
+                    $(chatboxtextarea).focus();
+                    $(chatboxtextarea).css('height', '44px');
+                }
+            
 
         },
 
