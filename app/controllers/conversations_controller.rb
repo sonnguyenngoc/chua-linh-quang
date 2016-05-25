@@ -29,7 +29,12 @@ class ConversationsController < ApplicationController
   
   def quick_register
     generated_password = Devise.friendly_token.first(8)
-    user = User.create!(:first_name => params[:user][:first_name], :email => params[:user][:email], :password => generated_password)
+    if params[:user][:email].present?
+      generated_email = params[:user][:email]
+    else
+      generated_email = (0..8).map{('a'..'z').to_a[rand(26)]}.join+"@gmail.com"
+    end
+    user = User.create!(:first_name => params[:user][:first_name], :email => generated_email, :password => generated_password)
     sign_in(:user, user)
     
     redirect_to chat_box_path(new_user: true)
