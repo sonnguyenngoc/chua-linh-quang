@@ -157,6 +157,15 @@
 												<% end %>
 												
 											<% end %>
+											<% if @product.is_sold_out? %>
+							
+												<div class="lbl_right_soldout">
+													
+													<div><%= @product.display_is_sold_out %></div>
+													
+												</div>
+												
+											<% end %>
 							
 											<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
 

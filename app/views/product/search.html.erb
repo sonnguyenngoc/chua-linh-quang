@@ -164,12 +164,20 @@
                                                             <div class="image_wrap">
                                                                 
                                                                 <% if product.get_main_image.present? %>
-                                                                            
-                                                                    <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                                    
+                                                                    <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
+                                                                    
+                                                                        <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                                        
+                                                                    </a>
                                                                 
                                                                 <% else %>
                                                                     
-                                                                    <img src="/frontend/images/medium_image.png" alt="">
+                                                                    <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
+                                                                    
+                                                                        <img src="/frontend/images/medium_image.png" alt="">
+                                                                        
+                                                                    </a>
                                                                 
                                                                 <% end %>
                 
@@ -405,12 +413,18 @@
                                                     <div class="image_wrap">
                                                         
                                                         <% if product.get_main_image.present? %>
-                                                                    
-                                                            <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                            <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
+                                                            
+                                                                <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                                
+                                                            </a>
                                                         
                                                         <% else %>
+                                                            <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
                                                             
-                                                            <img src="/frontend/images/medium_image.png" alt="">
+                                                                <img src="/frontend/images/medium_image.png" alt="">
+                                                                
+                                                            </a>
                                                         
                                                         <% end %>
         

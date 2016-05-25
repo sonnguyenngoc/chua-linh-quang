@@ -95,7 +95,7 @@
 										
 												<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
 						
-												<% if status == "deal" %>
+												<% if product.is_deal? %>
 													
 													<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
 														
@@ -107,9 +107,7 @@
 														
 													<% end %>
 													
-												<% end %>
-												
-												<% if status == "new" %>
+												<% elsif product.is_new? %>
 													
 													<div class="label_new">
 							
@@ -241,7 +239,7 @@
 										
 										<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
 										
-										<% if status == "deal" %>
+										<% if product.is_deal? %>
 													
 											<% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
 												
@@ -253,9 +251,7 @@
 												
 											<% end %>
 											
-										<% end %>
-										
-										<% if status == "new" %>
+										<% elsif product.is_new? %>
 											
 											<div class="label_new">
 					
