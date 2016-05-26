@@ -100,7 +100,7 @@
 
 		<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-		<div class="wide_layout">
+		<div class="wide_layoutz">
 
 			<!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
 
@@ -279,9 +279,9 @@
 											
 											<li><a style="padding: 1px 2px 2px 1px !important;" href="<%= url_for('/') %>"><img style="width: 40px" src="<%= url_for('/frontend/images/dsvm_logo2_small_50.png') %>" /></a></li>
 											
-											<li class="active"><a href="#register"><i class="icon-user-md"></i></a></li>
+											<li class="active"><a href="#register"><i style="font-size: 21px;" class="icon-users"></i></a></li>
 											
-											<li><a href="#login"><i class="icon-login-2"></i> Đăng nhập</a></li>
+											<!--<li><a href="#login"><i class="icon-login-2"></i> Đăng nhập</a></li>-->
 										</ul>
 										
 										<!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
@@ -292,9 +292,71 @@
 	
 											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
 	
-											<div id="register" class="tab_container">
+											<!--<div id="register" class="tab_container active">
 												
-												<h3>Thông tin khách hàng</h3>
+												
+											
+
+										
+											</div>--><!--/ #tab-9-->
+	
+											<!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
+											
+											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
+	
+											<div id="login" class="tab_container">
+												
+												<h3>Đăng nhập</h3>
+											
+												<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
+												
+														<ul>
+												
+															<li>
+																
+																<label for="login_email">Địa chỉ email:</label>
+																
+																<%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
+															
+															</li>
+												
+															<li>
+																
+																<label for="login_password">Mật khẩu:</label>
+																
+																<%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
+															
+															</li>
+												
+															<li class="v_centered">
+																
+																<%= button_tag "Đăng nhập", class: "button_blue middle_btn"%>
+																
+																<%= link_to "Quên mật khẩu?", { controller: "account", action: "forgotten" }, class: "small_link" %>
+															
+															</li>
+												
+														</ul>
+												
+													<% end %>
+											
+												<div class="streamlined">
+													<h4>Đăng nhập bằng mạng xã hội:</h4>
+													<!--Social icon's list-->
+													<ul class="horizontal_list social_btns">
+											
+														<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
+														<li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus tooltip_container" %></li>
+											
+													</ul><!--/ .horizontal_list.wrapper.social_btns-->
+													<!--End social icon's list-->
+											
+												</div><!--/ .streamlined-->
+												<br />
+												<hr>
+												<br />
+												
+												<h3>Đăng ký</h3>
 												
 												<p>Bạn cần điền thông tin bên dưới để chat với quản trị viên.</p>
 												<br />
@@ -344,65 +406,6 @@
 													</ul>
 											
 												<% end %>
-											
-												<%= render "/module/follow_facebook" %>
-										
-											</div><!--/ #tab-9-->
-	
-											<!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-											
-											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-	
-											<div id="login" class="tab_container">
-												
-												<h3>Đăng nhập</h3>
-											
-												<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
-												
-														<ul>
-												
-															<li>
-																
-																<label for="login_email">Địa chỉ email:</label>
-																
-																<%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
-															
-															</li>
-												
-															<li>
-																
-																<label for="login_password">Mật khẩu:</label>
-																
-																<%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
-															
-															</li>
-												
-															<li class="v_centered">
-																
-																<%= button_tag "Đăng nhập", class: "button_blue middle_btn"%>
-																
-																<%= link_to "Quên mật khẩu?", { controller: "account", action: "forgotten" }, class: "small_link" %>
-															
-															</li>
-												
-														</ul>
-												
-													<% end %>
-											
-												<div class="streamlined">
-											
-													<!--Social icon's list-->
-													<ul class="horizontal_list social_btns">
-											
-														<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
-														<li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus tooltip_container" %></li>
-											
-													</ul><!--/ .horizontal_list.wrapper.social_btns-->
-													<!--End social icon's list-->
-											
-												</div><!--/ .streamlined-->
-												<br /><br />
-												<%= render "/module/follow_facebook" %>
 	
 											</div><!--/ #tab-7-->
 	
@@ -417,6 +420,10 @@
 									<!-- - - - - - - - - - - - - - End of tabs v2 - - - - - - - - - - - - - - - - -->
 	
 								</section><!--/ [col]-->
+								
+								<div style="padding: 30px 20px;">
+									<%= render "/module/follow_facebook" %>
+								</div>
 								
 							<% end %>
 
