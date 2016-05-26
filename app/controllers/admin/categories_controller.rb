@@ -6,7 +6,7 @@ class Admin::CategoriesController < ApplicationController
   def index    
     respond_to do |format|
         format.html { 
-          @categories = Category.get_all_categories #.paginate(:page => params[:page], :per_page => 10)
+          @categories = Category.get_all_categories(params) #.paginate(:page => params[:page], :per_page => 10)
         }
         format.json { render json: Category.get_tree_json }
     end

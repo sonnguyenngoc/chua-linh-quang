@@ -78,7 +78,7 @@ class ProductController < ApplicationController
             @title_head = "Hàng nhập khẩu"
         end
         params[:number] = 15 if !params[:number].present?
-        @view_all_products = Product.get_all_product_by_status(params[:st]).paginate(:page => params[:page], :per_page => params[:number])
+        @view_all_products = Product.get_all_product_by_status(params).paginate(:page => params[:page], :per_page => params[:number])
     end
     
     def add_cart_buy_now
