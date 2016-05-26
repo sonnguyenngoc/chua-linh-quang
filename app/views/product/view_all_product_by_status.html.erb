@@ -286,7 +286,15 @@
                                                             
                                                         <% end %>
                                                         
-                                                    <% elsif product.is_new? && params[:st] == "new" %>
+                                                    <% elsif product.is_bestseller? %>
+                                                        
+                                                        <div class="label_bestseller">
+                                
+                                                            <div><%= product.display_is_new %></div>
+                                
+                                                        </div>
+                                                        
+                                                    <% elsif product.is_new? %>
                                                         
                                                         <div class="label_new">
                                 

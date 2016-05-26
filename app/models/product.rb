@@ -233,10 +233,17 @@ class Product < ActiveRecord::Base
     has_status?("sold_out")
   end
   
+  def is_bestseller?
+    has_status?("bestseller")
+  end
+  
   def display_is_new
     display = ""
     if is_new?
       display = "Mới"
+    end
+    if is_bestseller?
+      display = "Bán chạy"
     end
     return display
   end
