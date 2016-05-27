@@ -193,6 +193,7 @@ vi:
   edit_voucher: "Chỉnh sửa"
   price_coupon: "Số tiền"
   quantity_coupon: "Số lượng"
+  area_parent: "Trực thuộc"
   
   will_paginate:
     page_entries_info:
