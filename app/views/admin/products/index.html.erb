@@ -152,7 +152,7 @@
                                     </td>
                                     <td><%= format_number(item.price) %></td>
 
-                                    <td><%= format_number(item.quantity) %> (<%= item.unit %>)</td>
+                                    <td><%= format_number(item.quantity) %> <br /> (<%= item.unit %>)</td>
                                     <td>
                                         <%= item.categories.map(&:name).join("<br/>").html_safe %>
                                     </td>
