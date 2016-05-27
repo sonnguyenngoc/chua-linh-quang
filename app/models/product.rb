@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  validates :name, :price, :quantity, :unit, :manufacturer_id, :short_description, presence: true
+  validates :name, :price, :quantity, :unit, :categories, :short_description, presence: true
   before_destroy :ensure_not_referenced_by_any_line_item
   before_destroy :ensure_not_referenced_by_any_line_item_compare
   
@@ -41,25 +41,27 @@ class Product < ActiveRecord::Base
   #
   def self.status_options
     [
-      ["Deal","deal"],
-      ["New","new"],
-      ["Featured","featured"],
-      ["Bestseller","bestseller"]
+      [I18n.t('st_deal'),"deal"],
+      [I18n.t('st_prominent'),"prominent"],
+      [I18n.t('st_bestseller'),"bestseller"],
+      [I18n.t('st_new'),"new"],
+      [I18n.t('st_imported'),"imported"],
+      [I18n.t('st_sold_out'),"sold_out"],
     ]
   end
   
   def self.sort_by
     [
-      ["Product","products.name"],
-      ["Manufacturer","manufacturers.name"],
-      ["Price","products.price"]
+      [I18n.t('product_name'),"products.name"],
+      [I18n.t('manufacturer_name'),"manufacturers.name"],
+      [I18n.t('price'),"products.price"]
     ]
   end
   
   def self.sort_order
     [
-      ["ASC","asc"],
-      ["DESC","desc"],      
+      [I18n.t('asc'),"asc"],
+      [I18n.t('desc'),"desc"],      
     ]
   end
   
@@ -134,11 +136,16 @@ class Product < ActiveRecord::Base
   end
   
   def statuses
-    status.to_s.split(",")
+    # status.present? ? I18n.t("#{status}").to_s.split(",") : ""
+    arr = []
+    status.to_s.split(",").each do |st|
+      arr << I18n.t(st) if st.present?
+    end
+    return arr    
   end
   
   def display_statuses
-    @html = "<br />"
+    @html = ",<br />"
     statuses.join(@html).html_safe
   end
   

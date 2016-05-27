@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:category) %></label>
                                         <div>
-                                            <%= select_tag(:article_category_id, options_from_collection_for_select(ArticleCategory.all, :id, :name, :selected => params[:article_category_id]), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:article_category_id, options_from_collection_for_select(ArticleCategory.all, :id, :name, :selected => params[:article_category_id]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>
                                 </div>

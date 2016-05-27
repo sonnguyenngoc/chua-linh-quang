@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  #validates :title, :article_categories, :content, presence: true
   mount_uploader :image_url, ArticleUploader
   has_and_belongs_to_many :article_categories
   has_and_belongs_to_many :products
@@ -36,14 +37,14 @@ class Article < ActiveRecord::Base
   
   def self.sort_by
     [
-      ["Created At","created_at"]
+      [I18n.t('created_at'),"created_at"]
     ]
   end
   
   def self.sort_orders
     [
-      ["ASC","asc"],
-      ["DESC","desc"],
+      [I18n.t('asc'),"asc"],
+      [I18n.t('desc'),"desc"],
     ]
   end
   
