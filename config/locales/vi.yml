@@ -29,7 +29,7 @@ vi:
   list_image: "Hình ảnh"
   list_product_name: "Tên sản phẩm"
   list_category_name: "Tên chuyên mục"
-  list_manufacturer_name: "Tên nhãn hàng"
+  list_manufacturer_name: "Tên thương hiệu"
   list_area_name: "Tên khu vực"
   list_price: Giá
   list_quantity: "Trọng lượng/Khối lượng/Dung tích"
