@@ -33,7 +33,7 @@ class Admin::PaymentMethodsController < ApplicationController
 
     respond_to do |format|
       if @payment_method.save
-        format.html { redirect_to [:admin, @payment_method], notice: 'Payment method was successfully created.' }
+        format.html { redirect_to edit_admin_payment_method_path(@payment_method.id), notice: 'Payment method was successfully created.' }
         format.json { render :show, status: :created, location: @payment_method }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class Admin::PaymentMethodsController < ApplicationController
   def update
     respond_to do |format|
       if @payment_method.update(payment_method_params)
-        format.html { redirect_to [:admin, @payment_method], notice: 'Payment method was successfully updated.' }
+        format.html { redirect_to edit_admin_payment_method_path(@payment_method.id), notice: 'Payment method was successfully updated.' }
         format.json { render :show, status: :ok, location: @payment_method }
       else
         format.html { render :edit }

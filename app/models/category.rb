@@ -20,6 +20,10 @@ class Category < ActiveRecord::Base
       end
   end
   
+  def self.get_categories
+      self.all
+  end
+  
   def get_products_for_categories(params)
     category = Category.find(params[:category_id])
     records = Product.joins(:categories).where(categories: {id: category.get_all_related_ids}).uniq
