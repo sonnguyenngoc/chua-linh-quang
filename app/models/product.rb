@@ -67,6 +67,24 @@ class Product < ActiveRecord::Base
   def self.search(params)
     records = self.includes(:manufacturer)
     
+    #sorting search_page (frontend)
+    if params[:sort_group] == "name_asc"
+      records = records.order("products.name ASC")
+    end
+    
+    if params[:sort_group] == "name_desc"
+      records = records.order("products.name DESC")
+    end
+    
+    if params[:sort_group] == "price_asc"
+      records = records.order("products.price ASC")
+    end
+    
+    if params[:sort_group] == "price_desc"
+      records = records.order("products.price DESC")
+    end
+    #end sorting search_page (frontend)
+    
     # Manufacturer filter
     if params[:manufacturer_id].present?
         records = records.where(manufacturer_id: params[:manufacturer_id])
@@ -98,30 +116,11 @@ class Product < ActiveRecord::Base
     sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
     records = records.order("#{sort_by} #{sort_order}")
     
-    #sorting search_page (frontend)
-    if params[:sort_group] == "name_asc"
-      records = records.order("products.name ASC")
-    end
-    
-    if params[:sort_group] == "name_desc"
-      records = records.order("products.name DESC")
-    end
-    
-    if params[:sort_group] == "price_asc"
-      records = records.order("products.price ASC")
-    end
-    
-    if params[:sort_group] == "price_desc"
-      records = records.order("products.price DESC")
-    end
-    #end sorting search_page (frontend)
-    
     return records   
   end
   
   def get_main_image
     image = product_images.where(is_main: "True").order("updated_at DESC").first
-    
   end
   
   def get_related_products
@@ -169,13 +168,15 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  def self.get_all_product_by_status(status)
+  def self.get_all_product_by_status(params)
     records = self.all
-    records = records.where("products.status LIKE ?", "%#{status}%")
+    if params[:st].present?
+      records = records.where("products.status LIKE ?", "%#{params[:st]}%")
+    end
     
-    #if params[:sort_group] == "name_asc"
-    #  records = records.order("products.name ASC")
-    #end
+    if params[:sort_group].present?
+      records = records.order(params[:sort_group])
+    end
     #
     #if params[:sort_group] == "name_desc"
     #  records = records.order("products.name DESC")
@@ -233,10 +234,17 @@ class Product < ActiveRecord::Base
     has_status?("sold_out")
   end
   
+  def is_bestseller?
+    has_status?("bestseller")
+  end
+  
   def display_is_new
     display = ""
     if is_new?
       display = "Mới"
+    end
+    if is_bestseller?
+      display = "Bán chạy"
     end
     return display
   end

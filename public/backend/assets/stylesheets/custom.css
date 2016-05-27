@@ -47,3 +47,6 @@
     font-size: small;
     margin-bottom: 5px;
 }
+#form_edit_user .error {
+    border-color: red;
+}
