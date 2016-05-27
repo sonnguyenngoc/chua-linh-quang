@@ -126,7 +126,7 @@
                                 <th><%= t(:list_image) %></th>
                                 <th><%= t(:list_product_name) %></th>
                                 <th><%= t(:list_price) %> (VNĐ)</th>
-                                <th><%= t(:list_quantity) %></th>
+                                <th><%= t(:list_quantity_unit) %></th>
                                 <th><%= t(:list_categories) %></th>
                                 <th><%= t(:list_areas) %></th>
                                 <th><%= t(:list_status) %></th>
@@ -152,7 +152,7 @@
                                     </td>
                                     <td><%= format_number(item.price) %></td>
 
-                                    <td><%= format_number(item.quantity) %> (<%= item.unit %>)</td>
+                                    <td><%= format_number(item.quantity) %> <br /> (<%= item.unit %>)</td>
                                     <td>
                                         <%= item.categories.map(&:name).join("<br/>").html_safe %>
                                     </td>

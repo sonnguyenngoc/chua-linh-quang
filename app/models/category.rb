@@ -20,6 +20,10 @@ class Category < ActiveRecord::Base
       end
   end
   
+  def self.get_categories
+      self.all
+  end
+  
   def get_products_for_categories(params)
     category = Category.find(params[:category_id])
     records = Product.joins(:categories).where(categories: {id: category.get_all_related_ids}).uniq
@@ -128,7 +132,7 @@ class Category < ActiveRecord::Base
     ActionView::Base.send(:include, Rails.application.routes.url_helpers)
     str = ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-edit"></i>'.html_safe, {controller: "admin/categories", action: "edit", id: self.id})
     str += " "
-    str += ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-trash"></i>'.html_safe, {controller: "admin/categories", action: "destroy", id: self.id}, "data-method" => "delete")
+    # str += ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-trash"></i>'.html_safe, {controller: "admin/categories", action: "destroy", id: self.id}, "data-method" => "delete")
     str
   end
   

@@ -10,32 +10,32 @@
     </div>
 <% end %>
 
-<%= form_for [:admin, @user], html: {class: "form-horizontal"} do |f| %>
+<%= form_for [:admin, @user], html: {class: "form-horizontal", id: "form_edit_user"} do |f| %>
     
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:first_name) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-5">
-            <%= f.text_field :first_name, class: "form-control" %>
+            <%= f.text_field :first_name, class: "form-control required" %>
         </div>
         <label class="col-lg-2 control-label" ><%= t(:last_name) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-3">
-            <%= f.text_field :last_name, class: "form-control" %>
+            <%= f.text_field :last_name, class: "form-control required" %>
         </div>
     </div>
     
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:phone) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-5">
-            <%= f.text_field :phone, class: "form-control" %>
+            <%= f.text_field :phone, class: "form-control required" %>
         </div>
-        <label class="col-lg-2 control-label" ><%= t(:fax) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:fax) %></label>
         <div class="col-lg-3">
             <%= f.text_field :fax, class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:company) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:company) %></label>
         <div class="col-lg-10">
             <%= f.text_field :company, class: "form-control" %>
         </div>
@@ -44,26 +44,26 @@
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:address_1) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
-            <%= f.text_field :address_1, class: "form-control" %>
+            <%= f.text_field :address_1, class: "form-control required" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:zip_code) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:zip_code) %></label>
         <div class="col-lg-10">
             <%= f.text_field :zip_code, class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:country) %></label>
+        <label class="col-lg-2 control-label" ><%= t(:country) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.select(:country, ['Việt Nam'], {}, { :class => 'select' })%>
         </div>
     </div>
     
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:province) %></label>
+        <label class="col-lg-2 control-label" ><%= t(:province) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.collection_select(:province, Area.get_list_province_city, :id, :name, {}, {class: "select"}) %>
         </div>

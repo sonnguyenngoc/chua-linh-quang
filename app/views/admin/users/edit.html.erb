@@ -97,10 +97,15 @@
 
 <%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
 <%= javascript_include_tag '/backend/assets/js/pages/colors_teal.js' %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 <!-- /theme JS files -->
 <script>
     // Checkboxes and radios
     $("#user_is_admin").uniform({
         wrapperClass: "border-teal text-teal-600"
+    });
+    
+    $(document).ready(function(){
+        $("#form_edit_user").validate();
     });
 </script>
