@@ -797,3 +797,6 @@ h3.care {
 .chat_box_page .mobile_container_socical_feeds {
     display: none;
 }
+.search_category_box ul li {
+    margin-bottom: 0 !important;
+}

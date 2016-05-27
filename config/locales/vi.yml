@@ -33,9 +33,10 @@ vi:
   list_area_name: "Tên khu vực"
   list_price: Giá
   list_quantity: "Trọng lượng/Khối lượng/Dung tích"
+  list_quantity_unit: "Đơn vị"
   list_categories: "Chuyên mục"
   list_description: "Mô tả"
-  list_areas: "Khu vực"
+  list_areas: "Khu vực/Tỉnh thành"
   list_status: "Trạng thái"
   created_at: "Ngày tạo"
   actions: "Thao tác"
