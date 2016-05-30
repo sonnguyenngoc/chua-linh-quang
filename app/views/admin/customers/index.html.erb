@@ -116,7 +116,7 @@
                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i> View'.html_safe, {controller: "admin/customers", action: "show", id: customer.id} %>
+                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i>'.html_safe + t(:view), {controller: "admin/customers", action: "show", id: customer.id} %>
                                                         <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, customer], method: :delete, data: {confirm: t(:confirm_delete)} %>
                                                     </li>
                                                 </ul>

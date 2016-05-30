@@ -109,10 +109,10 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title"><%= t(:customer_detail) %></h5>
+                        <h5 class="panel-title"><B><%= t(:customer_detail) %></B></h5>
                     </div>
                     <div class="panel-body col-md-12">
-                            <h6><b><%= t(:customer_info) %></b></h6>
+                            <!--<h6><b><%= t(:customer_info) %></b></h6>-->
                             <p>Họ tên khách hàng: <%= @customer.name %></p>
                             <p>Địa chỉ: <%= @customer.display_address %></p>
                             <p>Điện thoại: <%= @customer.phone %></p>
@@ -124,6 +124,7 @@
                         
                     </table>
                 </div>
+                <%= link_to '<i class="icon-backward2 position-left"></i>'.html_safe + t(:back), customers_path, class: "btn btn-primary" %>
                 <!-- /basic datatable -->
             
                 <!-- Footer -->

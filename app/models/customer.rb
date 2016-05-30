@@ -19,14 +19,14 @@ class Customer < ActiveRecord::Base
   #
   def self.sort_by
     [
-      ["Last Bought","customers.created_at"]
+      [I18n.t('last_bought'),"customers.created_at"]
     ]
   end
   
   def self.sort_order
     [
-      ["ASC","asc"],
-      ["DESC","desc"],
+      [I18n.t('asc'),"asc"],
+      [I18n.t('desc'),"desc"],
     ]
   end
   
