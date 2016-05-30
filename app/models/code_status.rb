@@ -7,15 +7,15 @@ class CodeStatus < ActiveRecord::Base
     
     def self.sort_by
     [
-      ["Title","code_statuses.title"],
-      ["Created At","code_statuses.created_at"],
+      [I18n.t('title'),"code_statuses.title"],
+      [I18n.t('created_at'),"code_statuses.created_at"],
     ]
     end
     
     def self.sort_order
       [
-        ["ASC","asc"],
-        ["DESC","desc"],
+        [I18n.t('asc'),"asc"],
+        [I18n.t('desc'),"desc"],
       ]
     end
     

@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:customer) %></label>
                                         <div>
-                                            <%= select_tag(:customer_id, options_for_select(Customer.all.collect {|c| [c.name,c.id]}, params[:customer_id]), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:customer_id, options_for_select(Customer.all.collect {|c| [c.name,c.id]}, params[:customer_id]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:user) %></label>
                                         <div>
-                                            <%= select_tag(:user_id, options_for_select(User.all.collect {|u| [u.email,u.id]}, params[:user_id]), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:user_id, options_for_select(User.all.collect {|u| [u.email,u.id]}, params[:user_id]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:product) %></label>
                                         <div>
-                                            <%= select_tag(:product_id, options_from_collection_for_select(Product.all.order("name"), :id, :name, :selected => params[:product_id]), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:product_id, options_from_collection_for_select(Product.all.order("name"), :id, :name, :selected => params[:product_id]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -87,10 +87,10 @@
                                         <label class="" ><%= t(:status) %></label>
                                         <div>
                                             <select name="status" class="select">
-                                                <option <%= "selected" if params[:status] == "pending" %> value="pending">Pending</option>
-                                                <option <%= "selected" if params[:status] == "finished" %> value="finished">Finished</option>
-                                                <option <%= "selected" if params[:status] == "cancel" %> value="cancel">Cancel</option>
-                                                <option <%= "selected" if params[:status] == "all" %> value="all">All</option>
+                                                <option <%= "selected" if params[:status] == "pending" %> value="pending"><%= t(:select_pending) %></option>
+                                                <option <%= "selected" if params[:status] == "finished" %> value="finished"><%= t(:select_finished) %></option>
+                                                <option <%= "selected" if params[:status] == "cancel" %> value="cancel"><%= t(:select_cancel) %></option>
+                                                <option <%= "selected" if params[:status] == "all" %> value="all"><%= t(:all) %></option>
                                             </select>
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@
                                         <% end %>
                                     </td>
                                     <td><%= format_number(item.total) %> đ</td>
-                                    <td><span class="<%= item.display_class_status %>"><%= item.status %></span></td>
+                                    <td><span class="<%= item.display_class_status %>"><%= t(item.status) %></span></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <ul class="icons-list">
