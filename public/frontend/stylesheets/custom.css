@@ -174,7 +174,7 @@ input:not([type="submit"]), textarea, .active_option {
     color: #777777;
 }
 form ul > li:not(:last-child) {
-    margin-bottom: 20px !important;
+    /*margin-bottom: 20px !important;*/
 }
 .quick_create_user_box  li.row {
     margin-bottom: 10px;
