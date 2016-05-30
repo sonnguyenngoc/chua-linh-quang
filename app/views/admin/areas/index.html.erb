@@ -60,7 +60,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="" >Parent</label>
+                                        <label class="" ><%= t(:area_parent) %></label>
                                         <div>
                                             <%= select_tag(:parent_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
                                         </div>
