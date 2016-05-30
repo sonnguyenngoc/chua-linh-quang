@@ -1,5 +1,5 @@
 class DeliveryMethod < ActiveRecord::Base
-  
+  validates :title, presence: true
   def self.search(params)
     records = self.all
     

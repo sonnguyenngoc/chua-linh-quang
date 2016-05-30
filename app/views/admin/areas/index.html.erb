@@ -52,7 +52,7 @@
                 <div class="panel panel-flat">
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_areas) %></span></h5>
-                        <%= link_to t(:new_area), new_admin_area_path, class: 'btn btn-primary pull-right' %>
+                        <!--<%= link_to t(:new_area), new_admin_area_path, class: 'btn btn-primary pull-right' %>-->
                     </div>
                     
                     <div class="filter-box">
@@ -60,9 +60,11 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
+
                                         <label class="" ><%= t(:area_parent) %></label>
+
                                         <div>
-                                            <%= select_tag(:parent_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: "All", class: "select") %>
+                                            <%= select_tag(:parent_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>
                                 </div>

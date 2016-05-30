@@ -182,7 +182,7 @@ form ul > li:not(:last-child) {
 .quick_create_user_box  li.row:last-child {
     margin-bottom: 30px;
 }
-#qLoverlay {
+#qLoverlayz {
     display: none !important;
 }
 .add_to_cart_category {

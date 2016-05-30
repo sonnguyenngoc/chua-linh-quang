@@ -10,6 +10,9 @@ en:
   my_profile: "My profile"
   account_settings: "Account settings"
   logout: "Logout"
+  all: "All"
+  asc: "ASC"
+  desc: "DESC"
   
   #filter
   listing_products: "Listing Products"
@@ -32,6 +35,7 @@ en:
   list_manufacturer_name: "Name"
   list_area_name: "Name"
   list_price: "Price"
+  price: "Price"
   list_quantity: "Weight/Glosbe/Volume"
   list_categories: "Categories"
   list_description: "Description"
@@ -80,6 +84,13 @@ en:
   imported: "Imported Product"
   deal: "Deal Product"
   sold_out: "SOLD OUT"
+  st_hot: "Hot Product"
+  st_new: "New Product"
+  st_bestseller: "Bestseller Product"
+  st_prominent: "Prominent Product"
+  st_imported: "Imported Product"
+  st_deal: "Deal Product"
+  st_sold_out: "SOLD OUT"
   introduction: "Introduction"
   picture: "Picture"
   related_photos: "Related Photos"
@@ -136,6 +147,7 @@ en:
   comment_articles: "Comment Articles"
   customer_name: "Customer Name"
   product_name: "Product Name"
+  manufacturer_name: "Manufacturer Name"
   star: "star"
   rating: "Rating"
   article_title: "Title"
@@ -192,6 +204,18 @@ en:
   edit_voucher: "Edit Voucher"
   price_coupon: "Price"
   quantity_coupon: "Quantity"
+#  ------------------------------------
+  none: "None"
+  parent_category: "Parent"
+  parent_area: "Parent"
+  remove: "Remove"
+  logo: "Logo"
+  area_name: "Area Name"
+  related_products: "Related Products"
+  color_1: "Color 1"
+  color_2: "Color 2"
+  style: "Style"
+  
   
   will_paginate:
     page_entries_info:
