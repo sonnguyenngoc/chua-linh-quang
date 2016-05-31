@@ -25,12 +25,12 @@
                     <div class="col-lg-6">
                         <%= f.text_field :name, class: "form-control" %>
                     </div>
-                    <label class="col-lg-1 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-3">
+                    <label class="col-lg-2 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-2">
                         <div class="row-fluid">
                             <div class="checkbox">
                                 <%= check_box 'product', 'is_show', {}, 'true', 'false' %>
-                                <label for="product_is_show">Hiển thị sản phẩm</label>
+                                <label for="product_is_show"><%= t(:show_product) %></label>
                             </div>
                         </div>
                     </div>
@@ -41,25 +41,25 @@
                     <div class="col-lg-6">
                         <%= f.text_field :code, class: "form-control" %>
                     </div>
-                    <label class="col-lg-1 control-label" ><%= t(:stock) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-3">
+                    <label class="col-lg-2 control-label" ><%= t(:stock) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-2">
                         <%= f.text_field :stock, class: "form-control" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_price) %> </label>
-                    <label class="col-lg-1 control-label" >Giá cũ </label>
+                    <label class="col-lg-1 control-label" ><%= t(:old_price) %> </label>
                     <div class="col-lg-2">
-                        <%= f.text_field :old_price, class: "form-control", placeholder: "Đối với khuyến mãi" %>
+                        <%= f.text_field :old_price, class: "form-control", placeholder: "#{t(:with_deal)}" %>
                     </div>
-                    <label class="col-lg-1 control-label" >Giá bán <span class='text-danger'>*</span></label>
+                    <label class="col-lg-1 control-label" ><%= t(:current_price) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-2">
-                        <%= f.text_field :price, class: "form-control", placeholder: "Giá bán ra" %>
+                        <%= f.text_field :price, class: "form-control", placeholder: "#{t(:apply_price)}" %>
                     </div>
-                    <label class="col-lg-2 control-label" >Phần trăm giảm giá </label>
+                    <label class="col-lg-2 control-label" ><%= t(:discount_percent) %> </label>
                     <div class="col-lg-2">
-                        <%= f.text_field :discount_percent, class: "form-control", placeholder: "Đối với khuyến mãi" %>
+                        <%= f.text_field :discount_percent, class: "form-control", placeholder: "#{t(:with_deal)}" %>
                     </div>
                 </div>
                     

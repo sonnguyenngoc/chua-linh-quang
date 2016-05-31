@@ -28,7 +28,8 @@ class Customer < ActiveRecord::Base
   #
   def self.sort_by
     [
-      [I18n.t('last_bought'),"customers.created_at"]
+      [I18n.t('last_bought'),"customers.created_at"],
+      [I18n.t('bought_at_a_price'),""],
     ]
   end
   
@@ -43,7 +44,7 @@ class Customer < ActiveRecord::Base
     records = self.all
     
     if params[:area_id].present?
-      #records = records.where("")
+      records = records.where(area_id: params[:area_id])
     end
     
     #Search keyword filter
