@@ -20,21 +20,21 @@
     </div>
     
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:description) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:description) %> <!--<span class='text-danger'>*</span>--></label>
         <div class="col-lg-10">
             <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> </label>
         <div class="col-lg-10">
             <%= f.text_field :meta_keywords, class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:meta_description) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:meta_description) %> </label>
         <div class="col-lg-10">
             <%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
         </div>
@@ -43,17 +43,23 @@
     <div class="form-group">
         <%= f.label t(:related_categories), class: "col-lg-2 control-label" %>
         <div class="col-lg-10">
+            <div class="row-fluid">
+                <div class="radio">
+                    <%= radio_button_tag 'parent_id', "", @article_category.parent.empty?, :id => "article_category_none", class: "styled-level-1" %>
+                    <label for="article_category_none"><%= t(:none) %></label>
+                </div>
+            </div>
             <% ArticleCategory.all.each do |article_category| %>
                 <% if @article_category.id != article_category.id %>
                   <% if article_category.level == 1 %>
-                    <p>
+                    <% if @article_category.id != article_category.id %>
                         <div class="row-fluid">
-                            <div class="checkbox">
-                                <%= check_box_tag 'article_category[parent_ids][]', article_category.id, @article_category.parent.include?(article_category), id: "article_category_#{article_category.id}", class: "styled-level-1" %>
-                                <%= f.label article_category.name, :for => "article_category_#{article_category.id}" %>
+                            <div class="radio">
+                                <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "article_category", class: "styled-level-1" %>
+                                <label for="article_category_<%= article_category.id %>"><%= article_category.name %></label>
                             </div>
                         </div>
-                    </p>
+                    <% end %>
                   <% end %>
                 <% end %>
             <% end %>

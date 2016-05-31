@@ -13,14 +13,14 @@ class Manufacturer < ActiveRecord::Base
   #
    def self.sort_by
     [
-      ["Name","manufacturers.name"]
+      [I18n.t('manufacturer_name'),"manufacturers.name"]
     ]
   end
   
   def self.sort_order
     [
-      ["ASC","asc"],
-      ["DESC","desc"],
+      [I18n.t('asc'),"asc"],
+      [I18n.t('desc'),"desc"],
     ]
   end
   

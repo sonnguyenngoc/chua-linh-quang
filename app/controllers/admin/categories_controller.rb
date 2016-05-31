@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
 
   # GET /categories
   # GET /categories.json
-  def index    
+  def index
     respond_to do |format|
         format.html { 
           @categories = Category.get_categories #.paginate(:page => params[:page], :per_page => 10)

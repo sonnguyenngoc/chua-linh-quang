@@ -48,16 +48,16 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:list_price) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:list_price) %> </label>
+                    <label class="col-lg-1 control-label" >Giá cũ </label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :old_price, class: "form-control", placeholder: "Đối với khuyến mãi" %>
+                    </div>
                     <label class="col-lg-1 control-label" >Giá bán <span class='text-danger'>*</span></label>
                     <div class="col-lg-2">
                         <%= f.text_field :price, class: "form-control", placeholder: "Giá bán ra" %>
                     </div>
-                    <label class="col-lg-1 control-label" >Giá cũ <span class='text-danger'>*</span></label>
-                    <div class="col-lg-2">
-                        <%= f.text_field :old_price, class: "form-control", placeholder: "Đối với khuyến mãi" %>
-                    </div>
-                    <label class="col-lg-2 control-label" >Phần trăm giảm giá <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" >Phần trăm giảm giá </label>
                     <div class="col-lg-2">
                         <%= f.text_field :discount_percent, class: "form-control", placeholder: "Đối với khuyến mãi" %>
                     </div>
@@ -94,7 +94,7 @@
                 </div>
                 
                 <div class="form-group field">
-                    <label class="col-lg-2 control-label" ><%= t(:list_areas) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:list_areas) %> </label>
                     <div class="col-lg-10">
                         <select name="area_ids[]" class="select select-item-color" data-placeholder="<%= t(:list_areas) %>....." multiple="multiple">
                             <% Area.get_list_province_city.each do |item| %>
@@ -105,9 +105,9 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:manufacturers) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:manufacturers) %> </label>
                     <div class="col-lg-10">
-                        <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, {:prompt=> "Manufacturers....."}, {class: "select"}) %>
+                        <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, {:prompt=> "#{t(:manufacturers)}....."}, {class: "select"}) %>
                     </div>
                 </div>
                 
@@ -119,7 +119,7 @@
                 </div>
  
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:tags) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:tags) %> </label>
                     <div class="col-lg-10">
                         <%= f.text_field :tags, class: "form-control" %>
                     </div>
@@ -128,7 +128,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:related_articles) %></label>
                     <div class="col-lg-10">
-                        <select name="article_ids[]" class="select select-item-color" data-placeholder="<%= t(:related_articles) %>..." multiple="multiple">
+                        <select name="article_ids[]" class="select select-item-color" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
                             <% @articles.each do |item| %>
                                 <option <%= "selected" if @product.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
                             <% end %>
@@ -137,14 +137,14 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> </label>
                     <div class="col-lg-10">
                         <%= f.text_field :meta_keywords, class: "form-control" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:meta_description) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:meta_description) %> </label>
                     <div class="col-lg-10">
                         <%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
                     </div>
@@ -163,17 +163,17 @@
                     <label class="col-lg-2 control-label" ><%=  %></label>
                     <div class="col-lg-12">
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("deal") %> type="checkbox" name="product[status][]" value="deal"><%= t(:deal) %></label>
+                            <input <%= "checked" if @product.statuses.include?("deal") %> type="checkbox" name="product[status][]" value="deal"><%= t(:st_deal) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("prominent") %> type="checkbox" name="product[status][]" value="prominent"><%= t(:prominent) %></label>
+                            <input <%= "checked" if @product.statuses.include?("prominent") %> type="checkbox" name="product[status][]" value="prominent"><%= t(:st_prominent) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("bestseller") %> type="checkbox" name="product[status][]" value="bestseller"><%= t(:bestseller) %></label>
+                            <input <%= "checked" if @product.statuses.include?("bestseller") %> type="checkbox" name="product[status][]" value="bestseller"><%= t(:st_bestseller) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("new") %> type="checkbox" name="product[status][]" value="new"><%= t(:new) %></label>
+                            <input <%= "checked" if @product.statuses.include?("new") %> type="checkbox" name="product[status][]" value="new"><%= t(:st_new) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("imported") %> type="checkbox" name="product[status][]" value="imported"><%= t(:imported) %></label>
+                            <input <%= "checked" if @product.statuses.include?("imported") %> type="checkbox" name="product[status][]" value="imported"><%= t(:st_imported) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("sold_out") %> type="checkbox" name="product[status][]" value="sold_out"><b><%= t(:sold_out) %></b></label>
+                            <input <%= "checked" if @product.statuses.include?("sold_out") %> type="checkbox" name="product[status][]" value="sold_out"><b><%= t(:st_sold_out) %></b></label>
                     </div>
                 </div>
                     
@@ -187,7 +187,7 @@
             <div class="tab-pane has-padding" id="control-tab3">
                 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:introduction) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:introduction) %> </label>
                 </div>
                 <div class="mb-15">
                     <%= f.text_area :description, rows: "4", cols: "4", id: "editor-full" %>
@@ -202,7 +202,7 @@
             <div class="tab-pane has-padding" id="control-tab4">
                 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:related_photos) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:related_photos) %> </label>
                     <div class="col-lg-10">
                         <% index = 0 %>
                         <%= f.fields_for :product_images do |ff| %>
@@ -221,7 +221,7 @@
                             <% if g.image_url? %>
                               <div class="col-lg-1" style="white-space: nowrap">
                                   <%= ff.check_box :_destroy, class: "styled-level-1" %>
-                                  <%= ff.label :_destroy, 'Remove' %>
+                                  <%= ff.label :_destroy, t(:remove) %>
                               </div>
                             <% end %>
                           <% index += 1 %>

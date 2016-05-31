@@ -107,8 +107,8 @@
                                         <%= user.phone %>
                                     </td>
                                     <td>
-                                        <b>Add1: </b><%= truncate(user.address_1, length: 40) %> </br>
-                                        <b>Add2: </b><%= truncate(user.address_2, length: 40) %>
+                                        <b><i class="icon-location4"></i> </b><%= truncate(user.address_1, length: 40) %> </br>
+                                        <b><i class="icon-location4"></i> </b><%= truncate(user.address_2, length: 40) %>
                                     </td>
                                     <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">

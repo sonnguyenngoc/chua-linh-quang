@@ -56,3 +56,12 @@ label.error {
 #form_coupon .error {
     border-color: red;
 }
+.category_taggable_list .fancytree-icon::after, .category_taggable_list .c-item {
+    color: blue;
+}
+.category_taggable_list ul li ul li .fancytree-icon::after, .category_taggable_list ul li ul li .c-item {
+    color: #3b984c;
+}
+.category_taggable_list ul li ul li ul li .fancytree-icon::after, .category_taggable_list ul li ul li ul li .c-item {
+    color: #f3c64c;
+}

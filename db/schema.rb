@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527083046) do
+ActiveRecord::Schema.define(version: 20160531021445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(version: 20160527083046) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "order_id"
+    t.integer  "area_id"
   end
 
   create_table "delivery_methods", force: :cascade do |t|
@@ -423,6 +424,7 @@ ActiveRecord::Schema.define(version: 20160527083046) do
     t.datetime "oauth_expires_at"
     t.datetime "last_seen"
     t.boolean  "is_admin",               default: false
+    t.integer  "area_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

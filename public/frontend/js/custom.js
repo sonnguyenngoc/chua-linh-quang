@@ -22,6 +22,9 @@ function undo_arrange_mobile_layout() {
     $("aside").insertBefore( $('main') );
 }
 
+// update website layout
+update_layout();
+
 $(document).ready(function () {
     
     // events when changing anything in filter box

@@ -4,13 +4,13 @@ class Question < ActiveRecord::Base
   
   def self.sort_by
     [
-      ["Created At", "questions.created_at"]
+      [I18n.t('created_at'), "questions.created_at"]
     ]
   end
   def self.sort_order
     [
-      ["ASC","asc"],
-      ["DESC","desc"],
+      [I18n.t('asc'),"asc"],
+      [I18n.t('desc'),"desc"],
     ]
   end
   

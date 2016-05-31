@@ -33,6 +33,10 @@ class Admin::ArticleCategoriesController < ApplicationController
 
     respond_to do |format|
       if @article_category.save
+        # update parent
+        @article_category.parent.clear
+        @article_category.parent << ArticleCategory.find(params[:parent_id]) if params[:parent_id].present?
+        
         format.html { redirect_to edit_admin_article_category_path(@article_category.id), notice: 'Article category was successfully created.' }
         format.json { render :show, status: :created, location: @article_category }
       else
@@ -47,6 +51,10 @@ class Admin::ArticleCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @article_category.update(article_category_params)
+        # update parent
+        @article_category.parent.clear
+        @article_category.parent << ArticleCategory.find(params[:parent_id]) if params[:parent_id].present?
+        
         format.html { redirect_to edit_admin_article_category_path(@article_category.id), notice: 'Article category was successfully updated.' }
         format.json { render :show, status: :ok, location: @article_category }
       else

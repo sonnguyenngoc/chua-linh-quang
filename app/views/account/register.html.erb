@@ -116,6 +116,34 @@
 											</div>
 							
 										</li>
+										
+										<li class="row">
+							
+											<div class="col-xs-12">
+							  
+												<label for="input-fax" class="col-sm-2 control-label">Khu vực hiện tại</label>
+							  
+												<div class="form_el">
+							  
+													<div>
+							  
+														<select class="required" name="user[area_id]">
+			
+															<% Area.get_list_province_city.each do |area| %>
+				  
+																<option value="<%= area.id %>"><%= area.name %></option>
+															
+															<% end %>
+				
+														</select>
+													
+													</div>
+							  
+												</div>
+							  
+											</div>
+							
+										</li>
 							
 										<li class="row">
 							

@@ -249,11 +249,7 @@ Rails.application.routes.draw do
             get 'search'
           end
         end
-        resources :companies, path: "cong-ty" do
-          collection do
-            get "head_office", path: "tru-so-chinh"
-          end
-        end
+        resources :companies, path: "chi-nhanh"
         resources :options, path: "cai-dat"
         resources :code_statuses, path: "ma-bai-viet" do
           collection do

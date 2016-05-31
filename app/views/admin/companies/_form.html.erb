@@ -13,7 +13,7 @@
 <%= form_for [:admin, @company], html: {class: "form-horizontal"} do |f| %>
     
     <div class="form-group">
-        <%= f.label "Logo: ", class: "col-lg-2 control-label" %>
+        <%= f.label t(:logo), class: "col-lg-2 control-label" %>
         <div class="col-lg-10">
             <div class="uploader bg-teal-400">
                 <%= f.file_field :image_url, class: "file-styled", require: true %>
@@ -35,6 +35,10 @@
         <label class="col-lg-2 control-label" ><%= t(:type) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.select(:type_company, ['Branch Office', 'Head Office'], {}, { :class => 'select_2' })%>
+            <!--<select class="select_2" name="type_company">
+                <option value="Branch Office"><%= t(:branch_office) %></option>
+                <option value="Head Office"><%= t(:head_office) %></option>
+            </select>-->
         </div>
     </div>
         

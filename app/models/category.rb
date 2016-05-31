@@ -106,9 +106,9 @@ class Category < ActiveRecord::Base
   def self.get_by_status(status, limit=5)
     cats = []
     Product.where("products.status LIKE ?", "%#{status}%").each do |p|
-      cats << p.categories.map(&:id)
+      cats += p.categories.map(&:id)
     end
-    self.where(id: cats.uniq).limit(5)
+    self.where(id: cats.uniq)[0..4]
   end
   
   # get json for tree draggable index
@@ -132,7 +132,7 @@ class Category < ActiveRecord::Base
     ActionView::Base.send(:include, Rails.application.routes.url_helpers)
     str = ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-edit"></i>'.html_safe, {controller: "admin/categories", action: "edit", id: self.id})
     str += " "
-    str += ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-trash"></i>'.html_safe, {controller: "admin/categories", action: "destroy", id: self.id}, "data-method" => "delete")
+    # str += ActionController::Base.helpers.link_to('<i class="glyphicon glyphicon-trash"></i>'.html_safe, {controller: "admin/categories", action: "destroy", id: self.id}, "data-method" => "delete")
     str
   end
   

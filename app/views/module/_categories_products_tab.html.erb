@@ -341,8 +341,7 @@
 			
 			<!-- - - - - - - - - - - - - - View all - - - - - - - - - - - - - - - - -->
 			
-			<footer class="bottom_box">
-				
+			<footer class="bottom_box view_all">
 				<% if status == "deal" %>
 					<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-khuyen-mai"}, class: "button_grey middle_btn" %>
 				<% elsif status == "prominent" %>
@@ -354,8 +353,6 @@
 				<% elsif status == "imported" %>
 					<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-nhap-khau"}, class: "button_grey middle_btn" %>
 				<% end %>
-				
-				
 			</footer>
 			
 			<!-- - - - - - - - - - - - - - End of view all - - - - - - - - - - - - - - - - -->

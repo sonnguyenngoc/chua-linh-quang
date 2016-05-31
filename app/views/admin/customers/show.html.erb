@@ -1,60 +1,3 @@
-<!--<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @customer.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @customer.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @customer.phone %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @customer.company %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @customer.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @customer.city %>
-</p>
-
-<p>
-  <strong>Zip code:</strong>
-  <%= @customer.zip_code %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @customer.country %>
-</p>
-
-<p>
-  <strong>Province:</strong>
-  <%= @customer.province %>
-</p>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
--->
-
-<p id="notice"><%= notice %></p>
 <!-- Main navbar -->
 <%= render "/admin/main/main_navbar" %>
 <!-- /main navbar -->
@@ -109,10 +52,10 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title"><%= t(:customer_detail) %></h5>
+                        <h5 class="panel-title"><B><%= t(:customer_detail) %></B></h5>
                     </div>
                     <div class="panel-body col-md-12">
-                            <h6><b><%= t(:customer_info) %></b></h6>
+                            <!--<h6><b><%= t(:customer_info) %></b></h6>-->
                             <p>Họ tên khách hàng: <%= @customer.name %></p>
                             <p>Địa chỉ: <%= @customer.display_address %></p>
                             <p>Điện thoại: <%= @customer.phone %></p>
@@ -124,6 +67,7 @@
                         
                     </table>
                 </div>
+                <%= link_to '<i class="icon-backward2 position-left"></i>'.html_safe + t(:back), admin_customers_path, class: "btn btn-primary" %>
                 <!-- /basic datatable -->
             
                 <!-- Footer -->

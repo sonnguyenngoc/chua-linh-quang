@@ -116,7 +116,7 @@
 					<!---->
 					<!--<% end %>-->
 
-					<div class="section_offset">
+					<div class="section_offsetz">
 
 						<div class="row">
 							
@@ -279,7 +279,7 @@
 											
 											<li><a style="padding: 1px 2px 2px 1px !important;" href="<%= url_for('/') %>"><img style="width: 40px" src="<%= url_for('/frontend/images/dsvm_logo2_small_50.png') %>" /></a></li>
 											
-											<li class="active"><a href="#register"><i style="font-size: 21px;" class="icon-users"></i></a></li>
+											<li class="active"><a  style="padding: 6px !important" href="#register"><i style="font-size: 21px;" class="icon-users"></i></a></li>
 											
 											<!--<li><a href="#login"><i class="icon-login-2"></i> Đăng nhập</a></li>-->
 										</ul>
@@ -430,15 +430,12 @@
 						</div><!--/ .row -->
 
 					</div><!--/ .section_offset -->
-
 				</div><!--/ .container-->
-
 			</div><!--/ .page_wrapper-->
 			
 			<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 			
 			<%= render "module/footer" %>
-
 		</div><!--/ [layout]-->
 		
 		<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
@@ -497,5 +494,10 @@
 			})
 			
         </script>
+		<style>
+			.tab_container {
+				position: inherit !important;
+			}
+		</style>
 	</body>
 </html>

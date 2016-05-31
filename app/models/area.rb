@@ -48,14 +48,14 @@ class Area < ActiveRecord::Base
   #
   def self.sort_by
     [
-      ["Name","areas.name"]
+      [I18n.t('area_name'),"areas.name"]
     ]
   end
   
   def self.sort_order
     [
-      ["ASC","asc"],
-      ["DESC","desc"],
+      [I18n.t('asc'),"asc"],
+      [I18n.t('desc'),"desc"],
     ]
   end
   
