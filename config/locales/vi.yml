@@ -184,6 +184,10 @@ vi:
   check_show_email: "Chọn hiển thị email"
   show_email: "Hiển thị email"
   online: "Trực tuyến"
+  choose_true: "Chọn"
+  choose_false: "Không chọn"
+  branch_office: "Chi nhánh"
+  head_office: "Trụ sở chính"
   
   #-------------------------------------
   comment_question: "Bình luận/Câu hỏi/Ý kiến"

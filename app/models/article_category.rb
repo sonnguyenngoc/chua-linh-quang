@@ -54,7 +54,7 @@ class ArticleCategory < ActiveRecord::Base
 
     #Search keyword filter
     if params[:keyword].present?
-        records = records.where("LOWER(article_categories.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+      records = records.where("LOWER(CONCAT(article_categories.name,' ',article_categories.description)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
     end
     
     # for sorting

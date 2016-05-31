@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
     def self.search(params)
         records = self.all
         
+        if params[:area_id].present?
+            #records = records.where("")
+        end
+        
         #Search keyword filter
         if params[:keyword].present?
             records = records.where("LOWER(concat(users.first_name,' ',users.last_name,' ',users.email,' ',users.phone,' ',users.address_1,' ',users.address_2)) LIKE ?", "%#{params[:keyword].downcase.strip}%")

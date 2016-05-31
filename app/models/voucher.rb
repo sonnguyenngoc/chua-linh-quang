@@ -73,10 +73,8 @@ class Voucher < ActiveRecord::Base
     records = self.all
     
     #From Date filter
-    if params[:from_date].present? && params[:to_date].present?
-      #records = records.where('vouchers.from_date >= ?', params[:from_date].to_date.beginning_of_day)
-      #                  .where('vouchers.to_date <= ?', params[:to_date].to_date.end_of_day)
-      records = records.where("#{params[:from_date]} BETWEEN ? AND ?", from_date, to_date)
+    if params[:valid_date].present?
+      records = records.where('vouchers.from_date <= ? AND vouchers.to_date >= ?', params[:valid_date], params[:valid_date])
     end
     
     #Search keyword filter

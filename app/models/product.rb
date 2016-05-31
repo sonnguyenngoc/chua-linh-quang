@@ -109,7 +109,7 @@ class Product < ActiveRecord::Base
     
     #Search keyword filter
     if params[:keyword].present?
-        records = records.where("LOWER(products.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+        records = records.where("LOWER(CONCAT(products.name,' ',products.code)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
     end
     
     # for sorting

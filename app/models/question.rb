@@ -24,7 +24,7 @@ class Question < ActiveRecord::Base
     
     #Search keyword filter
     if params[:keyword].present?
-        records = records.where("LOWER(questions.content) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+        records = records.joins(:product).where("LOWER(CONCAT(questions.name,' ',questions.email,' ',questions.content,' ',products.name)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
     end
     
     # for sorting

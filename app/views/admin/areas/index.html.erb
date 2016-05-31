@@ -64,7 +64,7 @@
                                         <label class="" ><%= t(:area_parent) %></label>
 
                                         <div>
-                                            <%= select_tag(:parent_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: t(:all), class: "select") %>
+                                            <%= select_tag(:parent_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:parent_id]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>
                                 </div>

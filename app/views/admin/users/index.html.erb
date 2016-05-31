@@ -54,7 +54,15 @@
                     <div class="filter-box">
                         <%= form_for("", url: {controller: "users", action: "index"}, method: "get") do |f| %>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:areas) %></label>
+                                        <div>
+                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_by) %></label>
                                         <div>
@@ -62,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_order) %></label>
                                         <div>
@@ -70,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 pull-right">
+                                <div class="col-md-3 pull-right">
                                     <div class="form-group">
                                         <label class="" ><%= t(:filter) %></label>
                                         <div class="input-group">

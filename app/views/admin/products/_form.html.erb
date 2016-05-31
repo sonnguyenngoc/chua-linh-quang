@@ -210,6 +210,10 @@
                             <%= ff.hidden_field :id %>
                             <div class="col-lg-7" style="margin-bottom: 30px;">
                                 <%= ff.select(:is_main, ['False', 'True'], {}, { :class => 'select col-lg-5' })%>
+                                <!--<select class="select col-lg-5" name="is_main">
+                                    <option <%= selected if @product.product_images.include?("True") %> value="True"><%= t(:choose_true) %></option>
+                                    <option <%= selected if @product.product_images.include?("False") %> value="False"><%= t(:choose_false) %></option>
+                                </select>-->
                                 <%= ff.file_field :image_url, class: "file-styled margin-bottom col-lg-7" %>
                                 <br /><br />
                             </div>
