@@ -183,6 +183,10 @@ en:
   check_show_email: "Check Show Email"
   show_email: "Show Email"
   online: "Online"
+  choose_true: "True"
+  choose_false: "False"
+  branch_office: "Branch Office"
+  head_office: "Head Office"
   
   #-------------------------------------
   comment_question: "Comment/Question/Testimonial"

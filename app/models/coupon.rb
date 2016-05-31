@@ -73,9 +73,8 @@ class Coupon < ActiveRecord::Base
     records = self.all
     
     #From Date filter
-    if params[:from_date].present? && params[:to_date].present?
-      records = records.where('coupons.from_date >= ?', params[:from_date].to_date.beginning_of_day)
-                        .where('coupons.to_date <= ?', params[:to_date].to_date.end_of_day)
+    if params[:valid_date].present?
+      records = records.where('coupons.from_date <= ? AND coupons.to_date >= ?', params[:valid_date], params[:valid_date])
     end
     
     #Search keyword filter

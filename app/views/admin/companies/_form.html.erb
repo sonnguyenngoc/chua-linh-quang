@@ -34,11 +34,11 @@
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:type) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
-            <%= f.select(:type_company, ['Branch Office', 'Head Office'], {}, { :class => 'select_2' })%>
-            <!--<select class="select_2" name="type_company">
-                <option value="Branch Office"><%= t(:branch_office) %></option>
-                <option value="Head Office"><%= t(:head_office) %></option>
-            </select>-->
+            <!--<%= f.select(:type_company, ['Branch Office', 'Head Office'], {}, { :class => 'select_2' })%>-->
+            <select class="select_2" name="type_company">
+                <option <%= "selected" if @company.type_company == "Branch Office" %> value="Branch Office"><%= t(:branch_office) %></option>
+                <option <%= "selected" if @company.type_company == "Head Office" %> value="Head Office"><%= t(:head_office) %></option>
+            </select>
         </div>
     </div>
         

@@ -33,6 +33,10 @@ class Customer < ActiveRecord::Base
   def self.search(params)
     records = self.all
     
+    if params[:area_id].present?
+      #records = records.where("")
+    end
+    
     #Search keyword filter
     if params[:keyword].present?
         records = records.where("LOWER(CONCAT(customers.first_name,' ',customers.last_name,' ',customers.email,' ',customers.phone,' ',customers.company,' ',customers.address,' ',customers.city,' ',customers.zip_code,' ',customers.country,' ',customers.province)) LIKE ?", "%#{params[:keyword].downcase.strip}%")

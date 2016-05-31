@@ -86,7 +86,7 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:status) %></label>
                                         <div>
-                                            <%= select_tag(:status_id, options_for_select(Product.status_options, :selected => params[:status_id]), include_blank: t(:all), class: "select") %>
+                                            <%= select_tag(:status, options_for_select(Product.status_options, :selected => params[:status]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>                                    
                                 </div>
