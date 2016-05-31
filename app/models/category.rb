@@ -44,7 +44,7 @@ class Category < ActiveRecord::Base
       records = records.order("products.price DESC")
     end
     
-    return records
+    return records.where(is_show: true)
   end
   
   def get_current_level

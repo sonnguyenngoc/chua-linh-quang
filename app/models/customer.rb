@@ -4,6 +4,15 @@ class Customer < ActiveRecord::Base
   def name
     first_name + " " + last_name
   end
+  
+  def checkout_total_price
+    price = 0
+    self.order.order_details.each do |item|
+      price += item.price
+    end
+    return price
+  end
+  
   def display_address
     str = []
     str << address if address.present?

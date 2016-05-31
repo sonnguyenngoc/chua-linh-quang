@@ -4,11 +4,11 @@ class Admin::ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search(params).paginate(:page => params[:page], :per_page => 10)
+    @products = Product.search_backend(params).paginate(:page => params[:page], :per_page => 10)
   end
   
-  def search
-    @products = Product.search(params).paginate(:page => params[:page], :per_page => 10)
+  def search_backend
+    @products = Product.search_backend(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/products/index"
   end
 
@@ -136,6 +136,6 @@ class Admin::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :code, :quantity, :unit, :price, :old_price, :discount_percent, :tags, :short_description, :description, :status, :manufacturer_id, :product_image_id, :meta_keywords, :meta_description, product_images_attributes: [:id, :image_url, :is_main, :_destroy])
+      params.require(:product).permit(:is_show, :stock, :name, :code, :quantity, :unit, :price, :old_price, :discount_percent, :tags, :short_description, :description, :status, :manufacturer_id, :product_image_id, :meta_keywords, :meta_description, product_images_attributes: [:id, :image_url, :is_main, :_destroy])
     end
 end

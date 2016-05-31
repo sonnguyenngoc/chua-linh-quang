@@ -106,6 +106,7 @@
 <%= javascript_include_tag '/backend/assets/js/pages/colors_teal.js' %>
 <%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
 <%= javascript_include_tag '//cdn.ckeditor.com/4.5.6/full/ckeditor.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/colors_teal.js' %>
 <!-- /theme JS files -->
 <script>
     // Full featured editor
@@ -117,6 +118,9 @@
     $(".styled-level-1, .multiselect-container input").uniform({
         radioClass: 'choice',
         checkboxClass: 'checker',
+        wrapperClass: "border-teal text-teal-600"
+    });
+    $("#product_is_show").uniform({
         wrapperClass: "border-teal text-teal-600"
     });
 </script>

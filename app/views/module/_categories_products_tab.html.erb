@@ -14,8 +14,12 @@
 			<ul class="tabs_nav clearfix">
 				
 				<% Category.get_by_status(status).each_with_index do |category,index| %>
+				
+					<% if category.products.where(is_show: true).count > 0 %>
 				   
-					<li><a href="#tab-<%= status %>-<%= index %>"><%= category.name %></a></li>
+						<li><a href="#tab-<%= status %>-<%= index %>"><%= category.name %></a></li>
+						
+					<% end %>
 				
 				<% end %>
 			

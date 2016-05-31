@@ -129,130 +129,136 @@ Rails.application.routes.draw do
     #end of resources
 
   
-    namespace :admin, path: "hkpanel" do
+    namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
-      resources :shopping_carts
-      resources :products do
-        collection do
-          get 'search'
+      scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do
+        resources :shopping_carts, path: "gio-hang"
+        resources :products, path: "danh-sach-san-pham" do
+          collection do
+            get 'search'
+            get 'search_backend'
+          end
         end
-      end
-      resources :categories do
-        collection do
-          get 'search'
-          get 'update_parent_order'
+        resources :categories, path: "chuyen-muc-san-pham" do
+          collection do
+            get 'search'
+            get 'update_parent_order'
+          end
         end
-      end
-      resources :manufacturers do
-        collection do
-          get 'search'
+        resources :manufacturers, path: "nha-cung-cap" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :articles do
-        collection do
-          get 'search'
+        resources :articles, path: "bai-viet" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :article_categories do
-        collection do
-          get 'search'
+        resources :article_categories, path: "chuyen-muc-bai-viet" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :areas do
-        collection do
-          get 'search'
+        resources :areas, path: "khu-vuc" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :orders do
-        collection do
-          get 'search'
+        resources :orders, path: "don-hang" do
+          collection do
+            get 'search'
+          end
+          collection do
+            get 'pending'
+          end
+          collection do
+            get 'finish'
+          end
+          collection do
+            get 'cancel'
+          end
         end
-        collection do
-          get 'pending'
+        resources :newsletters, path: "dang-ky-nhan-tin-moi" do
+          collection do
+            get 'search'
+          end
         end
-        collection do
-          get 'finish'
+        resources :contacts, path: "lien-he" do
+          collection do
+            get 'search'
+          end
         end
-        collection do
-          get 'cancel'
+        resources :wish_lists, path: "san-pham-yeu-thich" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :newsletters do
-        collection do
-          get 'search'
+        resources :comments, path: "binh-luan-san-pham" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :contacts do
-        collection do
-          get 'search'
+        resources :users , path: "nguoi-dung" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :wish_lists do
-        collection do
-          get 'search'
+        resources :questions, path: "cau-hoi-san-pham" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :comments do
-        collection do
-          get 'search'
+        resources :customers, path: "khach-hang" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :users do
-        collection do
-          get 'search'
+        resources :payment_methods, path: "hinh-thuc-thanh-toan" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :questions do
-        collection do
-          get 'search'
+        resources :delivery_methods, path: "hinh-thuc-giao-hang" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :customers do
-        collection do
-          get 'search'
+        resources :comment_articles, path: "binh-luan-bai-viet" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :payment_methods do
-        collection do
-          get 'search'
+        resources :slideshows, path: "trinh-chieu" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :delivery_methods do
-        collection do
-          get 'search'
+        resources :vouchers, path: "phieu-mua-hang" do
+          collection do
+            get 'search'
+          end
         end
-      end
-
-      resources :comment_articles do
-        collection do
-          get 'search'
+        resources :coupons, path: "ma-giam-gia" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :slideshows do
-        collection do
-          get 'search'
+        resources :testimonials, path: "y-kien-khach-hang" do
+          collection do
+            get 'search'
+          end
         end
-      end
-      resources :vouchers do
-        collection do
-          get 'search'
+        resources :companies, path: "cong-ty" do
+          collection do
+            get "head_office", path: "tru-so-chinh"
+          end
         end
-      end
-      resources :coupons do
-        collection do
-          get 'search'
-        end
-      end
-      resources :testimonials do
-        collection do
-          get 'search'
-        end
-      end
-      resources :companies
-      resources :options
-      resources :code_statuses do
-        collection do
-          get 'search'
+        resources :options, path: "cai-dat"
+        resources :code_statuses, path: "ma-bai-viet" do
+          collection do
+            get 'search'
+          end
         end
       end
     end

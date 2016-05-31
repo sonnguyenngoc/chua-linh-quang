@@ -102,7 +102,12 @@
 <%= javascript_include_tag "/backend/assets/js/plugins/pickers/pickadate/picker.time.js" %>
 <%= javascript_include_tag "/backend/assets/js/plugins/pickers/pickadate/legacy.js" %>
 
-
 <%= javascript_include_tag "/backend/assets/js/core/app.js" %>
 <%= javascript_include_tag "/backend/assets/js/pages/picker_date.js" %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 <!-- /theme JS files -->
+<script>
+    $(document).ready(function(){
+        $("#form_voucher").validate();
+    });
+</script>

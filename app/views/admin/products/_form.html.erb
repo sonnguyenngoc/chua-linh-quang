@@ -22,15 +22,28 @@
             <div class="tab-pane has-padding active" id="control-tab1">
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_product_name) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-10">
+                    <div class="col-lg-6">
                         <%= f.text_field :name, class: "form-control" %>
+                    </div>
+                    <label class="col-lg-1 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-3">
+                        <div class="row-fluid">
+                            <div class="checkbox">
+                                <%= check_box 'product', 'is_show', {}, 'true', 'false' %>
+                                <label for="product_is_show">Hiển thị sản phẩm</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_product_code) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <%= f.text_field :code, class: "form-control" %>
+                    </div>
+                    <label class="col-lg-1 control-label" ><%= t(:stock) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-3">
+                        <%= f.text_field :stock, class: "form-control" %>
                     </div>
                 </div>
                     
@@ -51,7 +64,7 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:list_quantity) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:quantity) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-5">
                         <%= f.text_field :quantity, class: "form-control" %>
                     </div>

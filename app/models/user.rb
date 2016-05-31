@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
     
     def short_name
         if !first_name.nil?
-            last_name + " " + first_name.split(" ").first
+            last_name.to_s + " " + first_name.to_s.split(" ").first
         else
             email.gsub(/@(.+)/,'')
         end

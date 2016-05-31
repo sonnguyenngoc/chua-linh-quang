@@ -88,6 +88,7 @@
                             <tr class="bg-teal-800">
                                 <th><%= t(:customer_name) %></th>
                                 <th><%= t(:info) %></th>
+                                <th><%= t(:bought_at_a_price) %></th>
                                 <th><%= t(:created_at) %></th>
                                 <th><%= t(:status) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
@@ -105,6 +106,9 @@
                                         <%= customer.company %> <br />
                                         <%= customer.address %>
                                     </td>
+                                    <td>
+                                        <%= format_number(customer.checkout_total_price) %>
+                                    </td>
                                     <td><%= customer.created_at.strftime("%d/%m/%Y") %></td>
                                     <td></td>
                                     <td class="text-center">
@@ -117,7 +121,6 @@
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
                                                         <%= link_to '<i class="glyphicon glyphicon-file"></i> View'.html_safe, {controller: "admin/customers", action: "show", id: customer.id} %>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, customer], method: :delete, data: {confirm: t(:confirm_delete)} %>
                                                     </li>
                                                 </ul>
                                             </li>
