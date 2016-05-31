@@ -250,6 +250,7 @@ Rails.application.routes.draw do
           end
         end
         resources :companies, path: "chi-nhanh"
+        get "tru-so-chinh" => "companies#head_office", as: :head_office
         resources :options, path: "cai-dat"
         resources :code_statuses, path: "ma-bai-viet" do
           collection do

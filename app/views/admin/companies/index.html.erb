@@ -31,7 +31,7 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold"><%= t(:customer) %></span></h4>
+                        <h4><span class="text-semibold"><%= t(:branch_office) %></span></h4>
                     </div>
                 </div>
             
@@ -39,7 +39,7 @@
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
                         <li><a href="<%= admin_companies_path %>"><%= t(:company) %></a></li>
-                        <li class="active"><%= t(:companies) %></li>
+                        <li class="active"><%= t(:branch_office) %></li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:companies) %></span></h5>
-                        <%= link_to t(:new_company), new_admin_company_path, class: 'btn btn-primary pull-right' %>
+                        <%= link_to t(:new_branch), new_admin_company_path, class: 'btn btn-primary pull-right' %>
                     </div>
                     
                     <table class="table">
