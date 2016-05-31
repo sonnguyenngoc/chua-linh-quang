@@ -7,6 +7,12 @@ class Admin::CompaniesController < ApplicationController
     @companies = Company.where(type_company: "Branch Office").paginate(:page => params[:page], :per_page => 10)
   end
   
+  # GET /companies
+  # GET /companies.json
+  def head_office
+    @companies = Company.where(type_company: "Head Office").paginate(:page => params[:page], :per_page => 10)
+  end
+  
   # GET /companies/1
   # GET /companies/1.json
   def show
