@@ -8,7 +8,8 @@ class Ability
     
     # get permission from group
     # Object.const_get("Article")
-    UserGroup.permission_classes.each do |model_class|
+    UserGroup.permission_classes.each do |row|
+        model_class = row[:class_name]
       
         # break if can get Class from string
         begin

@@ -295,6 +295,17 @@ vi:
   edit_user_group: "Chi tiết nhóm"
   name: "Tên"
   read_condition: "Điều kiện xem"
+  manufacturer: "Thương hiệu"
+  area: "Khu vực"
+  article_category: "Chuyên mục bài viết"
+  code_status: "Code status"
+  slideshow: "Slideshow trình chiếu"
+  comment: "Bình luận sản phẩm"
+  comment_article: "Bình luận bài viết"
+  voucher: "Voucher"
+  coupon: "Coupon"
+  user_group: "Nhóm người dùng"
+  system_setting: "Cấu hình hệ thống"
   
   will_paginate:
     page_entries_info:
