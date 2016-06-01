@@ -295,7 +295,7 @@
     .categories_module {
         display: none;
     }
-    .tab_containers_wrap {
+    .categories_products_home_tabs_container .tab_containers_wrap {
         visibility: hidden;
     }
     .main_slider.transparent, .main_slider.transparent * {
