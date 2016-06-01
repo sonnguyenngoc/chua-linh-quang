@@ -8,27 +8,7 @@ class Ability
     
     # get permission from group
     # Object.const_get("Article")
-    ["Product",
-      "Category", 
-      "Manufacturer", 
-      "Area", 
-      "ArticleCategory", 
-      "Article", 
-      "CodeStatus", 
-      "Slideshow", 
-      "Order", 
-      "DeliveryMethod", 
-      "PaymentMethod", 
-      "Comment", 
-      "Question", 
-      "CommentArticle", 
-      "Testimonial", 
-      "Voucher", 
-      "Coupon", 
-      "Customer", 
-      "User", 
-      "Company", 
-      "Setting"].each do |model_class|
+    UserGroup.permission_classes.each do |model_class|
       
         # break if can get Class from string
         begin
