@@ -245,9 +245,13 @@
             $(".categories_products_home_tabs_container .tab_containers_wrap").css("visibility", "visible");
             $(".categories_module").show();
             if($(window).width() < 490) {
-                $('.categories_products_home_tabs_container .owl-item').width($('.owl-stage-outer').width()/3);
-                $('.categories_products_home_tabs_container .owl-item .product_item').height($('.owl-stage-outer').width()/3 + 50);
-                $('.categories_products_home_tabs_container .tab_containers_wrap').height($('.owl-stage-outer').width()/3 + 90);
+                $('.categories_products_home_tabs_container .owl-item').width($('.owl-stage-outer').width()/2);
+                $('.categories_products_home_tabs_container .owl-item .product_item').height($('.owl-stage-outer').width()/2 + 50);
+                $('.categories_products_home_tabs_container .tab_containers_wrap').height($('.owl-stage-outer').width()/2 + 90);
+                //$('.categories_products_home_tabs_container .owl-stage').each(function(){
+                //    var width = $(this).find('.owl-item').width()*$(this).find('.owl-item').length;
+                //    $(this).width(width);
+                //});
             }
         }        
     };
