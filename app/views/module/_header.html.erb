@@ -245,8 +245,9 @@
             $(".categories_products_home_tabs_container .tab_containers_wrap").css("visibility", "visible");
             $(".categories_module").show();
             if($(window).width() < 490) {
-                $('.owl-item').width($('.owl-stage-outer').width()/3);
-                $('.owl-item .product_item').height($('.owl-stage-outer').width()/3 + 50);
+                $('.categories_products_home_tabs_container .owl-item').width($('.owl-stage-outer').width()/3);
+                $('.categories_products_home_tabs_container .owl-item .product_item').height($('.owl-stage-outer').width()/3 + 50);
+                $('.categories_products_home_tabs_container .tab_containers_wrap').height($('.owl-stage-outer').width()/3 + 90);
             }
         }        
     };
