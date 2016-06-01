@@ -800,3 +800,9 @@ h3.care {
 .search_category_box ul li {
     margin-bottom: 0 !important;
 }
+.product_preview .owl_carousel {
+    visibility: hidden;
+}
+.product_preview .owl_carousel.owl-loaded {
+    visibility: visible;
+}
