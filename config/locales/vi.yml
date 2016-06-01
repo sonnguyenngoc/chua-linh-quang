@@ -306,6 +306,7 @@ vi:
   coupon: "Coupon"
   user_group: "Nhóm người dùng"
   system_setting: "Cấu hình hệ thống"
+  user_groups: "Nhóm người dùng"
   
   will_paginate:
     page_entries_info:
