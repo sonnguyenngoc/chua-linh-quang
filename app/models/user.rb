@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
     validates :email, uniqueness: true
     belongs_to :area, foreign_key: "province"
-    has_many :wish_lists
+    has_many :wish_lists, dependent: :destroy
     has_many :comments, dependent: :destroy
     # has_many :conversations, -> { order "updated_at DESC" }, :foreign_key => :sender_id
-    has_many :messages
+    has_many :messages, dependent: :destroy
     belongs_to :user_group
     
     
