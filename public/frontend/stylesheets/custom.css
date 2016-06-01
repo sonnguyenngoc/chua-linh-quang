@@ -800,3 +800,12 @@ h3.care {
 .search_category_box ul li {
     margin-bottom: 0 !important;
 }
+/*CSS layout top banner*/
+.banner_item#zone_37 a {
+    display: block;
+    height: 80px;
+    background-color: rgba(0, 0, 0, .1);
+    background-position: 50% 0px;
+    background-repeat: repeat;
+}
+/*END -- CSS layout top banner*/

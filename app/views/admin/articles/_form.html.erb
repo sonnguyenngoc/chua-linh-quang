@@ -26,8 +26,17 @@
             
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:title) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-10">
+        <div class="col-lg-6">
             <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <label class="col-lg-2 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-2">
+            <div class="row-fluid">
+                <div class="checkbox">
+                    <%= check_box 'article', 'is_show', {}, 'true', 'false' %>
+                    <label for="article_is_show"><%= t(:show_article) %></label>
+                </div>
+            </div>
         </div>
     </div>
     
