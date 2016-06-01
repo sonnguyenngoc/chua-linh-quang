@@ -59,7 +59,7 @@
                         <thead>
                             <tr class="bg-teal-800">
                                 <th><%= t(:name) %></th>
-                                <th><%= t(:permission) %></th>
+                                <!--<th><%= t(:permission) %></th>-->
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
@@ -70,9 +70,9 @@
                                     <td>
                                         <%= link_to item.name, edit_admin_user_group_path(item) %>
                                     </td>
-                                    <td>
+                                    <!--<td>
                                         <%= item.permission %>
-                                    </td>
+                                    </td>-->
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <ul class="icons-list">
