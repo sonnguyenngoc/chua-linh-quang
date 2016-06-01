@@ -285,10 +285,16 @@ vi:
   read: "Xem"
   create: "Tạo mới"
   update: "Cập nhật"
-  no: "Không"
-  yes: "Có"
-  own: "Của chính mình"
-  not_own: "Của người khác"
+  _no: "Không"
+  _yes: "Có"
+  _own: "Của chính mình"
+  _not_own: "Của người khác"
+  _approved: "Khi đã duyệt"
+  _not_approved: "Khi chưa duyệt"
+  permission: "Phân quyền"
+  edit_user_group: "Chi tiết nhóm"
+  name: "Tên"
+  read_condition: "Điều kiện xem"
   
   will_paginate:
     page_entries_info:

@@ -282,10 +282,16 @@ en:
   read: "Read"
   create: "Create"
   update: "Update"
-  no: "No"
-  yes: "Yes"
-  own: "Own"
-  not_own: "Not Own"
+  _no: "No"
+  _yes: "Yes"
+  _own: "Own"
+  _not_own: "Not Own"
+  _approved: "Approved"
+  _not_approved: "Not Approved"
+  permission: "Permission"
+  edit_user_group:
+  name:
+  read_condition:
   
   
   will_paginate:

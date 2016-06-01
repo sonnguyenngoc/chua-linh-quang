@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     has_many :comments, dependent: :destroy
     # has_many :conversations, -> { order "updated_at DESC" }, :foreign_key => :sender_id
     has_many :messages
+    belongs_to :user_group
     
     
     has_many :orders
@@ -174,5 +175,14 @@ class User < ActiveRecord::Base
             [I18n.t('manager'), 'manager'],
             [I18n.t('admin'), 'admin'],
         ]
+    end
+    
+    def permissions
+        user_group.permissions
+    end
+    
+    def ability(model, action)
+        return ['no'] if user_group.nil?
+        user_group.ability(model, action)
     end
 end
