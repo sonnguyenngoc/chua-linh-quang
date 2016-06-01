@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     belongs_to :user_group
     
     
-    has_many :orders
+    has_many :orders, dependent: :destroy
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
