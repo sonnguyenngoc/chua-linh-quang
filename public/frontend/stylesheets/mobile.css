@@ -292,4 +292,10 @@
     .mobile_container_socical_feeds .section_follow_gmap {
         bottom: 55px;
     }
+    .categories_module {
+        display: none;
+    }
+    .tab_containers_wrap {
+        visibility: hidden;
+    }
 }

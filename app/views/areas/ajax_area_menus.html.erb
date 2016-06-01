@@ -1,0 +1,20 @@
+                                            <ul>
+                                                 <li value="">
+                                                     <a href="<%= change_current_area_path(-1) %>">Tất cả khu vực</a>
+                                                 </li>
+                                                 <% Area.order("display_order").where(level: 2).each do |item| %>
+                                                 
+                                                     <li value="<%= item.id %>">
+                                                         <a class="level-<%= item.level %>" href="<%= change_current_area_path(item.id) %>"><%= item.name %></a>
+                                                     </li>
+                                                     
+                                                     <% item.children.order("display_order").each do |child| %>
+     
+                                                         <li value="<%= child.id %>">
+                                                             <a class="level-<%= child.level %>" href="<%= change_current_area_path(child.id) %>"><%= child.name %></a>
+                                                         </li>
+                                                                                                    
+                                                     <% end %>
+                                                                                                
+                                                 <% end %>                                             
+                                             </ul>

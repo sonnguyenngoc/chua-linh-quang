@@ -207,30 +207,31 @@
     });
     
     
+    // for top area menus
     $( document ).ready(function() {
-        $(".search_category_box ul").height($(window).height()-100);
+        $(".search_category_box .area_menus_box").height($(window).height()-100);
     });
     $( window ).resize(function() {
-        $(".search_category_box ul").height($(window).height()-100);
+        $(".search_category_box .area_menus_box").height($(window).height()-100);
     });
     $(document).on("click", ".search_category_box h4", function(e){
         var box = $(".search_category_box");
-        box.find("ul").toggle();
+        box.find(".area_menus_box").toggle();
+        if(box.find("ul li").length < 5) {
+            var url = "<%= ajax_area_menus_areas_path %>";
+            $.ajax({
+                method: "GET",
+                url: url   
+            })
+            .done(function( msg ) {
+              box.find(".area_menus_box").html(msg);
+            });
+        }
     });    
-    //$(document).on("click", ".search_category_box a", function(e){
-    //    var box = $(".search_category_box");
-    //    var menu = $(".search_category_box ul");
-    //    var value = $(this).parent().attr("value");
-    //    var text = $(this).html();
-    //    $("input[name=area_id]").val(value);
-    //    box.find(".area_current").html(text);
-    //    menu.hide();
-    //    $(this).parents("form").submit();
-    //});
     $(document).mouseup(function (e)
     {
-        var container = $(".search_category_box ul");
-
+        var container = $(".search_category_box .area_menus_box");
+        
         if (e.target.className != 'area_current' && !container.is(e.target) // if the target of the click isn't the container...
             && container.has(e.target).length === 0) // ... nor a descendant of the container
         {
@@ -238,6 +239,16 @@
         }
     });
     
+    // Loading home categories products tabs
+    function checkHomeTabFinish() {
+        if($(".tabs.initialized").length > 0) {
+            $(".tab_containers_wrap").css("visibility", "visible");
+            $(".categories_module").show();
+        }
+    };
+    $( document ).ready(function() {
+        setInterval("checkHomeTabFinish()", 1000);
+    });
 </script>
 
 <%= render "module/mobile_header" %>

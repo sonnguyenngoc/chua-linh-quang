@@ -274,6 +274,10 @@ vi:
   color_2: "Mã màu 2"
   style: "Kiểu"
   area_parent: "Trực thuộc"
+  user_role: "Chức vụ"
+  role_none: "Không chọn"
+  manager: "Quản lý"
+  admin: "Quản lý cấp cao"
   
   will_paginate:
     page_entries_info:

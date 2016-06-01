@@ -167,4 +167,12 @@ class User < ActiveRecord::Base
     def see(c)
         c.messages.where.not(user_id: self.id).update_all(seen: Time.now)
     end
+    
+    def self.get_role_options
+        [
+            [I18n.t('user'), 'user'],
+            [I18n.t('manager'), 'manager'],
+            [I18n.t('admin'), 'admin'],
+        ]
+    end
 end
