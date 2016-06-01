@@ -305,3 +305,16 @@
         display: none;
     }
 }
+@media (max-width: 489px) {
+    .product_item .image_wrap {
+        padding: 8px;
+    }
+    .owl-item .product_item .product_info .rating {
+        margin-top: 0;
+        margin-bottom: 5px;
+        float: left;
+    }
+    .owl-item .product_item .actions_wrap {
+        display: none !important;
+    }
+}
