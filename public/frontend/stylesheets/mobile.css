@@ -298,4 +298,7 @@
     .tab_containers_wrap {
         visibility: hidden;
     }
+    .main_slider.transparent, .main_slider.transparent * {
+        visibility: hidden !important;
+    }
 }
