@@ -58,7 +58,7 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:areas) %></label>
                                         <div>
-                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), class: "select") %>
+                                            <%= select_tag(:area_id, options_from_collection_for_select(Area.all, :id, :name, :selected => params[:area_id]), include_blank: t(:all), class: "select") %>
                                         </div>
                                     </div>
                                 </div>
@@ -115,8 +115,12 @@
                                         <%= user.phone %>
                                     </td>
                                     <td>
-                                        <b><i class="icon-location4"></i> </b><%= truncate(user.address_1, length: 40) %> </br>
-                                        <b><i class="icon-location4"></i> </b><%= truncate(user.address_2, length: 40) %>
+                                        <% if user.address_1.present? %>
+                                            <!--<b><i class="icon-location4"></i> </b>--><%= truncate(user.address_1, length: 40) %> </br>
+                                        <% end %>
+                                        <% if user.address_2.present? %>
+                                            <!--<b><i class="icon-location4"></i> </b>--><%= truncate(user.address_2, length: 40) %>
+                                        <% end %>
                                     </td>
                                     <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">

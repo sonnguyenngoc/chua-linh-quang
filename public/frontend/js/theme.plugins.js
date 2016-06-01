@@ -161,6 +161,7 @@
 
        mw.find('.product_preview .owl_carousel').owlCarousel({
         margin : 10,
+		item: 10,
         themeClass : 'thumbnails_carousel',
         nav : true,
         navText : [],

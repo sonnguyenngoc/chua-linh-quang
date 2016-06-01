@@ -98,12 +98,12 @@ class User < ActiveRecord::Base
         records = self.all
         
         if params[:area_id].present?
-            #records = records.where("")
+            records = records.where(area_id: params[:area_id])
         end
         
         #Search keyword filter
         if params[:keyword].present?
-            records = records.where("LOWER(concat(users.first_name,' ',users.last_name,' ',users.email,' ',users.phone,' ',users.address_1,' ',users.address_2)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+            records = records.where("LOWER(CONCAT(users.first_name,' ',users.last_name,' ',users.email,' ',users.phone,' ',users.address_1,' ',users.address_2)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
         end
         
         # for sorting
@@ -166,5 +166,13 @@ class User < ActiveRecord::Base
     
     def see(c)
         c.messages.where.not(user_id: self.id).update_all(seen: Time.now)
+    end
+    
+    def self.get_role_options
+        [
+            [I18n.t('user'), 'user'],
+            [I18n.t('manager'), 'manager'],
+            [I18n.t('admin'), 'admin'],
+        ]
     end
 end

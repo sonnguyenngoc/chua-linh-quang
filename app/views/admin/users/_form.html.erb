@@ -70,6 +70,13 @@
     </div>
         
     <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:user_role) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= select("user", "role", User.get_role_options, { include_blank: t('role_none') }, class: "select") %>
+        </div>
+    </div>
+        
+    <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:author) %></label>
         <div class="col-lg-10">
             <p>

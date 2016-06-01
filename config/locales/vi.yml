@@ -188,6 +188,16 @@ vi:
   choose_false: "Không chọn"
   branch_office: "Chi nhánh"
   head_office: "Trụ sở chính"
+  bought_at_a_price: "Tổng số tiền đã mua"
+  show: "Hiển thị"
+  show_product: "Hiển thị sản phẩm"
+  stock: "Còn trong kho"
+  old_price: "Giá cũ"
+  current_price: "Giá bán"
+  discount_percent: "Phần trăm giảm giá"
+  with_deal: "Đối với khuyến mãi"
+  apply_price: "Giá đang áp dụng"
+  showing: "Đang hiển thị"
   
   #-------------------------------------
   comment_question: "Bình luận/Câu hỏi/Ý kiến"
@@ -264,6 +274,10 @@ vi:
   color_2: "Mã màu 2"
   style: "Kiểu"
   area_parent: "Trực thuộc"
+  user_role: "Chức vụ"
+  role_none: "Không chọn"
+  manager: "Quản lý"
+  admin: "Quản lý cấp cao"
   
   will_paginate:
     page_entries_info:

@@ -127,6 +127,12 @@ Rails.application.routes.draw do
     resources :feedbacks
     resources :testimonials
     #end of resources
+    
+    resources :areas, path: "khu-vuc" do
+      collection do
+        get 'ajax_area_menus'
+      end
+    end
 
   
     namespace :admin, path: "quan-tri" do
