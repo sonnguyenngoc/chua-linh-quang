@@ -25,10 +25,11 @@ class Admin::UserGroupsController < ApplicationController
   # POST /user_groups.json
   def create
     @user_group = UserGroup.new(user_group_params)
+    @user_group.permission = params[:permissions].to_json
 
     respond_to do |format|
       if @user_group.save
-        format.html { redirect_to edit_admin_user_path(@user_group.id), notice: 'User group was successfully created.' }
+        format.html { redirect_to edit_admin_user_group_path(@user_group.id), notice: 'User group was successfully created.' }
         format.json { render :show, status: :created, location: @user_group }
       else
         format.html { render :new }
@@ -42,7 +43,9 @@ class Admin::UserGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @user_group.update(user_group_params)
-        format.html { redirect_to edit_admin_user_path(@user_group.id), notice: 'User group was successfully updated.' }
+        @user_group.permission = params[:permissions].to_json
+        @user_group.save
+        format.html { redirect_to edit_admin_user_group_path(@user_group.id), notice: 'User group was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_group }
       else
         format.html { render :edit }
