@@ -143,6 +143,7 @@ Rails.application.routes.draw do
           collection do
             get 'search'
             get 'search_backend'
+            get 'approve'
           end
         end
         resources :categories, path: "chuyen-muc-san-pham" do
@@ -256,6 +257,7 @@ Rails.application.routes.draw do
           end
         end
         resources :companies, path: "chi-nhanh"
+        resources :user_groups, path: "nhom-nguoi-dung"
         get "tru-so-chinh" => "companies#head_office", as: :head_office
         resources :options, path: "cai-dat"
         resources :code_statuses, path: "ma-bai-viet" do

@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold">Tài khoản người dùng</span></h4>
+                        <h4><span class="text-semibold"><%= t(:users) %></span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_comments_path %>">Người dùng</a></li>
-                        <li class="active">Danh sách người dùng</li>
+                        <li><a href="<%= admin_users_path %>"><%= t(:users) %></a></li>
+                        <li class="active"><%= t(:user) %></li>
                     </ul>
                 </div>
             </div>

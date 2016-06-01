@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601013031) do
+ActiveRecord::Schema.define(version: 20160601091343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -357,6 +357,8 @@ ActiveRecord::Schema.define(version: 20160601013031) do
     t.text     "meta_description"
     t.boolean  "is_show",           default: false
     t.integer  "stock",             default: 1
+    t.boolean  "approved",          default: false
+    t.integer  "user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -392,6 +394,13 @@ ActiveRecord::Schema.define(version: 20160601013031) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_groups", force: :cascade do |t|
+    t.string   "name"
+    t.text     "permission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -401,8 +410,8 @@ ActiveRecord::Schema.define(version: 20160601013031) do
     t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+    t.text     "current_sign_in_ip"
+    t.text     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "first_name"

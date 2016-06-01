@@ -103,6 +103,9 @@ vi:
   categories: "Danh sách chuyên mục"
   manufacturers: "Thương hiệu"
   areas: "Khu vực/Vùng miền"
+  approve: "Duyệt "
+  not_yet_approved: "Chưa được duyệt"
+  approved: "Đã được duyệt"
   
   #-------------------------------------
   article: "Bài viết"
@@ -278,6 +281,14 @@ vi:
   role_none: "Không chọn"
   manager: "Quản lý"
   admin: "Quản lý cấp cao"
+  
+  read: "Xem"
+  create: "Tạo mới"
+  update: "Cập nhật"
+  no: "Không"
+  yes: "Có"
+  own: "Của chính mình"
+  not_own: "Của người khác"
   
   will_paginate:
     page_entries_info:

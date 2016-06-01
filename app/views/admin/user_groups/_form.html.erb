@@ -1,0 +1,106 @@
+<% if @user_group.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @user_group.errors.full_messages.each do |message| %>
+                -
+                <%= message %><br/>
+                    <% end %>
+        </div>
+    </div>
+    <% end %>
+
+        <%= form_for [:admin, @user_group], html: {class: "form-horizontal"} do |f| %>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label"><%= t(:name) %> <span class='text-danger'>*</span></label>
+                <div class="col-lg-10">
+                    <%= f.text_field :name, class: "form-control" %>
+                </div>
+            </div>
+                
+            <h2><%= t(:permission) %></h2>
+
+            <% ["product", 
+"category", 
+"manufacturer", 
+"area", 
+"article_category", 
+"article", 
+"code_status", 
+"slideshow", 
+"order", 
+"delivery_method", 
+"payment_method", 
+"comment", 
+"question", 
+"comment_article", 
+"testimonial", 
+"voucher", 
+"coupon", 
+"customer", 
+"user", 
+"company", 
+"setting"].each do |item|  %>
+                <fieldset>
+                    <legend class="text-semibold">
+                        <%= t(item) %>
+                    </legend>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label><%= t(:read) %>:</label>
+                            <select name="permissions[<%= item %>][read]" class="select">
+                  <option value="no"><%= t(:no) %></option> 
+                  <option value="yes"><%= t(:yes) %></option>
+                </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label><%= t(:create) %>:</label>
+                            <select name="permissions[<%= item %>][create]" class="select">
+                  <option value="no"><%= t(:no) %></option> 
+                  <option value="yes"><%= t(:yes) %></option>
+                  <option value="own"><%= t(:own) %></option>
+                </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label><%= t(:update) %>:</label>
+                            <select name="permissions[<%= item %>][create]" class="select">
+                  <option value="no"><%= t(:no) %></option> 
+                  <option value="yes"><%= t(:yes) %></option>
+                  <option value="own"><%= t(:own) %></option>
+                </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label><%= t(:delete) %>:</label>
+                            <select name="permissions[<%= item %>][create]" class="select">
+                  <option value="no"><%= t(:no) %></option> 
+                  <option value="yes"><%= t(:yes) %></option>
+                  <option value="own"><%= t(:own) %></option>
+                </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label><%= t(:approve) %>:</label>
+                            <select name="permissions[<%= item %>][create]" class="select">
+                  <option value="no"><%= t(:no) %></option> 
+                  <option value="yes"><%= t(:yes) %></option>
+                  <option value="own"><%= t(:own) %></option>
+                  <option value="own"><%= t(:not_own) %></option>
+                </select>
+                        </div>
+                    </div>
+                </fieldset>
+                <br/>
+                <% end %>
+
+                    <div class="text-right">
+                        <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+                            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_user_groups_path, class: "btn btn-danger"%>
+                    </div>
+
+                    <% end %>

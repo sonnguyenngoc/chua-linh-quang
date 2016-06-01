@@ -3,22 +3,55 @@ class Ability
 
   def initialize(user)
     if user.is_admin == true
-      can :manage, :all
+      # can :manage, :all
     end
     
     # if current user is user
     if user.role == 'user' or user.role == 'manager' or user.role == 'admin'
-      
+      # Cancan - Product
+        can [:read, :create], Product
+        can :update, Product do |item|
+          user.id == item.user_id && item.approved == false
+        end
+        can :delete, Product do |item|
+          user.id == item.user_id && item.approved == false
+        end
+      # Cancan - Category
+        can [:read], Category
+      # Cancan - Manufacturer
+        can [:read], Manufacturer
     end
     
     # if current user is manager
     if user.role == 'manager' or user.role == 'admin'
-      
+      # Cancan - Product
+        can :update, Product do |item|
+          item.approved == false
+        end
+        can :delete, Product do |item|
+          item.approved == false
+        end
+        can :approve, Product do |item|
+          item.approved == false
+        end
+      # Cancan - Category
+      # Cancan - Manufacturer
+        can [:create, :update], Manufacturer
+        
     end
     
     # if current user is admin
     if user.role == 'admin'
-      
+      # Cancan - Product
+        can :update, Product
+        can :delete, Product
+        can :approve, Product do |item|
+          item.approved == false
+        end
+      # Cancan - Category
+        can [:create, :update, :delete], Category
+      # Cancan - Manufacturer
+        can [:delete], Manufacturer
     end
     
     # Define abilities for the passed in user here. For example:

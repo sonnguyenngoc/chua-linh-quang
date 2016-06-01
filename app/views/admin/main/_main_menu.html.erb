@@ -105,6 +105,9 @@
                     <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
                         <%= link_to t(:users), admin_users_path %>
                     </li>
+                    <li class="<%= "active" if ["admin/user_groups"].include?(params[:controller]) %>">
+                        <%= link_to t(:user_groups), admin_user_groups_path %>
+                    </li>
                 </ul>
             </li>
             <li>

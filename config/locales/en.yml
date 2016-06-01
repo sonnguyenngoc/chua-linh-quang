@@ -102,6 +102,9 @@ en:
   categories: "Categories"
   manufacturers: "Manufacturers"
   areas: "Areas"
+  approve: "Approve"
+  not_yet_approved: "Not yet approved"
+  approved: "Approved"
   
   #-------------------------------------
   article: "Article"
@@ -276,7 +279,13 @@ en:
   role_none: "None"
   manager: "Manager"
   admin: "Administrator"
-  
+  read: "Read"
+  create: "Create"
+  update: "Update"
+  no: "No"
+  yes: "Yes"
+  own: "Own"
+  not_own: "Not Own"
   
   
   will_paginate:

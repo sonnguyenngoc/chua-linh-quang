@@ -1,13 +1,19 @@
 class Admin::ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :approve, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index
+    # authorize
+    authorize! :read, Product
+  
     @products = Product.search_backend(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search_backend
+    # authorize
+    authorize! :read, Product
+    
     @products = Product.search_backend(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/products/index"
   end
@@ -20,6 +26,10 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    
+    # authorize
+    authorize! :create, @product
+    
     @categories = Category.all
     @areas = Area.all
     10.times do
@@ -30,6 +40,9 @@ class Admin::ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    # authorize
+    authorize! :update, @product
+    
     @categories = Category.all
     @areas = Area.all
     (10-@product.product_images.count).times do
@@ -42,6 +55,12 @@ class Admin::ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    
+    # authorize
+    authorize! :create, @product
+    
+    @product.user_id = current_user.id
+    
     @product.categories.clear
     @categories = Category.all
     @articles = Article.all
@@ -79,6 +98,10 @@ class Admin::ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    
+    # authorize
+    authorize! :update, @product
+    
     @categories = Category.all
     @articles = Article.all
     if params[:category_ids].present?
@@ -121,9 +144,22 @@ class Admin::ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    # authorize
+    authorize! :delete, @product
     @product.destroy
     respond_to do |format|
       format.html { redirect_to admin_products_url, notice: 'Product was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+  
+  def approve
+    authorize! :approve, @product
+    @product = Product.find(params[:id])
+    @product.approved = true
+    @product.save
+    respond_to do |format|
+      format.html { redirect_to admin_products_url }
       format.json { head :no_content }
     end
   end

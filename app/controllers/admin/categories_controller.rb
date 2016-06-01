@@ -4,6 +4,9 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    # authorize
+    authorize! :read, Category
+    
     respond_to do |format|
         format.html { 
           @categories = Category.get_categories #.paginate(:page => params[:page], :per_page => 10)
@@ -13,6 +16,9 @@ class Admin::CategoriesController < ApplicationController
   end
   
   def search
+    # authorize
+    authorize! :read, Category
+    
     @categories = Category.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/categories/index"
   end
@@ -24,16 +30,24 @@ class Admin::CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    # authorize
+    authorize! :create, @category
+    
     @category = Category.new
   end
 
   # GET /categories/1/edit
   def edit
+    # authorize
+    authorize! :update, Category
   end
 
   # POST /categories
   # POST /categories.json
   def create
+    # authorize
+    authorize! :create, @category
+    
     @category = Category.new(category_params)
 
     respond_to do |format|
@@ -57,6 +71,9 @@ class Admin::CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
+    # authorize
+    authorize! :update, Category
+    
     respond_to do |format|
       if @category.update(category_params)
         # update parent
@@ -77,7 +94,9 @@ class Admin::CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @category.destroy
+    # authorize
+    authorize! :delete, Category
+    
     respond_to do |format|
       # update all level
       Category.update_all_level
