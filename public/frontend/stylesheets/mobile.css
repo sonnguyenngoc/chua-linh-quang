@@ -301,4 +301,7 @@
     .main_slider.transparent, .main_slider.transparent * {
         visibility: hidden !important;
     }
+    .chat_box_page .invisible {
+        display: none;
+    }
 }
