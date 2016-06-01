@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
     validates :email, uniqueness: true
     belongs_to :area, foreign_key: "province"
-    has_many :wish_lists
+    has_many :wish_lists, dependent: :destroy
     has_many :comments, dependent: :destroy
     # has_many :conversations, -> { order "updated_at DESC" }, :foreign_key => :sender_id
-    has_many :messages
+    has_many :messages, dependent: :destroy
+    belongs_to :user_group
     
     
-    has_many :orders
+    has_many :orders, dependent: :destroy
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
@@ -166,5 +167,22 @@ class User < ActiveRecord::Base
     
     def see(c)
         c.messages.where.not(user_id: self.id).update_all(seen: Time.now)
+    end
+    
+    def self.get_role_options
+        [
+            [I18n.t('user'), 'user'],
+            [I18n.t('manager'), 'manager'],
+            [I18n.t('admin'), 'admin'],
+        ]
+    end
+    
+    def permissions
+        user_group.permissions
+    end
+    
+    def ability(model, action)
+        return ['no'] if user_group.nil?
+        user_group.ability(model, action)
     end
 end

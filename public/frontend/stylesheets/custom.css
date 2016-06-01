@@ -762,25 +762,6 @@ h3.care {
     color: grey;
 }
 
-/*a.img_item {
-    z-index: 1;
-    position: inherit;
-}
-.product_item:not(.type_3) .actions_wrap {
-    padding: 90px 0px;
-    position: absolute;
-}
-.actions_wrap > .centered_buttons {
-    z-index: 1;
-    position: relative;
-}
-[class*="label_"] {
-    z-index: 1;
-}
-.actions_wrap {
-    cursor: pointer;
-}*/
-
 .shopping_cart_wrap .shopping_cart.visible {
     display: none;
 }
@@ -809,3 +790,9 @@ h3.care {
     background-repeat: repeat;
 }
 /*END -- CSS layout top banner*/
+.product_preview .owl_carousel {
+    visibility: hidden;
+}
+.product_preview .owl_carousel.owl-loaded {
+    visibility: visible;
+}

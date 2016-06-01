@@ -65,3 +65,6 @@ label.error {
 .category_taggable_list ul li ul li ul li .fancytree-icon::after, .category_taggable_list ul li ul li ul li .c-item {
     color: #f3c64c;
 }
+.user_group_permission .select2-container {
+    width: 90%;
+}

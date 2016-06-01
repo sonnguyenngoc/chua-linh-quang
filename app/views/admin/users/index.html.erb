@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold">Tài khoản người dùng</span></h4>
+                        <h4><span class="text-semibold"><%= t(:users) %></span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_comments_path %>">Người dùng</a></li>
-                        <li class="active">Danh sách người dùng</li>
+                        <li><a href="<%= admin_users_path %>"><%= t(:users) %></a></li>
+                        <li class="active"><%= t(:user) %></li>
                     </ul>
                 </div>
             </div>
@@ -95,9 +95,10 @@
                         <thead>
                             <tr class="bg-teal-800">
                                 <th><%= t(:user_name) %></th>
+                                <th class="text-nowrap"><%= t(:user_group) %></th>
                                 <th><%= t(:email) %></th>
                                 <th><%= t(:phone_number) %></th>
-                                <th><%= t(:address) %></th>
+                                <!--<th><%= t(:address) %></th>-->
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
@@ -109,19 +110,22 @@
                                         <%= link_to user.display_user_name, edit_admin_user_path(user) %>
                                     </td>
                                     <td>
+                                        <%= user.user_group.name if !user.user_group.nil? %>
+                                    </td>
+                                    <td>
                                         <%= user.email %>
                                     </td>
                                     <td>
                                         <%= user.phone %>
                                     </td>
-                                    <td>
+                                    <!--<td>
                                         <% if user.address_1.present? %>
-                                            <!--<b><i class="icon-location4"></i> </b>--><%= truncate(user.address_1, length: 40) %> </br>
+                                            <%= truncate(user.address_1, length: 40) %> </br>
                                         <% end %>
                                         <% if user.address_2.present? %>
-                                            <!--<b><i class="icon-location4"></i> </b>--><%= truncate(user.address_2, length: 40) %>
+                                            <%= truncate(user.address_2, length: 40) %>
                                         <% end %>
-                                    </td>
+                                    </td>-->
                                     <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <ul class="icons-list">

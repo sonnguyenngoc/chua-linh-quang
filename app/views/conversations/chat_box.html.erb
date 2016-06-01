@@ -435,7 +435,9 @@
 			
 			<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 			
-			<%= render "module/footer" %>
+			<% if !user_signed_in? %>
+				<%= render "module/footer" %>
+			<% end %>
 		</div><!--/ [layout]-->
 		
 		<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->

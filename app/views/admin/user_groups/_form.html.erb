@@ -1,0 +1,56 @@
+<% if @user_group.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @user_group.errors.full_messages.each do |message| %>
+                -
+                <%= message %><br/>
+                    <% end %>
+        </div>
+    </div>
+    <% end %>
+
+        <%= form_for [:admin, @user_group], html: {class: "form-horizontal"} do |f| %>
+
+            <div class="form-group">
+                <label class="col-lg-1 control-label"><%= t(:name) %> <span class='text-danger'>*</span></label>
+                <div class="col-lg-11">
+                    <%= f.text_field :name, class: "form-control" %>
+                </div>
+            </div>
+            <br /><br />
+            <h2><%= t(:permission) %></h2>
+
+            <% UserGroup.permission_classes.each do |row|  %>
+                <fieldset>
+                    <legendz class="text-semibold">
+                        <h4><strong><%= row[:display_name] %></strong></h4>
+                    </legendz>
+                    <div class="row">
+                        
+                        <% row[:actions].each_with_index do |action, col_num|  %>
+                            <div class="col-md-3">
+                                <label><%= t(action[:name]) %>:</label>
+                                <select name="permissions[<%= row[:class_name] %>][approve][]" class="select" <%= "multiple" if action[:multiple] %>>
+                                    <% action[:values].each do |value|  %>
+                                        <option<%= " selected" if @user_group.ability(row[:class_name],action[:name]).include?(value) %>  value="<%= value %>"><%= t('_'+value) %></option> 
+                                    <% end %>
+                                </select>
+                            </div>
+                        
+                        <%= "</div><div class='row'>".html_safe if col_num%4 == 3 %>    
+                        
+                        <% end %>
+                        
+                    </div>
+                </fieldset>
+                <hr><br/>
+                <% end %>
+
+                    <div class="text-right">
+                        <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+                            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_user_groups_path, class: "btn btn-danger"%>
+                    </div>
+
+                    <% end %>

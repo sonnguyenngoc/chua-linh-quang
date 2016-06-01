@@ -149,6 +149,11 @@
                                         <br/><%= item.code %>
                                         <br/><%= item.manufacturer.name if !item.manufacturer.nil?%>
                                         <% if item.is_show == true %><br/> <span class="label bg-blue"><%= t(:showing) %></span> <% end %>
+                                        <% if item.approved == true %>
+                                            <br/> <span class="label bg-success"><%= t(:approved) %></span>
+                                        <% else %>
+                                            <br/> <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+                                        <% end %>
                                     </td>
                                     </td>
                                     <td><%= format_number(item.price) %></td>
@@ -165,22 +170,32 @@
                                     </td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
-                                        <ul class="icons-list">
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="icon-menu9"></i>
-                                                </a>
-                
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), edit_admin_product_path(item) %>
-                                                    </li>
-                                                    <li>
-                                                        <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <% if can?(:update, item) or can?(:delete, item) or can?(:approve, item) %>
+                                            <ul class="icons-list">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-menu9"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <% if can? :approve, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="glyphicon glyphicon-ok"></i> '.html_safe + t(:approve), {controller: "admin/products", action: "approve", id: item.id} %>
+                                                            </li>
+                                                        <% end %>
+                                                        <% if can? :update, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), edit_admin_product_path(item) %>
+                                                            </li>
+                                                        <% end %>
+                                                        <% if can? :delete, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                            </li>
+                                                        <% end %>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        <% end %>
                                     </td>
                                 </tr>
                             <% end %>
