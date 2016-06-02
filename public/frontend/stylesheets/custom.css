@@ -811,6 +811,24 @@ h3.care {
 .infoblock.type_2 [class*="button"] {
     background: #018bc8;
 }
-.member_online {
+.conversation_rightbox {
     margin-top: 40px;
+    background: #ff4557;
+}
+.conversation_rightbar .c_info_location {
+    margin-bottom: 0;
+}
+.conversation_rightbar section.dropdow {
+    height: 288px;
+    overflow: auto;
+}
+.width_area_banner {
+    vertical-align: top;
+    width: 100%;
+    z-index: 1000;
+    display: block;
+}
+.page_with_main_nav .width_area_banner {
+    margin-top: -35px;
+    margin-bottom: 50px;
 }
