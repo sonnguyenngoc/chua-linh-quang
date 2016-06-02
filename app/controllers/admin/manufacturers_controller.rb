@@ -4,10 +4,16 @@ class Admin::ManufacturersController < ApplicationController
   # GET /manufacturers
   # GET /manufacturers.json
   def index
+    # authorize
+    authorize! :read, Manufacturer
+    
     @manufacturers = Manufacturer.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, Manufacturer
+    
     @manufacturers = Manufacturer.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/manufacturers/index"
   end
@@ -19,16 +25,24 @@ class Admin::ManufacturersController < ApplicationController
 
   # GET /manufacturers/new
   def new
+    # authorize
+    authorize! :create, Manufacturer
+    
     @manufacturer = Manufacturer.new
   end
 
   # GET /manufacturers/1/edit
   def edit
+    # authorize
+    authorize! :update, Manufacturer
   end
 
   # POST /manufacturers
   # POST /manufacturers.json
   def create
+    # authorize
+    authorize! :create, Manufacturer
+    
     @manufacturer = Manufacturer.new(manufacturer_params)
 
     respond_to do |format|
@@ -45,6 +59,9 @@ class Admin::ManufacturersController < ApplicationController
   # PATCH/PUT /manufacturers/1
   # PATCH/PUT /manufacturers/1.json
   def update
+    # authorize
+    authorize! :update, Manufacturer
+    
     respond_to do |format|
       if @manufacturer.update(manufacturer_params)
         format.html { redirect_to edit_admin_manufacturer_path(@manufacturer.id), notice: 'Manufacturer was successfully updated.' }
@@ -59,6 +76,9 @@ class Admin::ManufacturersController < ApplicationController
   # DELETE /manufacturers/1
   # DELETE /manufacturers/1.json
   def destroy
+    # authorize
+    authorize! :delete, Manufacturer
+    
     @manufacturer.destroy
     respond_to do |format|
       format.html { redirect_to admin_manufacturers_url, notice: 'Manufacturer was successfully destroyed.' }

@@ -4,10 +4,16 @@ class Admin::ArticleCategoriesController < ApplicationController
   # GET /article_categories
   # GET /article_categories.json
   def index
+    # authorize
+    authorize! :read, ArticleCategory
+    
     @article_categories = ArticleCategory.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, ArticleCategory
+    
     @article_categories = ArticleCategory.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/article_categories/index"
   end
@@ -19,16 +25,24 @@ class Admin::ArticleCategoriesController < ApplicationController
 
   # GET /article_categories/new
   def new
+    # authorize
+    authorize! :create, ArticleCategory
+    
     @article_category = ArticleCategory.new
   end
 
   # GET /article_categories/1/edit
   def edit
+    # authorize
+    authorize! :update, ArticleCategory
   end
 
   # POST /article_categories
   # POST /article_categories.json
   def create
+    # authorize
+    authorize! :create, ArticleCategory
+    
     @article_category = ArticleCategory.new(article_category_params)
 
     respond_to do |format|
@@ -49,6 +63,9 @@ class Admin::ArticleCategoriesController < ApplicationController
   # PATCH/PUT /article_categories/1
   # PATCH/PUT /article_categories/1.json
   def update
+    # authorize
+    authorize! :update, ArticleCategory
+    
     respond_to do |format|
       if @article_category.update(article_category_params)
         # update parent
@@ -67,6 +84,9 @@ class Admin::ArticleCategoriesController < ApplicationController
   # DELETE /article_categories/1
   # DELETE /article_categories/1.json
   def destroy
+    # authorize
+    authorize! :delete, ArticleCategory
+    
     @article_category.destroy
     respond_to do |format|
       format.html { redirect_to admin_article_categories_url, notice: 'Article category was successfully destroyed.' }

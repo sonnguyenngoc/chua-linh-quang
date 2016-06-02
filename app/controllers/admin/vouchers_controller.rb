@@ -4,10 +4,16 @@ class Admin::VouchersController < ApplicationController
   # GET /vouchers
   # GET /vouchers.json
   def index
+    # authorize
+    authorize! :read, Voucher
+    
     @vouchers = Voucher.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, Voucher
+    
     @vouchers = Voucher.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/vouchers/index"
   end
@@ -20,6 +26,9 @@ class Admin::VouchersController < ApplicationController
 
   # GET /vouchers/new
   def new
+    # authorize
+    authorize! :create, Voucher
+    
     @voucher = Voucher.new
     @voucher.from_date = Time.now
     @voucher.to_date = Time.now
@@ -27,11 +36,16 @@ class Admin::VouchersController < ApplicationController
 
   # GET /vouchers/1/edit
   def edit
+    # authorize
+    authorize! :update, Voucher
   end
 
   # POST /vouchers
   # POST /vouchers.json
   def create
+    # authorize
+    authorize! :create, Voucher
+    
     @voucher = Voucher.new(voucher_params)
     
     @voucher.generate_codes
@@ -51,6 +65,9 @@ class Admin::VouchersController < ApplicationController
   # PATCH/PUT /vouchers/1
   # PATCH/PUT /vouchers/1.json
   def update
+    # authorize
+    authorize! :update, Voucher
+    
     respond_to do |format|
       if @voucher.update(voucher_params)
         format.html { redirect_to edit_admin_voucher_path(@voucher.id), notice: 'Voucher was successfully updated.' }
@@ -65,6 +82,9 @@ class Admin::VouchersController < ApplicationController
   # DELETE /vouchers/1
   # DELETE /vouchers/1.json
   def destroy
+    # authorize
+    authorize! :delete, Voucher
+    
     @voucher.destroy
     respond_to do |format|
       format.html { redirect_to admin_vouchers_url, notice: 'Voucher was successfully destroyed.' }

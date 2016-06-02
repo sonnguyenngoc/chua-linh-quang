@@ -51,10 +51,14 @@
             <div class="content">
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
+                    
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_products) %></span></h5>
-                        <%= link_to t(:new_product), new_admin_product_path, class: 'btn btn-primary pull-right' %>
+                        <% if can? :create, :products %>
+                            <%= link_to t(:new_product), new_admin_product_path, class: 'btn btn-primary pull-right' %>
+                        <% end %>
                     </div>
+                    
                     <div class="filter-box">
                         <%= form_for("", url: {controller: "products", action: "search_backend"}, method: "get") do |f| %>
                             <div class="row">

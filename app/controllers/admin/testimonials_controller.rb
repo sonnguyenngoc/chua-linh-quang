@@ -4,10 +4,16 @@ class Admin::TestimonialsController < ApplicationController
   # GET /testimonials
   # GET /testimonials.json
   def index
+    # authorize
+    authorize! :read, Testimonial
+    
     @testimonials = Testimonial.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, Testimonial
+    
     @testimonials = Testimonial.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/testimonials/index"
   end
@@ -19,16 +25,24 @@ class Admin::TestimonialsController < ApplicationController
 
   # GET /testimonials/new
   def new
+    # authorize
+    authorize! :create, Testimonial
+    
     @testimonial = Testimonial.new
   end
 
   # GET /testimonials/1/edit
   def edit
+    # authorize
+    authorize! :update, Testimonial
   end
 
   # POST /testimonials
   # POST /testimonials.json
   def create
+    # authorize
+    authorize! :create, Testimonial
+    
     @testimonial = Testimonial.new(testimonial_params)
 
     respond_to do |format|
@@ -45,6 +59,9 @@ class Admin::TestimonialsController < ApplicationController
   # PATCH/PUT /testimonials/1
   # PATCH/PUT /testimonials/1.json
   def update
+    # authorize
+    authorize! :update, Testimonial
+    
     respond_to do |format|
       if @testimonial.update(testimonial_params)
         format.html { redirect_to edit_admin_testimonial_path(@testimonial.id), notice: 'Testimonial was successfully updated.' }
@@ -59,6 +76,9 @@ class Admin::TestimonialsController < ApplicationController
   # DELETE /testimonials/1
   # DELETE /testimonials/1.json
   def destroy
+    # authorize
+    authorize! :delete, Testimonial
+    
     @testimonial.destroy
     respond_to do |format|
       format.html { redirect_to admin_testimonials_url, notice: 'Testimonial was successfully destroyed.' }

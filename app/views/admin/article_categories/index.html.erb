@@ -52,7 +52,9 @@
                 <div class="panel panel-flat">
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_categories) %></span></h5>
-                        <%= link_to t(:new_category), new_admin_article_category_path, class: 'btn btn-primary pull-right' %>
+                        <% if can?(:create, :article_categories) %>
+                            <%= link_to t(:new_category), new_admin_article_category_path, class: 'btn btn-primary pull-right' %>
+                        <% end %>
                     </div>
                     
                     <div class="filter-box">
@@ -93,7 +95,9 @@
                                 <th><%= t(:list_category_name) %></th></th>
                                 <th><%= t(:list_description) %></th>
                                 <th><%= t(:created_at) %></th>
-                                <th class="text-center"><%= t(:actions) %></th>
+                                <% if can?(:update, :article_categories) or can?(:delete, :article_categories) %>
+                                    <th class="text-center"><%= t(:actions) %></th>
+                                <% end %>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,24 +112,30 @@
                                             <%= item.description %>
                                         </td>
                                         <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
-                                        <td class="text-center">
-                                            <ul class="icons-list">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                        <i class="icon-menu9"></i>
-                                                    </a>
-                    
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li>
-                                                            <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_article_category_path(item) %>
-                                                        </li>
-                                                        <li>
-                                                            <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </td>
+                                        <% if can?(:update, item) or can?(:delete, item) %>
+                                            <td class="text-center">
+                                                <ul class="icons-list">
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                            <i class="icon-menu9"></i>
+                                                        </a>
+                        
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <% if can?(:update, item) %>
+                                                                <li>
+                                                                    <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_article_category_path(item) %>
+                                                                </li>
+                                                            <% end %>
+                                                            <% if can?(:update, item) %>
+                                                                <li>
+                                                                    <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                                </li>
+                                                            <% end %>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        <% end %>
                                     </tr>
                                     <% item.children.each do |child_1| %>
                                         <% child_1.update_level(2) %>
@@ -137,24 +147,30 @@
                                                 <%= child_1.description %>
                                             </td>
                                             <td><%= child_1.created_at.strftime("%d/%m/%Y") %></td>
-                                            <td class="text-center">
-                                                <ul class="icons-list">
-                                                    <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                            <i class="icon-menu9"></i>
-                                                        </a>
-                        
-                                                        <ul class="dropdown-menu dropdown-menu-right">
-                                                            <li>
-                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_article_category_path(child_1) %>
-                                                            </li>
-                                                            <li>
-                                                                <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, child_1], method: :delete, data: {confirm: 'Are you sure?'} %>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </td>
+                                            <% if can?(:update, child_1) or can?(:delete, child_1) %>
+                                                <td class="text-center">
+                                                    <ul class="icons-list">
+                                                        <li class="dropdown">
+                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                                <i class="icon-menu9"></i>
+                                                            </a>
+                            
+                                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                                <% if can?(:update, child_1) %>
+                                                                    <li>
+                                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_article_category_path(child_1) %>
+                                                                    </li>
+                                                                <% end %>
+                                                                <% if can?(:delete, child_1) %>
+                                                                    <li>
+                                                                        <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, child_1], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                                    </li>
+                                                                <% end %>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            <% end %>
                                         </tr>
                                     <% end %>
                                 <% end %>

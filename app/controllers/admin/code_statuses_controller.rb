@@ -4,10 +4,16 @@ class Admin::CodeStatusesController < ApplicationController
   # GET /code_statuses
   # GET /code_statuses.json
   def index
+    # authorize
+    authorize! :read, CodeStatus
+    
     @code_statuses = CodeStatus.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, CodeStatus
+    
     @code_statuses = CodeStatus.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/code_statuses/index"
   end
@@ -19,16 +25,24 @@ class Admin::CodeStatusesController < ApplicationController
 
   # GET /code_statuses/new
   def new
+    # authorize
+    authorize! :create, CodeStatus
+    
     @code_status = CodeStatus.new
   end
 
   # GET /code_statuses/1/edit
   def edit
+    # authorize
+    authorize! :create, CodeStatus
   end
 
   # POST /code_statuses
   # POST /code_statuses.json
   def create
+    # authorize
+    authorize! :create, CodeStatus
+    
     @code_status = CodeStatus.new(code_status_params)
 
     respond_to do |format|
@@ -45,6 +59,9 @@ class Admin::CodeStatusesController < ApplicationController
   # PATCH/PUT /code_statuses/1
   # PATCH/PUT /code_statuses/1.json
   def update
+    # authorize
+    authorize! :create, CodeStatus
+    
     respond_to do |format|
       if @code_status.update(code_status_params)
         format.html { redirect_to edit_admin_code_status_path(@code_status.id), notice: 'Code status was successfully updated.' }
@@ -59,6 +76,9 @@ class Admin::CodeStatusesController < ApplicationController
   # DELETE /code_statuses/1
   # DELETE /code_statuses/1.json
   def destroy
+    # authorize
+    authorize! :delete, CodeStatus
+    
     @code_status.destroy
     respond_to do |format|
       format.html { redirect_to admin_code_statuses_url, notice: 'Code status was successfully destroyed.' }

@@ -4,10 +4,16 @@ class Admin::DeliveryMethodsController < ApplicationController
   # GET /delivery_methods
   # GET /delivery_methods.json
   def index
+    # authorize
+    authorize! :read, DeliveryMethod
+    
     @delivery_methods = DeliveryMethod.all.paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, DeliveryMethod
+    
     @delivery_methods = DeliveryMethod.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/delivery_methods/index"
   end
@@ -19,16 +25,24 @@ class Admin::DeliveryMethodsController < ApplicationController
 
   # GET /delivery_methods/new
   def new
+    # authorize
+    authorize! :create, DeliveryMethod
+    
     @delivery_method = DeliveryMethod.new
   end
 
   # GET /delivery_methods/1/edit
   def edit
+    # authorize
+    authorize! :update, DeliveryMethod
   end
 
   # POST /delivery_methods
   # POST /delivery_methods.json
   def create
+    # authorize
+    authorize! :create, DeliveryMethod
+    
     @delivery_method = DeliveryMethod.new(delivery_method_params)
 
     respond_to do |format|
@@ -45,6 +59,9 @@ class Admin::DeliveryMethodsController < ApplicationController
   # PATCH/PUT /delivery_methods/1
   # PATCH/PUT /delivery_methods/1.json
   def update
+    # authorize
+    authorize! :update, DeliveryMethod
+    
     respond_to do |format|
       if @delivery_method.update(delivery_method_params)
         format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Delivery method was successfully updated.' }
@@ -59,6 +76,9 @@ class Admin::DeliveryMethodsController < ApplicationController
   # DELETE /delivery_methods/1
   # DELETE /delivery_methods/1.json
   def destroy
+    # authorize
+    authorize! :delete, DeliveryMethod
+    
     @delivery_method.destroy
     respond_to do |format|
       format.html { redirect_to admin_delivery_methods_url, notice: 'Delivery method was successfully destroyed.' }
