@@ -312,6 +312,7 @@ vi:
   user_group: "Nhóm người dùng"
   system_setting: "Cấu hình hệ thống"
   user_groups: "Nhóm người dùng"
+  cetegroy_level: "Chuyên mục cấp"
   
   will_paginate:
     page_entries_info:

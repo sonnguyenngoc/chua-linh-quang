@@ -76,20 +76,8 @@
                 
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" ><%= t(:list_categories) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-10">
-                        <select name="category_ids[]" class="select select-item-color" data-placeholder="<%= t(:list_categories) %>....." multiple="multiple">
-                            <% @categories.each do |item| %>
-                                <% if item.level == 1 %>
-                                    <option <%= "selected" if @product.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
-                                    <% item.children.each do |child_1| %>
-                                        <option <%= "selected" if @product.categories.include?(child_1) %> value="<%= child_1.id %>"><%= "--" + child_1.name %></option>
-                                        <% child_1.children.each do |child_2| %>
-                                        <option <%= "selected" if @product.categories.include?(child_2) %> value="<%= child_2.id %>"><%= "-----" + child_2.name %></option>
-                                    <% end %>
-                                    <% end %>
-                                <% end %>
-                            <% end %>
-                        </select>
+                    <div class="col-lg-10 three_cols_select">
+                        <%= render "admin/categories/three_cols_select" %>
                     </div>
                 </div>
                 
@@ -243,3 +231,25 @@
     </div>
     
 <% end %>
+
+<script>
+    // update category three cols select
+    $( document ).on("change", ".three_cols_select select", function() {
+        var cid = $(this).val();
+        var level = $(this).attr("level");
+        if(cid != '') {
+            var url = "<%= three_cols_select_admin_categories_path %>?category_id="+cid+"&level="+level;
+            $.ajax({
+                method: "GET",
+                url: url   
+            })
+            .done(function( msg ) {
+               $('.three_cols_select').html(msg);
+               $('.three_cols_select select').select2();
+            });
+        } else {
+            $(this).parents(".catcol").next().find('select').select2("val","");
+            $(this).parents(".catcol").next().next().find('select').select2("val","");
+        }
+    });
+</script>

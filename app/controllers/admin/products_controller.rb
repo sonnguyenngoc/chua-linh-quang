@@ -44,6 +44,8 @@ class Admin::ProductsController < ApplicationController
     authorize! :update, @product
     
     @categories = Category.all
+    @category = @product.categories.first
+    
     @areas = Area.all
     (10-@product.product_images.count).times do
       @product.product_images.build
@@ -64,11 +66,17 @@ class Admin::ProductsController < ApplicationController
     @product.categories.clear
     @categories = Category.all
     @articles = Article.all
+    
+    # update category id    
     if params[:category_ids].present?
+      catid = nil
       params[:category_ids].each do |id|      
-        @product.categories << Category.find(id)
+        catid = id if id.present? 
       end
-    end
+      @category = Category.find(catid) if catid.present?
+      @product.categories << Category.find(catid) if catid.present?
+    end    
+    
     
     @product.areas.clear
     if params[:area_ids].present?
@@ -106,10 +114,14 @@ class Admin::ProductsController < ApplicationController
     @articles = Article.all
     if params[:category_ids].present?
         @product.categories.clear
+        # update category id
+        catid = nil
         params[:category_ids].each do |id|      
-          @product.categories << Category.find(id)
+          catid = id if id.present?
         end
-    end
+        @category = Category.find(catid) if catid.present?
+        @product.categories << Category.find(catid) if catid.present?
+    end   
     
     @product.areas.clear
     if params[:area_ids].present?
