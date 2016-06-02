@@ -19,7 +19,7 @@ class UserGroup < ActiveRecord::Base
                             {name: "create", values: ["yes","no"], multiple: false},
                             {name: "update", values: ["yes","no","own","not_own","approved","not_approved"], multiple: true},
                             {name: "delete", values: ["yes","no","own","not_own","approved","not_approved"], multiple: true},
-                            {name: "approve", values: ["yes","no","own","not_own"], multiple: true}
+                            {name: "approve", values: ["yes","no","own","not_own", "not_approved"], multiple: true}
                         ]
             },
             {
@@ -68,8 +68,8 @@ class UserGroup < ActiveRecord::Base
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
                             {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no","own","not_own"], multiple: true},
-                            {name: "delete", values: ["yes","no","own","not_own"], multiple: true},
+                            {name: "update", values: ["yes","no","own","not_own", "not_approved"], multiple: true},
+                            {name: "delete", values: ["yes","no","own","not_own", "not_approved"], multiple: true},
                         ]
             },
             {

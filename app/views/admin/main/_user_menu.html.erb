@@ -3,7 +3,7 @@
         <div class="media">
             <a href="#" class="media-left" title="<%= t(:my_profile) %>"><img src="/backend/assets/images/logo_admin.png" class="img-circle img-sm" alt=""></a>
             <div class="media-body">
-                <span class="media-heading text-semibold"><%= t(:admin) %></span>
+                <span class="media-heading text-semibold"><%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></span>
                 <div class="text-size-mini text-muted">
                     <i class="icon-pin text-size-small"></i> &nbsp;<%= t(:location) %>
                 </div>

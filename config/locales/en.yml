@@ -249,6 +249,11 @@ en:
   settings: "Settings"
   
   #-------------------------------------
+  listing_user_groups: "Listing user groups"
+  new_user_group: "New user group"
+  edit_user_group: "Edit"
+  
+  #-------------------------------------
   voucher_coupon: "Voucher/Coupon"
   coupons: "Coupons"
   vouchers: "Vouchers"
