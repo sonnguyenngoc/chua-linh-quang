@@ -19,4 +19,8 @@ class BlogController < ApplicationController
     @META_KEYWORDS = @article_category.meta_keywords
     @META_DESCRIPTION = @article_category.meta_description
   end
+  
+  def deal
+    @products = Product.all.paginate(:page => params[:page], :per_page => 12)
+  end
 end

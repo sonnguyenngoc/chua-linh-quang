@@ -531,7 +531,7 @@ ul > li > .def_icon_btn.middle_btn {
     z-index: 109;
 }
 .zoomContainer {
-    z-index: 200;
+    z-index: 102;
 }
 @media (min-width: 1360px) {
     .container {

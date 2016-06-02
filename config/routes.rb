@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get "bai-viet" => "blog#index", as: :index
     get "bai-viet/chi-tiet-bai-viet/:blog_id" => "blog#show", as: :show
     get "bai-viet/chuyen-muc-bai-viet/:article_category_id" => "blog#article_category", as: :article_category
+    get "bai-viet/su-kien/chuong-trinh-khuyen-mai" => "blog#deal", as: :deal
     # end blog
     
     # information
