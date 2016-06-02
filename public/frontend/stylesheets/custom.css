@@ -202,7 +202,7 @@ form ul > li:not(:last-child) {
 }
 @media only screen and (max-height: 900px) {    
     .social_feeds {
-        top: 130px;
+        top: 144px;
     }
 }
 input[type="radio"] + label::before {
@@ -810,4 +810,7 @@ h3.care {
 }
 .infoblock.type_2 [class*="button"] {
     background: #018bc8;
+}
+.member_online {
+    margin-top: 40px;
 }

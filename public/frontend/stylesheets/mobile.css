@@ -317,6 +317,9 @@
         overflow: hidden;
         width: 100%;
     }
+    .mobile_container_socical_feeds {
+        margin-top: 15px;
+    }
 }
 @media (max-width: 489px) {
     .product_item .image_wrap {
