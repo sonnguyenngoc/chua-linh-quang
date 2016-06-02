@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :order_details, dependent: :destroy
-  has_one :customer
+  has_one :customer, dependent: :destroy
   has_one :order_delivery, dependent: :destroy
   
   #save cart

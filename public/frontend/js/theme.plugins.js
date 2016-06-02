@@ -39,18 +39,20 @@
 			/* ------------------------------------------------
 					Revolution slider
 			------------------------------------------------ */
-
-			if($('.rev_slider').length){
-				$('.rev_slider').revolution({
-			        delay:4000,
-			        startwidth:848,
-			        startheight:387,
-			        hideTimerBar : "on",
-			        hideThumbs : 100,
-			        navigationType:"none",
-					navigationStyle:"round"
-			 	});
-			 }
+			
+			// if($(window).width() > 489) {
+				if($('.rev_slider').length){
+					$('.rev_slider').revolution({
+						delay:4000,
+						startwidth:848,
+						startheight:387,
+						hideTimerBar : "on",
+						hideThumbs : 100,
+						navigationType:"none",
+						navigationStyle:"round"
+					});
+				}
+			// }
 
 			/* ------------------------------------------------
 					End Revolution slider

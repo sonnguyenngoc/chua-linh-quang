@@ -251,6 +251,11 @@ vi:
   settings: "Cài đặt"
   
   #-------------------------------------
+  listing_user_groups: "Danh sách nhóm"
+  new_user_group: "Tạo mới nhóm"
+  edit_user_group: "Chỉnh sửa nhóm"
+  
+  #-------------------------------------
   voucher_coupon: "Phiếu mua hàng/Mã giảm giá"
   vouchers: "Phiếu mua hàng"
   coupons: "Mã giảm giá"

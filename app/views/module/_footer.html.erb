@@ -880,10 +880,8 @@
         });
     });
     
-    $(".botton_footer_register_box").click(function(){
-    
-        $(".footer_register_box").toggle();    
-        
+    $(document).on("click", ".botton_footer_register_box", function() {
+        $(".footer_register_box").toggle();
     });
     
     $(document).mouseup(function (e)

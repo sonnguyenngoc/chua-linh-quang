@@ -40,7 +40,7 @@
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <img src="/backend/assets/images/logo_admin.png" alt="">
-                    <span><%= t(:admin) %></span>
+                    <span><%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></span>
                     <i class="caret"></i>
                 </a>
 

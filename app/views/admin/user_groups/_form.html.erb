@@ -32,7 +32,7 @@
                         <% row[:actions].each_with_index do |action, col_num|  %>
                             <div class="col-md-3">
                                 <label><%= t(action[:name]) %>:</label>
-                                <select name="permissions[<%= row[:class_name] %>][approve][]" class="select" <%= "multiple" if action[:multiple] %>>
+                                <select name="permissions[<%= row[:class_name] %>][<%= action[:name] %>][]" class="select" <%= "multiple" if action[:multiple] %>>
                                     <% action[:values].each do |value|  %>
                                         <option<%= " selected" if @user_group.ability(row[:class_name],action[:name]).include?(value) %>  value="<%= value %>"><%= t('_'+value) %></option> 
                                     <% end %>

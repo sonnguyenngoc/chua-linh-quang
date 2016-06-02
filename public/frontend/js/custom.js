@@ -22,8 +22,7 @@ function undo_arrange_mobile_layout() {
     $("aside").insertBefore( $('main') );
 }
 
-// update website layout
-update_layout();
+
 
 $(document).ready(function () {
     
@@ -39,8 +38,11 @@ $(document).ready(function () {
     
     // update website layout
     update_layout();
+    $('aside').show();
 });
 
+// update website layout
+update_layout();
 $( window ).resize(function () {    
     update_layout();
 });
