@@ -310,6 +310,13 @@
     aside {
         display: none;
     }
+    .product_item .description a {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        overflow: hidden;
+        width: 100%;
+    }
 }
 @media (max-width: 489px) {
     .product_item .image_wrap {
