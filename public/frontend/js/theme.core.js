@@ -375,14 +375,16 @@ var Core = (function(Core){
 
 				if($(window).width() > 767) {
 
-					self.appear(function() {
-
-						var delay = (self.attr("data-animation-delay") ? self.attr("data-animation-delay") : 1);
-
-						if(delay > 1) self.css("animation-delay", delay + "ms");
-						self.removeClass('transparent').addClass("visible " + self.attr("data-animation"));	
-
-					}, {accX: 0, accY: -250});
+					//self.appear(function() {
+					//
+					//	var delay = (self.attr("data-animation-delay") ? self.attr("data-animation-delay") : 1);
+					//
+					//	if(delay > 1) self.css("animation-delay", delay + "ms");
+					//	self.removeClass('transparent').addClass("visible " + self.attr("data-animation"));	
+					//
+					//}, {accX: 0, accY: -250});
+					
+					self.removeClass("transparent").addClass("visible");					
 
 				}
 				else {

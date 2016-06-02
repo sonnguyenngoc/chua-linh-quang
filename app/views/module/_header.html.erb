@@ -68,97 +68,7 @@
 
                                 <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
                                 
-                                <% if user_signed_in? %>
                                 
-                                    <!-- - - - - - - - - - - - - - Conversation - - - - - - - - - - - - - - - - -->
-    
-                                    <div class="alignright site_settings">
-    
-                                        <span class="current open_">
-                                            
-                                            <i class="icon-comment"></i>
-                                            
-                                            <% if current_user.unread_conversations_count > 0 %>
-                                                
-                                                (<%= current_user.unread_conversations_count %>)
-                                            
-                                            <% end %>
-                                        
-                                        </span>
-                                        
-                                        <ul class="dropdown site_setting_list conversation">
-                                            
-                                            <% if current_user.is_admin == false %>
-                  
-                                                <% User.get_admins.each do |user| %>
-                                                
-                                                   <li class="animated_item">
-                                                     
-                                                     <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>"><b><%= user.first_name.to_s + " " + user.last_name.to_s %></b><br/>
-                                                             
-                                                         <p class="style_chat">Chat với quản trị viên</p>
-                                                         
-                                                     </a>
-                                                   
-                                                   </li>
-                             
-                                                 <% end %>
-                                               
-                                            <% end %>
-                                            
-                                            <% if current_user.involving_conversations.count != 0 %>
-                                            
-                                                <% current_user.involving_conversations.each do |chat| %>
-        
-                                                    <li class="animated_item <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
-                                                        
-                                                        <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>">
-                                                            <b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>
-                                                                
-                                                                <% if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>
-                                                
-                                                                    (<%= current_user.unread_messages({conversation_id: chat.id}).count %>)
-                                                                
-                                                                <% end %>
-                                                                
-                                                            </b><br/>
-                                                            
-                                                            <p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
-                                                        
-                                                            <% if chat.messages.count > 0 %>
-                                                                <p class="style_chat"><%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %></p>
-                                                            <% end %>
-                                                        </a>
-                                                    
-                                                    </li>
-                                                    
-                                                <% end %>
-                                            
-                                            <% else %>
-                                                
-                                                <li class="animated_item">
-                                                        
-                                                    <a href="#"><b>Bạn chưa có cuộc trò chuyện nào...</b></a>
-                                                    
-                                                <li>
-                                            
-                                            <% end %>
-                                        
-                                        </ul>
-    
-                                    </div><!--/ .alignright.site_settings-->
-    
-                                    <!-- - - - - - - - - - - - - - End of conversation - - - - - - - - - - - - - - - - -->
-                                
-                                <% else %>
-                                    
-                                    <div class="alignright site_settings">
-    
-                                        <span class="botton_footer_register_box"><i class="icon-comment"></i></span>
-                                        
-                                    </div>
-                                
-                                <% end %>
 
                             </div><!--/ .clearfix-->
                             
@@ -246,14 +156,10 @@
             $(".categories_module").show();
             if($(window).width() < 490) {
                 $('.categories_products_home_tabs_container .owl-item').width($('.owl-stage-outer').width()/2);
-                $('.categories_products_home_tabs_container .owl-item .product_item').height($('.owl-stage-outer').width()/2 + 50);
+                $('.categories_products_home_tabs_container .owl-item .product_item').height($('.owl-stage-outer').width()/2 + 35);
                 $('.categories_products_home_tabs_container .tab_containers_wrap').height($('.owl-stage-outer').width()/2 + 90);
-                //$('.categories_products_home_tabs_container .owl-stage').each(function(){
-                //    var width = $(this).find('.owl-item').width()*$(this).find('.owl-item').length;
-                //    $(this).width(width);
-                //});
             }
-        }        
+        }
     };
     $( document ).ready(function() {
         setInterval("checkHomeTabFinish()", 1000);
@@ -261,3 +167,7 @@
 </script>
 
 <%= render "module/mobile_header" %>
+
+<a class="width_area_banner" href="#">
+    <img src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2016/Tab/FireColorRefresh/unrec/FireColor-GW-d-US-1500x300-4-unrec._CB275210917_.jpg" />
+</a>

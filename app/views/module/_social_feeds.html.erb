@@ -229,10 +229,79 @@
 
     <!-- - - - - - - - - - - - - - End google map - - - - - - - - - - - - - - - - -->
     
+    
+    <!-- - - - - - - - - - - - - - Conversation - - - - - - - - - - - - - - - - -->
+    
+    <li class="conversation_rightbar">
+        <% if user_signed_in? %>
+            <button class="botton_footer_register_box icon_btn middle_btn conversation_rightbox open_"><i class="icon-comment" style="color: #fff"></i></button>
+            
+            <!--Location-->
+    
+            <section class="dropdown">
+    
+                <div class="animated_item">
+                    
+                    <h3 class="title">Nội dung trao đổi</h3>
+                </div>
+                
+                
+                    <% User.get_admins.each do |user| %>
+                        <div class="animated_item">
+                            <p class="c_info_location">
+                                <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>">
+                                    <b><%= user.first_name.to_s + " " + user.last_name.to_s %></b><br/>
+                                                                     
+                                    Chat với quản trị viên
+                                    
+                                </a>
+                            </p>
+                        </div>
+                    <% end %>
+                    
+                    <% if current_user.involving_conversations.count != 0 %>
+                                            
+                        <% current_user.involving_conversations.each do |chat| %>
+                            <div class="animated_item">
+                                <p class="c_info_location <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
+                                    <b><%= link_to chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => chat.get_chatter(current_user).id %></b>
+                                    <br /><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %>
+                                                        
+                                    <% if chat.messages.count > 0 %>
+                                        <%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %>
+                                    <% end %>
+                                </p>
+                            </div>
+                        <% end %>
+                    
+                    <% else %>
+                        <div class="animated_item">
+                            <p class="c_info_location">
+                                    
+                                <a href="#"><b>Bạn chưa có cuộc trò chuyện nào...</b></a>
+                                
+                            </p>
+                        </div>
+                            
+                    <% end %>
+
+                   
+                
+    
+            </section><!--/ .dropdown-->
+        <% else %>
+            <button class="botton_footer_register_box icon_btn middle_btn member_online"><i class="icon-comment" style="color: #fff"></i></button>
+        <% end %>
+    
+    </li>
+    <!-- - - - - - - - - - - - - - End conversation - - - - - - - - - - - - - - - - -->
+    
+    
     <% if user_signed_in? %>
         
         <!-- - - - - - - - - - - - - - Member Online - - - - - - - - - - - - - - - - -->
-    
+        
+        
         <li>
     
             <button class="icon_btn middle_btn member_online open_"><i class="icon-user-5"></i></button>
