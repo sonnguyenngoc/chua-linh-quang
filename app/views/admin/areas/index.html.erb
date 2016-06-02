@@ -103,6 +103,7 @@
                                 <th><%= t(:list_area_name) %></th>
                                 <th><%= t(:area_parent) %></th>
                                 <th><%= t(:list_description) %></th>
+                                <th><%= t(:display_order) %></th>
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
@@ -119,7 +120,8 @@
                                     <td>
                                         <%= item.description %>
                                     </td>
-                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td><%= item.display_order %></td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>                                    
                                     <td class="text-center">
                                         <ul class="icons-list">
                                             <li class="dropdown">
