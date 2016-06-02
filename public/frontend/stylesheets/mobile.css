@@ -324,12 +324,12 @@
     .owl-item .product_item .actions_wrap {
         display: none !important;
     }
-    .rev_slider {
+    /*.rev_slider {
         display: none;
     }
     .home_main_margin_top {
         margin-top: 0;
-    }
+    }*/
 }
 
 @media (max-width: 350px) {
