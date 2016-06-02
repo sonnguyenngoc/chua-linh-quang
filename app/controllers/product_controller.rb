@@ -49,6 +49,7 @@ class ProductController < ApplicationController
         @title_head = "Kết quả tìm kiếm"
         params[:number] = 15 if !params[:number].present?
         @products = Product.search(params).paginate(:page => params[:page], :per_page => params[:number])
+        @manufacturers = Manufacturer.get_all_manufacturers
     end
     
     def testimonial

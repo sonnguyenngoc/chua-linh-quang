@@ -1,40 +1,15 @@
 <section class="section_offset">
 
-    <h3>Lọc</h3>
+    <h3>Tìm kiếm</h3>
 
     <%= form_tag({controller: "product", action: "search"}, method: "get", class: "type_2") do %>
-    
-        <%= hidden_field_tag "category_id", @category.id %>
+        
+        <%= hidden_field_tag "keyword", params[:keyword] %>
+        <%= hidden_field_tag "area_id", params[:area_id] %>
 
         <div class="table_layout list_view">
 
             <div class="table_row">
-
-                <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
-
-                <div class="table_cell">
-
-                    <label>Khu vực</label>
-
-                    <div class="">
-
-                        <select name="area_id">
-                            
-                            <option value="">Tất cả</option>
-                            
-                            <% Area.where(level: 2).each do |item| %>
-                                                    
-                                <option value="<%= item.id %>" class="list_category_option"><%= item.name %></option>
-                                                                           
-                            <% end %>
-
-                        </select>
-
-                    </div>
-
-                </div><!--/ .table_cell -->
-
-                <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
 
                 <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
 

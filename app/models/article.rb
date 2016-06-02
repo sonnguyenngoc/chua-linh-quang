@@ -147,6 +147,15 @@ class Article < ActiveRecord::Base
     return records
   end
   
+  #banner event on top
+  def self.get_banner_event_top
+    records = self.all
+    records = records.joins(:code_status).where(code_statuses: { title: 'banner_event_top' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
   #keywords
   def keywords
     self.tags.split(",")
