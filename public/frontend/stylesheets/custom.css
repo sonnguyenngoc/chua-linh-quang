@@ -689,7 +689,7 @@ footer.view_all {
     border: none;
     background: none;
     padding: 5px 0;
-    height: 35px;
+    height: 45px;
 }
 @media only screen and (item-1) {    
     .table_layout .product_item.tem-1, .table_layout .entry, .table_layout blockquote {
@@ -800,4 +800,14 @@ h3.care {
     position: absolute;
     width: 100%;
     height: 100%;
+    display: none;
+}
+.infoblock i[class|="icon"], .infoblock .caption {
+    color: #555;
+}
+.infoblock {
+    border: solid 1px #ddd;
+}
+.infoblock.type_2 [class*="button"] {
+    background: #018bc8;
 }

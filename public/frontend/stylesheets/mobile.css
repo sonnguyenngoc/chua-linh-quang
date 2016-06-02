@@ -304,6 +304,12 @@
     .chat_box_page .invisible {
         display: none;
     }
+    .image_preview_container .scroll_mobile_fix_image {
+        display: block;
+    }
+    aside {
+        display: none;
+    }
 }
 @media (max-width: 489px) {
     .product_item .image_wrap {
@@ -317,5 +323,19 @@
     }
     .owl-item .product_item .actions_wrap {
         display: none !important;
+    }
+    .rev_slider {
+        display: none;
+    }
+    .home_main_margin_top {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 350px) {
+    .home_intro_box, .row .home_intro_box:nth-child(3), .home_intro_box:nth-child(4), .home_intro_box:nth-child(5), .home_intro_box:nth-child(6) {
+        width: 100%;
+        margin-bottom: 10px !important;
+        margin-top: 10px !important;
     }
 }
