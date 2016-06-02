@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     belongs_to :area, foreign_key: "province"
     has_many :wish_lists, dependent: :destroy
     has_many :comments, dependent: :destroy
-    # has_many :conversations, -> { order "updated_at DESC" }, :foreign_key => :sender_id
+    has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
     has_many :messages, dependent: :destroy
     belongs_to :user_group
     

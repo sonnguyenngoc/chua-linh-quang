@@ -38,7 +38,7 @@
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_user_groups_path %>"><%= t(:users) %></a></li>
+                        <li><a href="<%= admin_user_groups_path %>"><%= t(:user) %></a></li>
                         <li class="active"><%= t(:user_groups) %></li>
                     </ul>
                 </div>
@@ -98,7 +98,7 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @user_groups %></div>
+                            <div class="dataTables_info" ><%= page_entries_info @user_groups %> nhóm.</div>
                             <div class="dataTables_paginate paging_simple_numbers">
                                 <%= will_paginate @user_groups, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                             </div>
