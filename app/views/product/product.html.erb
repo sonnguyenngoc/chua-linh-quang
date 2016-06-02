@@ -129,7 +129,7 @@
 										<!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
 
 										<div class="image_preview_container">
-											
+											<div class="scroll_mobile_fix_image"></div>
 											<% if @product.get_main_image.present? %>
 																
 												<img id="img_zoom" data-zoom-image="<%= @product.get_main_image.image_url.big_image %>" src="<%= @product.get_main_image.image_url.large_image %>" alt="">
