@@ -119,6 +119,14 @@ class Admin::CategoriesController < ApplicationController
     Category.update_all_level
     render text: items.count.to_s
   end
+  
+  def three_cols_select
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+    end
+      
+    render layout: nil
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

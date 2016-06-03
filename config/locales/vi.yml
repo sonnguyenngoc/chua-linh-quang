@@ -194,6 +194,7 @@ vi:
   bought_at_a_price: "Tổng số tiền đã mua"
   show: "Hiển thị"
   show_product: "Hiển thị sản phẩm"
+  show_article: "Hiển thị bài viết"
   stock: "Còn trong kho"
   old_price: "Giá cũ"
   current_price: "Giá bán"
@@ -314,6 +315,7 @@ vi:
   system_setting: "Cấu hình hệ thống"
   contact: "Liên hệ"
   newsletter: "Đăng ký nhận tin mới"
+  category_level: "Cấp chuyên mục"
   
   will_paginate:
     page_entries_info:

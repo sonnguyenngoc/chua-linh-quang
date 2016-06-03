@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get "bai-viet" => "blog#index", as: :index
     get "bai-viet/chi-tiet-bai-viet/:blog_id" => "blog#show", as: :show
     get "bai-viet/chuyen-muc-bai-viet/:article_category_id" => "blog#article_category", as: :article_category
+    get "bai-viet/su-kien/chuong-trinh-khuyen-mai/:article_category_id" => "blog#deal", as: :deal
     # end blog
     
     # information
@@ -150,6 +151,7 @@ Rails.application.routes.draw do
           collection do
             get 'search'
             get 'update_parent_order'
+            get 'three_cols_select'
           end
         end
         resources :manufacturers, path: "nha-cung-cap" do

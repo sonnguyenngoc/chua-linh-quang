@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
   #validates :title, :article_categories, :content, presence: true
   mount_uploader :image_url, ArticleUploader
+  mount_uploader :image_url_full_width, ArticleUploader
   has_and_belongs_to_many :article_categories
   has_and_belongs_to_many :products
   has_many :comment_articles, dependent: :destroy
@@ -150,8 +151,8 @@ class Article < ActiveRecord::Base
   #banner event on top
   def self.get_banner_event_top
     records = self.all
-    records = records.joins(:code_status).where(code_statuses: { title: 'banner_event_top' })
-    records.order("created_at DESC").first
+    records = records.joins(:code_status).where(code_statuses: { title: 'banner_event_top' }).last
+    #records.order("created_at DESC").first
     
     return records
   end

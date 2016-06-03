@@ -103,6 +103,7 @@
                                 <th><%= t(:list_area_name) %></th>
                                 <th><%= t(:area_parent) %></th>
                                 <th><%= t(:list_description) %></th>
+                                <th><%= t(:display_order) %></th>
                                 <th><%= t(:created_at) %></th>
                                 <% if can?(:update, :areas) or can?(:delete, :areas) %>
                                     <th class="text-center"><%= t(:actions) %></th>
@@ -125,6 +126,7 @@
                                     <td>
                                         <%= item.description %>
                                     </td>
+                                   <td><%= item.display_order %></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <% if can?(:update, item) or can?(:delete, item) %>
                                         <td class="text-center">
