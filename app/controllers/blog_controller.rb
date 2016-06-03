@@ -10,6 +10,11 @@ class BlogController < ApplicationController
     @title_head = @blog.title
     @META_KEYWORDS = @blog.meta_keywords
     @META_DESCRIPTION = @blog.meta_description
+    
+    if @blog.page_layout == "full_width"
+      @related_products = @blog.products.search(params).paginate(:page => params[:page], :per_page => 12)
+      render "blog/deal"
+    end
   end
   
   def article_category
@@ -20,7 +25,7 @@ class BlogController < ApplicationController
     @META_DESCRIPTION = @article_category.meta_description
   end
   
-  def deal
-    @products = Product.all.paginate(:page => params[:page], :per_page => 12)
-  end
+  #def deal
+  #  @products = Product.all.paginate(:page => params[:page], :per_page => 12)
+  #end
 end

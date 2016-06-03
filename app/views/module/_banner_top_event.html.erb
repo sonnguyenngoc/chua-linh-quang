@@ -1,13 +1,13 @@
 
-<% Article.get_banner_event_top.each do |item| %>
-	<% if item.is_show == true %>
+ <!--Article.get_banner_event_top.each do |item| -->
+	<% if @blog_deal.is_show == true %>
 		
 		<div class="banner_item" id="zone_37">
 					
-			<a href="<%= url_for({ controller: "blog", action: "show", blog_id: item.id})  %>" style="background-image: url(<%= asset_path(item.image_url) %>)" data-title="<%= item.title %>" title="<%= item.title %>"></a>
+			<a href="<%= url_for({ controller: "blog", action: "show", blog_id: @blog_deal.id})  %>" style="background-image: url(<%= asset_path(@blog_deal.image_url) %>)" data-title="<%= @blog_deal.title %>" title="<%= @blog_deal.title %>"></a>
 			
 		</div>
 	
 	<% end %>
 	
-<% end %>
+<!-- end -->
