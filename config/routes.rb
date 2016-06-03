@@ -151,6 +151,7 @@ Rails.application.routes.draw do
           collection do
             get 'search'
             get 'update_parent_order'
+            get 'three_cols_select'
           end
         end
         resources :manufacturers, path: "nha-cung-cap" do

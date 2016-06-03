@@ -32,6 +32,13 @@
             <%= f.collection_select(:parent_id, Area.all, :id, :name, {:prompt=> "None....."}, {class: "select"}) %>
         </div>
     </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:display_order) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :display_order, class: "form-control" %>
+        </div>
+    </div>
 
     <div class="text-right">
         <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>

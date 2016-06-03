@@ -151,9 +151,34 @@ class Category < ActiveRecord::Base
   # update all categories level
   def self.update_all_level
     Category.all.each do |c|
-      c.update_attribute(:level, c.get_level)
+      c.update_column(:level, c.get_level)
     end
 
+  end
+  
+  def self.get_three_cols_select(level, category=nil)
+    if level == 1
+      return Category.where(level: 1)
+    elsif category.present?
+      if level == category.get_level - 1
+        return category.parent.first.parent.first.children
+      end
+      if level == category.get_level
+        return category.parent.first.children
+      end
+      if level == category.get_level + 1
+        return category.children
+      end
+    end
+    []
+  end
+  
+  def related_ids
+    arr = [self.id]
+    arr << self.parent.first.id if self.parent.present?
+    arr << self.parent.first.parent.first.id if self.parent.present? and self.parent.first.parent.present?
+    
+    return arr
   end
   
 end
