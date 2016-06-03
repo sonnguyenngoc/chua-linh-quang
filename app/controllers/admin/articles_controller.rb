@@ -97,6 +97,45 @@ class Admin::ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def upload_image_video
+    `mkdir public/uploads/editor`    
+    uploaded_io = params[:upload_file]
+    file_name = Time.now.getutc.to_i.to_s+"."+uploaded_io.original_filename.split(".").last
+    path = Rails.root.join('public', 'uploads', 'editor', file_name)
+    public_path = '/uploads/editor/'+file_name
+    
+    # check image
+    images = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
+    if images.include?(uploaded_io.content_type)
+      File.open(path, 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+      
+      render text: "<script>parent.editor_uploaded('<img src=\""+public_path.to_s+"\" />')</script>"
+    end
+    
+    # check video
+    videos = ['video/x-flv', 'video/mp4', 'application/x-mpegURL', 'video/MP2T', 'video/3gpp', 'video/quicktime', 'video/x-msvideo', 'video/x-ms-wmv']
+    if videos.include?(uploaded_io.content_type)
+      File.open(path, 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+      
+      if params[:image].present?
+        image_io = params[:image]
+        image_name = Time.now.getutc.to_i.to_s+"-thumb."+image_io.original_filename.split(".").last
+        image_path = Rails.root.join('public', 'uploads', 'editor', image_name)
+        File.open(image_path, 'wb') do |f|
+          f.write(image_io.read)
+        end
+        image_public_path = '/uploads/editor/'+image_name
+      end
+      
+      video_tag = "<img thumb=\"#{image_public_path.to_s}\" width=\"100%\" height=\"100%\" class=\"video_map\" rel=\"#{public_path.to_s}\" src=\"/img/videobg.png\" />"
+      render text: "<script>parent.editor_uploaded('"+video_tag+"')</script>"
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

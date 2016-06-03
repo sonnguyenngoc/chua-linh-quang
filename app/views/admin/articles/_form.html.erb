@@ -1,3 +1,6 @@
+<%= javascript_include_tag '/tinymce/tinymce.min.js' %>
+
+
 <% if @article.errors.any? %>
     <div id="error_explanation">
         <span class="label label-warning"></span>
@@ -54,6 +57,15 @@
         <label class="col-lg-2 control-label" ><%= t(:content) %> <span class='text-danger'>*</span></label>
     </div>
     <div class="mb-15">
+        <div class="upload_tools text-right" style="margin-bottom: 5px;
+																						margin-top: -30px;">											
+											<span class="uploading" style="display: none;font-size: 17px;">
+Đang tải hình ảnh/video...
+<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+</span>
+											<a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+											<a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+										</div>
         <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
     </div>
         
@@ -91,7 +103,7 @@
         
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:meta_description) %> </label>
-        <div class="col-lg-10">
+        <div class="col-lg-10">            
             <%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
         </div>
     </div>
@@ -102,3 +114,119 @@
     </div>
     
 <% end %>
+
+    
+<!-- UPLOADER -->
+<iframe style="position: absolute; top: -900000px" id="editor_upload_frame" name="editor_upload_frame"></iframe>
+<%= form_for(Article.new, :url => upload_image_video_admin_articles_path, html: {multipart: true, id: "editor_upload_form", target: "editor_upload_frame"}) do |f| %>
+    <input style="position: absolute; top: -900000px" type="file" id="editor_upload_file" name="upload_file" />
+<% end %>
+<div id="modal_upload_video" class="modal fade modal_import_file">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <%= form_for(Article.new, :url => upload_image_video_admin_articles_path, html: {multipart: true, id: "editor_upload_form", target: "editor_upload_frame"}) do |f| %>
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Tải video</h5>
+                </div>
+
+                <div class="modal-body">
+                    
+                        <div class="form-group">
+                            <label>Chọn video <span class="text-danger">*</span></label>
+                            <div class="">
+                                <input type="file" class="file-styled required" name="upload_file">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Chọn hình ảnh đại diện <span class="text-danger">*</span></label>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div>
+                                        <img class="video_thumb" width="100%" src="http://marketonline.vn:3000/img/announce.png" />
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="">
+                                        <input type="file" class="file-styled" name="image" onchange="readURL(this, $('.video_thumb'));">
+                                    </div>
+                                    <span class="help-block">Định dạng ảnh: gif, png, jpg. Kích thước tối đa: 2Mb</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    
+                </div>
+
+                <div class="modal-footer before">
+                    <span style="display: none;font-size: 17px;" class="uploading">
+                        Đang tải hình ảnh/video...
+                        <i style="font-size: 40px; display: inline-block; margin-right: 10px;" class="icon-spinner2 spinner"></i>
+                    </span>
+                    <button type="button" class="btn btn-primary post_video" type="submit" onclick="$(this).parents('form').submit()"><i class=""></i> Tải video</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+                
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- /basic modal -->
+
+<script>
+        function editor_uploaded(data) {
+            //CKEDITOR.instances["editor-full"].insertHtml(data);
+            tinymce.activeEditor.execCommand('mceInsertContent', false, data);
+            // CKEDITOR.instances["editor-full"].insertHtml(data);
+            $(".uploading").hide();
+            $("#modal_upload_video").trigger("click")
+            $(".post_video").attr("disabled", false);
+        }
+        $(document).ready(function() {
+            $("#editor_upload_button").click(function() {							
+                $("#editor_upload_file").trigger("click")
+            });
+            $("#editor_upload_file").change(function() {
+                $(".uploading").show();
+                $("#editor_upload_form").submit();
+            })
+            $(".post_video").click(function() {
+                $(".uploading").show();
+                $(this).attr("disabled", true);
+            })
+            
+            
+            // Init tinyMCE
+            tinymce.init({
+				selector: '#editor-full',
+				height: 500,
+				theme: 'modern',
+				plugins: [
+				  'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+				  'searchreplace wordcount visualblocks visualchars code fullscreen',
+				  'insertdatetime media nonbreaking save table directionality',
+				  'emoticons template paste textcolor colorpicker textpattern imagetools'
+				],
+				toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+				toolbar2: 'print preview media | forecolor backcolor emoticons',
+				image_advtab: true,
+				templates: [
+				  { title: 'Test template 1', content: 'Test 1' },
+				  { title: 'Test template 2', content: 'Test 2' }
+				],
+				content_css: [
+				  '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+				  '//www.tinymce.com/css/codepen.min.css'
+				],
+				language: 'vi_VN',
+				valid_elements: '*[*]',
+				entity_encoding: "raw",
+				relative_urls: false,
+				convert_urls: false,
+				remove_script_host : false,
+			});
+        });
+        
+</script>
