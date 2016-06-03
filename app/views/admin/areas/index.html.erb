@@ -105,9 +105,7 @@
                                 <th><%= t(:list_description) %></th>
                                 <th><%= t(:display_order) %></th>
                                 <th><%= t(:created_at) %></th>
-                                <% if can?(:update, :areas) or can?(:delete, :areas) %>
-                                    <th class="text-center"><%= t(:actions) %></th>
-                                <% end %>
+                                <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>

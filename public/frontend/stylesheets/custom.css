@@ -832,3 +832,16 @@ h3.care {
     margin-top: -35px;
     margin-bottom: 50px;
 }
+.footer_area_map {
+    padding: 20px;
+    border: solid 1px #ddd;
+    border-radius: 10px;
+    background: #fff;
+    margin-top: 30px;
+}
+.view_more_list {
+    text-align: right;
+}
+.view_more_list a {
+    color: #018bc8;
+}
