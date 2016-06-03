@@ -1,0 +1,25 @@
+<% if @current_area.id.nil? %>
+    <div class="row" style="padding: 0 15px">
+        <div class="col-md-12 footer_area_map">
+            <div class="row">
+                <% Area.where(level: 2).order("display_order").each do |area| %>
+                    <div class="col-md-4">
+                        <h3><a href="<%= change_current_area_path(area.id) %>"><%= area.name %></a></h3>
+                        <ul class="list_of_links">
+                            <% area.children.order("display_order").each_with_index do |child,index| %>
+                                <li<%= ' stylez="display:none"'.html_safe if index > 9 %>>
+                                    <a href="<%= change_current_area_path(child.id) %>"><%= child.name %></a>
+                                </li>
+                            <% end %>
+                            <!--<li class="view_more_list">
+                                <a href="#more" onclick="$(this).parents('ul').find('li').show();$(this).hide()">Xem thêm</a>
+                            </li>-->
+                        </ul>
+                        <br style="clear: both" />
+                        <br />
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>

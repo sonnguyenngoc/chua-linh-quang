@@ -103,9 +103,11 @@ class Category < ActiveRecord::Base
     return records   
   end
   
-  def self.get_by_status(status, limit=5)
+  def self.get_by_status(status, area, limit=5)
     cats = []
-    Product.where("products.status LIKE ?", "%#{status}%").each do |p|
+    query = Product.joins(:areas).where("products.status LIKE ?", "%#{status}%").where("products.is_show = ?", true).where("products.approved = ?", true)
+    query = query.where("areas.id = ?", area.id) if area.id.present?
+    query.each do |p|
       cats += p.categories.map(&:id)
     end
     self.where(id: cats.uniq)[0..4]

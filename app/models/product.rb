@@ -209,9 +209,10 @@ class Product < ActiveRecord::Base
     statuses.join(@html).html_safe
   end
   
-  def self.get_by_category_status(category, status)
-    records = self.where(is_show: true)
+  def self.get_by_category_status(category, area, status)
+    records = self.joins(:areas).where(is_show: true).where(approved: true)
     records = records.where("products.status LIKE ?", "%#{status}%")
+    records = records.where("areas.id = ?", area.id) if area.id.present?
     records = records.joins(:categories).where(categories: {id: category})
     return records
   end
