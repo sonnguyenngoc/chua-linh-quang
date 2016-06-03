@@ -74,9 +74,15 @@
                             <% @companies.each do |item| %>
                                 <tr>
                                     <td>
-                                        <div class="media-left">
-                                            <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_company_path(item) %>
-                                        </div>
+                                        <% if can?(:update, item) %>
+                                            <div class="media-left">
+                                                <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_company_path(item) %>
+                                            </div>
+                                        <% else %>
+                                            <div class="media-left">
+                                                <%= image_tag(item.image_url, size: "180x110", class: "img-rouded") %>
+                                            </div>
+                                        <% end %>
                                     </td>
                                     <td><%= item.name %></td>
                                     <td><%= item.phone %></td>

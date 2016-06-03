@@ -1,19 +1,118 @@
-<p id="notice"><%= notice %></p>
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @contact.name %>
-</p>
+<!-- Page container -->
+<div class="page-container">
 
-<p>
-  <strong>Email:</strong>
-  <%= @contact.email %>
-</p>
+    <!-- Page content -->
+    <div class="page-content">
 
-<p>
-  <strong>Message:</strong>
-  <%= @contact.message %>
-</p>
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
+
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold"><%= @contact.name %></span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_contacts_path %>"><%= t(:customer) %></a></li>
+                        <li><a href="<%= admin_contacts_path %>"><%= t(:contact) %></a></li>
+                        <li class="active"><%= @contact.name %></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Basic datatable -->
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h5 class="panel-title"><span class="text-semibold"><%= @contact.name %></span></h5><br/>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <%= label "", t(:name), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static") do %>
+                                      <%= @contact.name %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:email), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @contact.email %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:message), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @contact.message %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", "Created At: ", class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static") do %>
+                                      <%= @contact.created_at.strftime("%d/%m/%Y") %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </form>
+                        <%= link_to '<i class="icon-backward2 position-left"></i> '.html_safe + t(:back), admin_contacts_path, class: "btn btn-primary margin-submit" %>
+                    </div>
+                </div>
+                <!-- /basic datatable -->
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_manufacturers.js' %>
+<!-- /theme JS files -->

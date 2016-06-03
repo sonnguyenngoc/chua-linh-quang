@@ -49,6 +49,8 @@ class Admin::ArticlesController < ApplicationController
     authorize! :create, Article
     @article = Article.new(article_params)
     
+    @article.user_id = current_user.id
+    
     @article.article_categories.clear
     if params[:category_ids].present?
       params[:category_ids].each do |id|      
@@ -115,6 +117,17 @@ class Admin::ArticlesController < ApplicationController
     @article.destroy
     respond_to do |format|
       format.html { redirect_to admin_articles_url, notice: 'Article was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+  
+  def approve
+    authorize! :approve, @article
+    @article = Article.find(params[:id])
+    @article.approved = true
+    @article.save
+    respond_to do |format|
+      format.html { redirect_to admin_articles_url }
       format.json { head :no_content }
     end
   end

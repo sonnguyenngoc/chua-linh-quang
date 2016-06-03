@@ -11,8 +11,9 @@ class Admin::CategoriesController < ApplicationController
         format.html { 
           @categories = Category.get_categories #.paginate(:page => params[:page], :per_page => 10)
         }
-        format.json { render json: Category.get_tree_json }
+        format.json { render json: Category.get_tree_json(current_user) }
     end
+    
   end
   
   def search

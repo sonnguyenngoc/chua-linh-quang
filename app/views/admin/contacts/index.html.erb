@@ -64,7 +64,13 @@
                         <tbody>
                             <% @contacts.each do |item| %>
                                 <tr>
-                                    <td><%= item.name %></td>
+                                    <td>
+                                        <% if can?(:read, item) %>
+                                            <strong><%= link_to item.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
+                                        <% end %>
+                                    </td>
                                     <td><%= item.email %></td>
                                     <td><%= item.message %></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>

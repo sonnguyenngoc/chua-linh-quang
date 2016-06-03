@@ -105,7 +105,12 @@
                             <% @questions.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= item.name %><br />
+                                        <% if can?(:read, item) %>
+                                            <strong><%= link_to item.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
+                                        <% end %>
+                                        <br />
                                         <%= item.email %>
                                     </td>
                                     <td>

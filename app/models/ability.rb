@@ -19,17 +19,17 @@ class Ability
         end
         
         # check for read ability
-        if user.ability(model_class, "read").include?('yes')
+        if user.permission(model_class, "read").include?('yes')
           can :read, model
         end
         
         # check for create ability
-        if user.ability(model_class, "create").include?('yes')
+        if user.permission(model_class, "create").include?('yes')
           can :create, model
         end
         
         # check for update ability
-        abilities = user.ability(model_class, "update")
+        abilities = user.permission(model_class, "update")
         can :update, model do |item|       
           result = false
           if abilities.include?('yes')
@@ -51,7 +51,7 @@ class Ability
         end
         
         # check for delete ability
-        delete_abilities = user.ability(model_class, "delete")
+        delete_abilities = user.permission(model_class, "delete")
         can :delete, model do |item|       
           result = false
           if delete_abilities.include?('yes')
@@ -73,7 +73,7 @@ class Ability
         end
         
         # check for approve ability
-        approve_abilities = user.ability(model_class, "approve")
+        approve_abilities = user.permission(model_class, "approve")
         can :approve, model do |item|       
           result = false
           if approve_abilities.include?('yes')

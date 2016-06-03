@@ -13,10 +13,11 @@
 <%= form_for [:admin, @product], html: {class: "form-horizontal"} do |f| %>
     <div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
-            <li class="active"><a href="#control-tab1" data-toggle="tab"><%= t(:tab_product_info) %></a></li>
+            <li class="active button_tab_product"><a href="#control-tab1" value="control-tab1" data-toggle="tab"><%= t(:tab_product_info) %></a></li>
             <li><a href="#control-tab2" data-toggle="tab"><%= t(:tab_product_status) %> </a></li>
             <li><a href="#control-tab3" data-toggle="tab"><%= t(:tab_product_intro) %> </a></li>
             <li><a href="#control-tab4" data-toggle="tab"><%= t(:tab_product_images) %> </a></li>
+            <li><a href="#control-tab5" data-toggle="tab"><%= t(:tab_related_articles) %> </a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane has-padding active" id="control-tab1">
@@ -112,17 +113,6 @@
                         <%= f.text_field :tags, class: "form-control" %>
                     </div>
                 </div>
-                    
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:related_articles) %></label>
-                    <div class="col-lg-10">
-                        <select name="article_ids[]" class="select select-item-color" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
-                            <% @articles.each do |item| %>
-                                <option <%= "selected" if @product.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
-                            <% end %>
-                        </select>
-                    </div>
-                </div>
                 
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> </label>
@@ -151,17 +141,18 @@
                     <label class="col-lg-2 control-label" ><%=  %></label>
                     <div class="col-lg-12">
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("deal") %> type="checkbox" name="product[status][]" value="deal"><%= t(:st_deal) %></label>
+                            <input <%= "checked" if @product.statuses.include?("deal") %> type="checkbox" name="product[status][]" id="product_status_deal" value="deal"><%= t(:st_deal) %>
+                        </label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("prominent") %> type="checkbox" name="product[status][]" value="prominent"><%= t(:st_prominent) %></label>
+                            <input <%= "checked" if @product.statuses.include?("prominent") %> type="checkbox" name="product[status][]" id="product_status_prominent" value="prominent"><%= t(:st_prominent) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("bestseller") %> type="checkbox" name="product[status][]" value="bestseller"><%= t(:st_bestseller) %></label>
+                            <input <%= "checked" if @product.statuses.include?("bestseller") %> type="checkbox" name="product[status][]" id="product_status_bestseller" value="bestseller"><%= t(:st_bestseller) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("new") %> type="checkbox" name="product[status][]" value="new"><%= t(:st_new) %></label>
+                            <input <%= "checked" if @product.statuses.include?("new") %> type="checkbox" name="product[status][]" id="product_status_new" value="new"><%= t(:st_new) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("imported") %> type="checkbox" name="product[status][]" value="imported"><%= t(:st_imported) %></label>
+                            <input <%= "checked" if @product.statuses.include?("imported") %> type="checkbox" name="product[status][]" id="product_status_imported" value="imported"><%= t(:st_imported) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?("sold_out") %> type="checkbox" name="product[status][]" value="sold_out"><b><%= t(:st_sold_out) %></b></label>
+                            <input <%= "checked" if @product.statuses.include?("sold_out") %> type="checkbox" name="product[status][]" id="product_status_sold_out" value="sold_out"><b><%= t(:st_sold_out) %></b></label>
                     </div>
                 </div>
                     
@@ -175,9 +166,17 @@
             <div class="tab-pane has-padding" id="control-tab3">
                 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:introduction) %> </label>
+                    <label class="col-lg-2 control-label" ><%= t(:introduction) %> <span class='text-danger'>*</span></label>
                 </div>
-                <div class="mb-15">
+                
+                <div class="form-group">
+                    <div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
+						<span class="uploading" style="display: none;font-size: 17px;">
+							Đang tải hình ảnh/video...<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+						</span>
+						<a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+						<a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+					</div>
                     <%= f.text_area :description, rows: "4", cols: "4", id: "editor-full" %>
                 </div>
                 
@@ -227,29 +226,94 @@
                 </div>
                 
             </div>
+            
+            <div class="tab-pane has-padding active" id="control-tab5">
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        <select name="article_ids[]" class="select select-item-color" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
+                            <% @articles.each do |item| %>
+                                <option <%= "selected" if @product.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <%= link_to "#{t(:add_to_list)}".html_safe, "", class: "btn btn-info"%>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="bg-teal-800">
+                            <th></th>
+                            <th><%= t(:picture) %></th>
+                            <th><%= t(:title) %>/<%= t(:tags) %></th>
+                            <th><%= t(:content) %></th>
+                            <th><%= t(:category) %></th>
+                            <th><%= t(:created_at) %></th>
+                            <th class="text-center"><%= t(:actions) %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @articles.each do |item| %>
+                            <tr>
+                                <td>
+									<input type="checkbox" class="checkbox-related-articles">
+								</td>
+                                <td>
+                                    <div class="media-left">
+                                        <% if can? :update, item %>
+                                            <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_article_path(item), target: "_blank" %>
+                                        <% else %>
+                                            <%= image_tag(item.image_url, size: "180x110", class: "img-rouded") %>
+                                        <% end %>
+                                    </div>
+                                </td>
+                                <td>
+                                    <%= item.title %><br/>
+                                    <% if item.approved == true %>
+                                        <span class="label bg-success"><%= t(:approved) %></span>
+                                    <% else %>
+                                        <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+                                    <% end %>
+                                </td>
+                                <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
+                                <td></td>
+                                <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                <td class="text-center">
+                                    <ul class="icons-list">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon-menu9"></i>
+                                            </a>
+            
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                    <%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:remove), "" %>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+                <div class="dataTables_wrapper no-footer">
+                    <div class="datatable-footer showed">
+                        <div class="dataTables_info" ><%= page_entries_info @articles %></div>
+                        <div class="dataTables_paginate paging_simple_numbers">
+                            <%= will_paginate @articles, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
+                </div>
+            </div>
         </div>
     </div>
     
 <% end %>
 
-<script>
-    // update category three cols select
-    $( document ).on("change", ".three_cols_select select", function() {
-        var cid = $(this).val();
-        var level = $(this).attr("level");
-        if(cid != '') {
-            var url = "<%= three_cols_select_admin_categories_path %>?category_id="+cid+"&level="+level;
-            $.ajax({
-                method: "GET",
-                url: url   
-            })
-            .done(function( msg ) {
-               $('.three_cols_select').html(msg);
-               $('.three_cols_select select').select2();
-            });
-        } else {
-            $(this).parents(".catcol").next().find('select').select2("val","");
-            $(this).parents(".catcol").next().next().find('select').select2("val","");
-        }
-    });
-</script>
+<%= render "/admin/main/editor_upload" %>
+

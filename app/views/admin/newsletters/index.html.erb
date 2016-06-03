@@ -62,7 +62,7 @@
                         <tbody>
                             <% @newsletters.each do |item| %>
                                 <tr>
-                                    <td><%= item.email %></td>
+                                    <td><strong><%= item.email %></strong></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <% if can?(:delete, item) %>

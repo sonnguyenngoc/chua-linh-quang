@@ -316,6 +316,11 @@ en:
   contact: "Contact"
   newsletter: "Newsletter"
   category_level: "Level Category"
+  message: "Message"
+  edit_delivery_method: "Edit delivery method"
+  tab_related_articles: "Related articles"
+  add_to_list: "Add to list"
+  display_order: "Display order"
   
   will_paginate:
     page_entries_info:

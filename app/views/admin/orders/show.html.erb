@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-md-6">
                             <h6><b><%= t(:info_delivery) %></b></h6>
-                            <p>Họ tên: <%= @order.order_delivery.name %></p>
+                            <p><%= t(:full_name) %>: <%= @order.order_delivery.name %></p>
                             <p><%= t(:company) %>: <%= @order.order_delivery.company %></p>
                             <p><%= t(:address) %>: <%= @order.order_delivery.display_address %></p>
                             <p><%= t(:zip_code) %>: <%= @order.order_delivery.zip_code %></p>

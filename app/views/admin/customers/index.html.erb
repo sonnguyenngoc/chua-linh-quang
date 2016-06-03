@@ -106,7 +106,11 @@
                             <% @customers.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to item.name, [:admin, item] %>
+                                        <% if can?(:read, item) %>
+                                            <strong><%= link_to item.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
+                                        <% end %>
                                     </td>
                                     <td>
                                         <%= item.email %> <br />

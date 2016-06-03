@@ -1,8 +1,13 @@
 class Customer < ActiveRecord::Base
   belongs_to :order
+  belongs_to :area, :foreign_key => :province
   
   def name
-    first_name + " " + last_name
+    first_name.to_s + " " + last_name.to_s
+  end
+  
+  def full_address
+    address.to_s + ", " + area.name.to_s + ", " + country
   end
   
   def checkout_total_price

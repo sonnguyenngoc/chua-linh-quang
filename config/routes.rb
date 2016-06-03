@@ -163,6 +163,7 @@ Rails.application.routes.draw do
           collection do
             get 'search'
             post 'upload_image_video'
+            get 'approve'
           end
         end
         resources :article_categories, path: "chuyen-muc-bai-viet" do

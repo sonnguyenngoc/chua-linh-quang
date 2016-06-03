@@ -1,6 +1,3 @@
-<%= javascript_include_tag '/tinymce/tinymce.min.js' %>
-
-
 <% if @article.errors.any? %>
     <div id="error_explanation">
         <span class="label label-warning"></span>
@@ -64,6 +61,7 @@
 				<div class="form-group">
 					<label class="col-lg-2 control-label" ><%= t(:content) %> <span class='text-danger'>*</span></label>
 				</div>
+				
 				<div class="mb-15">
 					<div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
 						<span class="uploading" style="display: none;font-size: 17px;">
@@ -79,17 +77,6 @@
 					<label class="col-lg-2 control-label" ><%= t(:keywords) %> </label>
 					<div class="col-lg-10">
 						<%= f.text_field :tags, class: "form-control" %>
-					</div>
-				</div>
-					
-				<div class="form-group">
-					<label class="col-lg-2 control-label" ><%= t(:related_products) %></label>
-					<div class="col-lg-10">
-						<select name="product_ids[]" class="select-item-color" data-placeholder="<%= t(:related_products) %>....." multiple="multiple">
-							<% @products.each do |item| %>
-								<option <%= "selected" if @article.products.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
-							<% end %>
-						</select>
 					</div>
 				</div>
 				
@@ -138,12 +125,27 @@
 			</div>
 				
 			<div class="tab-pane has-padding" id="control-tab2">
+				<div class="form-group">
+                    <div class="col-lg-10">
+						<select name="product_ids[]" class="select-item-color" data-placeholder="<%= t(:related_products) %>....." multiple="multiple">
+							<% @products.each do |item| %>
+								<option <%= "selected" if @article.products.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+							<% end %>
+						</select>
+					</div>
+                    <div class="col-lg-2">
+                        <%= link_to "#{t(:add_to_list)}".html_safe, "", class: "btn btn-info"%>
+                    </div>
+                </div>
 				<table class="table">
 					<thead>
 						<tr class="bg-teal-800">
 							<th></th>
 							<th><%= t(:list_image) %></th>
 							<th><%= t(:list_product_name) %></th>
+							<th><%= t(:list_price) %></th>
+							<th class="text-nowrap"><%= t(:list_areas) %></th>
+							<th><%= t(:list_status) %></th>
 							<th><%= t(:created_at) %></th>
 							<th class="text-center"><%= t(:actions) %></th>
 						</tr>
@@ -152,21 +154,18 @@
 						<% @products.each do |item| %>
 							<tr>
 								<td>
-									<label class="checkbox-inline">
-										<div class="checker border-success text-success-600"><span class="checked"><input type="checkbox" class="styled"></span></div>
-										
-									</label>
+									<input type="checkbox" class="checkbox-related-products">
 								</td>
 								<td>
 									<% if item.get_main_image.present? %>
 										<% if can? :update, item %>
-											<%= link_to image_tag(item.get_main_image.image_url.small_image), edit_admin_product_path(item), title: item.name %>
+											<%= link_to image_tag(item.get_main_image.image_url.small_image), edit_admin_product_path(item), title: item.name, target: "_blank" %>
 										<% else %>
 											<%= image_tag item.get_main_image.image_url.small_image, title: item.name %>
 										<% end %>
 									<% else %>
 										<% if can? :update, item %>
-											<%= link_to image_tag("/frontend/images/small_image.png"), edit_admin_product_path(item), title: item.name %>
+											<%= link_to image_tag("/frontend/images/small_image.png"), edit_admin_product_path(item), title: item.name, target: "_blank" %>
 										<% else %>
 											<%= image_tag "/frontend/images/small_image.png", title: item.name %>
 										<% end %>
@@ -174,13 +173,31 @@
 								</td>
 								<td>
 									<% if can? :update, item %>
-										<strong><%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %></strong>
+										<strong><%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name, target: "_blank" %></strong>
 									<% else %>
 										<strong><%= raw truncate(strip_tags(item.name), length: 20) %></strong>
 									<% end %>
 									<br/><%= item.code %>
 									<br/><i class="icon-pin-alt"></i>  <%= item.manufacturer.name if !item.manufacturer.nil? %>
 									<br/><i class="icon-stack"></i>  <%= item.categories.map(&:name).join("<br/>").html_safe %>
+								</td>
+								<td><%= format_number(item.price) %><br/>(<%= format_number(item.quantity) %> <%= item.unit %>)</td>
+
+								<td>
+									<%= item.areas.map(&:name).join("<br/>").html_safe %>
+								</td>
+								<td>
+									<% if !item.status.nil? %>
+										<% item.split_statues.each do |status| %>
+											<span class="label bg-orange-600"><%= status %></span><br/>
+										<% end %>
+									<% end %>
+									<% if item.is_show == true %><span class="label bg-blue"><%= t(:showing) %></span><br/> <% end %>
+									<% if item.approved == true %>
+										<span class="label bg-success"><%= t(:approved) %></span>
+									<% else %>
+										<span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+									<% end %>
 								</td>
 								<td>
 									<%= item.created_at.strftime("%d/%m/%Y") %>
@@ -195,9 +212,9 @@
 												<i class="icon-menu9"></i>
 											</a>
 											<ul class="dropdown-menu dropdown-menu-right">
-													<li>
-														<%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:remove), "" %>
-													</li>
+												<li>
+													<%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:remove), "" %>
+												</li>
 											</ul>
 										</li>
 									</ul>
@@ -223,119 +240,5 @@
     </div>
     
 <% end %>
-
+<%= render "/admin/main/editor_upload" %>
     
-<!-- UPLOADER -->
-<iframe style="position: absolute; top: -900000px" id="editor_upload_frame" name="editor_upload_frame"></iframe>
-<%= form_for(Article.new, :url => upload_image_video_admin_articles_path, html: {multipart: true, id: "editor_upload_form", target: "editor_upload_frame"}) do |f| %>
-    <input style="position: absolute; top: -900000px" type="file" id="editor_upload_file" name="upload_file" />
-<% end %>
-<div id="modal_upload_video" class="modal fade modal_import_file">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            
-            <%= form_for(Article.new, :url => upload_image_video_admin_articles_path, html: {multipart: true, id: "editor_upload_form", target: "editor_upload_frame"}) do |f| %>
-            
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h5 class="modal-title">Tải video</h5>
-                </div>
-
-                <div class="modal-body">
-                    
-                        <div class="form-group">
-                            <label>Chọn video <span class="text-danger">*</span></label>
-                            <div class="">
-                                <input type="file" class="file-styled required" name="upload_file">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Chọn hình ảnh đại diện <span class="text-danger">*</span></label>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div>
-                                        <img class="video_thumb" width="100%" src="http://marketonline.vn:3000/img/announce.png" />
-                                    </div>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="">
-                                        <input type="file" class="file-styled" name="image" onchange="readURL(this, $('.video_thumb'));">
-                                    </div>
-                                    <span class="help-block">Định dạng ảnh: gif, png, jpg. Kích thước tối đa: 2Mb</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    
-                </div>
-
-                <div class="modal-footer before">
-                    <span style="display: none;font-size: 17px;" class="uploading">
-                        Đang tải hình ảnh/video...
-                        <i style="font-size: 40px; display: inline-block; margin-right: 10px;" class="icon-spinner2 spinner"></i>
-                    </span>
-                    <button type="button" class="btn btn-primary post_video" type="submit" onclick="$(this).parents('form').submit()"><i class=""></i> Tải video</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                </div>
-                
-            <% end %>
-        </div>
-    </div>
-</div>
-<!-- /basic modal -->
-
-<script>
-        function editor_uploaded(data) {
-            //CKEDITOR.instances["editor-full"].insertHtml(data);
-            tinymce.activeEditor.execCommand('mceInsertContent', false, data);
-            // CKEDITOR.instances["editor-full"].insertHtml(data);
-            $(".uploading").hide();
-            $("#modal_upload_video").trigger("click")
-            $(".post_video").attr("disabled", false);
-        }
-        $(document).ready(function() {
-            $("#editor_upload_button").click(function() {							
-                $("#editor_upload_file").trigger("click")
-            });
-            $("#editor_upload_file").change(function() {
-                $(".uploading").show();
-                $("#editor_upload_form").submit();
-            })
-            $(".post_video").click(function() {
-                $(".uploading").show();
-                $(this).attr("disabled", true);
-            })
-            
-            
-            // Init tinyMCE
-            tinymce.init({
-				selector: '#editor-full',
-				height: 500,
-				theme: 'modern',
-				plugins: [
-				  'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-				  'searchreplace wordcount visualblocks visualchars code fullscreen',
-				  'insertdatetime media nonbreaking save table directionality',
-				  'emoticons template paste textcolor colorpicker textpattern imagetools'
-				],
-				toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-				toolbar2: 'print preview media | forecolor backcolor emoticons',
-				image_advtab: true,
-				templates: [
-				  { title: 'Test template 1', content: 'Test 1' },
-				  { title: 'Test template 2', content: 'Test 2' }
-				],
-				content_css: [
-				  '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-				  '//www.tinymce.com/css/codepen.min.css'
-				],
-				language: 'vi_VN',
-				valid_elements: '*[*]',
-				entity_encoding: "raw",
-				relative_urls: false,
-				convert_urls: false,
-				remove_script_host : false,
-			});
-        });
-        
-</script>
