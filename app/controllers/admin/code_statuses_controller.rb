@@ -4,10 +4,16 @@ class Admin::CodeStatusesController < ApplicationController
   # GET /code_statuses
   # GET /code_statuses.json
   def index
+    # authorize
+    authorize! :read, CodeStatus
+    
     @code_statuses = CodeStatus.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, CodeStatus
+    
     @code_statuses = CodeStatus.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/code_statuses/index"
   end
@@ -19,17 +25,24 @@ class Admin::CodeStatusesController < ApplicationController
 
   # GET /code_statuses/new
   def new
+    # authorize
+    authorize! :create, @code_status
+    
     @code_status = CodeStatus.new
   end
 
   # GET /code_statuses/1/edit
   def edit
+    # authorize
+    authorize! :update, @code_status
   end
 
   # POST /code_statuses
   # POST /code_statuses.json
   def create
     @code_status = CodeStatus.new(code_status_params)
+    # authorize
+    authorize! :create, @code_status
 
     respond_to do |format|
       if @code_status.save
@@ -45,6 +58,9 @@ class Admin::CodeStatusesController < ApplicationController
   # PATCH/PUT /code_statuses/1
   # PATCH/PUT /code_statuses/1.json
   def update
+    # authorize
+    authorize! :update, @code_status
+    
     respond_to do |format|
       if @code_status.update(code_status_params)
         format.html { redirect_to edit_admin_code_status_path(@code_status.id), notice: 'Code status was successfully updated.' }
@@ -59,6 +75,9 @@ class Admin::CodeStatusesController < ApplicationController
   # DELETE /code_statuses/1
   # DELETE /code_statuses/1.json
   def destroy
+    # authorize
+    authorize! :delete, @code_status
+    
     @code_status.destroy
     respond_to do |format|
       format.html { redirect_to admin_code_statuses_url, notice: 'Code status was successfully destroyed.' }
@@ -74,6 +93,6 @@ class Admin::CodeStatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def code_status_params
-      params.require(:code_status).permit(:title, :description)
+      params.require(:code_status).permit(:title, :description, :user_id, :approved)
     end
 end

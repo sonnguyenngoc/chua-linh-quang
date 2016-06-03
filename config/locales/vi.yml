@@ -194,6 +194,7 @@ vi:
   bought_at_a_price: "Tổng số tiền đã mua"
   show: "Hiển thị"
   show_product: "Hiển thị sản phẩm"
+  show_article: "Hiển thị bài viết"
   stock: "Còn trong kho"
   old_price: "Giá cũ"
   current_price: "Giá bán"
@@ -310,9 +311,11 @@ vi:
   voucher: "Voucher"
   coupon: "Coupon"
   user_group: "Nhóm người dùng"
+  user_groups: "Danh sách nhóm người dùng"
   system_setting: "Cấu hình hệ thống"
-  user_groups: "Nhóm người dùng"
-  cetegroy_level: "Chuyên mục cấp"
+  contact: "Liên hệ"
+  newsletter: "Đăng ký nhận tin mới"
+  category_level: "Cấp chuyên mục"
   
   will_paginate:
     page_entries_info:

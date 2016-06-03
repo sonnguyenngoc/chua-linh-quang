@@ -4,12 +4,18 @@ class Admin::CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
+    # authorize
+    authorize! :read, Company
+    
     @companies = Company.where(type_company: "Branch Office").paginate(:page => params[:page], :per_page => 10)
   end
   
   # GET /companies
   # GET /companies.json
   def head_office
+    # authorize
+    authorize! :read, Company
+    
     @companies = Company.where(type_company: "Head Office").paginate(:page => params[:page], :per_page => 10)
   end
   
@@ -20,16 +26,24 @@ class Admin::CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
+    # authorize
+    authorize! :create, Company
+    
     @company = Company.new
   end
 
   # GET /companies/1/edit
   def edit
+    # authorize
+    authorize! :update, Company
   end
 
   # POST /companies
   # POST /companies.json
   def create
+    # authorize
+    authorize! :create, Company
+    
     @company = Company.new(company_params)
 
     respond_to do |format|
@@ -46,6 +60,9 @@ class Admin::CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
+    # authorize
+    authorize! :update, Company
+    
     respond_to do |format|
       if @company.update(company_params)
         format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Company was successfully updated.' }
@@ -60,6 +77,9 @@ class Admin::CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
+    # authorize
+    authorize! :delete, Company
+    
     @company.destroy
     respond_to do |format|
       format.html { redirect_to admin_companies_url, notice: 'Company was successfully destroyed.' }

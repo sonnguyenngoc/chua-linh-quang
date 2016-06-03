@@ -4,10 +4,16 @@ class Admin::OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    # authorize
+    authorize! :read, Order
+    
     @orders = Order.get_order_pending.paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, Order
+    
     @orders = Order.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/orders/index"
   end
@@ -19,17 +25,24 @@ class Admin::OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    # authorize
+    authorize! :create, @order
+    
     @order = Order.new
   end
 
   # GET /orders/1/edit
   def edit
+    # authorize
+    authorize! :update, @order
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    # authorize
+    authorize! :create, @order
 
     respond_to do |format|
       if @order.save
@@ -45,6 +58,9 @@ class Admin::OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    # authorize
+    authorize! :update, @order
+    
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to [:admin, @order], notice: 'Order was successfully updated.' }
@@ -59,6 +75,9 @@ class Admin::OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    # authorize
+    authorize! :delete, @order
+    
     @order.destroy
     respond_to do |format|
       format.html { redirect_to admin_orders_url, notice: 'Order was successfully destroyed.' }

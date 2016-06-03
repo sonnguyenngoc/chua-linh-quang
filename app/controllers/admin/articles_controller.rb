@@ -4,10 +4,16 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+    # authorize
+    authorize! :read, Article
+    
     @articles = Article.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, Article
+    
     @articles = Article.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/articles/index"
   end
@@ -19,6 +25,9 @@ class Admin::ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
+    # authorize
+    authorize! :create, Article
+    
     @article = Article.new
     @article_categories = ArticleCategory.all
     @products = Product.all
@@ -26,6 +35,9 @@ class Admin::ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    # authorize
+    authorize! :update, Article
+    
     @article_categories = ArticleCategory.all
     @products = Product.all
   end
@@ -33,6 +45,9 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    # authorize
+    authorize! :read, Article
+    
     @article = Article.new(article_params)
     @article.article_categories.clear
     if params[:category_ids].present?
@@ -62,6 +77,9 @@ class Admin::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    # authorize
+    authorize! :update, Article
+    
     @article.article_categories.clear
     if params[:category_ids].present?
         @article.article_categories.clear
@@ -91,6 +109,9 @@ class Admin::ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    # authorize
+    authorize! :delete, Article
+    
     @article.destroy
     respond_to do |format|
       format.html { redirect_to admin_articles_url, notice: 'Article was successfully destroyed.' }
@@ -145,6 +166,6 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show)
+      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show, :page_layout, :image_url_full_width)
     end
 end

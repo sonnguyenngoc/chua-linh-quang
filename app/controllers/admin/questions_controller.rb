@@ -4,10 +4,16 @@ class Admin::QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    # authorize
+    authorize! :read, Question
+    
     @questions = Question.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, Question
+    
     @questions = Question.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/questions/index"
   end
@@ -19,16 +25,23 @@ class Admin::QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    # authorize
+    authorize! :create, Question
     @question = Question.new
   end
 
   # GET /questions/1/edit
   def edit
+    # authorize
+    authorize! :update, Question
   end
 
   # POST /questions
   # POST /questions.json
   def create
+    # authorize
+    authorize! :create, Question
+    
     @question = Question.new(question_params)
 
     respond_to do |format|
@@ -45,6 +58,9 @@ class Admin::QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    # authorize
+    authorize! :update, Question
+    
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -59,6 +75,9 @@ class Admin::QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    # authorize
+    authorize! :delete, Question
+    
     @question.destroy
     respond_to do |format|
       format.html { redirect_to admin_questions_url, notice: 'Question was successfully destroyed.' }

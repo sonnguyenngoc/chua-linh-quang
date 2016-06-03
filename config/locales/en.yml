@@ -193,6 +193,7 @@ en:
   bought_at_a_price: "Total Amount Bought"
   show: "Show"
   show_product: "Product show"
+  show_article: "Article show"
   stock: "Stock"
   old_price: "Old Price"
   current_price: "Current Price"
@@ -308,8 +309,11 @@ en:
   voucher: "Voucher"
   coupon: "Coupon"
   user_group: "User group"
+  user_groups: "User groups"
   system_setting: "System setting"
-  
+  contact: "Contact"
+  newsletter: "Newsletter"
+  category_level: "Level Category"
   
   will_paginate:
     page_entries_info:

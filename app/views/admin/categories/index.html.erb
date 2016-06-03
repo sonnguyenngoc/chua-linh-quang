@@ -52,7 +52,7 @@
                 <div class="panel panel-flat">
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_categories) %></span></h5>
-                        <% if can? :create, :products %>
+                        <% if can? :create, :categories %>
                             <%= link_to t(:new_category), new_admin_category_path, class: 'btn btn-primary pull-right' %> 
                         <% end %>
                     </div>

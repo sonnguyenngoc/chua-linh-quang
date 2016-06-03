@@ -13,6 +13,7 @@ class Product < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   accepts_nested_attributes_for :product_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
   has_and_belongs_to_many :articles
+  belongs_to :user
   
   def self.get_products_for_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
@@ -197,6 +198,10 @@ class Product < ActiveRecord::Base
       arr << I18n.t(st) if st.present?
     end
     return arr    
+  end
+  
+  def split_statues
+    I18n.t(self.status.split(","))
   end
   
   def display_statuses

@@ -39,16 +39,15 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     # authorize
-    authorize! :update, Category
+    authorize! :update, @category
   end
 
   # POST /categories
   # POST /categories.json
-  def create
+  def create    
+    @category = Category.new(category_params)
     # authorize
     authorize! :create, @category
-    
-    @category = Category.new(category_params)
 
     respond_to do |format|
       if @category.save
@@ -72,7 +71,7 @@ class Admin::CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
     # authorize
-    authorize! :update, Category
+    authorize! :update, @category
     
     respond_to do |format|
       if @category.update(category_params)
@@ -95,7 +94,7 @@ class Admin::CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     # authorize
-    authorize! :delete, Category
+    authorize! :delete, @category
     
     respond_to do |format|
       # update all level

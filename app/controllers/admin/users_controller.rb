@@ -2,13 +2,21 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def index
+    # authorize
+    #authorize! :read, User
+    
     @users = User.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def edit
+    # authorize
+   # authorize! :update, User
   end
   
   def update
+    # authorize
+    #authorize! :update, User
+    
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to edit_admin_user_path(@user.id), notice: 'User was successfully updated.' }
@@ -23,6 +31,9 @@ class Admin::UsersController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    # authorize
+    # authorize! :delete, User
+    
     @user.destroy
     respond_to do |format|
       format.html { redirect_to admin_users_url, notice: 'User was successfully destroyed.' }
