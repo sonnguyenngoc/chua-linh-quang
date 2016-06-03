@@ -7,14 +7,16 @@
                         <h3><a href="<%= change_current_area_path(area.id) %>"><%= area.name %></a></h3>
                         <ul class="list_of_links">
                             <% area.children.order("display_order").each_with_index do |child,index| %>
-                                <li<%= ' style="display:none"'.html_safe if index > 4 %>>
+                                <li<%= ' stylez="display:none"'.html_safe if index > 9 %>>
                                     <a href="<%= change_current_area_path(child.id) %>"><%= child.name %></a>
                                 </li>
                             <% end %>
-                            <li class="view_more_list">
+                            <!--<li class="view_more_list">
                                 <a href="#more" onclick="$(this).parents('ul').find('li').show();$(this).hide()">Xem thêm</a>
-                            </li>
+                            </li>-->
                         </ul>
+                        <br style="clear: both" />
+                        <br />
                     </div>
                 <% end %>
             </div>
