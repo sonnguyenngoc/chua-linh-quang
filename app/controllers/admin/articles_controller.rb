@@ -26,11 +26,11 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles/new
   def new
     # authorize
-    authorize! :create, @article
+    authorize! :create, Article
     
     @article = Article.new
     @article_categories = ArticleCategory.all
-    @products = Product.all
+    @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /articles/1/edit
@@ -39,15 +39,15 @@ class Admin::ArticlesController < ApplicationController
     authorize! :update, @article
     
     @article_categories = ArticleCategory.all
-    @products = Product.all
+    @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
 
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
     # authorize
-    authorize! :read, @article
+    authorize! :create, Article
+    @article = Article.new(article_params)
     
     @article.article_categories.clear
     if params[:category_ids].present?

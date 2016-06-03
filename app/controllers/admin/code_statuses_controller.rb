@@ -26,7 +26,7 @@ class Admin::CodeStatusesController < ApplicationController
   # GET /code_statuses/new
   def new
     # authorize
-    authorize! :create, @code_status
+    authorize! :create, CodeStatus
     
     @code_status = CodeStatus.new
   end
@@ -40,9 +40,9 @@ class Admin::CodeStatusesController < ApplicationController
   # POST /code_statuses
   # POST /code_statuses.json
   def create
-    @code_status = CodeStatus.new(code_status_params)
     # authorize
-    authorize! :create, @code_status
+    authorize! :create, CodeStatus
+    @code_status = CodeStatus.new(code_status_params)
 
     respond_to do |format|
       if @code_status.save

@@ -26,7 +26,7 @@ class Admin::PaymentMethodsController < ApplicationController
   # GET /payment_methods/new
   def new
     # authorize
-    authorize! :create, @payment_method
+    authorize! :create, PaymentMethod
     
     @payment_method = PaymentMethod.new
   end
@@ -40,9 +40,9 @@ class Admin::PaymentMethodsController < ApplicationController
   # POST /payment_methods
   # POST /payment_methods.json
   def create
-    @payment_method = PaymentMethod.new(payment_method_params)
     # authorize
-    authorize! :create, @payment_method
+    authorize! :create, PaymentMethod
+    @payment_method = PaymentMethod.new(payment_method_params)
     
     respond_to do |format|
       if @payment_method.save

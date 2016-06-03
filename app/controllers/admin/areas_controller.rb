@@ -26,7 +26,7 @@ class Admin::AreasController < ApplicationController
   # GET /areas/new
   def new
     # authorize
-    authorize! :create, @area
+    authorize! :create, Area
     
     @area = Area.new
   end
@@ -40,10 +40,9 @@ class Admin::AreasController < ApplicationController
   # POST /areas
   # POST /areas.json
   def create
-    @area = Area.new(area_params)
     # authorize
-    authorize! :create, @area
-    
+    authorize! :create, Area
+    @area = Area.new(area_params)
 
     respond_to do |format|
       if @area.save

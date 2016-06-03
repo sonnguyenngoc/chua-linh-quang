@@ -26,7 +26,7 @@ class Admin::ManufacturersController < ApplicationController
   # GET /manufacturers/new
   def new
     # authorize
-    authorize! :create, @manufacturer
+    authorize! :create, Manufacturer
     
     @manufacturer = Manufacturer.new
   end
@@ -40,9 +40,9 @@ class Admin::ManufacturersController < ApplicationController
   # POST /manufacturers
   # POST /manufacturers.json
   def create
-    @manufacturer = Manufacturer.new(manufacturer_params)
     # authorize
-    authorize! :create, @manufacturer
+    authorize! :create, Manufacturer
+    @manufacturer = Manufacturer.new(manufacturer_params)
 
     respond_to do |format|
       if @manufacturer.save

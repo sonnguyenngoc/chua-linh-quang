@@ -18,7 +18,7 @@ class Admin::SlideshowsController < ApplicationController
   # GET /slideshows/new
   def new
     # authorize
-    authorize! :create, @slideshow
+    authorize! :create, Slideshow
     
     @slideshow = Slideshow.new
   end
@@ -32,9 +32,9 @@ class Admin::SlideshowsController < ApplicationController
   # POST /slideshows
   # POST /slideshows.json
   def create
-    @slideshow = Slideshow.new(slideshow_params)
     # authorize
-    authorize! :create, @slideshow
+    authorize! :create, Slideshow
+    @slideshow = Slideshow.new(slideshow_params)
     
     respond_to do |format|
       if @slideshow.save

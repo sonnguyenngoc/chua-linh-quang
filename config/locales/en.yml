@@ -113,6 +113,7 @@ en:
   placeholder_categories: "Choose the categories for article..."
   related_products: "Related Products"
   code_statuses: "Code"
+  code_status: "Article Tag"
   listing_code_statuses: "Listing Code Statuses"
   new_code_status: "New Code Status"
   categories_article: "Categories of Article"
@@ -213,6 +214,7 @@ en:
   rating: "Rating"
   article_title: "Title"
   testimonials: "Testimonials"
+  testimonial: "Testimonial"
   
   #-------------------------------------
   question: "Question"

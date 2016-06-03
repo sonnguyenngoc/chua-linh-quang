@@ -26,7 +26,7 @@ class Admin::TestimonialsController < ApplicationController
   # GET /testimonials/new
   def new
     # authorize
-    authorize! :create, @testimonial
+    authorize! :create, Testimonial
     
     @testimonial = Testimonial.new
   end
@@ -40,9 +40,9 @@ class Admin::TestimonialsController < ApplicationController
   # POST /testimonials
   # POST /testimonials.json
   def create
-    @testimonial = Testimonial.new(testimonial_params)
     # authorize
-    authorize! :create, @testimonial
+    authorize! :create, Testimonial
+    @testimonial = Testimonial.new(testimonial_params)
 
     respond_to do |format|
       if @testimonial.save

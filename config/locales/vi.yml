@@ -214,6 +214,7 @@ vi:
   rating: "Đánh giá"
   article_title: "Tiêu đề bài viết"
   testimonials: "Ý kiến khách hàng"
+  testimonial: "Ý kiến khách hàng"
   
   #-------------------------------------
   question: "Câu hỏi"
@@ -304,7 +305,7 @@ vi:
   manufacturer: "Thương hiệu"
   area: "Khu vực"
   article_category: "Chuyên mục bài viết"
-  code_status: "Code status"
+  code_status: "Thẻ bài viết"
   slideshow: "Slideshow trình chiếu"
   comment: "Bình luận sản phẩm"
   comment_article: "Bình luận bài viết"

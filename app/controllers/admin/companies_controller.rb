@@ -27,7 +27,7 @@ class Admin::CompaniesController < ApplicationController
   # GET /companies/new
   def new
     # authorize
-    authorize! :create, @company
+    authorize! :create, Company
     
     @company = Company.new
   end
@@ -41,9 +41,9 @@ class Admin::CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
     # authorize
-    authorize! :create, @company
+    authorize! :create, Company
+    @company = Company.new(company_params)
     
     respond_to do |format|
       if @company.save

@@ -31,7 +31,7 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/new
   def new
     # authorize
-    authorize! :create, @category
+    authorize! :create, Category
     
     @category = Category.new
   end
@@ -44,11 +44,11 @@ class Admin::CategoriesController < ApplicationController
 
   # POST /categories
   # POST /categories.json
-  def create    
-    @category = Category.new(category_params)
+  def create
     # authorize
-    authorize! :create, @category
-
+    authorize! :create, Category
+    @category = Category.new(category_params)
+    
     respond_to do |format|
       if @category.save
         # update parent

@@ -26,7 +26,7 @@ class Admin::DeliveryMethodsController < ApplicationController
   # GET /delivery_methods/new
   def new
     # authorize
-    authorize! :create, @delivery_method
+    authorize! :create, DeliveryMethod
     
     @delivery_method = DeliveryMethod.new
   end
@@ -40,9 +40,9 @@ class Admin::DeliveryMethodsController < ApplicationController
   # POST /delivery_methods
   # POST /delivery_methods.json
   def create
-    @delivery_method = DeliveryMethod.new(delivery_method_params)
     # authorize
-    authorize! :create, @delivery_method
+    authorize! :create, DeliveryMethod
+    @delivery_method = DeliveryMethod.new(delivery_method_params)
     
     respond_to do |format|
       if @delivery_method.save

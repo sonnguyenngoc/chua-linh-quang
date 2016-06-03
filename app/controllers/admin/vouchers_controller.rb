@@ -27,7 +27,7 @@ class Admin::VouchersController < ApplicationController
   # GET /vouchers/new
   def new
     # authorize
-    authorize! :create, @voucher
+    authorize! :create, Voucher
     
     @voucher = Voucher.new
     @voucher.from_date = Time.now
@@ -43,9 +43,9 @@ class Admin::VouchersController < ApplicationController
   # POST /vouchers
   # POST /vouchers.json
   def create
-    @voucher = Voucher.new(voucher_params)
     # authorize
-    authorize! :create, @voucher
+    authorize! :create, Voucher
+    @voucher = Voucher.new(voucher_params)
     
     @voucher.generate_codes
 

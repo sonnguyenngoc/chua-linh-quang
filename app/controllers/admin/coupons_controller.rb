@@ -26,7 +26,7 @@ class Admin::CouponsController < ApplicationController
   # GET /coupons/new
   def new
     # authorize
-    authorize! :create, @coupon
+    authorize! :create, Coupon
     
     @coupon = Coupon.new
     @coupon.from_date = Time.now
@@ -42,9 +42,9 @@ class Admin::CouponsController < ApplicationController
   # POST /coupons
   # POST /coupons.json
   def create
-    @coupon = Coupon.new(coupon_params)
     # authorize
-    authorize! :create, @coupon
+    authorize! :create, Coupon
+    @coupon = Coupon.new(coupon_params)
     
     @coupon.generate_codes
 

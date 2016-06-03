@@ -26,7 +26,7 @@ class Admin::CommentArticlesController < ApplicationController
   # GET /comment_articles/new
   def new
     # authorize
-    authorize! :create, @comment_article
+    authorize! :create, CommentArticle
     
     @comment_article = CommentArticle.new
   end
@@ -40,9 +40,9 @@ class Admin::CommentArticlesController < ApplicationController
   # POST /comment_articles
   # POST /comment_articles.json
   def create
-    @comment_article = CommentArticle.new(comment_article_params)
     # authorize
-    authorize! :create, @comment_article
+    authorize! :create, CommentArticle
+    @comment_article = CommentArticle.new(comment_article_params)
     
     respond_to do |format|
       if @comment_article.save

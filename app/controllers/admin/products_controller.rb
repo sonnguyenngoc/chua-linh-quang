@@ -28,7 +28,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
     
     # authorize
-    authorize! :create, @product
+    authorize! :create, Product
     
     @categories = Category.all
     @areas = Area.all
@@ -56,10 +56,9 @@ class Admin::ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-    
     # authorize
-    authorize! :create, @product
+    authorize! :create, Product
+    @product = Product.new(product_params)
     
     @product.user_id = current_user.id
     

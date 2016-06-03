@@ -26,7 +26,7 @@ class Admin::OrdersController < ApplicationController
   # GET /orders/new
   def new
     # authorize
-    authorize! :create, @order
+    authorize! :create, Order
     
     @order = Order.new
   end
@@ -40,9 +40,9 @@ class Admin::OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
     # authorize
-    authorize! :create, @order
+    authorize! :create, Order
+    @order = Order.new(order_params)
 
     respond_to do |format|
       if @order.save

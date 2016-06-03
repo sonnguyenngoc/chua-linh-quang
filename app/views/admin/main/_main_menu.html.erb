@@ -147,7 +147,7 @@
                 </li>
             <% end %>
             
-            <% if can?(:read, Customer) %>
+            <% if can?(:read, Customer) or can?(:read, Contact) or can?(:read, Newsletter) %>
                 <li>
                     <a href="#"><i class="icon-people"></i> <span><%= t(:customer) %></span></a>
                     <ul>
@@ -156,12 +156,16 @@
                                 <%= link_to t(:customers), admin_customers_path %>
                             </li>
                         <% end %>
-                        <li class="<%= "active" if ["admin/contacts"].include?(params[:controller]) %>">
-                            <%= link_to t(:contact), admin_contacts_path %>
-                        </li>
-                        <li class="<%= "active" if ["admin/newsletters"].include?(params[:controller]) %>">
-                            <%= link_to t(:newsletter), admin_newsletters_path %>
-                        </li>
+                        <% if can? :read, Contact %>
+                            <li class="<%= "active" if ["admin/contacts"].include?(params[:controller]) %>">
+                                <%= link_to t(:contact), admin_contacts_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, Newsletter %>
+                            <li class="<%= "active" if ["admin/newsletters"].include?(params[:controller]) %>">
+                                <%= link_to t(:newsletter), admin_newsletters_path %>
+                            </li>
+                        <% end %>
                     </ul>
                 </li>
             <% end %>

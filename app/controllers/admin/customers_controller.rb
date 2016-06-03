@@ -26,7 +26,7 @@ class Admin::CustomersController < ApplicationController
   # GET /customers/new
   def new
     # authorize
-    authorize! :create, @customer
+    authorize! :create, Customer
     
     @customer = Customer.new
   end
@@ -40,9 +40,9 @@ class Admin::CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    @customer = Customer.new(customer_params)
     # authorize
-    authorize! :create, @customer
+    authorize! :create, Customer
+    @customer = Customer.new(customer_params)
     
     respond_to do |format|
       if @customer.save

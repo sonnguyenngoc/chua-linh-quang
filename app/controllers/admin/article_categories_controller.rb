@@ -26,7 +26,7 @@ class Admin::ArticleCategoriesController < ApplicationController
   # GET /article_categories/new
   def new
     # authorize
-    authorize! :create, @article_category
+    authorize! :create, ArticleCategory
     
     @article_category = ArticleCategory.new
   end
@@ -40,9 +40,9 @@ class Admin::ArticleCategoriesController < ApplicationController
   # POST /article_categories
   # POST /article_categories.json
   def create
-    @article_category = ArticleCategory.new(article_category_params)
     # authorize
-    authorize! :create, @article_category
+    authorize! :create, ArticleCategory
+    @article_category = ArticleCategory.new(article_category_params)
 
     respond_to do |format|
       if @article_category.save
