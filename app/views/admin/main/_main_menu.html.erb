@@ -75,7 +75,7 @@
                 </li>
             <% end %>
             
-            <% if can?(:read, Comment) or can?(:read, CommentArticle) or can?(:read, Question) or can?(:read, Tertimonial) %>
+            <% if can?(:read, Comment) or can?(:read, CommentArticle) or can?(:read, Question) or can?(:read, Testimonial) %>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-comment"></i> <span><%= truncate("#{t(:comment_question)}", length: 25) %></span></a>
                     <ul>

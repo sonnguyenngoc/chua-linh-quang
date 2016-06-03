@@ -138,6 +138,14 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
+                class_name: "Testimonial",
+                display_name: I18n.t(:tertimonial),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no","own","not_own"], multiple: true},
+                        ]
+            },
+            {
                 class_name: "CommentArticle",
                 display_name: I18n.t(:comment_article),
                 actions: [
