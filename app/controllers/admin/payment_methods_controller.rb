@@ -26,7 +26,7 @@ class Admin::PaymentMethodsController < ApplicationController
   # GET /payment_methods/new
   def new
     # authorize
-    authorize! :create, PaymentMethod
+    authorize! :create, @payment_method
     
     @payment_method = PaymentMethod.new
   end
@@ -34,17 +34,16 @@ class Admin::PaymentMethodsController < ApplicationController
   # GET /payment_methods/1/edit
   def edit
     # authorize
-    authorize! :update, PaymentMethod
+    authorize! :update, @payment_method
   end
 
   # POST /payment_methods
   # POST /payment_methods.json
   def create
-    # authorize
-    authorize! :create, PaymentMethod
-    
     @payment_method = PaymentMethod.new(payment_method_params)
-
+    # authorize
+    authorize! :create, @payment_method
+    
     respond_to do |format|
       if @payment_method.save
         format.html { redirect_to edit_admin_payment_method_path(@payment_method.id), notice: 'Payment method was successfully created.' }
@@ -60,7 +59,7 @@ class Admin::PaymentMethodsController < ApplicationController
   # PATCH/PUT /payment_methods/1.json
   def update
     # authorize
-    authorize! :update, PaymentMethod
+    authorize! :update, @payment_method
     
     respond_to do |format|
       if @payment_method.update(payment_method_params)
@@ -77,7 +76,7 @@ class Admin::PaymentMethodsController < ApplicationController
   # DELETE /payment_methods/1.json
   def destroy
     # authorize
-    authorize! :delete, PaymentMethod
+    authorize! :delete, @payment_method
     
     @payment_method.destroy
     respond_to do |format|

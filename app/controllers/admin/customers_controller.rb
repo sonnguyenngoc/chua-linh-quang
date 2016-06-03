@@ -26,7 +26,7 @@ class Admin::CustomersController < ApplicationController
   # GET /customers/new
   def new
     # authorize
-    authorize! :create, Customer
+    authorize! :create, @customer
     
     @customer = Customer.new
   end
@@ -34,17 +34,16 @@ class Admin::CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     # authorize
-    authorize! :update, Customer
+    authorize! :update, @customer
   end
 
   # POST /customers
   # POST /customers.json
   def create
-    # authorize
-    authorize! :create, Customer
-    
     @customer = Customer.new(customer_params)
-
+    # authorize
+    authorize! :create, @customer
+    
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
@@ -60,7 +59,7 @@ class Admin::CustomersController < ApplicationController
   # PATCH/PUT /customers/1.json
   def update
     # authorize
-    authorize! :update, Customer
+    authorize! :update, @customer
     
     respond_to do |format|
       if @customer.update(customer_params)
@@ -77,7 +76,7 @@ class Admin::CustomersController < ApplicationController
   # DELETE /customers/1.json
   def destroy
     # authorize
-    authorize! :delete, Customer
+    authorize! :delete, @customer
     
     @customer.destroy
     respond_to do |format|

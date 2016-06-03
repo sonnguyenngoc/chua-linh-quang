@@ -27,7 +27,7 @@ class Admin::CommentsController < ApplicationController
   # GET /comments/new
   def new
     # authorize
-    authorize! :create, Comment
+    authorize! :create, @comment
     
     @comment = Comment.new
   end
@@ -35,16 +35,16 @@ class Admin::CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     # authorize
-    authorize! :update, Comment
+    authorize! :update, @comment
   end
 
   # POST /comments
   # POST /comments.json
   def create
-    # authorize
-    authorize! :create, Comment
-    
     @comment = Comment.new(comment_params)
+    # authorize
+    authorize! :create, @comment
+    
     respond_to do |format|
       if @comment.save
         format.html { redirect_to edit_admin_comment_path(@delivery_method.id), notice: 'Comment was successfully created.' }
@@ -60,7 +60,7 @@ class Admin::CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
     # authorize
-    authorize! :update, Comment
+    authorize! :update, @comment
     
     respond_to do |format|
       if @comment.update(comment_params)
@@ -77,7 +77,7 @@ class Admin::CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     # authorize
-    authorize! :delete, Comment
+    authorize! :delete, @comment
     
     @comment.destroy
     respond_to do |format|

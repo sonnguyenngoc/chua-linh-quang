@@ -26,7 +26,7 @@ class Admin::CouponsController < ApplicationController
   # GET /coupons/new
   def new
     # authorize
-    authorize! :create, Coupon
+    authorize! :create, @coupon
     
     @coupon = Coupon.new
     @coupon.from_date = Time.now
@@ -36,16 +36,15 @@ class Admin::CouponsController < ApplicationController
   # GET /coupons/1/edit
   def edit
     # authorize
-    authorize! :update, Coupon
+    authorize! :update, @coupon
   end
 
   # POST /coupons
   # POST /coupons.json
   def create
-    # authorize
-    authorize! :create, Coupon
-    
     @coupon = Coupon.new(coupon_params)
+    # authorize
+    authorize! :create, @coupon
     
     @coupon.generate_codes
 
@@ -64,7 +63,7 @@ class Admin::CouponsController < ApplicationController
   # PATCH/PUT /coupons/1.json
   def update
     # authorize
-    authorize! :update, Coupon
+    authorize! :update, @coupon
     
     respond_to do |format|
       if @coupon.update(coupon_params)
@@ -81,7 +80,7 @@ class Admin::CouponsController < ApplicationController
   # DELETE /coupons/1.json
   def destroy
     # authorize
-    authorize! :delete, Coupon
+    authorize! :delete, @coupon
     
     @coupon.destroy
     respond_to do |format|

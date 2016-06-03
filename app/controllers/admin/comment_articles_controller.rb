@@ -26,7 +26,7 @@ class Admin::CommentArticlesController < ApplicationController
   # GET /comment_articles/new
   def new
     # authorize
-    authorize! :create, CommentArticle
+    authorize! :create, @comment_article
     
     @comment_article = CommentArticle.new
   end
@@ -34,17 +34,16 @@ class Admin::CommentArticlesController < ApplicationController
   # GET /comment_articles/1/edit
   def edit
     # authorize
-    authorize! :update, CommentArticle
+    authorize! :update, @comment_article
   end
 
   # POST /comment_articles
   # POST /comment_articles.json
   def create
-    # authorize
-    authorize! :create, CommentArticle
-    
     @comment_article = CommentArticle.new(comment_article_params)
-
+    # authorize
+    authorize! :create, @comment_article
+    
     respond_to do |format|
       if @comment_article.save
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
@@ -60,7 +59,7 @@ class Admin::CommentArticlesController < ApplicationController
   # PATCH/PUT /comment_articles/1.json
   def update
     # authorize
-    authorize! :update, CommentArticle
+    authorize! :update, @comment_article
     
     respond_to do |format|
       if @comment_article.update(comment_article_params)
@@ -77,7 +76,7 @@ class Admin::CommentArticlesController < ApplicationController
   # DELETE /comment_articles/1.json
   def destroy
     # authorize
-    authorize! :delete, CommentArticle
+    authorize! :delete, @comment_article
     
     @comment_article.destroy
     respond_to do |format|

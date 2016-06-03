@@ -26,7 +26,7 @@ class Admin::AreasController < ApplicationController
   # GET /areas/new
   def new
     # authorize
-    authorize! :create, Area
+    authorize! :create, @area
     
     @area = Area.new
   end
@@ -34,16 +34,16 @@ class Admin::AreasController < ApplicationController
   # GET /areas/1/edit
   def edit
     # authorize
-    authorize! :update, Area
+    authorize! :update, @area
   end
 
   # POST /areas
   # POST /areas.json
   def create
-    # authorize
-    authorize! :create, Area
-    
     @area = Area.new(area_params)
+    # authorize
+    authorize! :create, @area
+    
 
     respond_to do |format|
       if @area.save
@@ -60,7 +60,7 @@ class Admin::AreasController < ApplicationController
   # PATCH/PUT /areas/1.json
   def update
     # authorize
-    authorize! :update, Area
+    authorize! :update, @area
     
     respond_to do |format|
       if @area.update(area_params)
@@ -77,7 +77,7 @@ class Admin::AreasController < ApplicationController
   # DELETE /areas/1.json
   def destroy
     # authorize
-    authorize! :delete, Area
+    authorize! :delete, @area
     
     @area.destroy
     respond_to do |format|

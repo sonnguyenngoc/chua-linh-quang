@@ -26,7 +26,7 @@ class Admin::TestimonialsController < ApplicationController
   # GET /testimonials/new
   def new
     # authorize
-    authorize! :create, Testimonial
+    authorize! :create, @testimonial
     
     @testimonial = Testimonial.new
   end
@@ -34,16 +34,15 @@ class Admin::TestimonialsController < ApplicationController
   # GET /testimonials/1/edit
   def edit
     # authorize
-    authorize! :update, Testimonial
+    authorize! :update, @testimonial
   end
 
   # POST /testimonials
   # POST /testimonials.json
   def create
-    # authorize
-    authorize! :create, Testimonial
-    
     @testimonial = Testimonial.new(testimonial_params)
+    # authorize
+    authorize! :create, @testimonial
 
     respond_to do |format|
       if @testimonial.save
@@ -60,7 +59,7 @@ class Admin::TestimonialsController < ApplicationController
   # PATCH/PUT /testimonials/1.json
   def update
     # authorize
-    authorize! :update, Testimonial
+    authorize! :update, @testimonial
     
     respond_to do |format|
       if @testimonial.update(testimonial_params)
@@ -77,7 +76,7 @@ class Admin::TestimonialsController < ApplicationController
   # DELETE /testimonials/1.json
   def destroy
     # authorize
-    authorize! :delete, Testimonial
+    authorize! :delete, @testimonial
     
     @testimonial.destroy
     respond_to do |format|

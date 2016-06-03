@@ -26,7 +26,7 @@ class Admin::DeliveryMethodsController < ApplicationController
   # GET /delivery_methods/new
   def new
     # authorize
-    authorize! :create, DeliveryMethod
+    authorize! :create, @delivery_method
     
     @delivery_method = DeliveryMethod.new
   end
@@ -34,17 +34,16 @@ class Admin::DeliveryMethodsController < ApplicationController
   # GET /delivery_methods/1/edit
   def edit
     # authorize
-    authorize! :update, DeliveryMethod
+    authorize! :update, @delivery_method
   end
 
   # POST /delivery_methods
   # POST /delivery_methods.json
   def create
-    # authorize
-    authorize! :create, DeliveryMethod
-    
     @delivery_method = DeliveryMethod.new(delivery_method_params)
-
+    # authorize
+    authorize! :create, @delivery_method
+    
     respond_to do |format|
       if @delivery_method.save
         format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Delivery method was successfully created.' }
@@ -60,7 +59,7 @@ class Admin::DeliveryMethodsController < ApplicationController
   # PATCH/PUT /delivery_methods/1.json
   def update
     # authorize
-    authorize! :update, DeliveryMethod
+    authorize! :update, @delivery_method
     
     respond_to do |format|
       if @delivery_method.update(delivery_method_params)
@@ -77,7 +76,7 @@ class Admin::DeliveryMethodsController < ApplicationController
   # DELETE /delivery_methods/1.json
   def destroy
     # authorize
-    authorize! :delete, DeliveryMethod
+    authorize! :delete, @delivery_method
     
     @delivery_method.destroy
     respond_to do |format|

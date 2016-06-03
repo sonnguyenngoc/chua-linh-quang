@@ -26,7 +26,7 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles/new
   def new
     # authorize
-    authorize! :create, Article
+    authorize! :create, @article
     
     @article = Article.new
     @article_categories = ArticleCategory.all
@@ -36,7 +36,7 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     # authorize
-    authorize! :update, Article
+    authorize! :update, @article
     
     @article_categories = ArticleCategory.all
     @products = Product.all
@@ -45,10 +45,10 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    # authorize
-    authorize! :read, Article
-    
     @article = Article.new(article_params)
+    # authorize
+    authorize! :read, @article
+    
     @article.article_categories.clear
     if params[:category_ids].present?
       params[:category_ids].each do |id|      
@@ -78,7 +78,7 @@ class Admin::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     # authorize
-    authorize! :update, Article
+    authorize! :update, @article
     
     @article.article_categories.clear
     if params[:category_ids].present?
@@ -110,7 +110,7 @@ class Admin::ArticlesController < ApplicationController
   # DELETE /articles/1.json
   def destroy
     # authorize
-    authorize! :delete, Article
+    authorize! :delete, @article
     
     @article.destroy
     respond_to do |format|

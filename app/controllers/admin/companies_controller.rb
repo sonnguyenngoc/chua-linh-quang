@@ -27,7 +27,7 @@ class Admin::CompaniesController < ApplicationController
   # GET /companies/new
   def new
     # authorize
-    authorize! :create, Company
+    authorize! :create, @company
     
     @company = Company.new
   end
@@ -35,17 +35,16 @@ class Admin::CompaniesController < ApplicationController
   # GET /companies/1/edit
   def edit
     # authorize
-    authorize! :update, Company
+    authorize! :update, @company
   end
 
   # POST /companies
   # POST /companies.json
   def create
-    # authorize
-    authorize! :create, Company
-    
     @company = Company.new(company_params)
-
+    # authorize
+    authorize! :create, @company
+    
     respond_to do |format|
       if @company.save
         format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Company was successfully created.' }
@@ -61,7 +60,7 @@ class Admin::CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     # authorize
-    authorize! :update, Company
+    authorize! :update, @company
     
     respond_to do |format|
       if @company.update(company_params)
@@ -78,7 +77,7 @@ class Admin::CompaniesController < ApplicationController
   # DELETE /companies/1.json
   def destroy
     # authorize
-    authorize! :delete, Company
+    authorize! :delete, @company
     
     @company.destroy
     respond_to do |format|

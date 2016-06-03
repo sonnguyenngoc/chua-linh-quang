@@ -27,7 +27,7 @@ class Admin::VouchersController < ApplicationController
   # GET /vouchers/new
   def new
     # authorize
-    authorize! :create, Voucher
+    authorize! :create, @voucher
     
     @voucher = Voucher.new
     @voucher.from_date = Time.now
@@ -37,16 +37,15 @@ class Admin::VouchersController < ApplicationController
   # GET /vouchers/1/edit
   def edit
     # authorize
-    authorize! :update, Voucher
+    authorize! :update, @voucher
   end
 
   # POST /vouchers
   # POST /vouchers.json
   def create
-    # authorize
-    authorize! :create, Voucher
-    
     @voucher = Voucher.new(voucher_params)
+    # authorize
+    authorize! :create, @voucher
     
     @voucher.generate_codes
 
@@ -66,7 +65,7 @@ class Admin::VouchersController < ApplicationController
   # PATCH/PUT /vouchers/1.json
   def update
     # authorize
-    authorize! :update, Voucher
+    authorize! :update, @voucher
     
     respond_to do |format|
       if @voucher.update(voucher_params)
@@ -83,7 +82,7 @@ class Admin::VouchersController < ApplicationController
   # DELETE /vouchers/1.json
   def destroy
     # authorize
-    authorize! :delete, Voucher
+    authorize! :delete, @voucher
     
     @voucher.destroy
     respond_to do |format|
