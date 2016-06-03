@@ -104,7 +104,11 @@
                             <% @code_statuses.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to item.title, edit_admin_code_status_path(item) %>
+                                        <% if can? :update, item %>
+                                            <strong><%= link_to item.title, edit_admin_code_status_path(item) %></strong>
+                                        <% else %>
+                                            <strong><%= item.title %></strong>
+                                        <% end %>
                                     </td>
                                     <td>
                                         <%= item.description %>

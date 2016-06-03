@@ -26,7 +26,7 @@ class Admin::OrdersController < ApplicationController
   # GET /orders/new
   def new
     # authorize
-    authorize! :create, Order
+    authorize! :create, @order
     
     @order = Order.new
   end
@@ -34,16 +34,15 @@ class Admin::OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     # authorize
-    authorize! :update, Order
+    authorize! :update, @order
   end
 
   # POST /orders
   # POST /orders.json
   def create
-    # authorize
-    authorize! :create, Order
-    
     @order = Order.new(order_params)
+    # authorize
+    authorize! :create, @order
 
     respond_to do |format|
       if @order.save
@@ -60,7 +59,7 @@ class Admin::OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     # authorize
-    authorize! :update, Order
+    authorize! :update, @order
     
     respond_to do |format|
       if @order.update(order_params)
@@ -77,7 +76,7 @@ class Admin::OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     # authorize
-    authorize! :delete, Order
+    authorize! :delete, @order
     
     @order.destroy
     respond_to do |format|

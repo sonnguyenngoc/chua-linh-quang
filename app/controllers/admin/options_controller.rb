@@ -4,6 +4,9 @@ class Admin::OptionsController < ApplicationController
   # GET /options
   # GET /options.json
   def index
+    # authorize
+    authorize! :create, Order
+    
     @options = Option.paginate(:page => params[:page], :per_page => 10)
   end
 

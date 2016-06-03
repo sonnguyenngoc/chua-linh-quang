@@ -26,7 +26,7 @@ class Admin::CodeStatusesController < ApplicationController
   # GET /code_statuses/new
   def new
     # authorize
-    authorize! :create, CodeStatus
+    authorize! :create, @code_status
     
     @code_status = CodeStatus.new
   end
@@ -34,16 +34,15 @@ class Admin::CodeStatusesController < ApplicationController
   # GET /code_statuses/1/edit
   def edit
     # authorize
-    authorize! :create, CodeStatus
+    authorize! :update, @code_status
   end
 
   # POST /code_statuses
   # POST /code_statuses.json
   def create
-    # authorize
-    authorize! :create, CodeStatus
-    
     @code_status = CodeStatus.new(code_status_params)
+    # authorize
+    authorize! :create, @code_status
 
     respond_to do |format|
       if @code_status.save
@@ -60,7 +59,7 @@ class Admin::CodeStatusesController < ApplicationController
   # PATCH/PUT /code_statuses/1.json
   def update
     # authorize
-    authorize! :create, CodeStatus
+    authorize! :update, @code_status
     
     respond_to do |format|
       if @code_status.update(code_status_params)
@@ -77,7 +76,7 @@ class Admin::CodeStatusesController < ApplicationController
   # DELETE /code_statuses/1.json
   def destroy
     # authorize
-    authorize! :delete, CodeStatus
+    authorize! :delete, @code_status
     
     @code_status.destroy
     respond_to do |format|
@@ -94,6 +93,6 @@ class Admin::CodeStatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def code_status_params
-      params.require(:code_status).permit(:title, :description)
+      params.require(:code_status).permit(:title, :description, :user_id, :approved)
     end
 end

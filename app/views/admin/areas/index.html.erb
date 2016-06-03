@@ -113,7 +113,11 @@
                             <% @areas.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to item.name, edit_admin_area_path(item) %>
+                                        <% if can? :update, item %>
+                                            <strong><%= link_to item.name, edit_admin_area_path(item) %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
+                                        <% end %>
                                     </td>
                                     <td>
                                         <%= item.get_parent_name %>

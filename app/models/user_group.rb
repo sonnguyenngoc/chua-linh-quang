@@ -134,8 +134,6 @@ class UserGroup < ActiveRecord::Base
                 display_name: I18n.t(:question),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no","own","not_own"], multiple: true},
                             {name: "delete", values: ["yes","no","own","not_own"], multiple: true},
                         ]
             },
@@ -174,6 +172,22 @@ class UserGroup < ActiveRecord::Base
                             {name: "read", values: ["yes","no"], multiple: false},
                             {name: "create", values: ["yes","no"], multiple: false},
                             {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Contact",
+                display_name: I18n.t(:contact),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Newsletter",
+                display_name: I18n.t(:newsletter),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
                             {name: "delete", values: ["yes","no"], multiple: false},
                         ]
             },

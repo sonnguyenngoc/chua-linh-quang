@@ -53,7 +53,7 @@
                      
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_manufacturers) %></span></h5>
-                        <% if can? :create, :manufaturers %> 
+                        <% if can? :create, Manufacturer %> 
                             <%= link_to t(:new_manufacturer), new_admin_manufacturer_path, class: 'btn btn-primary pull-right' %>
                         <% end %>
                     </div>
@@ -98,9 +98,7 @@
                                 <th><%= t(:address) %></th>
                                 <th><%= t(:list_description) %></th>
                                 <th><%= t(:created_at) %></th>
-                                <% if can?(:update, item) or can?(:delete, item) %>
-                                    <th class="text-center"><%= t(:actions) %></th>
-                                <% end %>
+                                <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,7 +106,11 @@
                                 <tr>
                                     <td>
                                         <div class="media-left">
-                                            <%= link_to image_tag(item.image_url.small_image, size: "180x110", class: "img-rouded"), edit_admin_manufacturer_path(item) %>
+                                            <% if can? :update, item %>
+                                                <%= link_to image_tag(item.image_url.small_image, size: "180x110", class: "img-rouded"), edit_admin_manufacturer_path(item) %>
+                                            <% else %>
+                                                <%= image_tag(item.image_url.small_image, size: "180x110", class: "img-rouded") %>
+                                            <% end %>
                                         </div>
                                     </td>
                                     <td>
@@ -121,8 +123,9 @@
                                         <%= item.description %>
                                     </td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
-                                    <% if can?(:update, item) or can?(:delete, item) %>
-                                        <td class="text-center">
+                                    
+                                    <td class="text-center">
+                                        <% if can?(:update, item) or can?(:delete, item) %>
                                             <ul class="icons-list">
                                                 <li class="dropdown">
                                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -143,8 +146,9 @@
                                                     </ul>
                                                 </li>
                                             </ul>
-                                        </td>
-                                    <% end %>
+                                        <% end %>
+                                    </td>
+                                    
                                 </tr>
                             <% end %>
                         </tbody>

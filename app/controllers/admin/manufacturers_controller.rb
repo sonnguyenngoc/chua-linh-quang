@@ -26,7 +26,7 @@ class Admin::ManufacturersController < ApplicationController
   # GET /manufacturers/new
   def new
     # authorize
-    authorize! :create, Manufacturer
+    authorize! :create, @manufacturer
     
     @manufacturer = Manufacturer.new
   end
@@ -34,16 +34,15 @@ class Admin::ManufacturersController < ApplicationController
   # GET /manufacturers/1/edit
   def edit
     # authorize
-    authorize! :update, Manufacturer
+    authorize! :update, @manufacturer
   end
 
   # POST /manufacturers
   # POST /manufacturers.json
   def create
-    # authorize
-    authorize! :create, Manufacturer
-    
     @manufacturer = Manufacturer.new(manufacturer_params)
+    # authorize
+    authorize! :create, @manufacturer
 
     respond_to do |format|
       if @manufacturer.save
@@ -60,7 +59,7 @@ class Admin::ManufacturersController < ApplicationController
   # PATCH/PUT /manufacturers/1.json
   def update
     # authorize
-    authorize! :update, Manufacturer
+    authorize! :update, @manufacturer
     
     respond_to do |format|
       if @manufacturer.update(manufacturer_params)
@@ -77,7 +76,7 @@ class Admin::ManufacturersController < ApplicationController
   # DELETE /manufacturers/1.json
   def destroy
     # authorize
-    authorize! :delete, Manufacturer
+    authorize! :delete, @manufacturer
     
     @manufacturer.destroy
     respond_to do |format|

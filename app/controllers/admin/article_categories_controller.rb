@@ -26,7 +26,7 @@ class Admin::ArticleCategoriesController < ApplicationController
   # GET /article_categories/new
   def new
     # authorize
-    authorize! :create, ArticleCategory
+    authorize! :create, @article_category
     
     @article_category = ArticleCategory.new
   end
@@ -34,16 +34,15 @@ class Admin::ArticleCategoriesController < ApplicationController
   # GET /article_categories/1/edit
   def edit
     # authorize
-    authorize! :update, ArticleCategory
+    authorize! :update, @article_category
   end
 
   # POST /article_categories
   # POST /article_categories.json
   def create
-    # authorize
-    authorize! :create, ArticleCategory
-    
     @article_category = ArticleCategory.new(article_category_params)
+    # authorize
+    authorize! :create, @article_category
 
     respond_to do |format|
       if @article_category.save
@@ -64,7 +63,7 @@ class Admin::ArticleCategoriesController < ApplicationController
   # PATCH/PUT /article_categories/1.json
   def update
     # authorize
-    authorize! :update, ArticleCategory
+    authorize! :update, @article_category
     
     respond_to do |format|
       if @article_category.update(article_category_params)
@@ -85,7 +84,7 @@ class Admin::ArticleCategoriesController < ApplicationController
   # DELETE /article_categories/1.json
   def destroy
     # authorize
-    authorize! :delete, ArticleCategory
+    authorize! :delete, @article_category
     
     @article_category.destroy
     respond_to do |format|

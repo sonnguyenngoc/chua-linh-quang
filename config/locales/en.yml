@@ -308,8 +308,10 @@ en:
   voucher: "Voucher"
   coupon: "Coupon"
   user_group: "User group"
+  user_groups: "User groups"
   system_setting: "System setting"
-  
+  contact: "Contact"
+  newsletter: "Newsletter"
   
   will_paginate:
     page_entries_info:
