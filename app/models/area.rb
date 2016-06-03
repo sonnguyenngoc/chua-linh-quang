@@ -2,8 +2,9 @@ class Area < ActiveRecord::Base
   validates :name, presence: true
   
   has_and_belongs_to_many :products
+  has_and_belongs_to_many :articles
   
-  has_many :children, class_name: "Area", foreign_key: "parent_id", dependent: :destroy
+  has_many :children, -> { order(:display_order) }, class_name: "Area", foreign_key: "parent_id", dependent: :destroy
   belongs_to :parent, class_name: "Area"
   
   def self.get_all_areas
@@ -104,6 +105,10 @@ class Area < ActiveRecord::Base
       c.update_attribute(:level, c.get_level)
     end
 
+  end
+  
+  def self.get_by_level(level)
+    self.where(level: level).order("display_order")
   end
   
 end

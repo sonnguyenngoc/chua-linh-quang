@@ -170,6 +170,6 @@
 
 <%= render "module/mobile_header" %>
 
-<a class="width_area_banner" href="#">
-    <img src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2016/Tab/FireColorRefresh/unrec/FireColor-GW-d-US-1500x300-4-unrec._CB275210917_.jpg" />
-</a>
+<% if !@blog_advertise.nil? %>        
+    <%= link_to image_tag(@blog_advertise.image_url.advertise_image), { controller: "blog", action: "show", blog_id: @blog_advertise.id }, class: "width_area_banner" %>
+<% end %>

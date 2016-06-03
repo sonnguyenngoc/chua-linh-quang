@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :products
   has_many :comment_articles, dependent: :destroy
   belongs_to :code_status
+  has_and_belongs_to_many :areas
   
   def self.get_lastest_blog_posts
     self.joins(:code_status).where(code_statuses: { title: 'news' }).first(3)
@@ -150,10 +151,26 @@ class Article < ActiveRecord::Base
   
   #banner event on top
   def self.get_banner_event_top
-    records = self.all
-    records = records.joins(:code_status).where(code_statuses: { title: 'banner_event_top' }).last
-    #records.order("created_at DESC").first
+    records = self.where(is_show: true)
+    records = records.joins(:code_status).where(code_statuses: { title: 'banner_event_top' })
     
+    return records.last
+  end
+  
+  #banner public relations by provinces/areas
+  def self.get_banner_by_area(current_area)
+    if !current_area.id.nil?
+      records = self.where(is_show: true)
+      records = records.joins(:code_status).where(code_statuses: { title: 'public_relations' })
+      records = records.joins(:areas).where(areas: {id: current_area.id}) 
+      return records.last
+    else
+      nil
+    end
+  end
+  
+  def self.get_by_area
+    records = self.all
     return records
   end
   

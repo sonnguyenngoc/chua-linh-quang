@@ -4,10 +4,12 @@ class Admin::CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    @areas = Area.get_by_level(2)
     @customers = Customer.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    @areas = Area.get_by_level(2)
     @customers = Customer.search(params).paginate(:page => params[:page], :per_page => 10)
     render 'admin/customers/index'
   end

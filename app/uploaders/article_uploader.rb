@@ -47,6 +47,12 @@ class ArticleUploader < CarrierWave::Uploader::Base
   version :smaller_image do
     process :resize_to_fill => [83, 53]
   end
+  version :advertise_image do
+    process :resize_to_fill => [1356, 271]
+  end
+  version :banner_small_top_image do
+    process :resize_to_fill => [1496, 80]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
