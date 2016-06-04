@@ -30,6 +30,8 @@ class Admin::ArticlesController < ApplicationController
     
     @article = Article.new
     @article_categories = ArticleCategory.all
+    @products = Product.all
+    @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -39,12 +41,15 @@ class Admin::ArticlesController < ApplicationController
     authorize! :update, @article
     
     @article_categories = ArticleCategory.all
+    @products = Product.all
+    @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
 
   # POST /articles
   # POST /articles.json
   def create
+    @areas = Area.get_by_level(2)
     # authorize
     authorize! :create, Article
     @article = Article.new(article_params)
@@ -52,6 +57,16 @@ class Admin::ArticlesController < ApplicationController
     @article.user_id = current_user.id
     
     @article.article_categories.clear
+    
+    # update areas
+    @article.areas.clear
+    if params[:area_ids].present?
+        @article.areas.clear
+        params[:area_ids].each do |id|      
+          @article.areas << Area.find(id)
+        end
+    end
+    
     if params[:category_ids].present?
       params[:category_ids].each do |id|      
         @article.article_categories << ArticleCategory.find(id)
@@ -79,6 +94,7 @@ class Admin::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @areas = Area.get_by_level(2)
     # authorize
     authorize! :update, @article
     
@@ -97,6 +113,15 @@ class Admin::ArticlesController < ApplicationController
       end
     end
     
+    # update areas
+    @article.areas.clear
+    if params[:area_ids].present?
+        @article.areas.clear
+        params[:area_ids].each do |id|      
+          @article.areas << Area.find(id)
+        end
+    end
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Article was successfully updated.' }
@@ -179,6 +204,6 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show, :page_layout, :image_url_full_width)
+      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show, :page_layout, :image_url_full_width, :area_id)
     end
 end

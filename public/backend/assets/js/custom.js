@@ -52,4 +52,8 @@ $(document).ready(function () {
     $(".form-group input#product_discount_percent").keyup(function() {
         updatePrice();
     });
+    
+    // display orther tab in article/_form.html.erb
+    
+    // END ---- display orther tab in article/_form.html.erb
 });

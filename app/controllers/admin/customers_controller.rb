@@ -4,6 +4,7 @@ class Admin::CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    @areas = Area.get_by_level(2)
     # authorize
     authorize! :read, Customer
     
@@ -11,6 +12,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def search
+    @areas = Area.get_by_level(2)
     # authorize
     authorize! :read, Customer
     

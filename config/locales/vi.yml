@@ -202,6 +202,7 @@ vi:
   with_deal: "Đối với khuyến mãi"
   apply_price: "Giá đang áp dụng"
   showing: "Đang hiển thị"
+  display_area: "Khu vực hiển thị"
   
   #-------------------------------------
   comment_question: "Bình luận/Câu hỏi/Ý kiến"
