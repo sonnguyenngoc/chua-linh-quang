@@ -145,6 +145,7 @@ Rails.application.routes.draw do
             get 'search'
             get 'search_backend'
             get 'approve'
+            get 'add_related_articles'
           end
         end
         resources :categories, path: "chuyen-muc-san-pham" do

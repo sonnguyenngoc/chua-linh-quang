@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
     10.times do
       @product.product_images.build
     end
-    @articles = Article.paginate(:page => params[:page], :per_page => 10)
+    @articles = @product.articles.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /products/1/edit
@@ -172,6 +172,13 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_products_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def add_related_articles
+    if params[:article_ids].present?
+      @articles = Article.where(id: params[:article_ids].split(","))
+      render "/admin/products/_table_related_articles"
     end
   end
 

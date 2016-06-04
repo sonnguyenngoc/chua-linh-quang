@@ -1,0 +1,57 @@
+<table class="table">
+    <thead>
+        <tr class="bg-teal-800">
+            <th></th>
+            <th><%= t(:picture) %></th>
+            <th><%= t(:title) %>/<%= t(:tags) %></th>
+            <th><%= t(:content) %></th>
+            <th><%= t(:category) %></th>
+            <th><%= t(:created_at) %></th>
+            <th class="text-center"><%= t(:actions) %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @articles.each do |item| %>
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkbox-related-articles" checked>
+                </td>
+                <td>
+                    <div class="media-left">
+                        <% if can? :update, item %>
+                            <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_article_path(item), target: "_blank" %>
+                        <% else %>
+                            <%= image_tag(item.image_url, size: "180x110", class: "img-rouded") %>
+                        <% end %>
+                    </div>
+                </td>
+                <td>
+                    <%= item.title %><br/>
+                    <% if item.approved == true %>
+                        <span class="label bg-success"><%= t(:approved) %></span>
+                    <% else %>
+                        <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+                    <% end %>
+                </td>
+                <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
+                <td></td>
+                <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                <td class="text-center">
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:remove), "#remove" %>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
