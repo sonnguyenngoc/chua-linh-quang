@@ -1,4 +1,4 @@
-<% if Product.get_by_category_status(Category.get_by_status(status), status).present? %>
+<% if Product.get_by_category_status(Category.get_by_status(status, @current_area), @current_area, status).present? %>
 	<section class="section_offset animated transparent" data-animation="fadeInDown"> 
 		
 		<% if status == "deal" %>
@@ -13,7 +13,7 @@
 			
 			<ul class="tabs_nav clearfix">
 				
-				<% Category.get_by_status(status).each_with_index do |category,index| %>
+				<% Category.get_by_status(status, @current_area).each_with_index do |category,index| %>
 				
 					<% if category.products.where(is_show: true).count > 0 %>
 				   
@@ -31,7 +31,7 @@
 	
 			<div class="tab_containers_wrap">
 				
-				<% Category.get_by_status(status).each_with_index do |category,index| %>
+				<% Category.get_by_status(status, @current_area).each_with_index do |category,index| %>
 					
 					<div id="tab-<%= status %>-<%= index %>" class="tab_container">
 		
@@ -39,7 +39,7 @@
 						
 						<div class="owl_carousel carousel_in_tabs type_2">
 							
-							<% Product.get_by_category_status(category, status).each do |product| %>
+							<% Product.get_by_category_status(category, @current_area, status).each do |product| %>
 							
 								<% if @current_area.id.present? %>
 							

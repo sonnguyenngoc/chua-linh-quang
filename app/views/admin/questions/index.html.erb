@@ -105,7 +105,12 @@
                             <% @questions.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= item.name %><br />
+                                        <% if can?(:read, item) %>
+                                            <strong><%= link_to item.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
+                                        <% end %>
+                                        <br />
                                         <%= item.email %>
                                     </td>
                                     <td>
@@ -118,19 +123,22 @@
                                     </td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
-                                        <ul class="icons-list">
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="icon-menu9"></i>
-                                                </a>
-                
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <% if can?(:delete, item) %>
+                                            <ul class="icons-list">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-menu9"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <% if can? :delete, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                            </li>
+                                                        <% end %>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        <% end %>
                                     </td>
                                 </tr>
                             <% end %>

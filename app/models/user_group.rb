@@ -19,7 +19,7 @@ class UserGroup < ActiveRecord::Base
                             {name: "create", values: ["yes","no"], multiple: false},
                             {name: "update", values: ["yes","no","own","not_own","approved","not_approved"], multiple: true},
                             {name: "delete", values: ["yes","no","own","not_own","approved","not_approved"], multiple: true},
-                            {name: "approve", values: ["yes","no","own","not_own", "not_approved"], multiple: true}
+                            {name: "approve", values: ["yes","no","own","not_own"], multiple: true}
                         ]
             },
             {
@@ -134,9 +134,15 @@ class UserGroup < ActiveRecord::Base
                 display_name: I18n.t(:question),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no","own","not_own"], multiple: true},
-                            {name: "delete", values: ["yes","no","own","not_own"], multiple: true},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Testimonial",
+                display_name: I18n.t(:testimonial),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no",], multiple: false},
                         ]
             },
             {
@@ -178,6 +184,22 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
+                class_name: "Contact",
+                display_name: I18n.t(:contact),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Newsletter",
+                display_name: I18n.t(:newsletter),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
                 class_name: "User",
                 display_name: I18n.t(:user),
                 actions: [
@@ -208,7 +230,7 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
-                class_name: "Setting",
+                class_name: "Option",
                 display_name: I18n.t(:system_setting),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},

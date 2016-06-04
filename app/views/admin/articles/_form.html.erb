@@ -11,165 +11,233 @@
 <% end %>
 
 <%= form_for [:admin, @article], html: {class: "form-horizontal"} do |f| %>
-    <div class="tabbable tab-content-bordered">
+
+	<div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
-            <li class="active"><a href="#control-tab1" data-toggle="tab"><%= t(:thông_tin) %></a></li>
-            <li><a href="#control-tab2" data-toggle="tab"><%= t(:nội_dung) %> </a></li>
-            <li><a href="#control-tab3" data-toggle="tab"><%= t(:hình_ảnh) %> </a></li>
-            <li><a href="#control-tab4" data-toggle="tab"><%= t(:cấu_hình_khác) %> </a></li>
+            <li class="active"><a href="#control-tab1" data-toggle="tab"><%= t(:new_article) %></a></li>
+            <li><a href="#control-tab2" data-toggle="tab"><%= t(:related_products) %> </a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane has-padding active" id="control-tab1">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:title) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-7">
-                        <%= f.text_field :title, class: "form-control" %>
-                    </div>
-                    <label class="col-lg-1 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+    
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:picture) %> </label>
+					<div class="col-lg-10">
+						<div class="uploader bg-teal-400">
+							<%= f.file_field :image_url, class: "file-styled", require: true %>
+							<span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
+						</div>
+						<span class="help-block">Accepted formats: gif, png, jpg.</span>
+						<%= image_tag(@article.image_url.medium_image, size: "202x128", class: "img-rouded") %>
+					</div>
+				</div>
+						
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:title) %> <span class='text-danger'>*</span></label>
+					<div class="col-lg-7">
+						<%= f.text_field :title, class: "form-control" %>
+					</div>
+					<label class="col-lg-1 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+					<div class="col-lg-2">
+						<div class="row-fluid">
+							<div class="checkbox">
+								<%= check_box 'article', 'is_show', {}, 'true', 'false' %>
+								<label for="article_is_show"><%= t(:show_article) %></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group field">
+					<label class="col-lg-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
+					<div class="col-lg-10">
+						<select name="category_ids[]" class="select-item-color" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
+							<% @article_categories.each do |item| %>
+								<option <%= "selected" if @article.article_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+							<% end %>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:content) %> <span class='text-danger'>*</span></label>
+				</div>
+				
+				<div class="mb-15">
+					<div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
+						<span class="uploading" style="display: none;font-size: 17px;">
+							Đang tải hình ảnh/video...<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+						</span>
+						<a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+						<a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+					</div>
+					<%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
+				</div>
+					
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:keywords) %> </label>
+					<div class="col-lg-10">
+						<%= f.text_field :tags, class: "form-control" %>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:page_layout) %> </label>
+					<div class="col-lg-4">
+						<select class="select_article" name="article[page_layout]">
+							<option <%= "selected" if @article.page_layout == "normal" %> value="normal"><%= t(:normal) %></option>
+							<option <%= "selected" if @article.page_layout == "full_width" %> value="full_width"><%= t(:full_width) %></option>
+						</select>
+					</div>
+					<label class="col-lg-2 control-label" ><%= t(:picture_full_width) %> </label>
+					<div class="col-lg-4">
+						<div class="uploader bg-teal-400">
+							<%= f.file_field :image_url_full_width, class: "file-styled", require: true %>
+							<span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:code_status) %></label>
+					<div class="col-lg-10">
+						<%= f.collection_select(:code_status_id, CodeStatus.get_all_statuses, :id, :title, {}, {class: "code_status"}) %>
+					</div>
+				</div>
+					
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> </label>
+					<div class="col-lg-10">
+						<%= f.text_field :meta_keywords, class: "form-control" %>
+					</div>
+				</div>
+					
+				<div class="form-group">
+					<label class="col-lg-2 control-label" ><%= t(:meta_description) %> </label>
+					<div class="col-lg-10">            
+						<%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
+					</div>
+				</div>
+					
+				<div class="text-right">
+					<%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+					<%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_articles_path, class: "btn btn-danger"%>
+				</div>
+			</div>
+				
+			<div class="tab-pane has-padding" id="control-tab2">
+				<div class="form-group">
+                    <div class="col-lg-10">
+						<select name="product_ids[]" class="select-item-color" data-placeholder="<%= t(:related_products) %>....." multiple="multiple">
+							<% @products.each do |item| %>
+								<option <%= "selected" if @article.products.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+							<% end %>
+						</select>
+					</div>
                     <div class="col-lg-2">
-                        <div class="row-fluid">
-                            <div class="checkbox">
-                                <%= check_box 'article', 'is_show', {}, 'true', 'false' %>
-                                <label for="article_is_show"><%= t(:show_article) %></label>
-                            </div>
-                        </div>
+                        <%= link_to "#{t(:add_to_list)}".html_safe, "", class: "btn btn-info"%>
                     </div>
                 </div>
-                
-                <div class="form-group field">
-                    <label class="col-lg-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-10">
-                        <select name="category_ids[]" class="select-item-color" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
-                            <% @article_categories.each do |item| %>
-                                <option <%= "selected" if @article.article_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
-                            <% end %>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:keywords) %> </label>
-                    <div class="col-lg-10">
-                        <%= f.text_field :tags, class: "form-control" %>
-                    </div>
-                </div>
-                    
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:related_products) %></label>
-                    <div class="col-lg-10">
-                        <select name="product_ids[]" class="select-item-color" data-placeholder="<%= t(:related_products) %>....." multiple="multiple">
-                            <% @products.each do |item| %>
-                                <option <%= "selected" if @article.products.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
-                            <% end %>
-                        </select>
-                    </div>
-                </div>
-                    
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> </label>
-                    <div class="col-lg-10">
-                        <%= f.text_field :meta_keywords, class: "form-control" %>
-                    </div>
-                </div>
-                    
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:meta_description) %> </label>
-                    <div class="col-lg-10">
-                        <%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
-                    </div>
-                </div>
-                    
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_articles_path, class: "btn btn-danger"%>
-                </div>
-                    
-            </div>
-            <div class="tab-pane has-padding" id="control-tab2">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:content) %> <span class='text-danger'>*</span></label>
-                </div>
-                <div class="mb-15">
-                    <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
-                </div>
-                
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_articles_path, class: "btn btn-danger"%>
-                </div>
-                
-            </div>
-            <div class="tab-pane has-padding" id="control-tab3">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:picture) %> </label>
-                    <div class="col-lg-10">
-                        <div class="uploader bg-teal-400">
-                            <%= f.file_field :image_url, class: "file-styled", require: true %>
-                            <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
-                        </div>
-                        <span class="help-block">Accepted formats: gif, png, jpg.</span>
-                        <%= image_tag(@article.image_url.medium_image, size: "202x128", class: "img-rouded") %>
-                    </div>
-                </div>
-                        
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_articles_path, class: "btn btn-danger"%>
-                </div>
-                
-            </div>
-            
-            <div class="tab-pane has-padding" id="control-tab4">
-                
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:page_layout) %> </label>
-                    <div class="col-lg-4">
-                        <select class="select_article" name="article[page_layout]">
-                            <option <%= "selected" if @article.page_layout == "normal" %> value="normal"><%= t(:normal) %></option>
-                            <option <%= "selected" if @article.page_layout == "full_width" %> value="full_width"><%= t(:full_width) %></option>
-                        </select>
-                    </div>
-                    <div class="picture_full_width">
-                        <label class="col-lg-2 control-label" ><%= t(:picture_full_width) %> </label>
-                        <div class="col-lg-4">
-                            <div class="uploader bg-teal-400">
-                                <%= f.file_field :image_url_full_width, class: "file-styled", require: true %>
-                                <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:code_status) %></label>
-                    <div class="col-lg-4">
-                        <%= f.collection_select(:code_status_id, CodeStatus.get_all_statuses, :id, :title, {}, {class: "code_status"}) %>
-                    </div>
-                    <div class="related_areas">
-                        <label class="col-lg-2 control-label" ><%= t(:display_area) %></label>
-                        <div class="col-lg-4">
-                            <select name="area_ids[]" class="select-item-color" data-placeholder="<%= t(:related_areas) %>....." multiple="multiple">
-                                <% @areas.each do |item| %>
-                                    <optgroup value="<%= item.id %>" label="<%= item.name %>">
-                                        
-                                        <% item.children.each do |child| %>
-                                            <option <%= "selected" if @article.areas.include?(child) %> value="<%= child.id %>"><%= child.name %></option>
-                                        <% end %>
-                                    
-                                    </optgroup>
-                                <% end %>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_articles_path, class: "btn btn-danger"%>
-                </div>
-                
-            </div>
-        </div>
+				<table class="table">
+					<thead>
+						<tr class="bg-teal-800">
+							<th></th>
+							<th><%= t(:list_image) %></th>
+							<th><%= t(:list_product_name) %></th>
+							<th><%= t(:list_price) %></th>
+							<th class="text-nowrap"><%= t(:list_areas) %></th>
+							<th><%= t(:list_status) %></th>
+							<th><%= t(:created_at) %></th>
+							<th class="text-center"><%= t(:actions) %></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @products.each do |item| %>
+							<tr>
+								<td>
+									<input type="checkbox" class="checkbox-related-products">
+								</td>
+								<td>
+									<% if item.get_main_image.present? %>
+										<% if can? :update, item %>
+											<%= link_to image_tag(item.get_main_image.image_url.small_image), edit_admin_product_path(item), title: item.name, target: "_blank" %>
+										<% else %>
+											<%= image_tag item.get_main_image.image_url.small_image, title: item.name %>
+										<% end %>
+									<% else %>
+										<% if can? :update, item %>
+											<%= link_to image_tag("/frontend/images/small_image.png"), edit_admin_product_path(item), title: item.name, target: "_blank" %>
+										<% else %>
+											<%= image_tag "/frontend/images/small_image.png", title: item.name %>
+										<% end %>
+									<% end %>
+								</td>
+								<td>
+									<% if can? :update, item %>
+										<strong><%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name, target: "_blank" %></strong>
+									<% else %>
+										<strong><%= raw truncate(strip_tags(item.name), length: 20) %></strong>
+									<% end %>
+									<br/><%= item.code %>
+									<br/><i class="icon-pin-alt"></i>  <%= item.manufacturer.name if !item.manufacturer.nil? %>
+									<br/><i class="icon-stack"></i>  <%= item.categories.map(&:name).join("<br/>").html_safe %>
+								</td>
+								<td><%= format_number(item.price) %><br/>(<%= format_number(item.quantity) %> <%= item.unit %>)</td>
+
+								<td>
+									<%= item.areas.map(&:name).join("<br/>").html_safe %>
+								</td>
+								<td>
+									<% if !item.status.nil? %>
+										<% item.split_statues.each do |status| %>
+											<span class="label bg-orange-600"><%= status %></span><br/>
+										<% end %>
+									<% end %>
+									<% if item.is_show == true %><span class="label bg-blue"><%= t(:showing) %></span><br/> <% end %>
+									<% if item.approved == true %>
+										<span class="label bg-success"><%= t(:approved) %></span>
+									<% else %>
+										<span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+									<% end %>
+								</td>
+								<td>
+									<%= item.created_at.strftime("%d/%m/%Y") %>
+									<% if !item.user_id.nil? %>
+										<br/><i class="icon-user"></i>  <span class="text-success"><b><%= item.user.first_name.to_s + " " + item.user.last_name.to_s %></b></span>
+									<% end %>
+								</td>
+								<td class="text-center">
+									<ul class="icons-list">
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+												<i class="icon-menu9"></i>
+											</a>
+											<ul class="dropdown-menu dropdown-menu-right">
+												<li>
+													<%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:remove), "" %>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<div class="dataTables_wrapper no-footer">
+					<div class="datatable-footer showed">
+						<div class="dataTables_info" ><%= page_entries_info @products %></div>
+						<div class="dataTables_paginate paging_simple_numbers">
+							<%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+						</div>
+					</div>
+				</div>
+				 <div class="text-right">
+					<%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+					<%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_articles_path, class: "btn btn-danger"%>
+				</div>
+			</div>
+		</div>
     </div>
     
 <% end %>
+<%= render "/admin/main/editor_upload" %>

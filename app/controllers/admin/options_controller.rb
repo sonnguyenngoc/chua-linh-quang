@@ -4,6 +4,9 @@ class Admin::OptionsController < ApplicationController
   # GET /options
   # GET /options.json
   def index
+    # authorize
+    authorize! :read, Option
+    
     @options = Option.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -14,16 +17,23 @@ class Admin::OptionsController < ApplicationController
 
   # GET /options/new
   def new
+    # authorize
+    authorize! :create, Option
+    
     @option = Option.new
   end
 
   # GET /options/1/edit
   def edit
+    # authorize
+    authorize! :update, @option
   end
 
   # POST /options
   # POST /options.json
   def create
+    # authorize
+    authorize! :create, Option
     @option = Option.new(option_params)
 
     respond_to do |format|
@@ -40,6 +50,8 @@ class Admin::OptionsController < ApplicationController
   # PATCH/PUT /options/1
   # PATCH/PUT /options/1.json
   def update
+    # authorize
+    authorize! :update, @option
     respond_to do |format|
       if @option.update(option_params)
         format.html { redirect_to edit_admin_option_path(@option.id), notice: 'Option was successfully updated.' }
@@ -54,6 +66,8 @@ class Admin::OptionsController < ApplicationController
   # DELETE /options/1
   # DELETE /options/1.json
   def destroy
+    # authorize
+    authorize! :delete, @option
     @option.destroy
     respond_to do |format|
       format.html { redirect_to admin_options_url, notice: 'Option was successfully destroyed.' }

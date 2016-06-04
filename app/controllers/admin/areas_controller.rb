@@ -4,10 +4,16 @@ class Admin::AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
+    # authorize
+    authorize! :read, Area
+    
     @areas = Area.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    # authorize
+    authorize! :read, Area
+    
     @areas = Area.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/areas/index"
   end
@@ -19,16 +25,23 @@ class Admin::AreasController < ApplicationController
 
   # GET /areas/new
   def new
+    # authorize
+    authorize! :create, Area
+    
     @area = Area.new
   end
 
   # GET /areas/1/edit
   def edit
+    # authorize
+    authorize! :update, @area
   end
 
   # POST /areas
   # POST /areas.json
   def create
+    # authorize
+    authorize! :create, Area
     @area = Area.new(area_params)
 
     respond_to do |format|
@@ -45,6 +58,9 @@ class Admin::AreasController < ApplicationController
   # PATCH/PUT /areas/1
   # PATCH/PUT /areas/1.json
   def update
+    # authorize
+    authorize! :update, @area
+    
     respond_to do |format|
       if @area.update(area_params)
         format.html { redirect_to edit_admin_area_path(@area.id), notice: 'Area was successfully updated.' }
@@ -59,6 +75,9 @@ class Admin::AreasController < ApplicationController
   # DELETE /areas/1
   # DELETE /areas/1.json
   def destroy
+    # authorize
+    authorize! :delete, @area
+    
     @area.destroy
     respond_to do |format|
       format.html { redirect_to admin_areas_url, notice: 'Area was successfully destroyed.' }

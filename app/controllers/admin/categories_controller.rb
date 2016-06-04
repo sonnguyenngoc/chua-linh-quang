@@ -11,8 +11,9 @@ class Admin::CategoriesController < ApplicationController
         format.html { 
           @categories = Category.get_categories #.paginate(:page => params[:page], :per_page => 10)
         }
-        format.json { render json: Category.get_tree_json }
+        format.json { render json: Category.get_tree_json(current_user) }
     end
+    
   end
   
   def search
@@ -31,7 +32,7 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/new
   def new
     # authorize
-    authorize! :create, @category
+    authorize! :create, Category
     
     @category = Category.new
   end
@@ -39,17 +40,16 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     # authorize
-    authorize! :update, Category
+    authorize! :update, @category
   end
 
   # POST /categories
   # POST /categories.json
   def create
     # authorize
-    authorize! :create, @category
-    
+    authorize! :create, Category
     @category = Category.new(category_params)
-
+    
     respond_to do |format|
       if @category.save
         # update parent
@@ -72,7 +72,7 @@ class Admin::CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
     # authorize
-    authorize! :update, Category
+    authorize! :update, @category
     
     respond_to do |format|
       if @category.update(category_params)
@@ -95,7 +95,7 @@ class Admin::CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     # authorize
-    authorize! :delete, Category
+    authorize! :delete, @category
     
     respond_to do |format|
       # update all level

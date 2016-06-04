@@ -14,6 +14,11 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :omniauthable, :validatable,
            :omniauthable, :lastseenable
+           
+    def ability
+        @ability ||= Ability.new(self)
+    end
+    delegate :can?, :cannot?, :to => :ability
     
     def self.find_for_facebook(access_token, signed_in_resource=nil)
         data = access_token.info
@@ -181,7 +186,7 @@ class User < ActiveRecord::Base
         user_group.permissions
     end
     
-    def ability(model, action)
+    def permission(model, action)
         return ['no'] if user_group.nil?
         user_group.ability(model, action)
     end

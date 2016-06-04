@@ -51,8 +51,7 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading col-md-12">
-                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_orders) %></span></h5>
-                        <!--<%= link_to 'New Order', new_admin_order_path, class: 'btn btn-primary pull-right' %>-->
+                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_orders) %></span></h5>=
                     </div>
                     
                     <div class="filter-box">
@@ -149,7 +148,13 @@
                         <tbody>
                             <% @orders.each do |item| %>
                                 <tr>
-                                    <td><%= item.customer.name %></td>
+                                    <td>
+                                        <% if can? :read, item %>
+                                            <strong><%= link_to item.customer.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.customer.name %></strong>
+                                        <% end %>
+                                    </td>
                                     <td>
                                         <% item.order_details.each do |detail| %>
                                             <%= detail.product_name %> - (x<%= detail.quantity %>)
@@ -160,37 +165,45 @@
                                     <td><span class="<%= item.display_class_status %>"><%= t(item.status) %></span></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
-                                        <ul class="icons-list">
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="icon-menu9"></i>
-                                                </a>
-                
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-file"></i>'.html_safe + t(:view), {controller: "admin/orders", action: "show", id: item.id} %>
-                                                    </li>
-                                                    <% if item.status != "finished" %>
-                                                        <li>
-                                                            <%= link_to '<i class="glyphicon glyphicon-check"></i> '.html_safe + t(:finish), {controller: "admin/orders", action: "finish", id: item.id} %>
-                                                        </li>
-                                                    <% end %>
-                                                    <% if item.status != "pending" %>
-                                                        <li>
-                                                            <%= link_to '<i class="icon-reload-alt"></i> '.html_safe + t(:pending), {controller: "admin/orders", action: "pending", id: item.id} %>
-                                                        </li>
-                                                    <% end %>
-                                                    <% if item.status != "cancel" %>
-                                                        <li>
-                                                            <%= link_to '<i class="glyphicon glyphicon-ban-circle"></i> '.html_safe + t(:cancel), {controller: "admin/orders", action: "cancel", id: item.id} %>
-                                                        </li>
-                                                    <% end %>
-                                                    <li>
-                                                        <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <% if can?(:read, item) or can?(:update, item) or can?(:delete, item) %>
+                                            <ul class="icons-list">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-menu9"></i>
+                                                    </a>
+                    
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <% if can? :read, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="glyphicon glyphicon-file"></i>'.html_safe + t(:view), [:admin, item] %>
+                                                            </li>
+                                                        <% end %>
+                                                        <% if can? :update, item %>
+                                                            <% if item.status != "finished" %>
+                                                                <li>
+                                                                    <%= link_to '<i class="glyphicon glyphicon-check"></i> '.html_safe + t(:finish), {controller: "admin/orders", action: "finish", id: item.id} %>
+                                                                </li>
+                                                            <% end %>
+                                                            <% if item.status != "pending" %>
+                                                                <li>
+                                                                    <%= link_to '<i class="icon-reload-alt"></i> '.html_safe + t(:pending), {controller: "admin/orders", action: "pending", id: item.id} %>
+                                                                </li>
+                                                            <% end %>
+                                                            <% if item.status != "cancel" %>
+                                                                <li>
+                                                                    <%= link_to '<i class="glyphicon glyphicon-ban-circle"></i> '.html_safe + t(:cancel), {controller: "admin/orders", action: "cancel", id: item.id} %>
+                                                                </li>
+                                                            <% end %>
+                                                        <% end %>
+                                                        <% if can? :delete, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                            </li>
+                                                        <% end %>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        <% end %>
                                     </td>
                                 </tr>
                             <% end %>

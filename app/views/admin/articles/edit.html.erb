@@ -96,16 +96,21 @@
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 
 <%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
-<%= javascript_include_tag '//cdn.ckeditor.com/4.5.7/full/ckeditor.js' %>
+<%= javascript_include_tag '//cdn.ckeditor.com/4.5.7/full/ckeditor_.js' %>
 <%= javascript_include_tag '/backend/assets/js/pages/colors_primary.js' %>
 <!-- /theme JS files -->
 <script>
-    // Full featured editor
-    CKEDITOR.replace( 'editor-full', {
-        height: '400px',
-        extraPlugins: 'forms'
-    });
+    //// Full featured editor
+    //CKEDITOR.replace( 'editor-full', {
+    //    height: '400px',
+    //    extraPlugins: 'forms'
+    //});
     $(".code_status").select2();
     $(".select_article").select2();
     $(".select_areas_article").select2();
+    $(".checkbox-related-products").uniform({
+        radioClass: 'choice',
+        checkboxClass: 'checker',
+        wrapperClass: "border-info text-info-600"
+    });
 </script>

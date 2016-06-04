@@ -1,0 +1,26 @@
+                        <div class="row">
+                            <div class="col-md-4 catcol">
+                                <select level="1" name="category_ids[]" class="select select-item-color" data-placeholder="<%= t(:category_level) %> 1">
+                                    <option value=""><%= t(:category_level) %> 1</option> 
+                                    <% Category.get_three_cols_select(1, @category).each do |item|  %>
+                                        <option<%= " selected" if !@category.nil? and @category.related_ids.include?(item.id) %> value="<%= item.id %>"><%= item.name %></option> 
+                                    <% end %>
+                                </select>
+                            </div>
+                            <div class="col-md-4 catcol">
+                                <select level="1" name="category_ids[]" class="select select-item-color" data-placeholder="<%= t(:category_level) %> 2">
+                                    <option value=""><%= t(:category_level) %> 2</option> 
+                                    <% Category.get_three_cols_select(2, @category).each do |item|  %>
+                                        <option<%= " selected" if !@category.nil? and @category.related_ids.include?(item.id) %> value="<%= item.id %>"><%= item.name %></option> 
+                                    <% end %>
+                                </select>
+                            </div>
+                            <div class="col-md-4 catcol">
+                                <select level="1" name="category_ids[]" class="select select-item-color" data-placeholder="<%= t(:category_level) %> 3">
+                                    <option value=""><%= t(:category_level) %> 3</option>
+                                    <% Category.get_three_cols_select(3, @category).each do |item|  %>
+                                        <option<%= " selected" if !@category.nil? and @category.related_ids.include?(item.id) %> value="<%= item.id %>"><%= item.name %></option> 
+                                    <% end %>
+                                </select>
+                            </div>
+                        </div>

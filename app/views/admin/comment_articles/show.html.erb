@@ -1,29 +1,118 @@
-<p id="notice"><%= notice %></p>
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @comment_article.name %>
-</p>
+<!-- Page container -->
+<div class="page-container">
 
-<p>
-  <strong>Email:</strong>
-  <%= @comment_article.email %>
-</p>
+    <!-- Page content -->
+    <div class="page-content">
 
-<p>
-  <strong>Content:</strong>
-  <%= @comment_article.content %>
-</p>
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
 
-<p>
-  <strong>User:</strong>
-  <%= @comment_article.user_id %>
-</p>
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
 
-<p>
-  <strong>Article:</strong>
-  <%= @comment_article.article_id %>
-</p>
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
 
-<%= link_to 'Edit', edit_comment_article_path(@comment_article) %> |
-<%= link_to 'Back', comment_articles_path %>
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold"><%= @comment_article.name %></span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_comment_articles_path %>"><%= t(:comment_question) %></a></li>
+                        <li><a href="<%= admin_comment_articles_path %>"><%= t(:comment_articles) %></a></li>
+                        <li class="active"><%= @comment_article.name %></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Basic datatable -->
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h5 class="panel-title"><span class="text-semibold"><%= @comment_article.name %></span></h5><br/>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <%= label "", t(:name), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static") do %>
+                                      <%= @comment_article.name %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:email), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @comment_article.email %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:content), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @comment_article.content %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", "Created At: ", class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static") do %>
+                                      <%= @comment_article.created_at.strftime("%d/%m/%Y") %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </form>
+                        <%= link_to '<i class="icon-backward2 position-left"></i> '.html_safe + t(:back), admin_comment_articles_path, class: "btn btn-primary margin-submit" %>
+                    </div>
+                </div>
+                <!-- /basic datatable -->
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_manufacturers.js' %>
+<!-- /theme JS files -->

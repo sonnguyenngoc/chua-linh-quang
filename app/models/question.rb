@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   validates :name, :email, :content, presence: true
   belongs_to :product
+  belongs_to :user
   
   def self.sort_by
     [

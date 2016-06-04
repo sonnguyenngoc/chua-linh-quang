@@ -13,6 +13,7 @@ class Product < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   accepts_nested_attributes_for :product_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
   has_and_belongs_to_many :articles
+  belongs_to :user
   
   def self.get_products_for_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
@@ -199,14 +200,19 @@ class Product < ActiveRecord::Base
     return arr    
   end
   
+  def split_statues
+    I18n.t(self.status.split(","))
+  end
+  
   def display_statuses
     @html = ",<br />"
     statuses.join(@html).html_safe
   end
   
-  def self.get_by_category_status(category, status)
-    records = self.where(is_show: true)
+  def self.get_by_category_status(category, area, status)
+    records = self.joins(:areas).where(is_show: true).where(approved: true)
     records = records.where("products.status LIKE ?", "%#{status}%")
+    records = records.where("areas.id = ?", area.id) if area.id.present?
     records = records.joins(:categories).where(categories: {id: category})
     return records
   end

@@ -4,10 +4,16 @@ class Admin::CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
+    # authorize
+    authorize! :read, Coupon
+    
     @coupons = Coupon.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
-  def search 
+  def search
+    # authorize
+    authorize! :read, Coupon
+    
     @coupons = Coupon.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/coupons/index"
   end
@@ -19,6 +25,9 @@ class Admin::CouponsController < ApplicationController
 
   # GET /coupons/new
   def new
+    # authorize
+    authorize! :create, Coupon
+    
     @coupon = Coupon.new
     @coupon.from_date = Time.now
     @coupon.to_date = Time.now
@@ -26,11 +35,15 @@ class Admin::CouponsController < ApplicationController
 
   # GET /coupons/1/edit
   def edit
+    # authorize
+    authorize! :update, @coupon
   end
 
   # POST /coupons
   # POST /coupons.json
   def create
+    # authorize
+    authorize! :create, Coupon
     @coupon = Coupon.new(coupon_params)
     
     @coupon.generate_codes
@@ -49,6 +62,9 @@ class Admin::CouponsController < ApplicationController
   # PATCH/PUT /coupons/1
   # PATCH/PUT /coupons/1.json
   def update
+    # authorize
+    authorize! :update, @coupon
+    
     respond_to do |format|
       if @coupon.update(coupon_params)
         format.html { redirect_to edit_admin_coupon_path(@coupon.id), notice: 'Coupon was successfully updated.' }
@@ -63,6 +79,9 @@ class Admin::CouponsController < ApplicationController
   # DELETE /coupons/1
   # DELETE /coupons/1.json
   def destroy
+    # authorize
+    authorize! :delete, @coupon
+    
     @coupon.destroy
     respond_to do |format|
       format.html { redirect_to admin_coupons_url, notice: 'Coupon was successfully destroyed.' }

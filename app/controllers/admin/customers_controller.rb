@@ -5,11 +5,17 @@ class Admin::CustomersController < ApplicationController
   # GET /customers.json
   def index
     @areas = Area.get_by_level(2)
+    # authorize
+    authorize! :read, Customer
+    
     @customers = Customer.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
     @areas = Area.get_by_level(2)
+    # authorize
+    authorize! :read, Customer
+    
     @customers = Customer.search(params).paginate(:page => params[:page], :per_page => 10)
     render 'admin/customers/index'
   end
@@ -21,18 +27,25 @@ class Admin::CustomersController < ApplicationController
 
   # GET /customers/new
   def new
+    # authorize
+    authorize! :create, Customer
+    
     @customer = Customer.new
   end
 
   # GET /customers/1/edit
   def edit
+    # authorize
+    authorize! :update, @customer
   end
 
   # POST /customers
   # POST /customers.json
   def create
+    # authorize
+    authorize! :create, Customer
     @customer = Customer.new(customer_params)
-
+    
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
@@ -47,6 +60,9 @@ class Admin::CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+    # authorize
+    authorize! :update, @customer
+    
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
@@ -61,6 +77,9 @@ class Admin::CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
+    # authorize
+    authorize! :delete, @customer
+    
     @customer.destroy
     respond_to do |format|
       format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }

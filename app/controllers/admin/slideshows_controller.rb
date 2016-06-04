@@ -4,6 +4,9 @@ class Admin::SlideshowsController < ApplicationController
   # GET /slideshows
   # GET /slideshows.json
   def index
+    # authorize
+    authorize! :read, Slideshow
+    
     @slideshows = Slideshow.all.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -14,18 +17,25 @@ class Admin::SlideshowsController < ApplicationController
 
   # GET /slideshows/new
   def new
+    # authorize
+    authorize! :create, Slideshow
+    
     @slideshow = Slideshow.new
   end
 
   # GET /slideshows/1/edit
   def edit
+    # authorize
+    authorize! :update, @slideshow
   end
 
   # POST /slideshows
   # POST /slideshows.json
   def create
+    # authorize
+    authorize! :create, Slideshow
     @slideshow = Slideshow.new(slideshow_params)
-
+    
     respond_to do |format|
       if @slideshow.save
         format.html { redirect_to edit_admin_slideshow_path(@slideshow.id), notice: 'Slideshow was successfully created.' }
@@ -40,6 +50,9 @@ class Admin::SlideshowsController < ApplicationController
   # PATCH/PUT /slideshows/1
   # PATCH/PUT /slideshows/1.json
   def update
+    # authorize
+    authorize! :update, @slideshow
+    
     respond_to do |format|
       if @slideshow.update(slideshow_params)
         format.html { redirect_to edit_admin_slideshow_path(@slideshow.id), notice: 'Slideshow was successfully updated.' }
@@ -54,6 +67,9 @@ class Admin::SlideshowsController < ApplicationController
   # DELETE /slideshows/1
   # DELETE /slideshows/1.json
   def destroy
+    # authorize
+    authorize! :delete, @slideshow
+    
     @slideshow.destroy
     respond_to do |format|
       format.html { redirect_to admin_slideshows_url, notice: 'Slideshow was successfully destroyed.' }

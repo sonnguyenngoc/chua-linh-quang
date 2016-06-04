@@ -51,10 +51,14 @@
             <div class="content">
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
+                    
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_products) %></span></h5>
-                        <%= link_to t(:new_product), new_admin_product_path, class: 'btn btn-primary pull-right' %>
+                        <% if can? :create, Product %>
+                            <%= link_to t(:new_product), new_admin_product_path, class: 'btn btn-primary pull-right' %>
+                        <% end %>
                     </div>
+                    
                     <div class="filter-box">
                         <%= form_for("", url: {controller: "products", action: "search_backend"}, method: "get") do |f| %>
                             <div class="row">
@@ -125,9 +129,7 @@
                             <tr class="bg-teal-800">
                                 <th><%= t(:list_image) %></th>
                                 <th><%= t(:list_product_name) %></th>
-                                <th><%= t(:list_price) %> (VNĐ)</th>
-                                <th><%= t(:list_quantity_unit) %></th>
-                                <th><%= t(:list_categories) %></th>
+                                <th><%= t(:list_price) %></th>
                                 <th><%= t(:list_areas) %></th>
                                 <th><%= t(:list_status) %></th>
                                 <th><%= t(:created_at) %></th>
@@ -139,36 +141,53 @@
                                 <tr>
                                     <td>
                                         <% if item.get_main_image.present? %>
-                                            <%= link_to image_tag(item.get_main_image.image_url.small_image), edit_admin_product_path(item), title: item.name %>
+                                            <% if can? :update, item %>
+                                                <%= link_to image_tag(item.get_main_image.image_url.small_image), edit_admin_product_path(item), title: item.name %>
+                                            <% else %>
+                                                <%= image_tag item.get_main_image.image_url.small_image, title: item.name %>
+                                            <% end %>
                                         <% else %>
-                                            <%= link_to image_tag("/frontend/images/small_image.png"), edit_admin_product_path(item), title: item.name %>
+                                            <% if can? :update, item %>
+                                                <%= link_to image_tag("/frontend/images/small_image.png"), edit_admin_product_path(item), title: item.name %>
+                                            <% else %>
+                                                <%= image_tag "/frontend/images/small_image.png", title: item.name %>
+                                            <% end %>
                                         <% end %>
                                     </td>
                                     <td>
-                                        <%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %>
+                                        <% if can? :update, item %>
+                                            <strong><%= link_to (truncate(strip_tags(item.name), length: 20)), edit_admin_product_path(item), title: item.name %></strong>
+                                        <% else %>
+                                            <strong><%= raw truncate(strip_tags(item.name), length: 20) %></strong>
+                                        <% end %>
                                         <br/><%= item.code %>
-                                        <br/><%= item.manufacturer.name if !item.manufacturer.nil?%>
-                                        <% if item.is_show == true %><br/> <span class="label bg-blue"><%= t(:showing) %></span> <% end %>
-                                        <% if item.approved == true %>
-                                            <br/> <span class="label bg-success"><%= t(:approved) %></span>
-                                        <% else %>
-                                            <br/> <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
-                                        <% end %>
+                                        <br/><i class="icon-pin-alt"></i>  <%= item.manufacturer.name if !item.manufacturer.nil? %>
+                                        <br/><i class="icon-stack"></i>  <%= item.categories.map(&:name).join("<br/>").html_safe %>
                                     </td>
-                                    </td>
-                                    <td><%= format_number(item.price) %></td>
+                                    <td><%= format_number(item.price) %><br/>(<%= format_number(item.quantity) %> <%= item.unit %>)</td>
 
-                                    <td><%= format_number(item.quantity) %> <br /> (<%= item.unit %>)</td>
-                                    <td>
-                                        <%= item.categories.map(&:name).join("<br/>").html_safe %>
-                                    </td>
                                     <td>
                                         <%= item.areas.map(&:name).join("<br/>").html_safe %>
                                     </td>
                                     <td>
-                                        <%= item.display_statuses %>
+                                        <% if !item.status.nil? %>
+                                            <% item.split_statues.each do |status| %>
+                                                <span class="label bg-orange-600"><%= status %></span><br/>
+                                            <% end %>
+                                        <% end %>
+                                        <% if item.is_show == true %><span class="label bg-blue"><%= t(:showing) %></span><br/> <% end %>
+                                        <% if item.approved == true %>
+                                            <span class="label bg-success"><%= t(:approved) %></span>
+                                        <% else %>
+                                            <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+                                        <% end %>
                                     </td>
-                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td>
+                                        <%= item.created_at.strftime("%d/%m/%Y") %>
+                                        <% if !item.user_id.nil? %>
+                                            <br/><i class="icon-user"></i>  <span class="text-success"><b><%= item.user.first_name.to_s + " " + item.user.last_name.to_s %></b></span>
+                                        <% end %>
+                                    </td>
                                     <td class="text-center">
                                         <% if can?(:update, item) or can?(:delete, item) or can?(:approve, item) %>
                                             <ul class="icons-list">

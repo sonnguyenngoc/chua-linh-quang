@@ -105,14 +105,13 @@
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/js/pages/colors_teal.js' %>
 <%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
-<%= javascript_include_tag '//cdn.ckeditor.com/4.5.6/full/ckeditor.js' %>
 <!-- /theme JS files -->
 <script>
-    // Full featured editor
-    CKEDITOR.replace( 'editor-full', {
-        height: '400px',
-        extraPlugins: 'forms'
-    });
+    //// Full featured editor
+    //CKEDITOR.replace( 'editor-full', {
+    //    height: '400px',
+    //    extraPlugins: 'forms'
+    //});
     // Checkboxes and radios
     $(".styled-level-1, .multiselect-container input").uniform({
         radioClass: 'choice',
@@ -121,5 +120,12 @@
     });
     $("#product_is_show").uniform({
         wrapperClass: "border-teal text-teal-600"
+    });
+    // Checkboxes and radios
+    // Checkboxes and radios
+    $(".checkbox-related-articles, #product_status_deal, #product_status_prominent, #product_status_bestseller, #product_status_new, #product_status_imported, #product_status_sold_out").uniform({
+        radioClass: 'choice',
+        checkboxClass: 'checker',
+        wrapperClass: "border-info text-info-600"
     });
 </script>

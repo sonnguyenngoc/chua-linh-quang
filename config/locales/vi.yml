@@ -215,6 +215,7 @@ vi:
   rating: "Đánh giá"
   article_title: "Tiêu đề bài viết"
   testimonials: "Ý kiến khách hàng"
+  testimonial: "Ý kiến khách hàng"
   
   #-------------------------------------
   question: "Câu hỏi"
@@ -305,16 +306,23 @@ vi:
   manufacturer: "Thương hiệu"
   area: "Khu vực"
   article_category: "Chuyên mục bài viết"
-  code_status: "Code status"
+  code_status: "Thẻ bài viết"
   slideshow: "Slideshow trình chiếu"
   comment: "Bình luận sản phẩm"
   comment_article: "Bình luận bài viết"
   voucher: "Voucher"
   coupon: "Coupon"
   user_group: "Nhóm người dùng"
+  user_groups: "Danh sách nhóm người dùng"
   system_setting: "Cấu hình hệ thống"
-  user_groups: "Nhóm người dùng"
-  cetegroy_level: "Chuyên mục cấp"
+  contact: "Liên hệ"
+  newsletter: "Đăng ký nhận tin mới"
+  category_level: "Cấp chuyên mục"
+  message: "Lời nhắn"
+  edit_delivery_method: "Chỉnh sửa hình thức giao hàng"
+  tab_related_articles: "Bài viết liên quan"
+  add_to_list: "Thêm vào danh sách"
+  display_order: "Thứ tự hiển thị"
   
   will_paginate:
     page_entries_info:
