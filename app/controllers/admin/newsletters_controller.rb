@@ -72,7 +72,7 @@ class Admin::NewslettersController < ApplicationController
     
     @newsletter.destroy
     respond_to do |format|
-      format.html { redirect_to admin_newsletters_url, notice: 'Newsletter was successfully destroyed.' }
+      format.html { redirect_to admin_newsletters_url, notice: 'Xóa email thành công.' }
       format.json { head :no_content }
     end
   end

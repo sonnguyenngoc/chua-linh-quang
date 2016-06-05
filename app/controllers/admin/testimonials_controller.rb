@@ -80,7 +80,7 @@ class Admin::TestimonialsController < ApplicationController
     
     @testimonial.destroy
     respond_to do |format|
-      format.html { redirect_to admin_testimonials_url, notice: 'Testimonial was successfully destroyed.' }
+      format.html { redirect_to admin_testimonials_url, notice: 'Xóa ý kiến khách hàng thành công.' }
       format.json { head :no_content }
     end
   end

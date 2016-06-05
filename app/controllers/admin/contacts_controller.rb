@@ -72,7 +72,7 @@ class Admin::ContactsController < ApplicationController
     
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to admin_contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to admin_contacts_url, notice: 'Xóa tin nhắn liên hệ thành công.' }
       format.json { head :no_content }
     end
   end

@@ -50,7 +50,7 @@ class Admin::CouponsController < ApplicationController
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to edit_admin_coupon_path(@coupon.id), notice: 'Coupon was successfully created.' }
+        format.html { redirect_to edit_admin_coupon_path(@coupon.id), notice: 'Tạo mới mã giảm giá thành công.' }
         format.json { render :show, status: :created, location: @coupon }
       else
         format.html { render :new }
@@ -67,7 +67,7 @@ class Admin::CouponsController < ApplicationController
     
     respond_to do |format|
       if @coupon.update(coupon_params)
-        format.html { redirect_to edit_admin_coupon_path(@coupon.id), notice: 'Coupon was successfully updated.' }
+        format.html { redirect_to edit_admin_coupon_path(@coupon.id), notice: 'Chỉnh sửa mã giảm giá thành công.' }
         format.json { render :show, status: :ok, location: @coupon }
       else
         format.html { render :edit }
@@ -84,7 +84,7 @@ class Admin::CouponsController < ApplicationController
     
     @coupon.destroy
     respond_to do |format|
-      format.html { redirect_to admin_coupons_url, notice: 'Coupon was successfully destroyed.' }
+      format.html { redirect_to admin_coupons_url, notice: 'Xóa mã giảm giá thành công.' }
       format.json { head :no_content }
     end
   end

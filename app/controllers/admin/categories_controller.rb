@@ -59,7 +59,7 @@ class Admin::CategoriesController < ApplicationController
         # update all level
         Category.update_all_level
         
-        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Category was successfully created.' }
+        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Tạo mới chuyên mục thành công.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -82,7 +82,7 @@ class Admin::CategoriesController < ApplicationController
         # update all level
         Category.update_all_level
         
-        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Category was successfully updated.' }
+        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Cập nhật chuyên mục thành công.' }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
@@ -101,7 +101,7 @@ class Admin::CategoriesController < ApplicationController
       # update all level
       Category.update_all_level
         
-      format.html { redirect_to admin_categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to admin_categories_url, notice: 'Xóa chuyên mục thành công.' }
       format.json { head :no_content }
     end
   end

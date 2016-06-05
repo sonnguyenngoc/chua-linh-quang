@@ -52,7 +52,7 @@ class Admin::VouchersController < ApplicationController
     respond_to do |format|
       if @voucher.save
         
-        format.html { redirect_to edit_admin_voucher_path(@voucher.id), notice: 'Voucher was successfully created.' }
+        format.html { redirect_to edit_admin_voucher_path(@voucher.id), notice: 'Tạo mới phiếu mua hàng thành công.' }
         format.json { render :show, status: :created, location: @voucher }
       else
         format.html { render :new }
@@ -69,7 +69,7 @@ class Admin::VouchersController < ApplicationController
     
     respond_to do |format|
       if @voucher.update(voucher_params)
-        format.html { redirect_to edit_admin_voucher_path(@voucher.id), notice: 'Voucher was successfully updated.' }
+        format.html { redirect_to edit_admin_voucher_path(@voucher.id), notice: 'Chỉnh sửa phiếu mua hàng thành công.' }
         format.json { render :show, status: :ok, location: @voucher }
       else
         format.html { render :edit }
@@ -86,7 +86,7 @@ class Admin::VouchersController < ApplicationController
     
     @voucher.destroy
     respond_to do |format|
-      format.html { redirect_to admin_vouchers_url, notice: 'Voucher was successfully destroyed.' }
+      format.html { redirect_to admin_vouchers_url, notice: 'Xóa phiếu mua hàng thành công.' }
       format.json { head :no_content }
     end
   end

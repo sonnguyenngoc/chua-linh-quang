@@ -46,7 +46,7 @@ class Admin::ManufacturersController < ApplicationController
 
     respond_to do |format|
       if @manufacturer.save
-        format.html { redirect_to edit_admin_manufacturer_path(@manufacturer.id), notice: 'Manufacturer was successfully created.' }
+        format.html { redirect_to edit_admin_manufacturer_path(@manufacturer.id), notice: 'Tạo mới thương hiệu thành công.' }
         format.json { render :show, status: :created, location: @manufacturer }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class Admin::ManufacturersController < ApplicationController
     
     respond_to do |format|
       if @manufacturer.update(manufacturer_params)
-        format.html { redirect_to edit_admin_manufacturer_path(@manufacturer.id), notice: 'Manufacturer was successfully updated.' }
+        format.html { redirect_to edit_admin_manufacturer_path(@manufacturer.id), notice: 'Chỉnh sửa thương hiệu thành công.' }
         format.json { render :show, status: :ok, location: @manufacturer }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class Admin::ManufacturersController < ApplicationController
     
     @manufacturer.destroy
     respond_to do |format|
-      format.html { redirect_to admin_manufacturers_url, notice: 'Manufacturer was successfully destroyed.' }
+      format.html { redirect_to admin_manufacturers_url, notice: 'Xóa thương hiệu thành công.' }
       format.json { head :no_content }
     end
   end
