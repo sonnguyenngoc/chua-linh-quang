@@ -7,7 +7,7 @@ class Admin::ArticlesController < ApplicationController
     # authorize
     authorize! :read, Article
     
-    @articles = Article.search(params).paginate(:page => params[:page], :per_page => 10)
+    @articles = Article.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
@@ -145,12 +145,12 @@ class Admin::ArticlesController < ApplicationController
   end
   
   def approve
-    authorize! :approve, @article
     @article = Article.find(params[:id])
+    authorize! :approve, @article
     @article.approved = true
     @article.save
     respond_to do |format|
-      format.html { redirect_to admin_articles_url }
+      format.html { redirect_to admin_articles_url, notice: 'Duyệt bài viết thành công.' }
       format.json { head :no_content }
     end
   end

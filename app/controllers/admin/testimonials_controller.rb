@@ -77,12 +77,8 @@ class Admin::TestimonialsController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @testimonial
-    
     @testimonial.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_testimonials_url, notice: 'Xóa ý kiến khách hàng thành công.' }
-      format.json { head :no_content }
-    end
+    format.html { redirect_to admin_testimonials_url, notice: 'Xóa ý kiến khách hàng thành công.' }
   end
 
   private
