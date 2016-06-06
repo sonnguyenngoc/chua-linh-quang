@@ -859,3 +859,7 @@ h3.care {
     width: 33%;
     white-space: nowrap;
 }
+.conversation_rightbar .dropdown.visible {
+    height: 288px;
+    overflow: auto;
+}

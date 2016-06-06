@@ -105,9 +105,7 @@
                                 <th><%= t(:content) %></th>
                                 <th><%= t(:category) %></th>
                                 <th><%= t(:created_at) %></th>
-                                <% if can?(:update, :articles) or can?(:delete, :articles) or can?(:approve, :articles) %>
-                                    <th class="text-center"><%= t(:actions) %></th>
-                                <% end %>
+                                <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
