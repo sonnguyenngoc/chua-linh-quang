@@ -106,7 +106,11 @@
                             <% @comment_articles.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= item.name %>
+                                        <% if can?(:read, item) %>
+                                            <strong><%= link_to item.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
+                                        <% end %>
                                     </td>
                                     <td>
                                         <% if !item.article.nil? %>

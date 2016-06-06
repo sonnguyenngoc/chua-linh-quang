@@ -26,7 +26,7 @@ class Admin::DeliveryMethodsController < ApplicationController
   # GET /delivery_methods/new
   def new
     # authorize
-    authorize! :create, @delivery_method
+    authorize! :create, DeliveryMethod
     
     @delivery_method = DeliveryMethod.new
   end
@@ -40,13 +40,13 @@ class Admin::DeliveryMethodsController < ApplicationController
   # POST /delivery_methods
   # POST /delivery_methods.json
   def create
-    @delivery_method = DeliveryMethod.new(delivery_method_params)
     # authorize
-    authorize! :create, @delivery_method
+    authorize! :create, DeliveryMethod
+    @delivery_method = DeliveryMethod.new(delivery_method_params)
     
     respond_to do |format|
       if @delivery_method.save
-        format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Delivery method was successfully created.' }
+        format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Tạo mới hình thức vận chuyển thành công.' }
         format.json { render :show, status: :created, location: @delivery_method }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class Admin::DeliveryMethodsController < ApplicationController
     
     respond_to do |format|
       if @delivery_method.update(delivery_method_params)
-        format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Delivery method was successfully updated.' }
+        format.html { redirect_to edit_admin_delivery_method_path(@delivery_method.id), notice: 'Chỉnh sửa hình thức vận chuyển thành công.' }
         format.json { render :show, status: :ok, location: @delivery_method }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class Admin::DeliveryMethodsController < ApplicationController
     
     @delivery_method.destroy
     respond_to do |format|
-      format.html { redirect_to admin_delivery_methods_url, notice: 'Delivery method was successfully destroyed.' }
+      format.html { redirect_to admin_delivery_methods_url, notice: 'Xóa hình thức vận chuyển thành công.' }
       format.json { head :no_content }
     end
   end

@@ -28,6 +28,8 @@
 	<%= javascript_include_tag "/backend/assets/js/plugins/loaders/blockui.min.js" %>
 	<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
 	<%= javascript_include_tag "/backend/assets/js/custom.js" %>
+	<%= javascript_include_tag '/backend/assets/js/plugins/notifications/sweet_alert.min.js' %>
+	<%= javascript_include_tag '/backend/assets/js/plugins/notifications/bootbox.min.js' %>
 	<!-- /core JS files -->
 
 </head>
@@ -43,7 +45,38 @@
 	  
 		ga('create', 'UA-77038521-1', 'auto');
 		ga('send', 'pageview');
-	  
+		
+		
+		$(document).ready(function() {
+			
+			// add related articles to list	
+			$(document).on("click", ".add_related_articles_button", function() {
+				var ids = $(".list_related_articles").select2("val");
+				var product_id = $(this).attr("product_id");
+				if(ids != "") {
+					$.ajax({
+						method: "GET",
+						url: '<%= add_related_articles_admin_products_path %>?article_ids='+ids+'&product_id='+product_id,
+					})
+					.done(function( msg ) {
+					  $(".table_related_articles").html(msg);
+					});
+				} else {
+					
+				}
+			});
+			
+		});
+		
+		<% if notice.present? %>
+			swal({
+				title: "<%= notice %>",
+				confirmButtonColor: "#66BB6A",
+				type: "success",
+				allowOutsideClick: true
+			});
+		<% end %>
+		
 	</script>
 
 	<%= yield %>

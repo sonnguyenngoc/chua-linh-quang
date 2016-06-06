@@ -113,6 +113,7 @@ en:
   placeholder_categories: "Choose the categories for article..."
   related_products: "Related Products"
   code_statuses: "Code"
+  code_status: "Article Tag"
   listing_code_statuses: "Listing Code Statuses"
   new_code_status: "New Code Status"
   categories_article: "Categories of Article"
@@ -201,6 +202,7 @@ en:
   with_deal: "With deal product"
   apply_price: "Price are appling"
   showing: "Showing"
+  display_area: "Display area"
   
   #-------------------------------------
   comment_question: "Comment/Question/Testimonial"
@@ -213,6 +215,7 @@ en:
   rating: "Rating"
   article_title: "Title"
   testimonials: "Testimonials"
+  testimonial: "Testimonial"
   
   #-------------------------------------
   question: "Question"
@@ -314,6 +317,12 @@ en:
   contact: "Contact"
   newsletter: "Newsletter"
   category_level: "Level Category"
+  message: "Message"
+  edit_delivery_method: "Edit delivery method"
+  tab_related_articles: "Related articles"
+  add_to_list: "Add to list"
+  display_order: "Display order"
+  wishlist_number: "Wishlist number"
   
   will_paginate:
     page_entries_info:

@@ -27,7 +27,7 @@ class Admin::CompaniesController < ApplicationController
   # GET /companies/new
   def new
     # authorize
-    authorize! :create, @company
+    authorize! :create, Company
     
     @company = Company.new
   end
@@ -41,13 +41,13 @@ class Admin::CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
     # authorize
-    authorize! :create, @company
+    authorize! :create, Company
+    @company = Company.new(company_params)
     
     respond_to do |format|
       if @company.save
-        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Company was successfully created.' }
+        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Tạo mới thông tin công ty thành công.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -64,7 +64,7 @@ class Admin::CompaniesController < ApplicationController
     
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Company was successfully updated.' }
+        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Chỉnh sửa thông tin công ty thành công.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }
@@ -81,7 +81,7 @@ class Admin::CompaniesController < ApplicationController
     
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to admin_companies_url, notice: 'Company was successfully destroyed.' }
+      format.html { redirect_to admin_companies_url, notice: 'Xóa công ty thành công.' }
       format.json { head :no_content }
     end
   end

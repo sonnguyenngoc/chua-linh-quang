@@ -26,7 +26,7 @@ class Admin::QuestionsController < ApplicationController
   # GET /questions/new
   def new
     # authorize
-    authorize! :create, @question
+    authorize! :create, Question
     @question = Question.new
   end
 
@@ -39,9 +39,9 @@ class Admin::QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
     # authorize
-    authorize! :create, @question
+    authorize! :create, Question
+    @question = Question.new(question_params)
     
     respond_to do |format|
       if @question.save
@@ -79,7 +79,7 @@ class Admin::QuestionsController < ApplicationController
     
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to admin_questions_url, notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to admin_questions_url, notice: 'Xóa câu hỏi thành công.' }
       format.json { head :no_content }
     end
   end

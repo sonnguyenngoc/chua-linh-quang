@@ -4,6 +4,9 @@ class Admin::ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
+    # authorize
+    authorize! :read, Contact
+    
     @contacts = Contact.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -14,18 +17,25 @@ class Admin::ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
+    # authorize
+    authorize! :read, Contact
+    
     @contact = Contact.new
   end
 
   # GET /contacts/1/edit
   def edit
+    # authorize
+    authorize! :read, @contact
   end
 
   # POST /contacts
   # POST /contacts.json
   def create
+    # authorize
+    authorize! :read, Contact
     @contact = Contact.new(contact_params)
-
+  
     respond_to do |format|
       if @contact.save
         format.html { redirect_to [:admin, @contact], notice: 'Contact was successfully created.' }
@@ -40,6 +50,9 @@ class Admin::ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
+    # authorize
+    authorize! :read, @contact
+    
     respond_to do |format|
       if @contact.update(contact_params)
         format.html { redirect_to [:admin, @contact], notice: 'Contact was successfully updated.' }
@@ -54,9 +67,12 @@ class Admin::ContactsController < ApplicationController
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy
+    # authorize
+    authorize! :read, @contact
+    
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to admin_contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to admin_contacts_url, notice: 'Xóa tin nhắn liên hệ thành công.' }
       format.json { head :no_content }
     end
   end

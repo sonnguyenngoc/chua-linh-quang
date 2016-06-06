@@ -40,7 +40,7 @@
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
                         <li><a href="<%= admin_customers_path %>"><%= t(:customer) %></a></li>
                         <li><a href="<%= admin_customers_path %>"><%= t(:customers) %></a></li>
-                        <li class="active"><%= t(:customer_detail) %></li>
+                        <li class="active"><%= @customer.name %></li>
                     </ul>
                 </div>
             </div>
@@ -52,22 +52,60 @@
                 <!-- Basic datatable -->
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title"><B><%= t(:customer_detail) %></B></h5>
+                        <h5 class="panel-title"><span class="text-semibold"><%= @customer.name %></span></h5><br/>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <%= label "", t(:name), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static") do %>
+                                      <%= @customer.name %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:address), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static") do %>
+                                      <%= @customer.full_address %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:phone), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @customer.phone %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:email), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @customer.email %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:company), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @customer.company %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", "Created At: ", class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static") do %>
+                                      <%= @customer.created_at.strftime("%d/%m/%Y") %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </form>
+                        <%= link_to '<i class="icon-backward2 position-left"></i> '.html_safe + t(:back), admin_customers_path, class: "btn btn-primary margin-submit" %>
                     </div>
-                    <div class="panel-body col-md-12">
-                            <!--<h6><b><%= t(:customer_info) %></b></h6>-->
-                            <p>Họ tên khách hàng: <%= @customer.name %></p>
-                            <p>Địa chỉ: <%= @customer.display_address %></p>
-                            <p>Điện thoại: <%= @customer.phone %></p>
-                            <p>E-mail: <%= @customer.email %></p>
-                            <p>Công ty: <%= @customer.company %></p>
-                    </div>
-                    
-                    <table class="table datatable-basic table-bordered table-striped table-hover">
-                        
-                    </table>
                 </div>
-                <%= link_to '<i class="icon-backward2 position-left"></i>'.html_safe + t(:back), admin_customers_path, class: "btn btn-primary" %>
                 <!-- /basic datatable -->
             
                 <!-- Footer -->
@@ -87,20 +125,10 @@
 <!-- /page container -->
 
 <!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
-<%= javascript_include_tag '/backend/assets/javascripts/datatables_categories.js' %>
-
-<!-- Theme JS files -->
-<%= javascript_include_tag '/backend/assets/js/core/libraries/jquery_ui/datepicker.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/daterangepicker.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.date.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.time.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/legacy.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/anytime.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/core/libraries/jquery_ui/effects.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/notifications/jgrowl.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/ui/moment/moment.min.js' %>
 
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_manufacturers.js' %>
+<!-- /theme JS files -->

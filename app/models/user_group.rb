@@ -230,7 +230,7 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
-                class_name: "Setting",
+                class_name: "Option",
                 display_name: I18n.t(:system_setting),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},

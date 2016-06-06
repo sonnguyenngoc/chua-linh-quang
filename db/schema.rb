@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602083819) do
+ActiveRecord::Schema.define(version: 20160603080430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20160602083819) do
     t.integer  "parent_id"
     t.integer  "areatype_id"
     t.integer  "display_order"
+  end
+
+  create_table "areas_articles", force: :cascade do |t|
+    t.integer  "area_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "areas_products", force: :cascade do |t|
@@ -63,9 +70,9 @@ ActiveRecord::Schema.define(version: 20160602083819) do
     t.string   "meta_keywords"
     t.text     "meta_description"
     t.boolean  "is_show",              default: false
-    t.string   "page_layout"
     t.integer  "user_id"
     t.boolean  "approved",             default: false
+    t.string   "page_layout"
     t.string   "image_url_full_width"
   end
 
@@ -415,8 +422,8 @@ ActiveRecord::Schema.define(version: 20160602083819) do
     t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+    t.text     "current_sign_in_ip"
+    t.text     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "first_name"

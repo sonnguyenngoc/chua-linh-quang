@@ -4,7 +4,10 @@ class Admin::NewslettersController < ApplicationController
   # GET /newsletters
   # GET /newsletters.json
   def index
-    @newsletters = Newsletter.all
+    # authorize
+    authorize! :read, Newsletter
+    
+    @newsletters = Newsletter.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /newsletters/1
@@ -14,16 +17,23 @@ class Admin::NewslettersController < ApplicationController
 
   # GET /newsletters/new
   def new
+    # authorize
+    authorize! :read, Newsletter
+    
     @newsletter = Newsletter.new
   end
 
   # GET /newsletters/1/edit
   def edit
+    # authorize
+    authorize! :read, @newsletter
   end
 
   # POST /newsletters
   # POST /newsletters.json
   def create
+    # authorize
+    authorize! :read, Newsletter
     @newsletter = Newsletter.new(newsletter_params)
 
     respond_to do |format|
@@ -40,6 +50,9 @@ class Admin::NewslettersController < ApplicationController
   # PATCH/PUT /newsletters/1
   # PATCH/PUT /newsletters/1.json
   def update
+    # authorize
+    authorize! :read, @newsletter
+    
     respond_to do |format|
       if @newsletter.update(newsletter_params)
         format.html { redirect_to [:admin, @newsletter], notice: 'Newsletter was successfully updated.' }
@@ -54,9 +67,12 @@ class Admin::NewslettersController < ApplicationController
   # DELETE /newsletters/1
   # DELETE /newsletters/1.json
   def destroy
+    # authorize
+    authorize! :read, @newsletter
+    
     @newsletter.destroy
     respond_to do |format|
-      format.html { redirect_to admin_newsletters_url, notice: 'Newsletter was successfully destroyed.' }
+      format.html { redirect_to admin_newsletters_url, notice: 'Xóa email thành công.' }
       format.json { head :no_content }
     end
   end

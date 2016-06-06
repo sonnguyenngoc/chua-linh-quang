@@ -26,11 +26,13 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles/new
   def new
     # authorize
-    authorize! :create, @article
+    authorize! :create, Article
     
     @article = Article.new
     @article_categories = ArticleCategory.all
     @products = Product.all
+    @areas = Area.get_by_level(2)
+    @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /articles/1/edit
@@ -40,16 +42,31 @@ class Admin::ArticlesController < ApplicationController
     
     @article_categories = ArticleCategory.all
     @products = Product.all
+    @areas = Area.get_by_level(2)
+    @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
 
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @areas = Area.get_by_level(2)
     # authorize
-    authorize! :read, @article
+    authorize! :create, Article
+    @article = Article.new(article_params)
+    
+    @article.user_id = current_user.id
     
     @article.article_categories.clear
+    
+    # update areas
+    @article.areas.clear
+    if params[:area_ids].present?
+        @article.areas.clear
+        params[:area_ids].each do |id|      
+          @article.areas << Area.find(id)
+        end
+    end
+    
     if params[:category_ids].present?
       params[:category_ids].each do |id|      
         @article.article_categories << ArticleCategory.find(id)
@@ -65,7 +82,7 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Article was successfully created.' }
+        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Tạo mới bài viết thành công.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -77,6 +94,7 @@ class Admin::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @areas = Area.get_by_level(2)
     # authorize
     authorize! :update, @article
     
@@ -95,9 +113,18 @@ class Admin::ArticlesController < ApplicationController
       end
     end
     
+    # update areas
+    @article.areas.clear
+    if params[:area_ids].present?
+        @article.areas.clear
+        params[:area_ids].each do |id|      
+          @article.areas << Area.find(id)
+        end
+    end
+
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Article was successfully updated.' }
+        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Chỉnh sửa bài viết thành công.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -114,7 +141,18 @@ class Admin::ArticlesController < ApplicationController
     
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to admin_articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to admin_articles_url, notice: 'Xóa bài viết thành công.' }
+      format.json { head :no_content }
+    end
+  end
+  
+  def approve
+    authorize! :approve, @article
+    @article = Article.find(params[:id])
+    @article.approved = true
+    @article.save
+    respond_to do |format|
+      format.html { redirect_to admin_articles_url }
       format.json { head :no_content }
     end
   end
@@ -166,6 +204,6 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show, :page_layout, :image_url_full_width)
+      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show, :page_layout, :image_url_full_width, :area_id)
     end
 end

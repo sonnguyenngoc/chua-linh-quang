@@ -55,6 +55,7 @@
                         <% if can? :create, Voucher %>
                             <%= link_to t(:new_voucher), new_admin_voucher_path, class: 'btn btn-primary pull-right' %>
                         <% end %>
+                        <button type="button" class="btn btn-success btn-sm" id="delete_voucher_success">Run <i class="icon-play3 position-right"></i></button>
                     </div>
                     
                     <div class="filter-box">
@@ -115,7 +116,11 @@
                             <% @vouchers.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to item.name, edit_admin_voucher_path(item) %>
+                                        <% if can?(:update, item) %>
+                                            <strong><%= link_to item.name, edit_admin_voucher_path(item) %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
+                                        <% end %>
                                     </td>
                                     <td>
                                         <%= format_number(item.price) %>
@@ -210,6 +215,14 @@
         labelYearSelect: 'Pick a year from the dropdown',
         selectMonths: true,
         selectYears: true
+    });
+    // Success alert
+    $('#delete_voucher_success').on('click', function() {
+        swal({
+            title: "Xóa phiếu mua hàng thành công!",
+            confirmButtonColor: "#66BB6A",
+            type: "success"
+        });
     });
 </script>
 <!-- /theme JS files -->

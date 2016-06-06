@@ -26,7 +26,7 @@ class Admin::OrdersController < ApplicationController
   # GET /orders/new
   def new
     # authorize
-    authorize! :create, @order
+    authorize! :create, Order
     
     @order = Order.new
   end
@@ -40,9 +40,9 @@ class Admin::OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
     # authorize
-    authorize! :create, @order
+    authorize! :create, Order
+    @order = Order.new(order_params)
 
     respond_to do |format|
       if @order.save
@@ -80,7 +80,7 @@ class Admin::OrdersController < ApplicationController
     
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to admin_orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to admin_orders_url, notice: 'Xóa đơn hàng thành công.' }
       format.json { head :no_content }
     end
   end

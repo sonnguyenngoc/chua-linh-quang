@@ -11,8 +11,9 @@ class Admin::CategoriesController < ApplicationController
         format.html { 
           @categories = Category.get_categories #.paginate(:page => params[:page], :per_page => 10)
         }
-        format.json { render json: Category.get_tree_json }
+        format.json { render json: Category.get_tree_json(current_user) }
     end
+    
   end
   
   def search
@@ -31,7 +32,7 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories/new
   def new
     # authorize
-    authorize! :create, @category
+    authorize! :create, Category
     
     @category = Category.new
   end
@@ -44,11 +45,11 @@ class Admin::CategoriesController < ApplicationController
 
   # POST /categories
   # POST /categories.json
-  def create    
-    @category = Category.new(category_params)
+  def create
     # authorize
-    authorize! :create, @category
-
+    authorize! :create, Category
+    @category = Category.new(category_params)
+    
     respond_to do |format|
       if @category.save
         # update parent
@@ -58,7 +59,7 @@ class Admin::CategoriesController < ApplicationController
         # update all level
         Category.update_all_level
         
-        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Category was successfully created.' }
+        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Tạo mới chuyên mục thành công.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -81,7 +82,7 @@ class Admin::CategoriesController < ApplicationController
         # update all level
         Category.update_all_level
         
-        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Category was successfully updated.' }
+        format.html { redirect_to edit_admin_category_path(@category.id), notice: 'Cập nhật chuyên mục thành công.' }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
@@ -100,7 +101,7 @@ class Admin::CategoriesController < ApplicationController
       # update all level
       Category.update_all_level
         
-      format.html { redirect_to admin_categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to admin_categories_url, notice: 'Xóa chuyên mục thành công.' }
       format.json { head :no_content }
     end
   end

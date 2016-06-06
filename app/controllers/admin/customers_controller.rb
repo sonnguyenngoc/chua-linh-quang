@@ -4,6 +4,7 @@ class Admin::CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    @areas = Area.get_by_level(2)
     # authorize
     authorize! :read, Customer
     
@@ -11,6 +12,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def search
+    @areas = Area.get_by_level(2)
     # authorize
     authorize! :read, Customer
     
@@ -26,7 +28,7 @@ class Admin::CustomersController < ApplicationController
   # GET /customers/new
   def new
     # authorize
-    authorize! :create, @customer
+    authorize! :create, Customer
     
     @customer = Customer.new
   end
@@ -40,9 +42,9 @@ class Admin::CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    @customer = Customer.new(customer_params)
     # authorize
-    authorize! :create, @customer
+    authorize! :create, Customer
+    @customer = Customer.new(customer_params)
     
     respond_to do |format|
       if @customer.save
@@ -80,7 +82,7 @@ class Admin::CustomersController < ApplicationController
     
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.html { redirect_to customers_url, notice: 'Xóa khách hàng thành công.' }
       format.json { head :no_content }
     end
   end

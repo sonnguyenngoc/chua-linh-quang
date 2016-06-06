@@ -26,7 +26,7 @@ class Admin::ArticleCategoriesController < ApplicationController
   # GET /article_categories/new
   def new
     # authorize
-    authorize! :create, @article_category
+    authorize! :create, ArticleCategory
     
     @article_category = ArticleCategory.new
   end
@@ -40,9 +40,9 @@ class Admin::ArticleCategoriesController < ApplicationController
   # POST /article_categories
   # POST /article_categories.json
   def create
-    @article_category = ArticleCategory.new(article_category_params)
     # authorize
-    authorize! :create, @article_category
+    authorize! :create, ArticleCategory
+    @article_category = ArticleCategory.new(article_category_params)
 
     respond_to do |format|
       if @article_category.save
@@ -50,7 +50,7 @@ class Admin::ArticleCategoriesController < ApplicationController
         @article_category.parent.clear
         @article_category.parent << ArticleCategory.find(params[:parent_id]) if params[:parent_id].present?
         
-        format.html { redirect_to edit_admin_article_category_path(@article_category.id), notice: 'Article category was successfully created.' }
+        format.html { redirect_to edit_admin_article_category_path(@article_category.id), notice: 'Tạo mới chuyên mục bài viết thành công.' }
         format.json { render :show, status: :created, location: @article_category }
       else
         format.html { render :new }
@@ -71,7 +71,7 @@ class Admin::ArticleCategoriesController < ApplicationController
         @article_category.parent.clear
         @article_category.parent << ArticleCategory.find(params[:parent_id]) if params[:parent_id].present?
         
-        format.html { redirect_to edit_admin_article_category_path(@article_category.id), notice: 'Article category was successfully updated.' }
+        format.html { redirect_to edit_admin_article_category_path(@article_category.id), notice: 'Chỉnh sửa chuyên mục bài viết thành công.' }
         format.json { render :show, status: :ok, location: @article_category }
       else
         format.html { render :edit }
@@ -88,7 +88,7 @@ class Admin::ArticleCategoriesController < ApplicationController
     
     @article_category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_article_categories_url, notice: 'Article category was successfully destroyed.' }
+      format.html { redirect_to admin_article_categories_url, notice: 'Xóa chuyên mục bài viết thành công.' }
       format.json { head :no_content }
     end
   end

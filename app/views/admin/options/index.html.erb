@@ -71,7 +71,13 @@
                         <tbody>
                             <% @options.each do |item| %>
                                 <tr>
-                                    <td><%= link_to item.title, edit_admin_option_path(item) %></td>
+                                    <td>
+                                        <% if can? :update, item %>
+                                            <strong><%= link_to item.title, edit_admin_option_path(item) %></strong>
+                                        <% else %>
+                                            <strong><%= item.title %></strong>
+                                        <% end %>
+                                    </td>
                                     <td><%= item.tag %></td>
                                     <td><%= item.value %></td>
                                     <td><%= item.note %></td>

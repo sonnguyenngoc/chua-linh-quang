@@ -28,14 +28,14 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
     
     # authorize
-    authorize! :create, @product
+    authorize! :create, Product
     
     @categories = Category.all
     @areas = Area.all
     10.times do
       @product.product_images.build
     end
-    @articles = Article.all
+    @articles = @product.articles.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /products/1/edit
@@ -50,16 +50,15 @@ class Admin::ProductsController < ApplicationController
     (10-@product.product_images.count).times do
       @product.product_images.build
     end
-    @articles = Article.all
+    @articles = Article.paginate(:page => params[:page], :per_page => 10)
   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-    
     # authorize
-    authorize! :create, @product
+    authorize! :create, Product
+    @product = Product.new(product_params)
     
     @product.user_id = current_user.id
     
@@ -94,7 +93,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to edit_admin_product_path(@product.id), notice: 'Product was successfully created.' }
+        format.html { redirect_to edit_admin_product_path(@product.id), notice: 'Tạo mới sản phẩm thành công.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -144,7 +143,7 @@ class Admin::ProductsController < ApplicationController
     
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to edit_admin_product_path(@product.id), notice: 'Product was successfully updated.' }
+        format.html { redirect_to edit_admin_product_path(@product.id), notice: 'Chỉnh sửa sản phẩm thành công.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -160,7 +159,7 @@ class Admin::ProductsController < ApplicationController
     authorize! :delete, @product
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to admin_products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to admin_products_url, notice: 'Xóa sản phẩm thành công.' }
       format.json { head :no_content }
     end
   end
@@ -173,6 +172,13 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_products_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def add_related_articles
+    if params[:article_ids].present?
+      @articles = Article.where(id: params[:article_ids].split(","))
+      render "/admin/products/_table_related_articles"
     end
   end
 

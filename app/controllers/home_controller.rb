@@ -6,6 +6,8 @@ class HomeController < ApplicationController
     @META_KEYWORDS = @option.value
     @META_DESCRIPTION = @option.note
     @blog_deal = Article.get_banner_event_top
+    @areas = Area.get_all_areas
+    @blog_advertise = Article.get_banner_by_area(@current_area)
   end
   
   def countdown

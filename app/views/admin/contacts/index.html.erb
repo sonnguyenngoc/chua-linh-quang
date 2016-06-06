@@ -31,7 +31,7 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold"><%= t(:comments) %></span></h4>
+                        <h4><span class="text-semibold"><%= t(:contact) %></span></h4>
                     </div>
                 </div>
             
@@ -54,37 +54,25 @@
                     <table class="table">
                         <thead>
                             <tr class="bg-teal-800">
-                                <th><%= t(:customer_name) %></th>
-                                <th><%= t(:product_name) %></th>
-                                <th><%= t(:content) %></th>
-                                <th><%= t(:rating) %></th>
-                                <th><%= t(:user) %></th>
+                                <th><%= t(:name) %></th>
+                                <th><%= t(:email) %></th>
+                                <th><%= t(:message) %></th>
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% @comments.each do |item| %>
+                            <% @contacts.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= item.name %>
-                                    </td>
-                                    <td>
-                                        <% if !item.product.nil? %>
-                                            <%= link_to item.product.name, { controller: "/product", action: "product", product_id: item.product_id }, target: "_blank" %>
+                                        <% if can?(:read, item) %>
+                                            <strong><%= link_to item.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.name %></strong>
                                         <% end %>
                                     </td>
-                                    <td>
-                                        <%= item.content %>
-                                    </td>
-                                    <td>
-                                        <%= item.star %> <%= t(:star) %>
-                                    </td>
-                                    <td>
-                                        <% if !item.user.nil? %>
-                                            <%= item.user.short_name %>
-                                        <% end %>
-                                    </td>
+                                    <td><%= item.email %></td>
+                                    <td><%= item.message %></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <% if can?(:delete, item) %>
@@ -110,9 +98,9 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @comments %></div>
+                            <div class="dataTables_info" ><%= page_entries_info @contacts %> <%= t(:contact) %>.</div>
                             <div class="dataTables_paginate paging_simple_numbers">
-                                <%= will_paginate @comments, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                                <%= will_paginate @contacts, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                             </div>
                         </div>
                     </div>

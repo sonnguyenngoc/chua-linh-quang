@@ -86,7 +86,11 @@
                             <% @payment_methods.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to item.title, edit_admin_payment_method_path(item) %>
+                                        <% if can? :update, item %>
+                                            <strong><%= link_to item.title, edit_admin_payment_method_path(item) %></strong>
+                                        <% else %>
+                                            <strong><%= item.title %></strong>
+                                        <% end %>
                                     </td>
                                     <td>
                                         <%= item.description %>

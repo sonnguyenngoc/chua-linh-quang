@@ -145,6 +145,7 @@ Rails.application.routes.draw do
             get 'search'
             get 'search_backend'
             get 'approve'
+            get 'add_related_articles'
           end
         end
         resources :categories, path: "chuyen-muc-san-pham" do
@@ -163,6 +164,7 @@ Rails.application.routes.draw do
           collection do
             get 'search'
             post 'upload_image_video'
+            get 'approve'
           end
         end
         resources :article_categories, path: "chuyen-muc-bai-viet" do

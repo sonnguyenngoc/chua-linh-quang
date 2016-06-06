@@ -27,7 +27,7 @@ class Admin::CommentsController < ApplicationController
   # GET /comments/new
   def new
     # authorize
-    authorize! :create, @comment
+    authorize! :create, Comment
     
     @comment = Comment.new
   end
@@ -41,9 +41,9 @@ class Admin::CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
     # authorize
-    authorize! :create, @comment
+    authorize! :create, Comment
+    @comment = Comment.new(comment_params)
     
     respond_to do |format|
       if @comment.save
@@ -81,7 +81,7 @@ class Admin::CommentsController < ApplicationController
     
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to admin_comments_url, notice: 'Xóa bình luận thành công.' }
       format.json { head :no_content }
     end
   end
