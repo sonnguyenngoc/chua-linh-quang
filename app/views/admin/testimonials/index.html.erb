@@ -122,7 +122,6 @@
                                                         <% end %>
                                                         <% if can? :delete, item %>
                                                             <li>
-                                                                
                                                                 <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_testimonial", url: admin_testimonial_path(item) , class: "delete_testimonial" %>
                                                             </li>
                                                         <% end %>
@@ -197,7 +196,7 @@
                     data: { authenticity_token: AUTH_TOKEN }
                 })
                 .done(function( msg ) {
-                    
+                    location.reload();
                 });
             }
         });

@@ -19,7 +19,7 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_lastest_blog_posts
-    self.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").first(3)
+    self.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").first(4)
   end
   
   def split_tags

@@ -78,7 +78,6 @@ class Admin::TestimonialsController < ApplicationController
     # authorize
     authorize! :delete, @testimonial
     @testimonial.destroy
-    format.html { redirect_to admin_testimonials_url, notice: 'Xóa ý kiến khách hàng thành công.' }
   end
 
   private

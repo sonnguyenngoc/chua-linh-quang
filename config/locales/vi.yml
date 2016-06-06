@@ -327,7 +327,8 @@ vi:
   
   devise:
     sessions:
-      signed_in: "Đăng nhập thành công."
+      signed_in: "Đăng nhập tài khoản thành công."
+      signed_out: "Đăng xuất tài khoản thành công."
   
   will_paginate:
     page_entries_info:

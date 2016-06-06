@@ -1,10 +1,10 @@
-    <div class="container" style="">
-        <!-- - - - - - - - - - - - - - Areas map - - - - - - - - - - - - - - - - -->
-            
-        <%= render "module/areas_map" %>
-    
-        <!-- - - - - - - - - - - - - - End areas map - - - - - - - - - - - - - - - - -->
-    </div>
+<div class="container" style="">
+    <!-- - - - - - - - - - - - - - Areas map - - - - - - - - - - - - - - - - -->
+        
+    <%= render "module/areas_map" %>
+
+    <!-- - - - - - - - - - - - - - End areas map - - - - - - - - - - - - - - - - -->
+</div>
 
 <% if @current_area.id.present? %>
 
@@ -426,7 +426,7 @@
 
                         <ul class="list_of_entries">
                             
-                            <% Testimonial.all.limit(2).each do |item| %>
+                            <% Testimonial.all.limit(4).each do |item| %>
 
                                 <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
     
