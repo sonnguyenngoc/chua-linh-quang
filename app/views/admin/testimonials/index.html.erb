@@ -122,7 +122,8 @@
                                                         <% end %>
                                                         <% if can? :delete, item %>
                                                             <li>
-                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                                
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_testimonial", url: admin_testimonial_path(item) , class: "delete_testimonial" %>
                                                             </li>
                                                         <% end %>
                                                     </ul>
@@ -134,6 +135,7 @@
                             <% end %>
                         </tbody>
                     </table>
+                    
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
                             <div class="dataTables_info" ><%= page_entries_info @testimonials %></div>
@@ -169,3 +171,35 @@
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/javascripts/datatables_manufacturers.js' %>
 <!-- /theme JS files -->
+<script>
+    // Alert combination
+    var current_delete_link;
+    $('.delete_testimonial').on('click', function(e) {
+        var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
+        
+        current_delete_link = $(this);
+        swal({
+            title: "Bạn có chắc muốn xóa?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#1E88E5",
+            confirmButtonText: "Tôi muốn xóa!",
+            cancelButtonText: "Tôi không muốn xóa!",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                var url = current_delete_link.attr("url");
+                $.ajax({
+                    method: "DELETE",
+                    url: url,
+                    data: { authenticity_token: AUTH_TOKEN }
+                })
+                .done(function( msg ) {
+                    
+                });
+            }
+        });
+    });
+</script>
