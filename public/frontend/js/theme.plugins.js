@@ -40,7 +40,7 @@
 					Revolution slider
 			------------------------------------------------ */
 			
-			// if($(window).width() > 489) {
+			if($(window).width() > 489) {
 				if($('.rev_slider').length){
 					$('.rev_slider').revolution({
 						delay:4000,
@@ -52,7 +52,12 @@
 						navigationStyle:"round"
 					});
 				}
-			// }
+			} else {
+				if($('.rev_slider').length){
+					$('.rev_slider li').hide();
+					setInterval("runSlideShow()", 4000);
+				}
+			}
 
 			/* ------------------------------------------------
 					End Revolution slider
