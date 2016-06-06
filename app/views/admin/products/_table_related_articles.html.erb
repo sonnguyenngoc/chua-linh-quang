@@ -14,7 +14,7 @@
         <% @articles.each do |item| %>
             <tr>
                 <td>
-                    <input type="checkbox" class="checkbox-related-articles" checked>
+                    <input name="article_ids[]" value="<%= item.id %>" type="checkbox" class="checkbox-related-articlesz" checked>
                 </td>
                 <td>
                     <div class="media-left">
@@ -36,20 +36,8 @@
                 <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
                 <td></td>
                 <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
-                <td class="text-center">
-                    <ul class="icons-list">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-menu9"></i>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li>
-                                    <%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:remove), "#remove" %>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <td>
+                    <span class="btn btn-marning bg-danger remove_button">X</span>
                 </td>
             </tr>
         <% end %>

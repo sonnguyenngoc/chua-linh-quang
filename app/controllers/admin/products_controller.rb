@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
     10.times do
       @product.product_images.build
     end
-    @articles = @product.articles.paginate(:page => params[:page], :per_page => 10)
+
   end
 
   # GET /products/1/edit
@@ -50,7 +50,6 @@ class Admin::ProductsController < ApplicationController
     (10-@product.product_images.count).times do
       @product.product_images.build
     end
-    @articles = Article.paginate(:page => params[:page], :per_page => 10)
   end
 
   # POST /products
@@ -64,7 +63,6 @@ class Admin::ProductsController < ApplicationController
     
     @product.categories.clear
     @categories = Category.all
-    @articles = Article.all
     
     # update category id    
     if params[:category_ids].present?
@@ -108,9 +106,9 @@ class Admin::ProductsController < ApplicationController
     
     # authorize
     authorize! :update, @product
-    
+
     @categories = Category.all
-    @articles = Article.all
+
     if params[:category_ids].present?
         @product.categories.clear
         # update category id
@@ -132,7 +130,7 @@ class Admin::ProductsController < ApplicationController
     
     if params[:article_ids].present?
       @product.articles.clear
-      params[:article_ids].each do |id|      
+      params[:article_ids].each do |id|
         @product.articles << Article.find(id)
       end
     end
@@ -178,7 +176,7 @@ class Admin::ProductsController < ApplicationController
   def add_related_articles
     if params[:article_ids].present?
       @articles = Article.where(id: params[:article_ids].split(","))
-      render "/admin/products/_table_related_articles"
+      render "/admin/products/_table_related_articles", layout: nil
     end
   end
 

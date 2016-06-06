@@ -128,10 +128,7 @@
                     </div>
                 </div>
                     
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
                 
             </div>
             
@@ -156,10 +153,7 @@
                     </div>
                 </div>
                     
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
                     
             </div>
             
@@ -180,10 +174,7 @@
                     <%= f.text_area :description, rows: "4", cols: "4", id: "editor-full" %>
                 </div>
                 
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
             </div>
             
             <div class="tab-pane has-padding" id="control-tab4">
@@ -220,19 +211,16 @@
                     </div>
                 </div>
                             
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
                 
             </div>
             
-            <div class="tab-pane has-padding active" id="control-tab5">
+            <div class="tab-pane has-padding" id="control-tab5">
                 <div class="form-group">
                     <div class="col-lg-10">
-                        <select name="article_ids[]" class="select select-item-color list_related_articles" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
+                        <select name="" class="select list_related_articles" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
                             <% Article.all.each do |item| %>
-                                <option <%= "selected" if @product.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
+                                <option value="<%= item.id %>"><%= item.title %></option>
                             <% end %>
                         </select>
                     </div>
@@ -241,22 +229,18 @@
                     </div>
                 </div>
                 
+                <% @articles = @product.articles %>
                 <div class="table_related_articles"><%= render "table_related_articles" %></div>
                 
-                <div class="dataTables_wrapper no-footer">
-                    <div class="datatable-footer showed">
-                        <div class="dataTables_info" ><%= page_entries_info @articles %></div>
-                        <div class="dataTables_paginate paging_simple_numbers">
-                            <%= will_paginate @articles, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
             </div>
         </div>
+                    
+        <br />
+        <div class="text-right">
+            <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
+        </div>
+        
     </div>
     
 <% end %>

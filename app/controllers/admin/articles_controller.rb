@@ -30,7 +30,6 @@ class Admin::ArticlesController < ApplicationController
     
     @article = Article.new
     @article_categories = ArticleCategory.all
-    @products = Product.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
@@ -41,7 +40,6 @@ class Admin::ArticlesController < ApplicationController
     authorize! :update, @article
     
     @article_categories = ArticleCategory.all
-    @products = Product.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
@@ -193,6 +191,13 @@ class Admin::ArticlesController < ApplicationController
       
       video_tag = "<img thumb=\"#{image_public_path.to_s}\" width=\"100%\" height=\"100%\" class=\"video_map\" rel=\"#{public_path.to_s}\" src=\"/img/videobg.png\" />"
       render text: "<script>parent.editor_uploaded('"+video_tag+"')</script>"
+    end
+  end
+  
+  def add_related_products
+    if params[:product_ids].present?
+      @products = Product.where(id: params[:product_ids].split(","))
+      render "/admin/articles/_table_related_products", layout: nil
     end
   end
 
