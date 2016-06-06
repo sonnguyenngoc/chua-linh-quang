@@ -50,7 +50,7 @@
 #form_user .error {
     border-color: red;
 }
-#category_validate .error {
+#validate_checking .error {
     border-color: red;
 }
 label.error {

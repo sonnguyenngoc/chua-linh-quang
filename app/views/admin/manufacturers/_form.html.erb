@@ -10,16 +10,16 @@
     </div>
 <% end %>
 
-<%= form_for [:admin, @manufacturer], html: {class: "form-horizontal"} do |f| %>
+<%= form_for [:admin, @manufacturer], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
     
     <div class="form-group">
-        <%= f.label t(:logo), class: "col-lg-2 control-label" %>
+        <label class="col-lg-2 control-label" ><%= t(:logo) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <div class="uploader bg-teal-400">
-                <%= f.file_field :image_url, class: "file-styled", require: true %>
+                <%= f.file_field :image_url, class: "file-styled required", accept: ".png, .jpg, .jpeg, .gif" %>
                 <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
             </div>
-            <span class="help-block">Accepted formats: gif, png, jpg.</span>
+            <span class="help-block">Accepted formats: gif, png, jpg, jpeg.</span>
             <%= image_tag(@manufacturer.image_url.small_image, size: "180x110", class: "img-rouded") %>
         </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:manufacturer_name) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
-            <%= f.text_field :name, class: "form-control" %>
+            <%= f.text_field :name, class: "form-control required" %>
         </div>
     </div>
         
