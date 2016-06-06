@@ -1,8 +1,9 @@
 class Product < ActiveRecord::Base
   validates :name, :price, :quantity, :unit, :manufacturer_id, :short_description, presence: true
+  validates :image_url, presence: true
   validates :image_url, allow_blank: true, format: {
-    with: %r{\.gif|jpg|png}i,
-    message: 'phải có định dạng gif, jpg hoặc png.'
+    with: %r{\.(gif|jpg|png)\Z}i,
+    message: 'must be a URL for GIF, JPG or PNG image.'
   }
   
   has_many :line_items, dependent: :destroy
