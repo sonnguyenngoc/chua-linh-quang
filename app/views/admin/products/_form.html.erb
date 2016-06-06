@@ -10,7 +10,7 @@
     </div>
 <% end %>
 
-<%= form_for [:admin, @product], html: {class: "form-horizontal"} do |f| %>
+<%= form_for [:admin, @product], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
     <div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
             <li class="active button_tab_product"><a href="#control-tab1" value="control-tab1" data-toggle="tab"><%= t(:tab_product_info) %></a></li>
@@ -24,9 +24,9 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_product_name) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-6">
-                        <%= f.text_field :name, class: "form-control" %>
+                        <%= f.text_field :name, class: "form-control required" %>
                     </div>
-                    <label class="col-lg-2 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:show) %></label>
                     <div class="col-lg-2">
                         <div class="row-fluid">
                             <div class="checkbox">
@@ -40,24 +40,27 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_product_code) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-6">
-                        <%= f.text_field :code, class: "form-control" %>
+                        <%= f.text_field :code, class: "form-control required" %>
                     </div>
                     <label class="col-lg-2 control-label" ><%= t(:stock) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-2">
-                        <%= f.text_field :stock, class: "form-control" %>
+                        <%= f.text_field :stock, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_price) %> </label>
+                    
+                    <label class="col-lg-1 control-label" ><%= t(:current_price) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :price, class: "form-control required", placeholder: "#{t(:apply_price)}" %>
+                    </div>
+                    
                     <label class="col-lg-1 control-label" ><%= t(:old_price) %> </label>
                     <div class="col-lg-2">
                         <%= f.text_field :old_price, class: "form-control", placeholder: "#{t(:with_deal)}" %>
                     </div>
-                    <label class="col-lg-1 control-label" ><%= t(:current_price) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-2">
-                        <%= f.text_field :price, class: "form-control", placeholder: "#{t(:apply_price)}" %>
-                    </div>
+                    
                     <label class="col-lg-2 control-label" ><%= t(:discount_percent) %> </label>
                     <div class="col-lg-2">
                         <%= f.text_field :discount_percent, class: "form-control", placeholder: "#{t(:with_deal)}" %>
@@ -67,11 +70,11 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:quantity) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-5">
-                        <%= f.text_field :quantity, class: "form-control" %>
+                        <%= f.text_field :quantity, class: "form-control required" %>
                     </div>
                     <label class="col-lg-1 control-label" ><%= t(:unit) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-4">
-                        <%= f.text_field :unit, class: "form-control" %>
+                        <%= f.text_field :unit, class: "form-control required" %>
                     </div>
                 </div>
                 
@@ -83,7 +86,7 @@
                 </div>
                 
                 <div class="form-group field">
-                    <label class="col-lg-2 control-label" ><%= t(:list_areas) %> </label>
+                    <label class="col-lg-2 control-label" ><%= t(:list_areas) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <select name="area_ids[]" class="select select-item-color" data-placeholder="<%= t(:list_areas) %>....." multiple="multiple">
                             <% Area.get_list_province_city.each do |item| %>
@@ -94,7 +97,7 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:manufacturers) %> </label>
+                    <label class="col-lg-2 control-label" ><%= t(:manufacturers) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, {:prompt=> "#{t(:manufacturers)}....."}, {class: "select"}) %>
                     </div>
@@ -103,7 +106,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:short_description) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
-                        <%= f.text_area :short_description, rows: "5", cols: "5", class: "form-control" %>
+                        <%= f.text_area :short_description, rows: "5", cols: "5", class: "form-control required" %>
                     </div>
                 </div>
  

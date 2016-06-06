@@ -324,6 +324,10 @@ en:
   display_order: "Display order"
   wishlist_number: "Wishlist number"
   
+  devise:
+    sessions:
+      signed_in: "Signed in successfully."
+  
   will_paginate:
     page_entries_info:
       single_page:

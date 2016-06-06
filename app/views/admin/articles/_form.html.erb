@@ -10,7 +10,7 @@
     </div>
 <% end %>
 
-<%= form_for [:admin, @article], html: {class: "form-horizontal"} do |f| %>
+<%= form_for [:admin, @article], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
     
     <div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
@@ -25,9 +25,9 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:title) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-7">
-                        <%= f.text_field :title, class: "form-control" %>
+                        <%= f.text_field :title, class: "form-control required" %>
                     </div>
-                    <label class="col-lg-1 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-1 control-label" ><%= t(:show) %></label>
                     <div class="col-lg-2">
                         <div class="row-fluid">
                             <div class="checkbox">
@@ -88,7 +88,7 @@
                     <label class="col-lg-2 control-label" ><%= t(:picture) %> </label>
                     <div class="col-lg-10">
                         <div class="uploader bg-teal-400">
-                            <%= f.file_field :image_url, class: "file-styled", require: true %>
+                            <%= f.file_field :image_url, class: "file-styled required", accept: ".png, .jpg, .jpeg, .gif" %>
                             <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
                         </div>
                         <span class="help-block">Accepted formats: gif, png, jpg.</span>

@@ -1,5 +1,11 @@
 class Article < ActiveRecord::Base
-  #validates :title, :article_categories, :content, presence: true
+  validates :title, :content, presence: true
+  validates :image_url, presence: true
+  validates :image_url, allow_blank: true, format: {
+    with: %r{\.(gif|jpg|png)\Z}i,
+    message: 'must be a URL for GIF, JPG or PNG image.'
+  }
+  
   mount_uploader :image_url, ArticleUploader
   mount_uploader :image_url_full_width, ArticleUploader
   has_and_belongs_to_many :article_categories

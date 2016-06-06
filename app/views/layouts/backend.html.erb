@@ -30,6 +30,7 @@
 	<%= javascript_include_tag "/backend/assets/js/custom.js" %>
 	<%= javascript_include_tag '/backend/assets/js/plugins/notifications/sweet_alert.min.js' %>
 	<%= javascript_include_tag '/backend/assets/js/plugins/notifications/bootbox.min.js' %>
+	<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 	<!-- /core JS files -->
 
 </head>
@@ -116,6 +117,9 @@
 	</script>
 
 	<%= yield %>
-    
+	
+    <script>
+		$("#validate_checking").validate();
+	</script>
 </body>
 </html>
