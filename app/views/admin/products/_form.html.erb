@@ -141,18 +141,18 @@
                     <label class="col-lg-2 control-label" ><%=  %></label>
                     <div class="col-lg-12">
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.status.include?("deal") %> type="checkbox" name="product[status][]" id="product_status_deal" value="deal"><%= t(:st_deal) %>
+                            <input <%= "checked" if @product.statuses.include?t(:deal) %> type="checkbox" name="product[status][]" id="product_status_deal" value="deal"><%= t(:st_deal) %>
                         </label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.status.include?("prominent") %> type="checkbox" name="product[status][]" id="product_status_prominent" value="prominent"><%= t(:st_prominent) %></label>
+                            <input <%= "checked" if @product.statuses.include?t(:prominent) %> type="checkbox" name="product[status][]" id="product_status_prominent" value="prominent"><%= t(:st_prominent) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.status.include?("bestseller") %> type="checkbox" name="product[status][]" id="product_status_bestseller" value="bestseller"><%= t(:st_bestseller) %></label>
+                            <input <%= "checked" if @product.statuses.include?t(:bestseller) %> type="checkbox" name="product[status][]" id="product_status_bestseller" value="bestseller"><%= t(:st_bestseller) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.status.include?("new") %> type="checkbox" name="product[status][]" id="product_status_new" value="new"><%= t(:st_new) %></label>
+                            <input <%= "checked" if @product.statuses.include?t(:new) %> type="checkbox" name="product[status][]" id="product_status_new" value="new"><%= t(:st_new) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.status.include?("imported") %> type="checkbox" name="product[status][]" id="product_status_imported" value="imported"><%= t(:st_imported) %></label>
+                            <input <%= "checked" if @product.statuses.include?t(:imported) %> type="checkbox" name="product[status][]" id="product_status_imported" value="imported"><%= t(:st_imported) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.status.include?("sold_out") %> type="checkbox" name="product[status][]" id="product_status_sold_out" value="sold_out"><b><%= t(:st_sold_out) %></b></label>
+                            <input <%= "checked" if @product.statuses.include?t(:sold_out) %> type="checkbox" name="product[status][]" id="product_status_sold_out" value="sold_out"><b><%= t(:st_sold_out) %></b></label>
                     </div>
                 </div>
                     

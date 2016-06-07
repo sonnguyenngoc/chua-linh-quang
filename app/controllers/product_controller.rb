@@ -2,7 +2,7 @@ class ProductController < ApplicationController
     def category
         @category = Category.find(params[:category_id])
         params[:number] = 15 if !params[:number].present?
-        @products = @category.get_products_for_categories(params).paginate(:page => params[:page], :per_page => params[:number])
+        @products = @category.get_products_for_categories(params).search(params).paginate(:page => params[:page], :per_page => params[:number])
         @areas = Area.get_all_areas
         @manufacturers = Manufacturer.get_all_manufacturers
         @title_head = @category.name
