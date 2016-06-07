@@ -20,4 +20,10 @@ class HomeController < ApplicationController
     
     redirect_to :back
   end
+  
+  def go_home
+    session[:current_area_id] = nil
+    
+    redirect_to controller: "home", action: "index"
+  end
 end
