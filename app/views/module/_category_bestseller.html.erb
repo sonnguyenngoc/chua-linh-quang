@@ -15,8 +15,12 @@
                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                 
                         <li>
-                            
-                            <%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+							
+                            <% if product.get_main_image.present? %>
+								<%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+							<% else %>
+								<%= link_to image_tag("/frontend/images/thumb_image.png"), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+							<% end %>
                 
                             <div class="wrapper">
                 
@@ -73,9 +77,13 @@
                 <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
         
                 <li>
-                    
-                    <%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
-        
+					
+                    <% if product.get_main_image.present? %>
+						<%= link_to image_tag(product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+					<% else %>
+						<%= link_to image_tag("/frontend/images/thumb_image.png"), { controller: "product", action: "product", product_id: product }, class: "product_thumb" %>
+					<% end %>
+					
                     <div class="wrapper">
         
                         <%= link_to product.name, { controller: "product", action: "product", product_id: product }, class: "product_title" %>

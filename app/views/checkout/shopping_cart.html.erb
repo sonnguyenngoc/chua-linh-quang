@@ -43,12 +43,12 @@
           
                                         <tr>
                                             <th class="product_image_col">Hình ảnh</th>
-                                            <th class="product_title_col">Tên sản phẩm / Thương hiệu sản phẩm</th>
-                                            <th>Mã</th>
-                                            <th>Giá</th>
+                                            <th class="product_title_col">Tên sản phẩm</th>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Đơn giá</th>
                                             <th class="product_qty_col">Số lượng</th>
                                             <th>Tổng tiền</th>
-                                            <th class="product_actions_col"></th>
+                                            <th class="product_actions_col">Xử lý</th>
                                         </tr>
           
                                     </thead>
@@ -63,7 +63,7 @@
               
                                                 <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
                                                     
-                                                <td class="product_image_col" data-title="Product Image">
+                                                <td class="product_image_col" data-title="Hình ảnh">
                                                     
                                                     <% if item.product.get_main_image.present? %>
                                                 
@@ -81,7 +81,7 @@
               
                                                 <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
               
-                                                <td data-title="Product Name">
+                                                <td data-title="Tên sản phẩm">
                                                     
                                                     <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_title" %><br/>
               
@@ -93,7 +93,7 @@
               
                                                 <!-- - - - - - - - - - - - - - SKU - - - - - - - - - - - - - - - - -->
               
-                                                <td data-title="SKU">
+                                                <td data-title="Mã sản phẩm">
               
                                                     <%= item.product.code %>
               
@@ -103,7 +103,7 @@
               
                                                 <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
               
-                                                <td class="subtotal" data-title="Price">
+                                                <td class="subtotal" data-title="Đơn giá">
                                                     
                                                     <%= format_number(item.product.price) %> đ
               
@@ -113,7 +113,7 @@
               
                                                 <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
               
-                                                <td data-title="Quantity">
+                                                <td data-title="Số lượng">
               
                                                     <div class="min clearfix">
               
@@ -127,7 +127,7 @@
               
                                                 <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
               
-                                                <td class="total" data-title="Total">
+                                                <td class="total" data-title="Tổng cộng">
               
                                                     <%= format_number(item.total_item) %> đ
               
@@ -137,7 +137,7 @@
               
                                                 <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
               
-                                                <td data-title="Action">
+                                                <td data-title="Xử lý">
                                                     
                                                     <button type="submit" class="button_dark_grey icon_btn edit_product">
                                                         
