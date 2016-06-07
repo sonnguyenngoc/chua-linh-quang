@@ -9,11 +9,11 @@
                                                      </li>
                                                      
                                                      <% item.children.order("display_order").each do |child| %>
-     
-                                                         <li value="<%= child.id %>">
-                                                             <a class="level-<%= child.level %>" href="<%= change_current_area_path(child.id) %>"><%= child.name %></a>
-                                                         </li>
-                                                                                                    
+                                                            <% if child.products.count > 0 %>
+                                                                 <li value="<%= child.id %>">
+                                                                     <a class="level-<%= child.level %>" href="<%= change_current_area_path(child.id) %>"><%= child.name %></a>
+                                                                 </li>
+                                                            <% end %>                                        
                                                      <% end %>
                                                                                                 
                                                  <% end %>                                             
