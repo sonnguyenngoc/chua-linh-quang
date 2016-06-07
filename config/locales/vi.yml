@@ -203,6 +203,11 @@ vi:
   apply_price: "Giá đang áp dụng"
   showing: "Đang hiển thị"
   display_area: "Khu vực hiển thị"
+  page_layout: "Dạng hiển thị"
+  normal: "Mặc định"
+  full_width: "Toàn trang"
+  infomations: "Thông tin"
+  orther_setting: "Thiết lập khác"
   
   #-------------------------------------
   comment_question: "Bình luận/Câu hỏi/Ý kiến"
@@ -306,7 +311,7 @@ vi:
   manufacturer: "Thương hiệu"
   area: "Khu vực"
   article_category: "Chuyên mục bài viết"
-  code_status: "Thẻ bài viết"
+  code_status: "Mã bài viết"
   slideshow: "Slideshow trình chiếu"
   comment: "Bình luận sản phẩm"
   comment_article: "Bình luận bài viết"
