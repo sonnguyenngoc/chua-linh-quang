@@ -322,6 +322,11 @@ en:
   tab_related_articles: "Related articles"
   add_to_list: "Add to list"
   display_order: "Display order"
+  wishlist_number: "Wishlist number"
+  
+  devise:
+    sessions:
+      signed_in: "Signed in successfully."
   
   will_paginate:
     page_entries_info:

@@ -56,7 +56,7 @@ class Admin::WishListsController < ApplicationController
   def destroy
     @wish_list.destroy
     respond_to do |format|
-      format.html { redirect_to admin_wish_lists_url, notice: 'Wish list was successfully destroyed.' }
+      format.html { redirect_to admin_wish_lists_url, notice: 'Xóa sản phẩm yêu thích thành công.' }
       format.json { head :no_content }
     end
   end

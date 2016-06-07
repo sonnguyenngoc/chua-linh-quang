@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
     
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_admin_user_path(@user.id), notice: 'User was successfully updated.' }
+        format.html { redirect_to edit_admin_user_path(@user.id), notice: 'Cập nhật người dùng thành công.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -43,7 +43,7 @@ class Admin::UsersController < ApplicationController
     
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_users_url, notice: 'Xóa người dùng thành công.' }
       format.json { head :no_content }
     end
   end

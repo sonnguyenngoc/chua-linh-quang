@@ -10,7 +10,7 @@ class TestimonialsController < ApplicationController
 
     respond_to do |format|
       if @testimonial.save
-        format.html { redirect_to testimonial_list_path, notice: 'Testimonial was successfully created.' }
+        format.html { redirect_to testimonial_list_path, notice: 'Viết ý kiến thành công.' }
         format.json { render :show, status: :created, location: @testimonial }
       else
         format.html { render :new }

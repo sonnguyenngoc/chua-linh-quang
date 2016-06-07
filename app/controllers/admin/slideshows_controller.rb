@@ -38,7 +38,7 @@ class Admin::SlideshowsController < ApplicationController
     
     respond_to do |format|
       if @slideshow.save
-        format.html { redirect_to edit_admin_slideshow_path(@slideshow.id), notice: 'Slideshow was successfully created.' }
+        format.html { redirect_to edit_admin_slideshow_path(@slideshow.id), notice: 'Tạo mới trình chiếu thành công.' }
         format.json { render :show, status: :created, location: @slideshow }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class Admin::SlideshowsController < ApplicationController
     
     respond_to do |format|
       if @slideshow.update(slideshow_params)
-        format.html { redirect_to edit_admin_slideshow_path(@slideshow.id), notice: 'Slideshow was successfully updated.' }
+        format.html { redirect_to edit_admin_slideshow_path(@slideshow.id), notice: 'Chỉnh sửa trình chiếu thành công.' }
         format.json { render :show, status: :ok, location: @slideshow }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class Admin::SlideshowsController < ApplicationController
     
     @slideshow.destroy
     respond_to do |format|
-      format.html { redirect_to admin_slideshows_url, notice: 'Slideshow was successfully destroyed.' }
+      format.html { redirect_to admin_slideshows_url, notice: 'Xóa trình chiếu thành công.' }
       format.json { head :no_content }
     end
   end

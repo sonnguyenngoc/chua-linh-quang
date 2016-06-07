@@ -10,46 +10,46 @@
     </div>
 <% end %>
 
-<%= form_for [:admin, @slideshow], html: {class: "form-horizontal"} do |f| %>
+<%= form_for [:admin, @slideshow], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
     
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:logo) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <div class="uploader bg-teal-400">
-                <%= f.file_field :image_url, class: "file-styled", require: true %>
+                <%= f.file_field :image_url, class: "file-styled required", accept: ".png, .jpg, .jpeg, .gif" %>
                 <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
             </div>
             <span class="help-block">Accepted formats: gif, png, jpg.</span>
-            <%= image_tag(@slideshow.image_url.image, size: "180x110", class: "img-rouded") %>
+            <%= image_tag(@slideshow.image_url.image, size: "202x128", class: "img-rouded") %>
         </div>
     </div>
     
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:title_1) %> </label>
+        <label class="col-lg-2 control-label" ><%= t(:title_1) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-6">
-            <%= f.text_field :title_1, class: "form-control" %>
+            <%= f.text_field :title_1, class: "form-control required" %>
         </div>
         
-        <label class="col-lg-1 control-label" ><%= t(:color_1) %> </label>
-        <div class="col-lg-3">
-            <%= f.text_field :color_1, class: "form-control" %>
+        <label class="col-lg-2 control-label" ><%= t(:color_1) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-2">
+            <%= f.text_field :color_1, class: "form-control required" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:title_2) %> </label>
+        <label class="col-lg-2 control-label" ><%= t(:title_2) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-6">
-            <%= f.text_field :title_2, class: "form-control" %>
+            <%= f.text_field :title_2, class: "form-control required" %>
         </div>
         
-        <label class="col-lg-1 control-label" ><%= t(:color_2) %> </label>
-        <div class="col-lg-3">
-            <%= f.text_field :color_2, class: "form-control" %>
+        <label class="col-lg-2 control-label" ><%= t(:color_2) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-2">
+            <%= f.text_field :color_2, class: "form-control required" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:style) %> </label>
+        <label class="col-lg-2 control-label" ><%= t(:style) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.select(:style, ['fade', 'boxfade', 'boxslide', 'curtain-1', 'curtain-2', 'curtain-3', 'slidedown', 'slideup', 'slideleft', 'slideright', 'slotfade-hor', 'slotfade-ver', 'slotside-hor', 'slotside-ver', 'slotzoom-hor', 'slotzoom-ver', 'papercut', 'cubic', 'flyin', '3dcurtain-horizontal', '3dcurtain-vertical', 'turnoff'], {}, { :class => 'select' })%>
         </div>

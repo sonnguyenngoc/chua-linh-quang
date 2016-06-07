@@ -60,12 +60,6 @@
                             </div>
                             
                             <div class="panel-body">
-                                <% if notice.present? %>
-                                    <div class="alert alert-success alert-styled-left">
-                                        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                                        <span class="text-semibold"><%= notice %></span>
-                                    </div>
-                                <% end %>
                                 <%= render 'form' %>
                             </div>
             
@@ -105,10 +99,4 @@
 
 <%= javascript_include_tag "/backend/assets/js/core/app.js" %>
 <%= javascript_include_tag "/backend/assets/js/pages/picker_date.js" %>
-<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 <!-- /theme JS files -->
-<script>
-    $(document).ready(function(){
-        $("#form_coupon").validate();
-    });
-</script>

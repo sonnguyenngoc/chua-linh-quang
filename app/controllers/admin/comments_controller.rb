@@ -81,7 +81,7 @@ class Admin::CommentsController < ApplicationController
     
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to admin_comments_url, notice: 'Xóa bình luận thành công.' }
       format.json { head :no_content }
     end
   end

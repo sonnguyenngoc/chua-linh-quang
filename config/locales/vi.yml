@@ -323,6 +323,12 @@ vi:
   tab_related_articles: "Bài viết liên quan"
   add_to_list: "Thêm vào danh sách"
   display_order: "Thứ tự hiển thị"
+  wishlist_number: "Số lượng yêu thích"
+  
+  devise:
+    sessions:
+      signed_in: "Đăng nhập tài khoản thành công."
+      signed_out: "Đăng xuất tài khoản thành công."
   
   will_paginate:
     page_entries_info:

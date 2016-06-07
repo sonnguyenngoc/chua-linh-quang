@@ -60,12 +60,6 @@
                             </div>
                             
                             <div class="panel-body">
-                                <% if notice.present? %>
-                                    <div class="alert alert-success alert-styled-left">
-                                        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                                        <span class="text-semibold"><%= notice %></span>
-                                    </div>
-                                <% end %>
                                 <%= render 'form' %>
                             </div>
             
@@ -108,7 +102,7 @@
     $(".code_status").select2();
     $(".select_article").select2();
     $(".select_areas_article").select2();
-    $(".checkbox-related-products").uniform({
+    $(".checkbox-related-products, #article_is_show").uniform({
         radioClass: 'choice',
         checkboxClass: 'checker',
         wrapperClass: "border-info text-info-600"

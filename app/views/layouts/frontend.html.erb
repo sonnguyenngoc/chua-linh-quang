@@ -97,6 +97,20 @@
 		<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
 		
 		<script>
+			function runSlideShow() {
+				var num = 0;
+				$('.rev_slider li').each(function(index) {					
+					if($(this).is(":visible")) {
+						num = index+1;
+					}
+					if(!$('.rev_slider li').eq(num).length) {
+						num = 0;
+					}					
+				});
+				$('.rev_slider li').hide();
+				$('.rev_slider li').eq(num).fadeIn(1000);
+			}
+			
 			$(document).ready(function() {
 				$('.actions_wrap').click(function() {					
 					if(event.target.tagName == 'DIV') {

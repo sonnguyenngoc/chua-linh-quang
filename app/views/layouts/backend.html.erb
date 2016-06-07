@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Đặc sản vùng miền | Trang quản lý</title>
+	
+	<meta content="abc123blahblahauthenticitytoken" name="csrf-token">
 
 	<!-- Global stylesheets -->
 	<%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" %>
@@ -28,6 +30,9 @@
 	<%= javascript_include_tag "/backend/assets/js/plugins/loaders/blockui.min.js" %>
 	<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
 	<%= javascript_include_tag "/backend/assets/js/custom.js" %>
+	<%= javascript_include_tag '/backend/assets/js/plugins/notifications/sweet_alert.min.js' %>
+	<%= javascript_include_tag '/backend/assets/js/plugins/notifications/bootbox.min.js' %>
+	<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 	<!-- /core JS files -->
 
 </head>
@@ -43,10 +48,80 @@
 	  
 		ga('create', 'UA-77038521-1', 'auto');
 		ga('send', 'pageview');
-	  
+		
+		
+		$(document).ready(function() {
+			
+			// add related articles to list	
+			$(document).on("click", ".add_related_articles_button", function() {
+				var ids = $(".list_related_articles").select2("val");
+				var product_id = $(this).attr("product_id");
+				if(ids != "") {
+					$.ajax({
+						method: "GET",
+						url: '<%= add_related_articles_admin_products_path %>?article_ids='+ids+'&product_id='+product_id,
+					})
+					.done(function( msg ) {
+						$('<div>').html(msg).find("tbody tr").each(function() {
+							var id = $(this).find("input[name='article_ids[]']").val();
+							var count = $(".table_related_articles tbody input[value="+id+"]").length;
+							if(count == 0) {
+								$(".table_related_articles tbody").prepend($(this).clone());
+							}
+						});						
+					});
+				} else {
+					
+				}
+				$(".list_related_articles").select2("val","");
+			});
+			$(document).on("click", ".table_related_articles .remove_button", function() {
+				$(this).parents("tr").remove();
+			});
+			
+			$(document).on("click", ".add_related_products_button", function() {
+				var ids = $(".list_related_products").select2("val");
+				var article_id = $(this).attr("article_id");
+				if(ids != "") {
+					$.ajax({
+						method: "GET",
+						url: '<%= add_related_products_admin_articles_path %>?product_ids='+ids+'&article_id='+article_id,
+					})
+					.done(function( msg ) {
+						$('<div>').html(msg).find("tbody tr").each(function() {
+							var id = $(this).find("input[name='product_ids[]']").val();
+							var count = $(".table_related_products tbody input[value="+id+"]").length;
+							if(count == 0) {
+								$(".table_related_products tbody").prepend($(this).clone());
+							}
+						});						
+					});
+				} else {
+					
+				}
+				$(".list_related_products").select2("val","");
+			});
+			$(document).on("click", ".table_related_products .remove_button", function() {
+				$(this).parents("tr").remove();
+			});
+			
+		});
+		
+		<% if notice.present? %>
+			swal({
+				title: "<%= notice %>",
+				confirmButtonColor: "#66BB6A",
+				type: "success",
+				allowOutsideClick: true
+			});
+		<% end %>
+		
 	</script>
 
 	<%= yield %>
-    
+	
+    <script>
+		$("#validate_checking").validate();
+	</script>
 </body>
 </html>

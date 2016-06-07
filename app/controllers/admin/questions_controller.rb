@@ -79,7 +79,7 @@ class Admin::QuestionsController < ApplicationController
     
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to admin_questions_url, notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to admin_questions_url, notice: 'Xóa câu hỏi thành công.' }
       format.json { head :no_content }
     end
   end

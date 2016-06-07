@@ -10,7 +10,7 @@
     </div>
 <% end %>
 
-<%= form_for [:admin, @product], html: {class: "form-horizontal"} do |f| %>
+<%= form_for [:admin, @product], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
     <div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
             <li class="active button_tab_product"><a href="#control-tab1" value="control-tab1" data-toggle="tab"><%= t(:tab_product_info) %></a></li>
@@ -24,9 +24,9 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_product_name) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-6">
-                        <%= f.text_field :name, class: "form-control" %>
+                        <%= f.text_field :name, class: "form-control required" %>
                     </div>
-                    <label class="col-lg-2 control-label" ><%= t(:show) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:show) %></label>
                     <div class="col-lg-2">
                         <div class="row-fluid">
                             <div class="checkbox">
@@ -40,24 +40,27 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_product_code) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-6">
-                        <%= f.text_field :code, class: "form-control" %>
+                        <%= f.text_field :code, class: "form-control required" %>
                     </div>
                     <label class="col-lg-2 control-label" ><%= t(:stock) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-2">
-                        <%= f.text_field :stock, class: "form-control" %>
+                        <%= f.text_field :stock, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:list_price) %> </label>
+                    
+                    <label class="col-lg-1 control-label" ><%= t(:current_price) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :price, class: "form-control required", placeholder: "#{t(:apply_price)}" %>
+                    </div>
+                    
                     <label class="col-lg-1 control-label" ><%= t(:old_price) %> </label>
                     <div class="col-lg-2">
                         <%= f.text_field :old_price, class: "form-control", placeholder: "#{t(:with_deal)}" %>
                     </div>
-                    <label class="col-lg-1 control-label" ><%= t(:current_price) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-2">
-                        <%= f.text_field :price, class: "form-control", placeholder: "#{t(:apply_price)}" %>
-                    </div>
+                    
                     <label class="col-lg-2 control-label" ><%= t(:discount_percent) %> </label>
                     <div class="col-lg-2">
                         <%= f.text_field :discount_percent, class: "form-control", placeholder: "#{t(:with_deal)}" %>
@@ -67,11 +70,11 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:quantity) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-5">
-                        <%= f.text_field :quantity, class: "form-control" %>
+                        <%= f.text_field :quantity, class: "form-control required" %>
                     </div>
                     <label class="col-lg-1 control-label" ><%= t(:unit) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-4">
-                        <%= f.text_field :unit, class: "form-control" %>
+                        <%= f.text_field :unit, class: "form-control required" %>
                     </div>
                 </div>
                 
@@ -83,7 +86,7 @@
                 </div>
                 
                 <div class="form-group field">
-                    <label class="col-lg-2 control-label" ><%= t(:list_areas) %> </label>
+                    <label class="col-lg-2 control-label" ><%= t(:list_areas) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <select name="area_ids[]" class="select select-item-color" data-placeholder="<%= t(:list_areas) %>....." multiple="multiple">
                             <% Area.get_list_province_city.each do |item| %>
@@ -94,7 +97,7 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:manufacturers) %> </label>
+                    <label class="col-lg-2 control-label" ><%= t(:manufacturers) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, {:prompt=> "#{t(:manufacturers)}....."}, {class: "select"}) %>
                     </div>
@@ -103,7 +106,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:short_description) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
-                        <%= f.text_area :short_description, rows: "5", cols: "5", class: "form-control" %>
+                        <%= f.text_area :short_description, rows: "5", cols: "5", class: "form-control required" %>
                     </div>
                 </div>
  
@@ -128,10 +131,7 @@
                     </div>
                 </div>
                     
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
                 
             </div>
             
@@ -156,10 +156,7 @@
                     </div>
                 </div>
                     
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
                     
             </div>
             
@@ -180,10 +177,7 @@
                     <%= f.text_area :description, rows: "4", cols: "4", id: "editor-full" %>
                 </div>
                 
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
             </div>
             
             <div class="tab-pane has-padding" id="control-tab4">
@@ -220,100 +214,38 @@
                     </div>
                 </div>
                             
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
                 
             </div>
             
-            <div class="tab-pane has-padding active" id="control-tab5">
+            <div class="tab-pane has-padding" id="control-tab5">
                 <div class="form-group">
                     <div class="col-lg-10">
-                        <select name="article_ids[]" class="select select-item-color" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
-                            <% @articles.each do |item| %>
-                                <option <%= "selected" if @product.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
+                        <select name="" class="select list_related_articles" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
+                            <% Article.all.each do |item| %>
+                                <option value="<%= item.id %>"><%= item.title %></option>
                             <% end %>
                         </select>
                     </div>
                     <div class="col-lg-2">
-                        <%= link_to "#{t(:add_to_list)}".html_safe, "", class: "btn btn-info"%>
+                        <%= link_to "#{t(:add_to_list)}".html_safe, "#add_to_list", class: "btn btn-info add_related_articles_button", product_id: @product.id %>
                     </div>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr class="bg-teal-800">
-                            <th></th>
-                            <th><%= t(:picture) %></th>
-                            <th><%= t(:title) %>/<%= t(:tags) %></th>
-                            <th><%= t(:content) %></th>
-                            <th><%= t(:category) %></th>
-                            <th><%= t(:created_at) %></th>
-                            <th class="text-center"><%= t(:actions) %></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @articles.each do |item| %>
-                            <tr>
-                                <td>
-									<input type="checkbox" class="checkbox-related-articles">
-								</td>
-                                <td>
-                                    <div class="media-left">
-                                        <% if can? :update, item %>
-                                            <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_article_path(item), target: "_blank" %>
-                                        <% else %>
-                                            <%= image_tag(item.image_url, size: "180x110", class: "img-rouded") %>
-                                        <% end %>
-                                    </div>
-                                </td>
-                                <td>
-                                    <%= item.title %><br/>
-                                    <% if item.approved == true %>
-                                        <span class="label bg-success"><%= t(:approved) %></span>
-                                    <% else %>
-                                        <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
-                                    <% end %>
-                                </td>
-                                <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
-                                <td></td>
-                                <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
-                                <td class="text-center">
-                                    <ul class="icons-list">
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <i class="icon-menu9"></i>
-                                            </a>
-            
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <li>
-                                                    <%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:remove), "" %>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-                <div class="dataTables_wrapper no-footer">
-                    <div class="datatable-footer showed">
-                        <div class="dataTables_info" ><%= page_entries_info @articles %></div>
-                        <div class="dataTables_paginate paging_simple_numbers">
-                            <%= will_paginate @articles, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-right">
-                    <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
-                    <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
-                </div>
+                
+                <% @articles = @product.articles %>
+                <div class="table_related_articles"><%= render "table_related_articles" %></div>
+                
             </div>
         </div>
+                    
+        <br />
+        <div class="text-right">
+            <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
+        </div>
+        
     </div>
     
 <% end %>
 
 <%= render "/admin/main/editor_upload" %>
-

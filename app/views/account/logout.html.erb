@@ -41,13 +41,23 @@
                         <h1><%= @title_head %></h1>
                         
                         <div class="bordered_content box">
-                          <div class="padded">
-                            <p>Đăng xuất tài khoản thành công.</p>
-                          </div>
-                          <div class="bottom_buttons">
-                            <div class="text-right"><%= link_to "Tiếp tục", login_path, class: "btn btn-primary" %></div>
-                          </div>
-                        </div>
+							
+							<div class="padded">
+								
+								<% if notice.present? %>
+                                
+									<h4 class="success"><%= notice %></h4>
+									
+								<% end %>
+							
+							</div>
+							
+							<div class="bottom_buttons">
+								<div class="text-right"><%= link_to "Tiếp tục", login_path, class: "btn btn-primary" %></div>
+							
+							</div>
+                        
+						  </div>
 
                     </main>
 

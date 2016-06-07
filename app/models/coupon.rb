@@ -1,4 +1,5 @@
 class Coupon < ActiveRecord::Base
+  validates :name, :from_date, :to_date, :quantity, :price, presence: true
   
   def codes
     code.split("][").map {|s| s.gsub("]","").gsub("[","") }

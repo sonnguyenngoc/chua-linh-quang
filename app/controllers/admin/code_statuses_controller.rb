@@ -46,7 +46,7 @@ class Admin::CodeStatusesController < ApplicationController
 
     respond_to do |format|
       if @code_status.save
-        format.html { redirect_to edit_admin_code_status_path(@code_status.id), notice: 'Code status was successfully created.' }
+        format.html { redirect_to edit_admin_code_status_path(@code_status.id), notice: 'Tạo mới nhãn bài viết thành công.' }
         format.json { render :show, status: :created, location: @code_status }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class Admin::CodeStatusesController < ApplicationController
     
     respond_to do |format|
       if @code_status.update(code_status_params)
-        format.html { redirect_to edit_admin_code_status_path(@code_status.id), notice: 'Code status was successfully updated.' }
+        format.html { redirect_to edit_admin_code_status_path(@code_status.id), notice: 'Chỉnh sửa nhãn bài viết thành công.' }
         format.json { render :show, status: :ok, location: @code_status }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class Admin::CodeStatusesController < ApplicationController
     
     @code_status.destroy
     respond_to do |format|
-      format.html { redirect_to admin_code_statuses_url, notice: 'Code status was successfully destroyed.' }
+      format.html { redirect_to admin_code_statuses_url, notice: 'Xóa nhãn bài viết thành công.' }
       format.json { head :no_content }
     end
   end

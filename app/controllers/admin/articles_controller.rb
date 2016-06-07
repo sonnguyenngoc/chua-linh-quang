@@ -7,7 +7,7 @@ class Admin::ArticlesController < ApplicationController
     # authorize
     authorize! :read, Article
     
-    @articles = Article.search(params).paginate(:page => params[:page], :per_page => 10)
+    @articles = Article.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
@@ -30,7 +30,6 @@ class Admin::ArticlesController < ApplicationController
     
     @article = Article.new
     @article_categories = ArticleCategory.all
-    @products = Product.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
@@ -41,7 +40,6 @@ class Admin::ArticlesController < ApplicationController
     authorize! :update, @article
     
     @article_categories = ArticleCategory.all
-    @products = Product.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
@@ -82,7 +80,7 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Article was successfully created.' }
+        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Tạo mới bài viết thành công.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -124,7 +122,7 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Article was successfully updated.' }
+        format.html { redirect_to edit_admin_article_path(@article.id), notice: 'Chỉnh sửa bài viết thành công.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -141,18 +139,18 @@ class Admin::ArticlesController < ApplicationController
     
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to admin_articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to admin_articles_url, notice: 'Xóa bài viết thành công.' }
       format.json { head :no_content }
     end
   end
   
   def approve
-    authorize! :approve, @article
     @article = Article.find(params[:id])
+    authorize! :approve, @article
     @article.approved = true
     @article.save
     respond_to do |format|
-      format.html { redirect_to admin_articles_url }
+      format.html { redirect_to admin_articles_url, notice: 'Duyệt bài viết thành công.' }
       format.json { head :no_content }
     end
   end
@@ -193,6 +191,13 @@ class Admin::ArticlesController < ApplicationController
       
       video_tag = "<img thumb=\"#{image_public_path.to_s}\" width=\"100%\" height=\"100%\" class=\"video_map\" rel=\"#{public_path.to_s}\" src=\"/img/videobg.png\" />"
       render text: "<script>parent.editor_uploaded('"+video_tag+"')</script>"
+    end
+  end
+  
+  def add_related_products
+    if params[:product_ids].present?
+      @products = Product.where(id: params[:product_ids].split(","))
+      render "/admin/articles/_table_related_products", layout: nil
     end
   end
 

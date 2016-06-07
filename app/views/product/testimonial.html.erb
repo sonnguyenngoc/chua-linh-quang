@@ -40,6 +40,16 @@
                                 <div class="grid_holder grid1">
                                   
                                     <div class="product-grid testimonial">
+										
+										<% if notice.present? %>
+                                
+											<div class="item testimonial">
+                                              
+                                                <h4 class="success"><%= notice %></h4>
+                                            
+                                            </div>
+											
+										<% end %>
                                         
                                         <% @testimonials.each do |item| %>
                             

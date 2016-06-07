@@ -1,5 +1,11 @@
 class Article < ActiveRecord::Base
-  #validates :title, :article_categories, :content, presence: true
+  validates :title, :content, presence: true
+  validates :image_url, presence: true
+  validates :image_url, allow_blank: true, format: {
+    with: %r{\.(gif|jpg|png)\Z}i,
+    message: 'must be a URL for GIF, JPG or PNG image.'
+  }
+  
   mount_uploader :image_url, ArticleUploader
   mount_uploader :image_url_full_width, ArticleUploader
   has_and_belongs_to_many :article_categories
@@ -8,8 +14,12 @@ class Article < ActiveRecord::Base
   belongs_to :code_status
   has_and_belongs_to_many :areas
   
+  def self.get_active_articles
+    self.where("articles.approved = true")
+  end
+  
   def self.get_lastest_blog_posts
-    self.joins(:code_status).where(code_statuses: { title: 'news' }).first(3)
+    self.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").first(4)
   end
   
   def split_tags
@@ -17,11 +27,11 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_all_blogs
-    self.all.joins(:code_status).where(code_statuses: { title: 'news' }).order("created_at DESC")
+    self.all.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").order("created_at DESC")
   end
   
   def self.get_blog_about_us
-    records = self.joins(:article_categories).where(article_categories: {name: "Về chúng tôi"})
+    records = self.joins(:code_status).where("code_statuses.title = 'about_us' and articles.approved = true")
     records.order("created_at").first
     
     return records
@@ -52,7 +62,7 @@ class Article < ActiveRecord::Base
   
   #the highest product quality
   def self.get_highest_product_quality
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'the_highest_product_quality' })
     records.order("created_at DESC").first
     
@@ -61,7 +71,7 @@ class Article < ActiveRecord::Base
   
   #the highest product quality
   def self.get_privacy_policy
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'privacy_policy' })
     records.order("created_at DESC").first
     
@@ -70,7 +80,7 @@ class Article < ActiveRecord::Base
   
   #the highest product quality
   def self.get_delivery_information
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'delivery_information' })
     records.order("created_at DESC").first
     
@@ -79,7 +89,7 @@ class Article < ActiveRecord::Base
   
   #the highest product quality
   def self.get_terms_conditions
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'terms_conditions' })
     records.order("created_at DESC").first
     
@@ -88,7 +98,7 @@ class Article < ActiveRecord::Base
   
   #faq
   def self.get_faq
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'faq' })
     records.order("created_at DESC").first
     
@@ -97,7 +107,7 @@ class Article < ActiveRecord::Base
   
   #fast & free delivery
   def self.get_fast_free_delivery
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'fast_free_delivery' })
     records.order("created_at DESC").first
     
@@ -106,7 +116,7 @@ class Article < ActiveRecord::Base
   
   #safe & secure payment
   def self.get_safe_secure_order
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'safe_secure_order' })
     records.order("created_at DESC").first
     
@@ -115,7 +125,7 @@ class Article < ActiveRecord::Base
   
   #100% money back guaranteed
   def self.get_money_back
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'money_back' })
     records.order("created_at DESC").first
     
@@ -124,7 +134,7 @@ class Article < ActiveRecord::Base
   
   #get percent off fo reorder
   def self.get_percent_off
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'get_5_percent_off' })
     records.order("created_at DESC").first
     
@@ -133,7 +143,7 @@ class Article < ActiveRecord::Base
   
   #free pills on every order
   def self.get_favorable_gift
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'favorable_gift' })
     records.order("created_at DESC").first
     
@@ -142,7 +152,7 @@ class Article < ActiveRecord::Base
   
   #get footer about us
   def self.get_footer_about_us
-    records = self.all
+    records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'about_us' })
     records.order("created_at DESC").first
     
@@ -151,7 +161,7 @@ class Article < ActiveRecord::Base
   
   #banner event on top
   def self.get_banner_event_top
-    records = self.where(is_show: true)
+    records = self.where("articles.approved = true and articles.is_show = true")
     records = records.joins(:code_status).where(code_statuses: { title: 'banner_event_top' })
     
     return records.last
@@ -160,7 +170,7 @@ class Article < ActiveRecord::Base
   #banner public relations by provinces/areas
   def self.get_banner_by_area(current_area)
     if !current_area.id.nil?
-      records = self.where(is_show: true)
+      records = self.where("articles.approved = true and articles.is_show = true")
       records = records.joins(:code_status).where(code_statuses: { title: 'public_relations' })
       records = records.joins(:areas).where(areas: {id: current_area.id}) 
       return records.last

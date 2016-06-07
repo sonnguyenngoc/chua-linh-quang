@@ -82,7 +82,7 @@ class Admin::CustomersController < ApplicationController
     
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.html { redirect_to customers_url, notice: 'Xóa khách hàng thành công.' }
       format.json { head :no_content }
     end
   end

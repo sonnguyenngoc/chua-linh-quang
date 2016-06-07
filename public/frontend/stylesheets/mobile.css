@@ -334,12 +334,27 @@
     .owl-item .product_item .actions_wrap {
         display: none !important;
     }
-    /*.rev_slider {
-        display: none;
+    .rev_slider li {
+        position: relative;
     }
-    .home_main_margin_top {
-        margin-top: 0;
-    }*/
+    .rev_slider .caption {
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+    }    
+    .rev_slider .main_title {
+        position: absolute;
+        bottom: 100px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .rev_slider .main_description {
+        position: absolute;
+        bottom: 70px;
+        font-size: 18px;
+        font-weight: normal;
+    }
+    
 }
 
 @media (max-width: 350px) {

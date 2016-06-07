@@ -29,7 +29,7 @@ class Admin::UserGroupsController < ApplicationController
 
     respond_to do |format|
       if @user_group.save
-        format.html { redirect_to edit_admin_user_group_path(@user_group.id), notice: 'User group was successfully created.' }
+        format.html { redirect_to edit_admin_user_group_path(@user_group.id), notice: 'Tạo mới nhóm người dùng thành công.' }
         format.json { render :show, status: :created, location: @user_group }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class Admin::UserGroupsController < ApplicationController
       if @user_group.update(user_group_params)
         @user_group.permission = params[:permissions].to_json
         @user_group.save
-        format.html { redirect_to edit_admin_user_group_path(@user_group.id), notice: 'User group was successfully updated.' }
+        format.html { redirect_to edit_admin_user_group_path(@user_group.id), notice: 'Chỉnh sửa nhóm người dùng thành công.' }
         format.json { render :show, status: :ok, location: @user_group }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class Admin::UserGroupsController < ApplicationController
   def destroy
     @user_group.destroy
     respond_to do |format|
-      format.html { redirect_to admin_user_groups_url, notice: 'User group was successfully destroyed.' }
+      format.html { redirect_to admin_user_groups_url, notice: 'Xóa nhóm người dùng thành công.' }
       format.json { head :no_content }
     end
   end

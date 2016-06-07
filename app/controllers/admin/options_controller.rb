@@ -38,7 +38,7 @@ class Admin::OptionsController < ApplicationController
 
     respond_to do |format|
       if @option.save
-        format.html { redirect_to edit_admin_option_path(@option.id), notice: 'Option was successfully created.' }
+        format.html { redirect_to edit_admin_option_path(@option.id), notice: 'Tạo mới cài đặt thành công.' }
         format.json { render :show, status: :created, location: @option }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class Admin::OptionsController < ApplicationController
     authorize! :update, @option
     respond_to do |format|
       if @option.update(option_params)
-        format.html { redirect_to edit_admin_option_path(@option.id), notice: 'Option was successfully updated.' }
+        format.html { redirect_to edit_admin_option_path(@option.id), notice: 'Chỉnh sửa cài đặt thành công.' }
         format.json { render :show, status: :ok, location: @option }
       else
         format.html { render :edit }
@@ -70,7 +70,7 @@ class Admin::OptionsController < ApplicationController
     authorize! :delete, @option
     @option.destroy
     respond_to do |format|
-      format.html { redirect_to admin_options_url, notice: 'Option was successfully destroyed.' }
+      format.html { redirect_to admin_options_url, notice: 'Xóa cài đặt thành công.' }
       format.json { head :no_content }
     end
   end

@@ -128,12 +128,13 @@
                         <thead>
                             <tr class="bg-teal-800">
                                 <th><%= t(:list_image) %></th>
-                                <th><%= t(:list_product_name) %></th>
+                                <th class="text-nowrap"><%= t(:list_product_name) %></th>
                                 <th><%= t(:list_price) %></th>
-                                <th><%= t(:list_areas) %></th>
+                                <th class="text-nowrap"><%= t(:list_areas) %></th>
+                                <th class="text-nowrap"><%= t(:wishlist_number) %></th>
                                 <th><%= t(:list_status) %></th>
                                 <th><%= t(:created_at) %></th>
-                                <th class="text-center"><%= t(:actions) %></th>
+                                <th class="text-nowrap"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -169,6 +170,7 @@
                                     <td>
                                         <%= item.areas.map(&:name).join("<br/>").html_safe %>
                                     </td>
+                                    <td class="text-center"><%= item.wish_lists.count %></td>
                                     <td>
                                         <% if !item.status.nil? %>
                                             <% item.split_statues.each do |status| %>
@@ -185,7 +187,7 @@
                                     <td>
                                         <%= item.created_at.strftime("%d/%m/%Y") %>
                                         <% if !item.user_id.nil? %>
-                                            <br/><i class="icon-user"></i>  <span class="text-success"><b><%= item.user.first_name.to_s + " " + item.user.last_name.to_s %></b></span>
+                                            <br/><i class="icon-user"></i>  <span class="text-success"><b class="text-nowrap"><%= item.user.first_name.to_s + " " + item.user.last_name.to_s %></b></span>
                                         <% end %>
                                     </td>
                                     <td class="text-center">

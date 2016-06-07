@@ -15,9 +15,13 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :articles
   belongs_to :user
   
+  def self.get_active_products
+    self.where("products.approved = true and products.is_show = true")
+  end
+  
   def self.get_products_for_manufacturer(params)
+    records = self.get_active_products
     records = self.where(manufacturer_id: params[:manufacturer_id])
-                  .where(is_show: true)
     
     if params[:sort_group] == "name_asc"
       records = records.order("products.name ASC")
@@ -67,7 +71,7 @@ class Product < ActiveRecord::Base
   
   #Filter, Sort
   def self.search(params)
-    records = self.includes(:manufacturer)
+    records = self.get_active_products
     
     #sorting search_page (frontend)
     if params[:sort_group] == "name_asc"
@@ -118,12 +122,12 @@ class Product < ActiveRecord::Base
     sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
     records = records.order("#{sort_by} #{sort_order}")
     
-    return records.where(is_show: true)
+    return records
   end
   
   #Filter, Sort
   def self.search_backend(params)
-    records = self.includes(:manufacturer)
+    records = self.all
     
     #sorting search_page (frontend)
     if params[:sort_group] == "name_asc"
@@ -210,7 +214,8 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_by_category_status(category, area, status)
-    records = self.joins(:areas).where(is_show: true).where(approved: true)
+    records = self.joins(:areas).where(is_show: true)
+                                .where(approved: true)
     records = records.where("products.status LIKE ?", "%#{status}%")
     records = records.where("areas.id = ?", area.id) if area.id.present?
     records = records.joins(:categories).where(categories: {id: category})
@@ -218,26 +223,26 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_by_bestseller
-    records = self.where(is_show: true)
+    records = self.get_active_products
     records = records.where("products.status LIKE ?", "%#{'bestseller'}%")
     records = records.order("updated_at DESC").first(3)
     return records
   end
   
   def self.get_by_deal
-    records = self.where(is_show: true)
+    records = self.get_active_products
     records = records.where("products.status LIKE ?", "%#{'deal'}%")
     return records
   end
   
   def self.get_by_new
-    records = self.where(is_show: true)
+    records = self.get_active_products
     records = records.where("products.status LIKE ?", "%#{'new'}%")
     return records
   end
   
   def self.get_all_product_by_status(params)
-    records = self.where(is_show: true)
+    records = self.get_active_products
     if params[:st].present?
       records = records.where("products.status LIKE ?", "%#{params[:st]}%")
     end
