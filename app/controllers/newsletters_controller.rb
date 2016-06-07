@@ -4,6 +4,8 @@ class NewslettersController < ApplicationController
   # POST /newsletters.json
   def create
     @newsletter = Newsletter.new(newsletter_params)
+    
+    @newsletter.user_id = current_user if current_user.present?
 
     respond_to do |format|
       if @newsletter.save
@@ -24,6 +26,6 @@ class NewslettersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsletter_params
-      params.require(:newsletter).permit(:email, :status)
+      params.require(:newsletter).permit(:email, :status, :user_id)
     end
 end
