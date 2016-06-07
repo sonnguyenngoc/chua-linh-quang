@@ -1,18 +1,47 @@
-<section class="section_offset">
-
-    <h3>Đăng ký nhận tin mới</h3>
-
-    <div class="theme_box">
+<% if current_user.present? %>
+    
+    <% if Newsletter.where("email = ?", current_user.email).count == 0 %>
+    
+        <section class="section_offset">
         
-        <%= form_for Newsletter.new, html: {class: 'newsletter clearfix'} do |f| %>
-
-            <%= f.email_field :email, placeholder: 'Nhập email tại đây...', class: "required" %>
-                                
-            <button type="submit" class="button_blue def_icon_btn"></button>
-
-        <% end %>
-
-    </div>
-    <!--/ .theme_box-->
-
-</section>
+            <h3>Đăng ký nhận tin mới</h3>
+        
+            <div class="theme_box">
+                
+                <%= form_for Newsletter.new, html: {class: 'newsletter clearfix'} do |f| %>
+        
+                    <%= f.email_field :email, placeholder: 'Nhập email tại đây...', class: "required", value: current_user.email %>
+                                        
+                    <button type="submit" class="button_blue def_icon_btn"></button>
+        
+                <% end %>
+        
+            </div>
+            <!--/ .theme_box-->
+        
+        </section>
+    
+    <% end %>
+    
+<% else %>
+    
+    <section class="section_offset">
+    
+        <h3>Đăng ký nhận tin mới</h3>
+    
+        <div class="theme_box">
+            
+            <%= form_for Newsletter.new, html: {class: 'newsletter clearfix'} do |f| %>
+    
+                <%= f.email_field :email, placeholder: 'Nhập email tại đây...', class: "required" %>
+                                    
+                <button type="submit" class="button_blue def_icon_btn"></button>
+    
+            <% end %>
+    
+        </div>
+        <!--/ .theme_box-->
+    
+    </section>
+    
+<% end %>

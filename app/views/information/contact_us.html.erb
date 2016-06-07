@@ -95,14 +95,32 @@
                                             <div class="col-sm-6">
                                             
                                                 <%= f.label "Họ và Tên", class: "required" %>
-                                                <%= f.text_field :name, class: "required" %>
+                                                
+                                                <% if current_user.present? %>
+                                                    
+                                                    <%= f.text_field :name, class: "required", value: current_user.first_name.to_s + " " + current_user.last_name.to_s, readonly: true %>
+                                                
+                                                <% else %>
+                                                    
+                                                    <%= f.text_field :name, class: "required" %>
+                                                    
+                                                <% end %>
 
                                             </div><!--/ [col]-->
 
                                             <div class="col-sm-6">
 
                                                 <%= f.label "Địa chỉ email", class: "required" %>
-                                                <%= f.email_field :email, class: "required email" %>
+                                                
+                                                <% if current_user.present? %>
+                                                    
+                                                    <%= f.text_field :email, class: "required", value: current_user.email, readonly: true %>
+                                                
+                                                <% else %>
+                                                    
+                                                    <%= f.text_field :email, class: "required email" %>
+                                                    
+                                                <% end %>
 
                                             </div><!--/ [col]-->
 

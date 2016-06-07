@@ -1,4 +1,4 @@
-<body class="front_page">
+<body class="front_page <%= " has_area" if !@current_area.id.nil? %>">
 
 	<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
@@ -36,16 +36,15 @@
 							<!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
 						
 						</aside><!--/ [col]-->
-
+						
 						<!-- - - - - - - - - - - - - - Main slider - - - - - - - - - - - - - - - - -->
 						<div class="col-md-9 home_main_slider">
 							
 							<%= render "module/main_slider" %>
 							
-						</div><!--/ [col]-->
-
+						</div><!--/ [col]-->	
 						<!-- - - - - - - - - - - - - - End of main slider - - - - - - - - - - - - - - - - -->
-
+						
 					</div><!--/ .row-->
 
 				</div><!--/ .section_offset-->

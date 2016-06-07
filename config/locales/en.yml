@@ -323,6 +323,8 @@ en:
   add_to_list: "Add to list"
   display_order: "Display order"
   wishlist_number: "Wishlist number"
+  vietnamese: "Vietnamese"
+  english: "English"
   
   devise:
     sessions:

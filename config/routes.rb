@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     
     # change current area session
     get "change_current_area/:area_id" => "home#change_current_area", as: :change_current_area
+    get "go_home" => "home#go_home", as: :go_home
     
     # account
     get "tai-khoan/dang-nhap" => "account#login", as: :login
