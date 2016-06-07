@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
     @question.user_id = current_user.id if current_user.present?
     status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
-      if @question.save && status
+      if @question.save && status == true
         format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
       else
         flash[:notice] = "Đăng câu hỏi không thành công"
