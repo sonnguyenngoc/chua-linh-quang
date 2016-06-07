@@ -326,6 +326,9 @@
     .footer_area_map ul li {
         width: 50%;
     }
+    .banners_modules .banners_box {
+        margin-bottom: 20px;
+    }
 }
 @media (max-width: 489px) {
     .product_item .image_wrap {
