@@ -14,10 +14,10 @@
     
     <div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
-            <li class="active"><a href="#control-tab1" data-toggle="tab"><%= t(:thông_tin) %></a></li>
-            <li><a href="#control-tab2" data-toggle="tab"><%= t(:nội_dung) %> </a></li>
-            <li><a href="#control-tab3" data-toggle="tab"><%= t(:hình_ảnh) %> </a></li>
-            <li><a href="#control-tab4" data-toggle="tab"><%= t(:cấu_hình_khác) %> </a></li>
+            <li class="active"><a href="#control-tab1" data-toggle="tab"><%= t(:infomations) %></a></li>
+            <li><a href="#control-tab2" data-toggle="tab"><%= t(:content) %> </a></li>
+            <li><a href="#control-tab3" data-toggle="tab"><%= t(:picture) %> </a></li>
+            <li><a href="#control-tab4" data-toggle="tab"><%= t(:orther_setting) %> </a></li>
             <li><a href="#control-tab5" data-toggle="tab"><%= t(:related_products) %> </a></li>
         </ul>
         <div class="tab-content">
@@ -107,31 +107,18 @@
             <div class="tab-pane has-padding" id="control-tab4">
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:page_layout) %> </label>
-                    <div class="col-lg-4">
+                    <div class="col-lg-10">
                         <select class="select_article" name="article[page_layout]">
                             <option <%= "selected" if @article.page_layout == "normal" %> value="normal"><%= t(:normal) %></option>
                             <option <%= "selected" if @article.page_layout == "full_width" %> value="full_width"><%= t(:full_width) %></option>
                         </select>
                     </div>
-                    <div class="picture_full_width">
-                        <label class="col-lg-2 control-label" ><%= t(:picture_full_width) %> </label>
-                        <div class="col-lg-4">
-                            <div class="uploader bg-teal-400">
-                                <%= f.file_field :image_url_full_width, class: "file-styled", require: true %>
-                                <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:code_status) %></label>
-                    <div class="col-lg-4">
-                        <%= f.collection_select(:code_status_id, CodeStatus.get_all_statuses, :id, :title, {}, {class: "code_status"}) %>
-                    </div>
-                    <div class="related_areas">
+				
+				<div class="form-group">
+					<div class="related_areas">
                         <label class="col-lg-2 control-label" ><%= t(:display_area) %></label>
-                        <div class="col-lg-4">
+                        <div class="col-lg-10">
                             <select name="area_ids[]" class="select-item-color" data-placeholder="<%= t(:related_areas) %>....." multiple="multiple">
                                 <% @areas.each do |item| %>
                                     <optgroup value="<%= item.id %>" label="<%= item.name %>">
@@ -144,6 +131,13 @@
                                 <% end %>
                             </select>
                         </div>
+                    </div>
+				</div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:code_status) %></label>
+                    <div class="col-lg-10">
+                        <%= f.collection_select(:code_status_id, CodeStatus.get_all_statuses, :id, :title, {}, {class: "code_status"}) %>
                     </div>
                 </div>
 
