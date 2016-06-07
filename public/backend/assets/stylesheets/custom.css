@@ -71,3 +71,6 @@ label.error {
 .user_group_permission .select2-container {
     width: 90%;
 }
+.button_top_form {
+    margin-top: -30px;
+}

@@ -353,10 +353,10 @@
         bottom: 70px;
         font-size: 18px;
         font-weight: normal;
+        line-height: 30px;
     }
     
 }
-
 @media (max-width: 350px) {
     .home_intro_box, .row .home_intro_box:nth-child(3), .home_intro_box:nth-child(4), .home_intro_box:nth-child(5), .home_intro_box:nth-child(6) {
         width: 100%;
