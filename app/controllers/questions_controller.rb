@@ -1,63 +1,24 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
-
-  # GET /questions
-  # GET /questions.json
-  def index
-    @questions = Question.all
+  def verify_google_recaptcha(secret_key,response)
+    status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
+    logger.info "---------------status ==> #{status}"
+    hash = JSON.parse(status)
+    hash["success"] == true ? true : false
   end
-
-  # GET /questions/1
-  # GET /questions/1.json
-  def show
-  end
-
-  # GET /questions/new
-  def new
-    @question = Question.new
-  end
-
-  # GET /questions/1/edit
-  def edit
-  end
-
   # POST /questions
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    @secret_key = "6Le7mh8TAAAAAGKRPjxYnO9t0O1_m8dgxa-EgcOB"
     @question.user_id = current_user.id if current_user.present?
-
+    status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
-      if @question.save
+      if @question.save && status == true
         format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
       else
         flash[:notice] = "Đăng câu hỏi không thành công"
         format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
       end
-    end
-  end
-
-  # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
-  def update
-    respond_to do |format|
-      if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question }
-      else
-        format.html { render :edit }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /questions/1
-  # DELETE /questions/1.json
-  def destroy
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

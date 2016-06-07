@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
     @contact.user_id = current_user if current_user.present?
     status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
-      if @contact.save && status
+      if @contact.save && status == true
         format.html { redirect_to controller: "information", action: "finish_contact_us" }
       else
         flash[:notice] = "Gửi tin nhắn liên hệ thất bại"

@@ -190,7 +190,7 @@
                             <%= ff.hidden_field :id %>
                             <div class="col-lg-7" style="margin-bottom: 30px;">
                                 <!--<%= ff.select(:is_main, ['False', 'True'], {}, { :class => 'select col-lg-5' })%>-->
-                                <select class="select col-lg-5" name="is_main">
+                                <select class="select col-lg-5" name="product[product_images_attributes][<%= index %>][is_main]">
                                     <option <%= "selected" if g.is_main == "True" %> value="True"><%= t(:image_default_true) %></option>
                                     <option <%= "selected" if g.is_main == "False" %> value="False"><%= t(:image_default_false) %></option>
                                 </select>
