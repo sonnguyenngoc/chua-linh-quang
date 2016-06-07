@@ -139,7 +139,7 @@
                         </thead>
                         <tbody>
                             <% @products.each do |item| %>
-                                <tr>
+                                <tr class="<%= "warning" if item.stock < 1 %>">
                                     <td>
                                         <% if item.get_main_image.present? %>
                                             <% if can? :update, item %>
@@ -164,6 +164,7 @@
                                         <br/><%= item.code %>
                                         <br/><i class="icon-pin-alt"></i>  <%= item.manufacturer.name if !item.manufacturer.nil? %>
                                         <br/><i class="icon-stack"></i>  <%= item.categories.map(&:name).join("<br/>").html_safe %>
+                                        <br/><br/><i class="icon-home"></i>  <%= t(:stock) %> <strong><%= item.stock %></strong>
                                     </td>
                                     <td><%= format_number(item.price) %><br/>(<%= format_number(item.quantity) %> <%= item.unit %>)</td>
 

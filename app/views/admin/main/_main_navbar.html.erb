@@ -17,24 +17,32 @@
         <p class="navbar-text"><span class="label bg-success-400"><%= t(:online) %></span></p>
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown language-switch <%= "active" if params[:locale] == "vi" %>">
-                <a href="<%= url_for( :locale => 'vi' ) %>">
-                    <img src="/backend/assets/images/flags/vn.png" class="position-left" alt="">
-                      Tiếng Việt
-                </a>
-
-                <!--<ul class="dropdown-menu">
-                    <li><a class="english"><img src="/backend/assets/images/flags/gb.png" alt=""> English</a></li>
-                    <li><a class="espana"><img src="/backend/assets/images/flags/vn.png" alt=""> Vietnam</a></li>
-                </ul>-->
-            </li>
             
-            <li class="dropdown language-switch <%= "active" if params[:locale] == "en" %>">
+            <li class="dropdown language-switch">
                 
-                <a href="<%= url_for( :locale => 'en' ) %>">
-                    <img src="/backend/assets/images/flags/gb.png" class="position-left" alt="">
-                      English
-                </a>
+                <% if params[:locale] == "vi" %>
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="/backend/assets/images/flags/vn.png" class="position-left" alt="">
+                            <%= t(:vietnamese) %>
+                        <span class="caret"></span>
+                    </a>
+    
+                    <ul class="dropdown-menu">
+                        <li><a href="<%= url_for( :locale => 'vi' ) %>"><img src="/backend/assets/images/flags/vn.png" alt=""> <%= t(:vietnamese) %></a></li>
+                        <li><a href="<%= url_for( :locale => 'en' ) %>"><img src="/backend/assets/images/flags/gb.png" alt=""> <%= t(:english) %></a></li>
+                    </ul>
+                <% else %>
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="/backend/assets/images/flags/gb.png" class="position-left" alt="">
+                            <%= t(:english) %>
+                        <span class="caret"></span>
+                    </a>
+    
+                    <ul class="dropdown-menu">
+                        <li><a href="<%= url_for( :locale => 'en' ) %>"><img src="/backend/assets/images/flags/gb.png" alt=""> <%= t(:english) %></a></li>
+                        <li><a href="<%= url_for( :locale => 'vi' ) %>"><img src="/backend/assets/images/flags/vn.png" alt=""> <%= t(:vietnamese) %></a></li>
+                    </ul>
+                <% end %>
             </li>
 
             <li class="dropdown dropdown-user">

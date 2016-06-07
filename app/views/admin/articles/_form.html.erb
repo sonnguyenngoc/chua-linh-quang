@@ -41,7 +41,7 @@
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
-                        <select name="category_ids[]" class="select-item-color" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
+                        <select name="category_ids[]" id="article_category_ids" class="select-item-color required" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
                             <% @article_categories.each do |item| %>
                                 <option <%= "selected" if @article.article_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
                             <% end %>
@@ -77,15 +77,21 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:content) %> <span class='text-danger'>*</span></label>
                 </div>
-                <div class="mb-15">
-                    <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
+                <div class="form-group">
+                    <div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
+						<span class="uploading" style="display: none;font-size: 17px;">
+							Đang tải hình ảnh/video...<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+						</span>
+						<a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+						<a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+					</div>
+                    <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full", class: "required" %>
                 </div>
-                
             </div>
             
             <div class="tab-pane has-padding" id="control-tab3">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:picture) %> </label>
+                    <label class="col-lg-2 control-label" ><%= t(:picture) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <div class="uploader bg-teal-400">
                             <%= f.file_field :image_url, class: "file-styled required", accept: ".png, .jpg, .jpeg, .gif" %>
