@@ -21,8 +21,7 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_products_for_manufacturer(params)
-    records = self.get_active_products
-    records = self.where(manufacturer_id: params[:manufacturer_id])
+    records = self.get_active_products.where(manufacturer_id: params[:manufacturer_id])
     
     if params[:sort_group] == "name_asc"
       records = records.order("products.name ASC")
