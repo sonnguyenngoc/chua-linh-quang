@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <% @articles.each do |item| %>
+        <% Article.get_all_blogs.each do |item| %>
             <tr>
                 <td>
                     <input name="article_ids[]" value="<%= item.id %>" type="checkbox" class="checkbox-related-articlesz" checked>

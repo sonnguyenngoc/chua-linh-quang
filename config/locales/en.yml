@@ -203,6 +203,11 @@ en:
   apply_price: "Price are appling"
   showing: "Showing"
   display_area: "Display area"
+  page_layout: "Page display style"
+  normal: "Default"
+  full_width: "Full width page"
+  infomations: "Infomations"
+  orther_setting: "Orther Setting"
   
   #-------------------------------------
   comment_question: "Comment/Question/Testimonial"

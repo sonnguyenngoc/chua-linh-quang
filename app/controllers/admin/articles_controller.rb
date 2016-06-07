@@ -93,10 +93,13 @@ class Admin::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     @areas = Area.get_by_level(2)
+    @article_categories = ArticleCategory.all
+    @products = Product.paginate(:page => params[:page], :per_page => 10)
     # authorize
     authorize! :update, @article
     
     @article.article_categories.clear
+    
     if params[:category_ids].present?
         @article.article_categories.clear
         params[:category_ids].each do |id|      

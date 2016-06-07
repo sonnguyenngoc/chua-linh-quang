@@ -3,13 +3,15 @@ class Admin::UsersController < ApplicationController
   
   def index
     # authorize
-    #authorize! :read, User
+    authorize! :read, User
     @areas = Area.get_by_level(2)
     
     @users = User.search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
+    authorize! :read, User
+    
     @areas = Area.get_by_level(2)
     @users = User.search(params).paginate(:page => params[:page], :per_page => 10)
     render "admin/users/index"
@@ -17,12 +19,12 @@ class Admin::UsersController < ApplicationController
   
   def edit
     # authorize
-   # authorize! :update, User
+    authorize! :update, @user
   end
   
   def update
     # authorize
-    #authorize! :update, User
+    authorize! :update, @user
     
     respond_to do |format|
       if @user.update(user_params)
@@ -39,7 +41,7 @@ class Admin::UsersController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     # authorize
-    # authorize! :delete, User
+    authorize! :delete, @user
     
     @user.destroy
     respond_to do |format|
