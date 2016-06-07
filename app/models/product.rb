@@ -3,16 +3,16 @@ class Product < ActiveRecord::Base
   
   has_many :line_items, dependent: :destroy
   has_many :line_item_comparies, dependent: :destroy
-  has_many :categories_products
+  has_many :categories_products, dependent: :destroy
   has_many :wish_lists, dependent: :destroy
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :areas
   belongs_to :manufacturer
-  has_many :product_images
+  has_many :product_images, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :questions, dependent: :destroy
   accepts_nested_attributes_for :product_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
-  has_and_belongs_to_many :articles
+  has_and_belongs_to_many :articles, dependent: :destroy
   belongs_to :user
   
   def self.get_active_products
