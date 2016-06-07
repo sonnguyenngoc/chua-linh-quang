@@ -4,6 +4,7 @@ class Admin::UserGroupsController < ApplicationController
   # GET /user_groups
   # GET /user_groups.json
   def index
+    authorize! :read, UserGroup
     @user_groups = UserGroup.all.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -14,16 +15,19 @@ class Admin::UserGroupsController < ApplicationController
 
   # GET /user_groups/new
   def new
+    authorize! :create, UserGroup
     @user_group = UserGroup.new
   end
 
   # GET /user_groups/1/edit
   def edit
+    authorize! :update, @user_group
   end
 
   # POST /user_groups
   # POST /user_groups.json
   def create
+    authorize! :create, UserGroup
     @user_group = UserGroup.new(user_group_params)
     @user_group.permission = params[:permissions].to_json
 
@@ -41,6 +45,7 @@ class Admin::UserGroupsController < ApplicationController
   # PATCH/PUT /user_groups/1
   # PATCH/PUT /user_groups/1.json
   def update
+    authorize! :update, @user_group
     respond_to do |format|
       if @user_group.update(user_group_params)
         @user_group.permission = params[:permissions].to_json
@@ -57,6 +62,7 @@ class Admin::UserGroupsController < ApplicationController
   # DELETE /user_groups/1
   # DELETE /user_groups/1.json
   def destroy
+    authorize! :delete, @user_group
     @user_group.destroy
     respond_to do |format|
       format.html { redirect_to admin_user_groups_url, notice: 'Xóa nhóm người dùng thành công.' }

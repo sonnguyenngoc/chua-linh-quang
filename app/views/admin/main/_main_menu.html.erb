@@ -170,17 +170,25 @@
                 </li>
             <% end %>
             
-            <li>
-                <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
-                <ul>
-                    <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
-                        <%= link_to t(:users), admin_users_path %>
-                    </li>
-                    <li class="<%= "active" if ["admin/user_groups"].include?(params[:controller]) %>">
-                        <%= link_to t(:user_groups), admin_user_groups_path %>
-                    </li>
-                </ul>
-            </li>
+            <% if can?(:read, User) or can?(:read, UserGroup) %>
+                
+                <li>
+                    <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
+                    <ul>
+                        <% if can? :read, User %>
+                            <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
+                                <%= link_to t(:users), admin_users_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, UserGroup %>
+                            <li class="<%= "active" if ["admin/user_groups"].include?(params[:controller]) %>">
+                                <%= link_to t(:user_groups), admin_user_groups_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            
+            <% end %>
             
             <% if can?(:read, Company) %>
                 <li>

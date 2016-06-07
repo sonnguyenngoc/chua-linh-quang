@@ -116,46 +116,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @users.each do |user| %>
+                            <% @users.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to user.display_user_name, edit_admin_user_path(user) %>
+                                        <%= link_to item.display_user_name, edit_admin_user_path(item) %>
                                     </td>
                                     <td>
-                                        <%= user.user_group.name if !user.user_group.nil? %>
+                                        <%= item.user_group.name if !item.user_group.nil? %>
                                     </td>
                                     <td>
-                                        <%= user.email %>
+                                        <%= item.email %>
                                     </td>
                                     <td>
-                                        <%= user.phone %>
+                                        <%= item.phone %>
                                     </td>
-                                    <!--<td>
-                                        <% if user.address_1.present? %>
-                                            <%= truncate(user.address_1, length: 40) %> </br>
-                                        <% end %>
-                                        <% if user.address_2.present? %>
-                                            <%= truncate(user.address_2, length: 40) %>
-                                        <% end %>
-                                    </td>-->
-                                    <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
-                                        <ul class="icons-list">
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="icon-menu9"></i>
-                                                </a>
-                
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i>Sửa'.html_safe, edit_admin_user_path(user) %>
-                                                    </li>
-                                                    <li>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, user], method: :delete, data: {confirm: t(:confirm_delete)} %>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <% if can?(:update, item) or can?(:delete, item) %>
+                                            <ul class="icons-list">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-menu9"></i>
+                                                    </a>
+                    
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <% if can? :update, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_user_path(item) %>
+                                                            </li>
+                                                        <% end %>
+                                                        <% if can? :delete, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                            </li>
+                                                        <% end %>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        <% end %>
                                     </td>
                                 </tr>
                             <% end %>
