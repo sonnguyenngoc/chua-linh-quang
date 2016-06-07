@@ -1,5 +1,5 @@
 <% if @current_area.id.nil? %>
-    <div class="row" style="padding: 0 15px">
+    <div class="row" style="padding: 0 15px 20px 15px">
         <div class="col-md-12 footer_area_map">
             <div class="row">
                 <% Area.where(level: 2).order("display_order").each do |area| %>
