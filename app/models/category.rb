@@ -110,7 +110,7 @@ class Category < ActiveRecord::Base
     query.each do |p|
       cats += p.categories.map(&:id)
     end
-    self.where(id: cats.uniq)[0..4].shuffle
+    self.where(id: cats.uniq)[0..4]
   end
   
   # get json for tree draggable index
