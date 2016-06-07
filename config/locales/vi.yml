@@ -195,7 +195,7 @@ vi:
   show: "Hiển thị"
   show_product: "Hiển thị sản phẩm"
   show_article: "Hiển thị bài viết"
-  stock: "Còn trong kho"
+  stock: "Tồn kho"
   old_price: "Giá cũ"
   current_price: "Giá bán"
   discount_percent: "Phần trăm giảm giá"

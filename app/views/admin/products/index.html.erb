@@ -131,7 +131,7 @@
                                 <th class="text-nowrap"><%= t(:list_product_name) %></th>
                                 <th><%= t(:list_price) %></th>
                                 <th class="text-nowrap"><%= t(:list_areas) %></th>
-                                <th class="text-nowrap"><%= t(:wishlist_number) %></th>
+                                <th class="text-nowrap"><%= t(:stock) %></th>
                                 <th><%= t(:list_status) %></th>
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-nowrap"><%= t(:actions) %></th>
@@ -139,7 +139,7 @@
                         </thead>
                         <tbody>
                             <% @products.each do |item| %>
-                                <tr class="<%= "warning" if item.stock < 1 %>">
+                                <tr class="<%= "warning" if item.stock < 0 %>">
                                     <td>
                                         <% if item.get_main_image.present? %>
                                             <% if can? :update, item %>
@@ -164,14 +164,16 @@
                                         <br/><%= item.code %>
                                         <br/><i class="icon-pin-alt"></i>  <%= item.manufacturer.name if !item.manufacturer.nil? %>
                                         <br/><i class="icon-stack"></i>  <%= item.categories.map(&:name).join("<br/>").html_safe %>
-                                        <br/><br/><i class="icon-home"></i>  <%= t(:stock) %> <strong><%= item.stock %></strong>
+                                        <br/><i class="icon-thumbs-up2"></i>  <strong><%= item.wish_lists.count %></strong>
                                     </td>
                                     <td><%= format_number(item.price) %><br/>(<%= format_number(item.quantity) %> <%= item.unit %>)</td>
 
                                     <td>
                                         <%= item.areas.map(&:name).join("<br/>").html_safe %>
                                     </td>
-                                    <td class="text-center"><%= item.wish_lists.count %></td>
+                                    <td class="text-center">
+                                        <%= item.stock %>
+                                    </td>
                                     <td>
                                         <% if !item.status.nil? %>
                                             <% item.split_statues.each do |status| %>
@@ -187,7 +189,7 @@
                                     </td>
                                     <td>
                                         <%= item.created_at.strftime("%d/%m/%Y") %>
-                                        <% if !item.user_id.nil? %>
+                                        <% if !item.user.nil? %>
                                             <br/><i class="icon-user"></i>  <span class="text-success"><b class="text-nowrap"><%= item.user.first_name.to_s + " " + item.user.last_name.to_s %></b></span>
                                         <% end %>
                                     </td>
