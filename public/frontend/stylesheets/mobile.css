@@ -337,8 +337,12 @@
     .owl-item .product_item .actions_wrap {
         display: none !important;
     }
+    .rev_slider {
+        min-height: 150px;
+    }
     .rev_slider li {
         position: relative;
+        display: none;
     }
     .rev_slider .caption {
         position: absolute;
