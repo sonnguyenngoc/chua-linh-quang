@@ -58,14 +58,15 @@
                                     <div class="form-group">
                                         <label class="" ><%= t(:areas) %></label>
                                         <div>
-                                            <!--select_tag(:area_id, options_from_collection_for_select(@areas.children, :id, :name, :selected => params[:area_id]), include_blank: t(:all), class: "select") %>
-                                            -->
+                                            <!--<%= select_tag(:area_id, options_from_collection_for_select(@areas.all, :id, :name, :selected => params[:area_id]), include_blank: t(:all), class: "select") %>-->
+                                            
                                             <select name="area_id" class="select" data-placeholder="<%= t(:related_areas) %>.....">
+                                                <option value=""><%= t(:all) %></option>
                                                 <% @areas.each do |item| %>
-                                                    <optgroup value="<%= item.id %>" label="<%= item.name %>">
+                                                    <optgroup value="" label="<%= item.name %>">
                                                         
                                                         <% item.children.each do |child| %>
-                                                            <option selected="<%= "selected" if params[:area_id] == params[:area_id] %>" value="<%= child.id %>"><%= child.name %></option>
+                                                            <option <%= "selected" if params[:area_id] == child.id %> value="<%= child.id %>"><%= child.name %></option>
                                                         <% end %>
                                                     
                                                     </optgroup>

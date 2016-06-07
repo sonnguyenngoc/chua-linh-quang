@@ -3,9 +3,8 @@
     <h3>Tìm kiếm</h3>
 
     <%= form_tag({controller: "product", action: "category"}, method: "get", class: "type_2") do %>
-        
-        <%= hidden_field_tag "category_id", @category.id %>
-        <%= hidden_field_tag "area_id", params[:area_id] %>
+    <%= hidden_field_tag "number", params[:number] %>
+    <%= hidden_field_tag "sort_group", params[:sort_group] %>
 
         <div class="table_layout list_view">
 
@@ -25,7 +24,7 @@
 
                                 <li>
                                     
-                                    <input type="checkbox" name="manufacturer_id" value="<%= manufacturer.id %>" id="manufacturer_<%= manufacturer.id %>">
+                                    <input type="checkbox" <%= "checked" if manufacturer.id == params[:manufacturer_id] %> name="manufacturer_id" value="<%= manufacturer.id %>" id="manufacturer_<%= manufacturer.id %>">
                                     <label for="manufacturer_<%= manufacturer.id %>"><%= manufacturer.name %></label>
     
                                 </li>

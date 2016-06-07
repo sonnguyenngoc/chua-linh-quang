@@ -170,6 +170,12 @@
 
 <%= render "module/mobile_header" %>
 
-<% if !@blog_advertise.nil? %>        
-    <%= link_to image_tag(@blog_advertise.image_url.advertise_image), { controller: "blog", action: "show", blog_id: @blog_advertise.id }, class: "width_area_banner" %>
+<% if !@blog_advertise.nil? %>
+    
+    <div class="banner_item " id="advertise_area">
+        
+        <%= link_to image_tag(@blog_advertise.image_url.advertise_image), { controller: "blog", action: "show", blog_id: @blog_advertise.id }, class: "width_area_banner" %>
+        
+    </div>
+    
 <% end %>
