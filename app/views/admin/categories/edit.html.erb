@@ -56,7 +56,8 @@
                         <!-- Basic layout-->
                         <div class="panel panel-flat">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><%= t(:edit_category) %></h5>
+                                <h5 class="panel-title"><span class="text-semibold"><%= t(:edit_category) %></span></h5>
+                                <%= link_to "#{t(:delete)}<i class=\"glyphicon glyphicon-remove-sign position-right\"></i>".html_safe, {controller: "admin/categories", action: "destroy", id: @category.id}, method: :delete, data: {confirm: t(:confirm_delete)}, class: "btn btn-danger button_top_form pull-right" %>
                             </div>
                             
                             <div class="panel-body">

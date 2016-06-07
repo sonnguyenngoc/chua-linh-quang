@@ -4,8 +4,15 @@ class Admin::UsersController < ApplicationController
   def index
     # authorize
     #authorize! :read, User
+    @areas = Area.get_by_level(2)
     
     @users = User.search(params).paginate(:page => params[:page], :per_page => 10)
+  end
+  
+  def search
+    @areas = Area.get_by_level(2)
+    @users = User.search(params).paginate(:page => params[:page], :per_page => 10)
+    render "admin/users/index"
   end
   
   def edit
@@ -39,11 +46,6 @@ class Admin::UsersController < ApplicationController
       format.html { redirect_to admin_users_url, notice: 'Xóa người dùng thành công.' }
       format.json { head :no_content }
     end
-  end
-  
-  def search
-    @users = User.search(params).paginate(:page => params[:page], :per_page => 10)
-    render "admin/users/index"
   end
   
   private

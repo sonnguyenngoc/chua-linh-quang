@@ -782,14 +782,19 @@ h3.care {
     margin-bottom: 0 !important;
 }
 /*CSS layout top banner*/
-.banner_item#zone_37 a {
+.banner_item#zone_37 a > img {
     display: block;
-    height: 80px;
+    height: 100%;
+    width: 100%;
     background-color: rgba(0, 0, 0, .1);
     background-position: 50% 0px;
     background-repeat: repeat;
 }
 /*END -- CSS layout top banner*/
+.banner_item#advertise_area {
+    height: 100%;
+    width: 100%;
+}
 .product_preview .owl_carousel {
     visibility: hidden;
 }
@@ -832,6 +837,12 @@ h3.care {
     margin-top: -35px;
     margin-bottom: 50px;
 }
+@media screen and (max-width: 480px) {
+    .page_with_main_nav .width_area_banner {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
 .footer_area_map {
     padding: 20px;
     border: solid 1px #ddd;
@@ -859,6 +870,75 @@ h3.care {
     width: 33%;
     white-space: nowrap;
 }
+/*--------CSS display image item----------*/
+/*.table_cell {
+    display: inline-block;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 310px;
+}
+@media screen and (max-width: 1300px) {
+    .table_cell {
+        display: inline-block;
+        padding-left: 3%;
+        padding-right: 3%;
+        width: 282px;
+    }
+}
+@media screen and (max-width: 1199px) {
+    .table_cell {
+        display: inline-block;
+        padding-left: 3%;
+        padding-right: 3%;
+        width: 232px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .table_cell {
+        display: inline-block;
+        padding-left: 2%;
+        padding-right: 2%;
+        width: 232px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .table_cell {
+        display: table-cell;
+    }
+}
+@media screen and (max-width: 568px) {
+    .table_cell {
+        display: inline-block;
+        width: 177px;
+    }
+}
+@media screen and (max-width: 505px) {
+    .table_cell {
+        display: inline-block;
+        padding-left: 3%;
+        padding-right: 3%;
+        width: 231px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .table_cell {
+        display: block;
+        width: 384px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .table_cell {
+        display: block;
+        width: 330px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .table_cell {
+        display: block;
+        width: 290px;
+    }
+}*/
+/*-----------------------------------------*/
 .conversation_rightbar .dropdown.visible {
     height: 288px;
     overflow: auto;
