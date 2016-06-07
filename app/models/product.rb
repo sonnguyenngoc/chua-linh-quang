@@ -1,9 +1,10 @@
 class Product < ActiveRecord::Base
   validates :name, :price, :quantity, :unit, :manufacturer_id, :short_description, presence: true
   
+  has_many :order_details
   has_many :line_items, dependent: :destroy
-  has_many :line_item_comparies, dependent: :destroy
-  has_many :categories_products, dependent: :destroy
+  has_many :line_item_comparies, dependent: :destroy, class_name: "LineItemCompare"
+  has_many :categories_products
   has_many :wish_lists, dependent: :destroy
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :areas
@@ -329,5 +330,9 @@ class Product < ActiveRecord::Base
     end
     return display
   end
- 
+  
+  # buy products
+  def bought_products
+    order_details.sum(:quantity)
+  end
 end

@@ -63,15 +63,7 @@
 
                         <div class="min clearfix action_checkout">
 
-                            <input class="display_inline qty_input" type="text" name="quantities[<%= item.id %>]" value="<%= item.quantity %>">
-
-                            <a class="button_dark_grey icon_btn edit_product refresh_checkout">
-                                
-                                <i class='fa fa-refresh fa-refresh-checkout'></i>
-                            
-                            </a>
-
-                            <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "checkout", action: "shopping_cart", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product remove_checkout"} %>
+                            <p class="display_inline qty_input"><%= item.quantity %></p>
                                 
                         </div><!--/ .qty.min.clearfix-->
 
