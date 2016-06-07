@@ -78,6 +78,9 @@ class Admin::TestimonialsController < ApplicationController
     # authorize
     authorize! :delete, @testimonial
     @testimonial.destroy
+    
+    render nothing:true
+    flash[:notice] = 'Xóa ý kiến khách hàng thành công.'
   end
 
   private

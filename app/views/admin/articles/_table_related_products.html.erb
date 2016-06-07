@@ -12,7 +12,7 @@
 						</tr>
 					</thead>
 					<tbody>
-							<% @products.get_active_products.each do |item| %>
+							<% @products.each do |item| %>
 								<tr>
 									<td>
 										<input checked name="product_ids[]" value="<%= item.id %>" type="checkbox" class="checkbox-related-productsz">

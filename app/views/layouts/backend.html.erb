@@ -107,6 +107,7 @@
 			
 		});
 		
+		// Alert notice when finish action
 		<% if notice.present? %>
 			swal({
 				title: "<%= notice %>",
@@ -122,6 +123,37 @@
 	
     <script>
 		$("#validate_checking").validate();
+		
+		// Alert backend destroy
+		var current_delete_link;
+		$('.backend_delete_item').on('click', function(e) {
+			var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
+			
+			current_delete_link = $(this);
+			swal({
+				title: "Bạn có chắc muốn xóa?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#1E88E5",
+				confirmButtonText: "Tôi muốn xóa!",
+				cancelButtonText: "Tôi không muốn xóa!",
+				closeOnConfirm: false,
+				closeOnCancel: true
+			},
+			function(isConfirm){
+				if (isConfirm) {
+					var url = current_delete_link.attr("url");
+					$.ajax({
+						method: "DELETE",
+						url: url,
+						data: { authenticity_token: AUTH_TOKEN }
+					})
+					.done(function( msg ) {
+						location.reload();
+					});
+				}
+			});
+		});
 	</script>
 </body>
 </html>
