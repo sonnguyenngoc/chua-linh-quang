@@ -78,10 +78,9 @@ class Admin::QuestionsController < ApplicationController
     authorize! :delete, @question
     
     @question.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_questions_url, notice: 'Xóa câu hỏi thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa câu hỏi của khách hàng thành công.'
   end
 
   private

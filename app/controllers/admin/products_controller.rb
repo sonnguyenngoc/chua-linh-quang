@@ -7,7 +7,7 @@ class Admin::ProductsController < ApplicationController
     # authorize
     authorize! :read, Product
   
-    @products = Product.search_backend(params).paginate(:page => params[:page], :per_page => 10)
+    @products = Product.order("created_at DESC").search_backend(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search_backend

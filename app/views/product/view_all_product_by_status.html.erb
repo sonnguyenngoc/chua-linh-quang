@@ -461,13 +461,13 @@
 
                                 <div class="left_side">
 
-                                    <p><%= page_entries_info @view_all_products %> sản phẩm.</p>
+                                    <p><%= page_entries_info @view_all_products.get_active_products %> sản phẩm.</p>
     
                                 </div>
 
                                 <div class="right_side">
                                 
-                                    <%= will_paginate @view_all_products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                                    <%= will_paginate @view_all_products.get_active_products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
     
                                 </div>
 
