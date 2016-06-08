@@ -1,5 +1,6 @@
 class CodeStatus < ActiveRecord::Base
     validates :title, presence: true
+    has_many :articles
     
     def self.get_all_statuses
         self.all.order("created_at ASC")

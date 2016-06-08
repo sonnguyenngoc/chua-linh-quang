@@ -138,7 +138,7 @@
 				confirmButtonText: "Tôi muốn xóa!",
 				cancelButtonText: "Tôi không muốn xóa!",
 				closeOnConfirm: false,
-				closeOnCancel: true
+				closeOnCancel: true,
 			},
 			function(isConfirm){
 				if (isConfirm) {
@@ -149,7 +149,11 @@
 						data: { authenticity_token: AUTH_TOKEN }
 					})
 					.done(function( msg ) {
-						location.reload();
+						if(msg != "") {
+							window.location = msg;
+						} else {
+							location.reload();
+						}
 					});
 				}
 			});

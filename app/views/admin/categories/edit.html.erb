@@ -57,7 +57,13 @@
                         <div class="panel panel-flat">
                             <div class="panel-heading">
                                 <h5 class="panel-title"><span class="text-semibold"><%= t(:edit_category) %></span></h5>
-                                <%= link_to "#{t(:delete)}<i class=\"glyphicon glyphicon-remove-sign position-right\"></i>".html_safe, {controller: "admin/categories", action: "destroy", id: @category.id}, method: :delete, data: {confirm: t(:confirm_delete)}, class: "btn btn-danger button_top_form pull-right" %>
+                                <% if can? :delete, @category %>
+                                    <% if @category.get_products_for_categories(category_id: @category).count > 0 %>
+                                        <%= link_to "#{t(:delete)}<i class=\"glyphicon glyphicon-remove-sign position-right\"></i>".html_safe, "#modal_theme_danger", data: { toggle: "modal" }, class: "btn btn-danger button_top_form pull-right" %>
+                                    <% else %>
+                                        <%= link_to "#{t(:delete)}<i class=\"glyphicon glyphicon-remove-sign position-right\"></i>".html_safe, "#delete_category", url: admin_category_path(@category) , class: "btn btn-danger button_top_form pull-right backend_delete_item" %>
+                                    <% end %>
+                                <% end %>
                             </div>
                             
                             <div class="panel-body">
@@ -102,6 +108,23 @@
 <%= javascript_include_tag '/backend/assets/js/pages/colors_warning.js' %>
 <%= javascript_include_tag '/backend/assets/js/pages/colors_violet.js' %>
 <!-- /theme JS files -->
+<!-- Danger modal -->
+<div id="modal_theme_danger" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Thông báo</h6>
+            </div>
+
+            <div class="modal-body">
+                <h6 class="text-semibold">Không thể xóa chuyên mục</h6>
+                <p>Chuyên mục đã có sản phẩm nên không thể xóa.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /default modal -->
 <script>
     // Checkboxes and radios
     $(".styled-level-1, .multiselect-container input").uniform({

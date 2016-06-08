@@ -118,7 +118,7 @@
             
             <% if can?(:read, PaymentMethod) %>
                 <li>
-                    <a href="#"><i class="icon-paypal"></i> <span><%= t(:payment_method) %></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-usd"></i> <span><%= t(:payment_method) %></span></a>
                     <ul>
                         <% if can? :read, PaymentMethod %>
                             <li class="<%= "active" if ["admin/payment_methods"].include?(params[:controller]) %>">
@@ -192,7 +192,7 @@
             
             <% if can?(:read, Company) %>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-fire"></i> <span><%= t(:company) %></span></a>
+                    <a href="#"><i class="icon-office"></i> <span><%= t(:company) %></span></a>
                     <ul>
                         <% if can? :read, Company %>
                             <li class="<%= "active" if ["admin/companies"].include?(params[:controller]) %>">
