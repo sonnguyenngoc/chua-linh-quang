@@ -332,6 +332,11 @@ vi:
   vietnamese: "Tiếng Việt"
   english: "English"
   
+  activerecord:
+    attributes:
+      product:
+        code: "Mã sản phẩm"
+  
   devise:
     sessions:
       signed_in: "Đăng nhập tài khoản thành công."

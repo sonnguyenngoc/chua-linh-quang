@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   validates :name, :price, :quantity, :unit, :manufacturer_id, :short_description, presence: true
+  validates :code, :uniqueness => true
   
   has_many :order_details
   has_many :line_items, dependent: :destroy
