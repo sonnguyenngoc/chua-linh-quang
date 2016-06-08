@@ -89,8 +89,229 @@
 <% end %>
 
 
+<div class="container mobile_container_socical_feeds">
+        
+    <section class="section_offset">
+
+        <!-- - - - - - - - - - - - - - Social icon's list - - - - - - - - - - - - - - - - -->
+        
+        <ul class="social_btns">
+
+            <li>
+                <a href="#facebook" class="icon_btn middle_btn social_facebook tooltip_container" box="section_follow_facebook"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></a>
+            </li>
+            
+            <li>
+                <a href="#googleplus" class="icon_btn middle_btn social_googleplus tooltip_container" box="section_follow_googleplus"><i class="icon-gplus-2"></i><span class="tooltip top">Google+</span></a>
+            </li>
+        
+            <li>
+                <a href="#contact" class="icon_btn middle_btn social_contact tooltip_container" box="section_follow_contact"><i class="icon-mail-8"></i><span class="tooltip top">Liên hệ</span></a>
+            </li>
+        
+            <li>
+                <a href="#gmap" class="icon_btn middle_btn social_gmap tooltip_container" box="section_follow_gmap"><i class="icon-location-4"></i><span class="tooltip top">Thông tin công ty</span></a>
+            </li>
+        
+        </ul>
+        
+        <!-- - - - - - - - - - - - - - End social icon's list - - - - - - - - - - - - - - - - -->
+        
+    </section>
+    
+    <section class="mobile_social_box section_offset section_follow_facebook" style="display: none;">
+        
+        <div class="animated_item">
+
+            <h3 class="title">Tham gia cùng chúng tôi trên Facebook</h3>
+
+        </div><!--/ .animated_item-->
+
+        <div class="animated_item">
+
+            <div style="display: inline">
+                
+                <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                   
+                    <div class="fb-xfbml-parse-ignore">
+                        
+                        <blockquote cite="https://www.facebook.com/DacSanVungMien.net">
+                           
+                            <a href="https://www.facebook.com/DacSanVungMien.net">DacSanVungMien.net</a>
+                       
+                        </blockquote>
+                    
+                    </div>
+                
+                </div>
+                
+                <div id="fb-root"></div>
+                
+                <script>
+                
+                    (function(d, s, id) {
+                    
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        
+                        if (d.getElementById(id)) return;
+                        
+                        js = d.createElement(s); js.id = id;
+                        
+                        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                        
+                        fjs.parentNode.insertBefore(js, fjs);
+                    
+                    }
+                    
+                    (document, 'script', 'facebook-jssdk'));
+                
+                </script>
+            
+            </div>
+
+        </div><!--/ .animated_item-->
+        
+    </section>
+    
+    <section class="mobile_social_box section_offset section_follow_googleplus" style="display: none;">
+        
+        <div class="animated_item">
+
+            <h3 class="title">Google +</h3>
+
+        </div><!--/ .animated_item-->
+
+        <div class="animated_item">
+            
+            <!-- Place this tag where you want the widget to render. -->
+            <div class="g-person" data-width="230" data-href="//plus.google.com/u/0/104171666401993038308" data-rel="author"></div>
+            
+        </div>
+         
+        <footer class="animated_item bottom_box">
+            
+            <%= link_to "Vào trang", "//plus.google.com/u/0/104171666401993038308", class: "button_grey middle_btn", target: "_blank" %>
+
+        </footer><!--/ .animated_item-->
+        
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        
+    </section>
+    
+    <section class="mobile_social_box section_offset section_follow_contact" style="display: none;">
+        
+        <div class="animated_item">
+
+            <h3 class="title">Liên hệ</h3>
+
+        </div><!--/ .animated_item-->
+         
+        <div class="animated_item">
+
+            <p class="form_caption">Điền thông tin và nội dung tin nhắn để gửi đến Đặc sản vùng miền.</p>
+
+            <%= form_for Contact.new, html: {id: "new_contact_form"} do |f| %>
+
+                <ul>
+
+                    <li class="row">
+
+                        <div class="col-xs-12">
+
+                            <input type="text" class="required" title="Name" id="contact_name" name="contact[name]" placeholder="Họ & tên">
+
+                        </div>
+
+                    </li>
+
+                    <li class="row">
+
+                        <div class="col-xs-12">
+
+                            <input type="email" class="required" title="Email" id="contact_email" name="contact[email]" placeholder="Địa chỉ email">
+
+                        </div>
+
+                    </li>
+
+                    <li class="row">
+
+                        <div class="col-xs-12">
+
+                            <textarea placeholder="Nội dung" class="required" title="Message" id="contact_message" name="contact[message]" rows="6"></textarea>
+
+                        </div>
+
+                    </li>
+                    
+                    <li class="row">
+
+                        <div class="col-xs-12">
+
+                            <button class="button_grey middle_btn">Gửi liên hệ</button>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            <% end %>
+
+        </div><!--/ .animated_item-->
+        
+    </section>
+    
+    <section class="mobile_social_box section_offset section_follow_gmap" style="display: none;">
+        
+        <div class="animated_item">
+
+            <h3 class="title">Thông tin công ty</h3>
+
+        </div><!--/ .animated_item-->
+           
+        <div class="animated_item">
+            
+            <% if !Company.get_company.nil? %>
+                
+                <p class="c_info_location">VP: <%= Company.get_company.head_office_address + ", " + Company.get_company.area.name %></p>
+                
+                <p class="c_info_location">VPGD: <%= Company.get_company.sales_office_address + ", " + Company.get_company.area.name %></p>
+            
+            <% end %>
+
+            <div class="proportional_frame">
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3024.238131852431!2d-74.006059!3d40.712773999999996!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fda88cefb3%3A0x7f1e88758d210007!2z0J3RjNGOLdC50L7RgNC60YHQutC40Lkg0KHQuNGC0Lgt0YXQvtC70Ls!5e0!3m2!1sru!2sua!4v1415946524959" style="border:0"></iframe>
+
+            </div>
+
+            <ul class="c_info_list">
+               
+                <% if !Company.get_company.nil? %>
+                   
+                    <li class="c_info_phone">ĐT: <%= Company.get_company.phone %></li>
+                   
+                    <li class="c_info_phone">Hotline: <%= Company.get_company.hotline %></li>
+                    
+                    <li class="c_info_mail">Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a></li>
+                
+                <% end %>
+            
+            </ul>
+
+        </div><!--/ .animated_item-->
+        
+    </section>
+
+</div>
+
 
 <footer id="footer">
+    
+    
+    
     
     <!-- - - - - - - - - - - - - - Footer section- - - - - - - - - - - - - - - - -->
     <% if !@is_mobile.present? %>
