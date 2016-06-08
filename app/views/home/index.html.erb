@@ -137,7 +137,7 @@
 	<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
 	
 	<% if !@is_mobile.present? %>
-		
+		<%= render "module/social_feeds" %>
 	<% end%>
 
 	<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
@@ -157,7 +157,6 @@
 	<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
 	<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
 	<%= javascript_include_tag '/frontend/js/retina.min.js' %>
-	
 	<%= javascript_include_tag 'https://select2.github.io/dist/js/select2.full.js' %>
 	<%= stylesheet_link_tag "https://select2.github.io/dist/css/select2.min.css" %>
     <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
