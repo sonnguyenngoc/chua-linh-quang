@@ -1,5 +1,7 @@
 <body class="front_page <%= " has_area" if !@current_area.id.nil? %>">
 
+
+
 	<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
 	<div class="wide_layout page_with_main_nav">
@@ -49,15 +51,7 @@
 
 				</div><!--/ .section_offset-->
 
-				<!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
 				
-				<div class="home_infoblocks">
-					
-					<%= render "module/infoblocks" %>
-					
-				</div>
-				
-				<!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
 				
 				
 				<div class="home_main home_main_margin_top">
@@ -111,6 +105,17 @@
 					
 				</div>
 				
+				
+				<!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
+				
+				<div class="home_infoblocks">
+					
+					<%= render "module/infoblocks" %>
+					
+				</div>
+				
+				<!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
+				
 			</div><!--/ .container-->
 
 		</div><!--/ .page_wrapper-->
@@ -118,7 +123,7 @@
 		<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 
 		<!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
+		
 		<%= render "module/footer" %>
 		
 		<!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
@@ -128,8 +133,10 @@
 	<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
 
 	<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-	 
+	
+	<% if !@is_mobile.present? %>
+		<%= render "module/social_feeds" %>
+	<% end%>
 
 	<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
 	

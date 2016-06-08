@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_action :user_saw
   before_filter :set_current_area
   before_action :set_current_area
+  before_filter :check_mobile
+  
   protect_from_forgery
   
   layout :layout_by_resource
@@ -70,5 +72,13 @@ class ApplicationController < ActionController::Base
   
   def user_saw
     current_user.saw if current_user.present?
+  end
+  
+  def check_mobile
+    if session[:mobile_param]
+      @is_mobile = session[:mobile_param] == "1"
+    else
+      @is_mobile = request.user_agent =~ /Mobile|webOS/
+    end
   end
 end

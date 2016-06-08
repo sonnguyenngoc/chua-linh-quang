@@ -1,98 +1,102 @@
-<header id="header" class="type_2">
-
-    <!-- - - - - - - - - - - - - - Bottom part - - - - - - - - - - - - - - - - -->
-
-    <div class="bottom_part header_top">
-
-        <div class="sticky_part">
-
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="main_header_row">
-
-                        <div class="col-sm-3 header_logo">
-
-                            <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
-                            
-                            <%= link_to image_tag("/frontend/images/dsvm_logo2.png", class: ""), go_home_path, class: "logo" %>
-
-                            <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
-
-                        </div><!--/ [col]-->
-
-                        <div class="col-lg-6 col-md-5 col-sm-6">
-
-                            <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
-                            
-                            <%= render "module/verytop_menu_bar", prefix: "" %>
-
-                            <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
-                            
-                            <%= render "module/top_search_form" %>                            
-                            
-                            <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
-
-                        </div><!--/ [col]-->
-
-                        <div class="col-lg-3 col-md-4 col-sm-3">
-
-                            <div class="clearfix">
-
-                                <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
-
-                                <div class="alignright site_settings">
+<% if !@is_mobile.present? %>
+        <header id="header" class="type_2">
+        
+            <!-- - - - - - - - - - - - - - Bottom part - - - - - - - - - - - - - - - - -->
+        
+            <div class="bottom_part header_top">
+        
+                <div class="sticky_part">
+        
+                    <div class="container">
+        
+                        <div class="row">
+        
+                            <div class="main_header_row">
+        
+                                <div class="col-sm-3 header_logo">
+        
+                                    <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
                                     
-                                    <% if params[:locale] == "vi" %>
-
-                                    <span class="current open_"><img src="/frontend/images/flag_vn.jpg" alt="">Vietnam</span>
+                                    <%= link_to image_tag("/frontend/images/dsvm_logo2.png", class: ""), go_home_path, class: "logo" %>
+        
+                                    <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
+        
+                                </div><!--/ [col]-->
+        
+                                <div class="col-lg-6 col-md-5 col-sm-6">
+        
+                                    <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
                                     
-                                    <% else %>
+                                    <%= render "module/verytop_menu_bar", prefix: "" %>
+        
+                                    <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
+        
+                                    <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
+                                    
+                                    <%= render "module/top_search_form" %>                            
+                                    
+                                    <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+        
+                                </div><!--/ [col]-->
+        
+                                <div class="col-lg-3 col-md-4 col-sm-3">
+        
+                                    <div class="clearfix">
+        
+                                        <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
+        
+                                        <div class="alignright site_settings">
+                                            
+                                            <% if params[:locale] == "vi" %>
+        
+                                            <span class="current open_"><img src="/frontend/images/flag_vn.jpg" alt="">Vietnam</span>
+                                            
+                                            <% else %>
+                                                
+                                                <span class="current open_"><img src="/frontend/images/flag_en.jpg" alt="">English</span>
+                                                
+                                            <% end %>
+                                            
+                                            <ul class="dropdown site_setting_list language">
+        
+                                                <li class="animated_item"><a href="<%= url_for( :locale => 'vi' ) %>"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
+                                            
+                                                <li class="animated_item"><a href="<%= url_for( :locale => 'en' ) %>"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
+                                                
+                                            </ul>
+        
+                                        </div><!--/ .alignright.site_settings-->
+        
+                                        <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
                                         
-                                        <span class="current open_"><img src="/frontend/images/flag_en.jpg" alt="">English</span>
                                         
-                                    <% end %>
+        
+                                    </div><!--/ .clearfix-->
                                     
-                                    <ul class="dropdown site_setting_list language">
-
-                                        <li class="animated_item"><a href="<%= url_for( :locale => 'vi' ) %>"><img src="/frontend/images/flag_vn.jpg" alt=""> Vietnam</a></li>
+                                    <div class="ajax_shopping_carts align_right v_centered">
+        
+                                        <%= render "/module/shopping_cart_items" %>
                                     
-                                        <li class="animated_item"><a href="<%= url_for( :locale => 'en' ) %>"><img src="/frontend/images/flag_en.jpg" alt=""> English</a></li>
-                                        
-                                    </ul>
+                                    </div><!--/ .align_right-->
+        
+                                </div><!--/ [col]-->
+        
+                            </div><!--/ .main_header_row-->
+        
+                        </div><!--/ .row-->
+        
+                    </div><!--/ .container-->
+        
+                </div>
+        
+            </div><!--/ .bottom_part -->
+        
+            <!-- - - - - - - - - - - - - - End of bottom part - - - - - - - - - - - - - - - - -->
+        
+        </header>
 
-                                </div><!--/ .alignright.site_settings-->
+<% end %>
 
-                                <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
-                                
-                                
-
-                            </div><!--/ .clearfix-->
-                            
-                            <div class="ajax_shopping_carts align_right v_centered">
-
-                                <%= render "/module/shopping_cart_items" %>
-                            
-                            </div><!--/ .align_right-->
-
-                        </div><!--/ [col]-->
-
-                    </div><!--/ .main_header_row-->
-
-                </div><!--/ .row-->
-
-            </div><!--/ .container-->
-
-        </div>
-
-    </div><!--/ .bottom_part -->
-
-    <!-- - - - - - - - - - - - - - End of bottom part - - - - - - - - - - - - - - - - -->
-
-</header>
 <script>
     function get_cart() {
         var url = "<%= cart_carts_path %>";
@@ -180,7 +184,11 @@
     });
 </script>
 
-<%= render "module/mobile_header" %>
+<% if @is_mobile.present? %>
+
+    <%= render "module/mobile_header" %>
+    
+<% end %>
 
 <% if !@blog_advertise.nil? %>
     
