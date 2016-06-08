@@ -69,12 +69,10 @@ class Admin::SlideshowsController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @slideshow
-    
     @slideshow.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_slideshows_url, notice: 'Xóa trình chiếu thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa trình chiếu thành công.'
   end
 
   private

@@ -139,12 +139,10 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @article
-    
     @article.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_articles_url, notice: 'Xóa bài viết thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa bài viết thành công.'
   end
   
   def approve

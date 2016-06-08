@@ -77,12 +77,10 @@ class Admin::PaymentMethodsController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @payment_method
-    
     @payment_method.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_payment_methods_url, notice: 'Xóa hình thức thanh toán thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa hình thức thanh toán thành công.'
   end
 
   private

@@ -52,7 +52,7 @@
                                                 
                                                 <% if current_user.present? %>
                                                     
-                                                    <input class="required" type="text" name="testimonial[name]" id="testimonial_name" value="<%= current_user.first_name + " " + current_user.last_name %>" class="form-control" >
+                                                    <input class="required" type="text" name="testimonial[name]" id="testimonial_name" value="<%= current_user.first_name + " " + current_user.last_name %>" class="form-control" readonly >
                                                     
                                                 <% else %>
                                                     
@@ -112,7 +112,7 @@
                                                 
                                                 <% if current_user.present? %>
                                                     
-                                                    <input class="required email" type="text" name="testimonial[email]" id="testimonial_email" value="<%= current_user.email %>" class="form-control" >
+                                                    <input class="required email" type="text" name="testimonial[email]" id="testimonial_email" value="<%= current_user.email %>" class="form-control" readonly >
                                                     
                                                 <% else %>
                                                     

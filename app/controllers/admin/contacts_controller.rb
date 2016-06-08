@@ -68,13 +68,11 @@ class Admin::ContactsController < ApplicationController
   # DELETE /contacts/1.json
   def destroy
     # authorize
-    authorize! :read, @contact
-    
+    authorize! :delete, @contact
     @contact.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_contacts_url, notice: 'Xóa tin nhắn liên hệ thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa tin nhắn liên hệ thành công.'
   end
 
   private
