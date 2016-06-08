@@ -54,7 +54,6 @@
 				}
 			} else {
 				if($('.rev_slider').length){
-					$('.rev_slider li').hide();
 					setInterval("runSlideShow()", 4000);
 				}
 			}

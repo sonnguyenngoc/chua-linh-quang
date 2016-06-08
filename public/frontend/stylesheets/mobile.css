@@ -353,6 +353,9 @@
         position: relative;
         display: none;
     }
+    .rev_slider li:first-child {
+        display: block;
+    }
     .rev_slider .caption {
         position: absolute;
         bottom: 20px;
