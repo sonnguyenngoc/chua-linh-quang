@@ -17,22 +17,22 @@ var Core = (function(Core){
 		**/
 		afterDOMReady : function(){
 
-			$("body").queryLoader2({
-    			barHeight : 4,
-    			backgroundColor : '#fff',
-    			barColor : '#018bc8',
-    			minimumTime : 2000,
-    			onComplete : function(){
-
-					// show promo popup
-    				if($.arcticmodal && $('body').hasClass('promo_popup')){
-						$.arcticmodal({
-							url : "modals/promo.html"
-						});
-					}
-
-    			}
-    		});
+//			$("body").queryLoader2({
+//    			barHeight : 4,
+//    			backgroundColor : '#fff',
+//    			barColor : '#018bc8',
+//    			minimumTime : 2000,
+//    			onComplete : function(){
+//
+//					// show promo popup
+//    				if($.arcticmodal && $('body').hasClass('promo_popup')){
+//						$.arcticmodal({
+//							url : "modals/promo.html"
+//						});
+//					}
+//
+//    			}
+//    		});
 
 			this.fancyboxValidationFix();
 			this.generateBackToTopButton();
