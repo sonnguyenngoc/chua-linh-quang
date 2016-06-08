@@ -88,455 +88,241 @@
     
 <% end %>
 
-<div class="container mobile_container_socical_feeds">
-        
-    <section class="section_offset">
 
-        <!-- - - - - - - - - - - - - - Social icon's list - - - - - - - - - - - - - - - - -->
-        
-        <ul class="social_btns">
-
-            <li>
-                <a href="#facebook" class="icon_btn middle_btn social_facebook tooltip_container" box="section_follow_facebook"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></a>
-            </li>
-            
-            <li>
-                <a href="#googleplus" class="icon_btn middle_btn social_googleplus tooltip_container" box="section_follow_googleplus"><i class="icon-gplus-2"></i><span class="tooltip top">Google+</span></a>
-            </li>
-        
-            <li>
-                <a href="#contact" class="icon_btn middle_btn social_contact tooltip_container" box="section_follow_contact"><i class="icon-mail-8"></i><span class="tooltip top">Liên hệ</span></a>
-            </li>
-        
-            <li>
-                <a href="#gmap" class="icon_btn middle_btn social_gmap tooltip_container" box="section_follow_gmap"><i class="icon-location-4"></i><span class="tooltip top">Thông tin công ty</span></a>
-            </li>
-        
-        </ul>
-        
-        <!-- - - - - - - - - - - - - - End social icon's list - - - - - - - - - - - - - - - - -->
-        
-    </section>
-    
-    <section class="mobile_social_box section_offset section_follow_facebook" style="display: none;">
-        
-        <div class="animated_item">
-
-            <h3 class="title">Tham gia cùng chúng tôi trên Facebook</h3>
-
-        </div><!--/ .animated_item-->
-
-        <div class="animated_item">
-
-            <div style="display: inline">
-                
-                <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                   
-                    <div class="fb-xfbml-parse-ignore">
-                        
-                        <blockquote cite="https://www.facebook.com/DacSanVungMien.net">
-                           
-                            <a href="https://www.facebook.com/DacSanVungMien.net">DacSanVungMien.net</a>
-                       
-                        </blockquote>
-                    
-                    </div>
-                
-                </div>
-                
-                <div id="fb-root"></div>
-                
-                <script>
-                
-                    (function(d, s, id) {
-                    
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        
-                        if (d.getElementById(id)) return;
-                        
-                        js = d.createElement(s); js.id = id;
-                        
-                        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
-                        
-                        fjs.parentNode.insertBefore(js, fjs);
-                    
-                    }
-                    
-                    (document, 'script', 'facebook-jssdk'));
-                
-                </script>
-            
-            </div>
-
-        </div><!--/ .animated_item-->
-        
-    </section>
-    
-    <section class="mobile_social_box section_offset section_follow_googleplus" style="display: none;">
-        
-        <div class="animated_item">
-
-            <h3 class="title">Google +</h3>
-
-        </div><!--/ .animated_item-->
-
-        <div class="animated_item">
-            
-            <!-- Place this tag where you want the widget to render. -->
-            <div class="g-person" data-width="230" data-href="//plus.google.com/u/0/104171666401993038308" data-rel="author"></div>
-            
-        </div>
-         
-        <footer class="animated_item bottom_box">
-            
-            <%= link_to "Vào trang", "//plus.google.com/u/0/104171666401993038308", class: "button_grey middle_btn", target: "_blank" %>
-
-        </footer><!--/ .animated_item-->
-        
-        <!-- Place this tag in your head or just before your close body tag. -->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        
-    </section>
-    
-    <section class="mobile_social_box section_offset section_follow_contact" style="display: none;">
-        
-        <div class="animated_item">
-
-            <h3 class="title">Liên hệ</h3>
-
-        </div><!--/ .animated_item-->
-         
-        <div class="animated_item">
-
-            <p class="form_caption">Điền thông tin và nội dung tin nhắn để gửi đến Đặc sản vùng miền.</p>
-
-            <%= form_for Contact.new, html: {id: "new_contact_form"} do |f| %>
-
-                <ul>
-
-                    <li class="row">
-
-                        <div class="col-xs-12">
-
-                            <input type="text" class="required" title="Name" id="contact_name" name="contact[name]" placeholder="Họ & tên">
-
-                        </div>
-
-                    </li>
-
-                    <li class="row">
-
-                        <div class="col-xs-12">
-
-                            <input type="email" class="required" title="Email" id="contact_email" name="contact[email]" placeholder="Địa chỉ email">
-
-                        </div>
-
-                    </li>
-
-                    <li class="row">
-
-                        <div class="col-xs-12">
-
-                            <textarea placeholder="Nội dung" class="required" title="Message" id="contact_message" name="contact[message]" rows="6"></textarea>
-
-                        </div>
-
-                    </li>
-                    
-                    <li class="row">
-
-                        <div class="col-xs-12">
-
-                            <button class="button_grey middle_btn">Gửi liên hệ</button>
-
-                        </div>
-
-                    </li>
-
-                </ul>
-
-            <% end %>
-
-        </div><!--/ .animated_item-->
-        
-    </section>
-    
-    <section class="mobile_social_box section_offset section_follow_gmap" style="display: none;">
-        
-        <div class="animated_item">
-
-            <h3 class="title">Thông tin công ty</h3>
-
-        </div><!--/ .animated_item-->
-           
-        <div class="animated_item">
-            
-            <% if !Company.get_company.nil? %>
-                
-                <p class="c_info_location">VP: <%= Company.get_company.head_office_address + ", " + Company.get_company.area.name %></p>
-                
-                <p class="c_info_location">VPGD: <%= Company.get_company.sales_office_address + ", " + Company.get_company.area.name %></p>
-            
-            <% end %>
-
-            <div class="proportional_frame">
-
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3024.238131852431!2d-74.006059!3d40.712773999999996!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fda88cefb3%3A0x7f1e88758d210007!2z0J3RjNGOLdC50L7RgNC60YHQutC40Lkg0KHQuNGC0Lgt0YXQvtC70Ls!5e0!3m2!1sru!2sua!4v1415946524959" style="border:0"></iframe>
-
-            </div>
-
-            <ul class="c_info_list">
-               
-                <% if !Company.get_company.nil? %>
-                   
-                    <li class="c_info_phone">ĐT: <%= Company.get_company.phone %></li>
-                   
-                    <li class="c_info_phone">Hotline: <%= Company.get_company.hotline %></li>
-                    
-                    <li class="c_info_mail">Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a></li>
-                
-                <% end %>
-            
-            </ul>
-
-        </div><!--/ .animated_item-->
-        
-    </section>
-
-</div>
 
 <footer id="footer">
     
     <!-- - - - - - - - - - - - - - Footer section- - - - - - - - - - - - - - - - -->
-
-    <div class="footer_section section_1">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-xs-6 col-md-3 col-sm-6">
-
-                    <!-- - - - - - - - - - - - - - About us widget- - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Tin tức Facebook</h4>
-                        
-                        <ul class="list_of_entries">
-
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <div class="animated_item">
-
-                                    <div style="display: inline">
-                                        
-                                        <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                                           
-                                            <div class="fb-xfbml-parse-ignore">
+    <% if !@is_mobile.present? %>
+            <div class="footer_section section_1">
+        
+                <div class="container">
+        
+                    <div class="row">
+        
+                        <div class="col-xs-6 col-md-3 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - About us widget- - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Tin tức Facebook</h4>
+                                
+                                <ul class="list_of_entries">
+        
+                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+        
+                                    <li>
+                                            
+                                        <div class="animated_item">
+        
+                                            <div style="display: inline">
                                                 
-                                                <blockquote cite="https://www.facebook.com/DacSanVungMien.net">
+                                                <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                                                    
-                                                    <a href="https://www.facebook.com/DacSanVungMien.net">DacSanVungMien.net</a>
-                                               
-                                                </blockquote>
+                                                    <div class="fb-xfbml-parse-ignore">
+                                                        
+                                                        <blockquote cite="https://www.facebook.com/DacSanVungMien.net">
+                                                           
+                                                            <a href="https://www.facebook.com/DacSanVungMien.net">DacSanVungMien.net</a>
+                                                       
+                                                        </blockquote>
+                                                    
+                                                    </div>
+                                                
+                                                </div>
+                                                
+                                                <div id="fb-root"></div>
+                                                
+                                                <script>
+                                                
+                                                    (function(d, s, id) {
+                                                    
+                                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                                        
+                                                        if (d.getElementById(id)) return;
+                                                        
+                                                        js = d.createElement(s); js.id = id;
+                                                        
+                                                        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                                                        
+                                                        fjs.parentNode.insertBefore(js, fjs);
+                                                    
+                                                    }
+                                                    
+                                                    (document, 'script', 'facebook-jssdk'));
+                                                
+                                                </script>
                                             
                                             </div>
-                                        
-                                        </div>
-                                        
-                                        <div id="fb-root"></div>
-                                        
-                                        <script>
-                                        
-                                            (function(d, s, id) {
-                                            
-                                                var js, fjs = d.getElementsByTagName(s)[0];
-                                                
-                                                if (d.getElementById(id)) return;
-                                                
-                                                js = d.createElement(s); js.id = id;
-                                                
-                                                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
-                                                
-                                                fjs.parentNode.insertBefore(js, fjs);
-                                            
-                                            }
-                                            
-                                            (document, 'script', 'facebook-jssdk'));
-                                        
-                                        </script>
-                                    
-                                    </div>
-                    
-                                </div><!--/ .animated_item-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                        </ul>
-                        
-                        <%= link_to "Theo dõi trang", "https://www.facebook.com/DacSanVungMien.net/", class: "button_grey middle_btn", target: "_blank" %>
-                        
-                    </section><!--/ .widget-->
-                    
-                    <!-- - - - - - - - - - - - - - End of about us widget - - - - - - - - - - - - - - - - -->
-
-                </div><!--/ [col]-->
-
-                <div class="col-xs-6 col-md-3 col-sm-6">
-
-                    <!-- - - - - - - - - - - - - - Information widget - - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Từ khóa phổ biến</h4>
-                        
-                        <div class="tags_container">
                             
-                            <% if !Article.get_keyword_article.nil? %>
-                               
-                                <ul class="tags_cloud">
+                                        </div><!--/ .animated_item-->
+        
+                                    </li>
+        
+                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+        
+                                </ul>
+                                
+                                <%= link_to "Theo dõi trang", "https://www.facebook.com/DacSanVungMien.net/", class: "button_grey middle_btn", target: "_blank" %>
+                                
+                            </section><!--/ .widget-->
+                            
+                            <!-- - - - - - - - - - - - - - End of about us widget - - - - - - - - - - - - - - - - -->
+        
+                        </div><!--/ [col]-->
+        
+                        <div class="col-xs-6 col-md-3 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - Information widget - - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Từ khóa phổ biến</h4>
+                                
+                                <div class="tags_container">
                                     
-                                    <% Article.get_keyword_article.keywords.each do |item| %>
-                                        
-                                        <li><a href="#" class="button_grey"><%= item.html_safe %></a></li>
+                                    <% if !Article.get_keyword_article.nil? %>
+                                       
+                                        <ul class="tags_cloud">
+                                            
+                                            <% Article.get_keyword_article.keywords.each do |item| %>
+                                                
+                                                <li><a href="#" class="button_grey"><%= item.html_safe %></a></li>
+                                            
+                                            <% end %>
+            
+                                        </ul><!--/ .tags_cloud-->
+                                   
+                                    <% end %>
+                                    
+                                </div>
+                            
+                            <!-- - - - - - - - - - - - - - End of information widget - - - - - - - - - - - - - - - - -->
+                        
+                        </div><!--/ [col]-->
+        
+                        <div class="col-xs-6 col-md-3 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - My account widget - - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Ý kiến khách hàng</h4>
+        
+                                <ul class="list_of_entries">
+                                    
+                                    <% Testimonial.all.limit(4).each do |item| %>
+        
+                                        <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+            
+                                        <li>
+                                                
+                                            <article class="entry">
+            
+                                                <div class="wrapper">
+            
+                                                    <h6 class="entry_title"><%= link_to item.name + ", " + item.city, testimonial_list_path %></h6>
+            
+                                                    <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+            
+                                                    <div class="entry_meta">
+            
+                                                        <p class="text-justify"><%= truncate(strip_tags(item.content), length: 150) %></p>
+            
+                                                    </div><!--/ .entry_meta-->
+            
+                                                    <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+            
+                                                </div><!--/ .wrapper-->
+            
+                                            </article><!--/ .clearfix-->
+            
+                                        </li>
+            
+                                        <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
                                     
                                     <% end %>
-    
-                                </ul><!--/ .tags_cloud-->
-                           
-                            <% end %>
-                            
+        
+                                </ul>
+                                
+                                <%= link_to "Xem toàn bộ", testimonial_list_path, class: "button_grey middle_btn" %>
+        
+                            </section><!--/ .widget-->
+        
+                            <!-- - - - - - - - - - - - - - End my account widget - - - - - - - - - - - - - - - - -->
+        
                         </div>
-                    
-                    <!-- - - - - - - - - - - - - - End of information widget - - - - - - - - - - - - - - - - -->
-                
-                </div><!--/ [col]-->
-
-                <div class="col-xs-6 col-md-3 col-sm-6">
-
-                    <!-- - - - - - - - - - - - - - My account widget - - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Ý kiến khách hàng</h4>
-
-                        <ul class="list_of_entries">
-                            
-                            <% Testimonial.all.limit(4).each do |item| %>
-
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-    
-                                <li>
-                                        
-                                    <article class="entry">
-    
-                                        <div class="wrapper">
-    
-                                            <h6 class="entry_title"><%= link_to item.name + ", " + item.city, testimonial_list_path %></h6>
-    
-                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-    
-                                            <div class="entry_meta">
-    
-                                                <p class="text-justify"><%= truncate(strip_tags(item.content), length: 150) %></p>
-    
-                                            </div><!--/ .entry_meta-->
-    
-                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-    
-                                        </div><!--/ .wrapper-->
-    
-                                    </article><!--/ .clearfix-->
-    
-                                </li>
-    
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-                            
-                            <% end %>
-
-                        </ul>
-                        
-                        <%= link_to "Xem toàn bộ", testimonial_list_path, class: "button_grey middle_btn" %>
-
-                    </section><!--/ .widget-->
-
-                    <!-- - - - - - - - - - - - - - End my account widget - - - - - - - - - - - - - - - - -->
-
-                </div>
-
-                <div class="col-xs-6 col-md-3 col-sm-6">
-
-                    <!-- - - - - - - - - - - - - - Blog widget - - - - - - - - - - - - - - - - -->
-
-                    <section class="widget">
-
-                        <h4>Bài viết mới nhất</h4>
-
-                        <ul class="list_of_entries">
-                            
-                            <% Article.get_lastest_blog_posts.each do |blog| %>
-
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-    
-                                <li>
-                                        
-                                    <article class="entry">
-                                        
-                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                                        
-                                        <%= link_to image_tag(blog.image_url.smaller_image), { controller: "blog", action: "show", blog_id: blog.id }, class: "entry_thumb", title: blog.title %>
-    
-                                        <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-    
-                                        <div class="wrapper">
-    
-                                            <h6 class="entry_title"><%= link_to blog.title, { controller: "blog", action: "show", blog_id: blog.id } %></h6>
-    
-                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-    
-                                            <div class="entry_meta">
-    
-                                                <span><i class="icon-calendar"></i> <%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>
+        
+                        <div class="col-xs-6 col-md-3 col-sm-6">
+        
+                            <!-- - - - - - - - - - - - - - Blog widget - - - - - - - - - - - - - - - - -->
+        
+                            <section class="widget">
+        
+                                <h4>Bài viết mới nhất</h4>
+        
+                                <ul class="list_of_entries">
+                                    
+                                    <% Article.get_lastest_blog_posts.each do |blog| %>
+        
+                                        <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+            
+                                        <li>
                                                 
-                                                <span><i class="icon-comment"></i> <%= blog.comment_articles.count %></span>
+                                            <article class="entry">
                                                 
-                                            </div><!--/ .entry_meta-->
-    
-                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-    
-                                        </div><!--/ .wrapper-->
-    
-                                    </article><!--/ .clearfix-->
-    
-                                </li>
-    
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-                            
-                            <% end %>
-                            
-                        </ul>
+                                                <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+                                                
+                                                <%= link_to image_tag(blog.image_url.smaller_image), { controller: "blog", action: "show", blog_id: blog.id }, class: "entry_thumb", title: blog.title %>
+            
+                                                <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
+            
+                                                <div class="wrapper">
+            
+                                                    <h6 class="entry_title"><%= link_to blog.title, { controller: "blog", action: "show", blog_id: blog.id } %></h6>
+            
+                                                    <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+            
+                                                    <div class="entry_meta">
+            
+                                                        <span><i class="icon-calendar"></i> <%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>
+                                                        
+                                                        <span><i class="icon-comment"></i> <%= blog.comment_articles.count %></span>
+                                                        
+                                                    </div><!--/ .entry_meta-->
+            
+                                                    <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+            
+                                                </div><!--/ .wrapper-->
+            
+                                            </article><!--/ .clearfix-->
+            
+                                        </li>
+            
+                                        <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                                    
+                                    <% end %>
+                                    
+                                </ul>
+        
+                            </section><!--/ .widget-->
+        
+                            <!-- - - - - - - - - - - - - - End of blog widget - - - - - - - - - - - - - - - - -->
+        
+                        </div><!--/ [col]-->
+        
+                    </div><!--/ .row-->
+        
+                </div><!--/ .container -->
+        
+            </div><!--/ .footer_section_2-->
+        
+            <!-- - - - - - - - - - - - - - End footer section- - - - - - - - - - - - - - - - -->
 
-                    </section><!--/ .widget-->
+            <hr>    
+    <% end %>
 
-                    <!-- - - - - - - - - - - - - - End of blog widget - - - - - - - - - - - - - - - - -->
-
-                </div><!--/ [col]-->
-
-            </div><!--/ .row-->
-
-        </div><!--/ .container -->
-
-    </div><!--/ .footer_section_2-->
-
-    <!-- - - - - - - - - - - - - - End footer section- - - - - - - - - - - - - - - - -->
-
-    <hr>
 
     <!-- - - - - - - - - - - - - - Footer section - - - - - - - - - - - - - - - - -->
 
