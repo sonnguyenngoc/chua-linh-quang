@@ -330,7 +330,7 @@ vi:
   display_order: "Thứ tự hiển thị"
   wishlist_number: "Số lượng yêu thích"
   vietnamese: "Tiếng Việt"
-  english: "Tiếng Anh"
+  english: "English"
   
   devise:
     sessions:

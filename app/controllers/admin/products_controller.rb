@@ -156,10 +156,9 @@ class Admin::ProductsController < ApplicationController
     # authorize
     authorize! :delete, @product
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_products_url, notice: 'Xóa sản phẩm thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa sản phẩm thành công.'
   end
   
   def approve

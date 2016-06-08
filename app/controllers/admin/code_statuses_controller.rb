@@ -77,12 +77,10 @@ class Admin::CodeStatusesController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @code_status
-    
     @code_status.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_code_statuses_url, notice: 'Xóa nhãn bài viết thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa thẻ bài viết thành công.'
   end
 
   private

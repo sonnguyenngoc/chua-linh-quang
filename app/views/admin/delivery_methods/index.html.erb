@@ -111,7 +111,7 @@
                                                         <% end %>
                                                         <% if can? :delete, item %>
                                                             <li>
-                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_delivery_method", url: admin_delivery_method_path(item) , class: "backend_delete_item" %>
                                                             </li>
                                                         <% end %>
                                                     </ul>

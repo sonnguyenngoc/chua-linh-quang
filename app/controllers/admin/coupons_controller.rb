@@ -81,12 +81,10 @@ class Admin::CouponsController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @coupon
-    
     @coupon.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_coupons_url, notice: 'Xóa mã giảm giá thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa mã giảm giá thành công.'
   end
 
   private

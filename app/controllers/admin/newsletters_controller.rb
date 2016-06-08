@@ -68,13 +68,11 @@ class Admin::NewslettersController < ApplicationController
   # DELETE /newsletters/1.json
   def destroy
     # authorize
-    authorize! :read, @newsletter
-    
+    authorize! :delete, @newsletter
     @newsletter.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_newsletters_url, notice: 'Xóa email thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa email đăng ký nhận tin mới thành công.'
   end
 
   private

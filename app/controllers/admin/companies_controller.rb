@@ -78,12 +78,10 @@ class Admin::CompaniesController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @company
-    
     @company.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_companies_url, notice: 'Xóa công ty thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa công ty/chi nhánh thành công.'
   end
 
   private
