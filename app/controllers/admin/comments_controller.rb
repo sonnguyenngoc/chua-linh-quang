@@ -78,12 +78,10 @@ class Admin::CommentsController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @comment
-    
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: 'Xóa bình luận thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa bình luận sản phẩm thành công.'
   end
 
   private

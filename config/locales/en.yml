@@ -328,12 +328,17 @@ en:
   add_to_list: "Add to list"
   display_order: "Display order"
   wishlist_number: "Wishlist number"
-  vietnamese: "Vietnamese"
+  vietnamese: "Tiếng Việt"
   english: "English"
   
   devise:
     sessions:
       signed_in: "Signed in successfully."
+      
+  activerecord:
+    attributes:
+      product:
+        code: "Product code"
   
   will_paginate:
     page_entries_info:

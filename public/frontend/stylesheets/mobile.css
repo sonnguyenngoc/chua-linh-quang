@@ -298,9 +298,6 @@
     .categories_products_home_tabs_container .tab_containers_wrap {
         visibility: hidden;
     }
-    .main_slider.transparent, .main_slider.transparent * {
-        visibility: hidden !important;
-    }
     .chat_box_page .invisible {
         display: none;
     }
@@ -352,6 +349,9 @@
     .rev_slider li {
         position: relative;
         display: none;
+    }
+    .rev_slider li:first-child {
+        display: block;
     }
     .rev_slider .caption {
         position: absolute;

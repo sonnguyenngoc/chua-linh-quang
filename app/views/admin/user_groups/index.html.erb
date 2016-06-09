@@ -86,7 +86,7 @@
                                                         <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_user_group_path(item) %>
                                                     </li>
                                                     <li>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_user_group", url: admin_user_group_path(item) , class: "backend_delete_item" %>
                                                     </li>
                                                 </ul>
                                             </li>

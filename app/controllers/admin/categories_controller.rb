@@ -96,14 +96,11 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @category
+    @category.destroy
+    Category.update_all_level
     
-    respond_to do |format|
-      # update all level
-      Category.update_all_level
-        
-      format.html { redirect_to admin_categories_url, notice: 'Xóa chuyên mục thành công.' }
-      format.json { head :no_content }
-    end
+    render text: admin_categories_url
+    flash[:notice] = 'Xóa chuyên mục sản phẩm thành công.'
   end
   
   # ajax update categories ordered parent

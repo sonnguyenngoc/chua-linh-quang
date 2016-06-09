@@ -130,7 +130,13 @@
                                                             <% end %>
                                                             <% if can?(:update, item) %>
                                                                 <li>
-                                                                    <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), [:admin, item], method: :delete, data: {confirm: t(:confirm_delete)} %>
+                                                                    <li>
+                                                                        <% if item.articles.count > 0 %>
+                                                                            <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#modal_theme_danger", data: { toggle: "modal" } %>
+                                                                        <% else %>
+                                                                            <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_article_category", url: admin_article_category_path(item) , class: "backend_delete_item" %>
+                                                                        <% end %>
+                                                                    </li>
                                                                 </li>
                                                             <% end %>
                                                         </ul>
@@ -169,7 +175,11 @@
                                                                 <% end %>
                                                                 <% if can?(:delete, child_1) %>
                                                                     <li>
-                                                                        <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, [:admin, child_1], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                                        <% if child_1.articles.count > 0 %>
+                                                                            <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#modal_theme_danger", data: { toggle: "modal" } %>
+                                                                        <% else %>
+                                                                            <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_article_category", url: admin_article_category_path(child_1) , class: "backend_delete_item" %>
+                                                                        <% end %>
                                                                     </li>
                                                                 <% end %>
                                                             </ul>
@@ -217,3 +227,21 @@
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
 <%= javascript_include_tag '/backend/assets/javascripts/datatables_article_categories.js' %>
 <!-- /theme JS files -->
+
+<!-- Danger modal -->
+<div id="modal_theme_danger" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Thông báo</h6>
+            </div>
+
+            <div class="modal-body">
+                <h6 class="text-semibold">Không thể xóa chuyên mục bài viết</h6>
+                <p>Chuyên mục đã có bài viết nên không thể xóa.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /default modal -->

@@ -1,5 +1,7 @@
 <body class="front_page <%= " has_area" if !@current_area.id.nil? %>">
 
+
+
 	<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
 	<div class="wide_layout page_with_main_nav">
@@ -49,15 +51,7 @@
 
 				</div><!--/ .section_offset-->
 
-				<!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
 				
-				<div class="home_infoblocks">
-					
-					<%= render "module/infoblocks" %>
-					
-				</div>
-				
-				<!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
 				
 				
 				<div class="home_main home_main_margin_top">
@@ -101,6 +95,16 @@
 		
 						<!-- - - - - - - - - - - - - - End of taday's deals - - - - - - - - - - - - - - - - -->
 						
+						<!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
+				
+						<div class="home_infoblocks">
+							
+							<%= render "module/infoblocks" %>
+							
+						</div>
+						
+						<!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
+						
 						<!-- - - - - - - - - - - - - - Banners - - - - - - - - - - - - - - - - -->
 		
 						<%= render "module/banners" %>
@@ -111,6 +115,9 @@
 					
 				</div>
 				
+				
+				
+				
 			</div><!--/ .container-->
 
 		</div><!--/ .page_wrapper-->
@@ -118,7 +125,7 @@
 		<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
 
 		<!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
+		
 		<%= render "module/footer" %>
 		
 		<!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
@@ -128,15 +135,16 @@
 	<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
 
 	<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-	<%= render "module/social_feeds" %>
+	
+	<% if !@is_mobile.present? %>
+		<%= render "module/social_feeds" %>
+	<% end%>
 
 	<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
 	
 	<!-- Include Libs & Plugins
 	============================================ -->
 	<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-	<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
 	<%= javascript_include_tag '/frontend/js/rs-plugin/js/jquery.themepunch.tools.min.js' %>
 	<%= javascript_include_tag '/frontend/js/rs-plugin/js/jquery.themepunch.revolution.min.js' %>
 	<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
@@ -148,7 +156,6 @@
 	<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
 	<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
 	<%= javascript_include_tag '/frontend/js/retina.min.js' %>
-	<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
 	<%= javascript_include_tag 'https://select2.github.io/dist/js/select2.full.js' %>
 	<%= stylesheet_link_tag "https://select2.github.io/dist/css/select2.min.css" %>
     <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>

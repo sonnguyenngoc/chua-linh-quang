@@ -77,12 +77,10 @@ class Admin::DeliveryMethodsController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @delivery_method
-    
     @delivery_method.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_delivery_methods_url, notice: 'Xóa hình thức vận chuyển thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa hình thức giao hàng thành công.'
   end
 
   private

@@ -69,10 +69,9 @@ class Admin::OptionsController < ApplicationController
     # authorize
     authorize! :delete, @option
     @option.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_options_url, notice: 'Xóa cài đặt thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa tùy chọn cài đặt thành công.'
   end
 
   private

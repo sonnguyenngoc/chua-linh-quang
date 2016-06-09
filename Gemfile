@@ -59,7 +59,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem "recaptcha", require: "recaptcha/rails"
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails', :groups => [:production, :development, :test]
 gem 'private_pub'
 gem 'thin'
 gem 'onliner'

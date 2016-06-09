@@ -85,12 +85,10 @@ class Admin::ArticleCategoriesController < ApplicationController
   def destroy
     # authorize
     authorize! :delete, @article_category
-    
     @article_category.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_article_categories_url, notice: 'Xóa chuyên mục bài viết thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa chuyên mục bài viết thành công.'
   end
 
   private
