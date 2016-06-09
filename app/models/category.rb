@@ -103,7 +103,7 @@ class Category < ActiveRecord::Base
     return records   
   end
   
-  def self.get_by_status(status, area, limit=5)
+  def self.get_by_status(area, status, limit=5)
     records = self.joins(:products).where("products.approved = true and products.is_show = true")
                          .where("products.status LIKE ?", "%#{status}%").uniq
     records = records.where("areas.id = ?", area.id) if area.id.present?
