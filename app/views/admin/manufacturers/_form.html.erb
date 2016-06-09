@@ -4,7 +4,7 @@
         <div class="alert alert-warning alert-styled-left">
             <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
             <% @manufacturer.errors.full_messages.each do |message| %>
-                - <%= message %><br/>
+                - <%= message %>.<br/>
             <% end %>
         </div>
     </div>
@@ -16,7 +16,7 @@
         <label class="col-lg-2 control-label" ><%= t(:logo) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <div class="uploader bg-teal-400">
-                <%= f.file_field :image_url, class: "file-styled required", accept: ".png, .jpg, .jpeg, .gif" %>
+                <%= f.file_field :image_url, class: "file-styled", accept: ".png, .jpg, .jpeg, .gif" %>
                 <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
             </div>
             <span class="help-block">Accepted formats: gif, png, jpg, jpeg.</span>

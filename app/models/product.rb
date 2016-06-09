@@ -215,11 +215,18 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_by_category_status(category, area, status)
-    records = self.joins(:areas).where(is_show: true)
-                                .where(approved: true)
-    records = records.where("products.status LIKE ?", "%#{status}%")
-    records = records.where("areas.id = ?", area.id) if area.id.present?
-    records = records.joins(:categories).where(categories: {id: category})
+    records = self.joins(:areas).get_active_products
+    
+    if status == 'new'
+      records = records.order("created_at DESC").limit(19)
+      records = records.where("areas.id = ?", area.id) if area.id.present?
+      records = records.joins(:categories).where(categories: {id: category})
+    else
+      records = records.where("products.status LIKE ?", "%#{status}%")
+      records = records.where("areas.id = ?", area.id) if area.id.present?
+      records = records.joins(:categories).where(categories: {id: category})
+    end
+    
     return records
   end
   
@@ -334,5 +341,15 @@ class Product < ActiveRecord::Base
   # buy products
   def bought_products
     order_details.sum(:quantity)
+  end
+  
+  # sum quantity
+  def sum_quantity
+    sum = 0
+    order_details.each do |item|
+      sum = sum + item.quantity
+    end
+    
+    return sum
   end
 end

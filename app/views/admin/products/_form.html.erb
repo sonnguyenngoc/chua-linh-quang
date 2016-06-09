@@ -148,8 +148,6 @@
                         <label class="checkbox-inline">
                             <input <%= "checked" if @product.statuses.include?t(:bestseller) %> type="checkbox" name="product[status][]" id="product_status_bestseller" value="bestseller"><%= t(:st_bestseller) %></label>
                         <label class="checkbox-inline">
-                            <input <%= "checked" if @product.statuses.include?t(:new) %> type="checkbox" name="product[status][]" id="product_status_new" value="new"><%= t(:st_new) %></label>
-                        <label class="checkbox-inline">
                             <input <%= "checked" if @product.statuses.include?t(:imported) %> type="checkbox" name="product[status][]" id="product_status_imported" value="imported"><%= t(:st_imported) %></label>
                         <label class="checkbox-inline">
                             <input <%= "checked" if @product.statuses.include?t(:sold_out) %> type="checkbox" name="product[status][]" id="product_status_sold_out" value="sold_out"><b><%= t(:st_sold_out) %></b></label>
@@ -212,9 +210,6 @@
                         <% end %>
                     </div>
                 </div>
-                            
-                
-                
             </div>
             
             <div class="tab-pane has-padding" id="control-tab5">

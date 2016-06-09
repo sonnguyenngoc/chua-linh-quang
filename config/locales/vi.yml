@@ -336,6 +336,10 @@ vi:
     attributes:
       product:
         code: "Mã sản phẩm"
+      manufacturer:
+        image_url: "Đường dẩn hình ảnh"
+      slideshow:
+        image_url: "Đường dẩn hình ảnh"
   
   devise:
     sessions:
