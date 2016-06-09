@@ -606,7 +606,7 @@ s {
         width: 100%;
     }
     .rev_slider li {
-        position: absolute;
+        position: relative;
         display: none;
         width: 100%;
     }
