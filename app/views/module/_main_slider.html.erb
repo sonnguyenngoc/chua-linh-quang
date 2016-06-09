@@ -24,29 +24,30 @@
                                 <li data-transition="<%= item.style %>" data-slotamount="7">
                                     
                                     <img src="<%= item.image_url.image %>" alt="">
-            
-                                    <div class="caption sfl stl layer_1 main_title" style="color: <%= item.color_1 %>" data-x="left" data-hoffset="60" data-y="90" data-easing="easeOutBack" data-speed="600" data-start="900"><%= item.title_1 %></div>
-            
-                                    <div class="caption sfl stl layer_2 main_description" style="color: <%= item.color_2 %>" data-x="left" data-y="138" data-hoffset="60" data-easing="easeOutBack" data-speed="600" data-start="1000"><%= item.title_2 %></div>
                                     
-                                    <% if item.name_button != "" && item.link != "" %>
+                                    <div class="slide_info">
+                                        <div class="caption sfl stl layer_1 main_title" style="color: <%= item.color_1 %>" data-x="left" data-hoffset="60" data-y="90" data-easing="easeOutBack" data-speed="600" data-start="900"><%= item.title_1 %></div>
+                
+                                        <div class="caption sfl stl layer_2 main_description" style="color: <%= item.color_2 %>" data-x="left" data-y="138" data-hoffset="60" data-easing="easeOutBack" data-speed="600" data-start="1000"><%= item.title_2 %></div>
                                         
-                                        <div class="caption sfb stb" data-x="left" data-y="245" data-hoffset="60" data-easing="easeOutBack" data-speed="700" data-start="1100">
+                                        <% if item.name_button != "" && item.link != "" %>
                                             
-                                            <% if item.link != "" %>
-                                            
-                                                <a href="<%= item.link %>" class="button_blue big_btn"><%= item.name_button %></a>
-                                            
-                                            <% else %>
+                                            <div class="caption sfb stb" data-x="left" data-y="245" data-hoffset="60" data-easing="easeOutBack" data-speed="700" data-start="1100">
                                                 
-                                                <a href="#<%= item.name_button %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                <% if item.link != "" %>
                                                 
-                                            <% end %>
-                                        
-                                        </div>
-                                        
-                                    <% end %>
-            
+                                                    <a href="<%= item.link %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                
+                                                <% else %>
+                                                    
+                                                    <a href="#<%= item.name_button %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                    
+                                                <% end %>
+                                            
+                                            </div>
+                                            
+                                        <% end %>
+                                    </div>
                                 </li>
             
                                 <!-- - - - - - - - - - - - - - End of Slide 1 - - - - - - - - - - - - - - - - -->
@@ -60,29 +61,30 @@
                                 <li data-transition="<%= item.style %>" data-slotamount="7" class="align_center">
                                     
                                     <img src="<%= item.image_url.image %>" alt="">
-            
-                                    <div class="caption sfl stl layer_5 main_title" style="color: <%= item.color_1 %>" data-x="center" data-y="77" data-easing="easeOutBack" data-speed="600" data-start="900"><%= item.title_1 %></div>
-            
-                                    <div class="caption sfl stl layer_6 main_description" style="color: <%= item.color_2 %>" data-x="center" data-y="135" data-easing="easeOutBack" data-speed="600" data-start="1050"><%= item.title_2 %></div>
-            
-                                    <% if item.name_button != "" && item.link != "" %>
-                                        
-                                        <div class="caption sfb stb" data-x="center" data-y="260" data-easing="easeOutBack" data-speed="700" data-start="1150">
+                                    
+                                    <div class="slide_info">
+                                        <div class="caption sfl stl layer_5 main_title" style="color: <%= item.color_1 %>" data-x="center" data-y="77" data-easing="easeOutBack" data-speed="600" data-start="900"><%= item.title_1 %></div>
+                
+                                        <div class="caption sfl stl layer_6 main_description" style="color: <%= item.color_2 %>" data-x="center" data-y="135" data-easing="easeOutBack" data-speed="600" data-start="1050"><%= item.title_2 %></div>
+                
+                                        <% if item.name_button != "" && item.link != "" %>
                                             
-                                            <% if item.link != "" %>
-                                            
-                                                <a href="<%= item.link %>" class="button_blue big_btn"><%= item.name_button %></a>
-                                            
-                                            <% else %>
+                                            <div class="caption sfb stb" data-x="center" data-y="260" data-easing="easeOutBack" data-speed="700" data-start="1150">
                                                 
-                                                <a href="#<%= item.name_button %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                <% if item.link != "" %>
                                                 
-                                            <% end %>
-                                       
-                                        </div>
-                                        
-                                    <% end %>
-            
+                                                    <a href="<%= item.link %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                
+                                                <% else %>
+                                                    
+                                                    <a href="#<%= item.name_button %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                    
+                                                <% end %>
+                                           
+                                            </div>
+                                            
+                                        <% end %>
+                                    </div>
                                 </li>
             
                                 <!-- - - - - - - - - - - - - - End of Slide 2 - - - - - - - - - - - - - - - - -->
@@ -96,31 +98,32 @@
                                 <li data-transition="<%= item.style %>" data-slotamount="7">
                                     
                                     <img src="<%= item.image_url.image %>" alt="">
-            
-                                    <div class="caption sfl stl layer_8 main_title" style="color: <%= item.color_1 %>" data-x="right" data-y="73" data-hoffset="-60" data-easing="easeOutBack" data-speed="600" data-start="900"><%= item.title_1 %></div>
-            
-                                    <div class="caption sfl stl layer_9 main_description" style="color: <%= item.color_2 %>" data-x="right" data-y="122" data-hoffset="-60" data-easing="easeOutBack" data-speed="600" data-start="1000"><%= item.title_2 %></div>
-            
-                                    <div class="caption sfl stl layer_10" data-x="right" data-y="178" data-hoffset="-60" data-easing="easeOutBack" data-speed="600" data-start="1100"></div>
-            
-                                    <% if item.name_button != "" && item.link != "" %>
-                                        
-                                        <div class="caption sfb stb" data-x="right" data-hoffset="-60" data-y="262" data-easing="easeOutBack" data-speed="700" data-start="1150">
+                                    
+                                    <div class="slide_info">
+                                        <div class="caption sfl stl layer_8 main_title" style="color: <%= item.color_1 %>" data-x="right" data-y="73" data-hoffset="-60" data-easing="easeOutBack" data-speed="600" data-start="900"><%= item.title_1 %></div>
+                
+                                        <div class="caption sfl stl layer_9 main_description" style="color: <%= item.color_2 %>" data-x="right" data-y="122" data-hoffset="-60" data-easing="easeOutBack" data-speed="600" data-start="1000"><%= item.title_2 %></div>
+                
+                                        <div class="caption sfl stl layer_10" data-x="right" data-y="178" data-hoffset="-60" data-easing="easeOutBack" data-speed="600" data-start="1100"></div>
+                
+                                        <% if item.name_button != "" && item.link != "" %>
                                             
-                                            <% if item.link != "" %>
-                                            
-                                                <a href="<%= item.link %>" class="button_blue big_btn"><%= item.name_button %></a>
-                                            
-                                            <% else %>
+                                            <div class="caption sfb stb" data-x="right" data-hoffset="-60" data-y="262" data-easing="easeOutBack" data-speed="700" data-start="1150">
                                                 
-                                                <a href="#<%= item.name_button %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                <% if item.link != "" %>
                                                 
-                                            <% end %>
-                                        
-                                        </div>
-                                        
-                                    <% end %>
-            
+                                                    <a href="<%= item.link %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                
+                                                <% else %>
+                                                    
+                                                    <a href="#<%= item.name_button %>" class="button_blue big_btn"><%= item.name_button %></a>
+                                                    
+                                                <% end %>
+                                            
+                                            </div>
+                                            
+                                        <% end %>
+                                    </div>
                                 </li>
             
                                 <!-- - - - - - - - - - - - - - End of Slide 3 - - - - - - - - - - - - - - - - -->

@@ -601,10 +601,25 @@ s {
     padding: 8px 15px;
 }
 @media (min-width: 768px) {
-    .rev_slider {
+    .rev_slider img {
         height: 380px !important;
+        width: 100%;
     }
 }
+
+    .rev_slider li {
+        position: relative;
+        display: none;
+    }
+    .rev_slider li:first-child {
+        display: block;
+    }
+    .rev_slider .slide_info {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+    }
+    
 ul li.comment_article_reply {
     margin-left: 2px;
 }
