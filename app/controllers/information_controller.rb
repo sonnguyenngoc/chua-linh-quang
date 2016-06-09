@@ -53,7 +53,7 @@ class InformationController < ApplicationController
   end
   
   def warranty_policy
-    warranty_policy = Article.get_warranty_policy
+    @warranty_policy = Article.get_warranty_policy
     @title_head = "Chính sách bảo hành"
   end
   
