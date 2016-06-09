@@ -904,8 +904,7 @@ h3.care {
     }
 }
 .boxed_layout, .wide_layout, .page_wrapper {
-    overflow-x: hidden;
-    overflow-y: hidden;
+    height: auto !important;
 }
 .conversation_rightbar .dropdown.visible {
     height: 288px;
