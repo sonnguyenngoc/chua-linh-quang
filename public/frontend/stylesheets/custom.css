@@ -920,3 +920,9 @@ h3.care {
     width: 273px;
     background: #f0f0f0;
 }
+.tabs-loading {
+    height: 200px;
+    width: 100%;
+    border: solid 1px #ddd;
+    background: url('../images/ajaxLoad.gif') no-repeat center #fff;
+}
