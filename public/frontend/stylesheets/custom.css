@@ -605,8 +605,6 @@ s {
         height: 380px !important;
         width: 100%;
     }
-}
-
     .rev_slider li {
         position: absolute;
         display: none;
@@ -620,6 +618,9 @@ s {
         bottom: 40px;
         left: 40px;
     }
+}
+
+    
     
 ul li.comment_article_reply {
     margin-left: 2px;
