@@ -894,79 +894,6 @@ h3.care {
     width: 33%;
     white-space: nowrap;
 }
-/*--------CSS display image item----------*/
-/*.table_cell {
-    display: inline-block;
-    padding-left: 3%;
-    padding-right: 3%;
-    width: 310px;
-}
-@media screen and (max-width: 1300px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 282px;
-    }
-}
-@media screen and (max-width: 1199px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 232px;
-    }
-}
-@media screen and (max-width: 1024px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 2%;
-        padding-right: 2%;
-        width: 232px;
-    }
-}
-@media screen and (max-width: 768px) {
-    .table_cell {
-        display: table-cell;
-    }
-}
-@media screen and (max-width: 568px) {
-    .table_cell {
-        display: inline-block;
-        width: 177px;
-    }
-}
-@media screen and (max-width: 505px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 231px;
-    }
-}
-@media screen and (max-width: 480px) {
-    .table_cell {
-        display: block;
-        width: 384px;
-    }
-}
-@media screen and (max-width: 360px) {
-    .table_cell {
-        display: block;
-        width: 330px;
-    }
-}
-@media screen and (max-width: 320px) {
-    .table_cell {
-        display: block;
-        width: 290px;
-    }
-}*/
-/*-----------------------------------------*/
-.conversation_rightbar .dropdown.visible {
-    height: 288px;
-    overflow: auto;
-}
 @media (min-width: 790px) {
     .transparent {
         display: block;
@@ -976,7 +903,11 @@ h3.care {
         visibility: hidden;
     }
 }
-.boxed_layout, .wide_layout {
+.boxed_layout, .wide_layout, .page_wrapper {
     overflow-x: hidden;
     overflow-y: hidden;
+}
+.conversation_rightbar .dropdown.visible {
+    height: 288px;
+    overflow: auto;
 }
