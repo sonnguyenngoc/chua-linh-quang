@@ -58,13 +58,13 @@
 													<% if product.get_main_image.present? %>
 																				
 														<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
-															<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+															<!--<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">-->
 														</a>
 													
 													<% else %>
 														
 														<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
-															<img src="/frontend/images/medium_image.png" alt="">
+															<!--<img src="/frontend/images/medium_image.png" alt="">-->
 														</a>
 														
 													<% end %>
@@ -205,12 +205,12 @@
 				
 											<% if product.get_main_image.present? %>
 												<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">						
-													<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+													<!--<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">-->
 												</a>
 											<% else %>
 												
 												<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
-													<img src="/frontend/images/medium_image.png" alt="">
+													<!--<img src="/frontend/images/medium_image.png" alt="">-->
 												</a>
 												
 											<% end %>
