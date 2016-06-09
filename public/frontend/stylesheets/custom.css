@@ -912,4 +912,5 @@ h3.care {
 }
 .home_tabs {
     height: 2000px;
+    overflow: hidden;
 }
