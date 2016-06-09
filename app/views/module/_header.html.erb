@@ -170,8 +170,8 @@
         if($(".tabs.initialized").length > 0) {
             $(".categories_products_home_tabs_container .tab_containers_wrap").css("visibility", "visible");
             $(".categories_module").show();
-            $(".tabs-loading").css("height","auto");
-            $(".tabs-loading").hide();
+            $(".home_tabs").css("height","auto");
+            // $(".tabs-loading").hide();
             if($(window).width() < 490) {
                 $('.categories_products_home_tabs_container .owl-item').width($('.owl-stage-outer').width()/2);
                 $('.categories_products_home_tabs_container .owl-item .product_item').height($('.owl-stage-outer').width()/2 + 35);

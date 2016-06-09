@@ -921,8 +921,27 @@ h3.care {
     background: #f0f0f0;
 }
 .tabs-loading {
-    height: 200px;
+    height: 300px;
     width: 100%;
     border: solid 1px #ddd;
+    border-left: 0;
+    overflow: hidden;
+    background: #fff;
+}
+.tabs-loading .box {
+    height: 300px;
+    float: left;
+    width: 25%;
+    border-left: solid 1px #ddd;
     background: url('../images/ajaxLoad.gif') no-repeat center #fff;
+}
+@media (max-width: 989px) {
+    .tabs-loading .box {
+        width: 33.3%;
+    }
+}
+@media (max-width: 680px) {
+    .tabs-loading .box {
+        width: 50%;
+    }
 }
