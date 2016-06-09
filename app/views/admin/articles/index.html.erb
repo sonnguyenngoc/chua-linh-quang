@@ -60,7 +60,7 @@
                     <div class="filter-box">
                         <%= form_for("", url: {controller: 'articles', action: 'search'}, method: "get") do |f| %>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="" ><%= t(:category) %></label>
                                         <div>
@@ -68,7 +68,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:code_status) %></label>
+                                        <div>
+                                            <%= select_tag(:code_statuses_id, options_from_collection_for_select(CodeStatus.all, :id, :title, :selected => params[:code_statuses_id]), include_blank: t(:all), class: "select", title: "") %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-2">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_by) %></label>
                                         <div>
@@ -76,7 +86,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="" ><%= t(:sort_order) %></label>
                                         <div>
@@ -84,7 +94,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="" ><%= t(:filter) %></label>
                                         <div class="input-group">
@@ -93,7 +103,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         <% end %>
                     </div>
                     

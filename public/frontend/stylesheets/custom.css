@@ -967,7 +967,6 @@ h3.care {
     height: 288px;
     overflow: auto;
 }
-
 @media (min-width: 790px) {
     .transparent {
         display: block;
@@ -977,6 +976,7 @@ h3.care {
         visibility: hidden;
     }
 }
-.page_wrapper, .page_with_main_nav {
-    overflow: hidden;
+.boxed_layout, .wide_layout {
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
