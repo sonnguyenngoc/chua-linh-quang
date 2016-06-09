@@ -28,7 +28,12 @@
 			<!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
 	
 			<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
-	
+			<div class="tabs-loading">
+				<div class=""></div>
+				<div class=""></div>
+				<div class=""></div>
+			</div>
+			
 			<div class="tab_containers_wrap">
 				
 				<% Category.get_by_status(status, @current_area).each_with_index do |category,index| %>
@@ -58,15 +63,13 @@
 													<% if product.get_main_image.present? %>
 																				
 														<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
-															<span class="loading-thumb"></span>
-															<!--<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">-->
+															<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
 														</a>
 													
 													<% else %>
 														
 														<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
-															<span class="loading-thumb"></span>
-															<!--<img src="/frontend/images/medium_image.png" alt="">-->
+															<img src="/frontend/images/medium_image.png" alt="">
 														</a>
 														
 													<% end %>
@@ -206,15 +209,13 @@
 										<div class="image_wrap">
 				
 											<% if product.get_main_image.present? %>
-												<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
-													<span class="loading-thumb"></span>
-													<!--<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">-->
+												<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">						
+													<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
 												</a>
 											<% else %>
 												
 												<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
-													<span class="loading-thumb"></span>
-													<!--<img src="/frontend/images/medium_image.png" alt="">-->
+													<img src="/frontend/images/medium_image.png" alt="">
 												</a>
 												
 											<% end %>
