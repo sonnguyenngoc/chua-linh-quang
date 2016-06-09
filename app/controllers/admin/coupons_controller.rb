@@ -7,7 +7,7 @@ class Admin::CouponsController < ApplicationController
     # authorize
     authorize! :read, Coupon
     
-    @coupons = Coupon.search(params).paginate(:page => params[:page], :per_page => 10)
+    @coupons = Coupon.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search

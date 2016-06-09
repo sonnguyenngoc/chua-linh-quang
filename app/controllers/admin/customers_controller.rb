@@ -8,7 +8,7 @@ class Admin::CustomersController < ApplicationController
     # authorize
     authorize! :read, Customer
     
-    @customers = Customer.search(params).paginate(:page => params[:page], :per_page => 10)
+    @customers = Customer.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search

@@ -7,7 +7,7 @@ class Admin::CompaniesController < ApplicationController
     # authorize
     authorize! :read, Company
     
-    @companies = Company.where(type_company: "Branch Office").paginate(:page => params[:page], :per_page => 10)
+    @companies = Company.where(type_company: "Branch Office").order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
   
   # GET /companies

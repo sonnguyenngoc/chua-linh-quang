@@ -105,16 +105,31 @@ class Category < ActiveRecord::Base
   
   def self.get_by_status(area, status, limit=5)
     records = self.joins(:products).where("products.approved = true and products.is_show = true")
-                         .where("products.status LIKE ?", "%#{status}%").uniq
+    
+    if status == "new"
+      records = records.order("created_at DESC")
+    end
+    
+    if status == "deal" or status == "prominent" or status == "bestseller" or status == "imported"
+      records = records.where("products.status LIKE ?", "%#{status}%")
+    end
+    
     records = records.where("areas.id = ?", area.id) if area.id.present?
-    records = records.limit(limit)
+    records = records.uniq.limit(limit)
   end
   
   def get_products_by_status(area, status, limit=5)
     records = Product.where("products.approved = true and products.is_show = true")
-                         .where("products.status LIKE ?", "%#{status}%").uniq
+    
+    if status == "new"
+      records = records.order("created_at DESC")
+    end
+    
+    if status == "deal" or status == "prominent" or status == "bestseller" or status == "imported"
+      records = records.where("products.status LIKE ?", "%#{status}%")
+    end
     records = records.where("areas.id = ?", area.id) if area.id.present?
-    records = records.limit(limit)
+    records = records.uniq.limit(limit)
   end
   
   # get json for tree draggable index

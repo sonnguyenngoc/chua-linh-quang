@@ -659,10 +659,10 @@
         
                                 <ul class="list_of_links">
         
-                                    <li><%= link_to "Trung tâm hỗ trợ khách hàng", "" %></li>
-                                    <li><%= link_to "Chính sách thanh toán", "" %></li>
-                                    <li><%= link_to "Chính sách giao hàng", "" %></li>
-                                    <li><%= link_to "Chính sách bảo hành", "" %></li>
+                                    <li><%= link_to "Trung tâm hỗ trợ khách hàng", { controller: "information", action: "customer_support_center" } %></li>
+                                    <li><%= link_to "Chính sách thanh toán", { controller: "information", action: "payment_policy" } %></li>
+                                    <li><%= link_to "Chính sách giao hàng", { controller: "information", action: "delivery_policy" } %></li>
+                                    <li><%= link_to "Chính sách bảo hành", { controller: "information", action: "warranty_policy" } %></li>
         
                                 </ul>
                                 

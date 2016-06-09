@@ -245,14 +245,19 @@ class Product < ActiveRecord::Base
   
   def self.get_by_new
     records = self.get_active_products
-    records = records.where("products.status LIKE ?", "%#{'new'}%")
+    records = records.order("created_at DESC")
     return records
   end
   
   def self.get_all_product_by_status(params)
     records = self.get_active_products
     if params[:st].present?
-      records = records.where("products.status LIKE ?", "%#{params[:st]}%")
+      if params[:st] == "new"
+        records = records.order("created_at DESC")
+      end
+      if params[:st] == "deal" or params[:st] == "prominent" or params[:st] == "bestseller" or params[:st] == "imported"
+        records = records.where("products.status LIKE ?", "%#{params[:st]}%")
+      end
     end
     
     if params[:sort_group].present?

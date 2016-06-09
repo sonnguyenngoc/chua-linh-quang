@@ -7,7 +7,7 @@ class Admin::CodeStatusesController < ApplicationController
     # authorize
     authorize! :read, CodeStatus
     
-    @code_statuses = CodeStatus.search(params).paginate(:page => params[:page], :per_page => 10)
+    @code_statuses = CodeStatus.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search

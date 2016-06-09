@@ -7,7 +7,7 @@ class Admin::CommentArticlesController < ApplicationController
     # authorize
     authorize! :read, CommentArticle
     
-    @comment_articles = CommentArticle.search(params).paginate(:page => params[:page], :per_page => 10)
+    @comment_articles = CommentArticle.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search
