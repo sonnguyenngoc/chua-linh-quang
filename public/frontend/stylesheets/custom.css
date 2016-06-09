@@ -608,7 +608,7 @@ s {
 }
 
     .rev_slider li {
-        position: relative;
+        position: absolute;
         display: none;
     }
     .rev_slider li:first-child {
