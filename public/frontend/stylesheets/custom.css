@@ -903,8 +903,8 @@ h3.care {
         visibility: hidden;
     }
 }
-.boxed_layout, .wide_layout, .page_wrapper {
-    height: auto !important;
+.page_wrapper {
+    
 }
 .conversation_rightbar .dropdown.visible {
     height: 288px;
