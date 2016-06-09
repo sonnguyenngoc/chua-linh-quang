@@ -973,4 +973,7 @@ h3.care {
         display: block;
         opacity: 1;
     }
+    .tab_containers_wrap {
+        visibility: hidden;
+    }
 }
