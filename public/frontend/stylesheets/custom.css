@@ -571,6 +571,11 @@ p.text-justifly {
 .main_slider {
     margin-top: -15px;
 }
+.main_slider.transparent {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
 .current_area_size {
     color: #777;
     font-size: 18px;

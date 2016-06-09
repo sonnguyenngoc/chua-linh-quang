@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#countdown"
     get "san-pham" => "home#index", as: :home
+    get "home-tab" => "home#home_tab", as: :home_tab
     
     # change current area session
     get "change_current_area/:area_id" => "home#change_current_area", as: :change_current_area
