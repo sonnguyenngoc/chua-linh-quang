@@ -1194,6 +1194,13 @@
 	<%= javascript_include_tag '/photoswipe/photoswipe-ui-default.min.js' %>
 	
 	<script>
+		$(document).on("click", ".add_cart_by_now", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			window.location = url + "&quantity=" + $("input.quantity").val();
+		});
+		
 		$(document).on("click", ".add_to_cart_button", function(e){
 			e.preventDefault();
 			
