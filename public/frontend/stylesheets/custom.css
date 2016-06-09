@@ -610,6 +610,7 @@ s {
     .rev_slider li {
         position: absolute;
         display: none;
+        width: 100%;
     }
     .rev_slider li:first-child {
         display: block;
