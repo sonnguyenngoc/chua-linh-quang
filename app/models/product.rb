@@ -218,7 +218,7 @@ class Product < ActiveRecord::Base
     records = self.joins(:areas).get_active_products
     
     if status == 'new'
-      records = records.order("created_at DESC").limit(19)
+      records = records.order("created_at DESC")
       records = records.where("areas.id = ?", area.id) if area.id.present?
       records = records.joins(:categories).where(categories: {id: category})
     else
@@ -258,18 +258,6 @@ class Product < ActiveRecord::Base
     if params[:sort_group].present?
       records = records.order(params[:sort_group])
     end
-    #
-    #if params[:sort_group] == "name_desc"
-    #  records = records.order("products.name DESC")
-    #end
-    #
-    #if params[:sort_group] == "price_asc"
-    #  records = records.order("products.price ASC")
-    #end
-    #
-    #if params[:sort_group] == "price_desc"
-    #  records = records.order("products.price DESC")
-    #end
     
     return records
   end

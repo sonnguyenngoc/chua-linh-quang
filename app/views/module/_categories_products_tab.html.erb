@@ -39,7 +39,7 @@
 						
 						<div class="owl_carousel carousel_in_tabs type_2">
 							
-							<% Product.get_by_category_status(category, @current_area, status).each do |product| %>
+							<% category.get_products_by_status(@current_area, status).each do |product| %>
 							
 								<% if @current_area.id.present? %>
 							
