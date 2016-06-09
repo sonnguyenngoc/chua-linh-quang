@@ -274,7 +274,7 @@
                                             
                                                     <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
                                                     
-                                                    <% if product.is_deal? %>
+                                                    <% if product.is_deal? and params[:st] == "deal" %>
                                             
                                                         <% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
                                                             
@@ -286,15 +286,19 @@
                                                             
                                                         <% end %>
                                                         
-                                                    <% elsif product.is_bestseller? %>
+                                                    <% end %>
+                                                        
+                                                    <% if product.is_bestseller? and params[:st] == "bestseller" %>
                                                         
                                                         <div class="label_bestseller">
                                 
-                                                            <div><%= product.display_is_new %></div>
+                                                            <div><%= product.display_is_bestseller %></div>
                                 
                                                         </div>
                                                         
-                                                    <% elsif product.is_new? %>
+                                                    <% end %>
+                                                        
+                                                    <% if product.is_new? and params[:st] == "new" %>
                                                         
                                                         <div class="label_new">
                                 

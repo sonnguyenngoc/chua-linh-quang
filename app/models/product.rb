@@ -317,6 +317,11 @@ class Product < ActiveRecord::Base
     if is_new?
       display = "Mới"
     end
+    return display
+  end
+  
+  def display_is_bestseller
+    display = ""
     if is_bestseller?
       display = "Bán chạy"
     end

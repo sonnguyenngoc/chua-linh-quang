@@ -84,7 +84,7 @@
 }
 .search_category {
     border-top: 1px solid #4ac4fa;
-    border-botton: 1px solid #4ac4fa;
+    border-bottom: 1px solid #4ac4fa;
 }
 .select_header {
     height: 40px;
@@ -626,9 +626,6 @@ s {
         left: 40px;
     }
 }
-
-    
-    
 ul li.comment_article_reply {
     margin-left: 2px;
 }
@@ -963,6 +960,7 @@ h3.care {
     }
 }*/
 /*-----------------------------------------*/
+
 .conversation_rightbar .dropdown.visible {
     height: 288px;
     overflow: auto;
