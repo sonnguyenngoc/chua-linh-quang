@@ -304,19 +304,19 @@ class Product < ActiveRecord::Base
   end
   
   def is_deal?
-    has_status?("deal")
+    has_status?(I18n.t('deal'))
   end
   
   def is_new?
-    has_status?("new")
+    has_status?(I18n.t('new'))
   end
   
   def is_sold_out?
-    has_status?("sold_out")
+    has_status?(I18n.t('sold_out'))
   end
   
   def is_bestseller?
-    has_status?("bestseller")
+    has_status?(I18n.t('bestseller'))
   end
   
   def display_is_new

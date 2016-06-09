@@ -78,3 +78,7 @@ label.error {
     bottom: 0;
     width: 50%;
 }
+.text-teal {
+    text-transform: uppercase;
+    font-weight: 900;
+}

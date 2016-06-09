@@ -571,6 +571,11 @@ p.text-justifly {
 .main_slider {
     margin-top: -15px;
 }
+.main_slider.transparent {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
 .current_area_size {
     color: #777;
     font-size: 18px;
@@ -601,10 +606,29 @@ s {
     padding: 8px 15px;
 }
 @media (min-width: 768px) {
-    .rev_slider {
+    .rev_slider img {
         height: 380px !important;
+        width: 100%;
     }
 }
+@media (min-width: 490px) {
+    .rev_slider li {
+        position: relative;
+        display: none;
+        width: 100%;
+    }
+    .rev_slider li:first-child {
+        display: block;
+    }
+    .rev_slider .slide_info {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+    }
+}
+
+    
+    
 ul li.comment_article_reply {
     margin-left: 2px;
 }
@@ -870,75 +894,19 @@ h3.care {
     width: 33%;
     white-space: nowrap;
 }
-/*--------CSS display image item----------*/
-/*.table_cell {
-    display: inline-block;
-    padding-left: 3%;
-    padding-right: 3%;
-    width: 310px;
-}
-@media screen and (max-width: 1300px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 282px;
-    }
-}
-@media screen and (max-width: 1199px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 232px;
-    }
-}
-@media screen and (max-width: 1024px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 2%;
-        padding-right: 2%;
-        width: 232px;
-    }
-}
-@media screen and (max-width: 768px) {
-    .table_cell {
-        display: table-cell;
-    }
-}
-@media screen and (max-width: 568px) {
-    .table_cell {
-        display: inline-block;
-        width: 177px;
-    }
-}
-@media screen and (max-width: 505px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 231px;
-    }
-}
-@media screen and (max-width: 480px) {
-    .table_cell {
+@media (min-width: 790px) {
+    .transparent {
         display: block;
-        width: 384px;
+        opacity: 1;
+    }
+    .tab_containers_wrap {
+        visibility: hidden;
     }
 }
-@media screen and (max-width: 360px) {
-    .table_cell {
-        display: block;
-        width: 330px;
-    }
+.boxed_layout, .wide_layout, .page_wrapper {
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
-@media screen and (max-width: 320px) {
-    .table_cell {
-        display: block;
-        width: 290px;
-    }
-}*/
-/*-----------------------------------------*/
 .conversation_rightbar .dropdown.visible {
     height: 288px;
     overflow: auto;

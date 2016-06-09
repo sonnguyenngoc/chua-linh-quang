@@ -61,37 +61,6 @@
 					<a href="#" class="button_dark_grey no_singed" data-modal-url="<%= no_singed_path %>">No Singed</a>
 					
 					<div class="categories_products_home_tabs_container">
-						
-						<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
-		
-						<%= render "module/categories_products_tab", title: "DEAL TỐT HÔM NAY", status: "deal" %>
-		
-						<!-- - - - - - - - - - - - - - End of taday's deals - - - - - - - - - - - - - - - - -->
-		
-						<!-- - - - - - - - - - - - - - Featured products - - - - - - - - - - - - - - - - -->
-		
-						<%= render "module/categories_products_tab", title: "NỔI BẬT", status: "prominent" %>
-		
-						<!-- - - - - - - - - - - - - - End of featured products - - - - - - - - - - - - - - - - -->
-		
-						<!-- - - - - - - - - - - - - - Bestsellers - - - - - - - - - - - - - - - - -->
-		
-						<%= render "module/categories_products_tab", title: "BÁN CHẠY", status: "bestseller" %>
-		
-						<!-- - - - - - - - - - - - - - End of bestsellers - - - - - - - - - - - - - - - - -->
-		
-						<!-- - - - - - - - - - - - - - New arrivals - - - - - - - - - - - - - - - - -->
-		
-						<%= render "module/categories_products_tab", title: "SẢN PHẨM MỚI", status: "new" %>
-		
-						<!-- - - - - - - - - - - - - - End of new arrivals - - - - - - - - - - - - - - - - -->					
-		
-						<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
-		
-						<%= render "module/categories_products_tab", title: "HÀNG NHẬP KHẨU", status: "imported" %>
-		
-						<!-- - - - - - - - - - - - - - End of taday's deals - - - - - - - - - - - - - - - - -->
-						
 						<!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
 				
 						<div class="home_infoblocks">
@@ -102,6 +71,11 @@
 						
 						<!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
 						
+						<div class="home_tabs">
+							
+						
+						</div>
+						
 						<!-- - - - - - - - - - - - - - Banners - - - - - - - - - - - - - - - - -->
 		
 						<%= render "module/banners" %>
@@ -109,6 +83,8 @@
 						<!-- - - - - - - - - - - - - - End of banners - - - - - - - - - - - - - - - - -->
 						
 					</div>
+					
+					
 					
 				</div>
 				
@@ -206,6 +182,19 @@
 		$(document).on("click", ".no_singed_button", function(e){
 			e.preventDefault();
 			$(".no_singed").trigger("click");
+		});
+		
+		
+		// Load Home tab
+		$(document).ready(function() {
+			var url = "<%= home_tab_path %>";
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				$(".home_tabs").html(msg);
+			});			
 		});
 	</script>
 	
