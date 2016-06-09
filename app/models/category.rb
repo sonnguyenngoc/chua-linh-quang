@@ -105,10 +105,19 @@ class Category < ActiveRecord::Base
   
   def self.get_by_status(status, area, limit=5)
     cats = []
-    query = Product.joins(:areas).where("products.status LIKE ?", "%#{status}%").where("products.is_show = ?", true).where("products.approved = ?", true)
+    if status == "new"
+      query = Product.joins(:areas).get_active_products
+      query.order("created_at DESC").first(19)
+    else
+      status == 'deal' or status == 'prominent' or status == 'imported' or status == "bestseller"
+      query = Product.joins(:areas).where("products.status LIKE ?", "%#{status}%").get_active_products
+    end
     query = query.where("areas.id = ?", area.id) if area.id.present?
-    query.each do |p|
-      cats += p.categories.map(&:id)
+    
+    if !query.nil?
+      query.each do |p|
+        cats += p.categories.map(&:id)
+      end
     end
     self.where(id: cats.uniq)[0..4]
   end

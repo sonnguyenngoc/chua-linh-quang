@@ -339,6 +339,10 @@ en:
     attributes:
       product:
         code: "Product code"
+      manufacturer:
+        image_url: "Image"
+      slideshow:
+        image_url: "Image"
   
   will_paginate:
     page_entries_info:
