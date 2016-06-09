@@ -65,7 +65,10 @@
 					
 					<div class="categories_products_home_tabs_container">
 						
+						<div class="home_tabs">
+							
 						
+						</div>
 						
 						<!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
 				
@@ -186,7 +189,14 @@
 		
 		// Load Home tab
 		$(document).ready(function() {
-			
+			var url = "<%= home_tab_path %>";
+			$.ajax({
+				method: "GET",
+				url: url
+			})
+			.done(function( msg ) {
+				$(".home_tabs").html(msg);
+			});			
 		});
 	</script>
 	

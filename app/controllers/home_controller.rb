@@ -26,4 +26,8 @@ class HomeController < ApplicationController
     
     redirect_to controller: "home", action: "index"
   end
+  
+  def home_tab
+    render layout: nil
+  end
 end
