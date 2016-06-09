@@ -977,3 +977,6 @@ h3.care {
         visibility: hidden;
     }
 }
+.page_wrapper, .page_with_main_nav {
+    overflow: hidden;
+}
