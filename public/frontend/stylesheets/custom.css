@@ -967,3 +967,13 @@ h3.care {
     height: 288px;
     overflow: auto;
 }
+
+@media (min-width: 790px) {
+    .transparent {
+        display: block;
+        opacity: 1;
+    }
+    .tab_containers_wrap {
+        visibility: hidden;
+    }
+}
