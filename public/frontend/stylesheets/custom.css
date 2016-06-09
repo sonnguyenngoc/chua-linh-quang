@@ -600,11 +600,13 @@ s {
     font-size: 16px;
     padding: 8px 15px;
 }
-@media (min-width: 490px) {
+@media (min-width: 768px) {
     .rev_slider img {
         height: 380px !important;
         width: 100%;
     }
+}
+@media (min-width: 490px) {
     .rev_slider li {
         position: relative;
         display: none;
