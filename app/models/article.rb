@@ -205,6 +205,11 @@ class Article < ActiveRecord::Base
     if params[:article_category_id].present?
         records = records.joins(:article_categories).where(article_categories: {id: params[:article_category_id]})
     end
+    
+    #Code statuses filter
+    if params[:code_statuses_id].present?
+        records = records.joins(:code_status).where(code_statuses: {id: params[:code_statuses_id]})
+    end
 
     #Search keyword filter
     if params[:keyword].present?
