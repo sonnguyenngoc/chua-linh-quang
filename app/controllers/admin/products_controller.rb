@@ -167,7 +167,7 @@ class Admin::ProductsController < ApplicationController
     @product.approved = true
     @product.save
     respond_to do |format|
-      format.html { redirect_to admin_products_url, notice: 'Duyệt sản phẩm thành công.' }
+      format.html { redirect_to :back, notice: 'Duyệt sản phẩm thành công.' }
       format.json { head :no_content }
     end
   end
