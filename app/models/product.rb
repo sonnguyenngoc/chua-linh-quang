@@ -214,21 +214,21 @@ class Product < ActiveRecord::Base
     statuses.join(@html).html_safe
   end
   
-  def self.get_by_category_status(category, area, status)
-    records = self.joins(:areas).get_active_products
-    
-    if status == 'new'
-      records = records.order("created_at DESC").limit(19)
-      records = records.where("areas.id = ?", area.id) if area.id.present?
-      records = records.joins(:categories).where(categories: {id: category})
-    else
-      records = records.where("products.status LIKE ?", "%#{status}%")
-      records = records.where("areas.id = ?", area.id) if area.id.present?
-      records = records.joins(:categories).where(categories: {id: category})
-    end
-    
-    return records
-  end
+  #def self.get_by_category_status(category, area, status)
+  #  records = self.joins(:areas).get_active_products
+  #  
+  #  if status == 'new'
+  #    records = records.order("created_at DESC").limit(19)
+  #    records = records.where("areas.id = ?", area.id) if area.id.present?
+  #    records = records.joins(:categories).where(categories: {id: category})
+  #  else
+  #    records = records.where("products.status LIKE ?", "%#{status}%")
+  #    records = records.where("areas.id = ?", area.id) if area.id.present?
+  #    records = records.joins(:categories).where(categories: {id: category})
+  #  end
+  #  
+  #  return records
+  #end
   
   def self.get_by_bestseller
     records = self.get_active_products
