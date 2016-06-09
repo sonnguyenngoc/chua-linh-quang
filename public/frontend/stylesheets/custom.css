@@ -914,3 +914,9 @@ h3.care {
     height: 2000px;
     overflow: hidden;
 }
+.loading-thumb {
+    display: inline-block;
+    height: 273px;
+    width: 273px;
+    background: #f0f0f0;
+}
