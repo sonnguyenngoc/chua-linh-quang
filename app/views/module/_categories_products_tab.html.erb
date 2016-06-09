@@ -27,8 +27,8 @@
 			
 			<!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
 	
-			<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
-	
+			<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->			
+			
 			<div class="tab_containers_wrap">
 				
 				<% Category.get_by_status(status, @current_area).each_with_index do |category,index| %>
@@ -347,6 +347,13 @@
 			
 			<!-- - - - - - - - - - - - - - View all - - - - - - - - - - - - - - - - -->
 			
+			<div class="tabs-loading">
+				<div class="box box-1"></div>
+				<div class="box box-2"></div>
+				<div class="box box-3"></div>
+				<div class="box box-4"></div>
+			</div>
+			
 			<footer class="bottom_box view_all">
 				<% if status == "deal" %>
 					<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-khuyen-mai"}, class: "button_grey middle_btn" %>
@@ -364,6 +371,8 @@
 			<!-- - - - - - - - - - - - - - End of view all - - - - - - - - - - - - - - - - -->
 	
 		</div>
+		
+		
 	
 	</section><!--/ .section_offset-->
 <% end %>
