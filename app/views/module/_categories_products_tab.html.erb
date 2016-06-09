@@ -1,4 +1,4 @@
-<% if Product.get_by_category_status(Category.get_by_status(status, @current_area), @current_area, status).present? %>
+<% if Category.get_by_status(@current_area, status).present? %>
 	<section class="section_offset animated transparent" data-animation="fadeInDown"> 
 		
 		<% if status == "deal" %>
@@ -13,7 +13,7 @@
 			
 			<ul class="tabs_nav clearfix">
 				
-				<% Category.get_by_status(status, @current_area).each_with_index do |category,index| %>
+				<% Category.get_by_status(@current_area, status).each_with_index do |category,index| %>
 				
 					<% if category.products.where(is_show: true).count > 0 %>
 				   
@@ -27,11 +27,11 @@
 			
 			<!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
 	
-			<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
-	
+			<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->			
+			
 			<div class="tab_containers_wrap">
 				
-				<% Category.get_by_status(status, @current_area).each_with_index do |category,index| %>
+				<% Category.get_by_status(@current_area, status).each_with_index do |category,index| %>
 					
 					<div id="tab-<%= status %>-<%= index %>" class="tab_container">
 		
@@ -39,7 +39,7 @@
 						
 						<div class="owl_carousel carousel_in_tabs type_2">
 							
-							<% Product.get_by_category_status(category, @current_area, status).each do |product| %>
+							<% category.get_products_by_status(@current_area, status).each do |product| %>
 							
 								<% if @current_area.id.present? %>
 							
@@ -347,6 +347,13 @@
 			
 			<!-- - - - - - - - - - - - - - View all - - - - - - - - - - - - - - - - -->
 			
+			<div class="tabs-loading">
+				<div class="box box-1"></div>
+				<div class="box box-2"></div>
+				<div class="box box-3"></div>
+				<div class="box box-4"></div>
+			</div>
+			
 			<footer class="bottom_box view_all">
 				<% if status == "deal" %>
 					<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-khuyen-mai"}, class: "button_grey middle_btn" %>
@@ -364,6 +371,8 @@
 			<!-- - - - - - - - - - - - - - End of view all - - - - - - - - - - - - - - - - -->
 	
 		</div>
+		
+		
 	
 	</section><!--/ .section_offset-->
 <% end %>

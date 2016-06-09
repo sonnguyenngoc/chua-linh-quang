@@ -164,6 +164,7 @@
                                         <br/><%= item.code %>
                                         <br/><i class="icon-pin-alt"></i>  <%= item.manufacturer.name if !item.manufacturer.nil? %>
                                         <br/><i class="icon-stack"></i>  <%= item.categories.map(&:name).join("<br/>").html_safe %>
+                                        <br/><i class="icon-cart-add2"></i>  <strong><%= item.sum_quantity %></strong>
                                         <br/><i class="icon-thumbs-up2"></i>  <strong><%= item.wish_lists.count %></strong>
                                     </td>
                                     <td><%= format_number(item.price) %><br/>(<%= format_number(item.quantity) %> <%= item.unit %>)</td>

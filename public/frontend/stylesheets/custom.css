@@ -537,6 +537,10 @@ ul > li > .def_icon_btn.middle_btn {
     .container {
         width: 1280px;
     }
+    .banners_box.bx-right img, .banners_box.bx-left img {
+        width: 100%;
+        height: 260px;
+    }
 }
 #open_shopping_cart .total_price {
     font-size: 16px;
@@ -891,75 +895,6 @@ h3.care {
     width: 33%;
     white-space: nowrap;
 }
-/*--------CSS display image item----------*/
-/*.table_cell {
-    display: inline-block;
-    padding-left: 3%;
-    padding-right: 3%;
-    width: 310px;
-}
-@media screen and (max-width: 1300px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 282px;
-    }
-}
-@media screen and (max-width: 1199px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 232px;
-    }
-}
-@media screen and (max-width: 1024px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 2%;
-        padding-right: 2%;
-        width: 232px;
-    }
-}
-@media screen and (max-width: 768px) {
-    .table_cell {
-        display: table-cell;
-    }
-}
-@media screen and (max-width: 568px) {
-    .table_cell {
-        display: inline-block;
-        width: 177px;
-    }
-}
-@media screen and (max-width: 505px) {
-    .table_cell {
-        display: inline-block;
-        padding-left: 3%;
-        padding-right: 3%;
-        width: 231px;
-    }
-}
-@media screen and (max-width: 480px) {
-    .table_cell {
-        display: block;
-        width: 384px;
-    }
-}
-@media screen and (max-width: 360px) {
-    .table_cell {
-        display: block;
-        width: 330px;
-    }
-}
-@media screen and (max-width: 320px) {
-    .table_cell {
-        display: block;
-        width: 290px;
-    }
-}*/
-/*-----------------------------------------*/
 
 .conversation_rightbar .dropdown.visible {
     height: 288px;
@@ -975,3 +910,70 @@ h3.care {
         visibility: hidden;
     }
 }
+@media (max-width: 680px) {
+    .tabs-loading .box {
+        width: 50%;
+    }
+}
+/*--------CSS display image item----------*/
+/*.table_cell {
+    display: inline-block;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 310px;
+}
+@media screen and (max-width: 1300px) {
+    .table_cell {
+        display: inline-block;
+        padding-left: 3%;
+        padding-right: 3%;
+        width: 282px;
+    }
+}
+@media (min-width: 790px) {
+    .transparent {
+        display: block;
+        opacity: 1;
+    }
+    .tab_containers_wrap {
+        visibility: hidden;
+    }
+}
+.page_wrapper {
+    
+}
+.conversation_rightbar .dropdown.visible {
+    height: 288px;
+    overflow: auto;
+}
+.home_tabs {
+    height: 2000px;
+    overflow: hidden;
+}
+.loading-thumb {
+    display: inline-block;
+    height: 273px;
+    width: 273px;
+    background: #f0f0f0;
+}
+.tabs-loading {
+    height: 300px;
+    width: 100%;
+    border: solid 1px #ddd;
+    border-left: 0;
+    overflow: hidden;
+    background: #fff;
+}
+.tabs-loading .box {
+    height: 300px;
+    float: left;
+    width: 25%;
+    border-left: solid 1px #ddd;
+    background: url('../images/ajaxLoad.gif') no-repeat center #fff;
+}
+@media (max-width: 989px) {
+    .tabs-loading .box {
+        width: 33.3%;
+    }
+}*/
+/*-----------------------------------------*/

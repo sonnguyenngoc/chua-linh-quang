@@ -103,14 +103,18 @@ class Category < ActiveRecord::Base
     return records   
   end
   
-  def self.get_by_status(status, area, limit=5)
-    cats = []
-    query = Product.joins(:areas).where("products.status LIKE ?", "%#{status}%").where("products.is_show = ?", true).where("products.approved = ?", true)
-    query = query.where("areas.id = ?", area.id) if area.id.present?
-    query.each do |p|
-      cats += p.categories.map(&:id)
-    end
-    self.where(id: cats.uniq)[0..4]
+  def self.get_by_status(area, status, limit=5)
+    records = self.joins(:products).where("products.approved = true and products.is_show = true")
+                         .where("products.status LIKE ?", "%#{status}%").uniq
+    records = records.where("areas.id = ?", area.id) if area.id.present?
+    records = records.limit(limit)
+  end
+  
+  def get_products_by_status(area, status, limit=5)
+    records = Product.where("products.approved = true and products.is_show = true")
+                         .where("products.status LIKE ?", "%#{status}%").uniq
+    records = records.where("areas.id = ?", area.id) if area.id.present?
+    records = records.limit(limit)
   end
   
   # get json for tree draggable index
