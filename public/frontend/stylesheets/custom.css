@@ -915,6 +915,12 @@ h3.care {
         width: 50%;
     }
 }
+@media (max-width: 480px){
+    .full_width {
+        width: 100%;
+    }
+}
+
 /*--------CSS display image item----------*/
 /*.table_cell {
     display: inline-block;

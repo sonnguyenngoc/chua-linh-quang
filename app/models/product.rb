@@ -334,6 +334,14 @@ class Product < ActiveRecord::Base
   
   # Display status label
   
+  def display_is_new
+    display = ""
+    if is_new?
+      display = "Mới"
+    end
+    return display
+  end
+  
   def display_is_bestseller
     display = ""
     if is_bestseller?
