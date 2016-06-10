@@ -324,13 +324,43 @@ class Product < ActiveRecord::Base
     has_status?(I18n.t('bestseller'))
   end
   
+  def is_prominent?
+    has_status?(I18n.t('prominent'))
+  end
+  
+  def is_imported?
+    has_status?(I18n.t('imported'))
+  end
+  
+  # Display status label
   def display_is_new
     display = ""
     if is_new?
-      display = "Mới"
+      display = "<div class=\"label_new\"><div>Mới</div></div>"
     end
+    return display
+  end
+  
+  def display_is_bestseller
+    display = ""
     if is_bestseller?
-      display = "Bán chạy"
+      display = "<div class=\"label_bestseller\"><div>Bán chạy</div></div>"
+    end
+    return display
+  end
+  
+  def display_is_prominent
+    display = ""
+    if is_prominent?
+      display = "<div class=\"label_hot\"><div>Nổi bật</div></div>"
+    end
+    return display
+  end
+  
+  def display_is_imported
+    display = ""
+    if is_imported?
+      display = "<div class=\"label_imported\"><div>Hàng nhập khẩu</div></div>"
     end
     return display
   end
@@ -342,6 +372,7 @@ class Product < ActiveRecord::Base
     end
     return display
   end
+  # End display status label
   
   # buy products
   def bought_products

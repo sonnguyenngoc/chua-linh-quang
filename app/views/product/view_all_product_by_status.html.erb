@@ -275,7 +275,7 @@
                                             
                                                     <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
                                                     
-                                                    <% if product.is_deal? %>
+                                                    <% if product.is_deal? and params[:st] == "deal" %>
                                             
                                                         <% if !product.discount_percent.nil? or !product.discount_percent == 0 %>
                                                             
@@ -287,21 +287,29 @@
                                                             
                                                         <% end %>
                                                         
-                                                    <% elsif product.is_bestseller? %>
+                                                    <% end %>
+                                                    
+                                                    <% if params[:st] == "new" %>
                                                         
-                                                        <div class="label_bestseller">
-                                
-                                                            <div><%= product.display_is_new %></div>
-                                
-                                                        </div>
+                                                        <%= product.display_is_new.html_safe %>
                                                         
-                                                    <% elsif product.is_new? %>
+                                                    <% end %>
+                                                    
+                                                    <% if params[:st] == "bestseller" %>
                                                         
-                                                        <div class="label_new">
-                                
-                                                            <div><%= product.display_is_new %></div>
-                                
-                                                        </div>
+                                                        <%= product.display_is_bestseller.html_safe %>
+                                                        
+                                                    <% end %>
+                                                    
+                                                    <% if params[:st] == "prominent" %>
+                                                        
+                                                        <%= product.display_is_prominent.html_safe %>
+                                                        
+                                                    <% end %>
+                                                    
+                                                    <% if params[:st] == "imported" %>
+                                                        
+                                                        <%= product.display_is_imported.html_safe %>
                                                         
                                                     <% end %>
                                                     
