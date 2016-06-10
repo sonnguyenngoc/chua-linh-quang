@@ -39,11 +39,23 @@
                         </div>
         
                         <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
-        
-                        <a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-reply-link"><i class="icon-reply-4"></i></a>
 						
-						<a href="#delete" class="button_grey icon_btn custom-comment-remove-link"><i class="icon-cancel"></i></a>
-        
+						<% if current_user.present? %>
+							
+							<% if can? :delete, comment %>
+								
+								<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-reply-link"><i class="icon-reply-4"></i></a>
+								
+								<%= link_to '<i class="icon-cancel"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+							
+							<% else %>
+								
+								<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-remove-link"><i class="icon-reply-4"></i></a>
+							
+							<% end %>
+						
+						<% end %>
+						
                     </article>
                     
                     <% if comment.children.count > 0 %>
@@ -84,9 +96,17 @@
         
                                         <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
 										
-										<a href="#delete" class="button_grey icon_btn custom-comment-remove-link"><i class="icon-cancel"></i></a>
-        
-                                    </article>
+										<% if current_user.present? %>
+										
+											<% if can? :delete, child %>
+												
+												<%= link_to '<i class="icon-cancel"></i>'.html_safe, child, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+			
+											<% end %>
+										
+										<% end %>
+									
+									</article>
         
                                 </li>
         

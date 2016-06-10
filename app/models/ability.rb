@@ -2,10 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.is_admin == true
-      # can :manage, :all
-    end
-    
     # get permission from group
     # Object.const_get("Article")
     UserGroup.permission_classes.each do |row|
