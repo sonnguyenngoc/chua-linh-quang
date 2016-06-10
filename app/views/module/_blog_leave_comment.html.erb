@@ -2,13 +2,13 @@
 	
 	<% if !current_user.present? %>
                 
-		<p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập hoặc đăng ký tài khoản để bình luận cho bài viết.</a></p>
+		<a href="#login" class="checkout-quick-login button_blue middle_btn" onclick="$('.checkout-quick-login-box').toggle()">Viết bình luận</a>
 
 		<!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
 
 		<section class="section_offset checkout-quick-login-box" style="display: none;">
 
-			<h3>Đăng nhập</h3>
+			<h3>Bạn cần đăng nhập để bình luận cho bài viết.</h3>
 
 			<div class="theme_box">
 
@@ -67,103 +67,107 @@
 		<!-- - - - - - - - - - - - - - End of login - - - - - - - - - - - - - - - - -->
 		
 	<% end %>
+	
+	<% if current_user.present? %>
 
-    <div class="theme_box">
-		
-		<% if !flash[:notice].nil? %>
-                                
-			<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
+		<div class="theme_box">
 			
-			<div class="alert_box warning warning_contact">
-
-				<b>Thông báo!</b> Quý khách chưa chọn xác nhận recaptcha.
-
-				<button class="close"></button>
-
-			</div>
-			
-			<!--/ .alert_box.warning -->
-			
-		<% end %>
-
-        <%= form_for @comment, html: {class: "type_2"} do |f| %>
-		
-			<%= hidden_field_tag 'parent_id' %>
-            
-            <% if current_user.present? %>
-																
-                <%= f.hidden_field :user_id, value: current_user.id %>
-            
-            <% end %>
-        
-            <%= f.hidden_field :article_id, value: @blog.id %>
-            
-            <ul>
+			<% if !flash[:notice].nil? %>
+									
+				<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
 				
-				<li class="row comment_article_reply">
+				<div class="alert_box warning warning_contact">
+	
+					<b>Thông báo!</b> Quý khách chưa chọn xác nhận recaptcha.
+	
+					<button class="close"></button>
+	
+				</div>
+				
+				<!--/ .alert_box.warning -->
+				
+			<% end %>
+	
+			<%= form_for @comment, html: {class: "type_2"} do |f| %>
+			
+				<%= hidden_field_tag 'parent_id' %>
+				
+				<% if current_user.present? %>
+																	
+					<%= f.hidden_field :user_id, value: current_user.id %>
+				
+				<% end %>
+			
+				<%= f.hidden_field :article_id, value: @blog.id %>
+				
+				<ul>
 					
-				</li>
-
-                <li class="row">
-                    
-                    <div class="col-sm-6">
-
-                        <label for="lc_name" class="required">Tên</label>
-                        
-                        <% if current_user.present? %>
-																			
-                            <%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, class: "required" %>
-                        
-                        <% else %>
-                            
-                            <%= f.text_field :name, class: "required" %>
-                            
-                        <% end %>
-
-                    </div>
-
-                    <div class="col-sm-6">
-
-                        <label for="lc_email" class="required">Địa chỉ e-mail</label>
-                        
-                        <% if current_user.present? %>
-																			
-                            <%= f.text_field :email, value: current_user.email, readonly: true, class: "required email" %>
-                        
-                        <% else %>
-                            
-                            <%= f.text_field :email, class: "required email" %>
-                            
-                        <% end %>
-
-                    </div>
-
-                </li>
-
-                <li class="row">
-
-                    <div class="col-xs-12">
-
-                        <label for="lc_message" class="required">Nội dung</label>
-                        
-                        <%= f.text_area :content, rows: "6", class: "required" %>
-
-                    </div>
-
-                </li>
-				
-				<div class="alignleft">
-
-					<div class="g-recaptcha" data-sitekey="6Le7mh8TAAAAALNVSNBWWfIHmrp-pZfOCoToS2p5"></div>
-
-				</div> <!--/ .row -->
-                
-                <%= f.submit "Đăng bình luận", class: "button_blue middle_btn alignright" %>
-
-            </ul>
-
-        <% end %> 
-
-    </div>
+					<li class="row comment_article_reply">
+						
+					</li>
+	
+					<li class="row">
+						
+						<div class="col-sm-6">
+	
+							<label for="lc_name" class="required">Tên</label>
+							
+							<% if current_user.present? %>
+																				
+								<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, class: "required" %>
+							
+							<% else %>
+								
+								<%= f.text_field :name, class: "required" %>
+								
+							<% end %>
+	
+						</div>
+	
+						<div class="col-sm-6">
+	
+							<label for="lc_email" class="required">Địa chỉ e-mail</label>
+							
+							<% if current_user.present? %>
+																				
+								<%= f.text_field :email, value: current_user.email, readonly: true, class: "required email" %>
+							
+							<% else %>
+								
+								<%= f.text_field :email, class: "required email" %>
+								
+							<% end %>
+	
+						</div>
+	
+					</li>
+	
+					<li class="row">
+	
+						<div class="col-xs-12">
+	
+							<label for="lc_message" class="required">Nội dung</label>
+							
+							<%= f.text_area :content, rows: "6", class: "required" %>
+	
+						</div>
+	
+					</li>
+					
+					<div class="alignleft">
+	
+						<div class="g-recaptcha" data-sitekey="6Le7mh8TAAAAALNVSNBWWfIHmrp-pZfOCoToS2p5"></div>
+	
+					</div> <!--/ .row -->
+					
+					<%= f.submit "Đăng bình luận", class: "button_blue middle_btn alignright" %>
+	
+				</ul>
+	
+			<% end %> 
+	
+		</div>
+	
+	<% end %>
 
 </section>

@@ -127,7 +127,7 @@ class UserGroup < ActiveRecord::Base
                 display_name: I18n.t(:comment),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no","own","not_own"], multiple: false},
                         ]
             },
             {
