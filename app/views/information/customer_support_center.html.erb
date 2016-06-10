@@ -1,0 +1,118 @@
+<body>
+
+    <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="wide_layout page_with_main_nav">
+
+        <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/header' %>
+        
+        <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <div class="secondary_page_wrapper">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <aside class="col-md-3 col-sm-4 has_mega_menu">
+
+                        <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                        <%= render 'module/categories' %>
+
+                        <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                        <div class="section_offset">
+
+                            <a href="#" class="banner">
+                                
+                                <img src="/frontend/images/banner_img_10.png" alt="">
+
+                            </a>
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+
+                    </aside>
+
+                    <main class="col-md-9 col-sm-8">
+                        
+                        <%= render 'module/main_nav_right' %>
+                        
+                        <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                        <ul class="breadcrumbs">
+        
+                            <li><a href="<%= root_path %>">Trang chủ</a></li>
+                            <li><%= @title_head %></li>
+        
+                        </ul>
+                        
+                        <h1><%= @title_head %></h1>
+                        
+                            <div class="bordered_content padded box">
+                                
+                            <% @customer_support_center.each do |customer_support_center| %>
+                                    
+                                <%= customer_support_center.content.html_safe %>
+                                
+                            <% end %>
+
+                        </div>
+
+                    </main>
+
+                </div><!--/ .row -->
+
+            </div><!--/ .container-->
+
+        </div><!--/ .page_wrapper-->
+        
+        <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+        <%= render 'module/footer'%>
+        
+        <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+    </div><!--/ [layout]-->
+    
+    <!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+    <%= render 'module/social_feeds' %>
+
+    <!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+    
+    <!-- Include Libs & Plugins
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+    <%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+    <%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+    <%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+    <%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+    <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+    <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+    <%= javascript_include_tag '/frontend/js/retina.min.js' %>
+    <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
+    <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+
+    <!-- Theme files
+    ============================================ -->
+    <%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+    <%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    
+</body>

@@ -58,6 +58,10 @@ Rails.application.routes.draw do
     get "thong-tin/thong-tin-giao-hang" => "information#delivery", as: :delivery
     get "thong-tin/cau-hoi-thuong-gap" => "information#faq", as: :faq
     get "thong-tin/chinh-sach-bao-mat" => "information#privacy_policy", as: :privacy_policy
+    get "thong-tin/trung-tam-ho-tro-khach-hang" => "information#customer_support_center", as: :customer_support_center
+    get "thong-tin/chinh-sach-thanh-toan" => "information#payment_policy", as: :payment_policy
+    get "thong-tin/chinh-sach-giao-hang" => "information#delivery_policy", as: :delivery_policy
+    get "thong-tin/chinh-sach-bao-hanh" => "information#warranty_policy", as: :warranty_policy
     get "thong-tin/dieu-khoan-dieu-kien" => "information#terms_conditions", as: :terms_conditions
     get "thong-tin/so-do-website" => "information#sitemap", as: :sitemap
     # end information

@@ -151,7 +151,7 @@ class Admin::ArticlesController < ApplicationController
     @article.approved = true
     @article.save
     respond_to do |format|
-      format.html { redirect_to admin_articles_url, notice: 'Duyệt bài viết thành công.' }
+      format.html { redirect_to :back, notice: 'Duyệt bài viết thành công.' }
       format.json { head :no_content }
     end
   end

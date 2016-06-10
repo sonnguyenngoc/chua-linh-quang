@@ -8,7 +8,7 @@ class Admin::CommentsController < ApplicationController
     # authorize
     authorize! :read, Comment
     
-    @comments = Comment.search(params).paginate(:page => params[:page], :per_page => 10)
+    @comments = Comment.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search

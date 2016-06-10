@@ -62,7 +62,7 @@
 									</td>
 									<td>
 										<%= item.created_at.strftime("%d/%m/%Y") %>
-										<% if !item.user_id.nil? %>
+										<% if !item.user.nil? %>
 											<br/><i class="icon-user"></i>  <span class="text-success"><b><%= item.user.first_name.to_s + " " + item.user.last_name.to_s %></b></span>
 										<% end %>
 									</td>

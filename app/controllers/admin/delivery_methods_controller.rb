@@ -7,7 +7,7 @@ class Admin::DeliveryMethodsController < ApplicationController
     # authorize
     authorize! :read, DeliveryMethod
     
-    @delivery_methods = DeliveryMethod.all.paginate(:page => params[:page], :per_page => 10)
+    @delivery_methods = DeliveryMethod.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search

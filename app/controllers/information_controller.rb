@@ -37,6 +37,26 @@ class InformationController < ApplicationController
     @title_head = "Chính sách bảo mật"
   end
   
+  def customer_support_center
+    @customer_support_center = Article.get_customer_support_center
+    @title_head = "Trung tâm hổ trợ khách hàng"
+  end
+  
+  def delivery_policy
+    @delivery_policy = Article.get_delivery_policy
+    @title_head = "Chính sách giao hàng"
+  end
+  
+  def payment_policy
+    @payment_policy = Article.get_payment_policy
+    @title_head = "Chính sách thanh toán"
+  end
+  
+  def warranty_policy
+    @warranty_policy = Article.get_warranty_policy
+    @title_head = "Chính sách bảo hành"
+  end
+  
   def terms_conditions
     @terms_information = Article.get_terms_conditions
     @title_head = "Điều khoản & Điều kiện"

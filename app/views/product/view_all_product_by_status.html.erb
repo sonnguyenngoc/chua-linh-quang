@@ -137,6 +137,7 @@
                                 <div class="left_side clearfix v_centered">
                                     
                                     <%= form_tag({controller: "product", action: "view_all_product_by_status"}, method: "get") do %>
+                                        
                                         <%= hidden_field_tag "number", params[:number] %>
                                         
                                         <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->

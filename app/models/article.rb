@@ -43,7 +43,7 @@ class Article < ActiveRecord::Base
       cat_ids += c.get_all_related_ids
     end
     records = Article.joins(:article_categories).where(article_categories: {id: cat_ids}).uniq
-    
+    records = Article.joins(:code_status).where("code_statuses.title = 'news'")
     return records
   end
   
@@ -145,6 +145,42 @@ class Article < ActiveRecord::Base
   def self.get_favorable_gift
     records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'favorable_gift' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # customer_support_center
+  def self.get_customer_support_center
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'customer_support_center' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # payment_policy
+  def self.get_payment_policy
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'payment_policy' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # delivery_policy
+  def self.get_delivery_policy
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'delivery_policy' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # warranty_policy
+  def self.get_warranty_policy
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'warranty_policy' })
     records.order("created_at DESC").first
     
     return records
