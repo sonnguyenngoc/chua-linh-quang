@@ -57,10 +57,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def after_update_path_for(resource)
-    my_account_path(resource)
-  end
-  
   def after_sign_out_path_for(resource_or_scope)
     logout_path
   end

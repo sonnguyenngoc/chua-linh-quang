@@ -24,6 +24,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to controller: "/account", action: "register"
     end
   end
+  
+  protected
+  def after_update_path_for(resource)
+    flash[:notice] = "Thay đổi thông tin tài khoản thành công."
+    my_account_path
+  end
 
   private
   
