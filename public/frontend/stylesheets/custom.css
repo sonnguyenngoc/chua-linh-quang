@@ -906,7 +906,7 @@ h3.care {
         display: block;
         opacity: 1;
     }
-    .tab_containers_wrap {
+    .categories_products_home_tabs_container .tab_containers_wrap {
         visibility: hidden;
     }
 }
