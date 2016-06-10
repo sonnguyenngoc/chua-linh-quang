@@ -14,7 +14,8 @@ class ArticleCategory < ActiveRecord::Base
   
   def get_blogs_for_categories(params)
     article_category = ArticleCategory.find(params[:article_category_id])
-    records = Article.joins(:article_categories).where(article_categories: {id: article_category.get_all_related_ids}).uniq
+    records = Article.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true")
+    records = records.joins(:article_categories).where(article_categories: {id: article_category.get_all_related_ids}).uniq
     
     return records
   end

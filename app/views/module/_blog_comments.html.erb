@@ -1,15 +1,4 @@
 <section class="section_offset">
-    
-    <div class="bottom alignright">
-												  
-        <ul class="horizontal_list social_btns">
-            
-            <li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top"></span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook" %></li>
-            <li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top"></span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus" %></li>
-
-        </ul><!--/ .horizontal_list.wrapper.social_btns-->
-  
-    </div>
                             
     <h3>Bình luận</h3>
 
@@ -50,9 +39,23 @@
                         </div>
         
                         <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
-        
-                        <a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn comment-reply-link"><i class="icon-reply-4"></i></a>
-        
+						
+						<% if current_user.present? %>
+							
+							<% if can? :delete, comment %>
+								
+								<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-reply-link"><i class="icon-reply-4"></i></a>
+								
+								<%= link_to '<i class="icon-cancel"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+							
+							<% else %>
+								
+								<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-remove-link"><i class="icon-reply-4"></i></a>
+							
+							<% end %>
+						
+						<% end %>
+						
                     </article>
                     
                     <% if comment.children.count > 0 %>
@@ -92,8 +95,18 @@
                                         </div>
         
                                         <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
-        
-                                    </article>
+										
+										<% if current_user.present? %>
+										
+											<% if can? :delete, child %>
+												
+												<%= link_to '<i class="icon-cancel"></i>'.html_safe, child, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+			
+											<% end %>
+										
+										<% end %>
+									
+									</article>
         
                                 </li>
         
