@@ -58,8 +58,20 @@
                                                 <span class="author"><%= item.name %>, <%= item.city %></span>
                                               
                                                 <p class="text-justify"><%= item.content %></p>
+												
+												<% if current_user.present? %>
+										
+													<% if can? :delete, item %>
+														
+														<%= link_to '<i class="icon-cancel"></i>'.html_safe, item, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+					
+													<% end %>
+												
+												<% end %>
                                             
                                             </div>
+											
+											
                                         
                                         <% end %>
                                         

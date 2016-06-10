@@ -21,6 +21,8 @@ class ProductController < ApplicationController
         @title_head = @product.name
         @META_KEYWORDS = @product.meta_keywords
         @META_DESCRIPTION = @product.meta_description
+        
+        session[:user_return_to] = product_path(@product)
     end
     
     def quick_view

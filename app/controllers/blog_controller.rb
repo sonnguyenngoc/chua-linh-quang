@@ -11,6 +11,8 @@ class BlogController < ApplicationController
     @META_KEYWORDS = @blog.meta_keywords
     @META_DESCRIPTION = @blog.meta_description
     
+    session[:user_return_to] = product_path(@blog)+"#form_comment_box"
+    
     if @blog.page_layout == "full_width"
       @related_products = @blog.products.search(params).paginate(:page => params[:page], :per_page => 12)
       render "blog/deal"
