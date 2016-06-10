@@ -421,17 +421,6 @@
                                         <div id="tab-questions" class="tab_container">
                                             
                                             <section class="section_offset">
-												
-												<div class="bottom alignright">
-												  
-													<ul class="horizontal_list social_btns">
-														
-														<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook" %></li>
-														<li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus" %></li>
-											
-													</ul><!--/ .horizontal_list.wrapper.social_btns-->
-											  
-												</div>
             
                                                 <h3>Câu hỏi từ khách hàng</h3>
             
@@ -468,6 +457,16 @@
 																	</div>
 					
 																	<!-- - - - - - - - - - - - - - End of review body - - - - - - - - - - - - - - - - -->
+																	
+																	<% if current_user.present? %>
+										
+																		<% if can? :delete, question %>
+																			
+																			<%= link_to '<i class="icon-cancel"></i>'.html_safe, question, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+										
+																		<% end %>
+																	
+																	<% end %>
 				
 																<% end %>
 															
@@ -488,32 +487,14 @@
                                             </section><!--/ .section_offset -->
                                             
                                             <section class="section_offset">
-												
-												<% if !flash[:notice].nil? %>
-                                
-													<!-- - - - - - - - - - - - - - Alert box - - - - - - - - - - - - - - - - -->
-													
-													<div class="alert_box warning warning_contact">
-					
-														<b>Thông báo!</b> Quý khách chưa chọn xác nhận recaptcha.
-					
-														<button class="close"></button>
-				
-													</div>
-													
-													<!--/ .alert_box.warning -->
-													
-												<% end %>
             
                                                 <% if !current_user.present? %>
-                
-													<p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập hoặc đăng ký tài khoản để bình luận cho bài viết.</a></p>
 											
 													<!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
 											
-													<section class="section_offset checkout-quick-login-box" style="display: none;">
+													<section class="section_offset checkout-quick-login-box">
 											
-														<h3>Đăng nhập</h3>
+														<h3>Bạn cần đăng nhập để bình luận cho bài viết.</h3>
 											
 														<div class="theme_box">
 											
@@ -572,106 +553,90 @@
 													<!-- - - - - - - - - - - - - - End of login - - - - - - - - - - - - - - - - -->
 													
 												<% end %>
+												
+												<% if current_user.present? %>
             
-                                                <div class="row">
-            
-                                                    <div class="col-lg-12 col-md-12">
-											
-														<%= form_for @question, html: {class: "type_2"} do |f| %>
-														
-															<% if current_user.present? %>
-																
-																<%= f.hidden_field :user_id, value: current_user.id %>
+													<div class="row">
+				
+														<div class="col-lg-12 col-md-12">
+												
+															<%= form_for @question, html: {class: "type_2"} do |f| %>
 															
-															<% end %>
-														
-															<%= f.hidden_field :product_id, value: @product.id %>
-					
-															<ul>
-															
-																<li class="row">
-					
-																	<div class="col-sm-12">
+																<% if current_user.present? %>
 																	
-																		<label for="cf_name" class="required">Họ & Tên</label>
-																		
-																		<% if current_user.present? %>
-																			
-																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
-																		
-																		<% else %>
-																			
-																			<%= f.text_field :name, class: "required" %>
-																			
-																		<% end %>
-					
-																	</div><!--/ [col]-->
-					
-																</li><!--/ .row -->
+																	<%= f.hidden_field :user_id, value: current_user.id %>
 																
-																<li class="row">
-					
-																	<div class="col-sm-12">
-					
-																		<label for="cf_email" class="required">Địa chỉ email</label>
-																		
-																		<% if current_user.present? %>
-																			
-																			<%= f.email_field :email, value: current_user.email, readonly: true, required: true %>
-																		
-																		<% else %>
-																			
-																			<%= f.email_field :email, class: "required email" %>
-																			
-																		<% end %>
-					
-																	</div><!--/ [col]-->
-					
-																</li><!--/ .row -->
-					
-																<li class="row">
-					
-																	<div class="col-xs-12">
-					
-																		<label for="cf_message" class="required">Nội dung câu hỏi</label>
-																		
-																		<%= f.text_area :content, rows: "6", class: "required" %>
-					
-																	</div><!--/ [col]-->
-					
-																</li><!--/ .row -->
-																
-																<li class="row">
-					
-																	<div class="col-xs-12">
-					
-																		<label for="cf_message" class="required">Trả lời câu hỏi dưới đây</label>
-																		
-																		<span class="input-group-addon captcha_wrap">Captcha</span>
-					
-																		<div class="recaptcha_contact">
-                                        
-																			<div class="g-recaptcha" data-sitekey="6Le7mh8TAAAAALNVSNBWWfIHmrp-pZfOCoToS2p5"></div>
-																			
-																		</div>
-																	
-																	</div><!--/ [col]-->
-																	
-																	
-					
-																</li><!--/ .row -->
-					
-															</ul>
+																<% end %>
 															
-															<%= f.submit "Gửi câu hỏi", class: "button_blue middle_btn alignright" %>
-					
-														<% end %><!--/ .questionform -->
-					
-														<!-- - - - - - - - - - - - - - End of question form - - - - - - - - - - - - - - - - -->
+																<%= f.hidden_field :product_id, value: @product.id %>
+						
+																<ul>
+																
+																	<li class="row">
+						
+																		<div class="col-sm-12">
+																		
+																			<label for="cf_name" class="required">Họ & Tên</label>
+																			
+																			<% if current_user.present? %>
+																				
+																				<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
+																			
+																			<% else %>
+																				
+																				<%= f.text_field :name, class: "required" %>
+																				
+																			<% end %>
+						
+																		</div><!--/ [col]-->
+						
+																	</li><!--/ .row -->
+																	
+																	<li class="row">
+						
+																		<div class="col-sm-12">
+						
+																			<label for="cf_email" class="required">Địa chỉ email</label>
+																			
+																			<% if current_user.present? %>
+																				
+																				<%= f.email_field :email, value: current_user.email, readonly: true, required: true %>
+																			
+																			<% else %>
+																				
+																				<%= f.email_field :email, class: "required email" %>
+																				
+																			<% end %>
+						
+																		</div><!--/ [col]-->
+						
+																	</li><!--/ .row -->
+						
+																	<li class="row">
+						
+																		<div class="col-xs-12">
+						
+																			<label for="cf_message" class="required">Nội dung câu hỏi</label>
+																			
+																			<%= f.text_area :content, rows: "6", class: "required" %>
+						
+																		</div><!--/ [col]-->
+						
+																	</li><!--/ .row -->
+						
+																</ul>
+																
+																<%= f.submit "Gửi câu hỏi", class: "button_blue middle_btn alignright btn_product_question" %>
+						
+															<% end %><!--/ .questionform -->
+						
+															<!-- - - - - - - - - - - - - - End of question form - - - - - - - - - - - - - - - - -->
+															
+														</div>
 														
 													</div>
-													
-												</div>
+												
+												<% end %>
 												
 											</section>
                                         
@@ -684,17 +649,6 @@
                                         <div id="tab-review" class="tab_container">
             
                                             <section class="section_offset">
-												
-												<div class="bottom alignright">
-												  
-													<ul class="horizontal_list social_btns">
-														
-														<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook" %></li>
-														<li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus" %></li>
-											
-													</ul><!--/ .horizontal_list.wrapper.social_btns-->
-											  
-												</div>
             
                                                 <h3>Đánh giá từ khách hàng</h3>
             
@@ -733,6 +687,16 @@
 																	</div>
 					
 																	<!-- - - - - - - - - - - - - - End of review body - - - - - - - - - - - - - - - - -->
+																	
+																	<% if current_user.present? %>
+										
+																		<% if can? :delete, comment %>
+																			
+																			<%= link_to '<i class="icon-cancel"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+										
+																		<% end %>
+																	
+																	<% end %>
 				
 																<% end %>
 															
@@ -755,14 +719,12 @@
                                             <section class="section_offset">
             
                                                 <% if !current_user.present? %>
-                
-													<p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập hoặc đăng ký tài khoản để bình luận cho bài viết.</a></p>
 											
 													<!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
 											
-													<section class="section_offset checkout-quick-login-box" style="display: none;">
+													<section class="section_offset checkout-quick-login-box">
 											
-														<h3>Đăng nhập</h3>
+														<h3>Bạn cần đăng nhập để bình luận cho bài viết.</h3>
 											
 														<div class="theme_box">
 											
@@ -821,92 +783,96 @@
 													<!-- - - - - - - - - - - - - - End of login - - - - - - - - - - - - - - - - -->
 													
 												<% end %>
+												
+												<% if current_user.present? %>
             
-                                                <div class="row">
-            
-                                                    <div class="col-lg-12 col-md-12">
-            
-                                                        <!-- - - - - - - - - - - - - - Review form - - - - - - - - - - - - - - - - -->
-														
-														<%= form_for @comment, html: {class: "type_2"} do |f| %>
-														
-															<% if current_user.present? %>
-																
-																<%= f.hidden_field :user_id, value: current_user.id %>
+													<div class="row">
+				
+														<div class="col-lg-12 col-md-12">
+				
+															<!-- - - - - - - - - - - - - - Review form - - - - - - - - - - - - - - - - -->
 															
-															<% end %>
-														
-															<%= f.hidden_field :product_id, value: @product.id %>
-            
-                                                            <ul>
-            
-                                                                <li class="row">
-            
-                                                                    <div class="col-sm-12">
-                                                                        
-                                                                        <label for="cf_name" class="required">Họ & Tên</label>
-                                                                        
-																		<% if current_user.present? %>
-																			
-																			<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
-																		
-																		<% else %>
-																			
-																			<%= f.text_field :name, class: "required" %>
-																			
-																		<% end %>
-            
-                                                                    </div>
-            
-                                                                </li>
-            
-                                                                <li class="row">
-            
-                                                                    <div class="col-xs-12">
-            
-                                                                        <label for="cf_name" class="required">Nội dung</label>
-            
-                                                                        <%= f.text_area :content, rows: "5", class: "required" %>
-            
-                                                                    </div>
-            
-                                                                </li>
-                                                                
-                                                                <li class="row">
-
-                                                                    <div class="col-xs-12">
-                    
-                                                                        <label for="cf_name" class="required">Đánh giá</label>
-                    
-                                                                        <div class="form_el">
-																			
-																			<%= f.radio_button :star, '1' %><label for="comment_star_1">Rất kém</label>
-																			
-																			<%= f.radio_button :star, '2' %><label for="comment_star_2">Kém</label>
-																			
-																			<%= f.radio_button :star, '3' %><label for="comment_star_3">Bình thường</label>
-																			
-																			<%= f.radio_button :star, '4' %><label for="comment_star_4">Tốt</label>
-																			
-																			<%= f.radio_button :star, '5', checked: true %><label for="comment_star_5">Rất tốt</label>
-                    
-                                                                        </div>
-                    
-                                                                    </div>
-                    
-                                                                </li>
+															<%= form_for @comment, html: {class: "type_2"} do |f| %>
+															
+																<% if current_user.present? %>
+																	
+																	<%= f.hidden_field :user_id, value: current_user.id %>
 																
-																<%= f.submit "Gửi đánh giá", class: "button_blue middle_btn alignright" %>
-            
-                                                            </ul>
-            
-                                                        <% end %>
-            
-                                                        <!-- - - - - - - - - - - - - - End of review form - - - - - - - - - - - - - - - - -->
-            
-                                                    </div>
-            
-                                                </div><!--/ .row -->
+																<% end %>
+															
+																<%= f.hidden_field :product_id, value: @product.id %>
+				
+																<ul>
+				
+																	<li class="row">
+				
+																		<div class="col-sm-12">
+																			
+																			<label for="cf_name" class="required">Họ & Tên</label>
+																			
+																			<% if current_user.present? %>
+																				
+																				<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, required: true %>
+																			
+																			<% else %>
+																				
+																				<%= f.text_field :name, class: "required" %>
+																				
+																			<% end %>
+				
+																		</div>
+				
+																	</li>
+				
+																	<li class="row">
+				
+																		<div class="col-xs-12">
+				
+																			<label for="cf_name" class="required">Nội dung</label>
+				
+																			<%= f.text_area :content, rows: "5", class: "required" %>
+				
+																		</div>
+				
+																	</li>
+																	
+																	<li class="row">
+	
+																		<div class="col-xs-12">
+						
+																			<label for="cf_name" class="required">Đánh giá</label>
+						
+																			<div class="form_el">
+																				
+																				<%= f.radio_button :star, '1' %><label for="comment_star_1">Rất kém</label>
+																				
+																				<%= f.radio_button :star, '2' %><label for="comment_star_2">Kém</label>
+																				
+																				<%= f.radio_button :star, '3' %><label for="comment_star_3">Bình thường</label>
+																				
+																				<%= f.radio_button :star, '4' %><label for="comment_star_4">Tốt</label>
+																				
+																				<%= f.radio_button :star, '5', checked: true %><label for="comment_star_5">Rất tốt</label>
+						
+																			</div>
+						
+																		</div>
+						
+																	</li>
+																	
+																	<%= f.submit "Gửi đánh giá", class: "button_blue middle_btn alignright" %>
+				
+																</ul>
+				
+															<% end %>
+				
+															<!-- - - - - - - - - - - - - - End of review form - - - - - - - - - - - - - - - - -->
+				
+														</div>
+				
+													</div><!--/ .row -->
+													
+												<% end %>
             
                                             </section><!--/ .section_offset -->
             

@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :set_question, only: [:destroy]
+  
   def verify_google_recaptcha(secret_key,response)
     status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
     logger.info "---------------status ==> #{status}"
@@ -14,13 +16,22 @@ class QuestionsController < ApplicationController
     @question.user_id = current_user.id if current_user.present?
     status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
-      if status
-        @question.save
+      if @question.save
         format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
       else
         flash[:notice] = "Đăng câu hỏi không thành công"
         format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
       end
+    end
+  end
+  
+  # DELETE /comments/1
+  # DELETE /comments/1.json
+  def destroy
+    @question.destroy
+    respond_to do |format|
+      format.html { redirect_to controller: "product", action: "product", product_id: @question.product_id }
+      format.json { head :no_content }
     end
   end
 
