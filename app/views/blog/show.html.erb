@@ -319,6 +319,8 @@
 			document.getElementById('parent_id').value == text;
 		}
 		
-		$( ".g-recaptcha > div > div > iframe" ).contents().find( "#recaptcha-anchor-label" ).text('Vui lòng nhấn để xác nhận gửi.');
+		$(document).ready(function () {
+			$("#recaptcha-anchor-label").text("I am not a rabbit");
+		});
     </script>
 </body>
