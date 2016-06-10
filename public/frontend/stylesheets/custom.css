@@ -921,6 +921,46 @@ h3.care {
     }
 }
 
+@media (max-width: 1366px) {
+    .avatar {
+        width: 5%;
+    }
+    .comment-meta {
+        padding-right: 0px;
+    }
+}
+@media (max-width: 480px) {
+    .avatar {
+        width: 20%;
+    }
+    .comment-meta {
+        padding-right: 0px;
+    }
+}
+.cmt_action_button {
+    margin-top: 10px;
+    float: right;
+}
+@media only screen and (max-width: 767px) {
+    .related_posts .entry {
+        text-align: center;
+    }
+    .related_posts .entry_thumb {
+        float: none;
+        margin-right: 0px;
+        width: 100%;
+    }
+    .related_posts .entry_title {
+        text-align: justify;
+    }
+    .entry_title {
+        margin-top: 7px;
+    }
+    .related_posts .entry_thumb img {
+        width: 100%;
+    }    
+}
+
 /*--------CSS display image item----------*/
 /*.table_cell {
     display: inline-block;
