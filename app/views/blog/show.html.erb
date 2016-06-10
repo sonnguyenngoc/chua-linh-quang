@@ -197,7 +197,7 @@
 
                                         <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
     
-                                        <div class="table_cell">
+                                        <div class="related_posts_table_cell table_cell">
     
                                             <article class="entry">
                                                 
@@ -318,6 +318,7 @@
 		function addTextTag(text){
 			document.getElementById('parent_id').value == text;
 		}
-
+		
+		$( ".g-recaptcha > div > div > iframe" ).contents().find( "#recaptcha-anchor-label" ).text('Vui lòng nhấn để xác nhận gửi.');
     </script>
 </body>
