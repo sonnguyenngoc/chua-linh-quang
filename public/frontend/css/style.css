@@ -3060,6 +3060,7 @@ transition-duration:0.1s;
 		.label_hot,.label_popular{ background:#ff8400; }
 		.label_bestseller{ background: #9b59b6; }
 		.label_soldout{ background: #b2b2b2; }
+		.label_imported{ background: #80ca52; }
 
 		/* Rating */
 

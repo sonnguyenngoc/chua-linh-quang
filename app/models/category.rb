@@ -119,7 +119,7 @@ class Category < ActiveRecord::Base
   end
   
   def get_products_by_status(area, status, limit=5)
-    records = Product.where("products.approved = true and products.is_show = true")
+    records = self.products.where("products.approved = true and products.is_show = true")
     
     if status == "new"
       records = records.order("created_at DESC")
@@ -128,6 +128,7 @@ class Category < ActiveRecord::Base
     if status == "deal" or status == "prominent" or status == "bestseller" or status == "imported"
       records = records.where("products.status LIKE ?", "%#{status}%")
     end
+    
     records = records.where("areas.id = ?", area.id) if area.id.present?
     records = records.uniq.limit(limit)
   end

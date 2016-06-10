@@ -505,7 +505,73 @@
 													
 												<% end %>
             
-                                                <h3>Viết câu hỏi cho sản phẩm</h3>
+                                                <% if !current_user.present? %>
+                
+													<p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập hoặc đăng ký tài khoản để bình luận cho bài viết.</a></p>
+											
+													<!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
+											
+													<section class="section_offset checkout-quick-login-box" style="display: none;">
+											
+														<h3>Đăng nhập</h3>
+											
+														<div class="theme_box">
+											
+															<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
+																
+																<ul>
+																	
+																	<li class="row">
+																		
+																		<div class="col-sm-6">
+																			
+																			<label for="email" class="required">Tài khoản: </label>
+																			<%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
+											
+																		</div><!--/ [col] -->
+											
+																		<div class="col-sm-6">
+																			
+																			<label for="email" class="required">Mật khẩu</label>
+																			<%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
+											
+																		</div><!--/ [col] -->
+											
+																	</li><!--/ .row -->
+											
+																</ul>
+																
+																<br/>
+															
+																<footer class="on_the_sides">
+																	
+																	<div class="left_side">
+											  
+																		<%= link_to "Đăng ký", { controller: "account", action: "register" }, class: "button_grey middle_btn" %>
+											  
+																		<%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top"></span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook" %></li>
+																		
+																		<%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top"></span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus" %>
+																	
+																	</div>
+											
+																	<div class="right_side">
+											  
+																		<%= button_tag "Đăng nhập", class: "button_blue middle_btn" %>
+											  
+																	</div>
+											  
+																</footer>
+																
+															<% end %>
+											
+														</div>
+											
+													</section><!--/ .section_offset -->
+											
+													<!-- - - - - - - - - - - - - - End of login - - - - - - - - - - - - - - - - -->
+													
+												<% end %>
             
                                                 <div class="row">
             
@@ -688,7 +754,73 @@
             
                                             <section class="section_offset">
             
-                                                <h3>Viết đánh giá cho sản phẩm</h3>
+                                                <% if !current_user.present? %>
+                
+													<p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập hoặc đăng ký tài khoản để bình luận cho bài viết.</a></p>
+											
+													<!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
+											
+													<section class="section_offset checkout-quick-login-box" style="display: none;">
+											
+														<h3>Đăng nhập</h3>
+											
+														<div class="theme_box">
+											
+															<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
+																
+																<ul>
+																	
+																	<li class="row">
+																		
+																		<div class="col-sm-6">
+																			
+																			<label for="email" class="required">Tài khoản: </label>
+																			<%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
+											
+																		</div><!--/ [col] -->
+											
+																		<div class="col-sm-6">
+																			
+																			<label for="email" class="required">Mật khẩu</label>
+																			<%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
+											
+																		</div><!--/ [col] -->
+											
+																	</li><!--/ .row -->
+											
+																</ul>
+																
+																<br/>
+															
+																<footer class="on_the_sides">
+																	
+																	<div class="left_side">
+											  
+																		<%= link_to "Đăng ký", { controller: "account", action: "register" }, class: "button_grey middle_btn" %>
+											  
+																		<%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top"></span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook" %></li>
+																		
+																		<%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top"></span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus" %>
+																	
+																	</div>
+											
+																	<div class="right_side">
+											  
+																		<%= button_tag "Đăng nhập", class: "button_blue middle_btn" %>
+											  
+																	</div>
+											  
+																</footer>
+																
+															<% end %>
+											
+														</div>
+											
+													</section><!--/ .section_offset -->
+											
+													<!-- - - - - - - - - - - - - - End of login - - - - - - - - - - - - - - - - -->
+													
+												<% end %>
             
                                                 <div class="row">
             
@@ -1194,6 +1326,13 @@
 	<%= javascript_include_tag '/photoswipe/photoswipe-ui-default.min.js' %>
 	
 	<script>
+		$(document).on("click", ".add_cart_by_now", function(e){
+			e.preventDefault();
+			
+			var url = $(this).attr("href");
+			window.location = url + "&quantity=" + $("input.quantity").val();
+		});
+		
 		$(document).on("click", ".add_to_cart_button", function(e){
 			e.preventDefault();
 			
