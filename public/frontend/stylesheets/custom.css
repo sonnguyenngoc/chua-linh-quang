@@ -924,15 +924,7 @@ h3.care {
         width: 282px;
     }
 }
-@media (min-width: 790px) {
-    .transparent {
-        display: block;
-        opacity: 1;
-    }
-    .tab_containers_wrap {
-        visibility: hidden;
-    }
-}
+
 .page_wrapper {
     
 }
