@@ -949,3 +949,13 @@ h3.care {
         width: 50%;
     }
 }
+.custom-comment-reply-link {
+    position: absolute;
+    right: 55px;
+    top: 11px;
+}
+.custom-comment-remove-link {
+    position: absolute;
+    right: 19px;
+    top: 11px;
+}

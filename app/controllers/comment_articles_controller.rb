@@ -16,8 +16,8 @@ class CommentArticlesController < ApplicationController
     
     status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
-      if status
-        @comment_article
+      if @comment_article.save
+        
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
       else
         flash[:notice] = "Đăng bình luận không thành công"
