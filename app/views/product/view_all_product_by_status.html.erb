@@ -287,24 +287,28 @@
                                                         <% end %>
                                                         
                                                     <% end %>
+                                                    
+                                                    <% if params[:st] == "new" %>
                                                         
-                                                    <% if product.is_bestseller? and params[:st] == "bestseller" %>
-                                                        
-                                                        <div class="label_bestseller">
-                                
-                                                            <div><%= product.display_is_bestseller %></div>
-                                
-                                                        </div>
+                                                        <%= product.display_is_new.html_safe %>
                                                         
                                                     <% end %>
+                                                    
+                                                    <% if params[:st] == "bestseller" %>
                                                         
-                                                    <% if product.is_new? and params[:st] == "new" %>
+                                                        <%= product.display_is_bestseller.html_safe %>
                                                         
-                                                        <div class="label_new">
-                                
-                                                            <div><%= product.display_is_new %></div>
-                                
-                                                        </div>
+                                                    <% end %>
+                                                    
+                                                    <% if params[:st] == "prominent" %>
+                                                        
+                                                        <%= product.display_is_prominent.html_safe %>
+                                                        
+                                                    <% end %>
+                                                    
+                                                    <% if params[:st] == "imported" %>
+                                                        
+                                                        <%= product.display_is_imported.html_safe %>
                                                         
                                                     <% end %>
                                                     

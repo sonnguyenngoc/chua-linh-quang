@@ -114,14 +114,6 @@
 														</div>
 														
 													<% end %>
-													
-												<% elsif product.is_new? %>
-													
-													<div class="label_new">
-							
-														<div><%= product.display_is_new %></div>
-							
-													</div>
 							
 												<% end %>
 								
@@ -261,14 +253,6 @@
 												
 											<% end %>
 											
-										<% elsif product.is_new? %>
-											
-											<div class="label_new">
-					
-												<div><%= product.display_is_new %></div>
-					
-											</div>
-					
 										<% end %>
 						
 										<% if product.is_sold_out? %>
