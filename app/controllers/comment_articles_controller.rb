@@ -1,4 +1,6 @@
 class CommentArticlesController < ApplicationController
+  before_action :set_comment_article, only: [:destroy]
+  
   def verify_google_recaptcha(secret_key,response)
     status = `curl "https://www.google.com/recaptcha/api/siteverify?secret=#{secret_key}&response=#{response}"`
     logger.info "---------------status ==> #{status}"
@@ -17,12 +19,21 @@ class CommentArticlesController < ApplicationController
     status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
       if @comment_article.save
-        
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
       else
         flash[:notice] = "Đăng bình luận không thành công"
         format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
       end
+    end
+  end
+  
+  # DELETE /comments/1
+  # DELETE /comments/1.json
+  def destroy
+    @comment_article.destroy
+    respond_to do |format|
+      format.html { redirect_to controller: "blog", action: "show", blog_id: @comment_article.article_id }
+      format.json { head :no_content }
     end
   end
 
