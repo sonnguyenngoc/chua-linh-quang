@@ -237,11 +237,11 @@
                                                     
                                                     <% if product.get_main_image.present? %>
 																
-                                                        <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
+                                                        <img class="full_width" src="<%= product.get_main_image.image_url.medium_image %>" alt="">
                                                     
                                                     <% else %>
                                                         
-                                                        <img src="/frontend/images/medium_image.png" alt="">
+                                                        <img class="full_width" src="/frontend/images/medium_image.png" alt="">
                                                     
                                                     <% end %>
     
@@ -291,7 +291,7 @@
                                                     
                                                     <% if params[:st] == "new" %>
                                                         
-                                                        <%= product.display_is_new.html_safe %>
+                                                        <div class="label_new"><div>Mới</div></div>
                                                         
                                                     <% end %>
                                                     

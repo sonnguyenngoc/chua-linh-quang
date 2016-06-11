@@ -30,7 +30,7 @@
         
                             <header class="comment-meta">
         
-                                <h6 class="comment-author"><%= comment.name %></h6>, <%= comment.created_at.strftime("%d-%m-%Y") %>
+                                <h6 class="comment-author"><%= comment.name %></h6><br /><%= comment.created_at.strftime("%d-%m-%Y") %>
         
                             </header>
         
@@ -40,21 +40,25 @@
         
                         <!-- - - - - - - - - - - - - - End of comment body - - - - - - - - - - - - - - - - -->
 						
-						<% if current_user.present? %>
+						<div class="cmt_action_button">
 							
-							<% if can? :delete, comment %>
-								
-								<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-reply-link"><i class="icon-reply-4"></i></a>
-								
-								<%= link_to '<i class="icon-cancel"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
+							<% if current_user.present? %>
 							
-							<% else %>
+								<% if can? :delete, comment %>
+									
+									<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-reply-link"><i class="icon-reply-4"></i></a>
+									
+									<%= link_to '<i class="icon-cancel"></i>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button_grey icon_btn custom-comment-remove-link" %>
 								
-								<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-reply-link"><i class="icon-reply-4"></i></a>
+								<% else %>
+									
+									<a href="#comment_reply" value="<%= comment.id %>" class="button_grey icon_btn custom-comment-remove-link"><i class="icon-reply-4"></i></a>
+								
+								<% end %>
 							
 							<% end %>
 						
-						<% end %>
+						</div>
 						
                     </article>
                     

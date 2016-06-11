@@ -333,10 +333,11 @@ class Product < ActiveRecord::Base
   end
   
   # Display status label
+  
   def display_is_new
     display = ""
     if is_new?
-      display = "<div class=\"label_new\"><div>Mới</div></div>"
+      display = "Mới"
     end
     return display
   end
