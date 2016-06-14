@@ -1,9 +1,0 @@
-
-<% if !@blog_deal.nil? %>
-	
-	<div class="banner_item" id="zone_37">
-				
-		<%= link_to image_tag(@blog_deal.image_url.banner_small_top_image), {controller: "blog", action: "show", blog_id: @blog_deal.id}, title: @blog_deal.title %>
-	</div>
-	
-<% end %>

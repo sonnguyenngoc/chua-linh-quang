@@ -1,13 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
-  include CurrentCart
-  before_action :get_cart
-  include CompareList
-  before_action :set_compare
-  before_action :user_saw
-  before_filter :set_current_area
-  before_action :set_current_area
-  before_filter :check_mobile
   
   protect_from_forgery
   
@@ -16,11 +8,8 @@ class ApplicationController < ActionController::Base
   
   protected
     def layout_by_resource
-      if controller_name == "home" || controller_name == "account" || controller_name == "checkout" || controller_name == "blog" ||
-        controller_name == "information" || controller_name == "manufacturer" || controller_name == "product" || controller_name == "branch"
+      if controller_name == "home"
         "frontend"
-      elsif controller_name == "account"
-        authenticate_user!
       elsif (devise_controller? && resource_name == :user && action_name != 'edit') || controller_name == 'passwords'
         "login"
       elsif controller_name == "main" || controller_name == "products" || controller_name == "categories" || controller_name == "manufacturers" ||
@@ -30,7 +19,6 @@ class ApplicationController < ActionController::Base
             controller_name == "options" || controller_name == "users" || controller_name == "user_groups" || controller_name == "contacts" || controller_name == "newsletters"
 
           authenticate_user!
-          
           redirect_to root_path if current_user.is_admin != true
           "backend"
       end
@@ -47,34 +35,5 @@ class ApplicationController < ActionController::Base
   
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
-  end
-  
-  def after_sign_in_path_for(resource)
-    if session[:user_return_to] == nil
-      my_account_path
-    else
-      super
-    end
-  end
-  
-  def after_sign_out_path_for(resource_or_scope)
-    logout_path
-  end
-  
-  def set_current_area
-    @current_area = Area.where(id: session[:current_area_id]).first()
-    @current_area = Area.new(name: "Tất cả khu vực") if @current_area.nil?
-  end
-  
-  def user_saw
-    current_user.saw if current_user.present?
-  end
-  
-  def check_mobile
-    if session[:mobile_param]
-      @is_mobile = session[:mobile_param] == "1"
-    else
-      @is_mobile = request.user_agent =~ /Mobile|webOS/
-    end
   end
 end

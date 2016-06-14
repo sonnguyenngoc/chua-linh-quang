@@ -1,2 +1,0 @@
-class AffiliateController < ApplicationController
-end
