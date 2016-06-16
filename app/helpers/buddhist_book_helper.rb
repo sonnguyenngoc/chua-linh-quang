@@ -1,0 +1,2 @@
+module BuddhistBookHelper
+end

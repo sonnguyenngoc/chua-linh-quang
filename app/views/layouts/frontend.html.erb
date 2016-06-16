@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Chùa Linh Quang</title>
+		<meta name="description" content="Chùa Linh Quang – Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam">
+		<meta name="author" content="Chùa Linh Quang">
+		
+		<!-- Mobile Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<!-- Put favicon.ico and apple-touch-icon(s).png in the images folder -->
+        <%= favicon_link_tag '/frontend/images/favicon.ico', rel: 'shortcut icon' %>
+		    	
+		<!-- CSS StyleSheets -->
+        <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&amp;amp;subset=latin,latin-ext" %>
+        <%= stylesheet_link_tag "/frontend/css/font-awesome.min.css" %>
+        <%= stylesheet_link_tag "/frontend/css/animate.css" %>
+        <%= stylesheet_link_tag "/frontend/css/prettyPhoto.css" %>
+        <%= stylesheet_link_tag "/frontend/css/slick.css" %>
+        <%= stylesheet_link_tag "/frontend/css/flexslider.css" %>
+        <%= stylesheet_link_tag "/frontend/css/style.css" %>
+        <%= stylesheet_link_tag "/frontend/css/responsive.css" %>
+        <%= stylesheet_link_tag "/frontend/css/news.css" %>
+        <%= stylesheet_link_tag "/frontend/css/custom.css" %>
+		<!--[if lt IE 9]>
+            <%= stylesheet_link_tag "/frontend/css/ie.css" %>
+            <%= javascript_include_tag "/frontendjs/html5.js" %>
+	    <![endif]-->
+
+		<!-- Skin style (** you can change the link below with the one you need from skins folder in the css folder **) -->
+        <%= stylesheet_link_tag "/frontend/css/skins/default.css" %>
+	
+	</head>
+	<body>
+	    
+	    <%= yield %>
+	
+    </body>
+
+</html>

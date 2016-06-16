@@ -1,9 +1,47 @@
 Rails.application.routes.draw do
-  
-  root "home#index"
   devise_for :users
   
-  scope "(:locale)", locale: /vi|en/ do
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
+    
+    root "coming_soon#index"
+    
+    # home
+    get 'trang-chu.html' => "home#index", as: :home
+    
+    # buddhist_news
+    get 'phat-su.html' => 'buddhist_news#index', as: :buddhist_news
+    
+    # buddhist_book
+    get 'phat-phap.html' => 'buddhist_book#index', as: :buddhist_book
+    get 'buoc-dau-hoc-phat.html' => 'buddhist_book#buddhist_book_sub_1', as: :buddhist_book_sub_1
+    get 'giao-phap.html' => 'buddhist_book#buddhist_book_sub_2', as: :buddhist_book_sub_2
+    get 'tinh-do-tong.html' => 'buddhist_book#buddhist_book_sub_3', as: :buddhist_book_sub_3
+    get 'thien-tong.html' => 'buddhist_book#buddhist_book_sub_4', as: :buddhist_book_sub_4
+    get 'mat-tong.html' => 'buddhist_book#buddhist_book_sub_5', as: :buddhist_book_sub_5
+    
+    # news
+    get 'tin-tuc.html' => "news#index", as: :news
+    
+    # charity
+    get 'tu-thien.html' => "charity#index", as: :charity
+    
+    # cultural
+    get 'van-hoa.html' => "cultural#index", as: :cultural
+    get 'gop-nhat-cat-da.html' => "cultural#cultural_sub_1", as: :cultural_sub_1
+    get 'van-hoc-nghe-thuat.html' => "cultural#cultural_sub_2", as: :cultural_sub_2
+    
+    # buddhist_family
+    get 'gdpt-linh-quang.html' => "buddhist_family#index", as: :buddhist_family
+    
+    # contact
+    get 'lien-he.html' => "contact#index", as: :contact
+    
+    # blog_detail
+    get 'chi-tiet-bai-viet.html' => "blog_detail#index", as: :blog_detail
+    
+    # feeback
+    get 'bao-loi-gop-y.html' => "feedback#index", as: :feedback
+    
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
       scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do

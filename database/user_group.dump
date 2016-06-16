@@ -1,0 +1,785 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas (id, name, level, description, created_at, updated_at, parent_id, areatype_id, display_order) FROM stdin;
+\.
+
+
+--
+-- Data for Name: areas_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas_articles (id, area_id, article_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_articles_id_seq', 1, false);
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_id_seq', 1, false);
+
+
+--
+-- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY article_categories (id, name, description, created_at, updated_at, level, meta_keywords, meta_description) FROM stdin;
+1	News		2016-06-15 09:06:24.715489	2016-06-15 09:11:17.537434	\N		
+\.
+
+
+--
+-- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY article_categories_articles (id, article_id, article_category_id, created_at, updated_at) FROM stdin;
+1	1	1	2016-06-15 09:15:52.916931	2016-06-15 09:15:52.916931
+2	2	1	2016-06-15 09:34:52.200024	2016-06-15 09:34:52.200024
+3	4	1	2016-06-15 09:41:39.353291	2016-06-15 09:41:39.353291
+\.
+
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('article_categories_articles_id_seq', 3, true);
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('article_categories_id_seq', 1, true);
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY articles (id, image_url, title, content, tags, article_category_id, created_at, updated_at, code_status_id, meta_keywords, meta_description, is_show, page_layout, user_id, approved, image_url_full_width) FROM stdin;
+1	vanilla.png	Thinking Inside The Box With Vanilla JavaScript	<p>During the past four or five years of blogging regularly and doing research for other writing projects, I’ve come across probably thousands of articles on JavaScript.</p>\r\n<p>To me, it seems that a big chunk of these articles can be divided into two very general categories:</p>\r\n<ol>\r\n<li>jQuery;</li>\r\n<li>Theory and concept articles focused on things like <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">IIFEs</a>, <a href="http://net.tutsplus.com/tutorials/javascript-ajax/closures-front-to-back/">closures</a> and <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/">design patterns</a>.</li>\r\n</ol>\r\n<p>Yes, I’ve likely stumbled upon a ton of other articles that don’t fall into either of these categories or that are more specific. But somehow it feels that most of the ones that really get pushed in the community fall under one of the two categories above.</p>\r\n<p>I think those articles are great, and I hope we see more of them. But<strong>sometimes the simplest JavaScript features are sitting right under our noses</strong> and we just haven’t had a lot of exposure to them. I’m talking about native, more-or-less cross-browser features that have been in the language for some time.</p>\r\n<p>So, in this article, I won’t be talking about jQuery, and I won’t be looking at structural code concepts or patterns. Instead, I’m going to introduce you to some pure JavaScript features that you can use today and that you might not have ever considered before.</p>\r\n<h3 id="insertadjacenthtml">insertAdjacentHTML() <a href="https://www.smashingmagazine.com/2013/10/inside-the-box-with-vanilla-javascript/#insertadjacenthtml" aria-label="Link to section 'insertAdjacentHTML()'" class="sr hsl">Link</a></h3>\r\n<p>Years ago, Microsoft introduced a method called <code>insertAdjacentHTML()</code> as a way to insert a specified string of text as HTML or XML into a specific place in the DOM. This feature has been available in Internet Explorer (IE) since version 4. Let’s see how it works.</p>\r\n<p>Suppose you have the following HTML:</p>\r\n<pre class=" language-markup"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>\r\n    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some example text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>\r\n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>\r\n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>\r\n    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some example text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>\r\n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>\r\n</code></pre>\r\n<p>And suppose you want to insert another snippet of HTML between <code>#box1</code> and<code>#box2</code>. You can do this quite easily using <code>insertAdjacentHTML()</code>:</p>\r\n<pre class=" language-javascript"><code class=" language-javascript"><span class="token keyword">var</span> box2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"box2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\r\nbox2<span class="token punctuation">.</span><span class="token function">insertAdjacentHTML</span><span class="token punctuation">(</span><span class="token string">'beforebegin'</span><span class="token punctuation">,</span> <span class="token string">'&lt;div&gt;&lt;p&gt;This gets inserted.&lt;/p&gt;&lt;/div&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\r\n</code></pre>\r\n<p>With that, the generated DOM ends up like this:</p>\r\n<pre class=" language-markup"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>\r\n    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some example text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>\r\n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>\r\n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This gets inserted.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>\r\n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>\r\n    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some example text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>\r\n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>\r\n</code></pre>\r\n<ul>\r\n<li><a href="http://jsbin.com/otIZApI/1/edit?html,js,output">View a simple demo.</a></li>\r\n</ul>\r\n<p>The <code>insertAdjacentHTML()</code> method takes two parameters. The first defines where you want to place the HTML, relative to the targeted element (in this case, the <code>#box2</code> element). This may be one of the following four string values:</p>\r\n<ul>\r\n<li><code>beforebegin</code><br />The HTML would be placed immediately before the element, as a sibling.</li>\r\n<li><code>afterbegin</code><br />The HTML would be placed inside the element, before its first child.</li>\r\n<li><code>beforeend</code><br />The HTML would be placed inside the element, after its last child.</li>\r\n<li><code>afterend</code><br />The HTML would be placed immediately after the element, as a sibling.</li>\r\n</ul>\r\n<p>Again, <strong>these are string values, not keywords</strong>, so they must be placed inside of single or double quotes.</p>\r\n<p>The second parameter is the string you want to insert, also placed in quotes (or else it would be a variable holding a string that was previously defined). Note that it should be a string, not a DOM element or element collection; so, it could just be text, with no actual markup.</p>\r\n<p><code>insertAdjacentHTML()</code> has, as outlined in a <a href="https://hacks.mozilla.org/2011/11/insertadjacenthtml-enables-faster-html-snippet-injection/">post on Mozilla Hacks</a>, a couple of advantages over something more conventional, like <code>innerHTML()</code>: It does not corrupt the existing DOM elements, and it performs better.</p>\r\n<p>And if you’re wondering why this one hasn’t received a lot of attention so far, despite being well supported in all in-use versions of IE, the reason is probably that, as mentioned in the Mozilla Hacks article, it was not added to Firefox until version 8. Because all other major browsers support this, and Firefox users have been auto-updating since version 5, it’s quite safe to use.</p>\r\n<p>For more on this method:</p>\r\n<ul>\r\n<li>“<a href="http://domparsing.spec.whatwg.org/#insertadjacenthtml()">insertAdjacentHTML()</a>,” in the “DOM Parsing and Serialization” specification, WHATWG</li>\r\n<li>“<a href="https://developer.mozilla.org/en-US/docs/Web/API/element.insertAdjacentHTML">Element.insertAdjacentHTML</a>,” Mozilla Developer Network</li>\r\n</ul>\r\n<h3 id="getboundingclientrect">getBoundingClientRect() <a href="https://www.smashingmagazine.com/2013/10/inside-the-box-with-vanilla-javascript/#getboundingclientrect" aria-label="Link to section 'getBoundingClientRect()'" class="sr hsl">Link</a></h3>\r\n<p>You can obtain the coordinates and, by extension, the dimensions of any element on the page using another lesser-known method, the<code>getBoundingClientRect()</code> method.</p>\r\n<p>Here’s an example of how it might be used:</p>\r\n<pre class=" language-javascript"><code class=" language-javascript"><span class="token keyword">var</span> box <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'box'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>\r\n    x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> w<span class="token punctuation">;</span>\r\n\r\nx <span class="token operator">=</span> box<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>left<span class="token punctuation">;</span>\r\ny <span class="token operator">=</span> box<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>top<span class="token punctuation">;</span>\r\n\r\n<span class="token keyword">if</span> <span class="token punctuation">(</span>box<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>width<span class="token punctuation">)</span> <span class="token punctuation">{</span>\r\n  w <span class="token operator">=</span> box<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>width<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// for modern browsers</span>\r\n<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>\r\n  w <span class="token operator">=</span> box<span class="token punctuation">.</span>offsetWidth<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// for oldIE</span>\r\n<span class="token punctuation">}</span>\r\n\r\nconsole<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> w<span class="token punctuation">)</span><span class="token punctuation">;</span>\r\n</code></pre>\r\n<ul>\r\n<li><a href="http://jsbin.com/aKAdISE/1/edit?html,js,output">View a demo.</a></li>\r\n</ul>\r\n<p>Here, we’ve targeted an element with an ID of <code>box</code>, and we’re accessing three properties of the <code>getBoundingClientRect()</code> method for the <code>#box</code> element. Here’s a summary of six fairly self-explanatory properties that this method exposes:</p>\r\n<ul>\r\n<li><code>top</code><br />How many pixels the top edge of the element is from the topmost edge of the viewport</li>\r\n<li><code>left</code><br />How many pixels the left edge of the element is from the leftmost edge of the viewport</li>\r\n<li><code>right</code><br />How many pixels the right edge of the element is from the leftmost edge of the viewport</li>\r\n<li><code>bottom</code><br />How many pixels the bottom edge of the element is from the topmost edge of the viewport</li>\r\n<li><code>width</code><br />The width of the element</li>\r\n<li><code>height</code><br />The height of the element</li>\r\n</ul>\r\n<p><strong>All of these properties are read-only.</strong> And notice that the coordinate properties (<code>top</code>, <code>left</code>, <code>right</code> and <code>bottom</code>) are all relative to the top-left of the viewport.</p>\r\n<p>What about the <code>if/else</code> in the example from above? IE 6 to 8 don’t support the <code>width</code> and <code>height</code> properties; so, if you want full cross-browser support for those, you’ll have to use <code>offsetWidth</code> and/or <code>offsetHeight</code>.</p>\r\n<p>As with <code>insertAdjacentHTML()</code>, despite the lack of support for <code>width</code> and<code>height</code>, this method has been supported in IE since ancient times, and it has support everywhere else that’s relevant, so it’s pretty safe to use.</p>\r\n<p>I will concede something here: Getting the coordinates of an element using offset-based values (such as <code>offsetWidth</code>) is actually <a href="http://jsperf.com/getboundingclientrect-vs-jquery/5">faster than using<code>getBoundingClientRect()</code></a>. Note, however, that offset-based values will always round to the nearest integer, whereas <code>getBoundingClientRect()</code>’s properties will return fractional values.</p>		\N	2016-06-15 09:15:52.655556	2016-06-15 09:16:00.872723	\N			t	normal	1	t	\N
+2	landscape-1440436226-iphone-762044-1280.jpg	iOS 10 Will Finally Let You Delete All Those Pre-Installed Apps You Never Use	<p class="body-el-text standard-body-el-text">Lots of things were <a class="body-el-link standard-body-el-link" href="http://www.digitalspy.com/tech/wearables/feature/a797663/9-watchos-3-features-to-revolutionise-your-apple-watch/">announced</a> during Apple's WWDC yesterday, with the vast <a class="body-el-link standard-body-el-link" href="http://www.digitalspy.com/tech/apple/news/a797658/apple-unveils-ios-10-to-completely-change-your-iphone/">improvements being made through iOS 10</a> arguably the biggest takeaway from the keynote.</p>\r\n<p class="p1 body-el-text standard-body-el-text">One new software feature that went completely unmentioned, however, is that you'll soon be able to delete Apple's collection of mostly useless default apps that come pre-installed on your phone.</p>\r\n<p class="p1 body-el-text standard-body-el-text">You'll be able to delete the company's built-in apps such as Maps, Calculator, <a class="body-el-link standard-body-el-link" href="http://www.digitalspy.com/tech/apple/news/a797665/apple-music-getting-massive-overhaul/">Music</a> and Videos - though you do have the option to download them again later from the App Store.</p>\r\n<p class="p1 body-el-text standard-body-el-text">Certain apps like <a class="body-el-link standard-body-el-link" href="http://www.digitalspy.com/tech/smartphones/feature/a797679/10-ios-10-features-that-will-completely-update-your-iphone-from/">Messages</a>, Photos and Camera cannot be deleted, presumably because they're too integral to the system to be uninstalled.</p>\r\n<div class="embed embed--center embed--twitter embed--loaded">\r\n<div class="embed--inner"><twitterwidget class="twitter-tweet twitter-tweet-rendered" id="twitter-widget-1" data-tweet-id="742444196414398464">\r\n<div data-twitter-event-id="0" class="SandboxRoot env-bp-350">\r\n<div class="EmbeddedTweet EmbeddedTweet--mediaForward media-forward js-clickToOpenTarget js-tweetIdInfo" data-click-to-open-target="https://twitter.com/iWindowsTech/status/742444196414398464" data-iframe-title="Twitter Tweet" data-dt-full="%{hours12}:%{minutes} %{amPm} - %{day} %{month} %{year}" data-dt-months="Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec" data-dt-am="AM" data-dt-pm="PM" data-dt-now="now" data-dt-s="s" data-dt-m="m" data-dt-h="h" data-dt-second="second" data-dt-seconds="seconds" data-dt-minute="minute" data-dt-minutes="minutes" data-dt-hour="hour" data-dt-hours="hours" data-dt-abbr="%{number}%{symbol}" data-dt-short="%{day} %{month}" data-dt-long="%{day} %{month} %{year}" data-scribe="page:tweet" data-tweet-id="742444196414398464" id="twitter-widget-1" lang="en" data-twitter-event-id="1">\r\n<article class="MediaCard\r\n           MediaCard--mediaForward\r\n           \r\n           customisable-border" data-scribe="component:card" dir="ltr">\r\n<div class="MediaCard-media"><a class="MediaCard-borderOverlay" href="http://twitter.com/iWindowsTech/status/742444196414398464/photo/1" role="presentation" title="View image on Twitter" tabindex="-1"><span class="u-hiddenVisually">View image on Twitter</span></a>\r\n<div class="MediaCard-widthConstraint js-cspForcedStyle" data-style="max-width: 450px">\r\n<div class="MediaCard-mediaContainer js-cspForcedStyle" data-style="padding-bottom: 177.7778%"><a class="MediaCard-mediaAsset\r\n                    NaturalImage\r\n" href="http://twitter.com/iWindowsTech/status/742444196414398464/photo/1" data-scribe="element:photo"><img class="NaturalImage-image" data-srcset="https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FCk2xDtyUUAAY8il.jpg%3Alarge 750w,https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FCk2xDtyUUAAY8il.jpg 675w,https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FCk2xDtyUUAAY8il.jpg%3Asmall 382w" width="675" height="1200" title="View image on Twitter" alt="View image on Twitter" src="https://pbs.twimg.com/media/Ck2xDtyUUAAY8il.jpg" /></a></div>\r\n</div>\r\n</div>\r\n</article>\r\n<div class="EmbeddedTweet-tweet">\r\n<blockquote class="Tweet h-entry js-tweetIdInfo subject expanded\r\n                   is-deciderHtmlWhitespace" cite="https://twitter.com/iWindowsTech/status/742444196414398464" data-tweet-id="742444196414398464" data-scribe="section:subject">\r\n<div class="Tweet-header u-cf">\r\n<div class="Tweet-brand u-floatRight"><span class="u-hiddenInNarrowEnv"> </span></div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n</div>\r\n<div class="resize-sensor">\r\n<div class="resize-sensor-shrink"></div>\r\n</div>\r\n</div>\r\n</twitterwidget></div>\r\n</div>\r\n<p class="p1 body-el-text standard-body-el-text">The catch is that there could be some collateral damage, depending on how aggressively you cull. Deleting Music will mean you also lose it inside CarPlay for instance, while deleting Weather will mean you lose it within the Notification Center.</p>\r\n<p class="p1 body-el-text standard-body-el-text">And despite being able to delete almost every pre-installed app, Apple is insisting on you keeping Game Center around, at least for the time being, meaning you'll probably have to keep your "Unused Apple apps" folder along with it. </p>\r\n<p class="p1 body-el-text standard-body-el-text">It's perhaps not surprising Apple didn't announce the change—whether it ever confirms it remains to be seen—as it's effectively admitting its in-house apps might not be for everyone after all. But better to admit it quietly than not at all. </p>\r\n<div class="article-body--source standard-article-body-el-source"><span class="content-source--label">From: </span><a class="content-source--link" href="http://www.digitalspy.com/tech/apple/news/a797709/wwdc-ios-10-update-will-finally-let-you-delete-the-apple-apps-you-never-use/"><span class="content-source--name">Digital Spy</span></a></div>		\N	2016-06-15 09:34:52.093343	2016-06-15 09:35:05.193158	\N			t	normal	1	t	\N
+3	13.png	HTML5 Is A Finished W3C Standard	<p>If you are a web developer you will probably want to remember where you were on the day (October 28th, 2014) that HTML 5 became a standard. But my best guess is that you will just yawn and get on with the real task of working in an ever-evolving environment. </p>\r\n<p>There once was a time when you couldn't move for headlines about HTML 5. It was to be the solution. To what exactly was never particularly clear.</p>\r\n<p>HTML 5, an improved markup language, was somehow supposed to make it possible to do things that we currently couldn't do without the help of complete programming environments supplied as unreliable plugins - things like Flash. Of course, being just a markup language HTML 5 would need some help in all of this. But somehow the others involved - both CSS and JavaScript - managed not to get the publicity limelight like HTML 5 did.</p>\r\n<p><img alt="W3Clogo" src="http://www.i-programmer.info/images/stories/News/2012/SEPT/B/W3Clogo.jpg" height="120" width="200" /></p>\r\n<p>Of course, you know the story but just in case you don't, after all HTML 5 has been a long time in the making, this is what happened in a nutshell.</p>\r\n<p>W3C was determined that the way of the future was XML. So they spent time producing XHTML which had/has a strict syntax unlike HTML. If you didn't remember to close a tag then the whole page failed to render. It was a product of a pure syntax approach to getting something better - but it broke existing HTML pages and hence wasn't popular, except with a few enthusiasts. </p>\r\n<p>Even though it wasn't popular W3C pressed on. Then a new breakaway group Web Hypertext Application Technology Working Group (WHATWG) was formed to create a successor to HTML 4 that people would actually use. This is when HTML 5 was born. It would do new things but it would also try not to break the old.</p>\r\n<p>As the WHATWG HTML 5 effort gained lots of public interest and XHTML started to look like a dead end, the W3C joined in and the two bodies worked together. </p>\r\n<p><strong><img src="http://www.i-programmer.info/images/stories/News/2014/Oct/B/WHATWGoct2014.jpg" width="400" height="67" alt="WHATWGoct2014" /></strong></p>\r\n<p>This would have been a happy ending if they had actually seen eye-to-eye on the matter of how standards for the web should be produced. We all know that what really matters is not the standards, but how the standards are implemented. You can go and look at a W3C standard as much as you want, but what really matters is what is implemented in each of the "big browsers". You really need to look up what you can use in lists like "can I use" and then you have to make the decision based on the answer to questions like "is this supported enough?" and "how many users will I lose if I use it?"</p>\r\n<p>In other words, the real world of web dev is pragmatic and not strictly to standard. </p>\r\n<p>So now we have the final complete spec - the recommendation. This will progress through some bureaucratic stages and then emerge as the published standard some time before the end of the year. The W3C promises HTML 5.1 some time before the end of 2016. </p>\r\n<p>The only problem is that WHATWG split from W3C and has a very different view of the standards world. It believes in a living HTML 5 standard that is never finished and continues to evolve - forever or until they think that changing it to HTML 6 would produced some good vibes. The HTML 5 standard that has been produced by W3C is essentially a snapshot of the WHATWG specification at a particular point in time. As time ticks on what the WHATWG refers to as HTML 5 and the W3C standard will diverge, sometimes quite rapidly. </p>\r\n<p>The W3C is allowed to make use of the WHATWG evolving standard, but the WHATWG committee seems to be getting increasingly annoyed that the W3C is simply republishing its work. However, the alternative of a complete split between the two standards is much worse than a little plagiarism. </p>\r\n<p><img src="http://www.i-programmer.info/images/stories/News/2011/JAN/html5logo.JPG" alt="html5logo" height="135" width="200" /></p>\r\n<p>We have to wait and see what the big browsers do - although that seems fairly obvious. While they, especially IE, will be making big claims about being the most standards compliant, they will all add bits and pieces that they need to support for their particular purposes. Firefox will evolve the things that Firefox OS needs, Chrome will evolve to support Chrome OS. Microsoft will,... did I mention that they are very strong on standards. </p>\r\n<p>The coming web dev world isn't going to be so different from the previous web dev world even if there is a finished HTML 5 standard. We are going to have to just see what works.</p>		\N	2016-06-15 09:37:17.661261	2016-06-15 09:39:43.204562	\N			t	normal	1	t	\N
+4	category-15.jpg	Progress Survey of .NET Web Developers	<p>The .NET development landscape has undergone dramatic change with many .NET developers now targeting their efforts at the web rather than the desktop. A recent survey explored the type of web projects they undertake and the tools they prefer.</p>\r\n<p> This is our second look at the <a href="http://www.telerik.com/campaigns/devcraft/net-developer-report-for-2016" target="_blank">2016 .NET Community Report</a>recently made available by Progress, the company that owns Telerik. For the background to the survey and its findings relating to Windows Desktop developers see <a href="http://www.i-programmer.info/news/89-net/9722-telerik-survey-of-net-developers.html">Telerik Survey of .NET Developers</a></p>\r\n<p> </p>\r\n<p><img src="http://www.i-programmer.info/images/stories/News/2016/May/A/2016dotnetcommreport.JPG" width="296" height="265" alt="2016dotnetcommreport" /></p>\r\n<p> </p>\r\n<p>A key finding of the survey, which had 1862 respondents, is that almost half of them are targeting the responsive web and 45% the desktop web compared to only 30% targeting the desktop and 13% mobile. The percentages do not add up to 100 as more than one choice was permitted.</p>\r\n<p><em><img src="http://www.i-programmer.info/images/stories/News/2016/May/A/dnstarget.JPG" width="400" height="231" alt="dnstarget" /></em></p>\r\n<div class="konafilter">\r\n<p>The markup language overwhelmingly preferred by the web developers surveyed is HTML (78%). This is markedly different to Windows Desktop developers who have a strong preference for XAML.</p>\r\n<p><img src="http://www.i-programmer.info/images/stories/News/2016/May/A/dnsmarkuplang.JPG" width="383" height="209" alt="dnsmarkuplang" /></p>\r\n<p>When it comes to JavaScript use, Progress lumps all the .NET developers together so we can't make the same distinction between web and desktop developers but only 8% don't use JavaScript at all.</p>\r\n<p><img src="http://www.i-programmer.info/images/stories/News/2016/June/A/telerikjs.JPG" width="390" height="168" alt="telerikjs" /></p>\r\n<p> </p>\r\n<p>With regard to Javascript frameworks, Angular is a clear winner with 56% opting for it and other well-known frameworks sharing 15%. Another point to note, given the overall popularity of JavaScript, is that over a fifth of web developers in the survey responded "“I wouldn’t develop web apps with JavaScript". According to the report this appears to indicate a preference among developers to use the server for an application’s logic and view rendering.</p>\r\n<p>One of the main conclusions made by Progress is that increasingly .NET developers see themselves as Full-Stack developers stating in the report:</p>\r\n<p><em>Be it web, desktop or mobile development, most developers are exposed to the vast gamut of technologies. Many .NET developers are well-versed in technologies that span the entire application stack, from UI to the database. Even within a single stack, a developer might see several architectures. In effect, it is great to see most .NET developers starting to consider themselves full-stack and often polyglot developers</em>.</p>\r\n<h4><img src="http://www.i-programmer.info/images/stories/News/2016/May/A/dnsfullstack.JPG" width="380" height="234" alt="dnsfullstack" /></h4>\r\n<p>There's plenty more contained in the freely downloadable report.</p>\r\n</div>		\N	2016-06-15 09:41:39.285533	2016-06-15 09:41:45.672635	\N			t	normal	1	t	\N
+\.
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('articles_id_seq', 4, true);
+
+
+--
+-- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('articles_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY carts (id, created_at, updated_at, voucher_code, coupon_code) FROM stdin;
+\.
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('carts_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories (id, name, level, description, created_at, updated_at, ordered, meta_keywords, meta_description) FROM stdin;
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories_products (id, product_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: code_statuses; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY code_statuses (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('code_statuses_id_seq', 1, false);
+
+
+--
+-- Data for Name: comment_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY comment_articles (id, name, email, content, user_id, article_id, created_at, updated_at, parent_id) FROM stdin;
+\.
+
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('comment_articles_id_seq', 1, false);
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY comments (id, product_id, name, content, star, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY companies (id, image_url, name, head_office_address, certificate_no, date_of_issue, sales_office_address, phone, hotline, email, created_at, updated_at, head_area_id, branch_area_id, type_company) FROM stdin;
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 1, false);
+
+
+--
+-- Data for Name: compares; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY compares (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY contacts (id, name, email, message, created_at, updated_at, user_id, phone, subject) FROM stdin;
+1	Nguyễn Ngọc Sơn	sonnn@hoangkhang.com.vn	Test contact function - Test message	2016-06-15 07:54:20.96019	2016-06-15 07:54:20.96019	\N	01644046123	Test contact function - Test subject
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, true);
+
+
+--
+-- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY conversations (id, sender_id, recipient_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('conversations_id_seq', 1, false);
+
+
+--
+-- Data for Name: coupons; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY coupons (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('coupons_id_seq', 1, false);
+
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY customers (id, first_name, last_name, email, phone, company, address, city, zip_code, country, province, created_at, updated_at, order_id, area_id) FROM stdin;
+\.
+
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('customers_id_seq', 1, false);
+
+
+--
+-- Data for Name: delivery_methods; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY delivery_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('delivery_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY feedbacks (id, email, content, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('feedbacks_id_seq', 1, false);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY products (id, name, code, quantity, unit, price, short_description, description, manufacturer_id, product_image_id, created_at, updated_at, tags, status, old_price, discount_percent, meta_keywords, meta_description, is_show, stock, approved, user_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: line_item_compares; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY line_item_compares (id, product_id, compare_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('line_item_compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity) FROM stdin;
+\.
+
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('line_items_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY manufacturers (id, image_url, name, address, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone, fax, company, address_1, address_2, zip_code, country, province, city, provider, uid, password_reset_token, password_reset_sent_at, oauth_token, oauth_expires_at, last_seen, is_admin, area_id, role, user_group_id) FROM stdin;
+1	admin@hoangkhang.com.vn	$2a$11$xzGR3lYuBs6nTtpfeGwS0OEnttXv.QlQsjIreSjmJC5HxVd26btRe	\N	\N	\N	2	2016-06-15 06:37:09.50948	2016-06-14 03:48:19.928625	192.168.126.1	192.168.126.1	2016-06-14 03:48:13.073708	2016-06-15 09:39:12.907779	Quản Trị	Viên	01644046123	\N	Hoang Khang Incotech	Gò Vấp District	\N	\N	Việt Nam	\N	\N	\N	\N	\N	\N	\N	\N	2016-06-15 09:39:12.901046	t	\N	admin	3
+\.
+
+
+--
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY messages (id, body, conversation_id, user_id, created_at, updated_at, seen) FROM stdin;
+\.
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('messages_id_seq', 1, false);
+
+
+--
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY newsletters (id, email, created_at, updated_at, status, user_id) FROM stdin;
+1	sonnn@hoangkhang.com.vn	2016-06-15 07:15:13.123236	2016-06-15 07:15:13.123236	t	\N
+2	hungtn@hoangkhang.com.vn	2016-06-15 07:39:30.196528	2016-06-15 07:39:30.196528	t	\N
+\.
+
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('newsletters_id_seq', 2, true);
+
+
+--
+-- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY options (id, created_at, updated_at, code, tag, value, note, title, accept_email) FROM stdin;
+\.
+
+
+--
+-- Name: options_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('options_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_deliveries; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_deliveries (id, first_name, last_name, company, address, city, zip_code, country, province, delivery_method_id, payment_method_id, message, created_at, updated_at, order_id, email, phone) FROM stdin;
+\.
+
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_deliveries_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_details (id, order_id, product_id, quantity, price, created_at, updated_at, product_name) FROM stdin;
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY orders (id, created_at, updated_at, user_id, status, different_delivery, voucher_code, voucher_price, coupon_code, coupon_price) FROM stdin;
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_article_categories (id, parent_id, article_category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_article_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: payment_methods; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY payment_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('payment_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_images (id, product_id, image_url, created_at, updated_at, is_main) FROM stdin;
+\.
+
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_images_id_seq', 1, false);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('products_id_seq', 1, false);
+
+
+--
+-- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY questions (id, name, email, content, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('questions_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160406035423
+20160406060729
+20160406061501
+20160406072632
+20160406090918
+20160406093710
+20160407021915
+20160407022242
+20160407033416
+20160407034556
+20160407040834
+20160407041811
+20160407063600
+20160407071755
+20160407073929
+20160407090029
+20160407092753
+20160411022035
+20160411070126
+20160411090637
+20160412090455
+20160412091031
+20160412091620
+20160412092036
+20160413013557
+20160414070432
+20160414071647
+20160414071935
+20160414072251
+20160414072336
+20160414111647
+20160415024108
+20160415034338
+20160415045331
+20160415070403
+20160418084816
+20160419063009
+20160419063732
+20160419073354
+20160419084034
+20160419084328
+20160420021407
+20160420025319
+20160420031013
+20160420035639
+20160420071851
+20160420083852
+20160420083904
+20160421014453
+20160421023948
+20160421032607
+20160422075657
+20160422084139
+20160422092821
+20160425011612
+20160425011627
+20160425031932
+20160425042302
+20160425043159
+20160425043209
+20160425075501
+20160429043324
+20160429062814
+20160505042346
+20160505065936
+20160505084631
+20160505090509
+20160505092039
+20160506024000
+20160506084612
+20160506090959
+20160510030159
+20160510030222
+20160510094925
+20160512092157
+20160512092324
+20160514031109
+20160516073144
+20160516073152
+20160516073236
+20160516073244
+20160516080558
+20160516082039
+20160516085116
+20160516085213
+20160516090119
+20160517032825
+20160517033437
+20160517083909
+20160518035417
+20160518070327
+20160520062835
+20160521024747
+20160527042708
+20160527083046
+20160531021437
+20160531021445
+20160601013031
+20160601065702
+20160601091343
+20160601100102
+20160601111606
+20160602071024
+20160602083515
+20160602083819
+20160603025541
+20160603071216
+20160603080430
+20160607034151
+20160607034155
+20160615074814
+\.
+
+
+--
+-- Data for Name: slideshows; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY slideshows (id, image_url, title_1, title_2, name_button, link, created_at, updated_at, color_1, color_2, style) FROM stdin;
+\.
+
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('slideshows_id_seq', 1, false);
+
+
+--
+-- Data for Name: testimonials; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY testimonials (id, name, city, email, content, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('testimonials_id_seq', 1, false);
+
+
+--
+-- Data for Name: user_groups; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY user_groups (id, name, permission, created_at, updated_at) FROM stdin;
+1	Thành viên	\N	2016-06-14 03:25:31.764251	2016-06-14 03:25:31.764251
+2	Quản trị viên	\N	2016-06-14 03:25:31.773352	2016-06-14 03:25:31.773352
+3	Quản lý cấp cao	{"Product":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Category":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Manufacturer":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Area":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"ArticleCategory":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Article":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"],"approve":["yes"]},"CodeStatus":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Slideshow":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Order":{"read":["yes"],"update":["yes"],"delete":["yes"]},"DeliveryMethod":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"PaymentMethod":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Comment":{"read":["yes"],"delete":["yes"]},"Question":{"read":["yes"],"delete":["yes"]},"Testimonial":{"read":["yes"],"delete":["yes"]},"CommentArticle":{"read":["yes"],"delete":["yes"]},"Voucher":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Coupon":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Customer":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Contact":{"read":["yes"],"delete":["yes"]},"Newsletter":{"read":["yes"],"delete":["yes"]},"User":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"UserGroup":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Company":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Option":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]}}	2016-06-14 03:25:31.779396	2016-06-14 03:52:13.193739
+\.
+
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('user_groups_id_seq', 3, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Data for Name: vouchers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY vouchers (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('vouchers_id_seq', 1, false);
+
+
+--
+-- Data for Name: wish_lists; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY wish_lists (id, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('wish_lists_id_seq', 1, false);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

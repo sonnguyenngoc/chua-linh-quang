@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
   
   protected
     def layout_by_resource
-      if controller_name == "home"
+      if controller_name == "home" || controller_name == "contact" || controller_name == "buddhist_family" || controller_name == "cultural" || controller_name == "news" ||
+         controller_name == "charity" || controller_name == "buddhist_news" || controller_name == "buddhist_book" || controller_name == "blog_detail" || controller_name == "feedback"
         "frontend"
+      elsif controller_name == "coming_soon"
+        "coming_soon"
       elsif (devise_controller? && resource_name == :user && action_name != 'edit') || controller_name == 'passwords'
         "login"
       elsif controller_name == "main" || controller_name == "products" || controller_name == "categories" || controller_name == "manufacturers" ||

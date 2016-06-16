@@ -1,0 +1,188 @@
+<!-- site preloader start -->
+<div class="page-loader">
+    <div class="loader-in"></div>
+</div>
+<!-- site preloader end -->
+
+<div class="pageWrapper">
+
+    <!-- Header Start -->
+    <%= render "/home/header" %>
+    <!-- Header End -->
+    
+    <!-- Content Start -->
+    <div id="contentWrapper">
+        <div class="page-title title-1">
+            <div class="container">
+                <div class="row">
+                    <div class="cell-12">
+                        <h1 class="fx" data-animate="fadeInLeft">CHI TIẾT <span>BÀI VIẾT</span></h1>
+                        <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
+                            <%= link_to "Trang Chủ", root_path %><span class="line-separate">/</span><a href="#">Chuyên mục bài viết</a><span class="line-separate">/</span><span>Chi tiết bài viết</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sectionWrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="cell-9">
+                         <div class="blog-posts">
+                            <div class="post-item fx" data-animate="fadeInLeft">
+                                <div class="details-img">
+                                    <div class="post-lft-info">
+                                        <div class="main-bg">15<br>Jan<br>2014<span class="tri-col"></span></div>
+                                    </div>
+                                    <img src="/frontend/images/blog/1.jpg" alt="Our Blog post image goes here">
+                                </div>
+                                <article class="post-content">
+                                    <div class="post-info-container">
+                                        <h1 class="main-color">Blog post title with Image</h1>
+                                        
+                                        <div class="post-info">
+                                            <ul class="post-meta">
+                                                <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
+                                                <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
+                                                <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="text-justify">
+                                        <p>
+                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                                        Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit. Donec nisl tellus, posuere in commodo ac, placerat a elit. Nulla fringilla venenatis metus, sed laoreet nisi varius non. Nunc placerat tempor orci id mattis. Suspendisse pulvinar nisl neque, rutrum pellentesque neque commodo non. Maecenas ultrices tortor sit amet suscipit tempor. Aenean et nunc pharetra, pulvinar nibh sed, mattis urna. Morbi vel lectus convallis, tristique mi non, feugiat eros.  
+                                        </p>
+                                        <blockquote>
+                                            <p>Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit.</p>
+                                            <span>- Mark Henry "Google.com"</span>
+                                        </blockquote>
+                                        <p>
+                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                                        Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit. Donec nisl tellus, posuere in commodo ac, placerat a elit. Nulla fringilla venenatis metus, sed laoreet nisi varius non. Nunc placerat tempor orci id mattis. Suspendisse pulvinar nisl neque, rutrum pellentesque neque commodo non. Maecenas ultrices tortor sit amet suscipit tempor. Aenean et nunc pharetra, pulvinar nibh sed, mattis urna. Morbi vel lectus convallis, tristique mi non, feugiat eros.  
+                                        </p>
+                                    </div>
+                                </article>
+                            </div><!-- .post-item end -->
+                            <div class="comments">
+                                <h3 class="block-head">Phản Hồi</h3>
+                                <p class="hint marginBottom bold">Có <span class="main-color">4</span> lời phản hồi.</p>
+                                <ul class="comment-list">
+                                    <li>
+                                        <article class="comment">
+                                            <img src="/frontend/images/people/1.jpg" alt="avatar" class="comment-avatar">
+                                            <div class="comment-content">
+                                                <h5 class="comment-author skew-25">
+                                                    <span class="author-name skew25">John Martin</span>
+                                                    <a class="comment-reply main-bg"><span class="skew25"><i class="fa fa-comment">  Jan 15, 2014</i></span></a>
+                                                </h5>
+                                                <p class="text-justify">Lorem ipsum dolor sit amet, 
+                                                consectetur adipisicing elit. 
+                                                Corporis accusamus alias doloribus 
+                                                aliquam voluptas cupiditate animi 
+                                                officia temporibus dicta iure.</p>
+                                            </div>
+                                        </article><!-- End .comment -->
+                                    </li>
+                                    <li>
+                                        <article class="comment">
+                                            <img src="/frontend/images/people/1.jpg" alt="avatar" class="comment-avatar">
+                                            <div class="comment-content">
+                                                <h5 class="comment-author skew-25">
+                                                    <span class="author-name skew25">John Martin</span>
+                                                    <a class="comment-reply main-bg"><span class="skew25"><i class="fa fa-comment">  Jan 15, 2014</i></span></a>
+                                                </h5>
+                                                <p class="text-justify">Lorem ipsum dolor sit amet, 
+                                                consectetur adipisicing elit. 
+                                                Corporis accusamus alias doloribus 
+                                                aliquam voluptas cupiditate animi 
+                                                officia temporibus dicta iure.</p>
+                                            </div>
+                                        </article><!-- End .comment -->
+                                    </li>
+                                    <li>
+                                        <article class="comment">
+                                            <img src="/frontend/images/people/1.jpg" alt="avatar" class="comment-avatar">
+                                            <div class="comment-content">
+                                                <h5 class="comment-author skew-25">
+                                                    <span class="author-name skew25">John Martin</span>
+                                                    <a class="comment-reply main-bg"><span class="skew25"><i class="fa fa-comment">  Jan 15, 2014</i></span></a>
+                                                </h5>
+                                                <p class="text-justify">Lorem ipsum dolor sit amet, 
+                                                consectetur adipisicing elit. 
+                                                Corporis accusamus alias doloribus 
+                                                aliquam voluptas cupiditate animi 
+                                                officia temporibus dicta iure.</p>
+                                            </div>
+                                        </article><!-- End .comment -->
+                                    </li>
+                                    <li>
+                                        <article class="comment">
+                                            <img src="/frontend/images/people/1.jpg" alt="avatar" class="comment-avatar">
+                                            <div class="comment-content">
+                                                <h5 class="comment-author skew-25">
+                                                    <span class="author-name skew25">John Martin</span>
+                                                    <a class="comment-reply main-bg"><span class="skew25"><i class="fa fa-comment">  Jan 15, 2014</i></span></a>
+                                                </h5>
+                                                <p class="text-justify">Lorem ipsum dolor sit amet, 
+                                                consectetur adipisicing elit. 
+                                                Corporis accusamus alias doloribus 
+                                                aliquam voluptas cupiditate animi 
+                                                officia temporibus dicta iure.</p>
+                                            </div>
+                                        </article><!-- End .comment -->
+                                    </li>
+                                </ul><!-- End .comment-list -->
+                            </div>
+                            <form class="leave-comment contact-form">
+                                <h3 class="block-head">Viết phản hồi</h3>
+                                <div class="row">
+                                    <div class="cell-6">
+                                        <div class="form-input">
+                                            <input type="text" placeholder="Họ tên người gửi" required>
+                                        </div>
+                                    </div>
+                                    <div class="cell-6">
+                                        <div class="form-input">
+                                            <input type="text" placeholder="Số điện thoại" required>
+                                        </div>
+                                    </div>
+                                    <div class="cell-12">
+                                        <div class="form-input">
+                                            <textarea class="txt-box textArea" name="message" cols="40" rows="7" id="messageTxt"  placeholder="Message" spellcheck="true" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="cell-12">
+                                        <input type="submit" class="btn btn-large main-bg" value="Gửi phản hồi">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- right side bar -->
+                    <aside class="cell-3 right-sidebar">
+                        
+                        <%= render "/home/right_side_bar" %>
+                        
+                    </aside>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Content End -->
+    
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
+    
+    <!-- Back to top Link -->
+    <div id="to-top" class="main-bg"><span class="fa fa-chevron-up"></span></div>
+    
+</div>
+
+
+<%= render "/home/js_files" %>

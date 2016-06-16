@@ -1,0 +1,89 @@
+<div id="headWrapper" class="clearfix">
+    
+    <!-- top bar start -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="cell-11">
+                    <ul>
+                        <li><span>CHÙA LINH QUANG</span></li>
+                        <li><span><i class="fa fa-home"></i> Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam</span></li>
+                        <li><span><i class="fa fa-phone"></i> Điện thoại: 0613.629.057</span></li>
+                        <li><a href="mailto:hopthu@chualinhquang.com.vn"><i class="fa fa-envelope"></i>hopthu@chualinhquang.com.vn</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="cell-1 right-bar">
+                    <ul class="social-list right">
+                        <li><a href="<%= feedback_path %>" data-title="Báo lỗi - Góp Ý" data-tooltip="true" data-position="bottom"><span class="fa fa-commenting-o"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top bar end -->
+    
+    <!-- Logo, global navigation menu and search start -->
+    <header class="top-head top-head-4" data-sticky="true">
+        <div class="container">
+            <div class="row">
+                <div class="cell-12">
+                    <div class="banner">
+                        <div>Ads here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="nav-4">
+                <div class="gray-nav">
+                    <!-- top navigation menu start -->
+                    <nav class="top-nav mega-menu news">
+                        <ul>
+                            <li class="<%= ("selected" if params[:controller] == "home").to_s %>"><%= link_to "<span>Trang Chủ</span>".html_safe, home_path %></li>
+                            <li class="<%= ("selected" if params[:controller] == "buddhist_news").to_s %>"><%= link_to "<span>Phật Sự</span>".html_safe, buddhist_news_path %></li>
+                            <li class="<%= ("selected" if params[:controller] == "buddhist_book").to_s %>"><%= link_to "<span>Phật Pháp</span>".html_safe, buddhist_book_path %>
+                                <ul>
+                                    <li><%= link_to "Bước Đầu Học Phật".html_safe, buddhist_book_sub_1_path %></li>
+                                    <li><%= link_to "Giáo Pháp".html_safe, buddhist_book_sub_2_path %></li>
+                                    <li><%= link_to "Tịnh Độ Tông".html_safe, buddhist_book_sub_3_path %></li>
+                                    <li><%= link_to "Thiền Tông".html_safe, buddhist_book_sub_4_path %></li>
+                                    <li><%= link_to "Mật Tông".html_safe, buddhist_book_sub_5_path %></li>
+                                </ul>	
+                            </li>
+                            <li class="<%= ("selected" if params[:controller] == "news").to_s %>"><%= link_to "<span>Tin Tức</span>".html_safe, news_path %></li>
+                            <li class="<%= ("selected" if params[:controller] == "charity").to_s %>"><%= link_to "<span>Từ Thiện</span>".html_safe, charity_path %></li>
+                            <li class="<%= ("selected" if params[:controller] == "cultural").to_s %>"><%= link_to "<span>Văn Hóa</span>".html_safe, cultural_path %>
+                                <ul>
+                                    <li><%= link_to "Góp Nhặt Cát Đá".html_safe, cultural_sub_1_path %></li>
+                                    <li><%= link_to "Văn Học - Nghệ Thuật".html_safe, cultural_sub_2_path %></li>
+                                    <li><a href="#">Thư Viện Ảnh</a></li>
+                                </ul>	
+                            </li>
+                            <li class="<%= ("selected" if params[:controller] == "buddhist_family").to_s %>"><%= link_to "<span>GĐPT Linh Quang</span>".html_safe, buddhist_family_path %></li>
+                            <li class="<%= ("selected" if params[:controller] == "contact").to_s %>"><%= link_to "<span>Liên Hệ</span>".html_safe, contact_path %></li>
+                        </ul>
+                    </nav>
+                    <!-- top navigation menu end -->
+                    
+                    <!-- top search start -->
+                    <div class="top-search right">
+                        <a href="#"><span class="fa fa-search"></span></a>
+                        <div class="search-box">
+                            <div class="input-box left">
+                                <input type="text" name="t" id="t-search" class="txt-box" placeHolder="Nhập từ khóa cần tìm..." />
+                            </div>
+                            <div class="left">
+                                <input type="submit" class="btn main-bg" value="Tìm kiếm" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- top search end -->
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Logo, Global navigation menu and search end -->
+    
+</div>

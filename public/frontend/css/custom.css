@@ -1,0 +1,15 @@
+.text-justify {
+	text-align: justify;
+}
+.nav-4 .top-search a {
+	width: 85px;
+}
+.search-box input[type=text] {
+	width: 313px;
+}
+.search-box input[type=submit] {
+	width: 85px;
+}
+.masonry .post-content p {
+	max-height: 72px;
+}
