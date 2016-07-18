@@ -1,0 +1,53 @@
+<!-- site preloader start -->
+<div class="page-loader">
+    <div class="loader-in"></div>
+</div>
+<!-- site preloader end -->
+
+<div class="pageWrapper">
+
+    <!-- Header Start -->
+    <%= render "/home/header" %>
+    <!-- Header End -->
+    
+    <!-- Content Start -->
+    <div id="contentWrapper">
+        <div class="page-title title-1">
+            <div class="container">
+                <div class="row">
+                    <div class="cell-12">
+                        <h1 class="fx" data-animate="fadeInLeft">Liên Hệ</h1>
+                        <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
+                            <%= link_to "Trang Chủ", home_path %><span class="line-separate">/</span><span>Liên Hệ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sectionWrapper">
+            <div class="container">
+                <div class="not-found">
+                    <p class="hint extraLarge">GỬI THÀNH CÔNG</p>
+                    <hr class="hr-style3">
+                    <p>Lời nhắn của quý phật tử được gửi thành công. Ban quản trị Chùa Linh Quang sẽ phản hồi trong thời gian sớm nhất</p>
+                    <%= link_to "Trang Chủ", home_path, class: "btn btn-medium" %>	
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Content End -->
+    
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
+    
+    <!-- Back to top Link -->
+    <div id="to-top" class="main-bg"><span class="fa fa-chevron-up"></span></div>
+    
+    
+</div>
+
+
+<%= render "/home/js_files" %>

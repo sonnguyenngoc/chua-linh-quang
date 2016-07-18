@@ -101,7 +101,7 @@ body {
 	margin: 0;
 	padding: 0;
 	color: #777;
-	font-size: 13px;
+	font-size: 14px;
     line-height: 1.428571429;
 	font-family: "Open Sans", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -457,7 +457,7 @@ th, td, caption {
 }
 .top-bar li i {
 	margin: 0 8px;
-	font-size: 13px;
+	font-size: 14px;
 }
 .top-bar.main-bg li i{
 	color:#fff 
@@ -602,7 +602,7 @@ header.top-head .logo.center a{
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 40px;
 }
 .top-nav li li.hasChildren:after {
@@ -1732,7 +1732,7 @@ h6 {font-size: 12px;}
 p {
 	margin: 0 0 20px 0;
 	line-height: 22px;
-	font-size:13px
+	font-size:14px
 }
 .white-bg {
 	background: #fff;
@@ -2118,9 +2118,9 @@ blockquote span {
 	text-align:center;
 	border-radius:50%;
 	border:3px #fff solid;
-	-moz-box-shadow: inset 0 0 13px rgba(0,0,0,.4);
-	-webkit-box-shadow: inset 0 0 13px rgba(0,0,0,.4);
-	box-shadow: inset 0 0 13px rgba(0,0,0,.4);
+	-moz-box-shadow: inset 0 0 14px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 0 14px rgba(0,0,0,.4);
+	box-shadow: inset 0 0 14px rgba(0,0,0,.4);
 }
 .box-top h3 {
 	margin: 0 0 10px;
@@ -2504,7 +2504,7 @@ blockquote span {
 	display: block;
 	margin-top: 10px;
 	text-align: center;
-	font-size: 13px;
+	font-size: 14px;
 }
 /* ---- 7.4. Fun Staff -------------- */
 .fun-staff .fun-text {
@@ -2585,7 +2585,7 @@ blockquote span {
 	color: #777;
 	text-transform: none;
 	font-weight: normal;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: normal;
 	margin-top: 6px;
 }
@@ -2999,7 +2999,7 @@ button.skew-25 i {
 }
 .btn-medium {
 	padding: 0 12px;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 41px;
 }
 .btn-large {
@@ -3412,7 +3412,7 @@ button.skew-25 i {
 	transform: scaleX(-1);
 }
 .rit-plan .plan-year:after {
-	right: -13px;
+	right: -14px;
 }
 .plan-block h3 {
 	margin: 0;
@@ -3556,7 +3556,7 @@ button.skew-25 i {
 }
 .list-details li span.main-color{
 	font-weight:bold;
-	font-size:13px
+	font-size:14px
 }
 /* ---- 8.3. Pricing tables -------------- */
 .pricing-table, .pricing-table-2 {
@@ -3777,7 +3777,7 @@ button.skew-25 i {
 }
 .team-details h3 {
 	margin: 0;
-	padding: 13px 0 0 5px;
+	padding: 14px 0 0 5px;
 }
 .t-position {
 	padding: 10px 0;
@@ -4058,7 +4058,7 @@ button.skew-25 i {
 .masonry .post-content p {
 	overflow: hidden;
 	max-height: 60px;
-	font-size: 13px;
+	font-size: 14px;
 }
 .masonry .pager {
 	clear: both;
@@ -4310,7 +4310,7 @@ ul.child-comment li:after {
 #message {
     display: block;
     margin: 15px 0;
-    padding: 13px;
+    padding: 14px;
     background: transparent;
     text-align: center;
 }
@@ -4385,6 +4385,16 @@ img.loader{
 	left: 46.5%;
 	color: #f0f0f0;
 	content: "\f119";
+	font-weight: normal;
+	font-size: 60px;
+	font-family: FontAwesome;
+}
+.send-success:before {
+	position: absolute;
+	top: -33px;
+	left: 46.5%;
+	color: #f0f0f0;
+	content: "\f118";
 	font-weight: normal;
 	font-size: 60px;
 	font-family: FontAwesome;
@@ -4566,7 +4576,7 @@ img.loader{
 	position: relative;
 	float: right;
 	margin: 0 0 0 4px;
-	padding: 8px 13px;
+	padding: 8px 14px;
 	background: #EBEBEB;
 	font-size: 14px;
 }
@@ -5164,7 +5174,7 @@ img.loader{
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size:13px
+	font-size:14px
 }
 .widget-head {
 	position: relative;
@@ -5579,7 +5589,7 @@ a.wit-btn {
 	height: 30px;
 	text-align: center;
 	line-height: 30px;
-	font-size: 13px;
+	font-size: 14px;
 	border-radius: 50%;
 }
 #vertical-ticker{
@@ -5856,7 +5866,7 @@ a.wit-btn {
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 13px;
+	font-size: 14px;
 }
 .recent-posts-footer li .meta span {
 	display: inline-block;
@@ -6483,7 +6493,7 @@ a.main-color:hover,.project-name:hover,.box-top .more-btn:hover{
 	background: #f00;
 	white-space: nowrap;
 	z-index: 9;
-	padding: 13px;
+	padding: 14px;
 	left: 94%;
 	-moz-transition: all 0.4s ease-in-out;
 	-o-transition: all 0.4s ease-in-out;
@@ -6547,7 +6557,7 @@ header.top-head.top-head-4 .logo a,.head-style2 header.top-head .logo a, .head-s
 }
 .top-nav > ul ul li a i {
 	margin-right: 8px;
-	font-size: 13px;
+	font-size: 14px;
 }
 .portfolio-lft-txt{
 	max-height:137px
@@ -6931,7 +6941,7 @@ header.top-head.top-head-4 .logo a,.head-style2 header.top-head .logo a, .head-s
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 40px !important;
 	color:#fff
 }
@@ -7468,7 +7478,7 @@ header.top-head.top-head-4 .logo a,.head-style2 header.top-head .logo a, .head-s
 }
 .accordion.style-2 li > h3 u {
 	float: right;
-	margin: 13px 10px 0;
+	margin: 14px 10px 0;
 	padding: 0px;
 	background:transparent !important;
 	color: #A8A8A8 !important;

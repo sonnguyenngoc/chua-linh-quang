@@ -16,9 +16,9 @@
             <div class="container">
                 <div class="row">
                     <div class="cell-12">
-                        <h1 class="fx" data-animate="fadeInLeft">CHI TIẾT <span>BÀI VIẾT</span></h1>
+                        <h1 class="fx" data-animate="fadeInLeft"><%= @blog_detail.title %></h1>
                         <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-                            <%= link_to "Trang Chủ", root_path %><span class="line-separate">/</span><a href="#">Chuyên mục bài viết</a><span class="line-separate">/</span><span>Chi tiết bài viết</span>
+                            <%= link_to "Trang Chủ", root_path %><span class="line-separate">/</span><%= link_to "Văn Hóa", cultural_path %><span class="line-separate">/</span><%= link_to "Văn Học - Nghệ Thuật", cultural_sub_2_path %><span class="line-separate">/</span><span><%= @blog_detail.title %></span>
                         </div>
                     </div>
                 </div>
@@ -33,35 +33,24 @@
                             <div class="post-item fx" data-animate="fadeInLeft">
                                 <div class="details-img">
                                     <div class="post-lft-info">
-                                        <div class="main-bg">15<br>Jan<br>2014<span class="tri-col"></span></div>
+                                        <div class="main-bg"><%= @blog_detail.created_at.strftime("%d") %><br><%= @blog_detail.created_at.strftime("%m") %><br><%= @blog_detail.created_at.strftime("%Y") %><span class="tri-col"></span></div>
                                     </div>
-                                    <img src="/frontend/images/blog/1.jpg" alt="Our Blog post image goes here">
+                                    <img src="<%= @blog_detail.image_url.big_image %>" alt="<%= @blog_detail.title %>">
                                 </div>
                                 <article class="post-content">
                                     <div class="post-info-container">
-                                        <h1 class="main-color">Blog post title with Image</h1>
+                                        <h1 class="main-color"><%= @blog_detail.title %></h1>
                                         
                                         <div class="post-info">
                                             <ul class="post-meta">
-                                                <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
+                                                <li class="meta-user"><i class="fa fa-user"></i> <a href="#">Chùa Linh Quang</a></li>
+                                                <li><i class="fa fa-folder-open"></i> <a href="#">Văn Học - Nghệ Thuật</a></li>
+                                                <li class="meta-comments"><i class="fa fa-comments"></i> <a href="#">5</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="text-justify">
-                                        <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-                                        Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit. Donec nisl tellus, posuere in commodo ac, placerat a elit. Nulla fringilla venenatis metus, sed laoreet nisi varius non. Nunc placerat tempor orci id mattis. Suspendisse pulvinar nisl neque, rutrum pellentesque neque commodo non. Maecenas ultrices tortor sit amet suscipit tempor. Aenean et nunc pharetra, pulvinar nibh sed, mattis urna. Morbi vel lectus convallis, tristique mi non, feugiat eros.  
-                                        </p>
-                                        <blockquote>
-                                            <p>Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit.</p>
-                                            <span>- Mark Henry "Google.com"</span>
-                                        </blockquote>
-                                        <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-                                        Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit. Donec nisl tellus, posuere in commodo ac, placerat a elit. Nulla fringilla venenatis metus, sed laoreet nisi varius non. Nunc placerat tempor orci id mattis. Suspendisse pulvinar nisl neque, rutrum pellentesque neque commodo non. Maecenas ultrices tortor sit amet suscipit tempor. Aenean et nunc pharetra, pulvinar nibh sed, mattis urna. Morbi vel lectus convallis, tristique mi non, feugiat eros.  
-                                        </p>
+                                        <%= @blog_detail.content.html_safe %>
                                     </div>
                                 </article>
                             </div><!-- .post-item end -->

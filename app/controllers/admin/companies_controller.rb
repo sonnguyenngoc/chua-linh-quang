@@ -7,7 +7,7 @@ class Admin::CompaniesController < ApplicationController
     # authorize
     authorize! :read, Company
     
-    @companies = Company.where(type_company: "Branch Office").order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @companies = Company.all.paginate(:page => params[:page], :per_page => 10)
   end
   
   # GET /companies
@@ -16,7 +16,7 @@ class Admin::CompaniesController < ApplicationController
     # authorize
     authorize! :read, Company
     
-    @companies = Company.where(type_company: "Head Office").paginate(:page => params[:page], :per_page => 10)
+    @companies = Company.all.paginate(:page => params[:page], :per_page => 10)
   end
   
   # GET /companies/1
@@ -47,7 +47,7 @@ class Admin::CompaniesController < ApplicationController
     
     respond_to do |format|
       if @company.save
-        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Tạo mới thông tin công ty thành công.' }
+        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Tạo mới thông tin thành công.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -64,7 +64,7 @@ class Admin::CompaniesController < ApplicationController
     
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Chỉnh sửa thông tin công ty thành công.' }
+        format.html { redirect_to edit_admin_company_path(@company.id), notice: 'Chỉnh sửa thông tin thành công.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }
@@ -81,7 +81,7 @@ class Admin::CompaniesController < ApplicationController
     @company.destroy
     
     render nothing:true
-    flash[:notice] = 'Xóa công ty/chi nhánh thành công.'
+    flash[:notice] = 'Xóa thành công.'
   end
 
   private

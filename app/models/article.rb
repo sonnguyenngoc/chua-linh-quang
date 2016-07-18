@@ -1,6 +1,5 @@
 class Article < ActiveRecord::Base
   validates :title, :content, presence: true
-  validates :image_url, presence: true
   validates :image_url, allow_blank: true, format: {
     with: %r{\.(gif|jpg|png)\Z}i,
     message: 'must be a URL for GIF, JPG or PNG image.'
@@ -15,11 +14,152 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :areas
   
   def self.get_active_articles
-    self.where("articles.approved = true")
+    self.where("articles.approved = true and articles.is_show = true").order("created_at DESC")
   end
   
-  def self.get_lastest_blog_posts
-    self.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").first(4)
+  # 2 - Buddhist news
+    def self.get_all_buddhist_news
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.name = 'Phật Sự'")
+        
+        records
+    end
+  # End Buddhist news
+  
+  # 3 - Buddhist Book
+  
+    def self.get_all_buddhist_book_blogs
+      records = self.get_active_articles
+      records = records.joins(:article_categories).where("article_categories.name = 'Bước Đầu Học Phật' or article_categories.name = 'Giáo Pháp' or article_categories.name = 'Tịnh Độ Tông' or article_categories.name = 'Thiền Tông' or article_categories.name = 'Mật Tông'  or article_categories.name = 'Phật Pháp'")
+      
+      records.uniq
+    end
+    
+    def self.get_all_buddhist_book_sub_1_blogs
+      records = self.get_active_articles
+      records = records.joins(:article_categories).where("article_categories.name = 'Bước Đầu Học Phật'")
+      
+      records
+    end
+    
+    def self.get_all_buddhist_book_sub_2_blogs
+      records = self.get_active_articles
+      records = records.joins(:article_categories).where("article_categories.name = 'Giáo Pháp'")
+      
+      records
+    end
+    
+    def self.get_all_buddhist_book_sub_3_blogs
+      records = self.get_active_articles
+      records = records.joins(:article_categories).where("article_categories.name = 'Tịnh Độ Tông'")
+      
+      records
+    end
+    
+    def self.get_all_buddhist_book_sub_4_blogs
+      records = self.get_active_articles
+      records = records.joins(:article_categories).where("article_categories.name = 'Thiền Tông'")
+      
+      records
+    end
+    
+    def self.get_all_buddhist_book_sub_5_blogs
+      records = self.get_active_articles
+      records = records.joins(:article_categories).where("article_categories.name = 'Mật Tông'")
+      
+      records
+    end
+  
+  # End Buddhist Book
+  
+  # 4 - News
+    def self.get_all_news
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.name = 'Tin Tức'")
+        
+        records
+    end
+  # End News
+  
+  # 5 - Charity
+    def self.get_all_charity_blogs
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.name = 'Từ Thiện'")
+        
+        records
+    end
+  # End Charity
+  
+  # 6 - Cultural
+      def self.get_all_cultural_blogs
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.name = 'Góp Nhặt Cát Đá' or article_categories.name = 'Văn Học - Nghệ Thuật' or article_categories.name = 'Văn Hóa'")
+        
+        records.uniq
+      end
+      
+      def self.get_all_cultural_sub_1_blogs
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where(article_categories: { name: 'Góp Nhặt Cát Đá' })
+        
+        records
+      end
+      
+      def self.get_all_cultural_sub_2_blogs
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where(article_categories: { name: 'Văn Học - Nghệ Thuật' })
+        
+        records
+      end   
+  # End Cultural
+  
+  # 7 - Buddhist Family
+    def self.get_all_buddhist_family_blogs
+      records = self.get_active_articles
+      records = records.joins(:article_categories).where("article_categories.name = 'GĐPT Linh Quang'")
+      
+      records
+    end
+  # End Buddhist Family
+  
+  def self.get_lastest_blogs
+    self.get_active_articles.first(4)
+  end
+  
+  def self.get_lastest_buddhist_news
+    self.get_all_buddhist_news.first(4)
+  end
+  
+  def self.get_lastest_cultural_news
+    self.get_all_cultural_blogs.first(4)
+  end
+  
+  def self.home_buddhist_news_first
+    self.get_all_buddhist_news.first
+  end
+  
+  def self.home_buddhist_news
+    self.get_all_buddhist_news.offset(1).first(4)
+  end
+  
+  def self.home_buddhist_book_blogs
+    self.get_all_buddhist_book_blogs.first(3)
+  end
+  
+  def self.home_news
+    self.get_all_news.first(3)
+  end
+  
+  def self.home_charity_blogs
+    self.get_all_charity_blogs.first(3)
+  end
+  
+  def self.home_cultural_blogs
+    self.get_all_cultural_blogs.first(3)
+  end
+  
+  def self.home_buddhist_family_blogs
+    self.get_all_buddhist_family_blogs.first(3)
   end
   
   def split_tags

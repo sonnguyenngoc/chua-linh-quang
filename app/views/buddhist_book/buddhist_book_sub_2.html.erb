@@ -12,181 +12,114 @@
     
     <!-- Content Start -->
     <div id="contentWrapper">
+       
         <div class="page-title title-1">
+           
             <div class="container">
+               
                 <div class="row">
+                 
                     <div class="cell-12">
+                       
                         <h1 class="fx" data-animate="fadeInLeft">GIÁO PHÁP</h1>
+                       
                         <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
+                            
                             <%= link_to "Trang chủ", root_path %><span class="line-separate">/</span><%= link_to "Phật Pháp", buddhist_book_path %><span class="line-separate">/</span><span>Giáo Pháp</span>
+                        
                         </div>
+                        
                     </div>
+                    
                 </div>
+                
             </div>
+       
         </div>
         
         <div class="sectionWrapper">
+            
             <div class="container">
+                
                 <div class="row">
+                    
                     <div class="cell-9 lft">
+                        
                         <div class="blog-posts">
+                            
                             <div class="blog-timeline">
+                                
                                 <div class="row timeline-left">
                                     
-                                    <div class="fx timeline-cell sticky-post" data-animate="fadeInLeft">
-                                        <div class="timeline_date">
-                                            <span class="inner_date"><span class="day main-color">7</span>
-                                            <span class="month">Jan</span> </span>
-                                            <span class="year main-bg">2012</span>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-image">
-                                                <div class="post-icon main-bg" data-title="Standard" data-tooltip="true" data-position="top">
-                                                    <i class="fa fa-book"></i>
-                                                </div>
-                                                <a href="blog-single.html">
-                                                    <span class="mask"></span>
-                                                    <img src="/frontend/images/blog/1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <article class="post-content">
-                                                <div class="post-info-container">
-                                                    <div class="post-info">
-                                                        <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                                        <ul class="post-meta">
-                                                            <li><i class="fa fa-magic"></i>Sticky</li>
-                                                            <li><i class="fa fa-book"></i><span>Standard</span></li>
-                                                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. <a class="read-more" href="blog-single.html">
-                                                Read more</a> </p>
-                                            </article>
-                                        </div>
-                                    </div>
+                                    <% @articles.each do |item| %>
                                     
-                                    <div class="fx timeline-cell sticky-post" data-animate="fadeInLeft">
-                                        <div class="timeline_date">
-                                            <span class="inner_date"><span class="day main-color">7</span>
-                                            <span class="month">Jan</span> </span>
-                                            <span class="year main-bg">2012</span>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-image">
-                                                <div class="post-icon main-bg" data-title="Standard" data-tooltip="true" data-position="top">
-                                                    <i class="fa fa-book"></i>
-                                                </div>
-                                                <a href="blog-single.html">
-                                                    <span class="mask"></span>
-                                                    <img src="/frontend/images/blog/1.jpg" alt="">
-                                                </a>
+                                        <div class="fx timeline-cell sticky-post" data-animate="fadeInLeft">
+                                            
+                                            <div class="timeline_date">
+                                                
+                                                <span class="inner_date"><span class="day main-color"><%= item.created_at.strftime("%d") %></span>
+                                                <span class="month"><%= item.created_at.strftime("%m") %></span> </span>
+                                                <span class="year main-bg"><%= item.created_at.strftime("%Y") %></span>
+                                            
                                             </div>
-                                            <article class="post-content">
-                                                <div class="post-info-container">
-                                                    <div class="post-info">
-                                                        <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                                        <ul class="post-meta">
-                                                            <li><i class="fa fa-magic"></i>Sticky</li>
-                                                            <li><i class="fa fa-book"></i><span>Standard</span></li>
-                                                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                        </ul>
+                                            
+                                            <div class="post-item">
+                                               
+                                                <div class="post-image">
+                                                    
+                                                    <div class="post-icon main-bg" data-title="Giáo Pháp" data-tooltip="true" data-position="top">
+                                                        
+                                                        <i class="fa fa-book"></i>
+                                                   
                                                     </div>
+                                                    
+                                                    <a href="<%= blog_detail_path(blog_id: item) %>">
+                                                        
+                                                        <span class="mask"></span>
+                                                        
+                                                        <img src="<%= item.image_url.big_image %>" alt="<%= item.title %>">
+                                                   
+                                                    </a>
+                                                    
                                                 </div>
-                                                <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. <a class="read-more" href="blog-single.html">
-                                                Read more</a> </p>
-                                            </article>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="fx timeline-cell sticky-post" data-animate="fadeInLeft">
-                                        <div class="timeline_date">
-                                            <span class="inner_date"><span class="day main-color">7</span>
-                                            <span class="month">Jan</span> </span>
-                                            <span class="year main-bg">2012</span>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-image">
-                                                <div class="post-icon main-bg" data-title="Standard" data-tooltip="true" data-position="top">
-                                                    <i class="fa fa-book"></i>
-                                                </div>
-                                                <a href="blog-single.html">
-                                                    <span class="mask"></span>
-                                                    <img src="/frontend/images/blog/1.jpg" alt="">
-                                                </a>
+                                                
+                                                <article class="post-content">
+                                                   
+                                                    <div class="post-info-container">
+                                                       
+                                                        <div class="post-info">
+                                                           
+                                                            <h2><%= link_to item.title, blog_detail_path(blog_id: item), class: "main-color" %></h2>
+                                                            
+                                                            <ul class="post-meta">
+                                                                
+                                                                <li class="meta-user"><i class="fa fa-user"></i>Đăng bởi: <a href="#">Chùa Linh Quang</a></li>
+                                                                <li><i class="fa fa-folder-open"></i>Chuyên mục: <a href="#">Bước Đầu Học Phật</a></li>
+                                                                <li class="meta-comments"><i class="fa fa-comments"></i>Bình luận: <a href="<%= blog_detail_path(blog_id: item) %>">5</a></li>
+                                                            
+                                                            </ul>
+                                                        
+                                                        </div>
+                                                    
+                                                    </div>
+                                                    
+                                                    <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 400) %></p>
+                                               
+                                                </article>
+                                            
                                             </div>
-                                            <article class="post-content">
-                                                <div class="post-info-container">
-                                                    <div class="post-info">
-                                                        <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                                        <ul class="post-meta">
-                                                            <li><i class="fa fa-magic"></i>Sticky</li>
-                                                            <li><i class="fa fa-book"></i><span>Standard</span></li>
-                                                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. <a class="read-more" href="blog-single.html">
-                                                Read more</a> </p>
-                                            </article>
+                                       
                                         </div>
-                                    </div>
-                                    
-                                    <div class="fx timeline-cell sticky-post" data-animate="fadeInLeft">
-                                        <div class="timeline_date">
-                                            <span class="inner_date"><span class="day main-color">7</span>
-                                            <span class="month">Jan</span> </span>
-                                            <span class="year main-bg">2012</span>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-image">
-                                                <div class="post-icon main-bg" data-title="Standard" data-tooltip="true" data-position="top">
-                                                    <i class="fa fa-book"></i>
-                                                </div>
-                                                <a href="blog-single.html">
-                                                    <span class="mask"></span>
-                                                    <img src="/frontend/images/blog/1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <article class="post-content">
-                                                <div class="post-info-container">
-                                                    <div class="post-info">
-                                                        <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                                        <ul class="post-meta">
-                                                            <li><i class="fa fa-magic"></i>Sticky</li>
-                                                            <li><i class="fa fa-book"></i><span>Standard</span></li>
-                                                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. <a class="read-more" href="blog-single.html">
-                                                Read more</a> </p>
-                                            </article>
-                                        </div>
-                                    </div>
+                                        
+                                    <% end %>
                                     
                                 </div>
+                                
                             </div>
+                                
                             <div class="pager skew-25">
-                                <ul>
-                                    <li><a class="skew25" href="#"><i class="fa fa-angle-left"></i></a></li>
-                                    <li class="selected"><span class="skew25">1</span></li>
-                                    <li><a class="skew25" href="#">2</a></li>
-                                    <li><a class="skew25" href="#">3</a></li>
-                                    <li><a class="skew25" href="#">4</a></li>
-                                    <li><a class="skew25" href="#">5</a></li>
-                                    <li><span class="skew25">...</span></li>
-                                    <li><a class="skew25" href="#">10</a></li>
-                                    <li><a class="skew25" href="#"><i class="fa fa-angle-right"></i></a></li>
-                                </ul>
+                                
+                                <%= will_paginate @articles, previous_label: '<i class="fa fa-angle-left"></i>'.html_safe, next_label: '<i class="fa fa-angle-right"></i>'.html_safe, renderer: BootstrapPagination::Rails %>
                                 
                             </div>
                             

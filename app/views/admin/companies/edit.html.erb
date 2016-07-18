@@ -31,16 +31,16 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold"><%= t(:edit_company) %></span></h4>
+                        <h4><span class="text-semibold">Chỉnh sửa thông tin</span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_companies_path %>"><%= t(:company) %></a></li>
-                        <li><a href="<%= admin_companies_path %>"><%= t(:companies) %></a></li>
-                        <li class="active"><%= t(:edit_company) %></li>
+                        <li><a href="<%= admin_companies_path %>">Danh sách chùa</a></li>
+                        <li><a href="<%= admin_companies_path %>">Thông tin chùa</a></li>
+                        <li class="active">Chỉnh sửa thông tin</li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                         <!-- Basic layout-->
                         <div class="panel panel-flat">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><%= t(:edit_company) %></h5>
+                                <h5 class="panel-title">Chỉnh sửa thông tin</h5>
                             </div>
                             
                             <div class="panel-body">

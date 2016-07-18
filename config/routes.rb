@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     
     # buddhist_book
     get 'phat-phap.html' => 'buddhist_book#index', as: :buddhist_book
-    get 'buoc-dau-hoc-phat.html' => 'buddhist_book#buddhist_book_sub_1', as: :buddhist_book_sub_1
-    get 'giao-phap.html' => 'buddhist_book#buddhist_book_sub_2', as: :buddhist_book_sub_2
-    get 'tinh-do-tong.html' => 'buddhist_book#buddhist_book_sub_3', as: :buddhist_book_sub_3
-    get 'thien-tong.html' => 'buddhist_book#buddhist_book_sub_4', as: :buddhist_book_sub_4
-    get 'mat-tong.html' => 'buddhist_book#buddhist_book_sub_5', as: :buddhist_book_sub_5
+    get 'phat-phap/buoc-dau-hoc-phat.html' => 'buddhist_book#buddhist_book_sub_1', as: :buddhist_book_sub_1
+    get 'phat-phap/giao-phap.html' => 'buddhist_book#buddhist_book_sub_2', as: :buddhist_book_sub_2
+    get 'phat-phap/tinh-do-tong.html' => 'buddhist_book#buddhist_book_sub_3', as: :buddhist_book_sub_3
+    get 'phat-phap/thien-tong.html' => 'buddhist_book#buddhist_book_sub_4', as: :buddhist_book_sub_4
+    get 'phat-phap/mat-tong.html' => 'buddhist_book#buddhist_book_sub_5', as: :buddhist_book_sub_5
     
     # news
     get 'tin-tuc.html' => "news#index", as: :news
@@ -27,20 +27,24 @@ Rails.application.routes.draw do
     
     # cultural
     get 'van-hoa.html' => "cultural#index", as: :cultural
-    get 'gop-nhat-cat-da.html' => "cultural#cultural_sub_1", as: :cultural_sub_1
-    get 'van-hoc-nghe-thuat.html' => "cultural#cultural_sub_2", as: :cultural_sub_2
+    get 'van-hoa/gop-nhat-cat-da.html' => "cultural#cultural_sub_1", as: :cultural_sub_1
+    get 'van-hoa/van-hoc-nghe-thuat.html' => "cultural#cultural_sub_2", as: :cultural_sub_2
     
     # buddhist_family
     get 'gdpt-linh-quang.html' => "buddhist_family#index", as: :buddhist_family
     
     # contact
     get 'lien-he.html' => "contact#index", as: :contact
+    get 'lien-he/gui-thanh-cong.html' => "contact#send_contact_success", as: :send_contact_success
     
     # blog_detail
-    get 'chi-tiet-bai-viet.html' => "blog_detail#index", as: :blog_detail
+    get 'chi-tiet-bai-viet/:blog_id.html' => "blog_detail#index", as: :blog_detail
     
     # feeback
     get 'bao-loi-gop-y.html' => "feedback#index", as: :feedback
+    
+    # form create
+    resources :contacts
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"

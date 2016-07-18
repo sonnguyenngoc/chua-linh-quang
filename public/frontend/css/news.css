@@ -223,7 +223,7 @@ header.top-head .logo.left a{
 	background: #F2F2F2;
 	color: #DADADA;
 	text-align: center;
-	height: 65px;
+	height: auto;
 	line-height: 65px;
 	font-weight: 800;
 	font-size: 30px;

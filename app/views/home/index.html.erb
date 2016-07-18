@@ -12,575 +12,163 @@
     
     <!-- Content Start -->
     <div id="contentWrapper" class="news-site">
+       
         <div class="block-bg-2 overflow-auto">
+            
             <div class="container">
-            <div class="Newsslider">
-                <div>
-                    <a href="#" class="cell-9" title=""><img alt="" src="/frontend/images/blog/test-1.jpg"></a>
-                    <article class="post-content cell-3">
-                        <div class="post-info-container">
-                            <div class="post-info">
-                                <h2><a class="main-color" href="#" title="Đoàn Phật Tử Quận Bình Thạnh Phát Quà Từ Thiện">Đoàn Phật Tử Quận Bình Thạnh Phát Quà Từ Thiện</a></h2>
-                                <ul class="post-meta">
-                                    <li class="meta-user">Đăng bởi: <a href="#">Chùa Linh Quang</a> Chuyên mục: <a href="#">Từ Thiện</a></li>
-                                </ul>
-                            </div>
+            
+                <div class="Newsslider">
+                    
+                    <% @sliders.each do |item| %>
+                    
+                        <div>
+                            
+                            <%= link_to image_tag(item.image_url.big_image, alt: item.title), blog_detail_path(blog_id: item), class: "cell-9" %>
+                           
+                            <article class="post-content cell-3">
+                               
+                                <div class="post-info-container">
+                                    
+                                    <div class="post-info">
+                                        
+                                        <h2><%= link_to item.title, blog_detail_path(blog_id: item), class: "main-color", title: item.title %></h2>
+                                        
+                                        <ul class="post-meta">
+                                                            
+                                            <li class="meta-user"><i class="fa fa-user"></i><a href="#">Chùa Linh Quang</a></li>
+                                            <li><i class="fa fa-folder-open"></i><a href="#">Văn Học - Nghệ Thuật</a></li>
+                                            <li class="meta-comments"><i class="fa fa-comments"></i><a href="<%= blog_detail_path(blog_id: item) %>">5</a></li>
+                                        
+                                        </ul>
+                                        
+                                    </div>
+                                
+                                </div>
+                                
+                                <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 250) %> </p>
+                                
+                                <%= link_to "Đọc tiếp", blog_detail_path(blog_id: item), class: "read-more main-bg" %>
+                            
+                            </article>
+                        
                         </div>
-                        <p class="text-justify">Trong tinh thần nhường cơm sẽ áo, được sự vận động và khích lệ của đại đức trụ trì chùa Linh Quang. Sáng nay ngày ( 2/3/ 2016 ) từ 5 giờ sáng đoàn Phật tử tại phường 1 Quận Bình Thạnh TP.HCM đã khởi hành về chùa Linh Quang xã Phú Hòa, huyện Định Quán tỉnh Đồng Nai.....</p>
-                        <a class="read-more main-bg" href="blog-single.html">Đọc tiếp</a>
-                    </article>
+                    
+                    <% end %>
+                    
                 </div>
-                <div>
-                    <a href="#" class="cell-9" title=""><img alt="" src="/frontend/images/blog/test-1.jpg"></a>
-                    <article class="post-content cell-3">
-                        <div class="post-info-container">
-                            <div class="post-info">
-                                <h2><a class="main-color" href="#" title="Bếp Từ Thiện Chùa Linh Quang">Bếp Từ Thiện Chùa Linh Quang</a></h2>
-                                <ul class="post-meta">
-                                    <li class="meta-user">Đăng bởi: <a href="#">Chùa Linh Quang</a> Chuyên mục: <a href="#">Từ Thiện</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p class="text-justify">Nhằm chia sẻ những khó khăn của bệnh nhân tại Bệnh Viện Đa Khoa khu vực Định Quán, gần một năm qua (ngày đầu tiên thực hiện là 20/12 âm lịch năm Giáp Ngọ) chùa Linh Quang đã tổ chức phát cơm và cháo cho bệnh nhân nghèo tại bệnh viện.....</p>
-                        <a class="read-more  main-bg" href="blog-single.html">Đọc tiếp</a>
-                    </article>
-                </div>
-                <div>
-                    <a href="#" class="cell-9" title=""><img alt="" src="/frontend/images/blog/test-1.jpg"></a>
-                    <article class="post-content cell-3">
-                        <div class="post-info-container">
-                            <div class="post-info">
-                                <h2><a class="main-color" href="#" title="Lễ Tặng Qùa Mái Ấm Từ Tâm">Lễ Tặng Qùa Mái Ấm Từ Tâm</a></h2>
-                                <ul class="post-meta">
-                                    <li class="meta-user">Đăng bởi: <a href="#">Chùa Linh Quang</a> Chuyên mục: <a href="#">Từ Thiện</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p>Sau 2 tháng xây dựng, dù mưa gió thất thường nhưng với mong muốn Mái Ấm Từ Tâm sớm được hoàn thành và trao thật sớm cho 3 gia đình có hoàn cảnh khó khăn. Để họ được vào trong ngôi nhà mới, tránh được cái lo, cái ướt của mùa mưa. Sáng ngày 24 tháng 10 năm 2015.....</p>
-                        <a class="read-more  main-bg" href="blog-single.html">Đọc tiếp</a>
-                    </article>
-                </div>
+                
             </div>
+                    
         </div>
-        </div>
+                
         <div class="padd-vertical-30">
       
             <div class="container">
+                
                 <div class="row">
 
                     <div class="cell-9 blog-thumbs">
+                        
+                        <!--Middle East News-->
                         <h3 class="block-head-News">
-                            <span class="icon fa fa-angle-right"></span>
-                            Phật Sự
-                            <a href="#">Xem tất cả <span class="fa fa-plus"></span></a>
-                        </h3>
-                        <div class="blog-posts">
-                            <div class="post-item fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/blog/masonry/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                            <ul class="post-meta">
-                                                <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
                             
-                            <div class="small_news">
-                                <div class="small_items">
-                                    <div class="row">
-                                        <div class="cell-6">
-                                            <div class="post-item fx" data-animate="fadeInLeft">
-                                                <div class="cell-3">
-                                                    <div class="row">
-                                                        <a href="blog-single.html">
-                                                            <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <article class="cell-9">
-                                                    <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
-                                                    <ul class="post-meta">
-                                                        <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                        <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                        <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                    </ul>
-                                                </article>
-                                            </div>
-                                        </div>
-                                        <div class="cell-6">
-                                            <div class="post-item fx" data-animate="fadeInLeft">
-                                                <div class="cell-3">
-                                                    <div class="row">
-                                                        <a href="blog-single.html">
-                                                            <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <article class="cell-9">
-                                                    <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
-                                                    <ul class="post-meta">
-                                                        <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                        <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                        <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                    </ul>
-                                                </article>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="small_items">
-                                    <div class="row">
-                                        <div class="cell-6">
-                                            <div class="post-item fx" data-animate="fadeInLeft">
-                                                <div class="cell-3">
-                                                    <div class="row">
-                                                        <a href="blog-single.html">
-                                                            <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <article class="cell-9">
-                                                    <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
-                                                    <ul class="post-meta">
-                                                        <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                        <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                        <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                    </ul>
-                                                </article>
-                                            </div>
-                                        </div>
-                                        <div class="cell-6">
-                                            <div class="post-item fx" data-animate="fadeInLeft">
-                                                <div class="cell-3">
-                                                    <div class="row">
-                                                        <a href="blog-single.html">
-                                                            <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <article class="cell-9">
-                                                    <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
-                                                    <ul class="post-meta">
-                                                        <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
-                                                        <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
-                                                        <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
-                                                    </ul>
-                                                </article>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
+                            <span class="icon fa fa-angle-right"></span>
+                            
+                            Phật Sự
+                            
+                            <a href="<%= buddhist_news_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
+                        
+                        </h3>
+                        
+                        <div class="blog-posts">
+                            
+                            <%= render "/module/buddhist_news" %>
+                            
                         </div>
 
-                        <!--Middle East  News-->
+                        <!--Middle East News-->
                         <h3 class="block-head-News">
+                            
                             <span class="icon fa fa-angle-right"></span>
+                            
                             Phật pháp
-                            <a href="#">Xem tất cả <span class="fa fa-plus"></span></a>
+                            
+                            <a href="<%= buddhist_book_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
+                        
                         </h3>
 
                         <div class="news-masnory">
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-
-
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
+                            
+                            <%= render "/module/buddhist_book" %>
+                       
                         </div>
 
-                        <!--Middle East  News-->
+                        <!--Middle East News-->
                         <h3 class="block-head-News">
+                            
                             <span class="icon fa fa-angle-right"></span>
+                            
                             Tin tức
-                            <a href="#">Xem tất cả <span class="fa fa-plus"></span></a>
+                            
+                            <a href="<%= news_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
+                        
                         </h3>
 
                         <div class="news-masnory">
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-
-
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
+                            
+                            <%= render "/module/news" %>
+                            
                         </div>
 
-                        <!--Middle East  News-->
+                        <!--Middle East News-->
                         <h3 class="block-head-News">
+                            
                             <span class="icon fa fa-angle-right"></span>
+                            
                             Từ thiện
-                            <a href="#">Xem tất cả <span class="fa fa-plus"></span></a>
+                            
+                            <a href="<%= charity_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
+                        
                         </h3>
 
                         <div class="news-masnory">
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-
-
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
+                            
+                            <%= render "/module/charity" %>
+                            
                         </div>
 
-                        <!--Middle East  News-->
+                        <!--Middle East News-->
                         <h3 class="block-head-News">
+                            
                             <span class="icon fa fa-angle-right"></span>
+                            
                             Văn Hóa
-                            <a href="#">Xem tất cả <span class="fa fa-plus"></span></a>
+                            
+                            <a href="<%= cultural_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
+                            
                         </h3>
 
                         <div class="news-masnory">
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-
-
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
+                            
+                            <%= render "/module/cultural" %>
+                            
                         </div>
 
-                        <!--Middle East  News-->
+                        <!--Middle East News-->
                         <h3 class="block-head-News">
+                            
                             <span class="icon fa fa-angle-right"></span>
+                            
                             GĐPT Linh Quang
-                            <a href="#">Xem tất cả <span class="fa fa-plus"></span></a>
+                            
+                            <a href="<%= buddhist_family_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
+                        
                         </h3>
 
                         <div class="news-masnory">
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-
-
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="cell-4 post fx" data-animate="fadeInLeft">
-                                <div class="post-image">
-                                    <a href="blog-single.html">
-                                        <div class="mask"></div>
-                                        <div class="post-lft-info">
-                                            <div class="main-bg">15<br>Jan<br>2014</div>
-                                        </div>
-                                        <img src="/frontend/images/portfolio/1.jpg" alt="Our Blog post image goes here">
-                                    </a>
-                                </div>
-                                <article class="post-content">
-                                    <div class="post-info-container">
-                                        <div class="post-info">
-                                            <h2><a class="main-color" href="blog-single.html">Blog post title with Image</a></h2>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisierra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate. 
-                                        <a class="read-more" href="blog-single.html">Read more</a>
-                                    </p>
-                                </article>
-                            </div>
+                            
+                            <%= render "/module/buddhist_family" %>
+                            
                         </div>
                         
                         <div class="clearfix"></div>

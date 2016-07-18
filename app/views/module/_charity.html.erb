@@ -1,0 +1,41 @@
+<% Article.home_charity_blogs.each do |item| %>
+
+    <div class="cell-4 post fx" data-animate="fadeInLeft">
+       
+        <div class="post-image">
+          
+            <a href="<%= blog_detail_path(blog_id: item) %>">
+              
+                <div class="mask"></div>
+               
+                <div class="post-lft-info">
+                  
+                    <div class="main-bg"><%= item.created_at.strftime("%d") %><br><%= item.created_at.strftime("%m") %><br><%= item.created_at.strftime("%Y") %></div>
+               
+                </div>
+                
+                <img src="<%= item.image_url.large_image %>" alt="<%= item.title %>">
+       
+            </a>
+       
+        </div>
+       
+        <article class="post-content">
+           
+            <div class="post-info-container">
+                
+                <div class="post-info">
+                    
+                    <h2><%= link_to item.title, blog_detail_path(blog_id: item), class: "main-color", title: item.title %></h2>
+               
+                </div>
+            
+            </div>
+            
+            <p><%= truncate(strip_tags(item.content.html_safe), length: 120) %> </p>
+       
+        </article>
+    
+    </div>
+    
+<% end %>

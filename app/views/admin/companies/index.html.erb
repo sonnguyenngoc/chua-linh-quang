@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold"><%= t(:branch_office) %></span></h4>
+                        <h4><span class="text-semibold">Thông tin chùa</span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_companies_path %>"><%= t(:company) %></a></li>
-                        <li class="active"><%= t(:branch_office) %></li>
+                        <li><a href="<%= admin_companies_path %>">Danh sách chùa</a></li>
+                        <li class="active">Thông tin chùa</li>
                     </ul>
                 </div>
             </div>
@@ -52,9 +52,9 @@
                 <div class="panel panel-flat">
                     
                     <div class="panel-heading col-md-12">
-                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:companies) %></span></h5>
+                        <h5 class="panel-title col-md-6"><span class="text-semibold">Thông tin chùa</span></h5>
                         <% if can?(:create, Company) %>
-                            <%= link_to t(:new_branch), new_admin_company_path, class: 'btn btn-primary pull-right' %>
+                            <%= link_to "Tạo mới thông tin", new_admin_company_path, class: 'btn btn-primary pull-right' %>
                         <% end %>
                     </div>
                     
@@ -62,11 +62,10 @@
                         <thead>
                             <tr class="bg-teal-800">
                                 <th><%= t(:logo) %></th>
-                                <th><%= t(:company_name) %></th>
+                                <th>Tên Chùa</th>
                                 <th><%= t(:phone) %></th>
-                                <th><%= t(:hotline) %></th>
                                 <th><%= t(:email) %></th>
-                                <th><%= t(:created_at) %></th>
+                                <th><%= t(:address) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
@@ -86,9 +85,8 @@
                                     </td>
                                     <td><%= item.name %></td>
                                     <td><%= item.phone %></td>
-                                    <td><%= item.hotline %></td>
                                     <td><%= item.email %></td>
-                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td><%= item.head_office_address %></td>
                                     <td class="text-center">
                                         <% if can?(:update, item) or can?(:delete, item) %>
                                             <ul class="icons-list">
@@ -119,9 +117,9 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @customers %></div>
+                            <div class="dataTables_info" ><%= page_entries_info @companies %></div>
                             <div class="dataTables_paginate paging_simple_numbers">
-                                <%= will_paginate @customers, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                                <%= will_paginate @companies, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                             </div>
                         </div>
                     </div>

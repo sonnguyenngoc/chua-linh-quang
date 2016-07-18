@@ -6,7 +6,7 @@
             <li class="navigation-header"><span></span> <i class="icon-menu"></i></li>
             <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>'.html_safe + t(:dashboard) +'</span>'.html_safe, { controller: "main", action: "index" } %></li>
             
-            <% if can?(:read, Article) or can?(:read, Slideshow) or can?(:read, ArticleCategory) or can?(:read, CodeStatus) %>
+            <% if can?(:read, Article) or can?(:read, ArticleCategory) %>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
                     <ul>
@@ -15,42 +15,22 @@
                                 <%= link_to t(:articles), admin_articles_path %>
                             </li>
                         <% end %>
-                        <% if can? :read, Slideshow %>
-                            <li class="<%= "active" if ["admin/slideshows"].include?(params[:controller]) %>">
-                                <%= link_to t(:slideshows), admin_slideshows_path %>
-                            </li>
-                        <% end %>
                         <% if can? :read, ArticleCategory %>
                             <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
                                 <%= link_to t(:article_categories), admin_article_categories_path %>
-                            </li>
-                        <% end %>
-                        <% if can? :read, CodeStatus %>
-                            <li class="<%= "active" if ["admin/code_statuses"].include?(params[:controller]) %>">
-                                <%= link_to t(:code_statuses), admin_code_statuses_path %>
                             </li>
                         <% end %>
                     </ul>
                 </li>
             <% end %>
             
-            <% if can?(:read, Customer) or can?(:read, Contact) or can?(:read, Newsletter) %>
+            <% if can?(:read, Contact) %>
                 <li>
-                    <a href="#"><i class="icon-people"></i> <span><%= t(:customer) %></span></a>
+                    <a href="#"><i class="icon-people"></i> <span><%= t(:contact) %></span></a>
                     <ul>
-                        <% if can? :read, Customer %>
-                            <li class="<%= "active" if ["admin/customers"].include?(params[:controller]) %>">
-                                <%= link_to t(:customers), admin_customers_path %>
-                            </li>
-                        <% end %>
                         <% if can? :read, Contact %>
                             <li class="<%= "active" if ["admin/contacts"].include?(params[:controller]) %>">
                                 <%= link_to t(:contact), admin_contacts_path %>
-                            </li>
-                        <% end %>
-                        <% if can? :read, Newsletter %>
-                            <li class="<%= "active" if ["admin/newsletters"].include?(params[:controller]) %>">
-                                <%= link_to t(:newsletter), admin_newsletters_path %>
                             </li>
                         <% end %>
                     </ul>
@@ -76,19 +56,20 @@
                 </li>
             
             <% end %>
-            
-            <% if can?(:read, Option) %>
+        
+            <% if can?(:read, Company) %>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-cog"></i> <span><%= t(:settings) %></span></a>
+                    <a href="#"><i class="icon-home"></i> <span>Quản lý thông tin chùa</span></a>
                     <ul>
-                        <% if can? :read, Option %>
-                            <li class="<%= "active" if ["admin/options"].include?(params[:controller]) %>">
-                                <%= link_to t(:options), admin_options_path %>
+                        <% if can? :read, Company %>
+                            <li class="<%= "active" if ["admin/companies"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách chùa", admin_companies_path %>
                             </li>
                         <% end %>
                     </ul>
                 </li>
             <% end %>
+            
         </ul>
     </div>
 </div>

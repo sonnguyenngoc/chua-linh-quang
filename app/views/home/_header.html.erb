@@ -6,10 +6,10 @@
             <div class="row">
                 <div class="cell-11">
                     <ul>
-                        <li><span>CHÙA LINH QUANG</span></li>
-                        <li><span><i class="fa fa-home"></i> Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam</span></li>
-                        <li><span><i class="fa fa-phone"></i> Điện thoại: 0613.629.057</span></li>
-                        <li><a href="mailto:hopthu@chualinhquang.com.vn"><i class="fa fa-envelope"></i>hopthu@chualinhquang.com.vn</a></li>
+                        <li><span><%= Company.get_pagoda_info.name %></span></li>
+                        <li><span><i class="fa fa-home"></i> <%= Company.get_pagoda_info.head_office_address %></span></li>
+                        <li><a href="tel:<%= Company.get_pagoda_info.phone %>"><i class="fa fa-phone"></i> Điện thoại: <%= Company.get_pagoda_info.phone %></a></li>
+                        <li><a href="mailto:<%= Company.get_pagoda_info.email %>"><i class="fa fa-envelope"></i><%= Company.get_pagoda_info.email %></a></li>
                         
                     </ul>
                 </div>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="cell-12">
                     <div class="banner">
-                        <div>Ads here</div>
+                        <div><img src="/frontend/images/banner-vulan.jpg" alt="Banner Chùa Linh Quang"></div>
                     </div>
                 </div>
             </div>

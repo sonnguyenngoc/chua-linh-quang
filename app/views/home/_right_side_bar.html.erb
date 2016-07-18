@@ -1,229 +1,174 @@
 <ul class="sidebar_widgets">
     
     <li class="widget search-w fx" data-animate="fadeInRight">
+        
         <h3 class="widget-head">Tìm kiếm bài viết</h3>
+        
         <div class="widget-content">
+            
             <form>
+               
                 <input type="text" class="txt-box" placeholder="Nhập từ khóa cần tìm..." />
+               
                 <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+          
             </form>
+       
         </div>
+   
     </li>
     
     <li class="widget r-posts-w fx" data-animate="fadeInRight">
+       
         <h3 class="widget-head">Bài viết mới nhất</h3>
+       
         <div class="widget-content">
+           
             <ul>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
+               
+                <% Article.get_lastest_blogs.each do |item| %>
+                   
+                    <li>
+                         
+                         <div class="post-img">
+                                
+                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                                
+                                <img src="<%= item.image_url.square_medium_image %>" alt="">
+                            
                             </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                            
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                       
+                        <div class="widget-post-info">
+                            
+                            <h4>
+                              
+                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                            
+                            </h4>
+                            
+                            <div class="meta">
+                                
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                            
+                            </div>
+                            
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                        </div>
-                    </div>
-                </li>
+                        
+                    </li>
+                
+                <% end %>
+            
             </ul>
+            
         </div>
+        
     </li>
 
     <li class="widget r-posts-w fx" data-animate="fadeInRight">
+        
         <h3 class="widget-head">Phật sự</h3>
+        
         <div class="widget-content">
+            
             <ul>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
+                
+                <% Article.get_lastest_buddhist_news.each do |item| %>
+                    <li>
+                         <div class="post-img">
+                            
+                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                                
+                                <img src="<%= item.image_url.square_medium_image %>" alt="">
+                            
                             </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                            
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                        
+                        <div class="widget-post-info">
+                           
+                            <h4>
+                                
+                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                            
+                            </h4>
+                            
+                            <div class="meta">
+                                
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                            
+                            </div>
+                        
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                        </div>
-                    </div>
-                </li>
+                    
+                    </li>
+                    
+                <% end %>
+                
             </ul>
+            
         </div>
+        
     </li>
 
     <li class="widget r-posts-w fx" data-animate="fadeInRight">
+        
         <h3 class="widget-head">Văn hóa</h3>
+       
         <div class="widget-content">
+            
             <ul>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
+                
+                <% Article.get_lastest_cultural_news.each do |item| %>
+                    
+                    <li>
+                        <div class="post-img">
+                            
+                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                                
+                                <img src="<%= item.image_url.square_medium_image %>" alt="">
+                            
                             </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                            
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                        
+                        <div class="widget-post-info">
+                           
+                            <h4>
+                               
+                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                            
+                            </h4>
+                            
+                            <div class="meta">
+                                
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                            
+                            </div>
+                        
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="post-img">
-                        <img src="/frontend/images/people/1.jpg" alt="">
-                    </div>
-                    <div class="widget-post-info">
-                        <h4>
-                            <a href="blog-single.html">
-                                Blog post title with Image
-                            </a>
-                        </h4>
-                        <div class="meta">
-                            <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                        </div>
-                    </div>
-                </li>
+                    
+                    </li>
+                    
+                <% end %>
+                
             </ul>
+            
         </div>
+        
     </li>
 
     <li class="widget blog-cat-w fx" data-animate="fadeInRight">
         <h3 class="widget-head">Chuyên mục</h3>
         <div class="widget-content">
             <ul class="list list-ok alt">
-                <li><%= link_to "Phật Sự", buddhist_news_path %><span>[0]</span></li>
-                <li><%= link_to "Phật Pháp", buddhist_book_path %><span>[0]</span></li>
-                <li><%= link_to "Tin Tức", news_path %><span>[0]</span></li>
-                <li><%= link_to "Từ Thiện", charity_path %><span>[0]</span></li>
-                <li><%= link_to "Văn Hóa", cultural_path %><span>[0]</span></li>
-                <li><%= link_to "GĐPT Linh Quang", buddhist_family_path %><span>[0]</span></li>
+                <li><%= link_to "Phật Sự", buddhist_news_path %><span>[<%= Article.get_all_buddhist_news.count %>]</span></li>
+                <li><%= link_to "Phật Pháp", buddhist_book_path %><span>[<%= Article.get_all_buddhist_book_blogs.count %>]</span></li>
+                <li><%= link_to "Tin Tức", news_path %><span>[<%= Article.get_all_news.count %>]</span></li>
+                <li><%= link_to "Từ Thiện", charity_path %><span>[<%= Article.get_all_charity_blogs.count %>]</span></li>
+                <li><%= link_to "Văn Hóa", cultural_path %><span>[<%= Article.get_all_cultural_blogs.count %>]</span></li>
+                <li><%= link_to "GĐPT Linh Quang", buddhist_family_path %><span>[<%= Article.get_all_buddhist_family_blogs.count %>]</span></li>
             </ul>
         </div>
     </li>

@@ -1,0 +1,120 @@
+<div class="post-item fx" data-animate="fadeInLeft">
+    <div class="post-image">
+        <a href="<%= blog_detail_path(blog_id: Article.home_buddhist_news_first) %>">
+            <div class="mask"></div>
+            <div class="post-lft-info">
+                <div class="main-bg">
+                    <%= Article.home_buddhist_news_first.created_at.strftime("%d") %><br>
+                        <%= Article.home_buddhist_news_first.created_at.strftime("%m") %><br>
+                            <%= Article.home_buddhist_news_first.created_at.strftime("%Y") %>
+                </div>
+            </div>
+            <img src="<%= Article.home_buddhist_news_first.image_url.medium_image %>" alt="<%= Article.home_buddhist_news_first.title %>">
+        </a>
+    </div>
+    <article class="post-content">
+        <div class="post-info-container">
+            <div class="post-info">
+
+                <h2><%= link_to Article.home_buddhist_news_first.title, blog_detail_path(blog_id: Article.home_buddhist_news_first), class: "main-color", title: Article.home_buddhist_news_first.title %></h2>
+                <ul class="post-meta">
+                    <li class="meta-user"><i class="fa fa-user"></i>Đăng bởi: <a href="#">Chùa Linh Quang</a></li>
+                    <li><i class="fa fa-folder-open"></i>Chuyên mục: <a href="#">Chuyên mục</a></li>
+                    <li class="meta-comments"><i class="fa fa-comments"></i>Bình luận: <a href="<%= blog_detail_path(blog_id: Article.home_buddhist_news_first) %>">5</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-justify">
+            <%= truncate(strip_tags(Article.home_buddhist_news_first.content.html_safe), length: 110) %>
+        </p>
+    </article>
+</div>
+
+<div class="small_news">
+    <div class="small_items">
+        <div class="row">
+            <div class="cell-6">
+                <div class="post-item fx" data-animate="fadeInLeft">
+                    <div class="cell-3">
+                        <div class="row">
+                            <a href="blog-single.html">
+                                <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
+                            </a>
+                        </div>
+                    </div>
+                    <article class="cell-9">
+                        <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
+                        <ul class="post-meta">
+                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
+                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
+                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+            <div class="cell-6">
+                <div class="post-item fx" data-animate="fadeInLeft">
+                    <div class="cell-3">
+                        <div class="row">
+                            <a href="blog-single.html">
+                                <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
+                            </a>
+                        </div>
+                    </div>
+                    <article class="cell-9">
+                        <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
+                        <ul class="post-meta">
+                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
+                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
+                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="small_items">
+        <div class="row">
+            <div class="cell-6">
+                <div class="post-item fx" data-animate="fadeInLeft">
+                    <div class="cell-3">
+                        <div class="row">
+                            <a href="blog-single.html">
+                                <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
+                            </a>
+                        </div>
+                    </div>
+                    <article class="cell-9">
+                        <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
+                        <ul class="post-meta">
+                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
+                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
+                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+            <div class="cell-6">
+                <div class="post-item fx" data-animate="fadeInLeft">
+                    <div class="cell-3">
+                        <div class="row">
+                            <a href="blog-single.html">
+                                <img src="/frontend/images/blog/small/1.jpg" alt="Our Blog post image goes here">
+                            </a>
+                        </div>
+                    </div>
+                    <article class="cell-9">
+                        <h2><a class="main-color" href="blog-single.html">Blog post title with Sound</a></h2>
+                        <ul class="post-meta">
+                            <li class="meta-user"><i class="fa fa-user"></i>By: <a href="#">John Martin</a></li>
+                            <li><i class="fa fa-folder-open"></i>Category: <a href="#">Corporate News</a></li>
+                            <li class="meta-comments"><i class="fa fa-comments"></i>Comments: <a href="blog-single.html">5</a></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

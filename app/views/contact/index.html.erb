@@ -26,41 +26,45 @@
         </div>
         
         <div class="padd-top-50">
+            
             <div class="container">
+                
                 <div class="row">
+                    
                     <div class="cell-7 contact-form fx" data-animate="fadeInLeft" id="contact">
+                        
                         <h3 class="block-head">Gửi lời nhắn</h3>
-                        <mark id="message"></mark>
-                        <form class="form-signin cform">
+                        
+                        <%= form_for @contact, html: {class: "form-signin cform", id: "contact_form_validate"} do |f| %>
                             
                             <div class="form-input">
                                 <label>Họ & Tên<span class="red">*</span></label>
-                                <input type="text" name="name" id="name" required="required">
+                                <%= f.text_field :name, class: "required" %>
                             </div>
                             
                             <div class="form-input">
                                 <label>Phone<span class="red">*</span></label>
-                                <input name="phone" type="text" id="phone">			    						
+                                <%= f.text_field :phone, class: "required" %>				
                             </div>
                             
                             <div class="form-input">
-                                <label>Email</label>
-                                <input name="email" type="email" id="email" required="required">
+                                <label>Email<span class="red">*</span></label>
+                                <%= f.email_field :email, class: "required email" %>
                             </div>
                             
                             <div class="form-input">
                                 <label>Địa chỉ</label>
-                                <input type="text" name="name" id="name" required="required">
+                                <%= f.text_field :address %>
                             </div>
                             
                             <div class="form-input">
                                 <label>Đơn vị</label>
-                                <input type="text" name="name" id="name" required="required">
+                                <%= f.text_field :unit %>
                             </div>
                             
                             <div class="form-input">
                                 <label>Lời nhắn<span class="red">*</span></label>
-                                <textarea name="message" cols="40" rows="7" id="messageTxt" required="required"></textarea>
+                                <%= f.text_area :message, rows: '7', class: "required" %>
                             </div>
                             
                             <div  class="form-input">
@@ -70,20 +74,21 @@
                             </div>
                             
                             <div class="form-input">
-                                <input id="submit" name="submit" type="submit" class="btn btn-large main-bg" value="Submit">&nbsp;&nbsp;<input type="reset" class="btn btn-large" value="Nhập lại" id="reset">
+                                <button type="submit" class="btn btn-large main-bg"><i class="fa fa-paper-plane"></i> Gửi lời nhắn</button>&nbsp;&nbsp;<input type="reset" class="btn btn-large" value="Nhập lại" id="reset">
                             </div>
 
-                        </form>
+                        <% end %>
                     </div>
+                    
                     <div class="cell-5 contact-detalis">
                         <h3 class="block-head">Thông tin liên hệ</h3>
                         <div class="padding-vertical">
                             <div class="cell-12 fx" data-animate="fadeInRight">
-                                <h4 class="main-color bold">CHÙA LINH QUANG</h4>
-                                <p><i class="fa fa-home"></i>  Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam</p>
-                                <p><i class="fa fa-phone"></i>  0613 629 057</p>
-                                <p><i class="fa fa-envelope"></i>  <a href="mailto:hopthu@chualinhquang.com.vn">hopthu@chualinhquang.com.vn</a></p>
-                                <p><i class="fa fa-globe"></i>  <a>http://chualinhquang.com.vn/</a></p>
+                                <h4 class="main-color bold"><%= @info.name %></h4>
+                                <p><i class="fa fa-home"></i>  <%= @info.head_office_address %></p>
+                                <p><i class="fa fa-phone"></i>  <%= @info.phone %></p>
+                                <p><i class="fa fa-envelope"></i>  <a href="mailto:<%= @info.email %>"><%= @info.email %></a></p>
+                                <p><i class="fa fa-globe"></i>  http://chualinhquang.com.vn/</p>
                             </div>
                         </div>
                     </div>
@@ -101,7 +106,7 @@
                             mapTypeId: google.maps.MapTypeId.ROADMAP};
                             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
                             marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(11.213999, 107.425795)});
-                            infowindow = new google.maps.InfoWindow({content:"<div class='noScroll'><h3>Chùa Linh Quang</h3>Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam<br/><br/>Điện thoại: 0613 629 057<br/><br/><a href='mailto:hopthu@chualinhquang.com.vn'>hopthu@chualinhquang.com.vn</a></div>" });
+                            infowindow = new google.maps.InfoWindow({content:"<div class='noScroll'><h3><%= @info.name %></h3><%= @info.head_office_address %><br/><br/>Điện thoại: <%= @info.phone %><br/><br/><a href='mailto:<%= @info.email %>'><%= @info.email %></a></div>" });
                             google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});
                             infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
                     </script>
@@ -120,18 +125,12 @@
 
 </div>
 
-<div class="ModalPopUp">
-    <div class="ModalContainer">
-        <div class="Modalheader">
-            <h3></h3>
-            <a href="#" class="closePopup"><span class="fa fa-times"></span></a>
-        </div>
-        <div class="ModalContent">
-        </div>
-    </div>
-</div>
-
 <%= render "/home/js_files" %>
 
 <!-- Contact us js file -->
-<script type="text/javascript" src="js/contact.js"></script>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+<script>
+    $(document).ready(function(){
+        $("#contact_form_validate").validate();
+    });
+</script>

@@ -40,14 +40,14 @@
                 <!-- Useful Links footer cell start -->
                 <!-- contact us footer cell start -->
                 <div class="cell-3">
-                    <h3 class="block-head">CHÙA LINH QUANG</h3>
+                    <h3 class="block-head"><%= Company.get_pagoda_info.name %></h3>
                     <ul>
-                        <li class="footer-contact"><i class="fa fa-home"></i><span>Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam</span></li>
-                        <li class="footer-contact"><i class="fa fa-phone"></i><span>0613 629 057</span></li>
+                        <li class="footer-contact"><i class="fa fa-home"></i><span><%= Company.get_pagoda_info.head_office_address %></span></li>
+                        <li class="footer-contact"><i class="fa fa-phone"></i><span><%= Company.get_pagoda_info.phone %></span></li>
                         <li class="footer-contact">
                             <i class="fa fa-envelope"></i><span>
-                                <a href="mailto:hopthu@chualinhquang.com.vn">
-                                    hopthu@chualinhquang.com.vn
+                                <a href="mailto:<%= Company.get_pagoda_info.email %>">
+                                    <%= Company.get_pagoda_info.email %>
                                 </a>
                             </span>
                         </li>
@@ -69,7 +69,7 @@
                 
                 <!-- footer copyrights Center cell -->
                 <div class="copyrights-center cell-12">
-                &copy; Copyrights <b>Chùa Linh Quang</b> 2016. All rights reserved.
+                &copy; Copyrights <b><%= Company.get_pagoda_info.name %></b> 2016. All rights reserved.
                     <ul class="footer-menu-center">
                         <li><%= link_to "Trang chủ", home_path %></li>
                         <li><%= link_to "Phật Sự", buddhist_news_path %></li>
