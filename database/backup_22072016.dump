@@ -1,0 +1,3295 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: areas; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE areas (
+    id integer NOT NULL,
+    name character varying,
+    level integer,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    parent_id integer,
+    areatype_id integer,
+    display_order integer
+);
+
+
+ALTER TABLE areas OWNER TO nguyenngocson0811;
+
+--
+-- Name: areas_articles; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE areas_articles (
+    id integer NOT NULL,
+    area_id integer,
+    article_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE areas_articles OWNER TO nguyenngocson0811;
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE areas_articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE areas_articles_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE areas_articles_id_seq OWNED BY areas_articles.id;
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE areas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE areas_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE areas_id_seq OWNED BY areas.id;
+
+
+--
+-- Name: areas_products; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE areas_products (
+    id integer NOT NULL,
+    area_id integer,
+    product_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE areas_products OWNER TO nguyenngocson0811;
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE areas_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE areas_products_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE areas_products_id_seq OWNED BY areas_products.id;
+
+
+--
+-- Name: article_categories; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE article_categories (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    level integer,
+    meta_keywords character varying,
+    meta_description text
+);
+
+
+ALTER TABLE article_categories OWNER TO nguyenngocson0811;
+
+--
+-- Name: article_categories_articles; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE article_categories_articles (
+    id integer NOT NULL,
+    article_id integer,
+    article_category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE article_categories_articles OWNER TO nguyenngocson0811;
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE article_categories_articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE article_categories_articles_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE article_categories_articles_id_seq OWNED BY article_categories_articles.id;
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE article_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE article_categories_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE article_categories_id_seq OWNED BY article_categories.id;
+
+
+--
+-- Name: articles; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE articles (
+    id integer NOT NULL,
+    image_url character varying,
+    title character varying,
+    content text,
+    tags character varying,
+    article_category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    code_status_id integer,
+    meta_keywords character varying,
+    meta_description text,
+    is_show boolean DEFAULT false,
+    page_layout character varying,
+    user_id integer,
+    approved boolean DEFAULT false,
+    image_url_full_width character varying
+);
+
+
+ALTER TABLE articles OWNER TO nguyenngocson0811;
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE articles_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
+
+
+--
+-- Name: articles_products; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE articles_products (
+    id integer NOT NULL,
+    article_id integer,
+    product_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE articles_products OWNER TO nguyenngocson0811;
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE articles_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE articles_products_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE articles_products_id_seq OWNED BY articles_products.id;
+
+
+--
+-- Name: carts; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE carts (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    voucher_code character varying,
+    coupon_code character varying
+);
+
+
+ALTER TABLE carts OWNER TO nguyenngocson0811;
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE carts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE carts_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE carts_id_seq OWNED BY carts.id;
+
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE categories (
+    id integer NOT NULL,
+    name character varying,
+    level integer,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    ordered integer,
+    meta_keywords character varying,
+    meta_description text
+);
+
+
+ALTER TABLE categories OWNER TO nguyenngocson0811;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE categories_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
+
+
+--
+-- Name: categories_products; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE categories_products (
+    id integer NOT NULL,
+    product_id integer,
+    category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE categories_products OWNER TO nguyenngocson0811;
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE categories_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE categories_products_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE categories_products_id_seq OWNED BY categories_products.id;
+
+
+--
+-- Name: code_statuses; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE code_statuses (
+    id integer NOT NULL,
+    title character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE code_statuses OWNER TO nguyenngocson0811;
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE code_statuses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE code_statuses_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE code_statuses_id_seq OWNED BY code_statuses.id;
+
+
+--
+-- Name: comment_articles; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE comment_articles (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    content text,
+    user_id integer,
+    article_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    parent_id integer DEFAULT '-1'::integer
+);
+
+
+ALTER TABLE comment_articles OWNER TO nguyenngocson0811;
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE comment_articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE comment_articles_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE comment_articles_id_seq OWNED BY comment_articles.id;
+
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE comments (
+    id integer NOT NULL,
+    product_id integer,
+    name character varying,
+    content text,
+    star integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE comments OWNER TO nguyenngocson0811;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE comments_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+
+
+--
+-- Name: companies; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE companies (
+    id integer NOT NULL,
+    image_url character varying,
+    name character varying,
+    head_office_address character varying,
+    certificate_no character varying,
+    date_of_issue timestamp without time zone,
+    sales_office_address character varying,
+    phone character varying,
+    hotline character varying,
+    email character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    head_area_id integer,
+    branch_area_id integer,
+    type_company character varying
+);
+
+
+ALTER TABLE companies OWNER TO nguyenngocson0811;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE companies_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
+
+
+--
+-- Name: compares; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE compares (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE compares OWNER TO nguyenngocson0811;
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE compares_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE compares_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE compares_id_seq OWNED BY compares.id;
+
+
+--
+-- Name: contacts; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE contacts (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    message text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer,
+    phone character varying,
+    unit character varying,
+    address character varying
+);
+
+
+ALTER TABLE contacts OWNER TO nguyenngocson0811;
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE contacts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE contacts_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
+
+
+--
+-- Name: conversations; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE conversations (
+    id integer NOT NULL,
+    sender_id integer,
+    recipient_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE conversations OWNER TO nguyenngocson0811;
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE conversations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE conversations_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE conversations_id_seq OWNED BY conversations.id;
+
+
+--
+-- Name: coupons; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE coupons (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    from_date timestamp without time zone,
+    to_date timestamp without time zone,
+    description text,
+    quantity integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    price numeric
+);
+
+
+ALTER TABLE coupons OWNER TO nguyenngocson0811;
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE coupons_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE coupons_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE coupons_id_seq OWNED BY coupons.id;
+
+
+--
+-- Name: customers; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE customers (
+    id integer NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    email character varying,
+    phone character varying,
+    company character varying,
+    address character varying,
+    city character varying,
+    zip_code integer,
+    country character varying,
+    province character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    order_id integer,
+    area_id integer
+);
+
+
+ALTER TABLE customers OWNER TO nguyenngocson0811;
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE customers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE customers_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE customers_id_seq OWNED BY customers.id;
+
+
+--
+-- Name: delivery_methods; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE delivery_methods (
+    id integer NOT NULL,
+    title character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE delivery_methods OWNER TO nguyenngocson0811;
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE delivery_methods_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE delivery_methods_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE delivery_methods_id_seq OWNED BY delivery_methods.id;
+
+
+--
+-- Name: feedbacks; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE feedbacks (
+    id integer NOT NULL,
+    email character varying,
+    content text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE feedbacks OWNER TO nguyenngocson0811;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE feedbacks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE feedbacks_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE feedbacks_id_seq OWNED BY feedbacks.id;
+
+
+--
+-- Name: line_item_compares; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE line_item_compares (
+    id integer NOT NULL,
+    product_id integer,
+    compare_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE line_item_compares OWNER TO nguyenngocson0811;
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE line_item_compares_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE line_item_compares_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE line_item_compares_id_seq OWNED BY line_item_compares.id;
+
+
+--
+-- Name: line_items; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE line_items (
+    id integer NOT NULL,
+    product_id integer,
+    cart_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    quantity integer DEFAULT 1
+);
+
+
+ALTER TABLE line_items OWNER TO nguyenngocson0811;
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE line_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE line_items_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE line_items_id_seq OWNED BY line_items.id;
+
+
+--
+-- Name: manufacturers; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE manufacturers (
+    id integer NOT NULL,
+    image_url character varying,
+    name character varying,
+    address character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE manufacturers OWNER TO nguyenngocson0811;
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE manufacturers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE manufacturers_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE manufacturers_id_seq OWNED BY manufacturers.id;
+
+
+--
+-- Name: messages; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE messages (
+    id integer NOT NULL,
+    body text,
+    conversation_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    seen timestamp without time zone
+);
+
+
+ALTER TABLE messages OWNER TO nguyenngocson0811;
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE messages_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
+
+
+--
+-- Name: newsletters; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE newsletters (
+    id integer NOT NULL,
+    email character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    status boolean DEFAULT true,
+    user_id integer
+);
+
+
+ALTER TABLE newsletters OWNER TO nguyenngocson0811;
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE newsletters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE newsletters_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE newsletters_id_seq OWNED BY newsletters.id;
+
+
+--
+-- Name: options; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE options (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    code character varying,
+    tag character varying,
+    value text,
+    note text,
+    title character varying,
+    accept_email boolean DEFAULT false
+);
+
+
+ALTER TABLE options OWNER TO nguyenngocson0811;
+
+--
+-- Name: options_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE options_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE options_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: options_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE options_id_seq OWNED BY options.id;
+
+
+--
+-- Name: order_deliveries; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE order_deliveries (
+    id integer NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    company character varying,
+    address character varying,
+    city character varying,
+    zip_code integer,
+    country character varying,
+    province character varying,
+    delivery_method_id integer,
+    payment_method_id integer,
+    message text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    order_id integer,
+    email character varying,
+    phone character varying
+);
+
+
+ALTER TABLE order_deliveries OWNER TO nguyenngocson0811;
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE order_deliveries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE order_deliveries_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE order_deliveries_id_seq OWNED BY order_deliveries.id;
+
+
+--
+-- Name: order_details; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE order_details (
+    id integer NOT NULL,
+    order_id integer,
+    product_id integer,
+    quantity integer,
+    price numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    product_name character varying
+);
+
+
+ALTER TABLE order_details OWNER TO nguyenngocson0811;
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE order_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE order_details_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE order_details_id_seq OWNED BY order_details.id;
+
+
+--
+-- Name: orders; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE orders (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer,
+    status character varying DEFAULT 'Pending'::character varying,
+    different_delivery boolean DEFAULT false,
+    voucher_code character varying,
+    voucher_price numeric,
+    coupon_code character varying,
+    coupon_price numeric
+);
+
+
+ALTER TABLE orders OWNER TO nguyenngocson0811;
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE orders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE orders_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE orders_id_seq OWNED BY orders.id;
+
+
+--
+-- Name: parent_article_categories; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE parent_article_categories (
+    id integer NOT NULL,
+    parent_id integer,
+    article_category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE parent_article_categories OWNER TO nguyenngocson0811;
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE parent_article_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE parent_article_categories_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE parent_article_categories_id_seq OWNED BY parent_article_categories.id;
+
+
+--
+-- Name: parent_categories; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE parent_categories (
+    id integer NOT NULL,
+    parent_id integer,
+    category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE parent_categories OWNER TO nguyenngocson0811;
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE parent_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE parent_categories_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE parent_categories_id_seq OWNED BY parent_categories.id;
+
+
+--
+-- Name: payment_methods; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE payment_methods (
+    id integer NOT NULL,
+    title character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE payment_methods OWNER TO nguyenngocson0811;
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE payment_methods_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE payment_methods_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE payment_methods_id_seq OWNED BY payment_methods.id;
+
+
+--
+-- Name: product_images; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE product_images (
+    id integer NOT NULL,
+    product_id integer,
+    image_url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    is_main character varying DEFAULT 'False'::character varying
+);
+
+
+ALTER TABLE product_images OWNER TO nguyenngocson0811;
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE product_images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE product_images_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE product_images_id_seq OWNED BY product_images.id;
+
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE products (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    quantity numeric,
+    unit character varying,
+    price numeric,
+    short_description text,
+    description text,
+    manufacturer_id integer,
+    product_image_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    tags character varying,
+    status text,
+    old_price numeric,
+    discount_percent numeric,
+    meta_keywords character varying,
+    meta_description text,
+    is_show boolean DEFAULT false,
+    stock integer DEFAULT 1,
+    approved boolean DEFAULT false,
+    user_id integer
+);
+
+
+ALTER TABLE products OWNER TO nguyenngocson0811;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE products_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE products_id_seq OWNED BY products.id;
+
+
+--
+-- Name: questions; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE questions (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    content text,
+    product_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE questions OWNER TO nguyenngocson0811;
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE questions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE questions_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO nguyenngocson0811;
+
+--
+-- Name: slideshows; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE slideshows (
+    id integer NOT NULL,
+    image_url character varying,
+    title_1 character varying,
+    title_2 character varying,
+    name_button character varying,
+    link character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    color_1 character varying,
+    color_2 character varying,
+    style character varying
+);
+
+
+ALTER TABLE slideshows OWNER TO nguyenngocson0811;
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE slideshows_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE slideshows_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE slideshows_id_seq OWNED BY slideshows.id;
+
+
+--
+-- Name: testimonials; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE testimonials (
+    id integer NOT NULL,
+    name character varying,
+    city character varying,
+    email character varying,
+    content character varying,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE testimonials OWNER TO nguyenngocson0811;
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE testimonials_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE testimonials_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE testimonials_id_seq OWNED BY testimonials.id;
+
+
+--
+-- Name: user_groups; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE user_groups (
+    id integer NOT NULL,
+    name character varying,
+    permission text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE user_groups OWNER TO nguyenngocson0811;
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_groups_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE user_groups_id_seq OWNED BY user_groups.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip text,
+    last_sign_in_ip text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    phone character varying,
+    fax integer,
+    company character varying,
+    address_1 character varying,
+    address_2 character varying,
+    zip_code integer,
+    country character varying,
+    province character varying,
+    city character varying,
+    provider character varying,
+    uid character varying,
+    password_reset_token character varying,
+    password_reset_sent_at timestamp without time zone,
+    oauth_token character varying,
+    oauth_expires_at timestamp without time zone,
+    last_seen timestamp without time zone,
+    is_admin boolean DEFAULT false,
+    area_id integer,
+    role character varying,
+    user_group_id integer
+);
+
+
+ALTER TABLE users OWNER TO nguyenngocson0811;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: vouchers; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE vouchers (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    from_date timestamp without time zone,
+    to_date timestamp without time zone,
+    description text,
+    quantity integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    price numeric
+);
+
+
+ALTER TABLE vouchers OWNER TO nguyenngocson0811;
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE vouchers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE vouchers_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE vouchers_id_seq OWNED BY vouchers.id;
+
+
+--
+-- Name: wish_lists; Type: TABLE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE TABLE wish_lists (
+    id integer NOT NULL,
+    product_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE wish_lists OWNER TO nguyenngocson0811;
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE SEQUENCE wish_lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE wish_lists_id_seq OWNER TO nguyenngocson0811;
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER SEQUENCE wish_lists_id_seq OWNED BY wish_lists.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY areas ALTER COLUMN id SET DEFAULT nextval('areas_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY areas_articles ALTER COLUMN id SET DEFAULT nextval('areas_articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY areas_products ALTER COLUMN id SET DEFAULT nextval('areas_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY article_categories ALTER COLUMN id SET DEFAULT nextval('article_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY article_categories_articles ALTER COLUMN id SET DEFAULT nextval('article_categories_articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY articles_products ALTER COLUMN id SET DEFAULT nextval('articles_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY carts ALTER COLUMN id SET DEFAULT nextval('carts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY categories_products ALTER COLUMN id SET DEFAULT nextval('categories_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY code_statuses ALTER COLUMN id SET DEFAULT nextval('code_statuses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY comment_articles ALTER COLUMN id SET DEFAULT nextval('comment_articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY compares ALTER COLUMN id SET DEFAULT nextval('compares_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY coupons ALTER COLUMN id SET DEFAULT nextval('coupons_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY customers ALTER COLUMN id SET DEFAULT nextval('customers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY delivery_methods ALTER COLUMN id SET DEFAULT nextval('delivery_methods_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY feedbacks ALTER COLUMN id SET DEFAULT nextval('feedbacks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_item_compares ALTER COLUMN id SET DEFAULT nextval('line_item_compares_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_items ALTER COLUMN id SET DEFAULT nextval('line_items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY manufacturers ALTER COLUMN id SET DEFAULT nextval('manufacturers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY newsletters ALTER COLUMN id SET DEFAULT nextval('newsletters_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY options ALTER COLUMN id SET DEFAULT nextval('options_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY order_deliveries ALTER COLUMN id SET DEFAULT nextval('order_deliveries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY order_details ALTER COLUMN id SET DEFAULT nextval('order_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY orders ALTER COLUMN id SET DEFAULT nextval('orders_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY parent_article_categories ALTER COLUMN id SET DEFAULT nextval('parent_article_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY parent_categories ALTER COLUMN id SET DEFAULT nextval('parent_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY payment_methods ALTER COLUMN id SET DEFAULT nextval('payment_methods_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY product_images ALTER COLUMN id SET DEFAULT nextval('product_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY slideshows ALTER COLUMN id SET DEFAULT nextval('slideshows_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY testimonials ALTER COLUMN id SET DEFAULT nextval('testimonials_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY user_groups ALTER COLUMN id SET DEFAULT nextval('user_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY vouchers ALTER COLUMN id SET DEFAULT nextval('vouchers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY wish_lists ALTER COLUMN id SET DEFAULT nextval('wish_lists_id_seq'::regclass);
+
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas (id, name, level, description, created_at, updated_at, parent_id, areatype_id, display_order) FROM stdin;
+\.
+
+
+--
+-- Data for Name: areas_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas_articles (id, area_id, article_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_articles_id_seq', 1, false);
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_id_seq', 1, false);
+
+
+--
+-- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY article_categories (id, name, description, created_at, updated_at, level, meta_keywords, meta_description) FROM stdin;
+2	Phật Sự		2016-06-17 15:14:09.956308	2016-06-17 15:14:12.208381	1	\N	\N
+3	Phật Pháp		2016-06-17 15:14:20.447279	2016-06-17 15:14:23.008087	1	\N	\N
+4	Tin Tức		2016-06-17 15:14:29.443752	2016-06-17 15:14:31.585705	1	\N	\N
+5	Từ Thiện		2016-06-17 15:14:39.99739	2016-06-17 15:14:41.911437	1	\N	\N
+6	Văn Hóa		2016-06-17 15:14:48.881667	2016-06-17 15:14:51.066465	1	\N	\N
+7	GĐPT Linh Quang		2016-06-17 15:14:59.115138	2016-06-17 15:15:01.535684	1	\N	\N
+8	Bước Đầu Học Phật		2016-06-17 15:15:18.454013	2016-06-17 15:15:21.258235	2	\N	\N
+9	Giáo Pháp		2016-06-17 15:15:44.259622	2016-06-17 15:15:46.876	2	\N	\N
+10	Tịnh Độ Tông		2016-06-17 15:15:59.191863	2016-06-17 15:16:01.894676	2	\N	\N
+11	Thiền Tông		2016-06-17 15:16:12.339583	2016-06-17 15:16:14.465206	2	\N	\N
+12	Mật Tông		2016-06-17 15:16:24.545682	2016-06-17 15:16:28.444815	2	\N	\N
+13	Góp Nhặt Cát Đá		2016-06-17 15:17:12.891561	2016-06-17 15:17:15.89402	2	\N	\N
+14	Văn Học - Nghệ Thuật		2016-06-17 15:17:30.382568	2016-06-17 15:17:32.827321	2	\N	\N
+\.
+
+
+--
+-- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY article_categories_articles (id, article_id, article_category_id, created_at, updated_at) FROM stdin;
+8	6	6	2016-06-20 03:35:00.506967	2016-06-20 03:35:00.506967
+9	6	13	2016-06-20 03:35:00.511772	2016-06-20 03:35:00.511772
+10	5	6	2016-06-20 03:35:12.818709	2016-06-20 03:35:12.818709
+11	5	14	2016-06-20 03:35:12.823699	2016-06-20 03:35:12.823699
+12	7	6	2016-06-20 03:45:47.417788	2016-06-20 03:45:47.417788
+13	7	13	2016-06-20 03:45:47.425382	2016-06-20 03:45:47.425382
+16	8	6	2016-06-20 03:48:07.835184	2016-06-20 03:48:07.835184
+17	8	13	2016-06-20 03:48:07.840822	2016-06-20 03:48:07.840822
+18	9	5	2016-06-20 04:14:09.945771	2016-06-20 04:14:09.945771
+19	10	7	2016-06-20 04:31:32.686737	2016-06-20 04:31:32.686737
+22	11	7	2016-06-20 06:17:40.309	2016-06-20 06:17:40.309
+24	12	4	2016-06-20 06:32:09.225355	2016-06-20 06:32:09.225355
+25	13	2	2016-06-20 07:19:21.820515	2016-06-20 07:19:21.820515
+26	14	3	2016-06-20 08:22:36.602387	2016-06-20 08:22:36.602387
+27	14	9	2016-06-20 08:22:36.610661	2016-06-20 08:22:36.610661
+32	15	3	2016-06-20 08:29:33.624281	2016-06-20 08:29:33.624281
+33	15	10	2016-06-20 08:29:33.641075	2016-06-20 08:29:33.641075
+38	16	3	2016-06-20 08:33:48.156204	2016-06-20 08:33:48.156204
+39	16	11	2016-06-20 08:33:48.176131	2016-06-20 08:33:48.176131
+40	17	3	2016-06-20 08:35:08.046782	2016-06-20 08:35:08.046782
+41	17	11	2016-06-20 08:35:08.054865	2016-06-20 08:35:08.054865
+42	18	2	2016-06-20 09:42:39.83081	2016-06-20 09:42:39.83081
+43	19	2	2016-06-20 09:44:03.330744	2016-06-20 09:44:03.330744
+45	21	2	2016-06-20 09:49:29.124403	2016-06-20 09:49:29.124403
+50	22	2	2016-06-20 15:33:41.676278	2016-06-20 15:33:41.676278
+\.
+
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('article_categories_articles_id_seq', 50, true);
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('article_categories_id_seq', 14, true);
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY articles (id, image_url, title, content, tags, article_category_id, created_at, updated_at, code_status_id, meta_keywords, meta_description, is_show, page_layout, user_id, approved, image_url_full_width) FROM stdin;
+6	6647b2cd-d091-4133-90c3-c685b4c26044.jpg	Một tách trà	<p><span><em>Nan-In, một thiền sư Nhật vào thời Minh - Trị (1868- 1912), tiếp một vị giáo sư đại học đến tham vấn về Thiền. Nan-In đãi trà. Ngài chế một cốc đầy và vẫn tiếp tục rót. Vị giáo sư nhìn cốc nước tràn cho đến khi không nhịn được, bèn lên tiếng: "Nó đã đầy tràn rồi, không thêm được nữa đâu!"</em></span></p>\r\n<p><span><em>"Thì cũng như chiếc cốc này" Nan-In thong thả nói, "ông đã mang đầy tư kiến và thành kiến. Làm sao tôi có thể chỉ cho ông về Thiền nếu ông không cạn cốc của ông?" </em></span></p>\r\n<p><span><span><em>(Trích </em><strong>101 câu chuyện thiền<em>  </em></strong><em>- c</em><em>âu chuyện thứ nhất )</em></span></span></p>	\N	\N	2016-06-20 03:34:13.624387	2016-06-20 03:34:24.989936	\N	\N	\N	t	\N	1	t	\N
+5	Hinh-duc-phat-dan-sanh.jpg	THƠ - Rưng Rưng Phật Đản	<p align="center"><span>1. Niềm vui Phật đản rưng rưng </span><br /><span>Em ơi! Nắng mới, lá rừng hóa xanh </span><br /><span>Đạo đơm sắc áo thị thành </span><br /><span>Con trăng cánh mỏng long lanh vườn chùa </span><br /><span>Em ơi! Phật đến từ xưa </span><br /><span>Sen vàng bảy bước, nụ vừa mãn khai </span><br /><span>Con sâu, chú bướm ngủ vùi </span><br /><span>Thò tay vỡ kén, nói cười tung tăng </span><br /><span>Xôn xao giọt nước sông Hằng </span><br /><span>Cổ thành Xá Vệ nói năng dịu dàng</span><br /><span>Em ơi! Lệnh mẫu cao sang</span><br /><span>Vin sala – nở dung nhan tuyệt trần</span></p>\r\n<p align="center"><span>2. Em ơi! Khổ đế bao lần</span><br /><span>Dòng sông sinh tử tần ngần đứng xem</span><br /><span>Sương vui rỏ lệ bên thềm</span><br /><span>Lá vui phe phẩy tình đêm, tình ngày</span><br /><span>Con chim lạ hót đồi mây</span><br /><span>Thang âm vi diệu lay bay nghìn trùng</span><br /><span>Em ơi! Phật đản rưng rưng</span><br /><span>Chiếc thuyền mật độ thủy chung bến bờ</span><br /><span>Qua sông trăng viết bài thơ</span><br /><span>Sạch không cát bụi còn ngờ chiêm bao</span><br /><span>Con tim chợt lặng ba đào</span><br /><span>Ngu ngơ khối óc non cao sụt sùi</span><br /><span>Khe sâu đá nói, hoa cười</span><br /><span>Hạt sim, hạt móc tươi vui bộn bàng</span><br /><span>Lau bồng, cỏ rối lang thang</span><br /><span>Cõi đìu hiu, cõi gió ngàn lênh đênh</span></p>\r\n<p align="center"><span>3. Phật từ sa mạc hóa xanh</span><br /><span>Tin yêu hạt cải bỗng thành Tu di</span><br /><span>Em ơi! Mộng ước còn đi</span><br /><span>Bèo rong thi thiết, hữu vi buồn phiền</span><br /><span>Em ơi! Xuôi ngược đảo điên</span><br /><span>Đốt đau hỏa ngục sáu miền tương lai</span><br /><span>Cây vừa tỉnh mộng liêu trai</span><br /><span>Nứt từ kẽ lá, vươn vai mấy lần</span><br /><span>Có ai phủi nhẹ phù vân</span><br /><span>Có ai bóng nhỏ gót chân bụi hồng</span><br /><span>Lắt lay cỏ rạ bên đồng</span><br /><span>Lửa trời thiêu đốt, sắc không nhọc nhằn</span></p>\r\n<p align="center"><span>4. Em ơi! Từ nỗi vi trần</span><br /><span>Loay hoay diện mục chẳng gần, chẳng xa</span><br /><span>Phật từ đất mẹ bước ra</span><br /><span>Cảo thơm vô lượng, châu sa rạng ngời</span><br /><span>Ai nghe “không lặng” ba đời</span><br /><span>Ai nghe nhựa sống mọc chồi, đơm bông</span><br /><span>Rưng rưng nghiệp mệnh hai dòng</span><br /><span>Ngôn từ rơi vỡ, phiêu bồng về đâu</span><br /><span>Mắt xanh, mở cửa thiên thâu </span><br /><span>Khúc hòa ca, nối nhịp cầu yêu thương</span><br /><span>Rơi đọng kinh, rơi đọng hương</span><br /><span>Trang nghiêm lừng lững, chân thường hóa thơ!</span></p>\r\n<p align="center"><span><span id="ZoomContentBody" class="ctcBody"><strong>Minh Đức- Triều Tâm ảnh</strong></span></span></p>\r\n<p align="center"><span>Nguồn : Giacngo.vn</span></p>	\N	\N	2016-06-17 16:13:26.242191	2016-06-17 17:01:38.897549	\N	\N	\N	t	\N	1	t	\N
+7	phat-hien-moi-ve-kim-cuong-2.jpg	Tìm thấy viên ngọc trên đường bùn	<p><span><em>Gudo tuy là quốc sư, nhưng ngài vẫn hay du hành như một kẻ khất sĩ lang thang. Một hôm trên đường đi Edo, một trung tâm văn hóa và chính trị quan trọng, ngài đến gần một ngôi làng có tên là Takenaka. Trời đã tối và mưa tầm tả, Gudo ướt mẹp và đôi dép rơm đã tơi tả. - một căn nhà tranh gần làng, ngài thấy có khoảng bốn hay năm đôi dép bày ở cửa sồ và muốn vào hỏi mua một đôi. Người đàn bà thấy ngài ướt lạnh, thương tình mời ngài trú qua đêm. Gudo nhận lời và cám tạ bà ta. Ngài đến trước bàn thờ giữa nhà tụng một thời kinh. Sau đó bà mẹ của bà chủ và bầy con ra chào. Nhìn thấy cả nhà buồn bả, ngài hỏi cớ sự. "Chồng con là kẻ cờ bạc say sưa", người đàn bà kể lể. "Khi ổng ăn bạc thì uống rượu say mèm rồi về nhà đánh đập vợ con. Nếu ổng thua thì đi vay mượn khắp nơi. Lắm khi say quá lại không về nhà. Con phải làm sao?"</em></span></p>\r\n<p><span><em>"Ðể bần tăng giúp cho," Gudo nói. "Ðây có ít tiền, hãy đi mua một chung rượu ngon và ít đồ nhấm. Rồi bà đi nghỉ đi. Bần tăng sẽ tọa thiền trước bàn thờ." Nữa đêm, ông chồng say khướt trở về, la lối om xòm. "Con mẹ nó đâu, tao về nhà đây này. Có cái gì ăn không?"</em></span></p>\r\n<p><span><em>"Có" Gudo nói, "Bần tăng bị mắc mưa và được bà nhà thương tâm cho tạm trú qua đêm. Ðể đền đáp bần tăng có mua một ít rượu và đồ nhấm dành cho ông dùng."</em></span></p>\r\n<p><span><em>Gã đàn ông hài lòng, uống sạch chung rượu rồi ngã lăn trên sàn mà ngủ. Gudo tọa thiền cạnh bên. Sáng sớm hôm sau, gã đàn ông tỉnh dậy quên hẳn mọi chuyện đêm qua.</em></span></p>\r\n<p><span><em>"Ông là ai? - đâu đến đây?" gã hỏi Gudo khi ngài vẫn còn trầm tư mặc tưởng. "Bần tăng là Gudo từ Ðông Kinh đến, trên đường đi Edo," Thiền sư trả lời.</em></span></p>\r\n<p><span><em>Gã đàn ông xấu hổ quá, liền miệng xin lỗi quốc sư. Gudo mĩm cười.</em></span></p>\r\n<p><span><em>"Mọi sự, mọi vật trên đời đều vô thường," ngài giảng giải. "Cuộc đời rất ngắn ngủi. Nếu ông cứ tiếp tục cờ bạc và rượu chè thì ông chẳng làm được việc gì hữu sự, lại còn làm khổ vợ con."</em></span></p>\r\n<p><span><em>Gã đàn ông chợt ngộ, như ra khỏi cơn mê.</em></span></p>\r\n<p><span><em>"Ðại sư nói đúng," anh ta dõng dạc. "Làm sao con có thể đền bù cho ngài về lời dạy này! Hay là để con mang hành lý hộ ngài và tin ngài một đoạn đường.ẽ</em></span></p>\r\n<p><span><em>"Nếu ông muốn," Gudo tán đồng.</em></span></p>\r\n<p><span><em>Hai người lên đường. Sau khoảng ba dặm, Gudo bảo y quay về.</em></span></p>\r\n<p><span><em>"Xin được thêm năm dặm nữa," gã nài nỉ. Họ tiếp tục đi.</em></span></p>\r\n<p><span><em>"Giờ ông nên quay về," Gudo khuyên.</em></span></p>\r\n<p><span><em>"Hẳn thêm mười dặm nữa," gã đàn ông xin.</em></span></p>\r\n<p><span><em>"Hãy về ngay," Gudo bảo sau khi đã đi hết mười dặm.</em></span></p>\r\n<p><span><em>"Xin cho con theo Ðại sư suốt đời," gã tuyên bố.</em></span></p>\r\n<p><span><em>Những thiền sư hiện đại của Nhật đều là môn đệ của người kế thừa Gudo. Tên của ngài là Mu-nan, người đàn ông đã không bao giờ quay trở lại.</em></span></p>\r\n<p><em><span>(Trích </span></em><span><strong>101 câu chuyện thiền -</strong></span><em><span>câu chuyện thứ hai )</span></em></p>	\N	\N	2016-06-20 03:45:47.327665	2016-06-20 03:45:52.597831	\N	\N	\N	t	\N	1	t	\N
+8	img_4420.jpg	Thật Vậy Sao?	<p><span><em>Thiền sư Hakuin được mọi người tán tụng là một bậc đạo hạnh. Cạnh thiền thất có một cô gái xinh đẹp mà bố mẹ là chủ một cửa hàng thực phẩm. Bỗng dưng một hôm bố mẹ cô khám phá ra rằng cô đang mang bầu. Cô không chịu khai ai là tác giả của cái bào thai, nhưng sau bao lần cật vấn cô bảo là Hakuin.</em></span></p>\r\n<p><span><em>Cha mẹ cô điên tiết lên đến đối chất với Hakuin. Ngài chỉ nói "Thật vậy sao?".</em></span></p>\r\n<p><span><em>Ngay khi đứa bé vừa chào đời, nó được giao cho Hakuin, lúc bấy giờ danh dự của ngài đã bị tổn thương nghiêm trọng, nhưng ngài vẫn thản nhiên. Ngài tận tình chăm sóc đứa bé và thường đi sang hàng xóm để xin sữa và các thức cần thiết khác để nuôi trẻ sơ sinh.</em></span></p>\r\n<p><span><em>Một năm sau, cô gái xinh đẹp kia không chịu đựng được lương tâm cắn rứt, bèn thú nhận với bố mẹ rằng người cha thật sự của đứa bé là anh hàng cá trẻ tuổi. Bố mẹ cô gái vội vả đến tạ lỗi với thiền sư, mong ngài thứ tội và xin nhận lại đứa bé.</em></span></p>\r\n<p><span><em>Hakuin chấp thuận và khi trao đứa bé lại ngài chỉ nói: "Thật vậy sao?".</em></span></p>\r\n<p><span><span><em>(Trích </em><strong>101 câu chuyện thiền<em>  </em></strong><em>- c</em><em>âu chuyện thứ ba )</em></span></span></p>	\N	\N	2016-06-20 03:48:02.348274	2016-06-20 03:48:13.207755	\N	\N	\N	t	\N	1	t	\N
+22	05_294829035.jpg	Đêm A Di Đà tại chùa Linh Quang	<p><span><strong>Tối 17/11 Nhâm Thìn, gần 500 Phật tử Chùa Linh Quang, H. Định Quán, Đồng Nai đã dự Lễ Vía A Di Đà với nghi thức trang nghiêm, thanh tịnh.</strong></span></p>\r\n<p><span>Chùa Linh Quang  thuộc Xã Phú Hòa, cách Quốc lộ 20 8km, Chùa tuy nhỏ, đơn sơ, nhưng mỗi năm vẫn tổ chức đêm A Di Đà cho bà con Phật tử Chùa Linh Quang và các địa phương lân cận. Về với đêm hội, sau nghi thức tụng niệm, Phật tử cùng nhau kinh hành, niệm danh hiệu A Di Đà.</span></p>\r\n<p><span>Trong tâm tưởng của mỗi người hình ảnh Đức Phật trang nghiêm tỏa sáng, gương mặt hiền từ đức độ, tay cầm đài sen tiếp dẫn, ánh mắt từ bi nhìn xuống như dõi tìm những đứa con lưu lạc từ lâu, đã trở nên thân thương diệu kỳ và quen thuộc.</span></p>\r\n<p><span>48 đại nguyện, là thánh đạo, là con đường giải thoát bằng phương pháp của tâm từ bi vô lượng và trí tuệ vô cùng, sẵn sàng xóa bỏ mọi hận thù cho thế giới ta-bà phủ đầy gấm hoa diễm lệ.</span></p>\r\n<p><span>Đức Phật A Di Đà, vị Phật giáo chủ cõi Tây Phương Cực Lạc thế giới, đang tiếp dẫn chúng sinh phát tâm vãng sinh về nước của Ngài. Ngài đã thành Phật cách đây mười kiếp, nhưng nguyện lực từ bi của Ngài đối với chúng sinh vô cùng tận, nguyện độ khắp chúng sinh trong cõi đời ác trược, vãng sinh về cõi của Ngài, và tu cho đến khi thành Phật.</span></p>\r\n<p><span>Niệm danh hiệu của Ngài, sẽ thanh tịnh hoá thân tâm của mình, phiền não vọng tưởng dần dần tiêu diệt, chân tâm Phật tánh từ từ hiển lộ.</span></p>\r\n<p><span><img src="/uploads/editor/1466435326.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p><span><img src="/uploads/editor/1466435328.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p><span><img src="/uploads/editor/1466435330.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p><span></span></p>	\N	\N	2016-06-20 15:09:03.552273	2016-06-20 15:33:41.71013	\N	\N	\N	t	\N	1	t	\N
+9	hb03.jpg	Chùa Linh Quang: Trao học bổng Đuốc Tuệ cho học sinh nghèo vượt khó mùa Vu Lan	<p><span><strong><a href="http://www.chualinhquang.com.vn/" target="_self">(LQT)</a> </strong> <strong>Sáng ngày17/8/2013 Quỹ học bổng Đuốc Tuệ Chùa Linh Quang đã trao 69 suất học bổng cho học sinh vượt khó học giỏi.</strong></span></p>\r\n<p><span>Quỹ học bổng này được thành lập từ nhiều năm nay, nhưng từ năm 2012 chính thức đi vào hoạt động có quy củ.  Kinh phí hoạt động của quỹ được huy động từ các tổ chức và các cá nhân có  hảo tâm.</span></p>\r\n<p><span>Năm nay quỹ đã trao 69 suất, trong đó 28 suất bậc tiểu học, 27 suất bậc THCS, 7 suất bậc THPT và 7 suất cho bậc Đại học, cao đẳng . Mỗi suất trị giá từ 400.000đ đến 1 triệu đồng, tổng kinh phí trên 30 triệu đồng. Ngoài ra , quỹ còn tặng thêm 16 phần quà cho học sinh đạt thành tích cao trong học tập.</span></p>\r\n<p><span><img src="/uploads/editor/1466395631.jpg" style="display: block; margin-left: auto; margin-right: auto;" alt=" Những phần quà chuẩn bị được trao cho học sinh" caption="false" width="800" height="484" /></span></p>\r\n<p style="text-align: center;"><span> <em><span><span>Những phần quà chuẩn bị được trao cho học sinh</span></span></em></span></p>\r\n<p style="text-align: left;"><span><em><span><span><img src="/uploads/editor/1466395681.jpg" style="display: block; margin-left: auto; margin-right: auto;" alt="Đại đức Thích Huệ Trí – Trụ trì Chùa Linh Quang" caption="false" width="704" height="600" /></span></span></em></span></p>\r\n<p style="text-align: center;"><span><em><span><span>Đại đức Thích Huệ Trí – Trụ trì Chùa Linh Quang</span></span></em></span></p>\r\n<p> <span>Bà Nguyễn Thị Cúc, một trong những vị mạnh thường quân của Quỹ mong muốn được nhiều người chung tay góp sức để quỹ học bổng luôn có nguồn kinh phí dồi dào, tham gia ủng hộ quỹ học bổng là thực hiện phương châm: <em>“Phụng sự chúng sanh là cúng dường Chư Phật”</em> của Phật giáo.</span></p>\r\n<p><span>Em Trần Mai Chi đại diện học sinh được nhận học bổng cảm động phát biểu hứa chăm lo học  tập để không phụ lòng những tấm lòng vàng đã chăm lo cho thế hệ mai sau.</span></p>\r\n<p><span><span>Cũng nhân dịp này, Gia đình Phật tử Tâm Sương đến từ TP Hồ Chí Minh đã trao 50 phần quà đến các gia đình có người già cả, neo đơn và khó khăn  thuộc xã Phú Hòa- Định Quán, mỗi phần quà 10kg gạo. </span></span></p>\r\n<p><em><span>Một số hình ảnh trong buổi lễ phát học bổng tại chùa Linh Quang :</span></em></p>\r\n<p style="text-align: center;"><em><span>Trao học bổng</span></em></p>\r\n<p><em><span><img src="/uploads/editor/1466395744.jpg" style="display: block; margin-left: auto; margin-right: auto;" alt="Trao học bổng" caption="false" width="800" height="487" /></span></em></p>\r\n<p style="text-align: center;"></p>\r\n<p><em><span><img src="/uploads/editor/1466395753.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395760.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><br /><em><span><img src="/uploads/editor/1466395763.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span>Một vị mạnh thường quân trao học bổng cho các em</span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395767.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395771.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395774.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395776.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395779.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span> <em><span><span><span>Những tấm lòng vàng </span></span></span></em></span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395782.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span> <em><span><span><span><em><span><span><span><span>Học sinh được nhận học bổng</span></span></span></span></em></span></span></span></em></span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395786.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span>Bà Nguyễn Thị Cúc, một trong những vị mạnh thường quân của Quỹ mong muốn được nhiều người chung tay góp sức để quỹ học bổng luôn có nguồn kinh phí dồi dào</span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395790.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span>Em Trần Mai Chi đại diện học sinh được nhận học bổng cảm động phát biểu hứa chăm lo học  tập để không phụ lòng những tấm lòng vàng đã chăm lo cho thế hệ mai sau.</span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395793.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: center;"><em><span>Cũng nhân dịp này, Gia đình Phật tử Tâm Sương đến từ TP Hồ Chí Minh đã trao 50 phần quà đến các gia đình có người già cả, neo đơn và khó khăn  thuộc xã Phú Hòa- Định Quán, mỗi phần quà 10kg gạo.</span></em></p>\r\n<p style="text-align: center;"><em><span><img src="/uploads/editor/1466395795.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></em></p>\r\n<p style="text-align: left;"><em><span>Tin, ảnh:<strong><span> Thiện Ngộ</span></strong></span></em></p>	\N	\N	2016-06-20 04:14:09.942167	2016-06-20 04:14:25.020639	\N	\N	\N	t	\N	1	t	\N
+10	401164_162581527244890_1394474659_n.jpg	GĐPT Linh Quang - Định Quán - Đồng Nai	<p><span><strong>Gia đình Phật tử Linh Quang thành lập từ năm 1995 sinh hoạt tại Chùa Linh Quang - Xã Phú Hòa - Huyện Định Quán - Tỉnh Đồng Nai,  trong hệ thống Giáo hội Phật Giáo Việt Nam.</strong></span></p>\r\n<p><span>Châm ngôn : Bi - Trí - Dũng<br />Khẩu hiệu : Tiến<br />Mục Đích :</span></p>\r\n<p><span>Đào luyện thanh thiều đồng niên tin Phật thành Phật tử chân chánh, <br />- Góp phần phụng sự đạo pháp và xây dựng xã hội. </span><br /><br /><span>Đoàn sinh Gia Đình Phật Tử được đào tạo:<br />* Thực hành Đạo Phật để biết sống trong tỉnh thức, an vui, hòa hợp và cảm thông.<br />* Nâng cao lòng tự tin và tinh thần tự lập<br />* Hướng dẫn, khuyến khích một đời sống hướng thượng, lành mạnh về tinh thần cũng như thể chất.<br />* Khả năng lãnh đạo và điều hành, óc sáng tạo, tinh thần trách nhiệm, biết hy sinh cho tha nhân</span></p>\r\n<p><span>Tin , bài : Thiện Ngộ</span></p>	\N	\N	2016-06-20 04:31:32.684005	2016-06-20 04:31:38.838332	\N	\N	\N	t	\N	1	t	\N
+11	12508888_949852335091753_508455517116475534_n.jpg	Ban Huynh Trưởng	<p><span><strong>Ban huynh trưởng của GĐPT Linh Quang - Xã Phú Hòa , Huyện Định Quán , Tỉnh Đồng Nai như sau :</strong></span></p>\r\n<p><span>Gia trưởng.................Tạ Chí Quảng<br />Liên Đoàn trưởng......Tống Thị Ái<br />Liên Đoàn Phó. .........Nguyễn Văn Khuê<br />Thư Ký........................Nguyễn Thị Hoàng Oanh<br />Thủ Quĩ......................Nguyễn Thị Kim Hà<br />Đoàn trưởng Nam.....Hàng Minh Tuấn<br />Đoàn phó Nam.........Nguyễn Thành Danh<br />Đoàn trưởng Nữ........Nguyễn Thị Kim Hà<br />Đoàn phó Nữ............Nguyễn Thị Thanh Ni</span></p>\r\n<p><span>Tin , bài : Thiện Ngộ</span></p>	\N	\N	2016-06-20 04:33:50.990973	2016-06-20 06:17:40.376044	\N	\N	\N	t	\N	1	t	\N
+13	dinhquanpd_01.JPG	Đồng Nai: Huyện miền núi đón mừng Phật Đản	<p><span><strong><span id="ZoomContentSummary" class="ctcSummary">Hôm nay, 11/4 âm lịch, còn 4 ngày nữa là đến ngày Phật Đản, thế nhưng tất cả các chùa, tịnh thất, tịnh xá và các cơ sở Phật Giáo thuộc Huyện Định Quán – Đồng Nai đã cơ bản hoàn thành việc trang trí và thiết lập lễ đài cho lễ chính thức.</span></strong></span></p>\r\n<p align="left"><span> Bắt đầu từ hôm nay đến bất cứ một ngôi chùa nào ở Huyện Định Quán, chúng tôi cũng thấy quí tăng ni và Phật tử bận rộn cho việc trang trí và chuẩn bị mọi thứ cho Lễ Phật Đản. Chùa nào cũng có băng-rôn trước cổng và hầu hết đều có lễ đài lộ thiên để hành lễ. Đại Đức Thích Đồng Ngạn, Chánh Đại diện Phật Giáo huyện Định Quán cho biết:  Thời gian này, bà con Phật tử rất bận rộn cho việc tăng gia sản xuất, chăm sóc đồng ruộng và nương rẫy vì đang là đầu mùa mưa, nhưng dù bận rộn đến đâu, không ai quên ngày lễ trọng đại của tôn giáo mình, ai cũng dành thời gian dù ít hay nhiều để góp sức cho việc chuẩn bị lễ được chu đáo và xem đó  là niềm vui của một Phật tử.</span></p>\r\n<p align="left"><span><img src="/uploads/editor/1466406733.JPG" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p align="left" style="text-align: center;"><span>Vườn Lâm Tỳ Ni tại Chùa Linh Quang</span></p>\r\n<p align="left" style="text-align: center;"><span><img src="/uploads/editor/1466406735.JPG" /></span></p>\r\n<p align="left"><span><img src="/uploads/editor/1466406738.JPG" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<div align="center"><address><span>Gia đình phật tử Linh Quang</span></address></div>\r\n<p><span>Lễ đài của Huyện được tôn trí tại chùa Pháp Quang và cử hành lễ chính thức vào rạng sáng ngày 14 âl,  đó là thời gian hợp lý cho Phật tử là cán bộ công chức, giáo viên, học sinh và mọi người lao động có thể về tham dự lễ mà không ảnh hưởng  nhiều đến công việc thường ngày của nhịp sống  xã hội hiện nay.</span></p>\r\n<p><span><img src="/uploads/editor/1466406791.JPG" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p style="text-align: center;"><span>GĐPT Linh Quang</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406821.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Chùa Thiên Chơn</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406829.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Tịnh xá Ngọc Hiệp</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406847.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Tịnh xá Ngọc Vân</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406848.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406850.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Chùa Thiền Tịnh</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406852.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Nhà riệng của Phật tử cũng thiết kế </span><span>bàn hương án và trang trí mừng Phật đản</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406855.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406856.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Chùa Long Hoa</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406859.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Chùa Pháp Quang</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406862.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406866.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406871.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406874.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406880.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Chùa Pháp Hoa</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406883.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406887.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406892.JPG" /></span></p>\r\n<p style="text-align: center;"><span> Kết tràng hoa cho Lễ đài</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406894.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406897.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Thầy Trụ trì và các em Phật tử Tu viện Từ Bi </span><span>chụp hình với thành quả của mình</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406899.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Chùa Trúc Lâm</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406902.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Vườn Lâm Tỳ Ni</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406905.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406907.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Chùa Nam Sơn chưa xây dựng xong, nhưng cũng trang trí cho lễ đài Phật đản</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406909.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406912.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406916.JPG" /></span></p>\r\n<p style="text-align: center;"><span>Tịnh xá Ngọc Định</span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406918.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406921.JPG" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466406923.JPG" /></span></p>\r\n<div align="center"><address>\r\n<p><span>Chùa Gia Canh, một ngôi chùa vùng sâu của Huyện Định Quán</span></p>\r\n</address></div>\r\n<p><span> Các chùa, tịnh thất, tự viện, tịnh xá . . . trong huyện sẽ làm lễ vào thời gian thích hợp của địa phương mình. Việc tổ chức đón mừng Phật đản năm nay sẽ chú ý tiết kiệm nhưng vẫn đảm bảo sự trang nghiêm, thanh tịnh cần thiết và mang ý nghĩa chào mùng một nhân duyên mới đến với nhân loại.            </span></p>\r\n<p class="ctcSource"><span><em>Tin, ảnh</em>  <strong>Chí Quảng</strong><em> (Theo GNOL)</em></span></p>	\N	\N	2016-06-20 07:19:21.72526	2016-06-20 07:19:27.299167	\N	\N	\N	t	\N	1	t	\N
+12	22.jpg	Kết Khóa Trại Lộc Uyển II - Đồng Nai	<p><strong><span>Trại Lộc Uyển II - Đồng Nai đã tổ chức kết khóa trong 2 ngày 6-7/03/2010 tại Tổ đình Long Thiền Tự TP Biên Hòa . Có 101/141 trại sinh làm bài thi kết khóa và trúng cách 101/101 trại sinh . GĐPT Linh Quang có 7 anh chị đã trúng cách.</span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403980.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403982.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403984.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403986.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403988.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403989.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403991.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403993.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403994.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403996.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span><img src="/uploads/editor/1466403998.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></strong></p>\r\n<p><strong><span></span></strong></p>	\N	\N	2016-06-20 06:27:06.8254	2016-06-20 06:32:15.730788	\N	\N	\N	t	\N	1	t	\N
+14	zen-buddhist-the-white-dove-px-zen-buddhism.jpg	Khổ Thánh Đế	<p><span><strong><span id="ZoomContentSummary" class="ctcSummary">Khổ và hạnh phúc là một cặp đối đãi làm nên giá trị cho nhau.</span></strong></span></p>\r\n<p align="justify"><span><strong><em>Tôi đến với Phật pháp vì… quá khổ.</em></strong></span></p>\r\n<div align="justify">\r\n<table cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr>\r\n<td align="left" valign="top">\r\n<p><span>Khổ, vì mọi thứ được đặt nền tảng trên cái “quá sướng”. Sướng trong hiện tại, dù hiện tại đó đã thành quá khứ, mà có lẽ cả trong quá khứ, là những kiếp về trước khi phước báu khá đầy đủ. Nó đã ghi lại đâu đó trong tiềm thức của tôi, nên khi mới khổ chút, đã thấy khổ vô vàn, khổ cùng cực. “Nhà giàu đứt tay ăn mày đổ ruột”. Chuyện tất nhiên trong thế giới này. Một thế giới mà giá trị của pháp không phải tự bản thân nó gầy dựng giá trị cho nó mà được hình thành bằng sự đối đãi hoặc tương đãi<sup>1</sup>, Phật gọi là duyên khởi.</span></p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n<p align="justify"><span>Cái sướng ở quá khứ làm duyên để tôi cảm nhận cái khổ trong hiện tại. Và chính cái khổ đó lại là duyên giúp tôi đến với Phật pháp. Không khổ ít ai nghĩ đến Trời Phật. Khổ và hạnh phúc là một cặp đối đãi làm nên giá trị cho nhau. Lão Tử chiêm nghiệm và ghi lại trong <em>Đạo đức</em> <em>kinh</em>: “<em>Thiên hạ đều biết cái đẹp này là đẹp, cái kia xấu. Đều biết cái thiện này là thiện, cái kia là bất thiện. Có và không sinh nhau, khó và dễ làm thành nhau, dài và ngắn so nhau, cao và thấp úp nhau, âm và thanh hòa nhau, trước và sau theo nhau</em>…”. Cái này luôn có mối liên hệ với cái kia. Nhờ cái kia mới có cái này. Mọi thứ ở thế gian đều hình thành theo cách như thế. “<em>Dù chư Như Lai xuất hiện ở đời hay không xuất hiện ở đời, bản chất các pháp là thế. Vẫn quyết định tánh ấy. Vẫn theo duyên như thế</em>”. Là theo duyên “<em>do duyên sinh, lão tử có mặt</em>”<sup>2</sup>.  </span></p>\r\n<p align="justify"><span><strong><em>Khổ và Tập</em></strong></span></p>\r\n<p align="justify"><span>Khổ, là một chi phần trong Tứ Thánh đế. Song nếu chỉ nói đến “khổ” mà cho là “ khổ thánh đế” thì kinh <em>Niết-bàn </em>nói: “<em>Nói khổ đó, chẳng phải là Tứ Thánh đế, vì nếu nói khổ là khổ thánh đế thì tất cả trâu, dê, lừa, ngựa cùng người ở địa ngục lẽ ra đều có thánh đế</em>”<sup>3</sup>. Nhưng trâu, dê, lừa, ngựa không phải là thánh. Nên biết, “khổ” nếu không đi liền với “tập”, “diệt” và “đạo” thì “khổ” chỉ là khổ, không phải là “khổ thánh đế”. Kinh nói: “<em>Người nào không tu tập như vậy thì gọi là khổ, không phải khổ thánh đế</em>”. Là “<em>Tu tập được giải thoát và chứng biết như thật Như Lai thường trụ không có biến đổi</em>”<sup>4</sup>. Khổ chỉ được gọi là “ khổ thánh đế ” khi có sự tu tập và chứng biết. Tức không lìa “tập”, “đạo” và “diệt”. Vì thế nói đến “khổ thánh đế” là phải nói đến “tập”, đến “diệt”, đến “đạo”.  </span></p>\r\n<p align="justify"><span>Schopenhauer, một triết gia ở thế kỷ thứ XIX nói về nỗi khổ ở thế gian như sau: “<em>Nếu ta chỉ cho một người thấy rõ những khổ đau và cay cực ghê gớm mà cuộc đời của y phải chịu đựng miên viễn, y sẽ vô cùng kinh hãi. Và nếu ta dẫn người lạc quan kinh niên qua những bệnh viện, chẩn y viện, nhà tù, phòng tra tấn, củi nhốt nô lệ, qua bãi chiến trường và hành quyết… thì cả những người lạc quan kia cuối cùng cũng sẽ hiểu được bản chất của cái thế giới tốt đẹp nhất trong mọi thế giới khả hữu này. Từ đâu Dante đã lấy tài liệu cho địa ngục của ông nếu không phải từ chính thế giới thực thụ của chúng ta? Và rồi ông đã làm nó trở thành một địa ngục rất đặt biệt. Trái lại, khi mô tả thiên đường và những lạc thú của nó, Dante gặp một khó khăn không thể vượt, vì thế giới chúng ta không cung cấp một chút gì về điều đó</em>”<sup>5</sup>. Một cái nhìn được người đời cho là vô cùng bi quan, nhưng không hề thiếu tính xác thực. Ít ai dám nói thế giới này không khổ.</span></p>\r\n<p align="justify"><span>Người ta không nhận ra khổ hoặc có nhận ra cũng không biết do đâu có khổ và bản chất thực của khổ là gì. Cho nên, dù cách giải quyết khổ không sai, là phá bỏ những gì mang đến khổ cho mình, nhưng kết quả không mấy khả quan. Nếu khả quan, có khi lại tạo ra những nhân khổ mới. Bởi chỉ biết phá bỏ cái khổ từ ngoại cảnh mang đến mà gốc tạo khổ là ở bản thân thì không biết đến.</span></p>\r\n<p align="justify"><span>Với luận <em>Đại thừa khởi tín</em>, “khổ” đơn giản chỉ vì động: “<em>Động tức có khổ. Vì quả chẳng lìa nhân</em>”. Cái gì động? Tâm động. Bởi bất giác tâm động mà có quả khổ sinh tử. Do tâm bất giác vọng động mà xuất hiện thế giới và chúng sinh. Nói gần hơn chút nữa. Con người khổ là vì có “tập”. “Tập” là sự tích tụ, là chi phần thứ hai trong Tứ Thánh đế. Tâm bất giác vọng động rồi xuất hiện sự tích tụ. Vì tích tụ mà có khổ. Vọng động ra sao, tích tụ thế nào chỉ có Phật và hàng Đại Bồ-tát mới thấu được, nhưng không vì thế mà ta không kiểm nghiệm được nó ở những việc nhỏ nhặt trong đời sống thường ngày.</span></p>\r\n<p align="justify"><span>Nghiện, là một dạng của tích tụ. Sự tích tụ của vô số các hành động như nhau, có thể khác nhau ở mức độ nhưng hình thức và nội dung thì không khác. Chúng được lặp đi lặp lại nhiều lần và trở thành thứ mà ta gọi là thói quen. Nghiện, là hình thức của một thói quen đã thành nặng ký. Nghiện bất cứ thứ gì đều khiến ta trở thành nô lệ cho thứ đó. Khổ xuất hiện khi sự thỏa mãn không được đáp ứng. Song với cái nhìn của đạo và những người mà quan niệm tự do là trên hết thì nô lệ, bản chất của nó đã là khổ, không đợi đến khi sự thỏa mãn không được đáp ứng mới thấy khổ. Khổ nhất là từ cái khổ đó, do muốn thoát khổ, ta lại gây tạo thêm nhiều nhân khổ mới.</span></p>\r\n<p align="justify"><span>Thế gian này có rất nhiều thứ khiến ta bị nô lệ. Làm một kẻ nô lệ tình nguyện. Tiền tài, danh vọng, tình cảm, danh dự v.v... Ta tình nguyện hiến dâng dời mình cho chúng và đánh mất viên minh châu vô giá trong mỗi người.</span></p>\r\n<p align="justify"><span>“Khổ” và “tập”, ở mặt khái niệm và giải thích, không có gì khó hiểu. Nhưng để thực hiểu về chúng, đòi hỏi ta phải như thật biết thế nào là “khổ”, là “tập”. Kinh <em>Lăng già tâm ấn</em> có đề cập đến ba tướng thánh trí mà Bồ-tát phải tu học, trong đó có tướng “Chỗ tự nguyện của tất cả chư Phật”, là chỗ chư Phật trước tự nguyện tu sinh. Đại sư Hàm Thị bàn rằng: <em>Kinh Anh Lạc nói: “‘Chưa qua khổ đế khiến qua khổ đế, chưa hiểu tập đế khiến hiểu tập đế, chưa an đạo đế khiến an đạo đế, chưa được diệt đế khiến được diệt đế’. Đây là bốn hoằng thệ, y nơi giáo Biệt và Viên, đều duyên hai thứ Tứ Thánh đế hữu tác và vô tác. Chính là tướng Phật trước tự nguyện. Bồ-tát phát tâm không đồng với Nhị thừa</em>”<sup>6</sup>. Kinh qua khổ đế là một trong bốn hoằng thệ của hàng Bồ-tát Đại thừa. Bồ-tát tu hành không sợ khổ xứ. Bởi không tự bản thân mình trải qua, không thể hiểu khổ là gì. Cũng không thể hiểu được tha nhân khổ ra sao mà động chủng từ bi. Không khổ, khó từ bỏ những gì mang đến khổ. Cũng khó nhận ra gốc của khổ. Không nhận ra được thì khó mà giải quyết khổ cho đến nơi đến chốn.</span></p>\r\n<p align="justify"><span>Vào  khổ xứ mà có “đạo” và “diệt” làm nền tảng thì khổ là môi trường giúp tâm người tu thêm vững vàng. Cũng là nơi để kiểm nghiệm cái gọi là “đạo” và “diệt” mà mình đã thực hành và thực chứng. Bởi tướng thánh trí cuối cùng mà Bồ-tát phải đạt là “Tất cả chỗ, chứng được cảnh giới tự tâm hiện lượng”<sup>7</sup>. Không kinh qua khổ xứ, sao biết “đạo” mình học, “diệt” mình chứng ứng duyên đã tới đâu? Phồn vinh và hưởng thụ là quả báo của phúc đức, nhưng cũng là nhân của sự yếu hèn. Cảnh tĩnh lặng, cần thiết cho việc tu tập và an định tự tâm, song nếu bám vào đó để tìm một sự thanh nhàn thì thành họa cho bản thân. Xem ra, thứ mà người đời cho là quả báo của phúc đức, với người tu cũng chỉ là một loại khổ xứ đáng tỉnh giác hơn cả nghịch cảnh. Bởi nghịch cảnh, khiến con người muốn ly. Thuận cảnh, khiến con người dễ bám víu.  </span></p>\r\n<p align="justify"><span>Muốn thẩm thấu được tính duyên khởi của vạn pháp cũng phải từ thế giới sai biệt mà vào. Kinh nói: “<em>Bồ-tát không bỏ các thứ sai biệt đã có ở thế gian và xuất thế gian mà được chỗ thẩm bày của phi 108 câu</em>”<sup>8</sup>.</span></p>\r\n<p align="justify"><span>Nói chung, không có phần “chư Phật trước tự nguyện tu sinh ” thì mọi thứ chỉ hạn cuộc trên sách vở. Song kinh luận không thể tải hết những gì mà chư Phật muốn nói với chúng sinh. Vì thế, chưa qua khổ đế khiến qua khổ đế…</span></p>\r\n<p align="justify"><span>Chết là khổ. Vì nó là sự ra đi, chia lìa, phân tán. Có những sự phân tán thấy hãi hùng và đau đớn, không phải chỉ cho người chết mà cả cho người sống, như hàng loạt các vụ tai nạn xảy ra gần đây. Chết là một trạng thái mà có lẽ sau đó, con người không còn cơ hội để rút kinh nghiệm. Nhưng đa phần đều sợ chết vì nó vẫn in đậm nét đâu đó trong tiềm thức của mình về những lần chết trước. Một sự ẩn tàng chi phối con người khá mạnh khi đủ duyên, khiến ta sợ hãi khi nghĩ về cái chết. Cho đến khi giác ngộ được bản chất của chết là gì.</span></p>\r\n<p align="justify"><span>Sinh cũng khổ. Một đứa bé ra đời là cả một sự kỳ diệu của tạo hóa nhưng cũng chất chứa khá nhiều khổ não trong đó. Chưa lần nào đau đớn mà tôi thực sự giác ngộ “đời là bể khổ” khi sinh con gái đầu lòng. Chỉ là chưa đủ năng lực tỉnh giác trong thân một trẻ sơ sinh để biết cái khổ trong vai trò sơ sinh. Song khóc thét, không phải là trạng thái sung sướng hay vui mừng. Con nít chỉ khóc khi nó đau, hoặc nhu cầu ăn uống không được thỏa mãn hay ít nhất là đang cảm nhận một cảm giác bất an khi phải rời khỏi môi trường quen thuộc, một dạng của sự tích tụ, nhân duyên tạo ra khổ.</span></p>\r\n<p align="justify"><span>Còn khoảng giữa của sinh và tử? Không thiếu những khoảng đau khổ hư vọng. Đầy dẫy những bất ổn và lo toan. </span></p>\r\n<p align="justify"><span>Bất an, lo lắng v.v… không phải là trạng thái hạnh phúc khi bạn chưa giác ngộ được bản chất của nó và đặt nó trong tầm kiểm soát của bạn. </span></p>\r\n<p align="justify"><span>Tôi không chỉ có một mình. Tôi có gia đình. Có một ít bạn bè và người thân cùng láng giềng. Kiếm một người thứ hai như chồng tôi không phải dễ. Tìm cho ra những đứa con như tôi đang có, không có nhiều. Nhưng tôi vẫn nói với bạn rằng tôi không thấy có gì phức tạp hơn đời sống một gia đình. Đời sống xã hội không phải không phức tạp (nơi nào có tập thể, nơi đó có ít nhiều phức tạp), nhưng vì nó “không phải là của mình”, mình không phải đối diện chung chạ nhiều như cùng trong một nhà, nên với tôi đời sống gia đình vẫn là đời sống phức tạp nhất.</span></p>\r\n<p align="justify"><span>Đơn giản đã được phức tạp hóa vì những sở thích và quan niệm không trùng nhau, nhưng lại không biết cách buông xả để hòa hợp. Vì những thứ không thuộc tôi đã trở thành của tôi, nhưng vẫn không thể là của tôi. Sự khác biệt về ý nghĩ cũng như lối sống giữa các thế hệ trong cùng một gia đình khiến mọi chuyện dễ phát sinh. “<em>Chúng ta không hạnh phúc khi đã kết hôn nhưng không kết hôn chúng ta lại không hạnh phúc. Chúng ta bất hạnh khi ở một mình, bất hạnh trong xã hội. Chúng ta giống như những con nhím tụ lại cùng nhau để sưởi ấm và cảm thấy bất tiện khi quá ép lại gần nhau, nhưng lại khổ sở khi rời xa nhau</em>”<sup>9</sup>. Đó là những mâu thuẫn mà con người trong xã hội ngày nay hay gặp phải. Ái dục kéo con người lại gần nhau, nhưng quan điểm, định kiến, sở thích và thói quen khác nhau khiến con người không chịu đựng nổi nhau.</span></p>\r\n<p align="justify"><span>Ái dục, gần như là thứ chỉ đạo và chi phối suy nghĩ cũng như hành động của con người. Cảm giác hoan lạc hạnh phúc trong ái dục, dù chỉ là trên mặt tinh thần, cũng khiến con người dễ dính mắc vào đó. Không phải chỉ người đời, ngay cả người tu cũng không thoát được. Có khi còn mê mờ hơn cả người đời. Cho đến khi mặt duyên khởi của cái hoan lạc ấy xuất hiện. Khổ. Mới lôi người ta ra được ít nhiều. Nhờ khổ, mới biết tỉnh giác mà tính chuyện lìa bỏ. Không thì cũng như người đời, yêu thương, trông mong và cũng thể hiện sự tranh giành ghen tuông một cách rất tự nhiên, quên mất mình đang mặc chiếc áo thanh tịnh của Như Lai. Bởi tập tính ái dục ẩn sâu trong tiềm thức. Đủ duyên liền sinh khởi và dấy lực lôi mình đi. Chỉ khi khổ xuất hiện mới dừng được ít nhiều. Xem ra, ở mặt nào đó, “khổ” chính là “đạo”. Vì nó giúp ta từ bỏ.</span></p>\r\n<p align="justify"><span>Nietzche, trong một phút yếu đuối đã si tình cô nàng Lou Salomé nhưng Lou Salomé không đáp lại. Chàng thất vọng và bỏ ra đi. Đi từ Ý đến những miền cao của dãy Alpes ở Sil, không yêu đàn ông cũng không yêu đàn bà mà chỉ cầu nguyện cho con người có thể siêu việt. Trên những miền cao cô quạnh đó, chàng thanh niên đã cảm hứng:</span></p>\r\n<p align="justify"><span><em>Tôi ngồi đây chờ đợi, chờ đợi hư vô</em></span></p>\r\n<p align="justify"><span><em>Đã vượt ngoài thiện ác…</em></span></p>\r\n<p align="justify"><span><em>Bây giờ tôi thưởng thức</em></span></p>\r\n<p align="justify"><span><em>Ánh sáng và bóng râm</em></span></p>\r\n<p align="justify"><span><em>Chỉ có ngày, hồ, ban trưa, thời gian vô tận…</em></span></p>\r\n<p align="justify"><span><em>Nhưng bỗng nhiên bạn hỡi! Một đã thành hai.</em></span></p>\r\n<p align="justify"><span><em>Và Zarathustra lướt qua cạnh tôi.</em></span></p>\r\n<p align="justify"><span>Những câu văn chất đầy mùi đạo: Một tâm thức vượt ngoài thiện và ác, chỉ biết đến những gì đang hiển bày trong hiện tại. Và tâm từ bi nở hoa: “Hỡi những vì sao vĩ đại! Hạnh phúc của ngươi sẽ là gì, nếu không có những người mà ngươi chiếu cho họ ánh sáng?”<sup>10</sup>.</span></p>\r\n<p align="justify"><span>Tuy vậy, “khổ” không phải là “đạo”. Bởi nó giúp người ta từ bỏ nhưng lại không cho người ta một con đường dẫn đến thiên đường hay Niết-bàn. Người ta có thể từ bỏ cái khổ này nhưng có khi lại bước sang cái khổ khác. Chúng ta loay hoay trong những được, mất, hơn, thua… không có lối thoát và bế tắc với những suy nghĩ và hành động của mình. Cuối cùng là điên hay tự tử. Một cách mà chúng sinh thường dùng để giải quyết nỗi thống khổ ở đời.</span></p>\r\n<p align="justify"><span>Mười mấy năm trước, tôi đã nhìn thấy cảnh này tại Bệnh viện Sài Gòn: Một người phụ nữ đã tự tử bằng thuốc rầy. Cô nhập vào thân người con gái của gia đình mà cô oán hận và nhảy ra đường cho xe đụng để gia đình đưa cô gái vào đúng cái gường mà cô đã chết. Người mẹ khóc lóc van xin, nhưng người phụ nữ đau đớn đấm vào ngực mình mà nói: “Bà van xin tôi buông tha con bà, nhưng còn cái nóng bức đau đớn tôi đang chịu đây, ai buông tha cho tôi?”. Thuốc rầy và nỗi uất hận khi chết đã làm cô đau đớn nóng bức không nguôi. Chỉ muốn trả thù. Tội là ở đó. Khổ có khi giúp ta từ bỏ nhưng có khi… Cho nên, cần “đạo”.</span></p>\r\n<p align="justify"><span>Có “đạo” để nhận ra “khổ”, nhận ra gốc của “khổ”. Muốn hết “khổ” cũng phải nhờ “đạo”. Vì thế “đạo” được lập thành một chi phần riêng trong Tứ Thánh đế. Nó là nhân đưa đến thiên đường hay Niết-bàn, chính là “diệt”.</span></p>\r\n<p align="justify"><span><img src="/uploads/editor/1466410901.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p align="justify"><span><strong><em>Phần đoạn sinh tử khổ. Biến dịch sinh tử khổ</em></strong></span></p>\r\n<p align="justify"><span>Theo luận <em>Đại thừa khởi tín</em>, khổ có hai thứ: Khổ của phàm phu và khổ của thánh nhân.</span></p>\r\n<p align="justify"><span>Thánh nhân vẫn còn khổ?</span></p>\r\n<p align="justify"><span>Ngoại trừ Phật, còn lại chưa ai hết động. Dù động ở thánh nhân không thô phù như ở phàm phu nhưng cũng là động. “<em>Động tức có khổ, vì quả chẳng lìa nhân</em>”. Song hình thức và mức độ khổ của hai không như nhau.</span></p>\r\n<p align="justify"><span>Phàm phu khổ vì danh lợi, cơm ăn, áo mặc, bất như ý mà khổ v.v... Phật nói chúng sinh có tám thứ khổ: Sinh, lão, bệnh, tử, ghét mà ở gần nhau, thương lại phải xa nhau, muốn mà không được, và cuối cùng là ngũ ấm thạnh khổ. Luận <em>Du-già sư địa</em> thì nói tám khổ là lạnh, nóng, đói, khát, không được tự do, tự làm khổ lấy mình, bị người khác bức bách, phải chịu ở một tư thế nào đó trong suốt thời gian dài<sup>11</sup>.   </span></p>\r\n<p align="justify"><span>Thánh nhân khổ, vì chưa chứng được hoàn toàn tâm chân như, vẫn còn chịu cái khổ biến dịch vi tế của chuyển thức mà gốc trợ nó là Căn bản vô minh, là Vô minh trụ địa nói trong kinh <em>Thắng man</em>. Vậy nên nói thánh nhân khổ là so với bốn đức thường, lạc, ngã tịnh của Phật mà nói khổ. Không như khổ của phàm phu, do nghiệp trói buộc mà khổ.</span></p>\r\n<p align="justify"><span><em>Phần đoạn sinh tử</em>, theo luận <em>Thành duy thức</em><sup>12</sup>, là các nghiệp hữu lậu do thế lực của phiền não chướng làm duyên trợ giúp mà chiêu cảm ra quả Dị thục thô phù trong ba cõi với thân mạng sống lâu hay chết yểu. Do sức nhân duyên mà có sự hạn định, nên gọi là Phần đoạn sinh tử.</span></p>\r\n<p align="justify"><span>Luận <em>Đại thừa khởi tín</em> nói “<em>Tăng trưởng phân biệt sự thức huân tập khiến cho phàm phu phải chịu cái khổ do nghiệp trói buộc</em>”. Là đối với cảnh trước mắt, không biết duy tâm sở hiện, khởi phân biệt mà sinh yêu ghét. Từ cái yêu ghét đó sinh ra khổ vui, thức tâm khởi niệm tương ưng chẳng dứt. Đối với cảnh ưa thích sinh tâm chấp thủ tham muốn. Với cảnh không ưa thích, sinh tâm sân giận rồi tìm cách xa lìa. Từ đó mà tạo nghiệp. Y nghiệp đã tạo mà thọ báo, không thể tự tại, nên nói bị nghiệp trói buộc.          </span></p>\r\n<p align="justify"><span><em>Bất tư nghì biến dịch sinh tử</em>, là các nghiệp vô lậu do thế lực của sở tri chướng làm duyên trợ giúp chiêu cảm ra quả Dị thục với thân mạng thù thắng vi tế. Do sức bi nguyện mà thân mạng này chuyển dịch không hạn định, nên gọi là biến dịch. Vì do định vô lậu làm duyên trợ giúp chiêu cảm, diệu dụng khó lường, nên nói “bất tư nghì”. Thân biến dịch này là ý sinh thân (tùy ý nguyện mà sinh) của hàng Bồ-tát.</span></p>\r\n<p align="justify"><span>Luận <em>Đại thừa khởi tín</em> nói: “<em>Nghiệp thức căn bản huân tập khiến cho A-la-hán, Bích Chi Phật và tất cả Bồ-tát phải chịu cái khổ sinh diệt</em>”. Tự thể chân như không có tự tánh, bất giác mà có vô minh. Vô minh huân trở lại chân như biến chân như thành nghiệp thức. Từ nghiệp thức đó mà có chuyển thức và hiện thức v.v… tức Tam tế và Lục thô.</span></p>\r\n<p align="justify"><span>Nếu lấy Trí tướng trong Lục thô làm mốc thì phàm phu có đủ 9 tướng. Thánh nhân, tùy địa vị sâu cạn, chỉ bị các tướng từ Trí tướng trở lên chi phối. Như La-hán, phạm hạnh đã thành, không còn sinh tử, tức không còn bị nghiệp trói buộc, nên không bị cái khổ của phàm phu chi phối. Nhưng vì chưa chứng chân như, chưa mãn thành quả Phật, nên vẫn bị chuyển thức chi phối mà nói khổ.</span></p>\r\n<p align="justify"><span>Thân Biến dịch tuy là sinh tử khổ của thánh nhân nhưng là thành quả tu hành của hàng phàm phu trong một giai đoạn nào đó. Cho nên, với phàm phu, Biến dịch sinh tử không gọi là khổ. Chỉ gọi là khổ khi phàm phu đã thành thánh nhân và đứng ở góc độ Tam tế Lục thô mà xét. Luận <em>Đại thừa khởi tín</em> chỉ nói phàm phu chịu cái khổ của Phần đoạn sinh tử, không nói chịu hai cái khổ là Phần đoạn và Biến dịch. Lý của pháp duyên khởi là vậy, Niết-bàn của hạng này có khi vẫn là khổ của hạng kia. </span></p>\r\n<p align="justify"><span>Theo <em>Lăng già tâm ân</em><sup>13</sup>, phải là hàng Bồ-tát từ Sơ địa (đã đoạn hết kiến hoặc) trở lên mới có ý sinh thân. Song luận <em>Đại thừa khởi tín</em> lại nói “tất cả Bồ-tát” là do “nhiếp vào phương tiện ngôn mà nói. Vì mỗi vị cuối cùng đều đến Phật địa”<sup>14</sup>.</span></p>\r\n<p align="justify"><span>A-la-hán, Bích Chi Phật và hàng Bồ-tát đại lực đã đoạn hết phiền não chướng (Tứ trụ địa), nên không còn thọ thân Phần đoạn đời sau. Muốn tu Bồ-tát hạnh để được quả bồ-đề, phải nương thân Biến dịch, tức dùng nguyện lực của thắng định vô lậu, mà trở lại tam giới hành Bồ-tát đạo<sup>15</sup>.</span></p>\r\n<p align="justify"><span> <span><strong>Chú thích</strong></span></span></p>\r\n<p align="justify"><span><sup>(1)</sup> Đối đãi: Đợi có đối nhau mới thành. Như ngón tay áp út, bản thân nó không dài, không ngắn. Chỉ khi so với ngón dài hơn là ngón giữa thì nó thành ngắn. So với ngón ngắn hơn là ngón út thì nó mới có giá trị dài.</span></p>\r\n<p align="justify"><span>Tương đãi: Đợi nhau mà thành. Như ngón tay được hình thành từ nhiều duyên, do tứ đại hợp thành.</span></p>\r\n<p align="justify"><span><sup>(2)</sup> Kinh <em>Thánh cầu</em>, Trung bộ.</span></p>\r\n<p align="justify"><span><sup>(3)</sup> Kinh<em> Đại bát Niết-bàn</em>, HT.Trí Tịnh dịch.</span></p>\r\n<p align="justify"><span><sup>(4)</sup> Phẩm Tứ đế - kinh <em>Đại bát Niết-bàn</em> quyển 1.</span></p>\r\n<p align="justify"><span><sup>(5)</sup> <em>Câu chuyện triết học</em>, Will Durant, Trí Hải và Bửu Đích dịch.</span></p>\r\n<p align="justify"><span><sup>(6)</sup> Kinh <em>Lăng già tâm ân</em> - Đại sư Hàm Thị chú giải, bản dịch của HT.Thanh Từ.</span></p>\r\n<p align="justify"><span><sup>(7)</sup> Đại sư Hàm Thị.</span></p>\r\n<p align="justify"><span><sup>(8)</sup> Kinh <em>Lăng già tâm ân</em>, Đại sư Hàm Thị trực giải, HT.Thích Thanh Từ dịch.</span></p>\r\n<p align="justify"><span><sup>(9)</sup> Schopenhauer, <em>Câu chuyện triết học</em> của Will Durant, bản dịch của Trí Hải và Bửu Đích.</span></p>\r\n<p align="justify"><span><sup>(10)</sup> Schopenhauer, <em>Câu chuyện triết học </em>của Will Durant, bản dịch của Trí Hải và Bửu Đích.</span></p>\r\n<p align="justify"><span><sup>(11) </sup>Tự điển <em>Phật học Huệ Quang.</em></span></p>\r\n<p align="justify"><span><sup>(12)</sup> HT.Thích Thiện Siêu dịch và chú. Phần Biến dịch và Phần đoạn sinh tử đều được trích ra từ luận này.</span></p>\r\n<p align="justify"><span><sup>(13)</sup> <em>Lăng già tâm ấn,</em> Đại sư Hàm Thị trực giải, HT.Thanh Từ dịch.</span></p>\r\n<p align="justify"><span><sup>(14)</sup> Lời của Tổ Hiền Thủ trong <em>Hoa nghiêm thám huyền ký</em>, phẩm Thập hạnh.</span></p>\r\n<p align="justify"><span><sup>(15)</sup> Luận<em> thành duy thức, </em>HT.Thiện Siêu dịch và chú.</span></p>\r\n<p style="text-align: right;"><span><strong>Chân Hiền Tâm</strong></span></p>\r\n<p style="text-align: right;"><em><span>(Theo giacngo)</span></em></p>	\N	\N	2016-06-20 08:22:36.28024	2016-06-20 08:22:41.901827	\N	\N	\N	t	\N	1	t	\N
+15	wwww.JPG	Đối Trị Phiền Não Khi Niệm Phật	<div class="TomTat"><strong><span><a href="http://www.chualinhquang.com.vn/" target="_self">(LQT)</a>  Khi chúng ta hiểu rõ được căn nguyên, nguồn gốc của phiền não tất chúng ta sẽ dần dần, dễ dàng tìm ra phương cách để đối trị và hoá giải.</span></strong></div>\r\n<div class="NoiDungTangSize">\r\n<p><span>Thực ra không phải tới lúc niệm Phật chúng ta mới có phiền não, hoặc nhận biết ra chúng ta đang có, thậm chí quá nhiều phiền não, mà nói cho đúng: phiền não đã có trong chúng ta từ vô lượng kiếp tới nay. Nói khác là phiền não đã hằn sâu, gắn chặt trong tâm của chúng ta và chúng ta đã nguyện chung sống với chúng như một người bạn. Cũng vì lẽ đó mà chúng ta mới có mặt trong cõi Ta-Bà này.</span></p>\r\n<p><span>Khi chúng ta hiểu rõ được căn nguyên, nguồn gốc của phiền não tất chúng ta sẽ dần dần, dễ dàng tìm ra phương cách để đối trị và hoá giải. Tâm lý thông thường chúng ta hay nghĩ: Khi chúng ta vui, sung sướng, hạnh phúc… chúng ta sẽ không có (hoặc ít) phiền não. Hiểu theo lẽ đời thường và đơn giản có lẽ là vậy. Nhưng nếu dùng giáo lý của Phật để lý giải thì cái mà chúng ta gọi là vui, sung sướng, hay hạnh phúc đó cũng chính là phiền não (vạn vật không bất biến, không trường tồn). Tại sao? Trong Pháp Bảo Đàn Kinh Tổ Huệ Năng nói: “Phàm phu tức Phật, phiền não tức Bồ-đề”. Phàm phu là ý chỉ người chưa giác ngộ. Không lẽ người chưa giác ngộ mà Tổ lại ví như Phật? Hoàn toàn không phải vậy, mà phàm phu tổ nói ở đây không dùng để đánh giá học vấn (trí thức) hay cả một quá trình phấn đấu của một con người. Trái lại tổ chỉ thẳng vào sự nhận diện sự việc (giác ngộ hay trí tuệ) của người đó trong từng niệm.</span></p>\r\n<p><span>Tổ cắt nghĩa về Phàm phu và Phật như sau: Một niệm ngu tức phàm phu, một niệm trí tức Phật. Thế nào là một niệm ngu? Ví thử ta ngồi niệm Phật, người nhà cứ đi qua, đi lại, rồi có người lại buông một câu: “Dào ôi! Sống còn chẳng ăn ai, giờ còn ngồi lầm rầm như ma ám.” Hay: “Thích niệm Phật sao không lên chùa, hay kiếm nơi khỉ ho, cò gáy nào đó mà niệm có tốt không? Ngày nào cũng làm một đống chềnh ềnh giữa phòng, làm ảnh hưởng, mất hết tự do của người khác .v.v.” Gặp trường hợp như thế chúng ta sẽ làm gì? Chúng ta sẽ nổi sân? Sẽ quát mắng người chê bai, dè bỉu hay đàm tiếu chúng ta khi chúng ta đang công phu? Hay chúng ta sẽ ráng… im lặng, nhưng rồi ngồi để hậm hực niệm Phật? Khi cả hai trạng huống đó xuất hiện thì chúng ta đều là phàm phu mất rồi. Nghĩa là chúng ta chấp chặt những lời đàm tiếu của người xung quanh và cho đó là thật, làm ảnh hưởng tới mình hay hạ thấp đạo cách của mình. Khi niệm chấp đó nổi lên tổ gọi đó chính là niệm ngu (niệm của phàm phu chưa giác ngộ). Nhưng nếu trường hợp nói trên xảy ra, chúng ta không khởi tâm phân biệt, không khởi niệm chấp (chấp chặt, chấp có, chấp chết) mà chúng ta chỉ cần nhận biết: À, lại có người trêu chọc, quấy phá, hay muốn “nắn gân” mình rồi. Chỉ cần khởi niệm biết có người quấy phá là đủ. Niệm biết khởi lên với cái tâm hoan hỉ (không có tâm chống đối, giải thích, hay sân hận) rồi quên ngay những lời quấy phá trên để những lời đó thoảng qua tai hay tự lặng trong tự tánh. Ngay lúc ấy niệm biết chính là niệm trí.</span></p>\r\n<p><span>Như vậy từ phàm phu tới Phật khoảng cách chỉ trong vòng một niệm. Nếu như trong suốt buổi niệm Phật ta giữ được niệm trí như vậy thì những niệm đó tổ gọi là niệm của Phật (niệm của ta và Phật tương đồng). Như vậy ta là phàm phu hay ta là Phật vốn không bị phụ thuộc vào hoàn cảnh xung quanh (đối cảnh nhưng không nhiễm cảnh), trái lại phụ thuộc vào sự quán chiếu (Trí-Giác) trong từng niệm của chính mình.</span></p>\r\n<p><img src="/uploads/editor/1466411219.JPG" style="display: block; margin-left: auto; margin-right: auto;" /></p>\r\n<p><span>Vậy phiền não tức Bồ-đề là gì? Bồ-đề hiểu giản nghĩa là: giác ngộ, tự tại, hỉ lạc hay còn gọi là minh tâm kiến tánh và thanh tịnh bình đẳng giác. Trở lại ví dụ trên: nếu chúng ta đem tất cả những chấp kiến vào trong tâm, rồi vừa ngồi niệm Phật vừa “nhâm nhi”, nghiền ngẫm chúng, rồi để chúng chế ngự tâm của chúng ta khiến tâm chúng ta rối lên như mớ bòng bong, người chúng ta căng cứng, đầu óc quay cuồng, hoặc thân rũ ra như tầu chuối héo thì đó là chúng ta đã tự chuốc phiền não cho chính mình, tự nhận khổ làm vui, nhận giặc làm bạn. Nhưng nếu chúng ta nhận ra ta trót nhận phiền não làm bạn để chúng khuấy đảo khiến chúng ta thân, tâm cũng điên đảo theo mất, ngay khi chúng ta nhận biết đó là phiền não, và kiên quyết cự tuyệt những phiền não đó, không nuôi dưỡng, không để chúng chế ngự trong tâm (tâm không chấp) thì cũng chính ngay lúc ấy chúng ta đã tìm lại được tự tánh thanh tịnh của chính mình, đã giác ngộ. Nhưng sự thanh tịnh và giác ngộ lúc này mới chỉ là nhất thời (trong vòng một niệm). Do vậy để cho tự tánh của chúng ta được thanh tịnh trong suốt buổi niệm Phật đòi hỏi chúng ta phải mỗi niệm đều phải niệm trí và niệm giác. Có được như vậy phiền não lúc này sẽ chính là Bồ-đề.</span></p>\r\n<p><span>Trở lại với chuyện niềm vui, sung sướng, hạnh phúc cũng chính là phiền não. Đức Phật đã từng nói: “Hãy nhìn vào tất cả các vật thể chung quanh xem có vật thể nào trường tồn hay chăng? Có vật thể nào không phải là những cấu hợp sinh ra hay không? Tất cả sẽ gẫy nát, tan rã và phân tán.” (Lời dặn dò cuối cùng của Phật). Nếu ta quán chiếu lời Phật dạy, ta thấy: Phiền não và Bồ-đề là duyên sanh, thì tương tự, Bồ-đề-Phiền não cũng chính là duyên sanh. Có sanh, tất có diệt. Có diệt tất có sanh. Làm thế nào để đoạn diệt Phiền não và Bồ-đề luôn phát khởi trong tâm, điều này phụ thuộc vào sự quán chiếu và giác ngộ tâm của mỗi chúng ta.</span></p>\r\n<p><span>Hãy lấy một ví dụ nhỏ để chúng ta cùng suy ngẫm. Ví thử có ai đó tặng chúng ta một món quà rất quý và mắc tiền, điều mà nhiều khi chúng ta còn đang phải mơ ước để có được. Nếu đơn giản người tặng hoan hỉ tặng, người nhận cũng hoan hỉ nhận. Xong rồi thì thôi, hẳn đôi bên lúc ấy đều cảm thấy rất vui, sung sướng, và tự hào khi làm được một việc hữu ích cho nhau khi nhận được món quà đó. Nhưng người tặng quà chúng ta lại không làm điều đó, mà khi trao món quà cho chúng ta họ kèm thêm một lời đề nghị: Cô, bác, anh, chị… nhớ nhé! Món quà này quý và mắc tiền lắm đấy! Tôi phải thế này, tôi phải thế nọ mới có, mới mua được. Vì thế cô, bác, anh, chị… phải ráng giữ gìn cho cẩn thận nghe. Đừng có bán, cũng đừng cho ai mượn hay làm hỏng hóc nó. Để thỉnh thoảng gặp lại, tôi còn được nhìn thấy nó. Khi tâm chúng ta đối với cảnh huống đó, chắc chắn niềm vui, hạnh phúc và niềm tự hào sẽ vội qua mau. Thế vào đó là cảm giác nhột nhạt (vui-buồn) lẫn lộn diễn ra trong tâm. Không lấy thì sợ người tặng mình phật lòng, rồi bảo mình nghèo, không có còn sĩ diện. Nhưng lấy rồi cũng giống như người bị mắc nợ, và cũng bị cái điều kiện nêu trên ràng buộc, rồi nhiều khi cũng chẳng còn đủ tự tin để xử dụng món quà quý hiếm đó nữa. Còn người tặng chúng ta với tâm trạng muốn người khác phải làm theo ý mình, lo sợ món quà mình tặng sẽ không được gìn giữ như ý, tất nhiên trong lòng không thể nói sung hỉ được. Vậy là ý niệm vui (hỉ lạc trong tâm) giữa người Cho và Nhận mới chỉ kịp nhen nhóm, mới chỉ kịp khởi lên thôi, chưa kịp định hình thì ngay lập tức niềm hỉ lạc đó đã bị chính mình dập tắt. Nói khác đi là khoảng cách giữa vui (hỉ lạc) và buồn (phiền não) vốn chỉ trong một niệm, gang tấc. Do vậy người Trí-Giác là luôn biết quán chiếu vạn vật trong từng niệm. Một niệm ngu khởi lên là niệm phàm phu. Ta nhận biết đó là niệm phàm phu và chỉ cần buông xả ngay cái niệm đó, không chạy theo, nắm giữ, truy cầu, hay suy diễn tất tâm chúng ta sẽ tịnh lặng. Niệm niệm quán chiếu được như vậy, tất niệm niệm ấy là Trí-Giác, là niệm niệm tương ưng với Phật và lúc ấy Phật tánh sẽ hiện tiền (cảm giác thân nhẹ, an nhiên, tự tại, cảnh vật xung quanh hoàn toàn tịch lặng). Khi cảnh giới này xuất hiện là lúc chúng ta đã tìm lại được tự tánh của chính mình.</span></p>\r\n<p><span>Câu hỏi được đặt ra: Ai cướp, đánh mất tự tánh của chúng ta? Câu trả lời: Chính chúng ta chứ không ngoài ai khác. Điều này chúng ta nhận ra được và nhận ra một cách rõ nét nhất là khi chúng ta ngồi xuống để niệm Phật. Nếu niệm Phật mà đầu đau như búa bổ, cổ họng bỏng rát, môi khô, thân đau nhức… thì lúc ấy tự tánh (tánh Phật) trong chúng ta đã bị vô minh (tham-sân-si-chấp trước, ngã mạn) che lấp. Ngược lại chúng ta có được cảm giác an lạc, nhiều khi ngỡ mình đang lạc vào thế giới khác để rồi hoặc là giật mình hoảng sợ, hoặc là tham đắm, đeo đuổi cảnh giới đó đến độ cảnh giới đó vụt tan biến mất. Do vậy người niệm Phật khi gặp được cảnh giới đó cũng không cần phải quá hoan hỉ hay lo âu. Trái lại chỉ cần quán khởi một niệm biết: À ta đã tìm lại được tự tánh của chính mình rồi. Hay: À, ta đã xua tan vô minh, giúp cho tự tánh của ta hiện tiền lại rồi. Vậy là đủ! Và tiếp tục nhiếp tâm để niệm Phật. Nếu như chúng ta có thể giữ được sự Trí-Giác như vậy trong suốt buổi niệm Phật, niệm niệm nối tiếp, ngày ngày nối tiếp tất những phiền não trong tâm chúng ta sẽ dần dần biến mất. Những phiền não trong tâm của chúng ta đã được chính chúng ta dùng Trí-Giác để hoá giải, thế vào đó là tự tánh của chúng ta đã hiện tiền.</span></p>\r\n<p><span>Chúng ta tu hành theo pháp của Phật không ngoài một chân nghĩa nào khác đó là thắp sáng lại tự tánh – tìm lại Phật tánh bị vô minh che lấp trong mỗi chúng ta. Do vậy việc chúng ta tìm lại được tự tánh của chính mình không phải là một phát minh, hay chứng đắc gì cả mà nó chỉ mang một ý nghĩa vô cùng giản đơn: Ta Đã Tìm Lại Được Chính Mình.</span></p>\r\n<p><span>Dĩ nhiên để làm được việc đó không chỉ ngày một, ngày hai là chúng ta đã đạt được, trái lại nó là cả một quá trình tu-hành không mỏi mệt mà chúng ta phải dũng mãnh vượt qua. Người tu sau chưa chắc đã là người đến chậm. Người niệm Phật là người biết tìm cách để hoá giải những phiền não – những Người Bạn Không Hiền – đã gắn chặt với chúng ta từ vô lượng kiếp tới nay chứ không phải tìm cách để trốn chạy những người bạn này.</span></p>\r\n<p style="text-align: center;"><span>Tự tâm chúng sanh vô biên thệ nguyện độ</span><br /><span>Tự tâm phiền não vô biên thệ nguyện đoạn</span><br /><span>Tự tánh pháp môn vô tận thệ nguyện học</span><br /><span>Tự tánh vô thượng Phật Đạo thệ nguyện thành</span><br /><span>(Tứ Hoằng Thệ Nguyện – Tổ Huệ Năng)</span></p>\r\n<p><span>Chúng sanh là ai? Là chính chúng ta, là một niệm vô minh Tham-Sân-Si-Chấp trước-Ngã mạn trong mỗi chúng ta mà chúng ta phải tự độ, nguyện độ và nguyện đoạn cho chính mình.</span></p>\r\n<p style="text-align: right;"><span><em>08.2013</em></span></p>\r\n<p style="text-align: right;"><span><em>Nguồn: Internet</em></span></p>\r\n</div>	\N	\N	2016-06-20 08:27:14.510477	2016-06-20 08:28:27.741248	\N	\N	\N	t	\N	1	t	\N
+16	nao-bo-trong-luc-thien-dinh.jpg	Não Bộ Trong Lúc Thiền Định	<p><strong><span><a href="http://www.chualinhquang.com.vn/" target="_self">(LQT)</a>   Mới đây, Lazar và Holzel cũng đã cho biết rằng ở các hành giả ít cảm thấy căng thẳng, vùng hạch hạnh nhân của họ, vốn là khu vực não bộ có liên hệ chặt chẽ nhất với sự sợ hãi và những phản ứng cảm tính, có mật độ chất xám giảm dần.</span></strong></p>\r\n<p><span>Một trong những lãnh vực nghiên cứu thú vị nhất về tác động của việc thăm dò khả năng biến đổi thật sự của cấu trúc não bộ nhờ thực hành thiền định. Nhiều nhà nghiên cứu thần kinh học đã chứng tỏ rằng hoạt động ở một số vùng của não bộ trong lúc thiền định thực sự có khác biệt nơi những người thiền định đều đặn, và những bằng chứng mới nhất cho rằng những biến đổi ấy có thể xảy ra trong khoảng thời gian ít hơn tám tuần. Những khám phá này tỏ ra là không tương thích với những gì người ta đã biết về cấu trúc của não bộ nơi người trưởng thành. Người ta vẫn tin rằng vào một lúc nào đó không lâu sau thời gian từ 25 đến 30 tuổi, sự tăng trưởng và phát triển ở não bộ thật sự chấm dứt. Kể từ lúc đó não bộ trở nên ngày càng nhanh chóng bị hư hoại bởi tuổi tác và những thương tổn, và sự xuống dốc của não bộ là bắt đầu từ mức tăng trưởng và phát triển cực độ đó. Nhưng những nghiên cứu mới đây về thiền định cho rằng tình trạng đáng buồn ấy không phải là điều không thể tránh được; vì sự thực hành thiền định liên kết với các biến đổi ở những vùng riêng biệt của não bộ có tính cách thiết yếu cho sự chú ý, việc học tập, và sự điều hòa cảm xúc.</span></p>\r\n<p><span>Có thể điều đó không phải là đáng ngạc nhiên lắm. Khi chúng ta tập luyện về cơ bắp trong các bài tập thể dục, các bắp thịt của chúng ta lớn hơn và mạnh mẽ hơn. Cấu trúc của các bắp thịt có biến đổi. Thực tế, Hầu như mọi cấu trúc của cơ thể đều có những biến đổi khi chúng được sử dụng thường xuyên hơn. Ngày nay, điều đó có vẻ cũng đúng đối với não bộ. Chẳng hạn, chúng ta biết rằng khi ta tập luyện việc tung hứng, cái phần của não bộ liên quan đến việc theo dõi các đối tượng trong không gian trở nên phát triển hơn. Sự thiền định hẳn là cũng không khác gì. Như mọi cuộc nghiên cứu độc đáo khác, công trình tìm hiểu về kích thước của bộ não cũng là đối tượng tranh cãi, nhưng nó đã nhanh chóng trở thành một lãnh vực cho sự tìm hiểu sâu xa hơn bởi nhiều nhà khoa học.</span></p>\r\n<p><span>Đi tiên phong trong việc trình bày về tác động của thiền định trên cấu trúc của bộ não là nhà nghiên cứu thần kinh học Sara Lazar thuộc Bệnh viện Đa khoa Massachusetts. Bà đã sử dụng máy ghi nhận hình ảnh nhờ cộng hưởng từ (MRI) để có được những bức ảnh rất chi tiết về các bộ não của 20 thiền giả tự nguyện thuộc các trung tâm thiền định chung quanh thành phố Boston rồi so sánh với các hình ảnh có được từ một nhóm đối chứng là 20 người khác không thực hành thiền định. Các thiền giả chỉ là những người có kinh nghiệm thiền định chứ không phải là Tăng, Ni, hay những người đã hoàn toàn rút lui khỏi cuộc sống thường nhật. Nhóm hành giả gồm những người có thời gian thực tập thiền định trung bình là 9 năm và vẫn dành ra một khoảng thời gian trung bình là dưới một giờ mỗi ngày để ngồi thiền. Tất cả đều là người phương Tây, sống tại Hoa Kỳ và kiếm sống bằng những công việc tiêu biểu. Những người không phải hành giả là dân địa phương tình nguyện tham gia cuộc nghiên cứu, tương thích với những người là hành giả về phương diện tuổi tác và giới tính nhưng hoàn toàn không có một chút kinh nghiệm thực hành thiền định nào.</span></p>\r\n<p><span>Lazar đã tìm hiểu sâu ở vỏ não, bề mặt che phủ phía ngoài cùng của bộ não. Đây chính là phần tiến hóa nhất của bộ não. Khi những hình ảnh về bộ não của hai nhóm được đem ra so sánh, Lazar nhận thấy phần vỏ não của nhóm hành giả dầy đặc hơn là phần vỏ não của nhóm không phải là hành giả. Thông thường người ta vẫn biết rằng vỏ não teo lại theo tuổi tác; tuy nhiên, ở những đối tượng có thiền định trong cuộc nghiên cứu của Lazar, những phần mở rộng ở vỏ não của họ có cùng độ dày như ở vỏ não của những người không tu tập thiền định trẻ hơn họ khoảng 20 tuổi.Những nghiên cứu trước đó đã cho thấy đó chính là những phần có nhiều hoạt động nhất trong quá trình thực hành thiền. Một trong những vùng đó là phần vỏ não trước trán, cái phần của bộ não nhô ra xa nhất trong hộp sọ, gần trán nhất. Một vùng khác được Lazar nhận thấy cũng có sự khác biệt là thuộc một vùng khác của vỏ não, được gọi là não thùy.</span></p>\r\n<p><span>Mặc dù hết sức khó khăn để tách rời một chức năng tinh thần cụ thể nào đó khỏi một khu vực não bộ riêng biệt (và kết quả của những nỗ lực thực hiện việc này là điều vẫn gây ra tranh cãi trong cộng đồng các nhà khoa học), những khu vực riêng biệt mà Lazar đã chỉ ra ở phần vỏ não trước trán có tính cách thiết yếu cho một chuỗi những khả năng khác nhau thuộc loại hết sức quan trọng. Vùng vỏ não trước trán điều hành các chức năng quản trị nhận thức cao cấp như là lập kế hoạch, lấy quyết định, và phán đoán, đồng thời giữ cho chúng ta không gặp rắc rối bằng việc tạo sự thuận lợi cho những hành vi thích hợp về phương diện xã hội. Điều đó cho phép chúng ta duy trì trong tâm thức cùng lúc hai quan điểm hay hai kinh nghiệm khiến chúng ta có thể so sánh và đánh giá các kế hoạch, ý tưởng, và ký ức. Điều đó cũng giúp chúng ta liên kết ký ức với những dữ liệu cảm giác vừa tiếp thu nhờ đó chúng ta có thể kết nối điều chúng ta đã có kinh nghiệm trong quá khứ với những gì đang xảy ra trong thời điểm hiện tại.</span></p>\r\n<p><span>Một khu vực chính yếu khác cũng đã được Lazar nhận diện, vùng não thùy, dường như có nhiệm vụ hòa nhập cảm giác với cảm xúc và xử lý những cảm xúc xã hội, chẳng hạn như sự cảm thông và tình yêu thương. Não thùy cũng được cho là một vai trò thiết yếu đối với khả năng tự nhận thức. Mặc dù không có vùng nào của não bộ là không quan trọng, nhưng những hoạt động được hỗ trợ bởi các khu vực não bộ vừa nêu lại là hết sức thiết yếu cho việc hoạt động hữu hiệu của chúng ta trong cuộc sống.</span></p>\r\n<p><span>Cuộc nghiên cứu này vẫn còn được coi là có tính cách sơ bộ, một phần vì những kết luận của nó quá mâu thuẫn với những gì mà loài người nghĩ là họ đã biết, phần khác vì nó chỉ nghiên cứu trên 20 hành giả. Lazar cho biết, giữa các đồng nghiệp của bà, một số rất quan tâm và phấn khởi, trong khi nhiều người khác vẫn nghi ngờ. Tuy nhiên, tiếp theo cuộc nghiên cứu ấy, công trình của Lazar đã được khẳng định bởi một nhà nghiên cứu người Đức, Britta Holzel, cũng đã khám phá những vùng não bộ khác, ẩn sâu trong bộ não, có khả năng làm tăng mật độ chất xám nơi những hành giả tu tập thiền định. Chất xám là một phần của não bộ chứa đựng nhiều nhất các tế bào não hiện hữu; việc mật độ chất xám được tăng cường có thể phản ánh việc có sự tăng cường liên lạc giữa các tế bào não. Là một nhà nghiên cứu nhưng đồng thời cũng là một hành giả thiền định, hiện nay Holzel đang cộng tác với Lazar tại Boston. Những vùng mà Holzel và Lazar nhận diện chính là các khu vực của não bộ có liên kết với những hình thức biến đổi tâm lý và hành vi mà các hành giả thiền định đã nói tới từ hàng ngàn năm trước.</span></p>\r\n<p><span>Một trong những vùng não bộ đó cho phép chúng ta chuyển hướng tầm nhìn, một khả năng nâng đỡ một loạt những kỹ xảo và hành vi, kể cả năng lực thấy được suy nghĩ của người khác và việc vận dụng những trường hợp có chấn động về cảm xúc, chẳng hạn như khi ta vượt qua được những phản ứng của chính mình. Điều đó hoàn toàn phù hợp với những gì đang thực sự diễn ra trong lúc thực hành thiền định. Sự chuyển hướng tầm nhìn từ việc chỉ có những phản ứng lặt vặt mang tính tự động đến việc trở thành một nhân chứng có nhận thức sâu hơn và tinh tế hơn luôn luôn là một yếu tố cốt lõi của việc huấn luyện về thiền định. Lần lần, hành giả tập luyện chuyển hướng từ một trạng thái chỉ có nhận thức mơ hồ đến một nhận thức sống động về khoảnh khắc thực tại. Mới đây, Lazar và Holzel cũng đã cho biết rằng ở các hành giả ít cảm thấy căng thẳng, vùng hạch hạnh nhân của họ, vốn là khu vực não bộ có liên hệ chặt chẽ nhất với sự sợ hãi và những phản ứng cảm tính, có mật độ chất xám giảm dần. Phát hiện đáng ngạc nhiên nhất là tất cả những kiểu biến đổi cấu trúc về não bộ như vậy đã được ghi nhận chỉ sau tám tuần lễ thực hành trong một trương trình thực tập của Trung tâm Giảm Căng Thẳng Dựa Trên Thiền Định.</span></p>\r\n<p><span>Holzel cho rằng công trình nghiên cứu về thần kinh học của bà đã giúp ích rất nhiều cho việc thực hành thiền định của chính mình. Holzel nói, “Việc nghiên cứu này giúp tôi cải tiến việc thực hành của mình ngày càng tinh tế hơn, khiến tôi tỉnh thức hơn trước các tiến trình đang diễn ra trong lúc tôi thiền định. Việc nghiên cứu cũng giúp tôi học tập được sự kiên nhẫn và chấp nhận. Người ta có thể nghĩ rằng lẽ ra việc làm cho tâm trí trở nên tĩnh lặng phải dễ dàng hơn; nhưng tôi hiểu, hệ thống thần kinh cũng cần phải có thời gian mới có thể biến đổi được; và trạng thái lơ đãng là điều đã được xây dựng thành hệ thống rồi. Chính sự hiểu biết này cho phép tôi chấp nhận cái cách thích hợp cho tôi vào lúc bấy giờ. Đó chẳng phải là lỗi của tôi hay là vấn đề đối với tôi. Đơn giản, đó chỉ là cách mà bộ não đã được tạo nên và là cách mà hệ thống thần kinh của loài người vận hành”.</span></p>\r\n<p><span>Ích lợi của những thông tin này đã được khẳng định bởi Lazar. Bà phát biểu, “Điều khiến tôi ngạc nhiên nhất về cuộc nghiên cứu này là sao mà có quá nhiều những hành giả thâm niên và các vị thầy về thiền định vẫn nói rằng có sự thúc đẩy để họ thực hành thiền định trong suốt bao nhiêu lâu mặc dù việc thực hành thiền định của họ dường như chẳng đi đến đâu cả”. Lazar cũng cho biết thêm rằng các hành giả thường nói với bà, “Tôi thường nghĩ rằng tôi đang phí thời giờ vì tâm tôi cứ lang thang hết chỗ này đến chỗ nọ. Chính điều đó giữ tôi trên tấm bồ đoàn vì tôi nhớ rằng những biến đổi đó đáng kể biết là chừng nào”.</span></p>\r\n<p style="text-align: right;"><span><em>Nguồn: This is Your Brain on Mindfulness, Shambhala Sun.</em></span></p>\r\n<p><span>Michael Baime là giáo sư phụ tá lâm sàng của Đại học Y khoa thuộc University of Pennsylvania và chính thức làm việc tại Trung tâm Ung thư Abramson bang Philadelphia. Năm1992, ông xây dựng Chương trình Thiền Tỉnh thức tại Pennsylvania và có liên quan đến một loạt những đề án khác nhau trong việc thăm dò những hiệu quả của Thiền Tỉnh thức.</span></p>\r\n<p style="text-align: right;"><span><em>MICHAEL BAIME – TÂM LẠC dịch</em></span></p>	\N	\N	2016-06-20 08:32:08.855318	2016-06-20 08:33:48.782581	\N	\N	\N	t	\N	1	t	\N
+17	thi_n-4.jpg	Những Lợi Ích Của Thiền Định	<p><strong><span><a href="http://www.chualinhquang.com.vn/" target="_self">(LQT)</a> Nếu là người lo âu, thiền định có thể làm cho bạn bình tĩnh và tìm đến tâm an bình.</span></strong></p>\r\n<p><span>Ngày nay, nhiều người khắp nơi trên thế giới, bất luận là theo tôn giáo nào, họ đều ý thức được lợi ích của thiền định. Mục đích gần của thiền là để rèn luyện tâm và dụng tâm một cách có hiệu quả cao trong đời sống thường nhật. Mục đích tối hậu của thiền là để giải thoát ra khỏi sinh tử luân hồi. Mặc dù thiền định được xem là một việc làm khó nhất, nhưng những lợi ích tích cực thì có thể đạt được ngay trong giờ phút hiện tại nếu chúng ta chuyên tâm thực hành. Những lợi ích của thiền định có thể được tóm tắt như sau:</span></p>\r\n<p><span>- Nếu là người bận rộn, thiền định có thể giúp bạn buông bỏ căng thẳng và tìm đến sự thư thả.</span></p>\r\n<p><span>- Nếu là người lo âu, thiền định có thể làm cho bạn bình tĩnh và tìm đến tâm an bình.</span></p>\r\n<p><span>- Nếu bạn là người có nhiều vấn đề, thiền định có thể giúp bạn phát triển lòng can đảm và nghị lực để đối đầu và vượt qua.</span></p>\r\n<p><span>- Nếu bạn thiếu tự tin, thiền định có thể giúp bạn có được tự tin (tự tin là bí quyết thành công trong cuộc sống).</span></p>\r\n<p><span>- Nếu bạn có tâm lo sợ, thiền định có thể giúp bạn thấu hiểu thực chất của những vấn đề khiến bạn hoảng loạn, lúc đó bạn có thể khắc phục tâm lo sợ.</span></p>\r\n<p><span>- Nếu bạn luôn bất mãn và không có gì trong đời sống làm bạn thỏa mãn, thiền định có thể giúp bạn tạo cơ hội để phát triển và duy trì sự hài lòng với chính mình.</span></p>\r\n<p><span>- Nếu bạn hoài nghi và không quan tâm đến cách sống tôn giáo, thiền định có thể giúp bạn vượt qua thái độ hoài nghi và thấy được những giá trị thực tiễn trong đạo pháp.</span></p>\r\n<p><span>- Nếu bạn thất bại và khổ sở do thiếu hiểu biết về tình trạng bấp bênh của đời sống và thế giới, thiền định có thể hướng dẫn và giúp bạn hiểu biết tính phù du của các pháp thế gian.</span></p>\r\n<p><span>- Nếu bạn là người giàu có, thiền định có thể giúp bạn nhận chân bản chất sang trọng, cao cả của bạn và cách sử dụng nó không những vì chính hạnh phúc của bạn mà còn vì hạnh phúc tha nhân.</span></p>\r\n<p><span>- Nếu bạn là người nghèo khổ, thiền định có thể giúp bạn phát triển sự tri túc và không chứa chấp lòng ganh tỵ trong lòng với những ai giàu có hơn bạn.</span></p>\r\n<p><span>- Nếu bạn là một thanh niên đang ở "ngã ba đường" không biết rẽ về đâu, thiền định có thể giúp bạn tìm thấy chánh đạo để đi đến mục đích mà bạn đã chọn.</span></p>\r\n<p><span>- Nếu bạn là một người đứng tuổi, chán ngán cuộc sống, thiền định có thể mang lại cho bạn sự hiểu biết cuộc sống sâu sắc hơn; sự hiểu biết này lần lượt sẽ làm vơi đi những nỗi đau của bạn và gia tăng niềm vui sống.</span></p>\r\n<p><span>- Nếu bạn nóng tính, bạn có thể phát triển sức mạnh để khắc phục nhược điểm của tính nóng nảy, thù hận để trở thành người điềm đạm và tỉnh táo hơn.</span></p>\r\n<p><span>- Nếu bạn ganh tỵ, bạn có thể hiểu rằng những thái độ tinh thần tiêu cực không bao giờ đóng góp bất cứ điều gì cho lợi ích của bạn.</span></p>\r\n<p><span>- Nếu bạn không thể giảm thiểu tham ái đối với các dục lạc, bạn có thể học cách trở thành người làm chủ những dục lạc của bạn.</span></p>\r\n<p><span>- Nếu bạn nghiện rượu hoặc ma túy, bạn có thể vượt qua thói quen nguy hiểm đã<br />từng làm cho bạn nô lệ.</span></p>\r\n<p><span>- Nếu bạn là người hẹp hòi, bạn có thể phát triển trí sáng suốt để mang lại lợi ích cho chính mình, bạn bè và gia đình; và tránh sự hiểu lầm.</span></p>\r\n<p><span>- Nếu bạn khổ sở từ những hỗn loạn như những chứng suy nhược thần kinh và xáo trộn tinh thần, thiền định có thể làm khơi dậy những năng lực tích cực trong thân tâm bạn để phục hồi sức khỏe, đặc biệt nếu chúng thuộc những vấn đề thần kinh.</span></p>\r\n<p><span>- Nếu bạn là người nhu nhược hoặc có tính mặc cảm tự ti, thiền định có thể giúp bạn phát triển lòng can đảm và khắc phục nhược điểm.</span></p>\r\n<p><span>- Nếu bạn là người sáng suốt, thiền định sẽ hướng dẫn bạn đến trí tuệ cao siêu. Lúc đó bạn sẽ thấy chân tướng của các pháp, và không còn chấp theo hình tướng bên ngoài nữa...</span></p>\r\n<p><span>Đây là một số điều lợi ích thiết thực phát xuất từ việc thực hành thiền định. Những lợi ích này không thể rao bán trong các cửa hiệu hay cửa hàng bách hóa mà bạn muốn có thì phải thực tập thiền và rèn luyện tâm mỗi ngày. Tâm là chìa khóa mở cánh cửa hạnh phúc và cũng là chìa khóa mở cánh cửa khổ đau. Hiểu được tâm và khéo dụng tâm là công việc hơn hẳn đời sống thanh bình và thỏa mãn.</span></p>\r\n<p><span>Một số người cho rằng thực tập thiền rất khó vì khi hành thiền họ gặp phải loạn động rồi cho rằng không ai có thể đoạn trừ loạn động ấy. Thực ra, trong thế giới chúng ta đang sống không có nơi nào mà không có loạn động. Nhưng với sự khéo léo và hiểu rõ sự vật một cách hợp lý thì chúng ta sẽ biết cách bảo vệ tâm của mình, chống lại bất kỳ hình thức xáo trộn nào. Đức Phật dạy: "Khi bạn thấy bất kỳ sự vật gì, bạn cũng đừng chấp chặt vào sự vật đó mà phải dùng tâm để phát triển sự cảm nhận sâu sắc vào bản chất thật của sự vật hiện tượng".</span></p>\r\n<p><span><img src="/uploads/editor/1466411702.jpg" /></span></p>\r\n<p><span>Hãy quan sát mọi vật với sự rõ biết. Tốt hơn bạn không nên đắm say vào nó nếu bạn thật sự muốn giữ tâm yên tĩnh. Hãy để cho tâm tự do không dính mắc vào một thứ nào. Khi nghe âm thanh dù vui hay buồn, chỉ nghe với sự rõ biết. Bạn phải có chánh niệm để tránh sự tác động của âm thanh, lúc đó tâm của bạn mới không bị vướng mắc vào những gì mình đang có. Bạn phải rèn luyện tâm để duy trì sự bình yên nội tại.</span></p>\r\n<p><span>Ngoại cảnh và sự hưng phấn thường làm cho tâm bị xáo trộn nên ý niệm tham lam, ganh tỵ, sân si, vọng tưởng sẽ phát sinh; chúng làm cho tâm ô nhiễm. Thiền là phương tiện giúp ta bảo vệ tâm. Người khéo dụng công, khi tập trung vào bất kỳ sự vật hiện tượng nào dù vui hay buồn mà vẫn không có lòng tham đắm hay thù hận phát khởi.</span></p>\r\n<p><span>Chúng ta thường dành nhiều thời gian để chăm lo cho thân thể như tắm rửa, giặt áo quần, ăn uống, trang điểm, thư giãn... nhưng thử hỏi chúng ta đã dành bao nhiêu thời gian để quan tâm đến tâm?</span></p>\r\n<p><span>Nhiều căn bệnh và chứng rối loạn có thể tránh được nếu chúng ta biết dành thời gian thực tập thiền, rèn luyện tâm để giữ tâm yên tĩnh. Nhiều người không tin hoặc do lười biếng không hành thiền, không am tường về thiền nên cho rằng thiền chỉ là lãng phí thời gian.</span></p>\r\n<p><span>Thiền có thể giúp con người vượt qua thân bệnh và duy trì sức khỏe thông qua sự phát triển của tâm. Khi tâm thoải mái, chúng ta dễ dàng tiếp thu kiến thức hoặc nhạy bén hơn. Khi tâm chứa ý tưởng xấu, những tạp nhiễm này có thể gây tổn thương thân thể. Y học ngày nay cũng chấp nhận rằng tâm là nguồn gốc của các loại bệnh và tương tự tâm cũng có thể được dùng để điều trị bệnh.</span></p>\r\n<p style="text-align: right;"><span><strong>Thích Quảng Đạt</strong><em> dịch theo <em>Meditation the only way</em></em></span><br /><span><em><em>Nguồn: giacngo.vn</em></em></span></p>	\N	\N	2016-06-20 08:35:07.936051	2016-06-20 08:35:13.545144	\N	\N	\N	t	\N	1	t	\N
+18	33.jpg	Tưởng Niệm Ân Sư	<p><span><strong>Thượng tọa THÍCH TRÍ TỊNH</strong></span><br /><span>Thế danh : Hồ Văn Mãi</span><br /><span>-Thư kí Ban Đại diện Phật Giáo Huyện Định Quán</span><br /><span>-Trụ trì Chùa Linh Quang, Xã Phú Hòa. H. Định Quán, T.Đồng Nai</span></p>\r\n<p><span>Sau thời ngắn lâm bệnh, mặc dù được Chư tôn đức trong Môn phong, môn đồ pháp quyến, đệ tử và các y, bác sĩ tận tình chăm sóc chữa trị, nhưng vì chứng bệnh quá ngặt ngèo, Thượng tọa đã thuận thế vô thường, viên tịch vào lúc 19 giờ 45, ngày 29 tháng 2 năm Canh dần (13/04/2010).</span><br /><span>Trụ thế 58 tuổi, Hạ lạp 27 năm.</span></p>\r\n<p><span><img src="/uploads/editor/1466415644.jpg" style="display: block; margin-left: auto; margin-right: auto;" /><br /></span><span>- Lễ nhập quan: lúc 16 giờ ngày 01 tháng 03 năm Canh dần ( 14/04/2010)<br /><span>Kim quan được tôn trí tại Chùa Linh Quang ( địa chì như trên)</span><br /><span>- Lễ viếng bắt đầu lúc 20 giờ ngày 01 tháng 03 năm Canh dần ( 14/04/2010)</span><br /><span>- Lễ di quan: lúc 10 giờ 30 ngày 04 tháng 03 năm Canh dần ( 17/04/2010) và nhập tháp tại khuôn viên Chùa Linh Quang.</span><br /><span>Kính mong Chư tôn đức Tăng Ni, Phật tử quang lâm tụng kinh cầu nguyện trợ tiến giác linh Cố Thượng tọa cao đăng Phật quốc.</span></span></p>\r\n<p><span><span><img src="/uploads/editor/1466415714.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></span></p>\r\n<p style="text-align: center;"><span><span>Thầy đã về với chúng con</span></span></p>\r\n<p style="text-align: center;"><span><span><img src="/uploads/editor/1466415756.jpg" /></span></span></p>	\N	\N	2016-06-20 09:42:39.77766	2016-06-20 09:42:46.24349	\N	\N	\N	t	\N	1	t	\N
+19	03_293027465.jpg	Chùa Linh Quang tổ chức Trung thu tại địa phương	<p><span><strong>Đạo tràng Phật tử Chùa Linh Quang - Xã Phú Hòa , Huyện Định Quán , Tỉnh Đồng Nai đã trao hơn 200 phần quà trung thu và lồng đèn cho thiếu nhi trong Xã.</strong></span></p>\r\n<div class="bodytext">\r\n<p><span>Tối 14/8 Nhâm Thìn, Gia đình Phật tử và CLB Thanh niên Thiện Nguyện Chùa Linh Quang cùng phối hợp với Đoàn TN Xã tổ chức đêm trung thu cho các em gồm các hoạt động: Rước đèn. phá cỗ, múa hát tập thể, văn nghệ, trò chơi dân gian.</span></p>\r\n<p><span><img src="/uploads/editor/1466415826.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p style="text-align: center;"><span><img src="/uploads/editor/1466415828.jpg" /></span></p>\r\n<p><span><img src="/uploads/editor/1466415830.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n</div>	\N	\N	2016-06-20 09:44:03.310886	2016-06-20 09:44:09.128573	\N	\N	\N	t	\N	1	t	\N
+21	01_651342380.jpg	Chùa Linh Quang rót đồng đúc đại hồng chung	<p><span>Quả đại hồng chung được chế tác theo dáng dấp truyền thống với các hoạ tiết trang trí đơn giản, thanh thoát có hình các vị Phật: Thích Ca, Quan Âm, Di Đà, Địa Tạng và các bài kệ âm Hán-Việt.</span></p>\r\n<div class="bodytext">\r\n<p><span><strong>Sáng ngày 02/11/2012 nhằm ngày 19/9/Nhâm Thìn, ngày vía Đức Quan Âm Bồ tát, Chùa Linh Quang – H. Định Quán do Đại Đức Thích Huệ Trí trụ trì đã tổ chức trang nghiêm lễ cầu nguyện rót đồng, đúc đại hồng chung có trọng lượng 1000kg, chiều cao 1,75 mét.</strong></span></p>\r\n<p><span>Tham dự và chứng minh có Thượng tọa Thích Pháp Cần, Chánh đại diện PG H. Tân Phú, Thượng tọa Thích Đồng Ngạn, Chánh đại diện PG H. Định Quán cùng chư Tăng, chư Ni và Phật tử,  của gần 40 đạo tràng trong và ngoài Huyện.</span></p>\r\n<p><span>Đúng 9 giờ sáng, trong tiếng kinh cầu nguyện và niệm Phật của hơn 1000 Tăng, Ni, Phật tử, dòng đồng nung chảy được đổ vào khuôn do các nghệ nhân đến từ Thành phố Huế thực hiện.</span></p>\r\n<p><span>Chiều cùng ngày, khuôn được tháo dỡ để lộ quả đại hồng chung mà Phật tử nơi đây hằng mong ước.</span></p>\r\n<p><span>Đại hồng chung sẽ được tiếp tục những công đoạn còn lại và sẽ hoàn chỉnh trong vài ngày sắp tới.</span></p>\r\n<p><span>Quả đại hồng chung được chế tác theo dáng dấp truyền thống với các hoạ tiết trang trí đơn giản, thanh thoát có hình các vị Phật: Thích Ca, Quan Âm, Di Đà, Địa Tạng và các bài kệ âm Hán-Việt.</span></p>\r\n<p><span><img src="/uploads/editor/1466416157.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n<p><span><img src="/uploads/editor/1466416160.jpg" style="display: block; margin-left: auto; margin-right: auto;" /></span></p>\r\n</div>	\N	\N	2016-06-20 09:49:29.089261	2016-06-20 09:49:34.331101	\N	\N	\N	t	\N	1	t	\N
+\.
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('articles_id_seq', 22, true);
+
+
+--
+-- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('articles_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY carts (id, created_at, updated_at, voucher_code, coupon_code) FROM stdin;
+\.
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('carts_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories (id, name, level, description, created_at, updated_at, ordered, meta_keywords, meta_description) FROM stdin;
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories_products (id, product_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: code_statuses; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY code_statuses (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('code_statuses_id_seq', 1, false);
+
+
+--
+-- Data for Name: comment_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY comment_articles (id, name, email, content, user_id, article_id, created_at, updated_at, parent_id) FROM stdin;
+\.
+
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('comment_articles_id_seq', 1, false);
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY comments (id, product_id, name, content, star, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY companies (id, image_url, name, head_office_address, certificate_no, date_of_issue, sales_office_address, phone, hotline, email, created_at, updated_at, head_area_id, branch_area_id, type_company) FROM stdin;
+1	142234674761.jpg	CHÙA LINH QUANG	Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam	\N	\N	\N	0613 629 057	\N	hopthu@chualinhquang.com.vn	2016-06-17 15:08:25.747608	2016-07-18 05:33:43.01104	\N	\N	\N
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 1, true);
+
+
+--
+-- Data for Name: compares; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY compares (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY contacts (id, name, email, message, created_at, updated_at, user_id, phone, unit, address) FROM stdin;
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, true);
+
+
+--
+-- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY conversations (id, sender_id, recipient_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('conversations_id_seq', 1, false);
+
+
+--
+-- Data for Name: coupons; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY coupons (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('coupons_id_seq', 1, false);
+
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY customers (id, first_name, last_name, email, phone, company, address, city, zip_code, country, province, created_at, updated_at, order_id, area_id) FROM stdin;
+\.
+
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('customers_id_seq', 1, false);
+
+
+--
+-- Data for Name: delivery_methods; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY delivery_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('delivery_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY feedbacks (id, email, content, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('feedbacks_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_item_compares; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY line_item_compares (id, product_id, compare_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('line_item_compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity) FROM stdin;
+\.
+
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('line_items_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY manufacturers (id, image_url, name, address, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 1, false);
+
+
+--
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY messages (id, body, conversation_id, user_id, created_at, updated_at, seen) FROM stdin;
+\.
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('messages_id_seq', 1, false);
+
+
+--
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY newsletters (id, email, created_at, updated_at, status, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('newsletters_id_seq', 2, true);
+
+
+--
+-- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY options (id, created_at, updated_at, code, tag, value, note, title, accept_email) FROM stdin;
+\.
+
+
+--
+-- Name: options_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('options_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_deliveries; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_deliveries (id, first_name, last_name, company, address, city, zip_code, country, province, delivery_method_id, payment_method_id, message, created_at, updated_at, order_id, email, phone) FROM stdin;
+\.
+
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_deliveries_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_details (id, order_id, product_id, quantity, price, created_at, updated_at, product_name) FROM stdin;
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY orders (id, created_at, updated_at, user_id, status, different_delivery, voucher_code, voucher_price, coupon_code, coupon_price) FROM stdin;
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_article_categories (id, parent_id, article_category_id, created_at, updated_at) FROM stdin;
+1	3	8	2016-06-17 15:15:18.479455	2016-06-17 15:15:18.479455
+2	2	9	2016-06-17 15:15:44.328087	2016-06-17 15:15:44.328087
+3	2	10	2016-06-17 15:15:59.243121	2016-06-17 15:15:59.243121
+4	2	11	2016-06-17 15:16:12.359726	2016-06-17 15:16:12.359726
+5	2	12	2016-06-17 15:16:24.56665	2016-06-17 15:16:24.56665
+6	6	13	2016-06-17 15:17:12.912117	2016-06-17 15:17:12.912117
+7	6	14	2016-06-17 15:17:30.403294	2016-06-17 15:17:30.403294
+\.
+
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_article_categories_id_seq', 7, true);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: payment_methods; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY payment_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('payment_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_images (id, product_id, image_url, created_at, updated_at, is_main) FROM stdin;
+\.
+
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_images_id_seq', 1, false);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY products (id, name, code, quantity, unit, price, short_description, description, manufacturer_id, product_image_id, created_at, updated_at, tags, status, old_price, discount_percent, meta_keywords, meta_description, is_show, stock, approved, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('products_id_seq', 1, false);
+
+
+--
+-- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY questions (id, name, email, content, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('questions_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160406035423
+20160406060729
+20160406061501
+20160406072632
+20160406090918
+20160406093710
+20160407021915
+20160407022242
+20160407033416
+20160407034556
+20160407040834
+20160407041811
+20160407063600
+20160407071755
+20160407073929
+20160407090029
+20160407092753
+20160411022035
+20160411070126
+20160411090637
+20160412090455
+20160412091031
+20160412091620
+20160412092036
+20160413013557
+20160414070432
+20160414071647
+20160414071935
+20160414072251
+20160414072336
+20160414111647
+20160415024108
+20160415034338
+20160415045331
+20160415070403
+20160418084816
+20160419063009
+20160419063732
+20160419073354
+20160419084034
+20160419084328
+20160420021407
+20160420025319
+20160420031013
+20160420035639
+20160420071851
+20160420083852
+20160420083904
+20160421014453
+20160421023948
+20160421032607
+20160422075657
+20160422084139
+20160422092821
+20160425011612
+20160425011627
+20160425031932
+20160425042302
+20160425043159
+20160425043209
+20160425075501
+20160429043324
+20160429062814
+20160505042346
+20160505065936
+20160505084631
+20160505090509
+20160505092039
+20160506024000
+20160506084612
+20160506090959
+20160510030159
+20160510030222
+20160510094925
+20160512092157
+20160512092324
+20160514031109
+20160516073144
+20160516073152
+20160516073236
+20160516073244
+20160516080558
+20160516082039
+20160516085116
+20160516085213
+20160516090119
+20160517032825
+20160517033437
+20160517083909
+20160518035417
+20160518070327
+20160520062835
+20160521024747
+20160527042708
+20160527083046
+20160531021437
+20160531021445
+20160601013031
+20160601065702
+20160601091343
+20160601100102
+20160601111606
+20160602071024
+20160602083515
+20160602083819
+20160603025541
+20160603071216
+20160603080430
+20160607034151
+20160607034155
+20160617153206
+\.
+
+
+--
+-- Data for Name: slideshows; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY slideshows (id, image_url, title_1, title_2, name_button, link, created_at, updated_at, color_1, color_2, style) FROM stdin;
+\.
+
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('slideshows_id_seq', 1, false);
+
+
+--
+-- Data for Name: testimonials; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY testimonials (id, name, city, email, content, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('testimonials_id_seq', 1, false);
+
+
+--
+-- Data for Name: user_groups; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY user_groups (id, name, permission, created_at, updated_at) FROM stdin;
+1	Thành viên	\N	2016-06-14 03:25:31.764251	2016-06-14 03:25:31.764251
+2	Quản trị viên	\N	2016-06-14 03:25:31.773352	2016-06-14 03:25:31.773352
+3	Quản lý cấp cao	{"ArticleCategory":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Article":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"],"approve":["yes"]},"CommentArticle":{"read":["yes"],"delete":["yes"]},"Contact":{"read":["yes"],"delete":["yes"]},"User":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"UserGroup":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Company":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]}}	2016-06-14 03:25:31.779396	2016-06-17 15:20:43.352715
+\.
+
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('user_groups_id_seq', 3, true);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone, fax, company, address_1, address_2, zip_code, country, province, city, provider, uid, password_reset_token, password_reset_sent_at, oauth_token, oauth_expires_at, last_seen, is_admin, area_id, role, user_group_id) FROM stdin;
+1	admin@chualinhquang.com.vn	$2a$11$603J2HlAnUFox7s7oQrbDepW16mcViiC3WDD9V66HBwANX.cbg7tO	\N	\N	\N	6	2016-07-18 04:16:56.590853	2016-06-20 15:07:24.873553	192.168.126.1	192.168.126.1	2016-06-15 14:04:50.663058	2016-07-18 05:49:01.828807	Chùa Linh	Quang	0613.629.057	\N		Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam	\N	\N	Việt Nam	\N	\N	\N	\N	\N	\N	\N	\N	2016-07-18 05:49:01.824122	t	\N	admin	3
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Data for Name: vouchers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY vouchers (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('vouchers_id_seq', 1, false);
+
+
+--
+-- Data for Name: wish_lists; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY wish_lists (id, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('wish_lists_id_seq', 1, false);
+
+
+--
+-- Name: areas_articles_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY areas_articles
+    ADD CONSTRAINT areas_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: areas_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY areas
+    ADD CONSTRAINT areas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: areas_products_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY areas_products
+    ADD CONSTRAINT areas_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: article_categories_articles_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY article_categories_articles
+    ADD CONSTRAINT article_categories_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: article_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY article_categories
+    ADD CONSTRAINT article_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_products_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY articles_products
+    ADD CONSTRAINT articles_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: carts_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY carts
+    ADD CONSTRAINT carts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories_products_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY categories_products
+    ADD CONSTRAINT categories_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: code_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY code_statuses
+    ADD CONSTRAINT code_statuses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comment_articles_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY comment_articles
+    ADD CONSTRAINT comment_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY companies
+    ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: compares_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY compares
+    ADD CONSTRAINT compares_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY contacts
+    ADD CONSTRAINT contacts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: conversations_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY conversations
+    ADD CONSTRAINT conversations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: coupons_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY coupons
+    ADD CONSTRAINT coupons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: customers_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY customers
+    ADD CONSTRAINT customers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: delivery_methods_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY delivery_methods
+    ADD CONSTRAINT delivery_methods_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: feedbacks_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY feedbacks
+    ADD CONSTRAINT feedbacks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: line_item_compares_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_item_compares
+    ADD CONSTRAINT line_item_compares_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: line_items_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT line_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: manufacturers_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY manufacturers
+    ADD CONSTRAINT manufacturers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: newsletters_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY newsletters
+    ADD CONSTRAINT newsletters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: options_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY options
+    ADD CONSTRAINT options_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: order_deliveries_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY order_deliveries
+    ADD CONSTRAINT order_deliveries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: order_details_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY order_details
+    ADD CONSTRAINT order_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: orders_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: parent_article_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY parent_article_categories
+    ADD CONSTRAINT parent_article_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: parent_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY parent_categories
+    ADD CONSTRAINT parent_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: payment_methods_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY payment_methods
+    ADD CONSTRAINT payment_methods_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: product_images_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY product_images
+    ADD CONSTRAINT product_images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: questions_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY questions
+    ADD CONSTRAINT questions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: slideshows_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY slideshows
+    ADD CONSTRAINT slideshows_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: testimonials_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY testimonials
+    ADD CONSTRAINT testimonials_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY user_groups
+    ADD CONSTRAINT user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vouchers_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY vouchers
+    ADD CONSTRAINT vouchers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: wish_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY wish_lists
+    ADD CONSTRAINT wish_lists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_conversations_on_recipient_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_conversations_on_recipient_id ON conversations USING btree (recipient_id);
+
+
+--
+-- Name: index_conversations_on_sender_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_conversations_on_sender_id ON conversations USING btree (sender_id);
+
+
+--
+-- Name: index_line_item_compares_on_compare_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_line_item_compares_on_compare_id ON line_item_compares USING btree (compare_id);
+
+
+--
+-- Name: index_line_item_compares_on_product_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_line_item_compares_on_product_id ON line_item_compares USING btree (product_id);
+
+
+--
+-- Name: index_line_items_on_cart_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_line_items_on_cart_id ON line_items USING btree (cart_id);
+
+
+--
+-- Name: index_line_items_on_product_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_line_items_on_product_id ON line_items USING btree (product_id);
+
+
+--
+-- Name: index_messages_on_conversation_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_messages_on_conversation_id ON messages USING btree (conversation_id);
+
+
+--
+-- Name: index_messages_on_user_id; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE INDEX index_messages_on_user_id ON messages USING btree (user_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: nguyenngocson0811
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: fk_rails_11e15d5c6b; Type: FK CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT fk_rails_11e15d5c6b FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
+-- Name: fk_rails_273a25a7a6; Type: FK CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT fk_rails_273a25a7a6 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_7f927086d2; Type: FK CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT fk_rails_7f927086d2 FOREIGN KEY (conversation_id) REFERENCES conversations(id);
+
+
+--
+-- Name: fk_rails_af645e8e5f; Type: FK CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT fk_rails_af645e8e5f FOREIGN KEY (cart_id) REFERENCES carts(id);
+
+
+--
+-- Name: fk_rails_d6929b2f50; Type: FK CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_item_compares
+    ADD CONSTRAINT fk_rails_d6929b2f50 FOREIGN KEY (compare_id) REFERENCES compares(id);
+
+
+--
+-- Name: fk_rails_d72071e038; Type: FK CONSTRAINT; Schema: public; Owner: nguyenngocson0811
+--
+
+ALTER TABLE ONLY line_item_compares
+    ADD CONSTRAINT fk_rails_d72071e038 FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
