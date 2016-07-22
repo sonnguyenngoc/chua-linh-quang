@@ -158,9 +158,56 @@
         </div>
         
     </li>
+    
+    <li class="widget r-posts-w fx" data-animate="fadeInRight">
+        
+        <h3 class="widget-head">Hình Ảnh</h3>
+       
+        <div class="widget-content">
+            
+            <ul>
+                
+                <% Article.get_lastest_cultural_news.each do |item| %>
+                    
+                    <li>
+                        <div class="post-img">
+                            
+                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                                
+                                <img src="<%= item.image_url.square_medium_image %>" alt="">
+                            
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="widget-post-info">
+                           
+                            <h4>
+                               
+                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                            
+                            </h4>
+                            
+                            <div class="meta">
+                                
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                    </li>
+                    
+                <% end %>
+                
+            </ul>
+            
+        </div>
+        
+    </li>
 
     <li class="widget blog-cat-w fx" data-animate="fadeInRight">
-        <h3 class="widget-head">Chuyên mục</h3>
+        <h3 class="widget-head">Chuyên Mục Bài Viết</h3>
         <div class="widget-content">
             <ul class="list list-ok alt">
                 <li><%= link_to "Phật Sự", buddhist_news_path %><span>[<%= Article.get_all_buddhist_news.count %>]</span></li>
@@ -169,34 +216,6 @@
                 <li><%= link_to "Từ Thiện", charity_path %><span>[<%= Article.get_all_charity_blogs.count %>]</span></li>
                 <li><%= link_to "Văn Hóa", cultural_path %><span>[<%= Article.get_all_cultural_blogs.count %>]</span></li>
                 <li><%= link_to "GĐPT Linh Quang", buddhist_family_path %><span>[<%= Article.get_all_buddhist_family_blogs.count %>]</span></li>
-            </ul>
-        </div>
-    </li>
-
-    <li class="widget r-comments-w fx" data-animate="fadeInRight">
-        <h3 class="widget-head">Bình luận gần đây</h3>
-        <div class="widget-content">
-            <ul>
-                <li>
-                    <div class="left"><i class="fa fa-comments"></i></div>
-                    <h5>admin on <a href="blog-single.html">Blog Post with Video</a></h5>
-                    <span><i class="fa fa-clock-o"></i>Dec 28, 2013</span>
-                </li>
-                <li>
-                    <div class="left"><i class="fa fa-comments"></i></div>
-                    <h5>admin on <a href="blog-single.html">Blog post title with Image</a></h5>
-                    <span><i class="fa fa-clock-o"></i>Dec 24, 2013</span>
-                </li>
-                <li>
-                    <div class="left"><i class="fa fa-comments"></i></div>
-                    <h5>admin on <a href="blog-single.html">Blog post title with Image</a></h5>
-                    <span><i class="fa fa-clock-o"></i>Dec 22, 2013</span>
-                </li>
-                <li>
-                    <div class="left"><i class="fa fa-comments"></i></div>
-                    <h5>admin on <a href="blog-single.html">Blog post title with Image</a></h5>
-                    <span><i class="fa fa-clock-o"></i>Dec 22, 2013</span>
-                </li>
             </ul>
         </div>
     </li>
