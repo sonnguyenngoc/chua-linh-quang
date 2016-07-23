@@ -12,7 +12,7 @@
             <div class="media-right media-middle">
                 <ul class="icons-list">
                     <li>
-                        <a href="#" title="<%= t(:account_settings) %>"><i class="icon-cog3"></i></a>
+                        <%= link_to '<i class="icon-cog3"></i>'.html_safe, admin_companies_path, title: t(:account_settings) %>
                     </li>
                 </ul>
             </div>
