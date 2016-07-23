@@ -52,7 +52,7 @@
                                    
                                     <div class="post-image">
                                         
-                                        <a href="<%= blog_detail_path(blog_id: item) %>">
+                                        <a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">
                                            
                                             <div class="mask"></div>
                                             
@@ -74,13 +74,13 @@
                                             
                                             <div class="post-info">
                                                 
-                                                <h2><%= link_to item.title, blog_detail_path(blog_id: item), class: "main-color" %></h2>
+                                                <h2><%= link_to item.title, blog_detail_path(blog_id: item, title: item.url_friendly), class: "main-color" %></h2>
                                                 
                                                 <ul class="post-meta">
                                                     
                                                     <li class="meta-user"><i class="fa fa-user"></i><a href="#">Chùa Linh Quang</a></li>
                                                     <li><i class="fa fa-folder-open"></i><a href="#">Văn Học - Nghệ Thuật</a></li>
-                                                    <li class="meta-comments"><i class="fa fa-comments"></i><a href="blog-single.html">5</a></li>
+                                                    <li class="meta-comments"><i class="fa fa-comments"></i><a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">5</a></li>
                                                 
                                                 </ul>
                                             

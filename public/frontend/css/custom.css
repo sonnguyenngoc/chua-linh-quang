@@ -52,3 +52,6 @@ ul.pagination li {
 .news-site .news-masnory {
 	padding-bottom: 15px;
 }
+.widget h4 {
+	height: 24px !important;
+}

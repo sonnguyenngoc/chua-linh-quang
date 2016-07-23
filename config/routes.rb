@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'van-hoa.html' => "cultural#index", as: :cultural
     get 'van-hoa/gop-nhat-cat-da.html' => "cultural#cultural_sub_1", as: :cultural_sub_1
     get 'van-hoa/van-hoc-nghe-thuat.html' => "cultural#cultural_sub_2", as: :cultural_sub_2
+    get 'van-hoa/thu-vien-anh.html' => "cultural#cultural_sub_3", as: :cultural_sub_3
+    get 'van-hoa/thu-vien-nhac.html' => "cultural#cultural_sub_4", as: :cultural_sub_4
     
     # buddhist_family
     get 'gdpt-linh-quang.html' => "buddhist_family#index", as: :buddhist_family

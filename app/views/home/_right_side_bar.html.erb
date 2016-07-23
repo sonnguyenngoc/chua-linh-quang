@@ -32,7 +32,7 @@
                          
                          <div class="post-img">
                                 
-                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                            <a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">
                                 
                                 <img src="<%= item.image_url.square_medium_image %>" alt="">
                             
@@ -44,13 +44,13 @@
                             
                             <h4>
                               
-                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                                <%= link_to item.title, blog_detail_path(blog_id: item, title: item.url_friendly), title: item.title %>
                             
                             </h4>
                             
                             <div class="meta">
                                 
-                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>"><i class="fa fa-comments"></i>15</a>
                             
                             </div>
                             
@@ -78,7 +78,7 @@
                     <li>
                          <div class="post-img">
                             
-                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                            <a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">
                                 
                                 <img src="<%= item.image_url.square_medium_image %>" alt="">
                             
@@ -90,13 +90,13 @@
                            
                             <h4>
                                 
-                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                                <%= link_to item.title, blog_detail_path(blog_id: item, title: item.url_friendly), title: item.title %>
                             
                             </h4>
                             
                             <div class="meta">
                                 
-                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>"><i class="fa fa-comments"></i>15</a>
                             
                             </div>
                         
@@ -125,7 +125,7 @@
                     <li>
                         <div class="post-img">
                             
-                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                            <a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">
                                 
                                 <img src="<%= item.image_url.square_medium_image %>" alt="">
                             
@@ -137,13 +137,13 @@
                            
                             <h4>
                                
-                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                                <%= link_to item.title, blog_detail_path(blog_id: item, title: item.url_friendly), title: item.title %>
                             
                             </h4>
                             
                             <div class="meta">
                                 
-                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>"><i class="fa fa-comments"></i>15</a>
                             
                             </div>
                         
@@ -172,7 +172,7 @@
                     <li>
                         <div class="post-img">
                             
-                            <a href="<%= blog_detail_path(blog_id: item) %>">
+                            <a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">
                                 
                                 <img src="<%= item.image_url.square_medium_image %>" alt="">
                             
@@ -184,13 +184,13 @@
                            
                             <h4>
                                
-                                <%= link_to item.title, blog_detail_path(blog_id: item), title: item.title %>
+                                <%= link_to item.title, blog_detail_path(blog_id: item, title: item.url_friendly), title: item.title %>
                             
                             </h4>
                             
                             <div class="meta">
                                 
-                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item) %>"><i class="fa fa-comments"></i>15</a>
+                                <span><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %>,</span><a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>"><i class="fa fa-comments"></i>15</a>
                             
                             </div>
                         
