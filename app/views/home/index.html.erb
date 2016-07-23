@@ -23,7 +23,7 @@
                     
                         <div>
                             
-                            <%= link_to image_tag(item.image_url.big_image, alt: item.title), blog_detail_path(blog_id: item), class: "cell-9" %>
+                            <%= link_to image_tag(item.image_url.big_image, alt: item.title), blog_detail_path(blog_id: item, title: item.url_friendly), class: "cell-9" %>
                            
                             <article class="post-content cell-3">
                                
@@ -31,13 +31,13 @@
                                     
                                     <div class="post-info">
                                         
-                                        <h2><%= link_to item.title, blog_detail_path(blog_id: item), class: "main-color", title: item.title %></h2>
+                                        <h2><%= link_to item.title, blog_detail_path(blog_id: item, title: item.url_friendly), class: "main-color", title: item.title %></h2>
                                         
                                         <ul class="post-meta">
                                                             
                                             <li class="meta-user"><i class="fa fa-user"></i><a href="#">Chùa Linh Quang</a></li>
                                             <li><i class="fa fa-folder-open"></i><a href="#">Văn Học - Nghệ Thuật</a></li>
-                                            <li class="meta-comments"><i class="fa fa-comments"></i><a href="<%= blog_detail_path(blog_id: item) %>">5</a></li>
+                                            <li class="meta-comments"><i class="fa fa-comments"></i><a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">5</a></li>
                                         
                                         </ul>
                                         
@@ -47,7 +47,7 @@
                                 
                                 <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 250) %> </p>
                                 
-                                <%= link_to "Đọc tiếp", blog_detail_path(blog_id: item), class: "read-more main-bg" %>
+                                <%= link_to "Đọc tiếp", blog_detail_path(blog_id: item, title: item.url_friendly), class: "read-more main-bg" %>
                             
                             </article>
                         
@@ -74,16 +74,16 @@
                             
                             <span class="icon fa fa-angle-right"></span>
                             
-                            Phật Sự
+                            Phật sự
                             
                             <a href="<%= buddhist_news_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
                         
                         </h3>
-                        
-                        <div class="blog-posts">
+
+                        <div class="news-masnory">
                             
                             <%= render "/module/buddhist_news" %>
-                            
+                       
                         </div>
 
                         <!--Middle East News-->

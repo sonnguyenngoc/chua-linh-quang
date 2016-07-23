@@ -38,7 +38,7 @@
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_companies_path %>">Danh sách chùa</a></li>
+                        <li><a href="<%= admin_companies_path %>">Chùa Linh Quang</a></li>
                         <li class="active">Thông tin chùa</li>
                     </ul>
                 </div>
@@ -53,9 +53,6 @@
                     
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold">Thông tin chùa</span></h5>
-                        <% if can?(:create, Company) %>
-                            <%= link_to "Tạo mới thông tin", new_admin_company_path, class: 'btn btn-primary pull-right' %>
-                        <% end %>
                     </div>
                     
                     <table class="table">
@@ -99,11 +96,6 @@
                                                         <% if can? :update, item %>
                                                             <li>
                                                                 <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_company_path(item) %>
-                                                            </li>
-                                                        <% end %>
-                                                        <% if can? :update, item %>
-                                                            <li>
-                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_branch_company", url: admin_company_path(item) , class: "backend_delete_item" %>
                                                             </li>
                                                         <% end %>
                                                     </ul>

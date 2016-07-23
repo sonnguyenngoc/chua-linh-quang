@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     get 'lien-he/gui-thanh-cong.html' => "contact#send_contact_success", as: :send_contact_success
     
     # blog_detail
-    get 'chi-tiet-bai-viet/:blog_id.html' => "blog_detail#index", as: :blog_detail
+    get 'chi-tiet-bai-viet/(:title)-:blog_id.html' => "blog_detail#index", as: :blog_detail
     
     # feeback
     get 'bao-loi-gop-y.html' => "feedback#index", as: :feedback
@@ -172,7 +172,7 @@ Rails.application.routes.draw do
             get 'search'
           end
         end
-        resources :companies, path: "chi-nhanh"
+        resources :companies, path: "thong-tin-chua-linh-quang"
         resources :user_groups, path: "nhom-nguoi-dung"
         get "tru-so-chinh" => "companies#head_office", as: :head_office
         resources :options, path: "cai-dat"

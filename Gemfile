@@ -65,3 +65,4 @@ gem 'thin'
 gem 'onliner'
 gem 'devise_lastseenable'
 gem 'cancan'
+gem "sixarm_ruby_unaccent", ">= 1.1.1", "< 2"

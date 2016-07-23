@@ -17,6 +17,10 @@ class Article < ActiveRecord::Base
     self.where("articles.approved = true and articles.is_show = true").order("created_at DESC")
   end
   
+  def url_friendly
+      self.title.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+  end
+  
   # 2 - Buddhist news
     def self.get_all_buddhist_news
         records = self.get_active_articles
@@ -139,7 +143,8 @@ class Article < ActiveRecord::Base
   end
   
   def self.home_buddhist_news
-    self.get_all_buddhist_news.offset(1).first(4)
+    #self.get_all_buddhist_news.offset(1).first(4)
+    self.get_all_buddhist_news.first(3)
   end
   
   def self.home_buddhist_book_blogs

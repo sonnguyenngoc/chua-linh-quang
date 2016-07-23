@@ -13,11 +13,6 @@
                         
                     </ul>
                 </div>
-                <div class="cell-1 right-bar">
-                    <ul class="social-list right">
-                        <li><a href="<%= feedback_path %>" data-title="Báo lỗi - Góp Ý" data-tooltip="true" data-position="bottom"><span class="fa fa-commenting-o"></span></a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
@@ -58,6 +53,7 @@
                                     <li><%= link_to "Góp Nhặt Cát Đá".html_safe, cultural_sub_1_path %></li>
                                     <li><%= link_to "Văn Học - Nghệ Thuật".html_safe, cultural_sub_2_path %></li>
                                     <li><a href="#">Thư Viện Ảnh</a></li>
+                                    <li><a href="#">Thư Viện Nhạc</a></li>
                                 </ul>	
                             </li>
                             <li class="<%= ("selected" if params[:controller] == "buddhist_family").to_s %>"><%= link_to "<span>GĐPT Linh Quang</span>".html_safe, buddhist_family_path %></li>

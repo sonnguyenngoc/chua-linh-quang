@@ -50,6 +50,9 @@
 #form_user .error {
     border-color: red;
 }
+#new_user .error {
+    border-color: red;
+}
 #validate_checking .error {
     border-color: red;
 }

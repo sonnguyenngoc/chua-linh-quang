@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Đặc sản vùng miền | Login</title>
-    <meta name="description" content="Trang chủ,Máy vi tính giá rẻ, sửa chữa máy tính, bảo hành máy tính, bảo trì máy tính, xử lý sự cố máy tính, máy scaner, máy chiếu, máy fax, tổng đài, máy văn phòng, máy đa chức năng, máy in laser, máy in màu">
+	<title>Chùa Linh Quang | CPanel</title>
+    <meta name="description" content="Trang quản trị hệ thống của Chùa Linh Quang - Đăng Nhập">
 
 	<!-- Global stylesheets -->
 	<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' %>
@@ -14,6 +14,7 @@
 	<%= stylesheet_link_tag '/backend/assets/css/core.min.css' %>
 	<%= stylesheet_link_tag '/backend/assets/css/components.min.css' %>
 	<%= stylesheet_link_tag '/backend/assets/css/colors.min.css' %>
+	<%= stylesheet_link_tag "/backend/assets/stylesheets/custom.css" %>
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
@@ -74,6 +75,14 @@
 
 	</div>
 	<!-- /page container -->
+	
+	<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+	
+	<script>
+		jQuery(document).ready(function($){
+        $("#new_user").validate();
+    });
+	</script>
 
 </body>
 </html>
