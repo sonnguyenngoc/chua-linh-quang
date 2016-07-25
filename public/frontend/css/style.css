@@ -1341,7 +1341,7 @@ header.top-head-4 .logo {
   4. BLOCKS BACKGROUNDS.
 ============================================================================= */
 .block-bg-1 {
-	background: url('../images/bgs/block-bg-1.jpg') no-repeat fixed 0 0;
+	background: url('/frontend/images/bgs/block-bg-1.jpg') no-repeat fixed 0 0;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-webkit-background-size: cover;
@@ -1349,7 +1349,7 @@ header.top-head-4 .logo {
 	position:relative
 }
 .block-bg-2 {
-	background: url('../images/bgs/block-bg-2.jpg') no-repeat fixed 0 0;
+	background: url('/frontend//images/bgs/block-bg-2.jpg') no-repeat fixed 0 0;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-webkit-background-size: cover;
@@ -1358,7 +1358,7 @@ header.top-head-4 .logo {
 	overflow: hidden;
 }
 .block-bg-3 {
-	background: #fff url('../images/bgs/block-bg-3.jpg') no-repeat fixed 0 0;
+	background: #fff url('/frontend/images/bgs/block-bg-3.jpg') no-repeat fixed 0 0;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-webkit-background-size: cover;
@@ -1366,7 +1366,7 @@ header.top-head-4 .logo {
 	position:relative
 }
 .block-bg-4 {
-	background: #fff url('../images/bgs/block-bg-4.jpg') no-repeat fixed 0 0;
+	background: #fff url('/frontend/images/bgs/block-bg-4.jpg') no-repeat fixed 0 0;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-webkit-background-size: cover;
@@ -1374,7 +1374,7 @@ header.top-head-4 .logo {
 	position:relative
 }
 .block-bg-5 {
-	background: url('../images/bgs/block-bg-5.jpg') no-repeat fixed 0 0;
+	background: url('/frontend/images/bgs/block-bg-5.jpg') no-repeat fixed 0 0;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-webkit-background-size: cover;
@@ -1423,17 +1423,17 @@ header.top-head-4 .logo {
 /* patterns backgrounds */
 .dots-pattern {
 	border-top: 1px #E4E4E4 solid;
-	background: transparent url('../images/patterns/dots.png');
+	background: transparent url('/frontend/images/patterns/dots.png');
 }
 .gry-pattern {
-	background: #eee url('../images/patterns/gry-patt.png');
+	background: #eee url('/frontend/images/patterns/gry-patt.png');
 	border-top: 1px #E6E6E6 solid;
 	border-bottom: 1px #E6E6E6 solid;
 }
 .img-pattern {
 	border-top: 1px #E4E4E4 solid;
 	border-bottom: 1px #E4E4E4 solid;
-	background: #fff url('../images/patterns/1.png');
+	background: #fff url('/frontend/images/patterns/1.png');
 }
 /* ==========================================================================
   5. COMMON STYLES.
