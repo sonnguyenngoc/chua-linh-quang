@@ -244,7 +244,7 @@ vi:
   customers: "Danh sách khách hàng"
   email: "Email"
   phone: "Điện thoại"
-  company: "Công ty"
+  company: "Thông tin chùa"
   info: "Thông tin"
   last_bought: "Lần mua cuối"
   customer_detail: "Thông tin chi tiết khách hàng"
@@ -332,6 +332,7 @@ vi:
   vietnamese: "Tiếng Việt"
   english: "English"
   gallery: "Thư viện ảnh"
+  banner: "Hình lễ"
   
   activerecord:
     attributes:

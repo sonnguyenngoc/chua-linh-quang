@@ -4,7 +4,10 @@ class Admin::GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all.paginate(:page => params[:page], :per_page => 10)
+    # authorize
+    authorize! :read, Gallery
+    
+    @galleries = Gallery.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /galleries/1
@@ -14,6 +17,8 @@ class Admin::GalleriesController < ApplicationController
 
   # GET /galleries/new
   def new
+    # authorize
+    authorize! :create, Gallery
     @gallery = Gallery.new
     30.times do
       @gallery.gallery_images.build
@@ -22,6 +27,8 @@ class Admin::GalleriesController < ApplicationController
 
   # GET /galleries/1/edit
   def edit
+    # authorize
+    authorize! :update, @gallery
     (30-@gallery.gallery_images.count).times do
       @gallery.gallery_images.build
     end
@@ -30,6 +37,8 @@ class Admin::GalleriesController < ApplicationController
   # POST /galleries
   # POST /galleries.json
   def create
+    # authorize
+    authorize! :create, Gallery
     @gallery = Gallery.new(gallery_params)
 
     respond_to do |format|
@@ -46,6 +55,8 @@ class Admin::GalleriesController < ApplicationController
   # PATCH/PUT /galleries/1
   # PATCH/PUT /galleries/1.json
   def update
+    # authorize
+    authorize! :update, @gallery
     respond_to do |format|
       if @gallery.update(gallery_params)
         format.html { redirect_to edit_admin_gallery_path(@gallery.id), notice: 'Cập nhật thư viện ảnh thành công.' }
@@ -60,6 +71,8 @@ class Admin::GalleriesController < ApplicationController
   # DELETE /galleries/1
   # DELETE /galleries/1.json
   def destroy
+    # authorize
+    authorize! :delete, @gallery
     @gallery.destroy
     
     render nothing:true

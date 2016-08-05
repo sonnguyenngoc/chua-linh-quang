@@ -167,7 +167,7 @@ en:
   province: "Province"
   author: "Authorities"
   is_admin: "Is Admin"
-  companies: "Companies"
+  companies: "Pagodas"
   options: "Options"
   company_name: "Company Name"
   hotline: "Hotline"
@@ -331,6 +331,7 @@ en:
   vietnamese: "Tiếng Việt"
   english: "English"
   gallery: "Gallery"
+  banner: "Banner"
   
   devise:
     sessions:

@@ -24,7 +24,13 @@
             <div class="row">
                 <div class="cell-12">
                     <div class="banner">
-                        <div><img src="/frontend/images/banner-vulan.jpg" alt="Banner Chùa Linh Quang"></div>
+                        <div>
+                            <% if !Banner.get_main_banner.nil? %>
+                                <img src="<%= Banner.get_main_banner.image_url.main_banner %>" alt="Banner Chùa Linh Quang">
+                            <% else %>
+                                <div><img src="/frontend/images/default-banner.jpg" alt="Banner Chùa Linh Quang"></div>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>

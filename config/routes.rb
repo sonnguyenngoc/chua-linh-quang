@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
@@ -189,6 +188,7 @@ Rails.application.routes.draw do
           end
         end
         resources :galleries, path: "thu-vien-anh"
+        resources :banners, path: "banner-website"
       end
     end
   end

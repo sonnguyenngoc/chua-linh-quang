@@ -31,15 +31,15 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold">Danh sách thư viện ảnh</span></h4>
+                        <h4><span class="text-semibold">Danh sách banner</span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_galleries_path %>">Thư viện</a></li>
-                        <li class="active">Danh sách thư viện ảnh</li>
+                        <li><a href="<%= admin_banners_path %>">Thư viện</a></li>
+                        <li class="active">Danh sách Banner</li>
                     </ul>
                 </div>
             </div>
@@ -52,9 +52,9 @@
                 <div class="panel panel-flat">
                     
                     <div class="panel-heading col-md-12">
-                        <h5 class="panel-title col-md-6"><span class="text-semibold">Danh sách thư viện ảnh</span></h5>
-                        <% if can?(:create, Gallery) %>
-                        <%= link_to "Tạo mới thư viện ảnh", new_admin_gallery_path, class: 'btn btn-primary pull-right' %>
+                        <h5 class="panel-title col-md-6"><span class="text-semibold">Danh sách banner</span></h5>
+                        <% if can?(:create, Banner) %>
+                        <%= link_to "Tạo mới banner", new_admin_banner_path, class: 'btn btn-primary pull-right' %>
                         <% end %>
                     </div>
                     
@@ -63,20 +63,18 @@
                             <tr class="bg-teal-800">
                                 <th>Hình ảnh</th>
                                 <th>Tiêu đề</th>
-                                <th>Mô tả</th>
                                 <th class="text-center"><%= t(:actions) %></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% @galleries.each do |item| %>
+                            <% @banners.each do |item| %>
                                 <tr>
                                     <td>
                                         <div class="media-left">
-                                            <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_gallery_path(item) %>
+                                            <%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), edit_admin_banner_path(item) %>
                                         </div>
                                     </td>
                                     <td><%= item.title %></td>
-                                    <td><%= item.description %></td>
                                     <td class="text-center">
                                         <% if can?(:update, item) or can?(:delete, item) %>
                                             <ul class="icons-list">
@@ -88,12 +86,12 @@
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <% if can? :update, item %>
                                                             <li>
-                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_gallery_path(item) %>
+                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe + t(:edit), edit_admin_banner_path(item) %>
                                                             </li>
                                                         <% end %>
                                                         <% if can? :delete, item %>
                                                             <li>
-                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_gallery", url: admin_gallery_path(item) , class: "backend_delete_item" %>
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_banner", url: admin_banner_path(item) , class: "backend_delete_item" %>
                                                             </li>
                                                         <% end %>
                                                     </ul>
@@ -107,9 +105,9 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @galleries %></div>
+                            <div class="dataTables_info" ><%= page_entries_info @banners %></div>
                             <div class="dataTables_paginate paging_simple_numbers">
-                                <%= will_paginate @galleries, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                                <%= will_paginate @banners, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                             </div>
                         </div>
                     </div>

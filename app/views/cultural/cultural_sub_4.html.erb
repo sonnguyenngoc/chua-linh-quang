@@ -1,0 +1,82 @@
+<!-- site preloader start -->
+<div class="page-loader">
+    <div class="loader-in"></div>
+</div>
+<!-- site preloader end -->
+
+<div class="pageWrapper">
+
+    <!-- Header Start -->
+    <%= render "/home/header" %>
+    <!-- Header End -->
+    
+    <!-- Content Start -->
+    <div id="contentWrapper">
+        
+        <div class="page-title title-1">
+            
+            <div class="container">
+                
+                <div class="row">
+                    
+                    <div class="cell-12">
+                        
+                        <h1 class="fx" data-animate="fadeInLeft">THƯ VIỆN <span>NHẠC</span></h1>
+                        
+                        <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
+                           
+                            <%= link_to "Trang chủ", root_path %><span class="line-separate">/</span><%= link_to "Văn Hóa", cultural_path %><span class="line-separate">/</span><span>Thư Viện Nhạc</span>
+                        
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            
+            </div>
+        
+        </div>
+        
+        <div class="sectionWrapper">
+            
+            <div class="container">
+               
+                <div class="row">
+                   
+                    <div class="cell-9 masonry">
+                        
+                        <div class="blog-posts">
+                          
+                          TRANG ĐANG ĐƯỢC HOÀN THIỆN.....
+                            
+                        </div>
+                    
+                    </div>
+                    
+                    <!-- right side bar -->
+                    <aside class="cell-3 right-sidebar">
+                        
+                        <%= render "/home/right_side_bar" %>
+                        
+                    </aside>
+                    
+                
+                </div>
+            
+            </div>
+       
+        </div>
+        
+    </div>
+    <!-- Content End -->
+    
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
+    
+    <!-- Back to top Link -->
+    <div id="to-top" class="main-bg"><span class="fa fa-chevron-up"></span></div>
+    
+</div>
+
+<%= render "/home/js_files" %>

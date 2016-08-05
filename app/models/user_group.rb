@@ -41,7 +41,17 @@ class UserGroup < ActiveRecord::Base
                             {name: "update", values: ["yes","no"], multiple: false},
                             {name: "delete", values: ["yes","no"], multiple: false},
                         ]
-            }, 
+            },
+            {
+                class_name: "Banner",
+                display_name: I18n.t(:banner),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
             {
                 class_name: "Contact",
                 display_name: I18n.t(:contact),
