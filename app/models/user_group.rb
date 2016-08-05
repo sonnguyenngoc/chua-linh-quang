@@ -33,10 +33,12 @@ class UserGroup < ActiveRecord::Base
                         ]
             },         
             {
-                class_name: "CommentArticle",
-                display_name: I18n.t(:comment_article),
+                class_name: "Gallery",
+                display_name: I18n.t(:gallery),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
                             {name: "delete", values: ["yes","no"], multiple: false},
                         ]
             }, 

@@ -838,7 +838,7 @@
 	}
 	/* ================ one page functions. ================ */
 	if($(".digits").length > 0){
-		$('.digits').countdown('2016/08/01').on('update.countdown', function(event) {
+		$('.digits').countdown('2016/08/15').on('update.countdown', function(event) {
 		  var $this = $(this).html(event.strftime('<ul>'
 		     + '<li><span>%-w</span><p> Tuần </p> </li>'
 		     + '<li><span>%-d</span><p> Ngày </p></li>'

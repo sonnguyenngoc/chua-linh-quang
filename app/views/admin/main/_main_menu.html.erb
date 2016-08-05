@@ -25,10 +25,16 @@
             <% end %>
             
             <li>
-                <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span>Thư viện ảnh</span></a>
+                <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span>Thư viện</span></a>
                 <ul>
                     <li class="<%= "active" if ["admin/galleries"].include?(params[:controller]) %>">
                         <%= link_to "Quản lý thư viện ảnh", admin_galleries_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Quản lý thư viện nhạc", "#" %>
+                    </li>
+                    <li>
+                        <%= link_to "Quản lý banner", "#" %>
                     </li>
                 </ul>
             </li>

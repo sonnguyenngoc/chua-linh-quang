@@ -331,6 +331,7 @@ vi:
   wishlist_number: "Số lượng yêu thích"
   vietnamese: "Tiếng Việt"
   english: "English"
+  gallery: "Thư viện ảnh"
   
   activerecord:
     attributes:

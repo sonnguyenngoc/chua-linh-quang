@@ -172,72 +172,22 @@
                         </div>
                         
                         <div class="clearfix"></div>
-                        <!--Sport News--> 
+                        
+                        <% if @galleries.count > 0 %>
+                        <!--Gallery--> 
                         <h3 class="block-head-News">
                             <span class="icon fa fa-angle-right"></span>
                             Thư viện ảnh
-                            <a href="#">Xem tất cả <span class="fa fa-plus"></span></a>
+                            <a href="<%= cultural_sub_3_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
                         </h3>
                         <div class="news-masnory">
-                            <ul class="gallery">
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                                <li>
-                                    <a class="zoom" href="/frontend/images/portfolio/1.jpg" data-gal="prettyPhoto[pp_gal]"><img alt="" src="/frontend/images/portfolio/1.jpg" /><span class="img-overlay"></span></a>
-                                </li>
-                            </ul>
+                            
+                            <%= render "/module/gallery" %>
+                            
                         </div>
                         
                         <div class="clearfix"></div>
+                        <% end %>
                     </div>
                     
                     <!-- right side bar -->

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
@@ -45,6 +46,9 @@ Rails.application.routes.draw do
     
     # feeback
     get 'bao-loi-gop-y.html' => "feedback#index", as: :feedback
+    
+    # search result
+    get 'ket-qua-tim-kiem.html' => "search_result#index", as: :search_result
     
     # form create
     resources :contacts

@@ -65,14 +65,14 @@
                     <!-- top search start -->
                     <div class="top-search right">
                         <a href="#"><span class="fa fa-search"></span></a>
-                        <form class="search-box">
+                        <%= form_tag(search_result_path, method: "get", class: "search-box") do %>
                             <div class="input-box left">
-                                <input type="text" name="keywords" class="txt-box" placeHolder="Nhập từ khóa cần tìm..." />
+                                <input type="text" name="keyword" class="txt-box" placeHolder="Nhập từ khóa cần tìm..." />
                             </div>
                             <div class="left">
                                 <input type="submit" class="btn main-bg" value="Tìm kiếm" />
                             </div>
-                        </form>
+                        <% end %>
                     </div>
                     <!-- top search end -->
 

@@ -6,13 +6,13 @@
         
         <div class="widget-content">
             
-            <form>
+            <%= form_tag(search_result_path, method: "get") do %>
                
-                <input type="text" class="txt-box" placeholder="Nhập từ khóa cần tìm..." />
+                <input type="text" name="keyword" class="txt-box" placeholder="Nhập từ khóa cần tìm..." />
                
                 <button type="submit" class="btn"><i class="fa fa-search"></i></button>
           
-            </form>
+            <% end %>
        
         </div>
    

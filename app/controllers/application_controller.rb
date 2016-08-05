@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
     def layout_by_resource
       if controller_name == "home" || controller_name == "contact" || controller_name == "buddhist_family" || controller_name == "cultural" || controller_name == "news" ||
-         controller_name == "charity" || controller_name == "buddhist_news" || controller_name == "buddhist_book" || controller_name == "blog_detail" || controller_name == "feedback"
+         controller_name == "charity" || controller_name == "buddhist_news" || controller_name == "buddhist_book" || controller_name == "blog_detail" || controller_name == "feedback" || controller_name == "search_result"
         "frontend"
       elsif controller_name == "coming_soon"
         "coming_soon"

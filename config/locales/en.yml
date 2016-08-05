@@ -330,6 +330,7 @@ en:
   wishlist_number: "Wishlist number"
   vietnamese: "Tiếng Việt"
   english: "English"
+  gallery: "Gallery"
   
   devise:
     sessions:

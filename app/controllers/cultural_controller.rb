@@ -15,10 +15,10 @@ class CulturalController < ApplicationController
         @galleries = Gallery.get_all_galleries.paginate(:page => params[:page], :per_page => 3)
     end
     
-    def gallery_detail
-        @gallery = Gallery.find(params[:gallery_id])
+    def cultural_sub_4
     end
     
-    def cultural_sub_4
+    def gallery_detail
+        @gallery = Gallery.find(params[:gallery_id])
     end
 end

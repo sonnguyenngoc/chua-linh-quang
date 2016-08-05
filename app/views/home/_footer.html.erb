@@ -44,7 +44,7 @@
                     <h3 class="block-head"><%= Company.get_pagoda_info.name %></h3>
                     <ul>
                         <li class="footer-contact"><i class="fa fa-home"></i><span><%= Company.get_pagoda_info.head_office_address %></span></li>
-                        <li class="footer-contact"><i class="fa fa-phone"></i><span><%= Company.get_pagoda_info.phone %></span></li>
+                        <li class="footer-contact"><i class="fa fa-phone"></i><span><a href="tel:<%= Company.get_pagoda_info.phone %>"><%= Company.get_pagoda_info.phone %></a></span></li>
                         <li class="footer-contact">
                             <i class="fa fa-envelope"></i><span>
                                 <a href="mailto:<%= Company.get_pagoda_info.email %>">
