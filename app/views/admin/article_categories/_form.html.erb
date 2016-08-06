@@ -41,7 +41,7 @@
                     <% if @article_category.id != article_category.id %>
                         <div class="row-fluid">
                             <div class="radio">
-                                <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "article_category", class: "styled-level-1" %>
+                                <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "article_category_#{article_category.id}", class: "styled-level-1" %>
                                 <label for="article_category_<%= article_category.id %>"><%= article_category.name %></label>
                             </div>
                         </div>

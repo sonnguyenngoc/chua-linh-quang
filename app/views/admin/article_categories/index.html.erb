@@ -150,9 +150,9 @@
                                         <tr>
                                             <td>
                                                 <% if can? :update, child_1 %>
-                                                    <strong><%= link_to child_1.name.html_safe, edit_admin_article_category_path(child_1) %></strong>
+                                                    <strong>----- <%= link_to child_1.name.html_safe, edit_admin_article_category_path(child_1) %></strong>
                                                 <% else %>
-                                                    <strong><%= child_1.name.html_safe %></strong>
+                                                    <strong>----- <%= child_1.name.html_safe %></strong>
                                                 <% end %>
                                             </td>
                                             <td>
@@ -193,14 +193,6 @@
                             <% end %>
                         </tbody>
                     </table>
-                    <div class="dataTables_wrapper no-footer">
-                        <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @article_categories %></div>
-                            <div class="dataTables_paginate paging_simple_numbers">
-                                <%= will_paginate @article_categories, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /basic datatable -->
             
