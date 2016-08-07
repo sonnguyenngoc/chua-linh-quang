@@ -6192,6 +6192,9 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   .top-line {
     display: none;
   }
+  div.search-widget {
+    display: none;
+  }
   .navbar-default .advertisement {
     display: none;
   }

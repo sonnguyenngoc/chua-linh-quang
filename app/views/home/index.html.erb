@@ -95,7 +95,7 @@
           <div class="carousel-box owl-wrapper">
 
             <div class="title-section">
-              <h1><span>Phật Pháp</span></h1>
+              <h1><span>Phật Sự</span></h1>
             </div>
 
             <div class="owl-carousel" data-num="3">
@@ -118,7 +118,7 @@
           <div class="carousel-box owl-wrapper">
 
             <div class="title-section">
-              <h1><span>Tin Tức</span></h1>
+              <h1><span>Phật Pháp</span></h1>
             </div>
 
             <div class="owl-carousel" data-num="3">
@@ -141,7 +141,30 @@
           <div class="carousel-box owl-wrapper">
 
             <div class="title-section">
-              <h1><span>Thư Viện Ảnh</span></h1>
+              <h1><span>Tin Tức</span></h1>
+            </div>
+
+            <div class="owl-carousel" data-num="3">
+              <% (1..5).each do |item| %>
+              <div class="item news-post image-post3">
+                <%= image_tag "/frontend/upload/news-posts/gal.jpg", alt: "" %>
+                <div class="hover-box">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- End carousel box -->
+          
+          <!-- Carousel box -->
+          <div class="carousel-box owl-wrapper">
+
+            <div class="title-section">
+              <h1><span>Từ Thiện</span></h1>
             </div>
 
             <div class="owl-carousel" data-num="3">
@@ -179,7 +202,7 @@
 
           <div class="widget features-slide-widget">
             <div class="title-section">
-              <h1><span>Phật Sự</span></h1>
+              <h1><span>Văn Hóa</span></h1>
             </div>
             <div class="image-post-slider">
               <ul class="bxslider">
@@ -219,7 +242,7 @@
           
           <div class="widget features-slide-widget">
             <div class="title-section">
-              <h1><span>Từ Thiện</span></h1>
+              <h1><span>GĐPT Linh Quang</span></h1>
             </div>
             <div class="image-post-slider">
               <ul class="bxslider">
@@ -276,10 +299,10 @@
 
             <ul class="nav nav-tabs" id="myTab">
               <li class="active">
-                <a href="#option1" data-toggle="tab">Văn Hóa</a>
+                <a href="#option1" data-toggle="tab">Thư Viện Ảnh</a>
               </li>
               <li>
-                <a href="#option2" data-toggle="tab">GĐPT Linh Quang</a>
+                <a href="#option2" data-toggle="tab">Thư Viện Nhạc</a>
               </li>
             </ul>
 
