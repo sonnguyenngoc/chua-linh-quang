@@ -1,7 +1,0 @@
-<ul class="gallery">
-    <% @galleries.each do |item| %>
-    <li>
-        <a class="zoom" href="<%= item.image_url.large_image %>" data-gal="prettyPhoto[pp_gal]"><img src="<%= item.image_url.smaller_image %>" alt="Thư viện ảnh - Chùa Linh Quang" /><span class="img-overlay"></span></a>
-    </li>
-    <% end %>
-</ul>

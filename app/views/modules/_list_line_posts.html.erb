@@ -1,0 +1,24 @@
+<div class="list-line-posts">
+  <div class="container">
+
+    <div class="owl-wrapper">
+      <div class="owl-carousel" data-num="3">
+        
+        <% (1..5).each do |item| %>
+        <div class="item list-post">
+          <img src="/frontend/upload/news-posts/list.jpg" alt="">
+          <div class="post-content">
+            <%= link_to "Chuyên mục bài viết", "" %>
+            <h2><%= link_to "Tiêu đề bài viết", "" %></h2>
+            <ul class="post-tags">
+              <li><i class="fa fa-clock-o"></i><%= Time.now.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y") %></li>
+            </ul>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>

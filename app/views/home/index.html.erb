@@ -1,217 +1,362 @@
-<!-- site preloader start -->
-<div class="page-loader">
-    <div class="loader-in"></div>
-</div>
-<!-- site preloader end -->
+<section class="block-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-8">
 
-<div class="pageWrapper">
-    
-    <!-- Header Start -->
-    <%= render "/home/header" %>
-    <!-- Header End -->
-    
-    <!-- Content Start -->
-    <div id="contentWrapper" class="news-site">
-       
-        <div class="block-bg-2 overflow-auto">
-            
-            <div class="container">
-            
-                <div class="Newsslider">
-                    
-                    <% @sliders.each do |item| %>
-                    
-                        <div>
-                            
-                            <%= link_to image_tag(item.image_url.big_image, alt: item.title), blog_detail_path(blog_id: item, title: item.url_friendly), class: "cell-9" %>
-                           
-                            <article class="post-content cell-3">
-                               
-                                <div class="post-info-container">
-                                    
-                                    <div class="post-info">
-                                        
-                                        <h2><%= link_to item.title, blog_detail_path(blog_id: item, title: item.url_friendly), class: "main-color", title: item.title %></h2>
-                                        
-                                        <ul class="post-meta">
-                                                            
-                                            <li class="meta-user"><i class="fa fa-user"></i><a href="#">Chùa Linh Quang</a></li>
-                                            <li><i class="fa fa-folder-open"></i><a href="#">Văn Học - Nghệ Thuật</a></li>
-                                            <li class="meta-comments"><i class="fa fa-comments"></i><a href="<%= blog_detail_path(blog_id: item, title: item.url_friendly) %>">5</a></li>
-                                        
-                                        </ul>
-                                        
-                                    </div>
-                                
-                                </div>
-                                
-                                <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 250) %> </p>
-                                
-                                <%= link_to "Đọc tiếp", blog_detail_path(blog_id: item, title: item.url_friendly), class: "read-more main-bg" %>
-                            
-                            </article>
-                        
-                        </div>
-                    
-                    <% end %>
-                    
-                </div>
-                
-            </div>
-                    
-        </div>
-                
-        <div class="padd-vertical-30">
-      
-            <div class="container">
-                
-                <div class="row">
+        <!-- block content -->
+        <div class="block-content">
 
-                    <div class="cell-9 blog-thumbs">
-                        
-                        <!--Middle East News-->
-                        <h3 class="block-head-News">
-                            
-                            <span class="icon fa fa-angle-right"></span>
-                            
-                            Phật sự
-                            
-                            <a href="<%= buddhist_news_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
-                        
-                        </h3>
-
-                        <div class="news-masnory">
-                            
-                            <%= render "/module/buddhist_news" %>
-                       
-                        </div>
-
-                        <!--Middle East News-->
-                        <h3 class="block-head-News">
-                            
-                            <span class="icon fa fa-angle-right"></span>
-                            
-                            Phật pháp
-                            
-                            <a href="<%= buddhist_book_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
-                        
-                        </h3>
-
-                        <div class="news-masnory">
-                            
-                            <%= render "/module/buddhist_book" %>
-                       
-                        </div>
-
-                        <!--Middle East News-->
-                        <h3 class="block-head-News">
-                            
-                            <span class="icon fa fa-angle-right"></span>
-                            
-                            Tin tức
-                            
-                            <a href="<%= news_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
-                        
-                        </h3>
-
-                        <div class="news-masnory">
-                            
-                            <%= render "/module/news" %>
-                            
-                        </div>
-
-                        <!--Middle East News-->
-                        <h3 class="block-head-News">
-                            
-                            <span class="icon fa fa-angle-right"></span>
-                            
-                            Từ thiện
-                            
-                            <a href="<%= charity_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
-                        
-                        </h3>
-
-                        <div class="news-masnory">
-                            
-                            <%= render "/module/charity" %>
-                            
-                        </div>
-
-                        <!--Middle East News-->
-                        <h3 class="block-head-News">
-                            
-                            <span class="icon fa fa-angle-right"></span>
-                            
-                            Văn Hóa
-                            
-                            <a href="<%= cultural_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
-                            
-                        </h3>
-
-                        <div class="news-masnory">
-                            
-                            <%= render "/module/cultural" %>
-                            
-                        </div>
-
-                        <!--Middle East News-->
-                        <h3 class="block-head-News">
-                            
-                            <span class="icon fa fa-angle-right"></span>
-                            
-                            GĐPT Linh Quang
-                            
-                            <a href="<%= buddhist_family_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
-                        
-                        </h3>
-
-                        <div class="news-masnory">
-                            
-                            <%= render "/module/buddhist_family" %>
-                            
-                        </div>
-                        
-                        <div class="clearfix"></div>
-                        
-                        <% if @galleries.count > 0 %>
-                        <!--Gallery--> 
-                        <h3 class="block-head-News">
-                            <span class="icon fa fa-angle-right"></span>
-                            Thư viện ảnh
-                            <a href="<%= cultural_sub_3_path %>">Xem tất cả <span class="fa fa-plus"></span></a>
-                        </h3>
-                        <div class="news-masnory">
-                            
-                            <%= render "/module/gallery" %>
-                            
-                        </div>
-                        
-                        <div class="clearfix"></div>
-                        <% end %>
+          <!-- grid box -->
+          <div class="grid-box">
+            <div class="image-slider">
+              <ul class="bxslider">
+                <% (1..3).each do |item| %>
+                <li>
+                  <div class="news-post image-post">
+                    <img src="/frontend/upload/news-posts/slide1.jpg" alt="">
+                    <div class="hover-box">
+                      <span class="top-stories">CHÙA LINH QUANG</span>
+                      <div class="inner-hover">
+                        <%= link_to "Lễ Vu Lan", "", class: "category-post tech" %>
+                        <h2><%= link_to "Tiêu đề slideshow", "" %></h2>
+                        <ul class="post-tags">
+                          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                          <li><i class="fa fa-user"></i>bởi Chùa Linh Quang</li>
+                        </ul>
+                      </div>
                     </div>
-                    
-                    <!-- right side bar -->
-                    <aside class="cell-3 right-sidebar">
-                        
-                        <%= render "/home/right_side_bar" %>
-                        
-                    </aside>
-                    
-                </div>
-                
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <!-- End grid box -->
+
+          <!-- grid box -->
+          <div class="grid-box">
+
+            <div class="title-section">
+              <h1><span>Tin Nóng</span></h1>
             </div>
 
+            <div class="image-post-slider">
+              <ul class="bxslider">
+                <% (1..3).each do |item| %>
+                <li>
+                  <div class="news-post image-post2">
+                    <div class="post-gallery">
+                      <img src="/frontend/upload/news-posts/slide.jpg" alt="">
+                      <div class="hover-box">
+                        <div class="inner-hover">
+                          <%= link_to "Tin Nóng", "", class: "category-post world" %>
+                          <h2><%= link_to "Tiêu đề tin nóng", "" %></h2>
+                          <ul class="post-tags">
+                            <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                            <li><i class="fa fa-user"></i></i>bởi Chùa Linh Quang</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-posts">
+                  <% (0..11).each_with_index do |item,index| %>
+                  <li>
+                    <img src="/frontend/upload/news-posts/list.jpg" alt="">
+                    <div class="post-content">
+                      <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
+                      <ul class="post-tags">
+                        <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <%= '</ul></div><div class="col-md-6"><ul class="list-posts">'.html_safe if index%3 == 2 %>
+              <% end %>
+              </ul>
+              </div>
+
+            </div>
+
+            <div class="center-button">
+              <%= link_to "XEM THÊM TIN NÓNG", "" %>
+            </div>
+
+          </div>
+          <!-- End grid box -->
+          
+          <!-- Carousel box -->
+          <div class="carousel-box owl-wrapper">
+
+            <div class="title-section">
+              <h1><span>Phật Pháp</span></h1>
+            </div>
+
+            <div class="owl-carousel" data-num="3">
+              <% (1..5).each do |item| %>
+              <div class="item news-post image-post3">
+                <%= image_tag "/frontend/upload/news-posts/gal.jpg", alt: "" %>
+                <div class="hover-box">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- End carousel box -->
+          
+          <!-- Carousel box -->
+          <div class="carousel-box owl-wrapper">
+
+            <div class="title-section">
+              <h1><span>Tin Tức</span></h1>
+            </div>
+
+            <div class="owl-carousel" data-num="3">
+              <% (1..5).each do |item| %>
+              <div class="item news-post image-post3">
+                <%= image_tag "/frontend/upload/news-posts/gal.jpg", alt: "" %>
+                <div class="hover-box">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- End carousel box -->
+
+          <!-- Carousel box -->
+          <div class="carousel-box owl-wrapper">
+
+            <div class="title-section">
+              <h1><span>Thư Viện Ảnh</span></h1>
+            </div>
+
+            <div class="owl-carousel" data-num="3">
+              <% (1..5).each do |item| %>
+              <div class="item news-post image-post3">
+                <%= image_tag "/frontend/upload/news-posts/gal.jpg", alt: "" %>
+                <div class="hover-box">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- End carousel box -->
+
         </div>
+        <!-- End block content -->
+
+      </div>
+
+      <div class="col-md-3 col-sm-4">
+
+        <!-- sidebar -->
+        <div class="sidebar large-sidebar">
+
+          <div class="widget search-widget">
+            <form role="search" class="search-form">
+              <input type="text" id="search" name="search" placeholder="Nhập từ khóa cần tìm.....">
+              <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+
+          <div class="widget features-slide-widget">
+            <div class="title-section">
+              <h1><span>Phật Sự</span></h1>
+            </div>
+            <div class="image-post-slider">
+              <ul class="bxslider">
+                <% (1..3).each do |item| %>
+                <li>
+                  <div class="news-post image-post2">
+                    <div class="post-gallery">
+                      <%= image_tag "/frontend/upload/news-posts/im.jpg", alt: "" %>
+                      <div class="hover-box">
+                        <div class="inner-hover">
+                          <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                          <ul class="post-tags">
+                            <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+            <ul class="list-posts">
+              <% (1..4).each do |item| %>
+              <li>
+                <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+                <div class="post-content">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+          
+          <div class="widget features-slide-widget">
+            <div class="title-section">
+              <h1><span>Từ Thiện</span></h1>
+            </div>
+            <div class="image-post-slider">
+              <ul class="bxslider">
+                <% (1..3).each do |item| %>
+                <li>
+                  <div class="news-post image-post2">
+                    <div class="post-gallery">
+                      <%= image_tag "/frontend/upload/news-posts/im.jpg", alt: "" %>
+                      <div class="hover-box">
+                        <div class="inner-hover">
+                          <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                          <ul class="post-tags">
+                            <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+            <ul class="list-posts">
+              <% (1..4).each do |item| %>
+              <li>
+                <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+                <div class="post-content">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+
+          <div class="advertisement">
+            <div class="desktop-advert">
+              <span>VU LAN MÙA HIẾU HẠNH</span>
+              <img src="/frontend/upload/addsense/event-250x250.jpg" alt="">
+            </div>
+            <div class="tablet-advert">
+              <span>VU LAN MÙA HIẾU HẠNH</span>
+              <img src="/frontend/upload/addsense/event-200x200.jpg" alt="">
+            </div>
+            <div class="mobile-advert">
+              <span>VU LAN MÙA HIẾU HẠNH</span>
+              <img src="/frontend/upload/addsense/event-300x250.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="widget tab-posts-widget">
+
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="#option1" data-toggle="tab">Văn Hóa</a>
+              </li>
+              <li>
+                <a href="#option2" data-toggle="tab">GĐPT Linh Quang</a>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="option1">
+                <ul class="list-posts">
+                  <% (1..5).each do |item| %>
+                  
+                  <li>
+                    <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+                    <div class="post-content">
+                      <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát.....", "" %></h2>
+                      <ul class="post-tags">
+                        <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                      </ul>
+                    </div>
+                  </li>
+                  
+                  <% end %>
+                </ul>
+              </div>
+              <div class="tab-pane" id="option2">
+                <ul class="list-posts">
+                  <% (1..5).each do |item| %>
+                  
+                  <li>
+                    <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+                    <div class="post-content">
+                      <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát.....", "" %></h2>
+                      <ul class="post-tags">
+                        <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                      </ul>
+                    </div>
+                  </li>
+                  
+                  <% end %>
+                </ul>										
+              </div>
+            </div>
+          </div>
+
+          <div class="widget post-widget">
+            <div class="title-section">
+              <h1><span>Video</span></h1>
+            </div>
+            <% (1..2).each do |item| %>
+            <div class="news-post video-post">
+              <%= image_tag "/frontend/upload/news-posts/video-sidebar.jpg", alt: "" %>
+              <a href="https://www.youtube.com/watch?v=OPVtUBs6YDo" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+              <div class="hover-box">
+                <h2><%= link_to "Sự Tích Đức Phật Thích Ca 1/2", "" %></h2>
+                <ul class="post-tags">
+                  <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                </ul>
+              </div>
+              <p></p>
+            </div>
+            <div class="news-post video-post">
+              <%= image_tag "/frontend/upload/news-posts/video-sidebar.jpg", alt: "" %>
+              <a href="https://www.youtube.com/watch?v=FTQIa97H7h0" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+              <div class="hover-box">
+                <h2><%= link_to "Sự Tích Đức Phật Thích Ca 2/2", "" %></h2>
+                <ul class="post-tags">
+                  <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                </ul>
+              </div>
+              <p></p>
+            </div>
+            <% end %>
+          </div>
+
+        </div>
+        <!-- End sidebar -->
+
+      </div>
+
     </div>
-    <!-- Content End -->
-    
-    <!-- Footer start -->
-    <%= render "/home/footer" %>
-    <!-- Footer end -->
-    
-    <!-- Back to top Link -->
-    <div id="to-top" class="main-bg"><span class="fa fa-chevron-up"></span></div>
 
-</div>
-
-<%= render "/home/js_files" %>
+  </div>
+</section>

@@ -3,51 +3,8 @@ Rails.application.routes.draw do
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     
-    root "coming_soon#index"
-    
-    # home
-    get 'trang-chu.html' => "home#index", as: :home
-    
-    # buddhist_news
-    get 'phat-su.html' => 'buddhist_news#index', as: :buddhist_news
-    
-    # buddhist_book
-    get 'phat-phap.html' => 'buddhist_book#index', as: :buddhist_book
-    get 'phat-phap/buoc-dau-hoc-phat.html' => 'buddhist_book#buddhist_book_sub_1', as: :buddhist_book_sub_1
-    get 'phat-phap/giao-phap.html' => 'buddhist_book#buddhist_book_sub_2', as: :buddhist_book_sub_2
-    get 'phat-phap/tinh-do-tong.html' => 'buddhist_book#buddhist_book_sub_3', as: :buddhist_book_sub_3
-    get 'phat-phap/thien-tong.html' => 'buddhist_book#buddhist_book_sub_4', as: :buddhist_book_sub_4
-    get 'phat-phap/mat-tong.html' => 'buddhist_book#buddhist_book_sub_5', as: :buddhist_book_sub_5
-    
-    # news
-    get 'tin-tuc.html' => "news#index", as: :news
-    
-    # charity
-    get 'tu-thien.html' => "charity#index", as: :charity
-    
-    # cultural
-    get 'van-hoa.html' => "cultural#index", as: :cultural
-    get 'van-hoa/gop-nhat-cat-da.html' => "cultural#cultural_sub_1", as: :cultural_sub_1
-    get 'van-hoa/van-hoc-nghe-thuat.html' => "cultural#cultural_sub_2", as: :cultural_sub_2
-    get 'van-hoa/thu-vien-anh.html' => "cultural#cultural_sub_3", as: :cultural_sub_3
-    get 'van-hoa/thu-vien-anh/(:title)-:gallery_id.html' => "cultural#gallery_detail", as: :gallery_detail
-    get 'van-hoa/thu-vien-nhac.html' => "cultural#cultural_sub_4", as: :cultural_sub_4
-    
-    # buddhist_family
-    get 'gdpt-linh-quang.html' => "buddhist_family#index", as: :buddhist_family
-    
-    # contact
-    get 'lien-he.html' => "contact#index", as: :contact
-    get 'lien-he/gui-thanh-cong.html' => "contact#send_contact_success", as: :send_contact_success
-    
-    # blog_detail
-    get 'chi-tiet-bai-viet/(:title)-:blog_id.html' => "blog_detail#index", as: :blog_detail
-    
-    # feeback
-    get 'bao-loi-gop-y.html' => "feedback#index", as: :feedback
-    
-    # search result
-    get 'ket-qua-tim-kiem.html' => "search_result#index", as: :search_result
+    root "comming_soon#index"
+    get "trang-chu.html" => "home#index", as: :home
     
     # form create
     resources :contacts

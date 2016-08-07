@@ -1,57 +1,19 @@
-.text-justify {
-	text-align: justify;
+body {
+	font-family: "Open Sans"
 }
-.nav-4 .top-search a {
-	width: 85px;
+.navbar-nav > li.drop > a {
+	padding: 20px 35px 20px 17px;
 }
-.search-box input[type=text] {
-	width: 313px;
+.navbar-nav > li > a {
+	padding: 20px 17px 20px 17px;
 }
-.search-box input[type=submit] {
-	width: 85px;
+.navbar-nav > li > a.home {
+    padding-left: 20px;
+    padding-right: 20px;
 }
-.masonry .post-content p {
-	max-height: 100px;
+footer .categories-widget ul.category-list li {
+	width: 100%;
 }
-#contact_form_validate input.error, #contact_form_validate textarea.error {
-	border-color: red;
-	border-radius: 3px;
-}
-label.error {
-	display: none !important;
-}
-.cform input, .cform textarea {
-    border-radius: 3px;
-}
-ul.pagination li.disabled, ul.pagination li.active {
-	background-color: #e7512f;
-    color: #fff;
-}
-.pager ul.pagination li.active span, .pager ul.pagination li.disabled span {
-	display: block;
-    padding: 0 20px;
-    color: #fff;
-    font-size: 14px;
-    line-height: 38px;
-}
-.pager ul.pagination li.disabled span {
-	display: none;
-}
-ul.pagination li {
-	padding: 0;
-    list-style: none;
-}
-.news-masnory .post-info h2 {
-	height: 25px;
-	margin-right: 10px;
-}
-.news-masnory .post-content p {
-	margin-right: 10px;
-	max-height: 65px;
-}
-.news-site .news-masnory {
-	padding-bottom: 15px;
-}
-.widget h4 {
-	height: 24px !important;
+footer .categories-widget ul.category-list li:nth-child(2n) {
+  padding-left: 0px;
 }

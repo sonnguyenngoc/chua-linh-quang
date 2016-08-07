@@ -8,7 +8,7 @@
             
             <% if can?(:read, Article) or can?(:read, ArticleCategory) %>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
+                    <a href="#"><i class="icon-pencil"></i> <span><%= t(:article) %></span></a>
                     <ul>
                         <% if can? :read, Article %>
                             <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
@@ -26,7 +26,7 @@
             
             <% if can?(:read, Gallery) %>
             <li>
-                <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span>Thư viện</span></a>
+                <a href="#"><i class="icon-gallery"></i> <span>Thư viện</span></a>
                 <ul>
                     <% if can? :read, Gallery %>
                         <li class="<%= "active" if ["admin/galleries"].include?(params[:controller]) %>">
