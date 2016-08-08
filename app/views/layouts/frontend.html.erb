@@ -73,6 +73,13 @@
 
 		</header>
 		<!-- End Header -->
+		
+		<% if ["category"].include?(params[:controller]) %>
+		<!-- ticker-news-section
+			================================================== -->
+		<%= render "/modules/hot_news" %>
+		<!-- End ticker-news-section -->
+		<% end %>
 
 		<!-- block-wrapper-section
 			================================================== -->

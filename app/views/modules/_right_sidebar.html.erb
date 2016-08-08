@@ -1,0 +1,184 @@
+<div class="sidebar large-sidebar">
+
+  <div class="widget search-widget">
+    <form role="search" class="search-form">
+      <input type="text" id="search" name="search" placeholder="Nhập từ khóa cần tìm.....">
+      <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+  <div class="widget features-slide-widget">
+    <div class="title-section">
+      <h1><span>Văn Hóa</span></h1>
+    </div>
+    <div class="image-post-slider">
+      <ul class="bxslider">
+        <% (1..3).each do |item| %>
+        <li>
+          <div class="news-post image-post2">
+            <div class="post-gallery">
+              <%= image_tag "/frontend/upload/news-posts/im.jpg", alt: "" %>
+              <div class="hover-box">
+                <div class="inner-hover">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <ul class="list-posts">
+      <% (1..4).each do |item| %>
+      <li>
+        <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+        <div class="post-content">
+          <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
+          <ul class="post-tags">
+            <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+          </ul>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <div class="widget features-slide-widget">
+    <div class="title-section">
+      <h1><span>GĐPT Linh Quang</span></h1>
+    </div>
+    <div class="image-post-slider">
+      <ul class="bxslider">
+        <% (1..3).each do |item| %>
+        <li>
+          <div class="news-post image-post2">
+            <div class="post-gallery">
+              <%= image_tag "/frontend/upload/news-posts/im.jpg", alt: "" %>
+              <div class="hover-box">
+                <div class="inner-hover">
+                  <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh...", "", alt: "" %></h2>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <ul class="list-posts">
+      <% (1..4).each do |item| %>
+      <li>
+        <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+        <div class="post-content">
+          <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
+          <ul class="post-tags">
+            <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+          </ul>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="advertisement">
+    <div class="desktop-advert">
+      <span>VU LAN MÙA HIẾU HẠNH</span>
+      <img src="/frontend/upload/addsense/event-250x250.jpg" alt="">
+    </div>
+    <div class="tablet-advert">
+      <span>VU LAN MÙA HIẾU HẠNH</span>
+      <img src="/frontend/upload/addsense/event-200x200.jpg" alt="">
+    </div>
+    <div class="mobile-advert">
+      <span>VU LAN MÙA HIẾU HẠNH</span>
+      <img src="/frontend/upload/addsense/event-300x250.jpg" alt="">
+    </div>
+  </div>
+
+  <div class="widget tab-posts-widget">
+
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active">
+        <a href="#option1" data-toggle="tab">Thư Viện Ảnh</a>
+      </li>
+      <li>
+        <a href="#option2" data-toggle="tab">Thư Viện Nhạc</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="option1">
+        <ul class="list-posts">
+          <% (1..5).each do |item| %>
+          
+          <li>
+            <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+            <div class="post-content">
+              <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát.....", "" %></h2>
+              <ul class="post-tags">
+                <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+              </ul>
+            </div>
+          </li>
+          
+          <% end %>
+        </ul>
+      </div>
+      <div class="tab-pane" id="option2">
+        <ul class="list-posts">
+          <% (1..5).each do |item| %>
+          
+          <li>
+            <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+            <div class="post-content">
+              <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát.....", "" %></h2>
+              <ul class="post-tags">
+                <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+              </ul>
+            </div>
+          </li>
+          
+          <% end %>
+        </ul>										
+      </div>
+    </div>
+  </div>
+
+  <div class="widget post-widget">
+    <div class="title-section">
+      <h1><span>Video</span></h1>
+    </div>
+    <% (1..2).each do |item| %>
+    <div class="news-post video-post">
+      <%= image_tag "/frontend/upload/news-posts/video-sidebar.jpg", alt: "" %>
+      <a href="https://www.youtube.com/watch?v=OPVtUBs6YDo" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+      <div class="hover-box">
+        <h2><%= link_to "Sự Tích Đức Phật Thích Ca 1/2", "" %></h2>
+        <ul class="post-tags">
+          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+        </ul>
+      </div>
+      <p></p>
+    </div>
+    <div class="news-post video-post">
+      <%= image_tag "/frontend/upload/news-posts/video-sidebar.jpg", alt: "" %>
+      <a href="https://www.youtube.com/watch?v=FTQIa97H7h0" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+      <div class="hover-box">
+        <h2><%= link_to "Sự Tích Đức Phật Thích Ca 2/2", "" %></h2>
+        <ul class="post-tags">
+          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+        </ul>
+      </div>
+      <p></p>
+    </div>
+    <% end %>
+  </div>
+
+</div>

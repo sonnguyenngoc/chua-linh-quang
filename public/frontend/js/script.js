@@ -302,7 +302,7 @@ $(document).ready(function($) {
 	/*	Contact Map
 	/* ---------------------------------------------------------------------- */
 
-	var contact = {"lat":"-38.3945495", "lon":"144.9187974"}; //Change a map coordinate here!-38.3945495,144.9187974
+	var contact = {"lat":"11.214007", "lon":"107.425799"}; //Change a map coordinate here!-38.3945495,144.9187974
 
 	try {
 		var mapContainer = $('#map');
@@ -310,13 +310,13 @@ $(document).ready(function($) {
 			action: 'addMarker',
 			marker:{
 				options:{
-					icon : new google.maps.MarkerImage('images/marker.png')
+					//icon : new google.maps.MarkerImage('/frontend/images/marker.png')
 				}
 			},
 			latLng: [contact.lat, contact.lon],
 			map:{
 				center: [contact.lat, contact.lon],
-				zoom: 10
+				zoom: 16
 				},
 			},
 			{action: 'setOptions', args:[{scrollwheel:false}]}

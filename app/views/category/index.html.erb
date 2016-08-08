@@ -1,0 +1,80 @@
+<section class="block-wrapper">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-2 col-sm-0">
+
+        <!-- left sidebar -->
+        <%= render "/modules/left_sidebar" %>
+        <!-- End left sidebar -->
+
+      </div>
+
+      <div class="col-md-7 col-sm-8">
+
+        <!-- block content -->
+        <div class="block-content">
+
+          <!-- grid box -->
+          <div class="grid-box">
+            <div class="title-section">
+              <h1><span class="world">PHẬT SỰ</span></h1>
+            </div>
+            <div class="row">
+              <% (0..15).each_with_index do |item,index| %>
+              <div class="col-md-6">
+                <div class="news-post image-post2">
+                  <div class="post-gallery">
+                    <%= image_tag "/frontend/upload/news-posts/im.jpg", alt: "" %>
+                    <div class="hover-box">
+                      <div class="inner-hover">
+                        <%= link_to "Phật Sự", "", class: "category-post world" %>
+                        <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
+                        <ul class="post-tags">
+                          <li><i class="fa fa-clock-o"></i>08/07/2016</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="post-content">
+                    <p class="text-justify">Trong tinh thần nhường cơm sẻ áo, được sự vận động và khích lệ của đại đức trụ trì chùa Linh Quang.....</p>
+                  </div>
+                </div>
+              </div>
+              <%= '</div><div class="row">'.html_safe if index%2 == 1 %>
+              <% end %>
+            </div>
+
+          </div>
+          <!-- End grid box -->
+
+          <!-- pagination box -->
+          <div class="pagination-box">
+            <ul class="pagination-list">
+              <li><a class="active" href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">Trang sau</a></li>
+            </ul>
+            <p>Trang 1 / 9</p>
+          </div>
+          <!-- End Pagination box -->
+
+        </div>
+        <!-- End block content -->
+
+      </div>
+
+      <div class="col-md-3 col-sm-4">
+
+        <!-- right sidebar -->
+        <%= render "/modules/right_sidebar" %>
+        <!-- End right sidebar -->
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

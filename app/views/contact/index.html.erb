@@ -1,0 +1,172 @@
+<section class="block-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+
+        <!-- block content -->
+        <div class="block-content">
+
+          <!-- contact info box -->
+          <div class="contact-info-box">
+            <div class="title-section">
+              <h1><span>Liên Hệ</span></h1>
+            </div>
+
+            <div id="map"></div>
+            
+          </div>
+          <!-- End contact info box -->
+
+          <!-- contact form box -->
+          <div class="contact-form-box">
+            <div class="title-section">
+              <h1><span>GỬI LIÊN HỆ</span></h1>
+            </div>
+            <form id="contact-form">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="name">Họ & Tên *</label>
+                  <input id="name" name="name" type="text">
+                </div>
+                <div class="col-md-4">
+                  <label for="mail">Điện Thoại *</label>
+                  <input id="mail" name="mail" type="text">
+                </div>
+                <div class="col-md-4">
+                  <label for="website">Email *</label>
+                  <input id="website" name="website" type="text">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="name">Đơn Vị</label>
+                  <input id="name" name="name" type="text">
+                </div>
+                <div class="col-md-6">
+                  <label for="mail">Địa Chỉ</label>
+                  <input id="mail" name="mail" type="text">
+                </div>
+              </div>
+              <label for="comment">Lời Nhắn *</label>
+              <textarea id="comment" name="comment"></textarea>
+              <button type="submit" id="submit-contact">
+                <i class="fa fa-paper-plane"></i> Gửi Liên Hệ
+              </button>
+            </form>
+          </div>
+          <!-- End contact form box -->
+
+        </div>
+        <!-- End block content -->
+
+      </div>
+
+      <div class="col-sm-4">
+
+        <!-- sidebar -->
+        <div class="sidebar">
+
+          <div class="widget features-slide-widget">
+            <div class="title-section">
+              <h1><span>Tin Nóng</span></h1>
+            </div>
+            <div class="image-post-slider">
+              <ul class="bxslider">
+                <% (1..3).each do |item| %>
+                <li>
+                  <div class="news-post image-post2">
+                    <%= image_tag "/frontend/upload/news-posts/im.jpg", alt: "" %>
+                    <div class="hover-box">
+                      <div class="inner-hover">
+                        <h2><%= link_to "Tiêu đề tin nóng", "" %></h2>
+                        <ul class="post-tags">
+                          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                          <li><i class="fa fa-user"></i></i>bởi Chùa Linh Quang</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+          <div class="widget tab-posts-widget">
+
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active">
+                <a href="#option1" data-toggle="tab">Phật Sự</a>
+              </li>
+              <li>
+                <a href="#option2" data-toggle="tab">Tin Tức</a>
+              </li>
+              <li>
+                <a href="#option3" data-toggle="tab">Từ Thiện</a>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="option1">
+                <ul class="list-posts">
+                  <% (1..5).each do |item| %>
+                  
+                  <li>
+                    <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+                    <div class="post-content">
+                      <h2><%= link_to "Tiêu đề tin nóng", "" %></h2>
+                        <ul class="post-tags">
+                          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                        </ul>
+                    </div>
+                  </li>
+                  
+                  <% end %>
+                </ul>
+              </div>
+              <div class="tab-pane" id="option2">
+                <ul class="list-posts">
+                  <% (1..5).each do |item| %>
+                  
+                  <li>
+                    <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+                    <div class="post-content">
+                      <h2><%= link_to "Tiêu đề tin nóng", "" %></h2>
+                        <ul class="post-tags">
+                          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                        </ul>
+                    </div>
+                  </li>
+                  
+                  <% end %>
+                </ul>										
+              </div>
+              <div class="tab-pane" id="option3">
+                <ul class="list-posts">
+                  <% (1..5).each do |item| %>
+                  
+                  <li>
+                    <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+                    <div class="post-content">
+                      <h2><%= link_to "Tiêu đề tin nóng", "" %></h2>
+                        <ul class="post-tags">
+                          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                        </ul>
+                    </div>
+                  </li>
+                  
+                  <% end %>
+                </ul>										
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- End sidebar -->
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -21,3 +21,12 @@ div.block-content {
     padding: 30px 0 10px;
     position: relative;
 }
+.ticker-news-box .ticker-controls li.jnt-play-pause:after {
+	font-family: 'FontAwesome';
+}
+.ticker-news-box .ticker-controls li.jnt-prev:after {
+	font-family: 'FontAwesome';
+}
+.ticker-news-box .ticker-controls li.jnt-next:after {
+	font-family: 'FontAwesome';
+}
