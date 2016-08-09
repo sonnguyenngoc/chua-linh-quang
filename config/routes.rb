@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root "comming_soon#index"
     get "trang-chu.html" => "home#index", as: :home
     get "chuyen-muc.html" => "category#index", as: :category
+    get "chi-tiet-bai-viet.html" => "post_detail#index", as: :post_detail
     get "lien-he.html" => "contact#index", as: :contact
     
     # form create

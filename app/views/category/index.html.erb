@@ -18,7 +18,7 @@
           <!-- grid box -->
           <div class="grid-box">
             <div class="title-section">
-              <h1><span class="world">PHẬT SỰ</span></h1>
+              <h1><span class="<%= @category.style %>"><%= @category.name %></span></h1>
             </div>
             <div class="row">
               <% (0..15).each_with_index do |item,index| %>
@@ -29,7 +29,7 @@
                     <div class="hover-box">
                       <div class="inner-hover">
                         <%= link_to "Phật Sự", "", class: "category-post world" %>
-                        <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
+                        <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", post_detail_path %></h2>
                         <ul class="post-tags">
                           <li><i class="fa fa-clock-o"></i>08/07/2016</li>
                         </ul>

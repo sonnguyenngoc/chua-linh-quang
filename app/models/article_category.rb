@@ -12,6 +12,14 @@ class ArticleCategory < ActiveRecord::Base
     self.save
   end
   
+  def url_friendly
+      self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+  end
+  
+  def self.get_all_parent_categories
+    self.where("article_categories.level = 1").order("position asc")
+  end
+  
   def get_blogs_for_categories(params)
     article_category = ArticleCategory.find(params[:article_category_id])
     records = Article.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true")
@@ -59,7 +67,7 @@ class ArticleCategory < ActiveRecord::Base
     end
     
     # for sorting
-    sort_by = params[:sort_by].present? ? params[:sort_by] : "article_categories.created_at"
+    sort_by = params[:sort_by].present? ? params[:sort_by] : "article_categories.position"
     sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
     records = records.order("#{sort_by} #{sort_order}")
     

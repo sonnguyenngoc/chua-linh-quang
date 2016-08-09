@@ -347,25 +347,25 @@ header.active .nav-list-container {
   padding-left: 20px;
   padding-right: 30px;
 }
-.navbar-nav > li > a.world:before {
+.navbar-nav > li > a.category_2:before {
   background: #33a3f1;
 }
-.navbar-nav > li > a.travel:before {
+.navbar-nav > li > a.category_3:before {
   background: #f58021;
 }
-.navbar-nav > li > a.tech:before {
+.navbar-nav > li > a.category_4:before {
   background: #74b430;
 }
-.navbar-nav > li > a.fashion:before {
+.navbar-nav > li > a.category_5:before {
   background: #aa35d6;
 }
-.navbar-nav > li > a.video:before {
+.navbar-nav > li > a.category_6:before {
   background: #d6ac1b;
 }
 .navbar-nav > li > a.sport:before {
   background: #4c60f6;
 }
-.navbar-nav > li > a.food:before {
+.navbar-nav > li > a.home:before {
   background: #32b47b;
 }
 .navbar-nav > li > a.features:before {
@@ -858,20 +858,23 @@ p {
   padding-right: 5px;
   border-bottom: 1px solid #f44336;
 }
-.title-section h1 span.world {
+.title-section h1 span.category_1 {
+  border-bottom: 1px solid #f44336;
+}
+.title-section h1 span.category_2 {
   border-bottom: 1px solid #33a3f1;
 }
-.title-section h1 span.fashion {
-  border-bottom: 1px solid #aa35d6;
-}
-.title-section h1 span.travel {
+.title-section h1 span.category_3 {
   border-bottom: 1px solid #f58021;
 }
-.title-section h1 span.sport {
-  border-bottom: 1px solid #4c60f6;
+.title-section h1 span.category_4 {
+  border-bottom: 1px solid #74b430;
 }
-.title-section h1 span.food {
-  border-bottom: 1px solid #32b47b;
+.title-section h1 span.category_5 {
+  border-bottom: 1px solid #aa35d6;
+}
+.title-section h1 span.category_6 {
+  border-bottom: 1px solid #d6ac1b;
 }
 .title-section .arrow-box {
   float: right;

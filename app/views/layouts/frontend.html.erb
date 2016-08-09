@@ -74,7 +74,7 @@
 		</header>
 		<!-- End Header -->
 		
-		<% if ["category"].include?(params[:controller]) %>
+		<% if ["category"].include?(params[:controller]) || ["post_detail"].include?(params[:controller]) %>
 		<!-- ticker-news-section
 			================================================== -->
 		<%= render "/modules/hot_news" %>

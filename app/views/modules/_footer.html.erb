@@ -52,24 +52,11 @@
           <div class="widget categories-widget">
             <h1>CHUYÊN MỤC</h1>
             <ul class="category-list">
+              <% ArticleCategory.get_all_parent_categories.each do |cat| %>
               <li>
-                <a href="">Phật Sự <span>0</span></a>
+                <a href="<%= category_path(category_id: cat.id, category_name: cat.url_friendly) %>"><%= cat.name %> <span>0</span></a>
               </li>
-              <li>
-                <a href="">Phật Pháp <span>0</span></a>
-              </li>
-              <li>
-                <a href="">Tin Tức <span>0</span></a>
-              </li>
-              <li>
-                <a href="">Từ Thiện <span>0</span></a>
-              </li>
-              <li>
-                <a href="">Văn Hóa <span>0</span></a>
-              </li>
-              <li>
-                <a href="">GĐPT Linh Quang <span>0</span></a>
-              </li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -94,12 +81,9 @@
         <div class="col-md-8">
           <nav class="footer-nav">
             <ul>
-              <li><%= link_to "Phật Sự", "" %></li>
-              <li><%= link_to "Phật Pháp", "" %></li>
-              <li><%= link_to "Tin Tức", "" %></li>
-              <li><%= link_to "Từ Thiện", "" %></li>
-              <li><%= link_to "Văn Hóa", "" %></li>
-              <li><%= link_to "GĐPT Linh Quang", "" %></li>
+              <% ArticleCategory.get_all_parent_categories.each do |cat| %>
+              <li><%= link_to cat.name, category_path(category_id: cat.id, category_name: cat.url_friendly) %></li>
+              <% end %>
             </ul>
           </nav>
         </div>

@@ -2,39 +2,23 @@
   <ul class="nav navbar-nav navbar-right">
 
     <li><%= link_to "Trang Chủ", home_path, class: "home" %></li>
-
-    <li><%= link_to "Phật Sự", category_path, class: "food" %></li>
-
-    <li class="drop"><%= link_to "Phật Pháp", category_path, class: "world" %>
+    
+    <% ArticleCategory.get_all_parent_categories.each do |cat| %>
       
-      <ul class="dropdown">
-        <li><a href="">Bước Đầu Học Phật</a></li>
-        <li><a href="">Giáo Pháp</a></li>
-        <li><a href="">Tịnh Độ Tông</a></li>
-        <li><a href="">Thiền Tông</a></li>
-        <li><a href="">Mật Tông</a></li>
-      </ul>
-
-    </li>
-
-    <li><%= link_to "Tin Tức", category_path, class: "travel" %></li>
-
-    <li><%= link_to "Từ Thiện", category_path, class: "tech" %></li>
-
-    <li class="drop"><%= link_to "Văn Hóa", category_path, class: "fashion" %>
+      <% if cat.children.count == 0 %>
+        <li><%= link_to cat.name, category_path(category_id: cat.id, category_name: cat.url_friendly), class: cat.style %></li>
+      <% else %>
+        <li class="drop"><%= link_to cat.name, category_path(category_id: cat.id, category_name: cat.url_friendly), class: cat.style %>
+          <ul class="dropdown">
+            <% cat.children.each do |child| %>
+            <li><%= link_to child.name, category_path(category_id: child.id, category_name: child.url_friendly) %></li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
       
-      <ul class="dropdown">
-        <li><%= link_to "Góp Nhặt Cát Đá", category_path %></li>
-        <li><%= link_to "Văn Học - Nghệ Thuật", category_path %></li>
-        <li><%= link_to "Thư Viện Ảnh", category_path %></li>
-        <li><%= link_to "Thư Viện Video", category_path %></li>
-        <li><%= link_to "Thư viện Nhạc", category_path %></li>
-      </ul>
-
-    </li>
-
-    <li><%= link_to "GĐPT Linh Quang", category_path, class: "video" %></li>
-
+    <% end %>
+    
     <li><%= link_to "Liên Hệ", contact_path, class: "sport" %></li>
 
   </ul>
