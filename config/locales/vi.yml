@@ -351,13 +351,13 @@ vi:
   will_paginate:
     page_entries_info:
       single_page:
-        zero:  "Không có "
-        one:   "Hiển thị 1 "
-        other: "Hiển thị toàn bộ %{count} "
+        zero:  "Chưa có có bài viết cho chuyên mục này."
+        one:   "Hiển thị 1 cho chuyên mục này."
+        other: "Hiển thị toàn bộ %{count} cho chuyên mục này."
       single_page_html:
-        zero:  "Không có "
-        one:   "Hiển thị 1 "
-        other: "Hiển thị toàn bộ %{count} "
+        zero:  "Chưa có có bài viết cho chuyên mục này."
+        one:   "Hiển thị 1 cho chuyên mục này."
+        other: "Hiển thị toàn bộ %{count} cho chuyên mục này."
 
-      multi_page: "Hiển thị %{from} - %{to} của %{count} "
-      multi_page_html: "Hiển thị %{from} - %{to} của %{count} "
+      multi_page: "Hiển thị bài viết %{from} - %{to}."
+      multi_page_html: "Hiển thị bài viết %{from} - %{to}."

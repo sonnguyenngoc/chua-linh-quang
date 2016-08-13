@@ -29,7 +29,6 @@ class Admin::ArticlesController < ApplicationController
     authorize! :create, Article
     
     @article = Article.new
-    @article_categories = ArticleCategory.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
@@ -39,7 +38,6 @@ class Admin::ArticlesController < ApplicationController
     # authorize
     authorize! :update, @article
     
-    @article_categories = ArticleCategory.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
@@ -48,7 +46,6 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @areas = Area.get_by_level(2)
-    @article_categories = ArticleCategory.all
     # authorize
     authorize! :create, Article
     @article = Article.new(article_params)
@@ -94,7 +91,6 @@ class Admin::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     @areas = Area.get_by_level(2)
-    @article_categories = ArticleCategory.all
     @products = Product.paginate(:page => params[:page], :per_page => 10)
     # authorize
     authorize! :update, @article
@@ -211,6 +207,6 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show, :page_layout, :image_url_full_width, :area_id)
+      params.require(:article).permit(:image_url, :title, :content, :tags, :meta_keywords, :meta_description, :article_category_id, :code, :code_status_id, :is_show, :is_mine, :page_layout, :image_url_full_width, :area_id)
     end
 end

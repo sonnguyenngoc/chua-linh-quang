@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="top-line-list">
-          <li><span class="time-now"><%= Time.now.in_time_zone("Asia/Bangkok").strftime("%A %d/%m/%Y / %H:%M") %></span></li>
-          <% ArticleCategory.get_all_parent_categories.each do |cat| %>
-          <li><%= link_to cat.name, category_path(category_id: cat.id, category_name: cat.url_friendly) %></li>
-          <% end %>
+          <li><%= link_to Company.get_pagoda_info.name, root_path %></li>
+          <li><%= link_to Company.get_pagoda_info.head_office_address, contact_path %></li>
+          <li><a href="mailto:<%= Company.get_pagoda_info.email %>"><%= Company.get_pagoda_info.email %></a></li>\
+          <li><a href="tel:<%= Company.get_pagoda_info.phone %>"><%= Company.get_pagoda_info.phone %></a></li>
         </ul>
       </div>
     </div>

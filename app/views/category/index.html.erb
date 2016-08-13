@@ -21,23 +21,23 @@
               <h1><span class="<%= @category.style %>"><%= @category.name %></span></h1>
             </div>
             <div class="row">
-              <% (0..15).each_with_index do |item,index| %>
+              <% @posts.each_with_index do |item,index| %>
               <div class="col-md-6">
                 <div class="news-post image-post2">
                   <div class="post-gallery">
-                    <%= image_tag "/frontend/upload/news-posts/im.jpg", alt: "" %>
+                    <%= image_tag item.image_url.medium_image, alt: "" %>
                     <div class="hover-box">
                       <div class="inner-hover">
-                        <%= link_to "Phật Sự", "", class: "category-post world" %>
-                        <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", post_detail_path %></h2>
+                        <%= link_to @category.name, category_path(category_id: @category, category_name: @category.url_friendly), class: "category-post world" %>
+                        <h2><%= link_to item.title, post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
                         <ul class="post-tags">
-                          <li><i class="fa fa-clock-o"></i>08/07/2016</li>
+                          <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
                         </ul>
                       </div>
                     </div>
                   </div>
                   <div class="post-content">
-                    <p class="text-justify">Trong tinh thần nhường cơm sẻ áo, được sự vận động và khích lệ của đại đức trụ trì chùa Linh Quang.....</p>
+                    <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 90) %></p>
                   </div>
                 </div>
               </div>
@@ -50,14 +50,8 @@
 
           <!-- pagination box -->
           <div class="pagination-box">
-            <ul class="pagination-list">
-              <li><a class="active" href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">Trang sau</a></li>
-            </ul>
-            <p>Trang 1 / 9</p>
+            <%= will_paginate @posts, previous_label: 'Trang trước', next_label: 'Trang sau', renderer: BootstrapPagination::Rails %>
+            <p><%= page_entries_info @posts %></p>
           </div>
           <!-- End Pagination box -->
 

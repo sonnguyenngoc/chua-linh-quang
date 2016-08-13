@@ -62,27 +62,14 @@
 
   <div class="widget categories-widget">
     <div class="title-section">
-      <h1><span>Hot Categories</span></h1>
+      <h1><span>Chuyên Mục</span></h1>
     </div>
     <ul class="category-list">
+      <% ArticleCategory.get_all_parent_categories.each do |item| %>
       <li>
-        <a href="">Phật Sự <span>0</span></a>
+        <a href="<%= category_path(category_id: item.id, category_name: item.url_friendly) %>"><%= item.name %> <span><%= item.count_posts_for_categories %></span></a>
       </li>
-      <li>
-        <a href="">Phật Pháp <span>0</span></a>
-      </li>
-      <li>
-        <a href="">Tin Tức <span>0</span></a>
-      </li>
-      <li>
-        <a href="">Từ Thiện <span>0</span></a>
-      </li>
-      <li>
-        <a href="">Văn Hóa <span>0</span></a>
-      </li>
-      <li>
-        <a href="">GĐPT Linh Quang <span>0</span></a>
-      </li>
+      <% end %>
       <li>
         <a href="">Thư Viện Ảnh <span>0</span></a>
       </li>

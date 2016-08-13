@@ -9,75 +9,72 @@
             <!-- single-post box -->
             <div class="single-post-box">
 
-              <div class="title-post">
-                <h1>Tiêu đề bài viết</h1>
-                <ul class="post-tags">
-                  <li><i class="fa fa-clock-o"></i>07/08/2016</li>
-                  <li><i class="fa fa-user"></i>bởi Chùa Linh Quang</li>
-                </ul>
-              </div>
-
-              <div class="share-post-box">
-                <ul class="share-box">
-                  <li><i class="fa fa-share-alt"></i><span>Chia sẻ bài viết</span></li>
-                  <li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Chia sẻ Facebook</span></a></li>
-                  <li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Chia sẻ Twitter</span></a></li>
-                  <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span>Chia sẻ Google+</span></a></li>
-                </ul>
-              </div>
-
-              <div class="post-gallery">
-                <%= image_tag "/frontend/upload/news-posts/single.jpg", alt: "" %>
-                <span class="image-caption"><%= "Tiêu đề bài viết" %></span>
-              </div>
-
-              <div class="post-content text-justify">
-
-                <p><strong><%= link_to "(LQT)", "" %></strong> Những ngày đầu của tháng tư âm lịch, khi những cơn mưa đầu mùa bắt đầu đây đó rơi, không khí oi bức của cái nắng khắc nghiệt cũng nhẹ vơi đi, đây cũng là lúc các tự viện nô nức chuẩn bị cho ngày kỷ niệm Đức Phật đản sinh.
-
-Kỷ niệm ngày Đức Phật đản sinh không có nghĩa là trang trí lễ đài, đèn hoa tưng bừng, mà cái sâu xa hơn nữa là nhớ lại những lời Phật dạy và làm theo những lời Ngài đã dạy...đó mới thật là ý nghĩa của mùa Phật đản và ý nghĩa của việc tưởng nhớ đến Đức Phật (Người thầy tâm linh của chính mình).
-
-Hòa cùng với không khí vui mừng của mùa Phật Đản PL.2559 - DL.2015. Chư Tăng và Phật tử Chùa Linh Quang đã cùng nhau vâng theo lời Phật dạy chia sẻ niềm vui này qua việc vận động và chung tay để tặng những phần quà đến những gia đình có hoàn cảnh khó khăn, người già neo đơn. Vào lúc 14 giờ ngày mùng 8 tháng 4 AL, trước khi diễn ra lễ Tắm Phật (vào lúc 18h cùng ngày), 200 phần quà đã được trao tặng cho đồng bào nghèo ở địa phương. Mỗi phần quà tuy đơn sơ nhưng lại chứa đựng đầy ắp tình người, chính vì vậy khi được trao tay cả người tặng và người nhận đều nở nụ cười ấm áp và vui tươi. </p>
-              </div>
-
-              <div class="post-tags-box">
-                <ul class="tags-box">
-                  <li><i class="fa fa-tags"></i><span>Chuyên mục:</span></li>
-                  <li><a href="">Chùa Linh Quang</a></li>
-                  <li><a href="">Phật Sự</a></li>
-                </ul>
-              </div>
-
-              <div class="share-post-box">
-                <ul class="share-box">
-                  <li><i class="fa fa-share-alt"></i><span>Chia sẻ bài viết</span></li>
-                  <li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Chia sẻ Facebook</span></a></li>
-                  <li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Chia sẻ Twitter</span></a></li>
-                  <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span>Chia sẻ Google+</span></a></li>
-                </ul>
-              </div>
-
-              <!-- carousel box -->
-              <div class="carousel-box owl-wrapper">
-                <div class="title-section">
-                  <h1><span>Tin liên quan</span></h1>
+                <div class="title-post">
+                  <h1><%= @post_detail.title %></h1>
+                  <ul class="post-tags">
+                    <li><i class="fa fa-clock-o"></i><%= @post_detail.created_at.strftime("%d/%m/%Y") %></li>
+                    <li><i class="fa fa-user"></i>bởi Chùa Linh Quang</li>
+                  </ul>
                 </div>
-                <div class="owl-carousel" data-num="3">
-                  <% (1..5).each do |item| %>
-                  <div class="item news-post image-post3">
-                    <%= image_tag "", alt: "" %>
-                    <img src="/frontend/upload/news-posts/art1.jpg" alt="">
-                    <div class="hover-box">
-                      <h2><%= link_to "Tiêu đề bài viết", "" %></h2>
-                      <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i>07/08/2016</li>
-                      </ul>
-                    </div>
+  
+                <div class="share-post-box">
+                  <ul class="share-box">
+                    <li><i class="fa fa-share-alt"></i><span>Chia sẻ bài viết</span></li>
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Chia sẻ Facebook</span></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Chia sẻ Twitter</span></a></li>
+                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span>Chia sẻ Google+</span></a></li>
+                  </ul>
+                </div>
+  
+                <div class="post-gallery">
+                  <%= image_tag @post_detail.image_url.large_image, alt: "" %>
+                  <span class="image-caption"><%= "Tiêu đề bài viết" %></span>
+                </div>
+  
+                <div class="post-content text-justify">
+  
+                    <p><% if @post_detail.is_mine == false %><strong><%= link_to "(LQT)", root_path %></strong> <% end %></p>
+                    <%= @post_detail.content.html_safe %>
+                  
+                </div>
+  
+                <div class="post-tags-box">
+                  <ul class="tags-box">
+                    <li><i class="fa fa-tags"></i><span>Chuyên mục:</span></li>
+                    <li><%= link_to "Chùa Linh Quang", root_path %></li>
+                    <li><%= link_to @category.name, category_path(category_id: @category, category_name: @category.url_friendly) %></li>
+                  </ul>
+                </div>
+  
+                <div class="share-post-box">
+                  <ul class="share-box">
+                    <li><i class="fa fa-share-alt"></i><span>Chia sẻ bài viết</span></li>
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Chia sẻ Facebook</span></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Chia sẻ Twitter</span></a></li>
+                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span>Chia sẻ Google+</span></a></li>
+                  </ul>
+                </div>
+  
+                <!-- carousel box -->
+                <div class="carousel-box owl-wrapper">
+                  <div class="title-section">
+                    <h1><span>Tin liên quan</span></h1>
                   </div>
-                  <% end %>
+                  <div class="owl-carousel" data-num="3">
+                    <% @related_posts.each do |item| %>
+                    <div class="item news-post image-post3">
+                      <%= image_tag item.image_url.small_image, alt: "" %>
+                      <div class="hover-box">
+                        <h2><%= link_to item.title, post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
+                        <ul class="post-tags">
+                          <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-              <!-- End carousel box -->
+                <!-- End carousel box -->
 
             </div>
             <!-- End single-post box -->

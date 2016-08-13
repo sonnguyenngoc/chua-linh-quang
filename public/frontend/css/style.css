@@ -1360,15 +1360,15 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
   margin: 15px 15px;
 }
 /* pagination style */
-.pagination-box ul.pagination-list {
+.pagination-box ul.pagination {
   margin: 0;
   padding: 0;
 }
-.pagination-box ul.pagination-list li {
+.pagination-box ul.pagination li {
   display: inline-block;
   margin-right: 3px;
 }
-.pagination-box ul.pagination-list li a {
+.pagination-box ul.pagination li a {
   display: inline-block;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -1385,13 +1385,13 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-.pagination-box ul.pagination-list li a:hover,
-.pagination-box ul.pagination-list li a.active {
+.pagination-box ul.pagination li a:hover,
+.pagination-box ul.pagination li a.active {
   border: 1px solid #f44336;
   background: #f44336;
   color: #ffffff;
 }
-.pagination-box ul.pagination-list li span {
+.pagination-box ul.pagination li span {
   display: inline-block;
   margin: 0;
   color: #333333;
