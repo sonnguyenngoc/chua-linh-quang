@@ -1,0 +1,850 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas (id, name, level, description, created_at, updated_at, parent_id, areatype_id, display_order) FROM stdin;
+\.
+
+
+--
+-- Data for Name: areas_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas_articles (id, area_id, article_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_articles_id_seq', 1, false);
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_id_seq', 1, false);
+
+
+--
+-- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('areas_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY article_categories (id, name, description, created_at, updated_at, level, meta_keywords, meta_description, style, "position") FROM stdin;
+15	Phật Sự	Phật Sự	2016-08-09 13:55:11.856142	2016-08-09 14:19:45.000012	1	\N	\N	category_1	1
+16	Phật Pháp	Phật Pháp	2016-08-09 13:55:23.537837	2016-08-09 14:44:15.165483	1	\N	\N	category_2	2
+17	Tin Tức	Tin Tức	2016-08-09 13:55:32.727123	2016-08-09 14:44:37.189695	1	\N	\N	category_3	3
+27	Từ Thiện	Từ Thiện	2016-08-09 14:17:50.034062	2016-08-09 14:44:48.459031	1	\N	\N	category_4	4
+18	Văn Hóa	Văn Hóa	2016-08-09 13:55:56.350663	2016-08-09 14:44:57.313802	1	\N	\N	category_5	5
+19	GĐPT Linh Quang	GĐPT Linh Quang	2016-08-09 13:56:09.306056	2016-08-09 14:45:06.108436	1	\N	\N	category_6	6
+21	Giáo Pháp	Giáo Pháp	2016-08-09 13:56:39.619712	2016-08-09 14:49:39.18023	2	\N	\N	no_style	2
+20	Bước Đầu Học Phật	Bước Đầu Học Phật	2016-08-09 13:56:24.510452	2016-08-09 14:50:01.117951	2	\N	\N	no_style	1
+22	Tịnh Độ Tông	Tịnh Độ Tông	2016-08-09 13:57:03.482933	2016-08-09 14:50:45.662572	2	\N	\N	no_style	3
+23	Thiền Tông	Thiền Tông	2016-08-09 13:57:18.680516	2016-08-09 14:50:54.752591	2	\N	\N	no_style	4
+24	Mật Tông	Mật Tông	2016-08-09 14:00:12.331019	2016-08-09 14:51:02.20955	2	\N	\N	no_style	5
+25	Góp Nhặt Cát Đá	Góp Nhặt Cát Đá	2016-08-09 14:00:33.345281	2016-08-09 14:51:16.944595	2	\N	\N	no_style	1
+26	Văn Học Nghệ Thuật	Văn Học Nghệ Thuật	2016-08-09 14:00:57.607127	2016-08-09 14:51:28.60857	2	\N	\N	no_style	2
+\.
+
+
+--
+-- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY article_categories_articles (id, article_id, article_category_id, created_at, updated_at) FROM stdin;
+54	25	26	2016-08-13 12:39:23.197054	2016-08-13 12:39:23.197054
+57	26	26	2016-08-13 13:39:26.524707	2016-08-13 13:39:26.524707
+\.
+
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('article_categories_articles_id_seq', 57, true);
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('article_categories_id_seq', 27, true);
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY articles (id, image_url, title, content, tags, article_category_id, created_at, updated_at, code_status_id, meta_keywords, meta_description, is_show, page_layout, user_id, approved, image_url_full_width, is_mine) FROM stdin;
+25	Hinh-duc-phat-dan-sanh.jpg	Thơ - Rưng Rưng Phật Đản	<p style="text-align: center;">1. Niềm vui Phật đản rưng rưng<br />Em ơi! Nắng mới, lá rừng hóa xanh<br />Đạo đơm sắc áo thị thành<br />Con trăng cánh mỏng long lanh vườn chùa<br />Em ơi! Phật đến từ xưa<br />Sen vàng bảy bước, nụ vừa mãn khai<br />Con sâu, chú bướm ngủ vùi<br />Thò tay vỡ kén, nói cười tung tăng<br />Xôn xao giọt nước sông Hằng<br />Cổ thành Xá Vệ nói năng dịu dàng<br />Em ơi! Lệnh mẫu cao sang<br />Vin sala – nở dung nhan tuyệt trần</p>\r\n<p style="text-align: center;">2. Em ơi! Khổ đế bao lần<br />Dòng sông sinh tử tần ngần đứng xem<br />Sương vui rỏ lệ bên thềm<br />Lá vui phe phẩy tình đêm, tình ngày<br />Con chim lạ hót đồi mây<br />Thang âm vi diệu lay bay nghìn trùng<br />Em ơi! Phật đản rưng rưng<br />Chiếc thuyền mật độ thủy chung bến bờ<br />Qua sông trăng viết bài thơ<br />Sạch không cát bụi còn ngờ chiêm bao<br />Con tim chợt lặng ba đào<br />Ngu ngơ khối óc non cao sụt sùi<br />Khe sâu đá nói, hoa cười<br />Hạt sim, hạt móc tươi vui bộn bàng<br />Lau bồng, cỏ rối lang thang<br />Cõi đìu hiu, cõi gió ngàn lênh đênh</p>\r\n<p style="text-align: center;">3. Phật từ sa mạc hóa xanh<br />Tin yêu hạt cải bỗng thành Tu di<br />Em ơi! Mộng ước còn đi<br />Bèo rong thi thiết, hữu vi buồn phiền<br />Em ơi! Xuôi ngược đảo điên<br />Đốt đau hỏa ngục sáu miền tương lai<br />Cây vừa tỉnh mộng liêu trai<br />Nứt từ kẽ lá, vươn vai mấy lần<br />Có ai phủi nhẹ phù vân<br />Có ai bóng nhỏ gót chân bụi hồng<br />Lắt lay cỏ rạ bên đồng<br />Lửa trời thiêu đốt, sắc không nhọc nhằn</p>\r\n<p style="text-align: center;">4. Em ơi! Từ nỗi vi trần<br />Loay hoay diện mục chẳng gần, chẳng xa<br />Phật từ đất mẹ bước ra<br />Cảo thơm vô lượng, châu sa rạng ngời<br />Ai nghe “không lặng” ba đời<br />Ai nghe nhựa sống mọc chồi, đơm bông<br />Rưng rưng nghiệp mệnh hai dòng<br />Ngôn từ rơi vỡ, phiêu bồng về đâu<br />Mắt xanh, mở cửa thiên thâu <br />Khúc hòa ca, nối nhịp cầu yêu thương<br />Rơi đọng kinh, rơi đọng hương<br />Trang nghiêm lừng lững, chân thường hóa thơ!</p>\r\n<p style="text-align: center;"><em>Minh Đức- Triều Tâm ảnh</em></p>\r\n<p style="text-align: center;"><strong>Nguồn : Giacngo.vn</strong></p>	\N	\N	2016-08-13 12:28:13.064029	2016-08-13 12:39:23.21894	\N	\N	\N	t	\N	1	t	\N	f
+26	anh_minh_hoa.jpg	Hạnh Phúc Đến Từ Đâu	<p><strong>Người ta vẫn hay nói “đốt đuốc” đi tìm hạnh phúc. Trong khi hạnh phúc thường đến từ những điều đời thường nhất.</strong></p>\r\n<p>Tôi bắt đầu chuyện hạnh phúc bằng hình ảnh một cô bé 4 tuổi khóc thét lên và ôm choàng lấy mẹ vì sợ chó cắn, dù chú chó đang quẫy đuôi mừng. Một chú chó dễ thương mà làm cô bé sợ đến vậy là do bố cô bé mỗi khi thấy con nghịch thì dọa chó cắn…<br /> <br />Tuy nhiên, chỉ sau hơn một tiếng chú chó quấn quýt xung quanh và cô bé được người mẹ cùng mọi người xung quanh động viên về độ an toàn: “Không sao đâu con, bạn chó mừng con kìa, bạn thương con lắm mà!”, cô bé đã thay đổi. Và rồi cô bé từ từ đưa bàn tay nhút nhát, e dè ra sờ đầu bạn chó, và rất nhanh chóng chú chó hiền lành liếm tay cô bé một cách thích thú. Thường thì chó cũng như mèo thích sự ứng xử dịu dàng của con người nhưng tùy hoàn cảnh, không phải chú chó nào cũng dễ thương với khách như thế.<br /> <br />Quả là kỳ diệu, mấy ngày sau từ nỗi sợ chó, cô bé đã tự tin đòi mẹ phải mua cho cô một con chó như thế để làm bạn, không thì mỗi khi đi học về cô bé đều nói với mẹ rằng: “Mẹ ơi, cho con đến thăm bạn chó đi!”. Cô bé đã bắt đầu có niềm vui và cả tình thương với động vật. Bắt đầu từ nỗi sợ hãi mất an toàn, được thuyết phục về sự an toàn, cô bé chuyển sang giai đoạn thể hiện cảm xúc. Có một sự đổi thay quan trọng trong suy nghĩ, trong trí tưởng tượng của cô bé, đó là sự thích thú, mơ ước, khát khao và nhân ái đầu tiên của một tuổi thơ đẹp đẽ.</p>\r\n<p><br /><strong>Bất an liệu có hạnh phúc được?</strong><br /> <br />Hạnh phúc cá nhân không bao giờ tách rời với những tương quan xã hội. Hình ảnh luôn phản chiếu đời sống xã hội, chỉ cần nhìn vào hành vi xếp hàng, xả rác, tham gia giao thông, tham dự lễ hội, vào quán ăn là thấy ngay những “định nghĩa chuẩn” về một quốc gia hạnh phúc, ở đó có những công dân thật sự hạnh phúc.</p>\r\n<p>Trở về với cuộc sống xã hội rộng lớn đầy tương quan thuận nghịch của người lớn, phần nào chúng ta đang thiếu cảm giác về sự an toàn, nên đương nhiên đó không thể là hạnh phúc và các điều kiện để tiến gần đến hạnh phúc. Có thể dẫn ra những sự mất an toàn về tính mạng và tài sản như sau:<br />Nạn nạo phá thai tại Việt Nam được cho là đứng ở tốp đầu thế giới.<br /> <br />Ai cũng biết phá thai là hành vi giết hại, là tước đi quyền được làm người của một con người bên cạnh việc gây nguy hiểm cho bà mẹ và để lại những hệ quả xã hội khác. Từ đó, người ta thấy mình mất dần sự an toàn che chở của người thân yêu xung quanh, dẫn đến trong vô thức xã hội phá thai như là chuyện để giải quyết hậu quả không mong muốn là một điều “bình thường”. Ở đó không chỉ có sự chối bỏ của đối tác tạo ra cái thai đó, mà còn là sự thúc ép của người thân, nếu đối tác kia “bỏ của chạy lấy người”. Thế là kết cục cái thai kia bị phá bỏ… Hạnh phúc hay sự ám ảnh sẽ đeo theo suốt cuộc đời người mẹ bỏ con?<br /> <br />Nhưng mọi thứ giết hại, dù là con người hay động vật, đâu chỉ đứng riêng lẻ một mình. Chỉ cần nhìn vào tin tức cướp, giết, hiếp nhan nhản trên báo chí là thấy sự mất an toàn và tỉ lệ tội phạm gia tăng, trẻ hóa đến mức nào. Làm sao có hạnh phúc khi tương quan xã hội là những mối tương quan tràn ngập bất an?<br /> <br />Một tác động khác chỉ ra sự mất an toàn về tài sản không chỉ đến từ các cuộc khủng hoảng kinh tế ở mức độ toàn cầu, khu vực hay quốc gia, mà còn là chỉ số báo động của nạn tham nhũng, hối lộ, buôn gian bán lận, trốn thuế… làm cho giá trị của sản phẩm thấp, lương công nhân không đủ sống, kéo theo những tâm lý ích kỷ làm giàu bằng mọi cách. Điều đó cản trở con đường hạnh phúc mà một quốc gia phấn đấu hướng tới.<br /> <br />Không chỉ có thế, thống kê về tình trạng (vấn nạn) tai nạn giao thông tại Việt Nam cho biết hằng năm có trên một chục ngàn người chết vì tai nạn giao thông, hầu hết là những lao động chính, chủ lực của gia đình. Ngoài ý thức kém và hệ thống đường sá thiếu chuẩn, tai nạn giao thông liên đới không nhỏ tới chuyện sử dụng rượu bia khi chạy xe. Việc sử dụng rượu bia liên quan chặt chẽ tới thói quen ăn nhậu (nhậu lai rai cả ngày, bất cứ thời điểm nào, bất cứ ở đâu), thói quen ăn nhậu lại kéo theo nạn tiêu diệt các loài động vật hoang dã, côn trùng… Sản xuất hàng giả, hàng gian, hàng ngấm hóa chất độc hại tràn lan, thiếu kiểm soát luôn đi cùng với tình trạng môi trường sống bị ô nhiễm trầm trọng, bệnh ung thư và các bệnh nan y như tiểu đường, béo phì, tim mạch gia tăng báo động chỉ vì lương tâm con người bị đánh mất.</p>\r\n<p><br />Xã hội chúng ta luẩn quẩn trong mối tương quan nhiều chiều ấy, ở đó chứa đựng và hình thành những thói quen hành xử bất ổn giữa con người với con người và giữa con người với môi trường sống. Hệ quả, như đã thấy được và thống kê được, là con người cứ bước chân ra đường là có cảm giác mất an toàn. Đủ thứ mất an toàn như thế vây quanh, thử hỏi chúng ta có chạm đến được hạnh phúc hay không? Nếu có thì chỉ là những hạnh phúc ngắn hạn, mong manh, mang đầy nỗi lo âu và hoang mang. Niềm tin xã hội và các giá trị tốt đẹp dần bị đánh cắp chính từ những hoang mang, lo âu ấy.<br /> <br /><strong>“Sự đền bù hư ảo”</strong><br /> <br />Một điểm khác không thể không lưu ý đến sự lo âu, hoang mang này là những năm gần đây, người đi cầu cúng gia tăng, làm biến tướng nhiều giá trị tâm linh, tín ngưỡng tốt đẹp. Nhưng nhìn ở góc độ xã hội, đó cũng là biểu hiện khác của tâm lý bất an, nên dù gửi lời khấn cầu vào chốn thánh thần chẳng nhận lại được một lời hứa đảm bảo nào, nhưng họ vẫn đổ xô đến. Phải chăng đó là “sự đền bù hư ảo” mà các giá trị trần thế chưa thể rút ngắn được khoảng cách?<br /> <br />Cái không thể thay thế cái “hư ảo” kia chính là những đánh giá thiếu thực tiễn về chính cái “hư ảo” ấy để điều chỉnh chính sách. Xưa kia, xã hội phong kiến không phải không có pháp luật, nhưng ở những chỗ đông người như chợ búa vì sao luôn có những miếu thờ được cho là linh thiêng, chẳng phải đơn thuần chỉ vì người dân mê tín, mà bởi mỗi khi xảy ra tranh chấp, gian manh, lừa đảo, họ lôi tay nhau đến miếu để thề. Thề trước thần minh những điều trong sạch, không vấy bẩn lương tâm, nhờ vậy mà kẻ gian bớt lộng hành, chứ trông chờ vào sự phán xử qua bao nhiêu cấp của pháp luật thì cỏ đã xanh mồ. Đó là lý do mà Nguyễn Trãi phải thừa nhận rằng: “Pháp luật không bằng nhân nghĩa”.<br /> <br />Cùng nhìn lại hình ảnh cô bé sợ chó được nói đến ở trên để thấy người dân cần pháp luật và đạo đức xã hội đóng vai người mẹ (bảo trợ cho sự an toàn), đừng dọa dẫm các con về chó dữ, hãy cho con cảm nhận được cách sống tương quan, cảm nhận về sự an toàn, biết mở lòng yêu thương không chỉ với con người mà với cả súc vật.<br /> <br />Hạnh phúc cá nhân không bao giờ tách rời với những tương quan xã hội. Hình ảnh luôn phản chiếu đời sống xã hội, chỉ cần nhìn vào hành vi xếp hàng, xả rác, tham gia giao thông, tham dự lễ hội, vào quán ăn là thấy ngay những “định nghĩa chuẩn” về một quốc gia hạnh phúc, ở đó có những công dân thật sự hạnh phúc.</p>\r\n<p><br />Và chúng ta hãy dành cho nhau những cảm giác an toàn về thân thể, tài sản, hãy dành cho môi trường tự nhiên và xã hội những suy nghĩ tương quan liên đới trách nhiệm, chắc chắn hạnh phúc của chúng ta sẽ đầy lên, như ngọn đèn thắp sáng cho mọi ngọn đèn mà không hề vơi đi chút ánh sáng nào của mình. Chẳng lẽ làm một điều lành nhỏ trong ngày, mang đến an vui và tin tưởng cho người khác không phải là hạnh phúc?<br /> <br />Xã hội chúng ta luẩn quẩn trong mối tương quan nhiều chiều ấy, ở đó chứa đựng và hình thành những thói quen hành xử bất ổn giữa con người với con người và giữa con người với môi trường sống. Hệ quả, như đã thấy được và thống kê được, là con người cứ bước chân ra đường là có cảm giác mất an toàn. Đủ thứ mất an toàn như thế vây quanh, thử hỏi chúng ta có chạm đến được hạnh phúc hay không? Nếu có thì chỉ là những hạnh phúc ngắn hạn, mong manh, mang đầy nỗi lo âu và hoang mang. Niềm tin xã hội và các giá trị tốt đẹp dần bị đánh cắp chính từ những hoang mang, lo âu ấy.<br /> <br /><strong>Thích Thanh Thắng ( Nguồn PTVN)</strong></p>	\N	\N	2016-08-13 13:04:36.62111	2016-08-13 13:04:57.070448	\N	\N	\N	t	\N	1	t	\N	f
+\.
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('articles_id_seq', 26, true);
+
+
+--
+-- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('articles_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: banners; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY banners (id, image_url, title, banner_type, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: banners_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('banners_id_seq', 3, true);
+
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY carts (id, created_at, updated_at, voucher_code, coupon_code) FROM stdin;
+\.
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('carts_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories (id, name, level, description, created_at, updated_at, ordered, meta_keywords, meta_description) FROM stdin;
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories_products (id, product_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: code_statuses; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY code_statuses (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('code_statuses_id_seq', 1, false);
+
+
+--
+-- Data for Name: comment_articles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY comment_articles (id, name, email, content, user_id, article_id, created_at, updated_at, parent_id) FROM stdin;
+\.
+
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('comment_articles_id_seq', 1, false);
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY comments (id, product_id, name, content, star, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY companies (id, image_url, name, head_office_address, certificate_no, date_of_issue, sales_office_address, phone, hotline, email, created_at, updated_at, head_area_id, branch_area_id, type_company) FROM stdin;
+1	142234674761.jpg	CHÙA LINH QUANG	Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam	\N	\N	\N	0613 629 057	\N	hopthu@chualinhquang.com.vn	2016-06-17 15:08:25.747608	2016-07-18 05:33:43.01104	\N	\N	\N
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 1, true);
+
+
+--
+-- Data for Name: compares; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY compares (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY contacts (id, name, email, message, created_at, updated_at, user_id, phone, unit, address) FROM stdin;
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, true);
+
+
+--
+-- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY conversations (id, sender_id, recipient_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('conversations_id_seq', 1, false);
+
+
+--
+-- Data for Name: coupons; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY coupons (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('coupons_id_seq', 1, false);
+
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY customers (id, first_name, last_name, email, phone, company, address, city, zip_code, country, province, created_at, updated_at, order_id, area_id) FROM stdin;
+\.
+
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('customers_id_seq', 1, false);
+
+
+--
+-- Data for Name: delivery_methods; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY delivery_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('delivery_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY feedbacks (id, email, content, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('feedbacks_id_seq', 1, false);
+
+
+--
+-- Data for Name: galleries; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY galleries (id, title, description, gallery_image_id, created_at, updated_at, image_url) FROM stdin;
+\.
+
+
+--
+-- Name: galleries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('galleries_id_seq', 1, true);
+
+
+--
+-- Data for Name: gallery_images; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY gallery_images (id, image_url, gallery_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: gallery_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('gallery_images_id_seq', 4, true);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY products (id, name, code, quantity, unit, price, short_description, description, manufacturer_id, product_image_id, created_at, updated_at, tags, status, old_price, discount_percent, meta_keywords, meta_description, is_show, stock, approved, user_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: line_item_compares; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY line_item_compares (id, product_id, compare_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('line_item_compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity) FROM stdin;
+\.
+
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('line_items_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY manufacturers (id, image_url, name, address, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone, fax, company, address_1, address_2, zip_code, country, province, city, provider, uid, password_reset_token, password_reset_sent_at, oauth_token, oauth_expires_at, last_seen, is_admin, area_id, role, user_group_id) FROM stdin;
+1	admin@chualinhquang.com.vn	$2a$11$603J2HlAnUFox7s7oQrbDepW16mcViiC3WDD9V66HBwANX.cbg7tO	\N	\N	\N	16	2016-08-13 12:02:17.755586	2016-08-12 15:10:48.426055	192.168.126.1	192.168.126.1	2016-06-15 14:04:50.663058	2016-08-13 13:35:39.496597	Chùa Linh	Quang	0613.629.057	\N		Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam	\N	\N	Việt Nam	\N	\N	\N	\N	\N	\N	\N	\N	2016-08-13 13:35:39.489991	t	\N	admin	3
+\.
+
+
+--
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY messages (id, body, conversation_id, user_id, created_at, updated_at, seen) FROM stdin;
+\.
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('messages_id_seq', 1, false);
+
+
+--
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY newsletters (id, email, created_at, updated_at, status, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('newsletters_id_seq', 2, true);
+
+
+--
+-- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY options (id, created_at, updated_at, code, tag, value, note, title, accept_email) FROM stdin;
+\.
+
+
+--
+-- Name: options_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('options_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_deliveries; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_deliveries (id, first_name, last_name, company, address, city, zip_code, country, province, delivery_method_id, payment_method_id, message, created_at, updated_at, order_id, email, phone) FROM stdin;
+\.
+
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_deliveries_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_details (id, order_id, product_id, quantity, price, created_at, updated_at, product_name) FROM stdin;
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY orders (id, created_at, updated_at, user_id, status, different_delivery, voucher_code, voucher_price, coupon_code, coupon_price) FROM stdin;
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_article_categories (id, parent_id, article_category_id, created_at, updated_at) FROM stdin;
+23	16	21	2016-08-09 14:49:39.213456	2016-08-09 14:49:39.213456
+24	16	20	2016-08-09 14:50:01.194092	2016-08-09 14:50:01.194092
+25	16	22	2016-08-09 14:50:45.687011	2016-08-09 14:50:45.687011
+26	16	23	2016-08-09 14:50:54.778144	2016-08-09 14:50:54.778144
+27	16	24	2016-08-09 14:51:02.234209	2016-08-09 14:51:02.234209
+28	18	25	2016-08-09 14:51:16.968297	2016-08-09 14:51:16.968297
+29	18	26	2016-08-09 14:51:28.634559	2016-08-09 14:51:28.634559
+\.
+
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_article_categories_id_seq', 29, true);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: payment_methods; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY payment_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('payment_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_images (id, product_id, image_url, created_at, updated_at, is_main) FROM stdin;
+\.
+
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_images_id_seq', 1, false);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('products_id_seq', 1, false);
+
+
+--
+-- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY questions (id, name, email, content, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('questions_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160406035423
+20160406060729
+20160406061501
+20160406072632
+20160406090918
+20160406093710
+20160407021915
+20160407022242
+20160407033416
+20160407034556
+20160407040834
+20160407041811
+20160407063600
+20160407071755
+20160407073929
+20160407090029
+20160407092753
+20160411022035
+20160411070126
+20160411090637
+20160412090455
+20160412091031
+20160412091620
+20160412092036
+20160413013557
+20160414070432
+20160414071647
+20160414071935
+20160414072251
+20160414072336
+20160414111647
+20160415024108
+20160415034338
+20160415045331
+20160415070403
+20160418084816
+20160419063009
+20160419063732
+20160419073354
+20160419084034
+20160419084328
+20160420021407
+20160420025319
+20160420031013
+20160420035639
+20160420071851
+20160420083852
+20160420083904
+20160421014453
+20160421023948
+20160421032607
+20160422075657
+20160422084139
+20160422092821
+20160425011612
+20160425011627
+20160425031932
+20160425042302
+20160425043159
+20160425043209
+20160425075501
+20160429043324
+20160429062814
+20160505042346
+20160505065936
+20160505084631
+20160505090509
+20160505092039
+20160506024000
+20160506084612
+20160506090959
+20160510030159
+20160510030222
+20160510094925
+20160512092157
+20160512092324
+20160514031109
+20160516073144
+20160516073152
+20160516073236
+20160516073244
+20160516080558
+20160516082039
+20160516085116
+20160516085213
+20160516090119
+20160517032825
+20160517033437
+20160517083909
+20160518035417
+20160518070327
+20160520062835
+20160521024747
+20160527042708
+20160527083046
+20160531021437
+20160531021445
+20160601013031
+20160601065702
+20160601091343
+20160601100102
+20160601111606
+20160602071024
+20160602083515
+20160602083819
+20160603025541
+20160603071216
+20160603080430
+20160607034151
+20160607034155
+20160617153206
+20160725122336
+20160725122645
+20160725124915
+20160805154914
+20160809140349
+20160809144010
+20160813123044
+\.
+
+
+--
+-- Data for Name: slideshows; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY slideshows (id, image_url, title_1, title_2, name_button, link, created_at, updated_at, color_1, color_2, style) FROM stdin;
+\.
+
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('slideshows_id_seq', 1, false);
+
+
+--
+-- Data for Name: testimonials; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY testimonials (id, name, city, email, content, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('testimonials_id_seq', 1, false);
+
+
+--
+-- Data for Name: user_groups; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY user_groups (id, name, permission, created_at, updated_at) FROM stdin;
+2	Quản trị viên	\N	2016-06-14 03:25:31.773352	2016-06-14 03:25:31.773352
+3	Quản lý cấp cao	{"ArticleCategory":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Article":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"],"approve":["yes"]},"Gallery":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Banner":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Contact":{"read":["yes"],"delete":["yes"]},"User":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"UserGroup":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Company":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]}}	2016-06-14 03:25:31.779396	2016-08-05 16:04:34.959493
+\.
+
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('user_groups_id_seq', 3, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Data for Name: vouchers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY vouchers (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('vouchers_id_seq', 1, false);
+
+
+--
+-- Data for Name: wish_lists; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY wish_lists (id, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('wish_lists_id_seq', 1, false);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
