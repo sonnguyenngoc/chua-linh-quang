@@ -62,12 +62,12 @@ class Admin::UserGroupsController < ApplicationController
   # DELETE /user_groups/1
   # DELETE /user_groups/1.json
   def destroy
+    # authorize
     authorize! :delete, @user_group
     @user_group.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_user_groups_url, notice: 'Xóa nhóm người dùng thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa nhóm thành công.'
   end
 
   private
