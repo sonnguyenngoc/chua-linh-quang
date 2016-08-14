@@ -99,3 +99,7 @@ div.block-content {
   font-size: 12px;
 }
 /*-------------------------------------------------*/
+.post-content p img {
+	width: 100%;
+	height: auto;
+}
