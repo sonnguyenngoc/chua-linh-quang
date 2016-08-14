@@ -28,7 +28,7 @@
   
                 <div class="post-gallery">
                   <%= image_tag @post_detail.image_url.large_image, alt: "" %>
-                  <span class="image-caption"><%= "Tiêu đề bài viết" %></span>
+                  <span class="image-caption"><%= @post_detail.title %></span>
                 </div>
   
                 <div class="post-content text-justify">
