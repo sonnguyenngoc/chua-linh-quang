@@ -33,7 +33,7 @@
   
                 <div class="post-content text-justify">
   
-                    <p><% if @post_detail.is_mine == false %><strong><%= link_to "(LQT)", root_path %></strong> <% end %></p>
+                    <p><% if @post_detail.is_mine == true %><strong><%= link_to "(LQT)", root_path %></strong> <% end %></p>
                     <%= @post_detail.content.html_safe %>
                   
                 </div>
