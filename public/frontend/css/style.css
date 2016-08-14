@@ -942,23 +942,23 @@ a.category-post {
 a.category-post:hover {
   opacity: 0.7;
 }
-a.category-post.travel {
-  background: #f58021;
+a.category-post.category_1 {
+  background: #f44336;
 }
-a.category-post.sport {
-  background: #4c60f6;
-}
-a.category-post.world {
+a.category-post.category_2 {
   background: #33a3f1;
 }
-a.category-post.fashion {
-  background: #aa35d6;
+a.category-post.category_3 {
+  background: #f58021;
 }
-a.category-post.tech {
+a.category-post.category_4 {
   background: #74b430;
 }
-a.category-post.food {
-  background: #32b47b;
+a.category-post.category_5 {
+  background: #aa35d6;
+}
+a.category-post.category_6 {
+  background: #d6ac1b;
 }
 a.category-post.video {
   background: #d6ac1b;
