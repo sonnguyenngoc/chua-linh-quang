@@ -104,9 +104,3 @@ div.block-content {
 	height: auto;
 	border: solid 1px #f44336;
 }
-@media (max-width: 480px) {
-	.post-content p iframe {
-		width: 80%;
-		height: auto;
-	}
-}
