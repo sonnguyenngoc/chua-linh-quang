@@ -69,7 +69,7 @@
                 <ul class="list-posts">
                   <% Article.get_hot_news.each_with_index do |item,index| %>
                   <li>
-                    <%= image_tag item.image_url.smaller_image, alt: "" %>
+                    <%= image_tag item.image_url.small_image, alt: "" %>
                     <div class="post-content">
                       <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
                       <ul class="post-tags">
