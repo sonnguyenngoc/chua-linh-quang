@@ -21,14 +21,87 @@ class Article < ActiveRecord::Base
       self.title.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
   end
   
-  # 2 - Buddhist news
-    def self.get_all_buddhist_news
+  # 0 - hot news
+    def self.get_hot_news # get 12 items
         records = self.get_active_articles
-        records = records.joins(:article_categories).where("article_categories.name = 'Phật Sự'")
+        records = records.where("articles.is_mine = true").first(12)
         
         records
     end
-  # End Buddhist news
+    def self.get_newest_hot_news # get 12 items
+        records = self.get_active_articles
+        records = records.where("articles.is_mine = true").first(3)
+        
+        records
+    end
+  # End hot news
+  
+  # 1 - category_1
+    def self.get_all_category_1 # get 9 items phật sự
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.style = 'category_1'").first(5)
+        
+        records
+    end
+    def self.get_newest_category_1 # get 9 items phật sự
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.style = 'category_1'").first(3)
+        
+        records
+    end
+  # End category_1
+  
+  # 2 - category_2
+    def self.get_all_category_2 # get 9 items phật pháp
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.style = 'category_2'
+                                                            or article_categories.style = 'category_2.1'
+                                                            or article_categories.style = 'category_2.2'
+                                                            or article_categories.style = 'category_2.3'
+                                                            or article_categories.style = 'category_2.4'
+                                                            or article_categories.style = 'category_2.5'").first(5)
+        
+        records
+    end
+  # End category_2
+  
+  # 3 - category_3
+    def self.get_all_category_3 # get 9 items tin tức
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.style = 'category_3'").first(5)
+        
+        records
+    end
+  # End category_3
+  
+  # 1 - category_1
+    def self.get_all_category_4 # get 9 items từ thiện
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.style = 'category_4'").first(5)
+        
+        records
+    end
+  # End category_1
+  
+  # 5 - category_5
+    def self.get_all_category_5 # get 5 items văn hóa
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.style = 'category_5'
+                                                            or article_categories.style = 'category_5.1'
+                                                            or article_categories.style = 'category_5.2'").first(4)
+        
+        records
+    end
+  # End category_5
+  
+  # 6 - category_6
+    def self.get_all_category_6 # get 5 items văn hóa
+        records = self.get_active_articles
+        records = records.joins(:article_categories).where("article_categories.style = 'category_6'").first(4)
+        
+        records
+    end
+  # End category_6
   
   # 3 - Buddhist Book
   

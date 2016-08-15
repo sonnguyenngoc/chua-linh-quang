@@ -102,4 +102,5 @@ div.block-content {
 .post-content p img {
 	width: 100%;
 	height: auto;
+	border: solid 1px #f44336;
 }

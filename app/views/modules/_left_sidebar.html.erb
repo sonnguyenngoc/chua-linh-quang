@@ -3,11 +3,31 @@
   <div class="widget review-widget">
     <h1>Phật Sự</h1>
     <ul class="review-posts-list">
-      <% (1..5).each do |item| %>
+      <% Article.get_all_category_1.each do |item| %>
       <li>
-        <%= image_tag "/frontend/upload/news-posts/rev.jpg", alt: "" %>
-        <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
-        <span class="date"><i class="fa fa-clock-o"></i>07/08/2016</span>
+        <%= image_tag item.image_url.smaller_image, alt: "" %>
+        <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
+        <span class="post-rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <div class="widget review-widget">
+    <h1>Phật Pháp</h1>
+    <ul class="review-posts-list">
+      <% Article.get_all_category_2.each do |item| %>
+      <li>
+        <%= image_tag item.image_url.smaller_image, alt: "" %>
+        <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
         <span class="post-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -23,11 +43,11 @@
   <div class="widget review-widget">
     <h1>Tin Tức</h1>
     <ul class="review-posts-list">
-      <% (1..5).each do |item| %>
+      <% Article.get_all_category_3.each do |item| %>
       <li>
-        <%= image_tag "/frontend/upload/news-posts/rev.jpg", alt: "" %>
-        <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
-        <span class="date"><i class="fa fa-clock-o"></i>07/08/2016</span>
+        <%= image_tag item.image_url.smaller_image, alt: "" %>
+        <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
         <span class="post-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -43,11 +63,11 @@
   <div class="widget review-widget">
     <h1>Từ Thiện</h1>
     <ul class="review-posts-list">
-      <% (1..5).each do |item| %>
+      <% Article.get_all_category_4.each do |item| %>
       <li>
-        <%= image_tag "/frontend/upload/news-posts/rev.jpg", alt: "" %>
-        <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát quà từ thiện", "" %></h2>
-        <span class="date"><i class="fa fa-clock-o"></i>07/08/2016</span>
+        <%= image_tag item.image_url.smaller_image, alt: "" %>
+        <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
         <span class="post-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -59,24 +79,5 @@
       <% end %>
     </ul>
   </div>
-
-  <div class="widget categories-widget">
-    <div class="title-section">
-      <h1><span>Chuyên Mục</span></h1>
-    </div>
-    <ul class="category-list">
-      <% ArticleCategory.get_all_parent_categories.each do |item| %>
-      <li>
-        <a href="<%= category_path(category_id: item.id, category_name: item.url_friendly) %>"><%= item.name %> <span><%= item.count_posts_for_categories %></span></a>
-      </li>
-      <% end %>
-      <li>
-        <a href="">Thư Viện Ảnh <span>0</span></a>
-      </li>
-      <li>
-        <a href="">Thư Viện Video <span>0</span></a>
-      </li>
-    </ul>
-  </div>
-
+  
 </div>

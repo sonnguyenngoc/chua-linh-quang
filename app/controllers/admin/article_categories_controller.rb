@@ -43,6 +43,7 @@ class Admin::ArticleCategoriesController < ApplicationController
     # authorize
     authorize! :create, ArticleCategory
     @article_category = ArticleCategory.new(article_category_params)
+    @article_category.user_id = current_user.id    
 
     respond_to do |format|
       if @article_category.save
@@ -64,6 +65,7 @@ class Admin::ArticleCategoriesController < ApplicationController
   def update
     # authorize
     authorize! :update, @article_category
+    @article_category.user_id = current_user.id
     
     respond_to do |format|
       if @article_category.update(article_category_params)
@@ -99,6 +101,6 @@ class Admin::ArticleCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_category_params
-      params.require(:article_category).permit(:name, :level, :style, :position, :description, :meta_keywords, :meta_description, parent_ids: [])
+      params.require(:article_category).permit(:name, :level, :style, :position, :description, parent_ids: [])
     end
 end
