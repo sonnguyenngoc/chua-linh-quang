@@ -100,7 +100,7 @@ div.block-content {
 }
 /*-------------------------------------------------*/
 .post-content p img {
-	width: 100%;
+	width: 80%;
 	height: auto;
 	border: solid 1px #f44336;
 }
