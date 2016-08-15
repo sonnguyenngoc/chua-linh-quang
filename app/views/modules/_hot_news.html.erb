@@ -6,7 +6,7 @@
       <span class="new-news">Mới</span>
       <ul id="js-news">
         <% Article.get_hot_news.each do |item| %>
-        <li class="news-item"><span class="time-news"><%= item.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>  <%= link_to truncate(strip_tags(item.title), length: 60), post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %> <%= truncate(strip_tags(item.content.html_safe), length: 60) %> </li>
+        <li class="news-item"><span class="time-news"><%= item.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %></span>  <%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %> </li>
         <% end %>
       </ul>
     </div>
