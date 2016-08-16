@@ -46,7 +46,7 @@
                 <li>
                   <div class="news-post image-post2">
                     <div class="post-gallery">
-                      <%= image_tag item.image_url.large_image, alt: "" %>
+                      <%= image_tag item.image_url.largest_image, alt: "" %>
                       <div class="hover-box">
                         <div class="inner-hover">
                           <%= link_to item.article_categories.first.name, category_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly), class: "category-post #{item.article_categories.first.style}" %>
