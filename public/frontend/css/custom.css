@@ -104,3 +104,9 @@ div.block-content {
 	height: auto;
 	border: solid 1px #f44336;
 }
+label.error {
+	display: none !important;
+}
+#contact-form .error{
+    border-color: red;
+}

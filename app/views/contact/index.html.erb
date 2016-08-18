@@ -22,37 +22,37 @@
             <div class="title-section">
               <h1><span>GỬI LIÊN HỆ</span></h1>
             </div>
-            <form id="contact-form">
+            <%= form_for Contact.new, url: contact_path, html: {id: "contact-form" } do |f| %>
               <div class="row">
                 <div class="col-md-4">
                   <label for="name">Họ & Tên *</label>
-                  <input id="name" name="name" type="text">
+                  <input id="contact_name" name="contact[name]" type="text" class="required">
                 </div>
                 <div class="col-md-4">
                   <label for="mail">Điện Thoại *</label>
-                  <input id="mail" name="mail" type="text">
+                  <input id="contact_phone" name="contact[phone]" type="text" class="required">
                 </div>
                 <div class="col-md-4">
                   <label for="website">Email *</label>
-                  <input id="website" name="website" type="text">
+                  <input id="contact_email" name="contact[email]" type="text" class="required email">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label for="name">Đơn Vị</label>
-                  <input id="name" name="name" type="text">
+                  <input id="contact_unit" name="contact[unit]" type="text">
                 </div>
                 <div class="col-md-6">
                   <label for="mail">Địa Chỉ</label>
-                  <input id="mail" name="mail" type="text">
+                  <input id="contact_address" name="contact[address]" type="text">
                 </div>
               </div>
-              <label for="comment">Lời Nhắn *</label>
-              <textarea id="comment" name="comment"></textarea>
-              <button type="submit" id="submit-contact">
+              <label for="contact_message">Lời Nhắn *</label>
+              <textarea id="contact_message" name="contact[message]" class="required"></textarea>
+              <button type="submit">
                 <i class="fa fa-paper-plane"></i> Gửi Liên Hệ
               </button>
-            </form>
+            <% end %>
           </div>
           <!-- End contact form box -->
 

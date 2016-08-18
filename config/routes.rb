@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "bai-viet/(:category_name)-:category_id.html" => "category#index", as: :category
     get "bai-viet/(:category_name)-:category_id/(:post_name)-:post_id.html" => "post_detail#index", as: :post_detail
     get "lien-he.html" => "contact#index", as: :contact
+    get "lien-he/thanh-cong.html" => "contact#thankyou", as: :contact_thankyou
     
     # form create contact
     resources :contacts
