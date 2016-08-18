@@ -112,7 +112,7 @@
                         </thead>
                         <tbody>
                             <% @articles.each do |item| %>
-                                <tr>
+                                <tr<% if item.approved == true && item.is_show == true %> class="success"<% end %>>
                                     <td>
                                         <div class="media-left">
                                             <% if can? :update, item %>
@@ -128,7 +128,7 @@
                                         <span class="label bg-success"><%= t(:approved) %></span>
                                         <% else %>
                                          <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
-                                        <% end %>
+                                        <% end %><br/>
                                         <% item.article_categories.each do |cat| %>
                                         <span class="label bg-orange">Chuyên mục: <%= cat.name %></span>
                                         <% end %>
