@@ -13,7 +13,7 @@
     </div>
     <div class="image-post-slider">
       <ul class="bxslider">
-        <% Article.get_all_category_5.each do |item| %>
+        <% Article.get_all_category_5[0..2].each do |item| %>
         <li>
           <div class="news-post image-post2">
             <div class="post-gallery">
@@ -32,8 +32,9 @@
         <% end %>
       </ul>
     </div>
+    <% if Article.get_all_category_5.count > 3 %>
     <ul class="list-posts">
-      <% Article.get_all_category_5.each do |item| %>
+      <% Article.get_all_category_5[3..6].each do |item| %>
       <li>
         <%= image_tag item.image_url.small_image, alt: "" %>
         <div class="post-content">
@@ -45,6 +46,7 @@
       </li>
       <% end %>
     </ul>
+    <% end %>
   </div>
   
   <div class="widget features-slide-widget">
@@ -53,7 +55,7 @@
     </div>
     <div class="image-post-slider">
       <ul class="bxslider">
-        <% Article.get_all_category_6.each do |item| %>
+        <% Article.get_all_category_6[0..2].each do |item| %>
         <li>
           <div class="news-post image-post2">
             <div class="post-gallery">
@@ -72,8 +74,9 @@
         <% end %>
       </ul>
     </div>
+    <% if Article.get_all_category_6.count > 3 %>
     <ul class="list-posts">
-      <% Article.get_all_category_6.each do |item| %>
+      <% Article.get_all_category_6[3..6].each do |item| %>
       <li>
         <%= image_tag item.image_url.small_image, alt: "" %>
         <div class="post-content">
@@ -85,6 +88,7 @@
       </li>
       <% end %>
     </ul>
+    <% end %>
   </div>
 
   <div class="advertisement">

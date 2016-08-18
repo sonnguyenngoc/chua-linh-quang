@@ -24,13 +24,7 @@ class Article < ActiveRecord::Base
   # 0 - hot news
     def self.get_hot_news # get 12 items
         records = self.get_active_articles
-        records = records.where("articles.is_mine = true").first(12)
-        
-        records
-    end
-    def self.get_newest_hot_news # get 12 items
-        records = self.get_active_articles
-        records = records.where("articles.is_mine = true").first(3)
+        records = records.where("articles.is_mine = true").first(15)
         
         records
     end
@@ -88,7 +82,7 @@ class Article < ActiveRecord::Base
         records = self.get_active_articles
         records = records.joins(:article_categories).where("article_categories.style = 'category_5'
                                                             or article_categories.style = 'category_5.1'
-                                                            or article_categories.style = 'category_5.2'").first(4)
+                                                            or article_categories.style = 'category_5.2'").first(7)
         
         records
     end
@@ -97,7 +91,7 @@ class Article < ActiveRecord::Base
   # 6 - category_6
     def self.get_all_category_6 # get 5 items văn hóa
         records = self.get_active_articles
-        records = records.joins(:article_categories).where("article_categories.style = 'category_6'").first(4)
+        records = records.joins(:article_categories).where("article_categories.style = 'category_6'").first(7)
         
         records
     end

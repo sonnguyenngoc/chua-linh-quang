@@ -42,7 +42,7 @@
 
             <div class="image-post-slider">
               <ul class="bxslider">
-                <% Article.get_newest_hot_news.each do |item| %>
+                <% Article.get_hot_news[0..2].each do |item| %>
                 <li>
                   <div class="news-post image-post2">
                     <div class="post-gallery">
@@ -66,20 +66,22 @@
 
             <div class="row">
               <div class="col-md-6">
+                <% if Article.get_hot_news.count > 3 %>
                 <ul class="list-posts">
-                  <% Article.get_hot_news.each_with_index do |item,index| %>
-                  <li>
-                    <%= image_tag item.image_url.small_image, alt: "" %>
-                    <div class="post-content">
-                      <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
-                      <ul class="post-tags">
-                        <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
-                      </ul>
-                    </div>
-                  </li>
-                  <%= '</ul></div><div class="col-md-6"><ul class="list-posts">'.html_safe if index%2 == 1 %>
-              <% end %>
-              </ul>
+                  <% Article.get_hot_news[3..14].each_with_index do |item,index| %>
+                      <li>
+                        <%= image_tag item.image_url.small_image, alt: "" %>
+                        <div class="post-content">
+                          <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
+                          <ul class="post-tags">
+                            <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
+                          </ul>
+                        </div>
+                      </li>
+                      <%= '</ul></div><div class="col-md-6"><ul class="list-posts">'.html_safe if index%2 == 1 %>
+                  <% end %>
+                </ul>
+                <% end %>
               </div>
 
             </div>
