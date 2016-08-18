@@ -127,7 +127,7 @@
                                         <% if item.approved == true %>
                                         <span class="label bg-success"><%= t(:approved) %></span>
                                         <% else %>
-                                         <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+                                         <span class="label bg-orange"><%= t(:not_yet_approved) %></span>
                                         <% end %><br/>
                                         <% item.article_categories.each do |cat| %>
                                         <span class="label bg-orange">Chuyên mục: <%= cat.name %></span>
@@ -135,7 +135,7 @@
                                     </td>
                                     <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
                                     <td></td>
-                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td><% if item.posted_at.present? %><%= item.posted_at.strftime("%d/%m/%Y") %><% else %><span class="label bg-danger">Chưa chọn ngày đăng</span><% end %></td>
                                     <td class="text-center">
                                         <% if can?(:approve, item) or can?(:update, item) or can?(:delete, item) %>
                                             <ul class="icons-list">
