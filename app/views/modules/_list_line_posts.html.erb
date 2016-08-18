@@ -6,7 +6,7 @@
         
         <% Article.get_hot_news[0..4].each do |item| %>
         <div class="item list-post">
-          <%= image_tag item.image_url.small_image, alt: "" %>
+          <%= image_tag item.image_url.small_2_image, alt: "" %>
           <div class="post-content">
             <%= link_to item.article_categories.first.name, category_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly) %>
             <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
