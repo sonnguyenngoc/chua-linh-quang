@@ -273,8 +273,8 @@ class Article < ActiveRecord::Base
   
   def self.sort_orders
     [
-      [I18n.t('asc'),"asc"],
       [I18n.t('desc'),"desc"],
+      [I18n.t('asc'),"asc"],
     ]
   end
   

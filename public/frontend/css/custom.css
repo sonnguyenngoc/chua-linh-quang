@@ -107,9 +107,6 @@ div.block-content {
 label.error {
 	display: none !important;
 }
-#contact-form .error{
-    border-color: red;
-}
 /*-------------------------------------------------*/
 /* =  success banner
 /*-------------------------------------------------*/
