@@ -3,8 +3,9 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-    @contact.save
-    redirect_to send_contact_success_path
+    if @contact.save
+      redirect_to contact_thankyou_path
+    end
   end
 
   private

@@ -110,3 +110,28 @@ label.error {
 #contact-form .error{
     border-color: red;
 }
+/*-------------------------------------------------*/
+/* =  success banner
+/*-------------------------------------------------*/
+.success-banner {
+  background: #4CAF50;
+  padding: 20px 30px;
+  margin-bottom: 30px;
+}
+.success-banner h1 {
+  color: #ffffff;
+  font-size: 48px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 0 0 7px;
+}
+.success-banner h1 span {
+  font-weight: 900;
+}
+.success-banner p {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}

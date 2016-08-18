@@ -199,8 +199,8 @@ class Article < ActiveRecord::Base
     end
   # End Buddhist Family
   
-  def self.get_lastest_blogs
-    self.get_active_articles.first(4)
+  def self.get_lastest_posts
+    self.get_active_articles.first(12)
   end
   
   def self.get_lastest_buddhist_news

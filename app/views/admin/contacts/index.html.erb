@@ -98,7 +98,7 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @contacts %> <%= t(:contact) %>.</div>
+                            <div class="dataTables_info" ><%= page_entries_info @contacts %>.</div>
                             <div class="dataTables_paginate paging_simple_numbers">
                                 <%= will_paginate @contacts, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                             </div>
