@@ -20,7 +20,7 @@ class Admin::GalleriesController < ApplicationController
     # authorize
     authorize! :create, Gallery
     @gallery = Gallery.new
-    30.times do
+    60.times do
       @gallery.gallery_images.build
     end
   end
@@ -29,7 +29,7 @@ class Admin::GalleriesController < ApplicationController
   def edit
     # authorize
     authorize! :update, @gallery
-    (30-@gallery.gallery_images.count).times do
+    (60-@gallery.gallery_images.count).times do
       @gallery.gallery_images.build
     end
   end
@@ -40,6 +40,7 @@ class Admin::GalleriesController < ApplicationController
     # authorize
     authorize! :create, Gallery
     @gallery = Gallery.new(gallery_params)
+    @gallery.user_id = current_user.id
 
     respond_to do |format|
       if @gallery.save

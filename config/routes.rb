@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     get "trang-chu.html" => "home#index", as: :home
     get "bai-viet/(:category_name)-:category_id.html" => "category#index", as: :category
     get "bai-viet/(:category_name)-:category_id/(:post_name)-:post_id.html" => "post_detail#index", as: :post_detail
+    get "thu-vien-anh.html" => "gallery#picture", as: :gallery_picture
+    get "thu-vien-nhac.html" => "gallery#music", as: :gallery_music
+    get "thu-vien-video.html" => "gallery#video", as: :gallery_video
     get "lien-he.html" => "contact#index", as: :contact
     get "lien-he/thanh-cong.html" => "contact#thankyou", as: :contact_thankyou
     
@@ -150,6 +153,7 @@ Rails.application.routes.draw do
         end
         resources :galleries, path: "thu-vien-anh"
         resources :banners, path: "banner-website"
+        resources :albums, path: "album"
       end
     end
   end

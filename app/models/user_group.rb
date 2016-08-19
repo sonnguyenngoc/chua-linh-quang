@@ -43,6 +43,16 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
+                class_name: "Album",
+                display_name: I18n.t(:album),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
                 class_name: "Banner",
                 display_name: I18n.t(:banner),
                 actions: [

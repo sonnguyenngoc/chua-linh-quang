@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   
   protected
     def layout_by_resource
-      if controller_name == "home" || controller_name == "category" || controller_name == "post_detail" || controller_name == "contact"
+      if controller_name == "home" || controller_name == "category" || controller_name == "post_detail" || controller_name == "contact" || controller_name == "gallery"
         "frontend"
       elsif controller_name == "coming_soon"
         "coming_soon"
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
             controller_name == "articles" || controller_name == "article_categories" || controller_name == "areas" || controller_name == "orders" || controller_name == "slideshows" ||
             controller_name == "delivery_methods" || controller_name == "payment_methods" || controller_name == "comments" || controller_name == "questions" || controller_name == "customers" ||
             controller_name == "coupons" || controller_name == "vouchers" || controller_name == "comment_articles" || controller_name == "companies" || controller_name == "code_statuses" || controller_name == "testimonials" ||
-            controller_name == "options" || controller_name == "users" || controller_name == "user_groups" || controller_name == "contacts" || controller_name == "newsletters" || controller_name == "galleries" || controller_name == "banners"
+            controller_name == "options" || controller_name == "users" || controller_name == "user_groups" || controller_name == "contacts" || controller_name == "newsletters" || controller_name == "galleries" || controller_name == "banners" || controller_name == "albums"
 
           authenticate_user!
           redirect_to root_path if current_user.is_admin != true

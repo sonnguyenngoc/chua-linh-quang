@@ -24,7 +24,7 @@
                 </li>
             <% end %>
             
-            <% if can?(:read, Gallery) %>
+            <% if can?(:read, Gallery) or can?(:read, Album) %>
             <li>
                 <a href="#"><i class="icon-gallery"></i> <span>Thư viện</span></a>
                 <ul>
@@ -33,9 +33,11 @@
                             <%= link_to "Quản lý thư viện ảnh", admin_galleries_path %>
                         </li>
                     <% end %>
-                    <li>
-                        <%= link_to "Quản lý thư viện nhạc", "#" %>
+                    <% if can? :read, Album %>
+                    <li class="<%= "active" if ["admin/albums"].include?(params[:controller]) %>">
+                        <%= link_to "Quản lý thư viện video/nhạc", admin_albums_path %>
                     </li>
+                    <% end %>
                     <li class="<%= "active" if ["admin/banners"].include?(params[:controller]) %>">
                         <%= link_to "Quản lý banner", admin_banners_path %>
                     </li>

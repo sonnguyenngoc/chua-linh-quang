@@ -13,6 +13,11 @@
             <% cat.children.each do |child| %>
             <li><%= link_to child.name, category_path(category_id: child.id, category_name: child.url_friendly) %></li>
             <% end %>
+            <% if cat.style == "category_5" %>
+              <li><%= link_to "Thư Viện Hình Ảnh", gallery_picture_path %></li>
+              <li><%= link_to "Thư Viện Nhạc", gallery_music_path %></li>
+              <li><%= link_to "Thư Viện Video", gallery_video_path %></li>
+            <% end %>
           </ul>
         </li>
       <% end %>

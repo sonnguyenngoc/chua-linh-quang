@@ -333,6 +333,7 @@ vi:
   english: "English"
   gallery: "Thư viện ảnh"
   banner: "Hình lễ"
+  album: "Album"
   
   activerecord:
     attributes:
