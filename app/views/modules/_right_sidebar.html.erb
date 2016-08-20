@@ -120,35 +120,31 @@
     <div class="tab-content">
       <div class="tab-pane active" id="option1">
         <ul class="list-posts">
-          <% (1..5).each do |item| %>
-          
+          <% Gallery.get_newest_galleries.each do |item| %>
           <li>
-            <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+            <%= image_tag item.image_url.small_image, alt: "" %>
             <div class="post-content">
-              <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát.....", "" %></h2>
+              <h2><%= link_to item.title, "" %></h2>
               <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
               </ul>
             </div>
           </li>
-          
           <% end %>
         </ul>
       </div>
       <div class="tab-pane" id="option2">
         <ul class="list-posts">
-          <% (1..5).each do |item| %>
-          
+          <% Album.get_newest_musics.each do |item| %>
           <li>
-            <%= image_tag "/frontend/upload/news-posts/list.jpg", alt: "" %>
+            <%= image_tag item.image_url.small_image, alt: "" %>
             <div class="post-content">
-              <h2><%= link_to "Đoàn Phật tử quận Bình Thạnh phát.....", "" %></h2>
+              <h2><%= link_to item.title, "" %></h2>
               <ul class="post-tags">
-                <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
               </ul>
             </div>
           </li>
-          
           <% end %>
         </ul>										
       </div>
@@ -159,25 +155,14 @@
     <div class="title-section">
       <h1><span>Video</span></h1>
     </div>
-    <% (1..2).each do |item| %>
+    <% Album.get_newest_videos.each do |item| %>
     <div class="news-post video-post">
-      <%= image_tag "/frontend/upload/news-posts/video-sidebar.jpg", alt: "" %>
-      <a href="https://www.youtube.com/watch?v=OPVtUBs6YDo" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+      <%= image_tag item.image_url.smallest_image, alt: "" %>
+      <a href="<%= item.link %>" class="video-link"><i class="fa fa-play-circle-o"></i></a>
       <div class="hover-box">
-        <h2><%= link_to "Sự Tích Đức Phật Thích Ca 1/2", "" %></h2>
+        <h2><%= link_to item.title, "" %></h2>
         <ul class="post-tags">
-          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
-        </ul>
-      </div>
-      <p></p>
-    </div>
-    <div class="news-post video-post">
-      <%= image_tag "/frontend/upload/news-posts/video-sidebar.jpg", alt: "" %>
-      <a href="https://www.youtube.com/watch?v=FTQIa97H7h0" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-      <div class="hover-box">
-        <h2><%= link_to "Sự Tích Đức Phật Thích Ca 2/2", "" %></h2>
-        <ul class="post-tags">
-          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+          <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
         </ul>
       </div>
       <p></p>

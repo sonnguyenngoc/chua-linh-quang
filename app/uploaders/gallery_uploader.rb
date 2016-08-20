@@ -35,11 +35,14 @@ class GalleryUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
+  version :small_image do
+    process :resize_to_fit => [173, 173]
+  end
   version :smaller_image do
     process :resize_to_fill => [136, 90]
   end
-  version :small_image do
-    process :resize_to_fit => [173, 173]
+  version :smallest_image do
+    process :resize_to_fit => [370, 230]
   end
   version :medium_image do
     process :resize_to_fit => [393, 178]

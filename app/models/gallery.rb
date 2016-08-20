@@ -7,6 +7,10 @@ class Gallery < ActiveRecord::Base
         self.all.order("created_at DESC")
     end
     
+    def self.get_newest_galleries
+        self.all.order("created_at DESC").first(5)
+    end
+    
     def url_friendly
       self.title.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
   end

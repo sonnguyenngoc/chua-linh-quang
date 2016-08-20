@@ -8,4 +8,12 @@ class Album < ActiveRecord::Base
   def self.get_all_musics
     self.where("albums.type_album = 'Music'").order("created_at DESC")
   end
+  
+  def self.get_newest_videos
+    self.where("albums.type_album = 'Video'").order("created_at DESC").first(5)
+  end
+  
+  def self.get_newest_musics
+    self.where("albums.type_album = 'Music'").order("created_at DESC").first(4)
+  end
 end

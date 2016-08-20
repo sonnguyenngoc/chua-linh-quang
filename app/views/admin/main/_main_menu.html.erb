@@ -24,7 +24,7 @@
                 </li>
             <% end %>
             
-            <% if can?(:read, Gallery) or can?(:read, Album) %>
+            <% if can?(:read, Gallery) or can?(:read, Album)  or can?(:read, Banner) %>
             <li>
                 <a href="#"><i class="icon-gallery"></i> <span>Thư viện</span></a>
                 <ul>
@@ -38,9 +38,11 @@
                         <%= link_to "Quản lý thư viện video/nhạc", admin_albums_path %>
                     </li>
                     <% end %>
+                    <% if can? :read, Banner %>
                     <li class="<%= "active" if ["admin/banners"].include?(params[:controller]) %>">
                         <%= link_to "Quản lý banner", admin_banners_path %>
                     </li>
+                    <% end %>
                 </ul>
             </li>
             <% end %>
@@ -50,9 +52,9 @@
                     <a href="#"><i class="icon-people"></i> <span><%= t(:contact) %></span></a>
                     <ul>
                         <% if can? :read, Contact %>
-                            <li class="<%= "active" if ["admin/contacts"].include?(params[:controller]) %>">
-                                <%= link_to t(:contact), admin_contacts_path %>
-                            </li>
+                        <li class="<%= "active" if ["admin/contacts"].include?(params[:controller]) %>">
+                            <%= link_to t(:contact), admin_contacts_path %>
+                        </li>
                         <% end %>
                     </ul>
                 </li>
@@ -64,14 +66,14 @@
                     <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
                     <ul>
                         <% if can? :read, User %>
-                            <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
-                                <%= link_to t(:users), admin_users_path %>
-                            </li>
+                        <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
+                            <%= link_to t(:users), admin_users_path %>
+                        </li>
                         <% end %>
                         <% if can? :read, UserGroup %>
-                            <li class="<%= "active" if ["admin/user_groups"].include?(params[:controller]) %>">
-                                <%= link_to t(:user_groups), admin_user_groups_path %>
-                            </li>
+                        <li class="<%= "active" if ["admin/user_groups"].include?(params[:controller]) %>">
+                            <%= link_to t(:user_groups), admin_user_groups_path %>
+                        </li>
                         <% end %>
                     </ul>
                 </li>
@@ -83,9 +85,9 @@
                     <a href="#"><i class="icon-home"></i> <span>Quản lý thông tin chùa</span></a>
                     <ul>
                         <% if can? :read, Company %>
-                            <li class="<%= "active" if ["admin/companies"].include?(params[:controller]) %>">
-                                <%= link_to "Chùa Linh Quang", admin_companies_path %>
-                            </li>
+                        <li class="<%= "active" if ["admin/companies"].include?(params[:controller]) %>">
+                            <%= link_to "Chùa Linh Quang", admin_companies_path %>
+                        </li>
                         <% end %>
                     </ul>
                 </li>
