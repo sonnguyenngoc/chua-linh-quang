@@ -13,7 +13,7 @@
                   <%= link_to item.article_categories.first.name, category_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly) %>
                   <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
                   <ul class="post-tags">
-                    <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
+                    <li><i class="fa fa-clock-o"></i><%= item.posted_at.strftime("%d/%m/%Y") %></li>
                   </ul>
                 </div>
               </li>
@@ -40,7 +40,7 @@
                   <%= link_to item.article_categories.first.name, category_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly) %>
                   <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
                   <ul class="post-tags">
-                    <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
+                    <li><i class="fa fa-clock-o"></i><%= item.posted_at.strftime("%d/%m/%Y") %></li>
                   </ul>
                 </div>
               </li>

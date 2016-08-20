@@ -12,7 +12,7 @@
                 <div class="title-post">
                   <h1><% if @post_detail.is_mine == true %><strong><%= link_to "(LQT)", root_path %></strong> <% end %> <%= @post_detail.title %></h1>
                   <ul class="post-tags">
-                    <li><i class="fa fa-clock-o"></i><%= @post_detail.created_at.strftime("%d/%m/%Y") %></li>
+                    <li><i class="fa fa-clock-o"></i><%= @post_detail.posted_at.strftime("%d/%m/%Y") %></li>
                     <li><i class="fa fa-user"></i>bởi Chùa Linh Quang</li>
                   </ul>
                 </div>
@@ -66,7 +66,7 @@
                       <div class="hover-box">
                         <h2><%= link_to item.title, post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
                         <ul class="post-tags">
-                          <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
+                          <li><i class="fa fa-clock-o"></i><%= item.posted_at.strftime("%d/%m/%Y") %></li>
                         </ul>
                       </div>
                     </div>

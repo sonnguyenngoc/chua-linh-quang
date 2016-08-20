@@ -261,7 +261,7 @@ class Article < ActiveRecord::Base
   
   def self.sort_by
     [
-      [I18n.t('created_at'),"created_at"]
+      [I18n.t('created_at'),"postted_at"]
     ]
   end
   

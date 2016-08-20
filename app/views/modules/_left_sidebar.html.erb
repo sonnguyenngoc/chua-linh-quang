@@ -7,7 +7,7 @@
       <li>
         <%= image_tag item.image_url.smaller_image, alt: "" %>
         <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
-        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.posted_at.strftime("%d/%m/%Y") %></span>
         <span class="post-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -27,7 +27,7 @@
       <li>
         <%= image_tag item.image_url.smaller_image, alt: "" %>
         <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
-        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.posted_at.strftime("%d/%m/%Y") %></span>
         <span class="post-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -47,7 +47,7 @@
       <li>
         <%= image_tag item.image_url.smaller_image, alt: "" %>
         <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
-        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.posted_at.strftime("%d/%m/%Y") %></span>
         <span class="post-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -67,7 +67,7 @@
       <li>
         <%= image_tag item.image_url.smaller_image, alt: "" %>
         <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
-        <span class="date"><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></span>
+        <span class="date"><i class="fa fa-clock-o"></i><%= item.posted_at.strftime("%d/%m/%Y") %></span>
         <span class="post-rating">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
