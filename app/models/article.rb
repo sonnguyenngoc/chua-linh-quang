@@ -197,68 +197,6 @@ class Article < ActiveRecord::Base
     self.get_active_articles.first(12)
   end
   
-  def self.get_lastest_buddhist_news
-    self.get_all_buddhist_news.first(4)
-  end
-  
-  def self.get_lastest_cultural_news
-    self.get_all_cultural_blogs.first(4)
-  end
-  
-  def self.home_buddhist_news_first
-    self.get_all_buddhist_news.first
-  end
-  
-  def self.home_buddhist_news
-    #self.get_all_buddhist_news.offset(1).first(4)
-    self.get_all_buddhist_news.first(3)
-  end
-  
-  def self.home_buddhist_book_blogs
-    self.get_all_buddhist_book_blogs.first(3)
-  end
-  
-  def self.home_news
-    self.get_all_news.first(3)
-  end
-  
-  def self.home_charity_blogs
-    self.get_all_charity_blogs.first(3)
-  end
-  
-  def self.home_cultural_blogs
-    self.get_all_cultural_blogs.first(3)
-  end
-  
-  def self.home_buddhist_family_blogs
-    self.get_all_buddhist_family_blogs.first(3)
-  end
-  
-  def split_tags
-    tags.split(",").map {|s| s.to_s }
-  end
-  
-  def self.get_all_blogs
-    self.all.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").order("created_at DESC")
-  end
-  
-  def self.get_blog_about_us
-    records = self.joins(:code_status).where("code_statuses.title = 'about_us' and articles.approved = true")
-    records.order("created_at").first
-    
-    return records
-  end
-  
-  def get_related_blogs
-    cat_ids = []
-    article_categories.each do |c|
-      cat_ids += c.get_all_related_ids
-    end
-    records = Article.joins(:article_categories).where(article_categories: {id: cat_ids}).uniq
-    records = Article.joins(:code_status).where("code_statuses.title = 'news'")
-    return records
-  end
-  
   def self.sort_by
     [
       [I18n.t('created_at'),"postted_at"]
@@ -272,179 +210,6 @@ class Article < ActiveRecord::Base
     ]
   end
   
-  #the highest product quality
-  def self.get_highest_product_quality
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'the_highest_product_quality' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #the highest product quality
-  def self.get_privacy_policy
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'privacy_policy' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #the highest product quality
-  def self.get_delivery_information
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'delivery_information' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #the highest product quality
-  def self.get_terms_conditions
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'terms_conditions' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #faq
-  def self.get_faq
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'faq' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #fast & free delivery
-  def self.get_fast_free_delivery
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'fast_free_delivery' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #safe & secure payment
-  def self.get_safe_secure_order
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'safe_secure_order' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #100% money back guaranteed
-  def self.get_money_back
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'money_back' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #get percent off fo reorder
-  def self.get_percent_off
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'get_5_percent_off' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #free pills on every order
-  def self.get_favorable_gift
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'favorable_gift' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  # customer_support_center
-  def self.get_customer_support_center
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'customer_support_center' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  # payment_policy
-  def self.get_payment_policy
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'payment_policy' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  # delivery_policy
-  def self.get_delivery_policy
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'delivery_policy' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  # warranty_policy
-  def self.get_warranty_policy
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'warranty_policy' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #get footer about us
-  def self.get_footer_about_us
-    records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'about_us' })
-    records.order("created_at DESC").first
-    
-    return records
-  end
-  
-  #banner event on top
-  def self.get_banner_event_top
-    records = self.where("articles.approved = true and articles.is_show = true")
-    records = records.joins(:code_status).where(code_statuses: { title: 'banner_event_top' })
-    
-    return records.last
-  end
-  
-  #banner public relations by provinces/areas
-  def self.get_banner_by_area(current_area)
-    if !current_area.id.nil?
-      records = self.where("articles.approved = true and articles.is_show = true")
-      records = records.joins(:code_status).where(code_statuses: { title: 'public_relations' })
-      records = records.joins(:areas).where(areas: {id: current_area.id}) 
-      return records.last
-    else
-      nil
-    end
-  end
-  
-  def self.get_by_area
-    records = self.all
-    return records
-  end
-  
-  #keywords
-  def keywords
-    self.tags.split(",")
-  end
-  
-  def self.get_meta_keywords(params)
-    self.where(id: params[:article_category_id])
-  end
-  
-  def self.get_keyword_article
-      self.all.joins(:code_status).where(code_statuses: { title: 'keywords' }).first 
-  end
-  
   #Filter, Sort
   def self.search(params)
     records = self.all
@@ -453,11 +218,6 @@ class Article < ActiveRecord::Base
     if params[:article_category_id].present?
         records = records.joins(:article_categories).where(article_categories: {id: params[:article_category_id]})
     end
-    
-    #Code statuses filter
-    if params[:code_statuses_id].present?
-        records = records.joins(:code_status).where(code_statuses: {id: params[:code_statuses_id]})
-    end
 
     #Search keyword filter
     if params[:keyword].present?
@@ -465,7 +225,7 @@ class Article < ActiveRecord::Base
     end
     
     # for sorting
-    sort_by = params[:sort_by].present? ? params[:sort_by] : "articles.created_at"
+    sort_by = params[:sort_by].present? ? params[:sort_by] : "articles.posted_at"
     sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
     records = records.order("#{sort_by} #{sort_order}")
     
