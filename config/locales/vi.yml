@@ -360,5 +360,5 @@ vi:
         one:   "Hiển thị 1 cho chuyên mục này."
         other: "Hiển thị toàn bộ %{count} cho chuyên mục này."
 
-      multi_page: "Hiển thị bài viết %{from} - %{to}."
-      multi_page_html: "Hiển thị bài viết %{from} - %{to}."
+      multi_page: "Hiển thị bài viết %{from} - %{to} / %{count}."
+      multi_page_html: "Hiển thị bài viết %{from} - %{to} / %{count}."
