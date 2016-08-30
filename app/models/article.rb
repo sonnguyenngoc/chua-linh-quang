@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :areas
   
   def self.get_active_articles
-    self.where("articles.approved = true and articles.is_show = true").order("posted_at DESC, name ASC")
+    self.where("articles.approved = true and articles.is_show = true").order("posted_at DESC, title ASC")
   end
   
   def url_friendly
