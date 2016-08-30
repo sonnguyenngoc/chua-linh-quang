@@ -10,7 +10,7 @@
       <% else %>
         <li class="drop"><%= link_to cat.name, category_path(category_id: cat.id, category_name: cat.url_friendly), class: cat.style %>
           <ul class="dropdown">
-            <% cat.children.each do |child| %>
+            <% cat.children.order("position ASC").each do |child| %>
             <li><%= link_to child.name, category_path(category_id: child.id, category_name: child.url_friendly) %></li>
             <% end %>
             <% if cat.style == "category_5" %>
