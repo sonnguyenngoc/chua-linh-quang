@@ -29,7 +29,7 @@ class Article < ActiveRecord::Base
         records
     end
     def self.get_all_hot_news # get 12 items
-        records = self.get_active_articles
+        records = self.where("articles.approved = true and articles.is_show = true").order("posted_at DESC")
         records = records.where("articles.is_mine = true")
         
         records
