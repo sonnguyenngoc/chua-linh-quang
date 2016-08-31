@@ -83,18 +83,9 @@
                                             </div>
                                         <% end %>
                                     </td>
-                                    <td>
-                                        <strong><%= item.title_1 %></strong>
-                                    </td>
-                                    <td>
-                                        <strong><%= item.title_2 %></strong>
-                                    </td>
-                                    <td>
-                                        <%= item.name_button %>
-                                    </td>
-                                    <td>
-                                        <%= item.link %>
-                                    </td>
+                                    <td><strong><%= item.title_1 %></strong></td>
+                                    <td><strong><%= item.title_2 %></strong></td>
+                                    <td><%= item.link %></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <% if can?(:update, item) or can?(:delete, item) %>
