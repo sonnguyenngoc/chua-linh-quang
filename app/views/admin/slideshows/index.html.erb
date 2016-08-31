@@ -63,7 +63,6 @@
                                 <th><%= t(:image) %></th>
                                 <th><%= t(:title_1) %></th>
                                 <th><%= t(:title_2) %></th>
-                                <th><%= t(:button_name) %></th>
                                 <th><%= t(:link) %></th>
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-center"><%= t(:actions) %></th>
@@ -83,7 +82,7 @@
                                             </div>
                                         <% end %>
                                     </td>
-                                    <td><strong><%= item.title_1 %></strong></td>
+                                    <td><strong><%= item.style %>. <%= item.title_1 %></strong></td>
                                     <td><strong><%= item.title_2 %></strong></td>
                                     <td><%= item.link %></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>

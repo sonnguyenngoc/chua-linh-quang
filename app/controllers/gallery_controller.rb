@@ -1,5 +1,6 @@
 class GalleryController < ApplicationController
   def music
+    @musics = Album.get_all_musics.paginate(:page => params[:page], :per_page => 12)
   end
 
   def picture
@@ -7,6 +8,7 @@ class GalleryController < ApplicationController
   end
 
   def video
+    @videos = Album.get_all_videos.paginate(:page => params[:page], :per_page => 12)
   end
   
   def music_detail

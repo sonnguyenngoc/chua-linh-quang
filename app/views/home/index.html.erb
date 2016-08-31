@@ -5,22 +5,22 @@
 
         <!-- block content -->
         <div class="block-content">
-
+          <% if Slideshow.count > 0 %>
           <!-- grid box -->
           <div class="grid-box">
             <div class="image-slider">
               <ul class="bxslider">
-                <% (1..3).each do |item| %>
+                <% Slideshow.all.order("style ASC").each do |item| %>
                 <li>
                   <div class="news-post image-post">
-                    <img src="/frontend/upload/news-posts/slide1.jpg" alt="">
+                    <%= image_tag item.image_url.image, alt: "" %>
                     <div class="hover-box">
                       <span class="top-stories">CHÙA LINH QUANG</span>
                       <div class="inner-hover">
-                        <%= link_to "Lễ Vu Lan", "", class: "category-post tech" %>
-                        <h2><%= link_to "Tiêu đề slideshow", "" %></h2>
+                        <%= link_to item.title_1, item.link, class: "category-post tech" %>
+                        <h2 class="slideshow-font"><%= link_to item.title_2, item.link %></h2>
                         <ul class="post-tags">
-                          <li><i class="fa fa-clock-o"></i>07/08/2016</li>
+                          <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
                           <li><i class="fa fa-user"></i>bởi Chùa Linh Quang</li>
                         </ul>
                       </div>
@@ -32,6 +32,7 @@
             </div>
           </div>
           <!-- End grid box -->
+          <% end %>
 
           <!-- grid box -->
           <div class="grid-box">

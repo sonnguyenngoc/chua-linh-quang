@@ -132,6 +132,9 @@ label.error {
   font-weight: 700;
   margin-bottom: 3px;
 }
+.slideshow-font a {
+	font-family: 'Open Sans' !important;
+}
 @media (max-width: 650px) {
 	body.comming-soon-page #comming-soon-content form.subscribe p {
 		font-size: 20px !important;

@@ -1,5 +1,5 @@
 class Slideshow < ActiveRecord::Base
-  validates :title_1, :color_1, :title_2, :color_2, :style, presence: true
+  validates :title_1, :title_2, presence: true
   validates :image_url, presence: true
   validates :image_url, allow_blank: true, format: {
     with: %r{\.(gif|jpg|png)\Z}i,
