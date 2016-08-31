@@ -28,6 +28,12 @@ class Article < ActiveRecord::Base
         
         records
     end
+    def self.get_all_hot_news # get 12 items
+        records = self.get_active_articles
+        records = records.where("articles.is_mine = true")
+        
+        records
+    end
   # End hot news
   
   # 1 - category_1

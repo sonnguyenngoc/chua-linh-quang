@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root "comming_soon#index"
     get "trang-chu.html" => "home#index", as: :home
     get "bai-viet/(:category_name)-:category_id.html" => "category#index", as: :category
+    get "tin-nong.html" => "category#hot_news", as: :hot_news
     get "bai-viet/(:category_name)-:category_id/(:post_name)-:post_id.html" => "post_detail#index", as: :post_detail
     get "thu-vien-anh.html" => "gallery#picture", as: :gallery_picture
     get "thu-vien-nhac.html" => "gallery#music", as: :gallery_music
