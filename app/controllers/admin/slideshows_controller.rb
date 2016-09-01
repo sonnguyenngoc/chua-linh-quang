@@ -7,7 +7,7 @@ class Admin::SlideshowsController < ApplicationController
     # authorize
     authorize! :read, Slideshow
     
-    @slideshows = Slideshow.all.paginate(:page => params[:page], :per_page => 10)
+    @slideshows = Slideshow.order("style ASC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /slideshows/1

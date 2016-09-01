@@ -7,4 +7,8 @@ class CategoryController < ApplicationController
   def hot_news
     @posts = Article.get_all_hot_news.paginate(:page => params[:page], :per_page => 14)
   end
+  
+  def posts_search
+    @posts = Article.search(params).paginate(:page => params[:page], :per_page => 14)
+  end
 end

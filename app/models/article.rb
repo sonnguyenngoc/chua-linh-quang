@@ -218,22 +218,12 @@ class Article < ActiveRecord::Base
   
   #Filter, Sort
   def self.search(params)
-    records = self.all
-    
-    #Category filter
-    if params[:article_category_id].present?
-        records = records.joins(:article_categories).where(article_categories: {id: params[:article_category_id]})
-    end
+    records = self.where("articles.approved = true and articles.is_show = true").order("posted_at DESC")
 
     #Search keyword filter
     if params[:keyword].present?
         records = records.where("LOWER(articles.title) LIKE ?", "%#{params[:keyword].downcase.strip}%")
     end
-    
-    # for sorting
-    sort_by = params[:sort_by].present? ? params[:sort_by] : "articles.posted_at"
-    sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
-    records = records.order("#{sort_by} #{sort_order}")
     
     return records   
   end

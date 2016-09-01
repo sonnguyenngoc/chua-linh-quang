@@ -35,6 +35,15 @@ class GalleryUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
+  version :banner_image_250x250 do
+    process :resize_to_fit => [250, 250]
+  end
+  version :banner_image_200x200 do
+    process :resize_to_fit => [200, 200]
+  end
+  version :banner_image_300x250 do
+    process :resize_to_fit => [300, 250]
+  end
   version :small_image do
     process :resize_to_fit => [173, 173]
   end

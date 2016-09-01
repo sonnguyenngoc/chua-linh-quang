@@ -38,11 +38,6 @@
                         <%= link_to "Quản lý thư viện video/nhạc", admin_albums_path %>
                     </li>
                     <% end %>
-                    <% if can? :read, Banner %>
-                    <li class="<%= "active" if ["admin/banners"].include?(params[:controller]) %>">
-                        <%= link_to "Quản lý banner", admin_banners_path %>
-                    </li>
-                    <% end %>
                 </ul>
             </li>
             <% end %>
@@ -54,6 +49,19 @@
                         <% if can? :read, Contact %>
                         <li class="<%= "active" if ["admin/slideshows"].include?(params[:controller]) %>">
                             <%= link_to t(:slideshow), admin_slideshows_path %>
+                        </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+            
+            <% if can?(:read, Banner) %>
+                <li>
+                    <a href="#"><i class="icon-bookmark3"></i> <span><%= t(:banner) %></span></a>
+                    <ul>
+                        <% if can? :read, Contact %>
+                        <li class="<%= "active" if ["admin/banners"].include?(params[:controller]) %>">
+                            <%= link_to t(:banner), admin_banners_path %>
                         </li>
                         <% end %>
                     </ul>
