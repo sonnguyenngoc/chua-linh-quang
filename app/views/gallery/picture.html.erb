@@ -25,18 +25,18 @@
               <div class="col-md-6">
                   <div class="news-post standard-post2">
                     <div class="post-gallery">
-                      <%= image_tag item.image_url.medium_image, alt: "" %>
+                      <%= link_to (image_tag item.image_url.medium_image, alt: ""), picture_detail_path(picture_id: item.id, picture_name: item.url_friendly) %>
                       <%= link_to "Thư viện ảnh", gallery_picture_path, class: "category-post" %>
                     </div>
                     <div class="post-title">
-                      <h2><%= link_to item.title, "" %></h2>
+                      <h2><%= link_to item.title, picture_detail_path(picture_id: item.id, picture_name: item.url_friendly) %></h2>
                       <ul class="post-tags">
                         <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
                         <li><i class="fa fa-user"></i>bởi <%= link_to "Chùa Linh Quang", root_path %></li>
                       </ul>
                     </div>
                     <div class="post-content">
-                      <%= link_to '<i class="fa fa-arrow-circle-right"></i>Đọc Tiếp'.html_safe, "", class: "read-more-button" %>
+                      <%= link_to '<i class="fa fa-arrow-circle-right"></i>Đọc Tiếp'.html_safe, picture_detail_path(picture_id: item.id, picture_name: item.url_friendly), class: "read-more-button" %>
                     </div>
                   </div>
                 </div>

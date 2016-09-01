@@ -12,6 +12,6 @@ class GalleryController < ApplicationController
   end
   
   def picture_detail
-    @detail = Gallery.find(params[:picture_id])
+    @picture_detail = Gallery.find(params[:picture_id])
   end
 end
