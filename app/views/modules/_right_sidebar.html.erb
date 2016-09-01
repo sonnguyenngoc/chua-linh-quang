@@ -139,9 +139,9 @@
         <ul class="list-posts">
           <% Album.get_newest_musics.each do |item| %>
           <li>
-            <%= image_tag item.image_url.small_image, alt: "" %>
+            <%= link_to (image_tag item.image_url.small_image, alt: ""), music_detail_path(music_id: item.id, music_name: item.url_friendly) %>
             <div class="post-content">
-              <h2><%= link_to item.title, "" %></h2>
+              <h2><%= link_to item.title, music_detail_path(music_id: item.id, music_name: item.url_friendly) %></h2>
               <ul class="post-tags">
                 <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
               </ul>
@@ -162,7 +162,7 @@
       <%= image_tag item.image_url.smallest_image, alt: "" %>
       <a href="<%= item.link %>" class="video-link"><i class="fa fa-play-circle-o"></i></a>
       <div class="hover-box">
-        <h2><%= link_to item.title, "" %></h2>
+        <h2><%= link_to item.title, video_detail_path(video_id: item.id, video_name: item.url_friendly) %></h2>
         <ul class="post-tags">
           <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
         </ul>

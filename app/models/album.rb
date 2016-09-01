@@ -20,4 +20,8 @@ class Album < ActiveRecord::Base
   def self.get_newest_musics
     self.where("albums.type_album = 'Nhạc'").order("created_at DESC").first(4)
   end
+  
+  def self.get_footer_newest_musics
+    self.where("albums.type_album = 'Nhạc'").order("created_at DESC").first(6)
+  end
 end

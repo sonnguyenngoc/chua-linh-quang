@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     get "thu-vien-anh.html" => "gallery#picture", as: :gallery_picture
     get "thu-vien-nhac.html" => "gallery#music", as: :gallery_music
     get "thu-vien-video.html" => "gallery#video", as: :gallery_video
-    get "thu-vien-anh/(:picture_name)-:picture_id.html.html" => "gallery#picture_detail", as: :picture_detail
-    get "thu-vien-nhac/(:music_name)-:music_id.html.html" => "gallery#music_detail", as: :music_detail
-    get "thu-vien-video/(:video_name)-:video_id.html.html" => "gallery#video_detail", as: :video_detail
+    get "thu-vien-anh/(:picture_name)-:picture_id.html" => "gallery#picture_detail", as: :picture_detail
+    get "thu-vien-nhac/(:music_name)-:music_id.html" => "gallery#music_detail", as: :music_detail
+    get "thu-vien-video/(:video_name)-:video_id.html" => "gallery#video_detail", as: :video_detail
     get "lien-he.html" => "contact#index", as: :contact
     get "lien-he/thanh-cong.html" => "contact#thankyou", as: :contact_thankyou
     
