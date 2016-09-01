@@ -80,7 +80,7 @@
             <h1>THƯ VIỆN ẢNH</h1>
             <ul class="flickr-list">
               <% Gallery.get_footer_newest_galleries.each do |item| %>
-              <li><%= link_to image_tag(item.image_url.smallest_image, alt: ""), "" %></li>
+              <li><%= link_to image_tag(item.image_url.smallest_image, alt: ""), picture_detail_path(picture_id: item.id, picture_name: item.url_friendly) %></li>
               <% end %>
             </ul>
             <%= link_to "Xem thêm.....", gallery_picture_path %>

@@ -1,0 +1,112 @@
+<section class="block-wrapper">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+
+      <!-- block content -->
+      <div class="block-content">
+
+        <!-- single-post box -->
+        <div class="single-post-box">
+
+            <div class="title-post">
+              <h1><%= @picture_detail.title %></h1>
+              <ul class="post-tags">
+                <li><i class="fa fa-clock-o"></i><%= @picture_detail.created_at.strftime("%d/%m/%Y") %></li>
+                <li><i class="fa fa-user"></i>bởi Chùa Linh Quang</li>
+              </ul>
+            </div>
+
+            <div class="share-post-box">
+              <ul class="share-box">
+                <li><i class="fa fa-share-alt"></i><span>Chia sẻ bài viết</span></li>
+                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Chia sẻ Facebook</span></a></li>
+                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Chia sẻ Twitter</span></a></li>
+                <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span>Chia sẻ Google+</span></a></li>
+              </ul>
+            </div>
+
+            <div class="post-gallery">
+              <%= image_tag @picture_detail.image_url.larger_image, alt: "" %>
+              <span class="image-caption"><%= @picture_detail.title %></span>
+            </div>
+
+            <div class="post-content text-justify">
+
+                <div class="article-inpost">
+                    <div class="row">
+                        <% @picture_detail.gallery_images.each_with_index do |item,index| %>
+                        <div class="col-md-6">
+                            <div class="image-content">
+                                <div class="image-place">
+                                    <img src="<%= item.image_url.larger_image %>" alt="">
+                                    <div class="hover-image">
+                                        <a class="zoom" href="<%= item.image_url %>"><i class="fa fa-arrows-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%= '</div><div class="row">'.html_safe if index%2 == 1 %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-tags-box">
+              <ul class="tags-box">
+                <li><i class="fa fa-tags"></i><span>Chuyên mục:</span></li>
+                <li><%= link_to "Chùa Linh Quang", root_path %></li>
+                <li><%= link_to "Thư Viện Ảnh", gallery_picture_path %></li>
+              </ul>
+            </div>
+
+            <div class="share-post-box">
+              <ul class="share-box">
+                <li><i class="fa fa-share-alt"></i><span>Chia sẻ bài viết</span></li>
+                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i><span>Chia sẻ Facebook</span></a></li>
+                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i><span>Chia sẻ Twitter</span></a></li>
+                <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span>Chia sẻ Google+</span></a></li>
+              </ul>
+            </div>
+
+            <!-- carousel box -->
+            <div class="carousel-box owl-wrapper">
+              <div class="title-section">
+                <h1><span>Ảnh mới</span></h1>
+              </div>
+              <div class="owl-carousel" data-num="3">
+                <% Gallery.get_footer_newest_galleries.each do |item| %>
+                <div class="item news-post image-post3">
+                  <%= link_to (image_tag item.image_url.smallest_image, alt: ""), picture_detail_path(picture_id: item.id, picture_name: item.url_friendly) %>
+                  <div class="hover-box">
+                    <h2><%= link_to item.title, picture_detail_path(picture_id: item.id, picture_name: item.url_friendly) %></h2>
+                    <ul class="post-tags">
+                      <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
+                    </ul>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- End carousel box -->
+
+        </div>
+        <!-- End single-post box -->
+
+      </div>
+      <!-- End block content -->
+
+    </div>
+
+    <div class="col-sm-4">
+
+      <!-- sidebar -->
+      <%= render "/modules/post_detail_sidebar" %>
+      <!-- End sidebar -->
+
+    </div>
+
+  </div>
+
+</div>
+</section>
