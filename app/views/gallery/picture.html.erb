@@ -49,7 +49,7 @@
 
           <!-- pagination box -->
           <div class="pagination-box">
-            <%= will_paginate @galleries, previous_label: 'Trang trước', next_label: 'Trang sau', renderer: BootstrapPagination::Rails %>
+            <%= will_paginate @galleries, previous_label: 'Trang trước', next_label: 'Trang sau', renderer: BootstrapPagination::Rails %><br>
             <p><%= page_entries_info @galleries %></p>
           </div>
           <!-- End Pagination box -->
