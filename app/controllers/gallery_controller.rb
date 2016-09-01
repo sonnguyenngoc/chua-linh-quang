@@ -12,7 +12,7 @@ class GalleryController < ApplicationController
   end
   
   def music_detail
-    
+    @detail = Album.find(params[:music_id])
   end
   
   def picture_detail
@@ -20,5 +20,6 @@ class GalleryController < ApplicationController
   end
   
   def video_detail
+    @detail = Album.find(params[:video_id])
   end
 end
