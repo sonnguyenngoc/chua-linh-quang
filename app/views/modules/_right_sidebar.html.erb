@@ -90,7 +90,8 @@
     </ul>
     <% end %>
   </div>
-
+  
+  <% if Banner.count > 0 %>
   <div class="advertisement">
     <div class="desktop-advert">
       <span><%= Banner.get_main_banner.title %></span>
@@ -105,6 +106,7 @@
       <img src="<%= Banner.get_main_banner.image_url.banner_image_300x250 %>" alt="">
     </div>
   </div>
+  <% end %>
 
   <div class="widget tab-posts-widget">
 
