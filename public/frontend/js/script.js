@@ -232,7 +232,7 @@ $(document).ready(function($) {
 	
 	try {
 
-		$('#clock').countdown("2016/09/03", function(event) {
+		$('#clock').countdown("2016/09/04", function(event) {
 			var $this = $(this);
 			switch(event.type) {
 				case "seconds":
