@@ -79,8 +79,8 @@
           <div class="widget flickr-widget">
             <h1>THƯ VIỆN ẢNH</h1>
             <ul class="flickr-list">
-              <% Album.get_footer_newest_musics.each do |item| %>
-              <li><%= link_to image_tag(item.image_url.smallest_image, alt: ""), music_detail_path(music_id: item.id, music_name: item.url_friendly) %></li>
+              <% Gallery.get_footer_newest_galleries.each do |item| %>
+              <li><%= link_to image_tag(item.image_url.smallest_image, alt: ""), "" %></li>
               <% end %>
             </ul>
             <%= link_to "Xem thêm.....", gallery_picture_path %>

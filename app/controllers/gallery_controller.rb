@@ -11,15 +11,7 @@ class GalleryController < ApplicationController
     @videos = Album.get_all_videos.paginate(:page => params[:page], :per_page => 12)
   end
   
-  def music_detail
-    @detail = Album.find(params[:music_id])
-  end
-  
   def picture_detail
     @detail = Gallery.find(params[:picture_id])
-  end
-  
-  def video_detail
-    @detail = Album.find(params[:video_id])
   end
 end

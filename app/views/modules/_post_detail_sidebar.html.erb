@@ -97,9 +97,9 @@
         <ul class="list-posts">
           <% Album.get_newest_musics.each do |item| %>
           <li>
-            <%= link_to (image_tag item.image_url.small_image, alt: ""), music_detail_path(music_id: item.id, music_name: item.url_friendly) %>
+            <%= link_to (image_tag item.image_url.small_image, alt: ""), gallery_music_path %>
             <div class="post-content">
-              <h2><%= link_to item.title, music_detail_path(music_id: item.id, music_name: item.url_friendly) %></h2>
+              <h2><%= link_to item.title, gallery_music_path %></h2>
               <ul class="post-tags">
                 <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
               </ul>
