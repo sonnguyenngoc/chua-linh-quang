@@ -63,10 +63,34 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <%= label "", t(:phone), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @contact.phone %>
+                                    <% end %>
+                                </div>
+                            </div>   
+                            <div class="form-group">
                                 <%= label "", t(:email), class: "control-label col-sm-2 text-semibold" %>
                                 <div class="col-sm-10">
                                     <%= content_tag(:p, class: "form-control-static text-justify") do %>
                                       <%= @contact.email %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:unit), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @contact.unit %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <%= label "", t(:address), class: "control-label col-sm-2 text-semibold" %>
+                                <div class="col-sm-10">
+                                    <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                                      <%= @contact.address %>
                                     <% end %>
                                 </div>
                             </div>
