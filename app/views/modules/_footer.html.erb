@@ -25,7 +25,7 @@
           <div class="widget posts-widget">
             <h1>TIN NÓNG MỚI NHẤT</h1>
             <ul class="list-posts">
-              <% Article.get_hot_news[0..2].each do |item| %>
+              <% Article.get_hot_news[0..3].each do |item| %>
               <li>
                 <%= image_tag item.image_url.small_image, alt: "" %>
                 <div class="post-content">
