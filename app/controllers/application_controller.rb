@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   
   protected
     def layout_by_resource
-      if controller_name == "home" || controller_name == "category" || controller_name == "post_detail" || controller_name == "contact" || controller_name == "gallery"
+      if controller_name == "home" || controller_name == "category" || controller_name == "post_detail" || controller_name == "contact" || controller_name == "gallery" || controller_name == "errors"
         "frontend"
       elsif controller_name == "coming_soon"
         "coming_soon"

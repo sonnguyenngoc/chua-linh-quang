@@ -1,7 +1,7 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav navbar-right">
 
-    <li><%= link_to "Trang Chủ", home_path, class: "home" %></li>
+    <li><%= link_to "Trang Chủ", root_path, class: "home" %></li>
     
     <% ArticleCategory.get_all_parent_categories.each do |cat| %>
       
