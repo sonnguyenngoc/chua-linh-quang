@@ -3,20 +3,11 @@ Rails.application.routes.draw do
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     
-    #if Rails.env.production?
-    #  get '404', :to => 'application#page_not_found'
-    #  get '422', :to => 'application#server_error'
-    #  get '500', :to => 'application#server_error'
-    #end
-    #
-    #if Rails.env.development?
-    #  get '404', :to => 'application#page_not_found'
-    #  get '422', :to => 'application#server_error'
-    #  get '500', :to => 'application#server_error'
-    #end
+    match "/404", :to => "errors#not_found", :via => :all
     
     root "comming_soon#index"
     get "trang-chu.html" => "home#index", as: :home
+    #root "home#index"
     get "bai-viet/(:category_name)-:category_id.html" => "category#index", as: :category
     get "tin-nong.html" => "category#hot_news", as: :hot_news
     get "ket-qua-tim-kiem-bai-viet.html" => "category#posts_search", as: :posts_search

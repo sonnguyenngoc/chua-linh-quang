@@ -139,6 +139,12 @@ label.error {
 	text-align: left;
     margin-top: -11px;
 }
+.error-banner h1 {
+	font-family: none;
+}
+.image-post3 .hover-box h2, .video-post .hover-box h2 {
+	color: #fff;
+}
 @media (max-width: 650px) {
 	body.comming-soon-page #comming-soon-content form.subscribe p {
 		font-size: 20px !important;

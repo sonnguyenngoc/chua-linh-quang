@@ -37,15 +37,15 @@ class Article < ActiveRecord::Base
   # End hot news
   
   # 1 - category_1
-    def self.get_all_category_1 # get 9 items phật sự
+    def self.get_all_category_1
         records = self.get_active_articles
         records = records.joins(:article_categories).where("article_categories.style = 'category_1'").first(5)
         
         records
     end
-    def self.get_newest_category_1 # get 9 items phật sự
+    def self.get_newest_category_1
         records = self.get_active_articles
-        records = records.joins(:article_categories).where("article_categories.style = 'category_1'").first(3)
+        records = records.joins(:article_categories).where("article_categories.style = 'category_1'").first(4)
         
         records
     end

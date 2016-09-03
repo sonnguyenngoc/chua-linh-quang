@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
   
-  <meta charset="utf-8">
+	<meta charset="utf-8">
 	<meta name="author" content="Chùa Linh Quang">
 	<meta name="description" content="Chùa Linh Quang – Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam">
 
@@ -11,18 +11,18 @@
   
 	<title>Chùa Linh Quang - Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam</title>
   
-  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic" %>
-  <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" %>
-  
-  <%= stylesheet_link_tag "/frontend/css/bootstrap.min.css" %>
-  <%= stylesheet_link_tag "/frontend/css/jquery.bxslider.css" %>
-  <%= stylesheet_link_tag "/frontend/css/font-awesome.css" %>
-  <%= stylesheet_link_tag "/frontend/css/magnific-popup.css" %>
-  <%= stylesheet_link_tag "/frontend/css/owl.carousel.css" %>
-  <%= stylesheet_link_tag "/frontend/css/owl.theme.css" %>
-  <%= stylesheet_link_tag "/frontend/css/ticker-style.css" %>
-  <%= stylesheet_link_tag "/frontend/css/style.css" %>
-  <%= stylesheet_link_tag "/frontend/css/custom.css" %>
+	<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic" %>
+	<%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" %>
+	
+	<%= stylesheet_link_tag "/frontend/css/bootstrap.min.css" %>
+	<%= stylesheet_link_tag "/frontend/css/jquery.bxslider.css" %>
+	<%= stylesheet_link_tag "/frontend/css/font-awesome.css" %>
+	<%= stylesheet_link_tag "/frontend/css/magnific-popup.css" %>
+	<%= stylesheet_link_tag "/frontend/css/owl.carousel.css" %>
+	<%= stylesheet_link_tag "/frontend/css/owl.theme.css" %>
+	<%= stylesheet_link_tag "/frontend/css/ticker-style.css" %>
+	<%= stylesheet_link_tag "/frontend/css/style.css" %>
+	<%= stylesheet_link_tag "/frontend/css/custom.css" %>
 
 </head>
 
@@ -34,6 +34,7 @@
 		<!-- Header
 		    ================================================== -->
 		<header class="clearfix third-style">
+			
 			<!-- Bootstrap navbar -->
 			<nav class="navbar navbar-default navbar-static-top" role="navigation">
 
@@ -57,13 +58,15 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-              <%= link_to image_tag("/frontend/images/small-logo.png", alt: ""), home_path, class: "navbar-brand" %>
+							<%= link_to image_tag("/frontend/images/small-logo.png", alt: ""), root_path, class: "navbar-brand" %>
 						</div>
 
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<%= render "/modules/home_menu" %>
 						<!-- /.navbar-collapse -->
+						
 					</div>
+						
 				</div>
 				<!-- End navbar list container -->
 
@@ -93,9 +96,9 @@
 	</div>
 	<!-- End Container -->
   
-  <!-- include javascripts
-    ================================================== -->
-  <%= render "/modules/js_files" %>
+	<!-- include javascripts
+		================================================== -->
+	<%= render "/modules/js_files" %>
 	<!-- End Include Javascripts -->
 
 </body>

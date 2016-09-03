@@ -1,0 +1,66 @@
+<section class="block-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+
+        <!-- block content -->
+        <div class="block-content">
+
+          <!-- error box -->
+          <div class="error-box">
+            <div class="error-banner">
+              <h1 class="slideshow-font"><span>Lỗi Trang</span></h1>
+              <p class="text-justify">Trang không được tìm thấy do lỗi trang hoặc trang của website cũ qua website mới gây lỗi.</p>
+            </div>
+            <div class="search-box">
+              <form role="search" class="search-form">
+                <input type="text" id="search2" name="search" placeholder="Nhập từ khóa cần tìm.....">
+                <button type="submit" id="search-submit2"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+          </div>
+          <!-- End error box -->
+
+          <!-- grid box -->
+          <div class="grid-box">
+            <div class="title-section">
+              <h1><span>Tin Mới Nhất</span></h1>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-posts">
+                  <% Article.get_lastest_posts.each_with_index do |item,index| %>
+                  <li>
+                    <%= image_tag item.image_url.small_image, alt: "" %>
+                    <div class="post-content">
+                      <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
+                      <ul class="post-tags">
+                        <li><i class="fa fa-clock-o"></i><%= item.created_at.strftime("%d/%m/%Y") %></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <%= '</ul></div><div class="col-md-6"><ul class="list-posts">'.html_safe if index%2 == 1 %>
+              <% end %>
+              </ul>
+              </div>
+            </div>
+          </div>
+          <!-- End grid box -->
+
+        </div>
+        <!-- End block content -->
+
+      </div>
+
+      <div class="col-sm-4">
+
+        <!-- right contact sidebar -->
+        <%= render "/modules/post_detail_sidebar" %>
+        <!-- End right sidebar -->
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
