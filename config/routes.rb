@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     
     match "/404", :to => "errors#not_found", :via => :all
     
-    root "comming_soon#index"
-    get "trang-chu.html" => "home#index", as: :home
-    #root "home#index"
+    #root "comming_soon#index"
+    #get "trang-chu.html" => "home#index", as: :home
+    root "home#index"
     get "bai-viet/(:category_name)-:category_id.html" => "category#index", as: :category
     get "tin-nong.html" => "category#hot_news", as: :hot_news
     get "ket-qua-tim-kiem-bai-viet.html" => "category#posts_search", as: :posts_search
