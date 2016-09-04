@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require_tree .
 //= require private_pub
+//= require social-share-button
