@@ -10,13 +10,13 @@
           <div class="error-box">
             <div class="error-banner">
               <h1 class="slideshow-font"><span>Lỗi Trang</span></h1>
-              <p class="text-justify">Trang không được tìm thấy do lỗi trang hoặc trang của website cũ qua website mới gây lỗi.</p>
+              <p class="text-justify">Trang không được tìm thấy do lỗi trang hoặc trang của website cũ chuyển sang website mới gây lỗi.</p>
             </div>
             <div class="search-box">
-              <form role="search" class="search-form">
-                <input type="text" id="search2" name="search" placeholder="Nhập từ khóa cần tìm.....">
-                <button type="submit" id="search-submit2"><i class="fa fa-search"></i></button>
-              </form>
+              <%= form_tag(posts_search_path, method: "get", class: "search-form") do %>
+                <input type="text" name="keyword" placeholder="Nhập từ khóa cần tìm (có dấu).....">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              <% end %>
             </div>
           </div>
           <!-- End error box -->

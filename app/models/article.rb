@@ -200,7 +200,7 @@ class Article < ActiveRecord::Base
   # End Buddhist Family
   
   def self.get_lastest_posts
-    self.get_active_articles.first(12)
+    self.get_active_articles.first(20)
   end
   
   def self.sort_by
