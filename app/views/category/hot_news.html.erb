@@ -18,7 +18,7 @@
           <!-- grid box -->
           <div class="grid-box">
             <div class="title-section">
-              <h1><span class="category_1">TIN NÓNG</span></h1>
+              <h1><span class="category_1">TIN MỚI</span></h1>
             </div>
             <div class="row">
               <% @posts.each_with_index do |item,index| %>
@@ -26,7 +26,7 @@
                   <div class="news-post standard-post2">
                     <div class="post-gallery">
                       <%= image_tag item.image_url.medium_image, alt: "" %>
-                      <%= link_to "TIN NÓNG", hot_news_path, class: "category-post category_1" %>
+                      <%= link_to "TIN MỚI", hot_news_path, class: "category-post category_1" %>
                     </div>
                     <div class="post-title">
                       <h2><%= link_to item.title, post_detail_path(category_id: item.article_categories.first.id, category_name: item.article_categories.first.url_friendly, post_id: item.id, post_name: item.url_friendly) %></h2>
