@@ -7,7 +7,7 @@ class Admin::ArticlesController < ApplicationController
     # authorize
     authorize! :read, Article
     
-    @articles = Article.order("created_at DESC").search(params).paginate(:page => params[:page], :per_page => 10)
+    @articles = Article.order("created_at DESC").backend_search(params).paginate(:page => params[:page], :per_page => 10)
   end
   
   def search

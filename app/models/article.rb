@@ -228,4 +228,15 @@ class Article < ActiveRecord::Base
     return records   
   end
   
+  def self.backend_search(params)
+    records = self.order("posted_at DESC")
+
+    #Search keyword filter
+    if params[:keyword].present?
+        records = records.where("LOWER(articles.title) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+    end
+    
+    return records   
+  end
+  
 end
