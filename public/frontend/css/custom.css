@@ -159,3 +159,11 @@ label.error {
 .top-line {
 	background: #f44336;
 }
+a {
+  color: #fff;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  color: #f44336;
+	text-decoration: none;
+}
