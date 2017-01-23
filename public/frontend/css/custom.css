@@ -150,3 +150,12 @@ label.error {
 		font-size: 20px !important;
 	}
 }
+.top-line ul.top-line-list li a:hover {
+	color: #43c9eb;
+}
+.top-line ul.top-line-list li span, .top-line ul.top-line-list li a {
+	color: #fff;
+}
+.top-line {
+	background: #f44336;
+}
