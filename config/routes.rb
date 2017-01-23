@@ -8,14 +8,14 @@ Rails.application.routes.draw do
     #root "comming_soon#index"
     #get "trang-chu.html" => "home#index", as: :home
     root "home#index"
-    get "bai-viet/(:category_name)-:category_id.html" => "category#index", as: :category
+    get "bai-viet/(:category_id)/(:category_name).html" => "category#index", as: :category
     get "tin-nong.html" => "category#hot_news", as: :hot_news
     get "ket-qua-tim-kiem-bai-viet.html" => "category#posts_search", as: :posts_search
-    get "bai-viet/(:category_name)-:category_id/(:post_name)-:post_id.html" => "post_detail#index", as: :post_detail
+    get "bai-viet/(:category_id)/(:category_name)/(:post_id)/(:post_name).html" => "post_detail#index", as: :post_detail
     get "thu-vien-anh.html" => "gallery#picture", as: :gallery_picture
     get "thu-vien-nhac.html" => "gallery#music", as: :gallery_music
     get "thu-vien-video.html" => "gallery#video", as: :gallery_video
-    get "thu-vien-anh/(:picture_name)-:picture_id.html" => "gallery#picture_detail", as: :picture_detail
+    get "thu-vien-anh/(:picture_id)/(:picture_name).html" => "gallery#picture_detail", as: :picture_detail
     get "lien-he.html" => "contact#index", as: :contact
     get "lien-he/thanh-cong.html" => "contact#thankyou", as: :contact_thankyou
     
