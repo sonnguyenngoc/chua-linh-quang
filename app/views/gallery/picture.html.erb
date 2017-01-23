@@ -50,7 +50,7 @@
           <!-- pagination box -->
           <div class="pagination-box">
             <%= will_paginate @galleries, previous_label: 'Trang trước', next_label: 'Trang sau', renderer: BootstrapPagination::Rails %>
-            <br><br><p><%= page_entries_info @galleries %></p>
+            <% if @galleries.count > 0 %><br><br><p><%= page_entries_info @galleries %></p><% else %><p><%= page_entries_info @galleries %></p><% end %>
           </div>
           <!-- End Pagination box -->
 
