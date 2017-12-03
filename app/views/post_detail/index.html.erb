@@ -10,7 +10,7 @@
             <div class="single-post-box">
 
                 <div class="title-post">
-                  <h1><% if @post_detail.is_mine == true %><strong><%= link_to "(LQT)", root_path %></strong> <% end %> <%= @post_detail.title %></h1>
+                  <h1><% if @post_detail.is_mine == true %><strong><%= link_to "(LQT)", root_path, class: "link-post-detail" %></strong> <% end %> <%= @post_detail.title %></h1>
                   <ul class="post-tags">
                     <li><i class="fa fa-clock-o"></i><%= @post_detail.posted_at.strftime("%d/%m/%Y") %></li>
                     <li><i class="fa fa-user"></i>bởi Chùa Linh Quang</li>

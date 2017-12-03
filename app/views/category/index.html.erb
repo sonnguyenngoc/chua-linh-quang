@@ -36,7 +36,7 @@
                       </ul>
                     </div>
                     <div class="post-content">
-                      <p class="text-justify"><% if item.is_mine == true %><strong><%= link_to "(LQT)", post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: item.id, post_name: item.url_friendly) %></strong> <% end %> <%= truncate(strip_tags(item.content.html_safe), length: 90) %></p>
+                      <p class="text-justify"><% if item.is_mine == true %><strong><%= link_to "(LQT)", post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: item.id, post_name: item.url_friendly), class: "list-category" %></strong> <% end %> <%= truncate(strip_tags(item.content.html_safe), length: 90) %></p>
                       <%= link_to '<i class="fa fa-arrow-circle-right"></i>Đọc Tiếp'.html_safe, post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: item.id, post_name: item.url_friendly), class: "read-more-button" %>
                     </div>
                   </div>

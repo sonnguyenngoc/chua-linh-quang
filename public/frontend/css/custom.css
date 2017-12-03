@@ -167,3 +167,10 @@ a:focus, a:hover {
   color: #f44336;
 	text-decoration: none;
 }
+.post-content a.list-category, a.link-post-detail {
+	color: #f44336 !important;
+}
+.post-content a.list-category:hover, a.link-post-detail {
+	color: #f44336 !important;
+	opacity: 0.8;
+}

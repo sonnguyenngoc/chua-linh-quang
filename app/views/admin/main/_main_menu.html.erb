@@ -46,7 +46,7 @@
                 <li>
                     <a href="#"><i class="icon-file-picture"></i> <span><%= t(:slideshow) %></span></a>
                     <ul>
-                        <% if can? :read, Contact %>
+                        <% if can? :read, Slideshow %>
                         <li class="<%= "active" if ["admin/slideshows"].include?(params[:controller]) %>">
                             <%= link_to t(:slideshow), admin_slideshows_path %>
                         </li>
