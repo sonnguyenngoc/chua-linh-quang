@@ -14,3 +14,4 @@
 /config/database.yml
 /config/private_pub.yml
 config/private_pub.yml
+/public/uploads

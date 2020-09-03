@@ -3843,18 +3843,19 @@ div.list-post .post-content h2 a:hover {
 /* =  single post pages
 /*-------------------------------------------------*/
 .single-post-box .title-post {
-  padding: 0 20px 25px;
+  padding: 10px 0;
   margin-bottom: 12px;
   border-bottom: 1px solid #f0f0f0;
   margin-top: -10px;
 }
 .single-post-box .title-post h1 {
   color: #333333;
-  font-size: 24px;
+  font-size: 30px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
-  line-height: 30px;
-  margin: 0 0 8px;
+  line-height: 38px;
+  margin: 10px 0;
+  text-align: justify;
 }
 .single-post-box .share-post-box {
   margin-bottom: 10px;
@@ -3949,8 +3950,9 @@ div.list-post .post-content h2 a:hover {
   overflow: hidden;
 }
 .single-post-box > .post-content p {
-  padding: 0 20px;
-  margin-bottom: 18px;
+  padding: 10px 0;
+  font-size: 16px;
+  line-height: 24px;
 }
 .single-post-box > .post-content p a {
   display: inline-block;

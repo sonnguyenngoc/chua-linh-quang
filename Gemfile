@@ -68,3 +68,4 @@ gem 'cancan'
 gem "sixarm_ruby_unaccent", ">= 1.1.1", "< 2"
 gem 'social-share-button'
 gem 'shareable'
+gem 'sitemap_generator'

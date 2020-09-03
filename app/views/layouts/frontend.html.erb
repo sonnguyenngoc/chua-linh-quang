@@ -1,16 +1,12 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-  
 	<meta charset="utf-8">
 	<meta name="author" content="Chùa Linh Quang">
 	<meta name="keywords" content="chùa linh quang, chùa linh quang định quán, chùa linh quang định quán đồng nai, chua linh quang, chua linh quang dinh quang, chua linh quang dinh quang dong nai"/>
-	<meta name="description" content="Chùa Linh Quang – Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam">
-
+	<meta name="description" content="Chùa Linh Quang tọa lạc tại Ấp 1 xã Phú Hòa, huyện Định Quán, tỉnh Đồng Nai là nơi sinh hoạt tín ngưỡng tôn giáo của bà con Phật tử xa gần.">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-	<title>Chùa Linh Quang | Ấp 1, Xã Phú Hòa, Huyện Định Quán, Tỉnh Đồng Nai, Việt Nam</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
   
 	<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic" %>
 	<%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" %>
@@ -22,7 +18,7 @@
 	<%= stylesheet_link_tag "/frontend/css/owl.carousel.css" %>
 	<%= stylesheet_link_tag "/frontend/css/owl.theme.css" %>
 	<%= stylesheet_link_tag "/frontend/css/ticker-style.css" %>
-	<%= stylesheet_link_tag "/frontend/css/style.css" %>
+	<%= stylesheet_link_tag "/frontend/css/style.css?v=1.1" %>
 	<%= stylesheet_link_tag "/frontend/css/custom.css?v=3.1" %>
 	
 	<script>
@@ -30,39 +26,188 @@
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
 		ga('create', 'UA-85177049-1', 'auto');
 		ga('send', 'pageview');
-	
 	</script>
-
+	
+	<% if params[:controller] == 'home' && params[:action] == 'index' %>
+		<title>Chùa Linh Quang | Trang Tin Điện Tử Phật Giáo</title>
+		
+		<meta property="og:locale" content="vi" />
+		<meta property="og:type" content="website"/>
+		<meta property="og:title" content="Chùa Linh Quang | Trang Tin Điện Tử Phật Giáo"/>
+		<meta property="og:description" content="Chùa Linh Quang tọa lạc tại Ấp 1 xã Phú Hòa, huyện Định Quán, tỉnh Đồng Nai là nơi sinh hoạt tín ngưỡng tôn giáo của bà con Phật tử xa gần."/>
+		<meta property="og:url" content="http://chualinhquang.com.vn/"/>
+		<meta property="og:site_name" content="Chùa Linh Quang" />
+		<meta property="og:image" content="http://chualinhquang.com.vn/uploads/slideshow/image_url/1/image_1_-_Copy.jpg"/>
+		<meta property="og:image:width" content="850"/>
+		<meta property="og:image:height" content="620"/>
+		
+		<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:site" content="http://chualinhquang.com.vn/"/>
+		<meta name="twitter:title" content="Chùa Linh Quang | Trang Tin Điện Tử Phật Giáo" />
+		<meta name="twitter:description" content="Chùa Linh Quang tọa lạc tại Ấp 1 xã Phú Hòa, huyện Định Quán, tỉnh Đồng Nai là nơi sinh hoạt tín ngưỡng tôn giáo của bà con Phật tử xa gần."/>
+		<meta name="twitter:image" content="http://chualinhquang.com.vn/uploads/slideshow/image_url/1/image_1_-_Copy.jpg"/>
+	<% end %>
+	
+	<% if params[:controller] == 'category' && params[:action] == 'index' %>
+		<title><%= @category.name + ' | Chùa Linh Quang' %></title>
+		<meta property="og:locale" content="vi" />
+		<meta property="og:type" content="website"/>
+		<meta property="og:title" content="<%= @category.name %>"/>
+		<meta property="og:description" content="Chùa Linh Quang tọa lạc tại Ấp 1 xã Phú Hòa, huyện Định Quán, tỉnh Đồng Nai là nơi sinh hoạt tín ngưỡng tôn giáo của bà con Phật tử xa gần."/>
+		<meta property="og:url" content="<%= 'http://chualinhquang.com.vn' + category_path(category_id: @category, category_name: @category.url_friendly) %>"/>
+		<meta property="og:site_name" content="Chùa Linh Quang" />
+		<meta property="og:image" content="http://chualinhquang.com.vn/uploads/slideshow/image_url/1/image_1_-_Copy.jpg"/>
+		<meta property="og:image:width" content="850"/>
+		<meta property="og:image:height" content="620"/>
+		
+		<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:site" content="<%= 'http://chualinhquang.com.vn' + category_path(category_id: @category, category_name: @category.url_friendly) %>"/>
+		<meta name="twitter:title" content="<%= @category.name %>" />
+		<meta name="twitter:description" content="Chùa Linh Quang tọa lạc tại Ấp 1 xã Phú Hòa, huyện Định Quán, tỉnh Đồng Nai là nơi sinh hoạt tín ngưỡng tôn giáo của bà con Phật tử xa gần."/>
+		<meta name="twitter:image" content="http://chualinhquang.com.vn/uploads/slideshow/image_url/1/image_1_-_Copy.jpg"/>
+	<% end %>
+	
+	<% if params[:controller] == 'post_detail' && params[:action] == 'index' %>
+		<title><%= @post_detail.title + ' | Chùa Linh Quang' %></title>
+		<meta property="og:locale" content="vi" />
+		<meta property="og:type" content="website"/>
+		<meta property="og:title" content="<%= @post_detail.title %>"/>
+		<meta property="og:description" content="Chùa Linh Quang tọa lạc tại Ấp 1 xã Phú Hòa, huyện Định Quán, tỉnh Đồng Nai là nơi sinh hoạt tín ngưỡng tôn giáo của bà con Phật tử xa gần."/>
+		<meta property="og:url" content="<%= 'http://chualinhquang.com.vn' + post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: @post_detail.id, post_name: @post_detail.url_friendly) %>"/>
+		<meta property="og:site_name" content="Chùa Linh Quang" />
+		<meta property="og:image" content="http://chualinhquang.com.vn<%= @post_detail.image_url.larger_image %>"/>
+		<meta property="og:image:width" content="850"/>
+		<meta property="og:image:height" content="620"/>
+		
+		<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:site" content="<%= 'http://chualinhquang.com.vn' + post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: @post_detail.id, post_name: @post_detail.url_friendly) %>"/>
+		<meta name="twitter:title" content="<%= @post_detail.title %>" />
+		<meta name="twitter:description" content="Chùa Linh Quang tọa lạc tại Ấp 1 xã Phú Hòa, huyện Định Quán, tỉnh Đồng Nai là nơi sinh hoạt tín ngưỡng tôn giáo của bà con Phật tử xa gần."/>
+		<meta name="twitter:image" content="http://chualinhquang.com.vn<%= @post_detail.image_url.larger_image %>"/>
+	<% end %>
+	<% if params[:controller] == 'contact' && params[:action] == 'index' %>
+		<title>Liên Hệ | Chùa Linh Quang</title>
+	<% end %>
+	<% if params[:controller] == 'gallery' && params[:action] == 'music' %>
+		<title>Thư Viện Nhạc | Chùa Linh Quang</title>
+	<% end %>
+	<% if params[:controller] == 'gallery' && params[:action] == 'picture' %>
+		<title>Thư Viện Hình Ảnh | Chùa Linh Quang</title>
+	<% end %>
+	<% if params[:controller] == 'gallery' && params[:action] == 'video' %>
+		<title>Thư Viện Video | Chùa Linh Quang</title>
+	<% end %>
+	<% if params[:controller] == 'gallery' && params[:action] == 'picture_detail' %>
+		<title><%= @picture_detail.title + ' | Chùa Linh Quang' %></title>
+	<% end %>
+	
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org/",
+	  "@type": "WebSite",
+	  "name": "Chùa Linh Quang",
+	  "url": "http://chualinhquang.com.vn/",
+	  "potentialAction": {
+		"@type": "SearchAction",
+		"target": "http://chualinhquang.com.vn/ket-qua-tim-kiem-bai-viet.html?utf8=✓&keyword={search_term_string}",
+		"query-input": "required name=search_term_string"
+	  }
+	}
+	</script>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Organization",
+	  "name": "Chùa Linh Quang",
+	  "url": "http://chualinhquang.com.vn/",
+	  "logo": "http://chualinhquang.com.vn/frontend/images/chualinhquang-logo.png"
+	}
+	</script>
+	<% if params[:controller] == 'category' && params[:action] == 'index' %>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org/", 
+	  "@type": "BreadcrumbList", 
+	  "itemListElement": [{
+		"@type": "ListItem", 
+		"position": 1, 
+		"name": "Chùa Linh Quang | Trang Tin Điện Tử Phật Giáo",
+		"item": "<%= root_path %>"  
+	  },
+	  {
+		"@type": "ListItem", 
+		"position": 2, 
+		"name": "<%= @category.name %>",
+		"item": "<%= 'http://chualinhquang.com.vn' + category_path(category_id: @category, category_name: @category.url_friendly) %>"  
+	  }]
+	}
+	</script>
+	<% end %>
+	<% if params[:controller] == 'post_detail' && params[:action] == 'index' %>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org/", 
+	  "@type": "BreadcrumbList", 
+	  "itemListElement": [{
+		"@type": "ListItem", 
+		"position": 1, 
+		"name": "Chùa Linh Quang | Trang Tin Điện Tử Phật Giáo",
+		"item": "<%= root_path %>"  
+	  },
+	  {
+		"@type": "ListItem", 
+		"position": 2, 
+		"name": "<%= @category.name %>",
+		"item": "<%= 'http://chualinhquang.com.vn' + category_path(category_id: @category, category_name: @category.url_friendly) %>"  
+	  },
+	  {
+		"@type": "ListItem", 
+		"position": 3, 
+		"name": "<%= @post_detail.title %>",
+		"item": "<%= 'http://chualinhquang.com.vn' + post_detail_path(category_id: @category, category_name: @category.url_friendly, post_id: @post_detail.id, post_name: @post_detail.url_friendly) %>"  
+	  }]
+	}
+	</script>
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": "http://chualinhquang.com.vn/"
+		},
+		"headline": "<%= @post_detail.title %>",
+		"image": "http://chualinhquang.com.vn<%= @post_detail.image_url.larger_image %>",
+		"datePublished": "<%= @post_detail.created_at.strftime("%d/%m/%Y %I:%M%p") %>",
+		"dateModified": "<%= @post_detail.updated_at.strftime("%d/%m/%Y %I:%M%p") %>",
+		"author": {
+			"@type": "Organization",
+			"name": "Chùa Linh Quang"
+		},
+		 "publisher": {
+			"@type": "Organization",
+			"name": "Chùa Linh Quang",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "http://chualinhquang.com.vn/frontend/images/chualinhquang-logo.png"
+			}
+		},
+		"description": "<%= truncate(@post_detail.content.html_safe, length: 45) %>"
+	}
+	</script>
+	<% end %>
 </head>
 
 <body>
-
-	<!-- Container -->
 	<div id="container">
-
-		<!-- Header
-		    ================================================== -->
 		<header class="clearfix third-style">
-			
-			<!-- Bootstrap navbar -->
 			<nav class="navbar navbar-default navbar-static-top" role="navigation">
-
-				<!-- Top line -->
 				<%= render "/modules/top_line" %>
-				<!-- End Top line -->
-
-				<!-- list line posts -->
 				<%= render "/modules/list_line_posts" %>
-				<!-- End list line posts -->
-
-				<!-- navbar list container -->
 				<div class="nav-list-container">
 					<div class="container">
-
-						<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 								<span class="sr-only">Menu Chính</span>
@@ -72,46 +217,17 @@
 							</button>
 							<%= link_to image_tag("/frontend/images/chualinhquang-logo.png", alt: "Quay về trang chủ Chùa Linh Quang"), root_path, class: "navbar-brand main-logo" %>
 						</div>
-
-						<!-- Collect the nav links, forms, and other content for toggling -->
 						<%= render "/modules/home_menu" %>
-						<!-- /.navbar-collapse -->
-						
-					</div>
-						
+					</div>						
 				</div>
-				<!-- End navbar list container -->
-
 			</nav>
-			<!-- End Bootstrap navbar -->
-
 		</header>
-		<!-- End Header -->
-		
 		<% if ["category"].include?(params[:controller]) || ["post_detail"].include?(params[:controller]) %>
-		<!-- ticker-news-section
-			================================================== -->
 		<%= render "/modules/hot_news" %>
-		<!-- End ticker-news-section -->
 		<% end %>
-
-		<!-- block-wrapper-section
-			================================================== -->
 		<%= yield %>
-		<!-- End block-wrapper-section -->
-
-		<!-- footer 
-			================================================== -->
 		<%= render "/modules/footer" %>
-		<!-- End footer -->
-
 	</div>
-	<!-- End Container -->
-  
-	<!-- include javascripts
-		================================================== -->
 	<%= render "/modules/js_files" %>
-	<!-- End Include Javascripts -->
-
 </body>
 </html>
