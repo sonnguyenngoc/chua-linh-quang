@@ -18,22 +18,23 @@ class Article < ActiveRecord::Base
   end
   
   def url_friendly
-      self.title.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+    self.title.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
   end
   
   # 0 - hot news
-    def self.get_hot_news # get 12 items
-        records = self.get_active_articles
-        records = records.where("articles.is_mine = true").first(15)
-        
-        records
-    end
-    def self.get_all_hot_news # get 12 items
-        records = self.where("articles.approved = true and articles.is_show = true").order("posted_at DESC")
-        records = records.where("articles.is_mine = true")
-        
-        records
-    end
+  def self.get_hot_news # get 12 items
+    records = self.get_active_articles
+    records = records.where("articles.is_mine = true").first(15)
+    
+    records
+  end
+  
+  def self.get_all_hot_news # get 12 items
+      records = self.where("articles.approved = true and articles.is_show = true").order("posted_at DESC")
+      records = records.where("articles.is_mine = true")
+      
+      records
+  end
   # End hot news
   
   # 1 - category_1
